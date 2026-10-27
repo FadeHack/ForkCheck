@@ -1,0 +1,53 @@
+import { appendFile, mkdir } from "node:fs/promises";
+import { dirname } from "node:path";
+import type { ModelCallInfo } from "./port";
+
+/** A logged call. Never carries message content, keys or tokens. */
+export interface ModelCallEntry extends ModelCallInfo {
+  at: string;
+}
+
+export interface ModelCallLog {
+  write(entry: ModelCallEntry): Promise<void>;
+}
+
+export class MemoryCallLog implements ModelCallLog {
+  readonly entries: ModelCallEntry[] = [];
+
+  async write(entry: ModelCallEntry): Promise<void> {
+    this.entries.push(entry);
+  }
+}
+
+export class ConsoleCallLog implements ModelCallLog {
+  async write(e: ModelCallEntry): Promise<void> {
+    const status = e.ok ? "ok" : `FAILED ${e.error ?? ""}`;
+    console.error(
+      `[model] ${e.stage} ${e.provider}/${e.model} ${e.promptVersion} ${status}` +
+        `${e.cacheHit ? " (cache)" : ""} ${e.latencyMs}ms in=${e.inputTokens} out=${e.outputTokens}` +
+        ` reasoning=${e.reasoningTokens ?? "n/a"} $${e.costUsd.toFixed(5)}`,
+    );
+  }
+}
+
+/** One JSON object per line, e.g. `var/model-calls.jsonl`. */
+export class FileCallLog implements ModelCallLog {
+  constructor(readonly path: string) {}
+
+  async write(entry: ModelCallEntry): Promise<void> {
+    await mkdir(dirname(this.path), { recursive: true });
+    await appendFile(this.path, `${JSON.stringify(entry)}\n`);
+  }
+}
+
+export class MultiCallLog implements ModelCallLog {
+  readonly #logs: readonly ModelCallLog[];
+
+  constructor(...logs: ModelCallLog[]) {
+    this.#logs = logs;
+  }
+
+  async write(entry: ModelCallEntry): Promise<void> {
+    await Promise.all(this.#logs.map((l) => l.write(entry)));
+  }
+}

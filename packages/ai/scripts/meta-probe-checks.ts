@@ -1,5 +1,6 @@
 import { z } from "zod";
-import { META_CHAT_MODEL, META_CHAT_PRICE, META_TRANSCRIBE_MODEL } from "../src/models";
+import { META_CHAT_MODEL, META_TRANSCRIBE_MODEL } from "../src/models";
+import { META_CHAT_PRICE } from "../src/pricing";
 
 export const probeOutput = z.strictObject({
   decision: z.string().min(1),
