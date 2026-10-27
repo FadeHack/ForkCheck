@@ -1,17 +1,28 @@
 import { normalizeQuote, type Probe } from "@forkcheck/core";
 import { loadPrompt, probesOutput, stageConfig } from "@forkcheck/ai";
-import type { Drop, GenerateProbesInput, Stages } from "../contracts";
+import type {
+  Drop,
+  GenerateProbesInput,
+  GenerateProbesOutput,
+  ModelPort,
+  StageResult,
+  Stages,
+} from "../contracts";
 import { decisionBlock, meetingHeader } from "./format";
 
 export const GENERATE_PROBES_PROMPT_VERSION = 1;
 
-export function generateProbesUserMessage({
-  meeting,
-  participants,
-  decision,
-  candidate,
-}: GenerateProbesInput): string {
-  return [
+/** A rejected probe and what was wrong with it, sent back once for a rewrite. */
+export interface ProbeFeedback {
+  probe: Pick<Probe, "stem" | "options">;
+  problems: string[];
+}
+
+export function generateProbesUserMessage(
+  { meeting, participants, decision, candidate }: GenerateProbesInput,
+  feedback?: ProbeFeedback,
+): string {
+  const lines = [
     ...meetingHeader(meeting),
     `Participants: ${participants.map((p) => p.displayName).join(", ")}`,
     "",
@@ -21,7 +32,19 @@ export function generateProbesUserMessage({
     `Dimension: ${candidate.dimension}`,
     "Readings participants might hold:",
     ...candidate.readings.map((r) => `- ${r.text}`),
-  ].join("\n");
+  ];
+  if (feedback) {
+    lines.push(
+      "",
+      "An earlier question for this gap was rejected:",
+      `Question: ${feedback.probe.stem}`,
+      ...feedback.probe.options.map((o) => `- ${o.text}`),
+      "Problems:",
+      ...feedback.problems.map((p) => `- ${p}`),
+      "Write a new question that fixes every problem.",
+    );
+  }
+  return lines.join("\n");
 }
 
 const fold = (s: string) => normalizeQuote(s).toLowerCase();
@@ -32,7 +55,15 @@ const NOT_SURE =
   /^(?:not sure|unsure|i'?m not sure|don'?t know|i don'?t know|no idea|not decided(?: yet)?|undecided|other|none of (?:these|the above)|can'?t say)\W*$/;
 export const isNotSureOption = (text: string) => NOT_SURE.test(fold(text).trim());
 
-export const generateProbes: Stages["generateProbes"] = async (input, model) => {
+export const generateProbes: Stages["generateProbes"] = (input, model) =>
+  generateProbesWith(input, model);
+
+/** The stage, plus optional feedback on a rejected probe for the one rewrite. */
+export async function generateProbesWith(
+  input: GenerateProbesInput,
+  model: ModelPort,
+  feedback?: ProbeFeedback,
+): Promise<StageResult<GenerateProbesOutput>> {
   // T0 is templated without a model and T1 arrives in M3.3.
   if (input.tier !== "free") throw new Error(`generateProbes supports tier "free" only`);
   const prompt = loadPrompt("generateProbes", GENERATE_PROBES_PROMPT_VERSION);
@@ -43,7 +74,7 @@ export const generateProbes: Stages["generateProbes"] = async (input, model) => 
     schema: probesOutput,
     messages: [
       { role: "developer", content: prompt.text },
-      { role: "user", content: generateProbesUserMessage(input) },
+      { role: "user", content: generateProbesUserMessage(input, feedback) },
     ],
   });
 
@@ -88,4 +119,4 @@ export const generateProbes: Stages["generateProbes"] = async (input, model) => 
     output: { probes },
     trace: { stage: "generateProbes", promptVersion: prompt.version, calls: [call], drops },
   };
-};
+}
