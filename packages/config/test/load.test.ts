@@ -22,6 +22,7 @@ describe("loadEnv", () => {
       STORAGE_DRIVER: "blob",
       BLOB_READ_WRITE_TOKEN: "blob-secret",
       AUDIO_DIR: "/data/audio",
+      FFMPEG_PATH: "/opt/bin/ffmpeg",
       SPEND_CAP_USD: "40",
       BASETEN_SPEND_CAP_USD: "12.5",
     });
@@ -34,6 +35,7 @@ describe("loadEnv", () => {
       STORAGE_DRIVER: "blob",
       BLOB_READ_WRITE_TOKEN: "blob-secret",
       AUDIO_DIR: "/data/audio",
+      FFMPEG_PATH: "/opt/bin/ffmpeg",
       SPEND_CAP_USD: 40,
       BASETEN_SPEND_CAP_USD: 12.5,
     });
@@ -45,6 +47,7 @@ describe("loadEnv", () => {
       RECORD_FIXTURES: false,
       STORAGE_DRIVER: "local",
       AUDIO_DIR: "var/audio",
+      FFMPEG_PATH: "ffmpeg",
       SPEND_CAP_USD: 100,
       BASETEN_SPEND_CAP_USD: 60,
     });
