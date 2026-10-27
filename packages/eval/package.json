@@ -16,6 +16,7 @@
     "@forkcheck/ai": "workspace:*",
     "@forkcheck/engine": "workspace:*",
     "@forkcheck/asr": "workspace:*",
+    "openai": "^7.45.0",
     "zod": "^4.6.7"
   }
 }
