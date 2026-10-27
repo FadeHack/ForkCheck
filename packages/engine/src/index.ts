@@ -7,3 +7,4 @@ export * from "./vet-probe";
 export * from "./stages/simulate-answer";
 export * from "./stages/generate-recheck";
 export * from "./vet-recheck";
+export * from "./stages/draft-record-prose";
