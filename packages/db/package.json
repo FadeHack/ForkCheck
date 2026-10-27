@@ -8,10 +8,17 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
+    "@forkcheck/config": "workspace:*",
     "@forkcheck/core": "workspace:*",
-    "@forkcheck/config": "workspace:*"
+    "drizzle-orm": "0.45.4",
+    "postgres": "3.4.9"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.9",
+    "drizzle-kit": "0.31.11"
   }
 }

@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "id": "sample-friday-login",
+  "title": "Sample: SSO ready by Friday",
+  "set": "dev",
+  "category": "deadline",
+  "heldAt": "2026-10-26T15:00:00-04:00",
+  "timezone": "America/New_York",
+  "participants": ["Priya", "Marco", "Dana"],
+  "transcript": "[00:00] Priya: Quick one. Where are we on single sign-on for the pilot customer?\n[00:06] Marco: Login works on staging. I still need to wire up the admin roles.\n[00:14] Dana: The customer asked again yesterday. They want to try it this week.\n[00:20] Priya: OK, so SSO is ready by Friday. Marco, that's yours?\n[00:25] Marco: Yep, I'll have it ready by Friday.\n[00:29] Dana: Great, I'll tell them Friday.\n",
+  "expectedDecisions": [
+    {
+      "id": "sso-friday",
+      "kind": "commitment",
+      "statement": "Single sign-on for the pilot customer is ready by Friday.",
+      "owner": "Marco",
+      "deadline": "Friday",
+      "quotes": ["SSO is ready by Friday", "I'll have it ready by Friday"]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Priya",
+      "readings": [
+        {
+          "decision": "sso-friday",
+          "dimension": "deadline",
+          "reading": "Merged and deployed to staging by Friday; production the following week."
+        }
+      ]
+    },
+    {
+      "participant": "Marco",
+      "readings": [
+        {
+          "decision": "sso-friday",
+          "dimension": "deadline",
+          "reading": "Code complete on staging by Friday end of day, including admin roles."
+        }
+      ]
+    },
+    {
+      "participant": "Dana",
+      "readings": [
+        {
+          "decision": "sso-friday",
+          "dimension": "deadline",
+          "reading": "The customer's admins can log in to production on Friday morning."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "friday-meaning",
+      "decision": "sso-friday",
+      "dimension": "deadline",
+      "note": "Staging vs production: Dana promised the customer a production login."
+    }
+  ],
+  "expectedRecord": {
+    "stated": ["Marco: \"I'll have it ready by Friday\""],
+    "confirmed": [
+      "SSO with admin roles is live in production for the pilot customer by Friday 2026-10-30, 10:00 ET (firm)."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "friday-meaning",
+      "precise": {
+        "text": "SSO with admin roles is live in production for the pilot customer by Friday 2026-10-30, 10:00 ET. Firm.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "SSO is done by Friday.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}
