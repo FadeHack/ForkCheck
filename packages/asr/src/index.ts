@@ -9,3 +9,12 @@ export {
   type TranscribeRequest,
   type TranscribeResponse,
 } from "./transcribe";
+export {
+  WAV_LIMITS,
+  formatDuration,
+  inspectWav,
+  type WavInfo,
+  type WavProblem,
+  type WavProblemCode,
+  type WavReport,
+} from "./wav";
