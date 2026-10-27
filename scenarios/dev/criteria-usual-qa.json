@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "id": "dev-criteria-usual-qa",
+  "title": "Release 4.2 after the usual QA pass",
+  "set": "dev",
+  "category": "criteria",
+  "heldAt": "2026-10-26T11:00:00+01:00",
+  "timezone": "Europe/Berlin",
+  "participants": ["Zara", "Diego", "Noor"],
+  "transcript": "[00:00] Noor: Release 4.2. Diego, is everything merged?\n[00:05] Diego: Everything except the offline drafts fix. That's in review and should land today.\n[00:13] Zara: Is offline drafts the one that lost text on Android when you rotated the phone?\n[00:19] Diego: That's the one. Turned out to be an activity lifecycle thing.\n[00:26] Noor: App store review is taking a day or two lately. When can we submit?\n[00:33] Diego: Once the fix lands and it's been through QA.\n[00:38] Zara: We'll do the usual QA pass on the release build.\n[00:43] Noor: Great. Then let's submit Wednesday if the usual QA pass is clean.\n[00:50] Diego: Wednesday works.\n[00:52] Zara: OK.\n[00:54] Noor: Release notes. Who's writing them?\n[00:58] Diego: I'll draft them from the changelog and send them to you.\n[01:04] Noor: Thanks. Keep them short, three bullets at most.\n[01:09] Zara: Can we mention the rotation fix? A lot of store reviews complained about it.\n[01:16] Noor: Yes, lead with that.\n[01:19] Diego: Also, the new onboarding screens are behind a flag. They ship dark.\n[01:26] Noor: Good. We'll turn them on once the A/B setup is ready.\n[01:31] Zara: Then I'll skip onboarding this round.\n[01:35] Noor: Agreed. Anything else for 4.2?\n[01:39] Diego: The crash reporter upgrade went in last week. Nothing to do, just so you know.\n[01:46] Noor: Noted. Thanks, both.\n",
+  "expectedDecisions": [
+    {
+      "id": "qa-pass",
+      "kind": "commitment",
+      "statement": "Zara's team runs the usual QA pass on the 4.2 release build.",
+      "owner": "Zara",
+      "deadline": null,
+      "quotes": ["We'll do the usual QA pass on the release build."]
+    },
+    {
+      "id": "submit-wednesday",
+      "kind": "decision",
+      "statement": "Release 4.2 is submitted to the app stores on Wednesday if the QA pass is clean.",
+      "owner": null,
+      "deadline": "Wednesday",
+      "quotes": ["let's submit Wednesday if the usual QA pass is clean", "Wednesday works."]
+    },
+    {
+      "id": "release-notes",
+      "kind": "commitment",
+      "statement": "Diego drafts the release notes from the changelog, leading with the rotation fix.",
+      "owner": "Diego",
+      "deadline": null,
+      "quotes": ["I'll draft them from the changelog and send them to you."]
+    },
+    {
+      "id": "onboarding-dark",
+      "kind": "decision",
+      "statement": "The new onboarding screens ship behind a flag and are not tested this round.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["They ship dark.", "Then I'll skip onboarding this round."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Zara",
+      "readings": [
+        {
+          "decision": "qa-pass",
+          "dimension": "criteria",
+          "reading": "Full manual regression on the device lab, four iOS and four Android phones. About two days."
+        }
+      ]
+    },
+    {
+      "participant": "Diego",
+      "readings": [
+        {
+          "decision": "qa-pass",
+          "dimension": "criteria",
+          "reading": "A smoke test of login, compose and sync on the iOS and Android simulators. An hour or two."
+        }
+      ]
+    },
+    {
+      "participant": "Noor",
+      "readings": [
+        {
+          "decision": "qa-pass",
+          "dimension": "criteria",
+          "reading": "Full regression plus the accessibility checklist, because 4.2 changes the compose screen."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "what-usual-means",
+      "decision": "qa-pass",
+      "dimension": "criteria",
+      "note": "Acceptance: device-lab regression (Zara) vs simulator smoke test (Diego) vs regression plus accessibility (Noor)."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Zara: \"We'll do the usual QA pass on the release build.\"",
+      "Noor: \"let's submit Wednesday if the usual QA pass is clean\"",
+      "Diego: \"I'll draft them from the changelog and send them to you.\"",
+      "Diego: \"They ship dark.\""
+    ],
+    "confirmed": [
+      "QA for 4.2 passes when the full manual regression is clean on the eight lab devices and the accessibility checklist passes on the compose screen; submission moves to Thursday 2026-10-29."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "what-usual-means",
+      "precise": {
+        "text": "QA is done when the full manual regression passes on the eight lab devices and the accessibility checklist passes on the compose screen. Submission moves to Thursday 2026-10-29.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "QA gives it a proper going-over before we submit.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

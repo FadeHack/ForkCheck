@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "id": "dev-deadline-next-friday",
+  "title": "Security questionnaire back next Friday",
+  "set": "dev",
+  "category": "deadline",
+  "heldAt": "2026-10-28T14:00:00-05:00",
+  "timezone": "America/Chicago",
+  "participants": ["Rosa", "Kwame", "Lena"],
+  "transcript": "[00:00] Rosa: Thanks for jumping on. Brightwater Logistics sent over their security questionnaire, and it's the long one. About two hundred questions.\n[00:12] Kwame: I saw it. A lot of it maps to our SOC 2 answers, so maybe half is copy and paste.\n[00:21] Lena: The other half is the data residency section. They want to know where backups live.\n[00:30] Kwame: Backups stay in the EU region for EU customers. I need to check whether Brightwater is set up as EU or US.\n[00:42] Rosa: They're headquartered in the US, but the pilot team sits in Rotterdam.\n[00:49] Kwame: Then I'll answer for both and flag it.\n[00:54] Lena: Do we attach the pen test summary or just reference it?\n[01:00] Kwame: Attach the summary letter. Not the full report, that needs an NDA.\n[01:08] Lena: We have a mutual NDA with them already. I'll double check it covers security documents.\n[01:17] Rosa: OK, timing. Their procurement lead said they need it back next Friday.\n[01:25] Kwame: Next Friday is fine. I can block out time for it.\n[01:31] Rosa: Great, so Kwame owns the questionnaire, back to them next Friday.\n[01:38] Lena: And I'll do the legal and insurance sections, those are mine anyway. I'll pass them to Kwame to merge in.\n[01:49] Kwame: Works. Put them in the shared folder, not email.\n[01:55] Rosa: I'll let their procurement lead know it's in progress.\n[02:01] Lena: Do they want it in their portal or as a spreadsheet?\n[02:06] Rosa: Spreadsheet. They said the portal is being replaced.\n[02:12] Kwame: Good. The portal versions always break our formatting.\n[02:19] Lena: One question on insurance. Do they want the certificate itself or just the coverage amounts?\n[02:28] Rosa: I'll ask when I write to procurement.\n[02:33] Lena: Thanks.\n[02:35] Rosa: That's it from me. Thanks, both.\n",
+  "expectedDecisions": [
+    {
+      "id": "questionnaire-return",
+      "kind": "commitment",
+      "statement": "The completed security questionnaire goes back to Brightwater next Friday.",
+      "owner": "Kwame",
+      "deadline": "next Friday",
+      "quotes": [
+        "they need it back next Friday",
+        "Next Friday is fine",
+        "Kwame owns the questionnaire, back to them next Friday"
+      ]
+    },
+    {
+      "id": "legal-sections",
+      "kind": "commitment",
+      "statement": "Lena answers the legal and insurance sections and passes them to Kwame.",
+      "owner": "Lena",
+      "deadline": null,
+      "quotes": ["I'll do the legal and insurance sections"]
+    },
+    {
+      "id": "nda-check",
+      "kind": "commitment",
+      "statement": "Lena checks that the mutual NDA covers security documents.",
+      "owner": "Lena",
+      "deadline": null,
+      "quotes": ["I'll double check it covers security documents."]
+    },
+    {
+      "id": "procurement-update",
+      "kind": "commitment",
+      "statement": "Rosa tells Brightwater's procurement lead the questionnaire is in progress.",
+      "owner": "Rosa",
+      "deadline": null,
+      "quotes": ["I'll let their procurement lead know it's in progress."]
+    },
+    {
+      "id": "insurance-question",
+      "kind": "commitment",
+      "statement": "Rosa asks procurement whether they want the insurance certificate or only the coverage amounts.",
+      "owner": "Rosa",
+      "deadline": null,
+      "quotes": ["I'll ask when I write to procurement."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Rosa",
+      "readings": [
+        {
+          "decision": "questionnaire-return",
+          "dimension": "deadline",
+          "reading": "Friday 30 October, two days from now. Procurement's cut-off is the 30th."
+        }
+      ]
+    },
+    {
+      "participant": "Kwame",
+      "readings": [
+        {
+          "decision": "questionnaire-return",
+          "dimension": "deadline",
+          "reading": "Friday 6 November, the Friday of the following week."
+        }
+      ]
+    },
+    {
+      "participant": "Lena",
+      "readings": [
+        {
+          "decision": "questionnaire-return",
+          "dimension": "deadline",
+          "reading": "Friday 6 November. She plans to hand over her sections on Monday 2 November."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "which-friday",
+      "decision": "questionnaire-return",
+      "dimension": "deadline",
+      "note": "Date meaning: said on a Wednesday, Rosa means this coming Friday (Oct 30); Kwame and Lena hear Friday Nov 6."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Rosa: \"Kwame owns the questionnaire, back to them next Friday\"",
+      "Lena: \"I'll do the legal and insurance sections\"",
+      "Lena: \"I'll double check it covers security documents.\"",
+      "Rosa: \"I'll let their procurement lead know it's in progress.\""
+    ],
+    "confirmed": [
+      "Kwame sends the completed questionnaire to Brightwater procurement as a spreadsheet by Friday 2026-10-30, 17:00 CT."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "which-friday",
+      "precise": {
+        "text": "The completed questionnaire goes to Brightwater procurement as a spreadsheet by Friday 2026-10-30, 17:00 CT. Lena's sections reach Kwame by Thursday noon.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "Kwame sends it back next Friday as planned.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

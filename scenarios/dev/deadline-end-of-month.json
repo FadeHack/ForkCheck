@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "id": "dev-deadline-end-of-month",
+  "title": "Billing email templates: aim for end of month",
+  "set": "dev",
+  "category": "deadline",
+  "heldAt": "2026-10-21T10:00:00+01:00",
+  "timezone": "Europe/London",
+  "participants": ["Hannah", "Tomasz", "Aiko"],
+  "transcript": "[00:00] Hannah: Morning. Main thing today is the billing email templates. Tomasz, where did we land with the rendering bug?\n[00:09] Tomasz: Fixed on Monday. Outlook was stripping the header table, so I rebuilt it with plain divs. It renders fine in all the test inboxes now.\n[00:24] Aiko: Nice. Did that cover the dark mode version too?\n[00:29] Tomasz: Mostly. The logo still looks muddy on a black background. I've asked design for a light variant.\n[00:41] Hannah: OK. What's left before we can switch every customer over to the new templates?\n[00:48] Tomasz: Three templates. The invoice, the failed payment one, and the receipt. Receipts are the hard part because of the tax lines per country.\n[01:06] Aiko: How many countries are we talking about?\n[01:10] Tomasz: Eleven with VAT, plus the US sales tax block. I want a snapshot test for each one.\n[01:24] Hannah: That's sensible. Any blockers?\n[01:28] Tomasz: The tax copy. Finance still owes me the wording for reverse charge invoices.\n[01:37] Hannah: I'll chase finance today.\n[01:42] Aiko: From my side, the new templates are what the autumn campaign links to. The footer has the new referral block.\n[01:55] Hannah: Right. So let's aim for end of month for the full switch-over. Tomasz, does that work?\n[02:04] Tomasz: End of month should be doable if finance gets back to me this week.\n[02:12] Aiko: OK, end of month. I'll plan around that.\n[02:18] Hannah: Good. Tomasz, can you also turn off the old templates once the switch is done, so we don't send both?\n[02:27] Tomasz: Yes, I'll delete them from the sender config after a day of clean sends.\n[02:36] Aiko: One more thing. Can we get a preview link for the referral block? Legal wants to read the terms in context.\n[02:47] Tomasz: I'll send one this afternoon.\n[02:52] Aiko: Thanks. The campaign copy is with the translators, so I can't change the referral wording after this week.\n[03:04] Hannah: Noted. Let's keep that wording frozen, then. Thanks, both.\n",
+  "expectedDecisions": [
+    {
+      "id": "templates-switch",
+      "kind": "commitment",
+      "statement": "Every customer is switched to the new invoice, failed payment and receipt email templates by end of month.",
+      "owner": "Tomasz",
+      "deadline": "end of month",
+      "quotes": [
+        "let's aim for end of month for the full switch-over",
+        "End of month should be doable if finance gets back to me this week"
+      ]
+    },
+    {
+      "id": "chase-finance",
+      "kind": "commitment",
+      "statement": "Hannah chases finance for the reverse charge invoice wording.",
+      "owner": "Hannah",
+      "deadline": "today",
+      "quotes": ["I'll chase finance today."]
+    },
+    {
+      "id": "old-templates-off",
+      "kind": "commitment",
+      "statement": "The old templates are removed from the sender config after a day of clean sends on the new ones.",
+      "owner": "Tomasz",
+      "deadline": null,
+      "quotes": ["I'll delete them from the sender config after a day of clean sends"]
+    },
+    {
+      "id": "referral-preview",
+      "kind": "commitment",
+      "statement": "Tomasz sends a preview link for the referral block so legal can read the terms in context.",
+      "owner": "Tomasz",
+      "deadline": "this afternoon",
+      "quotes": ["I'll send one this afternoon."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Hannah",
+      "readings": [
+        {
+          "decision": "templates-switch",
+          "dimension": "deadline",
+          "reading": "A target. A few days into November is acceptable as long as old and new templates never run side by side."
+        }
+      ]
+    },
+    {
+      "participant": "Tomasz",
+      "readings": [
+        {
+          "decision": "templates-switch",
+          "dimension": "deadline",
+          "reading": "A soft goal for Saturday 31 October. If the tax wording arrives late, slipping a week into November is fine."
+        }
+      ]
+    },
+    {
+      "participant": "Aiko",
+      "readings": [
+        {
+          "decision": "templates-switch",
+          "dimension": "deadline",
+          "reading": "Firm. The campaign emails go out Monday 2 November and link to the new templates, so all three must be live for everyone by Friday 30 October."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "end-of-month-firmness",
+      "decision": "templates-switch",
+      "dimension": "deadline",
+      "note": "Firmness: Aiko's campaign on 2 November depends on the switch; Hannah and Tomasz treat end of month as a target that can slip."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Hannah: \"let's aim for end of month for the full switch-over\"",
+      "Hannah: \"I'll chase finance today.\"",
+      "Tomasz: \"I'll delete them from the sender config after a day of clean sends\"",
+      "Tomasz: \"I'll send one this afternoon.\""
+    ],
+    "confirmed": [
+      "All three new billing templates are live for every customer by Friday 2026-10-30, 17:00 UK time (firm; the 2 November campaign links to them)."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "end-of-month-firmness",
+      "precise": {
+        "text": "All three new templates are live for every customer by Friday 2026-10-30, 17:00 UK time. Firm: the 2 November campaign links to them.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "We'll get the switch done around the end of the month.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

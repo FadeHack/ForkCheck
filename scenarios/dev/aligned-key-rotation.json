@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "id": "dev-aligned-key-rotation",
+  "title": "Rotate the staging keys by Tuesday",
+  "set": "dev",
+  "category": "aligned",
+  "heldAt": "2026-10-30T11:00:00Z",
+  "timezone": "UTC",
+  "participants": ["Grace", "Mateo"],
+  "transcript": "[00:00] Grace: Staging keys. The contractor who had access finished last week, so we rotate everything he could see.\n[00:08] Mateo: That's the payments sandbox key, the email provider key, and the two internal service tokens.\n[00:17] Grace: Right. Mateo, can you rotate all four by Tuesday November 3rd, 17:00 UTC?\n[00:25] Mateo: Yes. Tuesday the 3rd, 17:00 UTC, all four.\n[00:30] Grace: Done means the old keys are revoked at the provider, not just replaced, and the CI secrets are updated so the nightly build passes.\n[00:42] Mateo: Got it. Revoked at the provider, CI secrets updated, nightly green.\n[00:49] Grace: I'll check the provider dashboards on Wednesday morning and confirm the old keys show as revoked.\n[00:57] Mateo: OK. I'll post in the infra channel as each one is done.\n[01:03] Grace: Thanks. Production keys are out of scope. He never had access to those.\n[01:10] Mateo: Understood. Staging only.\n[01:13] Grace: And if a rotation breaks something, roll forward. Don't restore the old key.\n[01:20] Mateo: Makes sense, the old ones will be revoked anyway.\n[01:25] Grace: Great. That's all I had.\n",
+  "expectedDecisions": [
+    {
+      "id": "rotate-keys",
+      "kind": "commitment",
+      "statement": "Mateo rotates the four staging credentials, revoking the old keys at the provider and updating the CI secrets, by Tuesday November 3rd, 17:00 UTC.",
+      "owner": "Mateo",
+      "deadline": "Tuesday November 3rd, 17:00 UTC",
+      "quotes": [
+        "can you rotate all four by Tuesday November 3rd, 17:00 UTC?",
+        "Yes. Tuesday the 3rd, 17:00 UTC, all four.",
+        "Revoked at the provider, CI secrets updated, nightly green."
+      ]
+    },
+    {
+      "id": "verify-revoked",
+      "kind": "commitment",
+      "statement": "Grace checks the provider dashboards and confirms the old keys show as revoked.",
+      "owner": "Grace",
+      "deadline": "Wednesday morning",
+      "quotes": ["I'll check the provider dashboards on Wednesday morning"]
+    },
+    {
+      "id": "post-progress",
+      "kind": "commitment",
+      "statement": "Mateo posts in the infra channel as each rotation is done.",
+      "owner": "Mateo",
+      "deadline": null,
+      "quotes": ["I'll post in the infra channel as each one is done."]
+    },
+    {
+      "id": "roll-forward",
+      "kind": "decision",
+      "statement": "If a rotation breaks something, roll forward rather than restoring the old key.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["roll forward. Don't restore the old key."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Grace",
+      "readings": [
+        { "decision": "rotate-keys", "dimension": "owner", "reading": "Mateo, on his own." },
+        {
+          "decision": "rotate-keys",
+          "dimension": "deadline",
+          "reading": "Firm: 17:00 UTC on Tuesday 3 November 2026."
+        },
+        {
+          "decision": "rotate-keys",
+          "dimension": "scope",
+          "reading": "The four staging credentials only. Production is excluded."
+        },
+        {
+          "decision": "rotate-keys",
+          "dimension": "criteria",
+          "reading": "Every old key revoked at its provider, CI secrets replaced, and the nightly build passing."
+        }
+      ]
+    },
+    {
+      "participant": "Mateo",
+      "readings": [
+        { "decision": "rotate-keys", "dimension": "owner", "reading": "Mateo, on his own." },
+        {
+          "decision": "rotate-keys",
+          "dimension": "deadline",
+          "reading": "Firm: 17:00 UTC on Tuesday 3 November 2026."
+        },
+        {
+          "decision": "rotate-keys",
+          "dimension": "scope",
+          "reading": "The four staging credentials only. Production is excluded."
+        },
+        {
+          "decision": "rotate-keys",
+          "dimension": "criteria",
+          "reading": "Every old key revoked at its provider, CI secrets replaced, and the nightly build passing."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": [
+      "Grace: \"can you rotate all four by Tuesday November 3rd, 17:00 UTC?\"",
+      "Mateo: \"Yes. Tuesday the 3rd, 17:00 UTC, all four.\"",
+      "Grace: \"I'll check the provider dashboards on Wednesday morning\"",
+      "Mateo: \"I'll post in the infra channel as each one is done.\"",
+      "Grace: \"roll forward. Don't restore the old key.\""
+    ],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}

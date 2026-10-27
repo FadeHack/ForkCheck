@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "id": "dev-ownership-outage-email",
+  "title": "Outage follow-up: we'll handle the customer emails",
+  "set": "dev",
+  "category": "ownership",
+  "heldAt": "2026-11-03T16:00:00-08:00",
+  "timezone": "America/Los_Angeles",
+  "participants": ["Imani", "Felix", "Sunil"],
+  "transcript": "[00:00] Sunil: Let's do the outage follow-up. Felix, what's the final count?\n[00:06] Felix: Two hundred and twelve workspaces had sync paused for more than an hour over the weekend. Root cause was the queue migration. The rollback finished at 3:40.\n[00:22] Imani: Support got about ninety tickets. Most were closed with the status page link, but around fifteen are still open and a couple are angry.\n[00:35] Sunil: Are those fifteen inside the two hundred and twelve?\n[00:40] Imani: I think so. I haven't cross-checked.\n[00:45] Felix: I can export the affected workspace list with the owner emails.\n[00:51] Sunil: Good. We agreed in the incident review that anyone down over an hour gets a credit. Is the credit applied automatically?\n[01:01] Felix: Not yet. Billing needs a CSV. I'll have the credits applied by Thursday.\n[01:09] Sunil: OK. And the affected customers need to hear from us directly, not just through the status page.\n[01:17] Imani: Agreed. The ones with open tickets keep asking whether it'll happen again.\n[01:24] Felix: The postmortem draft answers that. We added a canary for the queue and a migration lock.\n[01:33] Sunil: Right. So we'll handle the customer emails by tomorrow. Plain language, the credit, and what we changed.\n[01:42] Imani: Sounds good.\n[01:44] Felix: Yep, makes sense.\n[01:47] Sunil: Imani, can you also close out the open tickets once the email is out, pointing to it?\n[01:54] Imani: Yes, I'll do that with a macro.\n[01:58] Felix: I'll publish the postmortem on the blog after legal reads it.\n[02:05] Sunil: Great. Anything else on the outage?\n[02:09] Imani: Just that the status page went up twenty minutes late. We should look at that.\n[02:16] Felix: That one's on the on-call checklist. I'll add a step for it.\n[02:22] Sunil: Thanks, both.\n",
+  "expectedDecisions": [
+    {
+      "id": "customer-email",
+      "kind": "commitment",
+      "statement": "Affected customers get a direct email covering the outage, the credit, and what changed.",
+      "owner": null,
+      "deadline": "tomorrow",
+      "quotes": ["we'll handle the customer emails by tomorrow"]
+    },
+    {
+      "id": "workspace-export",
+      "kind": "commitment",
+      "statement": "Felix exports the affected workspace list with the owner emails.",
+      "owner": "Felix",
+      "deadline": null,
+      "quotes": ["I can export the affected workspace list with the owner emails."]
+    },
+    {
+      "id": "credits-applied",
+      "kind": "commitment",
+      "statement": "Outage credits are applied for every workspace down over an hour.",
+      "owner": "Felix",
+      "deadline": "by Thursday",
+      "quotes": ["I'll have the credits applied by Thursday."]
+    },
+    {
+      "id": "close-tickets",
+      "kind": "commitment",
+      "statement": "Open outage tickets are closed with a pointer to the email once it is sent.",
+      "owner": "Imani",
+      "deadline": null,
+      "quotes": ["Yes, I'll do that with a macro."]
+    },
+    {
+      "id": "postmortem",
+      "kind": "commitment",
+      "statement": "The postmortem is published on the blog after legal review.",
+      "owner": "Felix",
+      "deadline": null,
+      "quotes": ["I'll publish the postmortem on the blog after legal reads it."]
+    },
+    {
+      "id": "status-page-step",
+      "kind": "commitment",
+      "statement": "The on-call checklist gets a step for posting to the status page.",
+      "owner": "Felix",
+      "deadline": null,
+      "quotes": ["I'll add a step for it."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Imani",
+      "readings": [
+        {
+          "decision": "customer-email",
+          "dimension": "owner",
+          "reading": "Felix sends it. He holds the export, and incident notices come from engineering."
+        }
+      ]
+    },
+    {
+      "participant": "Felix",
+      "readings": [
+        {
+          "decision": "customer-email",
+          "dimension": "owner",
+          "reading": "Imani's support team writes and sends it from the helpdesk. He only supplies the export."
+        }
+      ]
+    },
+    {
+      "participant": "Sunil",
+      "readings": [
+        {
+          "decision": "customer-email",
+          "dimension": "owner",
+          "reading": "Imani writes and sends it, using the export Felix hands her."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "who-sends",
+      "decision": "customer-email",
+      "dimension": "owner",
+      "note": "Each of Imani and Felix assumes the other sends the email; \"we'll handle\" names no one."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Sunil: \"we'll handle the customer emails by tomorrow\"",
+      "Felix: \"I'll have the credits applied by Thursday.\"",
+      "Imani: \"Yes, I'll do that with a macro.\"",
+      "Felix: \"I'll publish the postmortem on the blog after legal reads it.\"",
+      "Felix: \"I'll add a step for it.\""
+    ],
+    "confirmed": [
+      "Imani sends the customer email from the helpdesk by Wednesday 2026-11-04, 12:00 PT, using Felix's export, which he shares by 09:00 PT."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "who-sends",
+      "precise": {
+        "text": "Imani sends the customer email from the helpdesk by Wednesday 2026-11-04, 12:00 PT. Felix shares the workspace export with her by 09:00 PT.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "Support and engineering get the email out together.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}
