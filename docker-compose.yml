@@ -1,0 +1,21 @@
+# Development Postgres only. Tests use in-memory PGlite and do not need Docker.
+name: forkcheck
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: forkcheck
+      POSTGRES_PASSWORD: forkcheck
+      POSTGRES_DB: forkcheck
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U forkcheck -d forkcheck"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+volumes:
+  postgres-data:
