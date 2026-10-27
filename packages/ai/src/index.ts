@@ -1,1 +1,1 @@
-export const packageName = "@forkcheck/ai";
+export { META_BASE_URL, META_CHAT_MODEL, META_CHAT_PRICE, META_TRANSCRIBE_MODEL } from "./models";

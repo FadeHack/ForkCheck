@@ -10,6 +10,7 @@
     "dev": "pnpm --filter @forkcheck/web dev",
     "build": "pnpm --filter @forkcheck/web build",
     "env:check": "tsx packages/config/scripts/check-env.ts",
+    "probe:meta": "tsx packages/ai/scripts/probe-meta.ts",
     "lint": "eslint .",
     "typecheck": "pnpm -r --parallel typecheck",
     "depcruise": "depcruise apps packages --config .dependency-cruiser.cjs",
