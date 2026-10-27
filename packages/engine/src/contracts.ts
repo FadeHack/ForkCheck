@@ -55,6 +55,7 @@ export interface ExtractOutput {
 
 export interface FindCandidatesInput {
   meeting: MeetingContext;
+  participants: Participant[];
   segments: Segment[];
   decisions: DecisionWithEvidence[];
 }

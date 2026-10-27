@@ -9,35 +9,17 @@ import {
 } from "@forkcheck/core";
 import { extractOutput, loadPrompt, stageConfig } from "@forkcheck/ai";
 import type { DecisionWithEvidence, Drop, ExtractInput, Stages } from "../contracts";
+import { meetingHeader, transcriptLines } from "./format";
 
 export const EXTRACT_PROMPT_VERSION = 1;
 
-function speakerName(segment: Segment, participants: Participant[]): string {
-  const p = participants.find((x) => x.id === segment.participantId);
-  return p?.displayName ?? (segment.speakerLabel ? `Speaker ${segment.speakerLabel}` : "Unknown");
-}
-
 export function extractUserMessage({ meeting, participants, segments }: ExtractInput): string {
-  const held = new Intl.DateTimeFormat("en-US", {
-    timeZone: meeting.timezone,
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hourCycle: "h23",
-  }).format(new Date(meeting.heldAt));
-  const lines = segments.map(
-    (s) => `[${s.id}] ${speakerName(s, participants)}: ${s.text.replace(/\n/g, " ")}`,
-  );
   return [
-    `Meeting: ${meeting.title}`,
-    `Held: ${held} (${meeting.timezone})`,
+    ...meetingHeader(meeting),
     `Participants: ${participants.map((p) => p.displayName).join(", ")}`,
     "",
     "Transcript, one turn per line as [segment ID] speaker: text",
-    ...lines,
+    ...transcriptLines(segments, participants),
   ].join("\n");
 }
 
