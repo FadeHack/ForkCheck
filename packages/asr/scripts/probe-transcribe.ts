@@ -3,10 +3,7 @@
  * to 24 kHz mono 16-bit WAV with ffmpeg, and transcribes it in DIARIZATION mode.
  * Usage: LIVE=1 tsx packages/asr/scripts/probe-transcribe.ts [--out <markdown file to append to>]
  */
-import { execFileSync } from "node:child_process";
-import { appendFileSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { appendFileSync } from "node:fs";
 import { EnvError, loadEnv, loadLocalEnvFile } from "@forkcheck/config";
 import {
   TRANSCRIBE_MODEL,
@@ -14,6 +11,7 @@ import {
   transcribeCostUsd,
   type TranscribeRequest,
 } from "../src/transcribe";
+import { renderProbeWav } from "./probe-audio";
 import { checkResponse, probeScript, type Check } from "./transcribe-probe-checks";
 
 loadLocalEnvFile();
@@ -34,48 +32,7 @@ if (!env.LIVE) {
 const outIndex = process.argv.indexOf("--out");
 const outFile = outIndex === -1 ? undefined : process.argv[outIndex + 1];
 
-const SAMPLE_RATE = 24_000;
-const toWav = ["-ac", "1", "-ar", String(SAMPLE_RATE), "-c:a", "pcm_s16le", "-map_metadata", "-1"];
-const work = mkdtempSync(join(tmpdir(), "forkcheck-asr-probe-"));
-
-let wavBytes: Buffer;
-let fileDurationMs: number;
-try {
-  const parts: string[] = [];
-  const gap = join(work, "gap.wav");
-  execFileSync("ffmpeg", [
-    "-v",
-    "error",
-    "-f",
-    "lavfi",
-    "-i",
-    `anullsrc=r=${SAMPLE_RATE}:cl=mono`,
-    "-t",
-    "0.5",
-    ...toWav,
-    gap,
-  ]);
-  probeScript.forEach((line, i) => {
-    const aiff = join(work, `${i}.aiff`);
-    const wav = join(work, `${i}.wav`);
-    execFileSync("say", ["-v", line.voice, "-o", aiff, line.text]);
-    execFileSync("ffmpeg", ["-v", "error", "-i", aiff, ...toWav, wav]);
-    parts.push(wav, gap);
-  });
-  const list = join(work, "list.txt");
-  writeFileSync(list, parts.map((p) => `file '${p}'`).join("\n"));
-  const out = join(work, "probe.wav");
-  execFileSync("ffmpeg", ["-v", "error", "-f", "concat", "-safe", "0", "-i", list, ...toWav, out]);
-  wavBytes = readFileSync(out);
-  const seconds = execFileSync(
-    "ffprobe",
-    ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", out],
-    { encoding: "utf8" },
-  );
-  fileDurationMs = Math.round(Number(seconds) * 1000);
-} finally {
-  rmSync(work, { recursive: true, force: true });
-}
+const { wavBytes, fileDurationMs } = renderProbeWav();
 
 const request: TranscribeRequest = {
   model: TRANSCRIBE_MODEL,

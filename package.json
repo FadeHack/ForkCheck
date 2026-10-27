@@ -15,6 +15,7 @@
     "probe:baseten": "tsx packages/eval/scripts/probe-baseten.ts",
     "probe:schemas": "tsx packages/ai/scripts/probe-schemas.ts",
     "smoke:model": "tsx packages/ai/scripts/smoke-call-model.ts",
+    "smoke:transcribe": "tsx packages/eval/scripts/smoke-transcribe.ts",
     "eval": "tsx packages/eval/scripts/eval.ts",
     "loop": "tsx packages/eval/scripts/loop.ts",
     "db:up": "docker compose up -d --wait",

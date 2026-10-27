@@ -26,3 +26,14 @@ export {
   type ConvertProblem,
   type ConvertResult,
 } from "./convert";
+export {
+  TranscribeClient,
+  TranscribeError,
+  type TranscribeCallEntry,
+  type TranscribeClientOptions,
+  type TranscribeErrorKind,
+  type TranscribeLog,
+  type TranscribeOptions,
+  type TranscribeResult,
+  type TranscribeSpendLedger,
+} from "./client";
