@@ -1,4 +1,8 @@
+import { loadLocalEnvFile } from "@forkcheck/config";
 import type { NextConfig } from "next";
+
+// Next reads env files only from apps/web; the shared .env.local sits at the repo root.
+loadLocalEnvFile();
 
 const nextConfig: NextConfig = {
   transpilePackages: [
