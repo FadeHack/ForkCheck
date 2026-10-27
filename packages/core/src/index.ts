@@ -1,1 +1,1 @@
-export const packageName = "@forkcheck/core";
+export * from "./model/index";

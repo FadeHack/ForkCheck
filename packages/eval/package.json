@@ -15,6 +15,7 @@
     "@forkcheck/config": "workspace:*",
     "@forkcheck/ai": "workspace:*",
     "@forkcheck/engine": "workspace:*",
-    "@forkcheck/asr": "workspace:*"
+    "@forkcheck/asr": "workspace:*",
+    "zod": "^4.6.7"
   }
 }

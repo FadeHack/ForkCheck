@@ -1,1 +1,1 @@
-export const packageName = "@forkcheck/eval";
+export * from "./scenario";
