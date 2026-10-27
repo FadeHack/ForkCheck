@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "id": "dev-partial-pricing-page",
+  "title": "Pricing page update live on the 13th",
+  "set": "dev",
+  "category": "partial_agreement",
+  "heldAt": "2026-11-05T13:00:00-05:00",
+  "timezone": "America/New_York",
+  "participants": ["Elena", "Jun", "Marisol"],
+  "transcript": "[00:00] Elena: Pricing page. The new prices take effect on the 13th, so the page has to match by then.\n[00:08] Jun: The 13th is a Friday, right?\n[00:11] Elena: Yes.\n[00:13] Marisol: Sales already sent the existing customers their notice, so that side is covered.\n[00:21] Jun: OK. What changes on the page?\n[00:25] Elena: The pricing update. Starter goes from twelve to fifteen, Team from twenty-nine to thirty-two.\n[00:36] Jun: And enterprise stays as contact us?\n[00:39] Elena: Yes.\n[00:41] Marisol: Customers keep asking about annual billing, so the timing is good.\n[00:48] Jun: Agreed. I'll build the pricing update on a branch and send you a preview link on Monday.\n[00:57] Elena: Great. So the pricing update is live on the 13th, Jun owns it.\n[01:03] Jun: Yep, live on the 13th.\n[01:06] Marisol: Perfect. I'll update the sales deck to match.\n[01:11] Elena: Do we need to change the FAQ?\n[01:14] Marisol: The FAQ still says prices are locked for a year. That's no longer true for monthly plans.\n[01:23] Elena: Then I'll rewrite that answer.\n[01:26] Jun: Send me the new copy and I'll swap it in.\n[01:30] Elena: Will do. Anything else?\n[01:33] Marisol: Only that the sales team will want to link straight to the page from proposals.\n[01:40] Jun: The URL won't change, so old links keep working.\n[01:45] Marisol: Good. That's it, then.\n",
+  "expectedDecisions": [
+    {
+      "id": "pricing-update",
+      "kind": "commitment",
+      "statement": "The pricing page update is live on the 13th.",
+      "owner": "Jun",
+      "deadline": "the 13th",
+      "quotes": [
+        "So the pricing update is live on the 13th, Jun owns it.",
+        "Yep, live on the 13th."
+      ]
+    },
+    {
+      "id": "preview-link",
+      "kind": "commitment",
+      "statement": "Jun sends a preview link of the pricing update.",
+      "owner": "Jun",
+      "deadline": "Monday",
+      "quotes": ["send you a preview link on Monday"]
+    },
+    {
+      "id": "sales-deck",
+      "kind": "commitment",
+      "statement": "Marisol updates the sales deck to the new prices.",
+      "owner": "Marisol",
+      "deadline": null,
+      "quotes": ["I'll update the sales deck to match."]
+    },
+    {
+      "id": "faq-answer",
+      "kind": "commitment",
+      "statement": "Elena rewrites the FAQ answer about prices being locked for a year; Jun swaps it in.",
+      "owner": "Elena",
+      "deadline": null,
+      "quotes": ["Then I'll rewrite that answer.", "Send me the new copy and I'll swap it in."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Elena",
+      "readings": [
+        {
+          "decision": "pricing-update",
+          "dimension": "deadline",
+          "reading": "Live before the new prices take effect at the start of Friday 13 November."
+        },
+        {
+          "decision": "pricing-update",
+          "dimension": "scope",
+          "reading": "Only the new Starter and Team prices. The layout stays as it is."
+        }
+      ]
+    },
+    {
+      "participant": "Jun",
+      "readings": [
+        {
+          "decision": "pricing-update",
+          "dimension": "deadline",
+          "reading": "Live before the new prices take effect at the start of Friday 13 November."
+        },
+        {
+          "decision": "pricing-update",
+          "dimension": "scope",
+          "reading": "The new prices plus a monthly/annual billing toggle on the plan cards."
+        }
+      ]
+    },
+    {
+      "participant": "Marisol",
+      "readings": [
+        {
+          "decision": "pricing-update",
+          "dimension": "deadline",
+          "reading": "Live before the new prices take effect at the start of Friday 13 November."
+        },
+        {
+          "decision": "pricing-update",
+          "dimension": "scope",
+          "reading": "The new prices, the annual toggle, and a plan comparison table sales can link to from proposals."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "what-the-update-covers",
+      "decision": "pricing-update",
+      "dimension": "scope",
+      "note": "Partial agreement: everyone agrees on Friday Nov 13; scope differs (prices only vs plus annual toggle vs plus comparison table)."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Elena: \"So the pricing update is live on the 13th, Jun owns it.\"",
+      "Jun: \"send you a preview link on Monday\"",
+      "Marisol: \"I'll update the sales deck to match.\"",
+      "Elena: \"Then I'll rewrite that answer.\""
+    ],
+    "confirmed": [
+      "Live by Friday 2026-11-13, 00:00 ET: new Starter and Team prices plus a monthly/annual toggle on the plan cards. The comparison table is not part of this release."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "what-the-update-covers",
+      "precise": {
+        "text": "Live by Friday 2026-11-13, 00:00 ET: new Starter and Team prices plus a monthly/annual toggle on the plan cards. The comparison table is a separate item, not in this release.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "The pricing page is fully updated by the 13th.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

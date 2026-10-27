@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "id": "dev-same-reading-loop-in-legal",
+  "title": "Larkspur Health: loop in legal",
+  "set": "dev",
+  "category": "same_reading",
+  "heldAt": "2026-10-27T10:00:00+11:00",
+  "timezone": "Australia/Sydney",
+  "participants": ["Owen", "Chiara", "Bashir"],
+  "transcript": "[00:00] Owen: Larkspur Health. They're ready to sign, pending their privacy review.\n[00:07] Chiara: Their privacy officer sent our data processing agreement back with comments. Mostly about subprocessors.\n[00:17] Bashir: We added two subprocessors last quarter, so the list in the DPA is out of date.\n[00:25] Owen: Can we just update the list?\n[00:28] Chiara: We can. But they also want breach notice within 48 hours instead of 72. That's a legal call, not ours.\n[00:40] Owen: OK. Chiara, can you loop in legal before Friday?\n[00:45] Chiara: Yep, I'll loop in legal today.\n[00:49] Bashir: I'll send you the updated subprocessor list so it all goes over together.\n[00:56] Chiara: Thanks, that saves a round trip.\n[01:00] Owen: What's the timeline on their side?\n[01:04] Chiara: Their board signs off on new vendors on the 6th.\n[01:09] Owen: Fine. If legal is OK with 48 hours, we're done.\n[01:14] Bashir: And if they're not?\n[01:17] Owen: Then I'll call their privacy officer myself and find a middle ground.\n[01:24] Chiara: Makes sense.\n[01:26] Bashir: Should I also update the public subprocessor page?\n[01:31] Owen: Yes, same day as the DPA list, so they match.\n[01:36] Bashir: Will do.\n[01:38] Owen: Great. Thanks, everyone.\n",
+  "expectedDecisions": [
+    {
+      "id": "loop-in-legal",
+      "kind": "commitment",
+      "statement": "Chiara loops in legal on Larkspur's DPA comments, including the 48-hour breach notice.",
+      "owner": "Chiara",
+      "deadline": "before Friday",
+      "quotes": ["Chiara, can you loop in legal before Friday?", "I'll loop in legal today."]
+    },
+    {
+      "id": "subprocessor-list",
+      "kind": "commitment",
+      "statement": "Bashir sends Chiara the updated subprocessor list to go to legal with the DPA.",
+      "owner": "Bashir",
+      "deadline": null,
+      "quotes": ["I'll send you the updated subprocessor list"]
+    },
+    {
+      "id": "subprocessor-page",
+      "kind": "commitment",
+      "statement": "Bashir updates the public subprocessor page the same day as the DPA list.",
+      "owner": "Bashir",
+      "deadline": null,
+      "quotes": ["Yes, same day as the DPA list, so they match.", "Will do."]
+    },
+    {
+      "id": "fallback-call",
+      "kind": "assumption",
+      "statement": "If legal rejects 48 hours, Owen calls Larkspur's privacy officer.",
+      "owner": "Owen",
+      "deadline": null,
+      "quotes": ["Then I'll call their privacy officer myself"]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Owen",
+      "readings": [
+        {
+          "decision": "loop-in-legal",
+          "dimension": "scope",
+          "reading": "Email the marked-up DPA and the new subprocessor list to legal and ask whether 48-hour breach notice is acceptable."
+        },
+        {
+          "decision": "loop-in-legal",
+          "dimension": "owner",
+          "reading": "Chiara does it herself."
+        },
+        {
+          "decision": "loop-in-legal",
+          "dimension": "deadline",
+          "reading": "Sent to legal by Tuesday 27 October; their answer is needed before Friday 30 October."
+        }
+      ]
+    },
+    {
+      "participant": "Chiara",
+      "readings": [
+        {
+          "decision": "loop-in-legal",
+          "dimension": "scope",
+          "reading": "Email the marked-up DPA and the new subprocessor list to legal and ask whether 48-hour breach notice is acceptable."
+        },
+        {
+          "decision": "loop-in-legal",
+          "dimension": "owner",
+          "reading": "Chiara does it herself."
+        },
+        {
+          "decision": "loop-in-legal",
+          "dimension": "deadline",
+          "reading": "Sent to legal by Tuesday 27 October; their answer is needed before Friday 30 October."
+        }
+      ]
+    },
+    {
+      "participant": "Bashir",
+      "readings": [
+        {
+          "decision": "loop-in-legal",
+          "dimension": "scope",
+          "reading": "Email the marked-up DPA and the new subprocessor list to legal and ask whether 48-hour breach notice is acceptable."
+        },
+        {
+          "decision": "loop-in-legal",
+          "dimension": "owner",
+          "reading": "Chiara does it herself."
+        },
+        {
+          "decision": "loop-in-legal",
+          "dimension": "deadline",
+          "reading": "Sent to legal by Tuesday 27 October; their answer is needed before Friday 30 October."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": [
+      "Owen: \"Chiara, can you loop in legal before Friday?\"",
+      "Chiara: \"I'll loop in legal today.\"",
+      "Bashir: \"I'll send you the updated subprocessor list\"",
+      "Bashir: \"Will do.\"",
+      "Owen: \"Then I'll call their privacy officer myself\""
+    ],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}
