@@ -5,3 +5,4 @@ export * from "./quote";
 export * from "./transcript";
 export * from "./select";
 export * from "./shuffle";
+export * from "./divergence";
