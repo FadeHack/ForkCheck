@@ -11,6 +11,7 @@
     "build": "pnpm --filter @forkcheck/web build",
     "env:check": "tsx packages/config/scripts/check-env.ts",
     "probe:meta": "tsx packages/ai/scripts/probe-meta.ts",
+    "probe:transcribe": "tsx packages/asr/scripts/probe-transcribe.ts",
     "lint": "eslint .",
     "typecheck": "pnpm -r --parallel typecheck",
     "depcruise": "depcruise apps packages --config .dependency-cruiser.cjs",
