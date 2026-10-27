@@ -13,6 +13,7 @@
     "probe:meta": "tsx packages/ai/scripts/probe-meta.ts",
     "probe:transcribe": "tsx packages/asr/scripts/probe-transcribe.ts",
     "probe:baseten": "tsx packages/eval/scripts/probe-baseten.ts",
+    "probe:schemas": "tsx packages/ai/scripts/probe-schemas.ts",
     "db:up": "docker compose up -d --wait",
     "db:down": "docker compose stop",
     "db:migrate": "tsx packages/db/scripts/migrate.ts",
@@ -23,8 +24,7 @@
     "test": "vitest run",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm depcruise && pnpm test",
-    "probe:schemas": "tsx packages/ai/scripts/probe-schemas.ts"
+    "verify": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm depcruise && pnpm test"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
