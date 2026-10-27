@@ -6,3 +6,4 @@ export * from "./transcript";
 export * from "./select";
 export * from "./shuffle";
 export * from "./divergence";
+export * from "./resolution";
