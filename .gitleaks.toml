@@ -1,0 +1,8 @@
+[extend]
+useDefault = true
+
+[[rules]]
+id = "meta-model-api-key"
+description = "Meta model API key (LLM_<id>_<secret>)"
+regex = '''\bLLM_[A-Za-z0-9]+_[A-Za-z0-9_\-]+'''
+keywords = ["llm_"]
