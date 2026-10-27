@@ -4,21 +4,38 @@
  *   pnpm eval validate [scenario files...]   (default: every scenario under scenarios/)
  *   LIVE=1 pnpm eval extract                 (extraction precision and recall on the dev set)
  *   LIVE=1 pnpm eval probes                  (candidates against planted gaps, T2 probes after lint and critic)
+ *   LIVE=1 pnpm eval simulate                (simulated answers on the probes for planted gaps)
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { EnvError, loadEnv, loadLocalEnvFile } from "@forkcheck/config";
-import { FileCallLog, FileModelCache, FileSpendLedger, MetaProvider } from "@forkcheck/ai";
-import { extract, findCandidates, vetProbe, type StageTrace } from "@forkcheck/engine";
 import {
+  FileCallLog,
+  FileModelCache,
+  FileSpendLedger,
+  MetaProvider,
+  type ModelPort,
+} from "@forkcheck/ai";
+import { optionOrder } from "@forkcheck/core";
+import {
+  extract,
+  findCandidates,
+  simulateAnswer,
+  vetProbe,
+  type StageTrace,
+} from "@forkcheck/engine";
+import {
+  isSplit,
   lintScenario,
   parseScenario,
   scenario,
+  scenarioBriefs,
   scenarioExtractInput,
   scoreCandidates,
   scoreExtraction,
   summarizeScores,
   type ExtractScore,
+  type Scenario,
 } from "../src/index";
 
 const root = resolve(import.meta.dirname, "../../../scenarios");
@@ -129,6 +146,39 @@ async function extractDev(): Promise<boolean> {
   return total.invented === 0;
 }
 
+/** Extract, find candidates and vet one probe per candidate for a scenario. */
+async function scenarioProbes(s: Scenario, model: ModelPort) {
+  const input = scenarioExtractInput(s);
+  const extracted = await extract(input, model);
+  const { decisions } = extracted.output;
+  const found = await findCandidates({ ...input, decisions }, model);
+  const score = scoreCandidates(s, decisions, found.output.candidates);
+  const byId = new Map(decisions.map((d) => [d.decision.id, d]));
+  const vetted = [];
+  for (const candidate of found.output.candidates) {
+    const result = await vetProbe(
+      {
+        meeting: input.meeting,
+        participants: input.participants,
+        decision: byId.get(candidate.decisionId)!,
+        candidate,
+        tier: "free",
+        segments: input.segments,
+      },
+      model,
+    );
+    vetted.push({ candidate, onPlanted: score.onPlanted.has(candidate.id), ...result });
+  }
+  const traces = [extracted.trace, found.trace, ...vetted.flatMap((v) => v.traces)];
+  return {
+    input,
+    score,
+    candidateDrops: found.trace.drops,
+    vetted,
+    cost: traces.reduce((t, tr) => t + traceCost(tr), 0),
+  };
+}
+
 async function probesDev(): Promise<boolean> {
   const model = liveMeta();
   let cost = 0;
@@ -141,13 +191,8 @@ async function probesDev(): Promise<boolean> {
   let plantedLost = 0;
   const dropReasons = new Map<string, number>();
   for (const s of devScenarios()) {
-    const input = scenarioExtractInput(s);
-    const extracted = await extract(input, model);
-    cost += traceCost(extracted.trace);
-    const { decisions } = extracted.output;
-    const found = await findCandidates({ ...input, decisions }, model);
-    cost += traceCost(found.trace);
-    const score = scoreCandidates(s, decisions, found.output.candidates);
+    const { score, candidateDrops, vetted, cost: c } = await scenarioProbes(s, model);
+    cost += c;
     planted += score.hit.length + score.missed.length;
     hit += score.hit.length;
     candidates += score.candidates;
@@ -156,32 +201,16 @@ async function probesDev(): Promise<boolean> {
         `${score.hit.length + score.missed.length}`,
     );
     for (const id of score.missed) console.log(`  MISSED   ${id}`);
-    for (const d of found.trace.drops) console.log(`  dropped  ${d.reason}`);
+    for (const d of candidateDrops) console.log(`  dropped  ${d.reason}`);
 
-    const byId = new Map(decisions.map((d) => [d.decision.id, d]));
-    for (const candidate of found.output.candidates) {
-      const decision = byId.get(candidate.decisionId)!;
-      const vetted = await vetProbe(
-        {
-          meeting: input.meeting,
-          participants: input.participants,
-          decision,
-          candidate,
-          tier: "free",
-          segments: input.segments,
-        },
-        model,
-      );
-      cost += vetted.traces.reduce((t, tr) => t + traceCost(tr), 0);
-      generations += vetted.traces.filter((t) => t.stage === "generateProbes").length;
-      const onPlanted = score.onPlanted.has(candidate.id);
-      for (const d of vetted.drops) {
+    for (const { candidate, onPlanted, probe: p, traces, drops } of vetted) {
+      generations += traces.filter((t) => t.stage === "generateProbes").length;
+      for (const d of drops) {
         dropReasons.set(d.reason, (dropReasons.get(d.reason) ?? 0) + 1);
         const item = d.item as { probe?: { stem: string }; problems?: string[] };
         console.log(`  dropped  ${d.reason} [${candidate.dimension}] ${item.probe?.stem ?? ""}`);
-        for (const p of item.problems ?? []) console.log(`      ${p}`);
+        for (const x of item.problems ?? []) console.log(`      ${x}`);
       }
-      const p = vetted.probe;
       if (!p) {
         if (onPlanted) plantedLost += 1;
         continue;
@@ -201,6 +230,47 @@ async function probesDev(): Promise<boolean> {
   return true;
 }
 
+/** Simulated answers on every published probe that targets a planted gap. */
+async function simulateDev(): Promise<boolean> {
+  const model = liveMeta();
+  let cost = 0;
+  let probes = 0;
+  let revealed = 0;
+  for (const s of devScenarios()) {
+    const { vetted, cost: c } = await scenarioProbes(s, model);
+    cost += c;
+    const briefs = scenarioBriefs(s);
+    for (const { candidate, onPlanted, probe } of vetted) {
+      if (!onPlanted || !probe) continue;
+      const planted = s.plantedMismatches.find((m) => m.dimension === candidate.dimension)!;
+      console.log(`${s.id} [${candidate.dimension}] ${probe.stem}`);
+      const answers: (string | null)[] = [];
+      for (const brief of briefs) {
+        const shown = optionOrder(probe, brief.participantId);
+        const { output, trace } = await simulateAnswer({ brief, probe: shown }, model);
+        cost += traceCost(trace);
+        const { optionId } = output.answer;
+        answers.push(optionId);
+        const text = probe.options.find((o) => o.id === optionId)?.text ?? "(not sure)";
+        const reading = brief.readings.find(
+          (r) => r.decisionId === planted.decision && r.dimension === planted.dimension,
+        );
+        console.log(`  ${brief.participantId}: ${text}`);
+        console.log(`      brief: ${reading?.reading ?? "(none)"}`);
+      }
+      probes += 1;
+      const split = isSplit(answers);
+      if (split) revealed += 1;
+      console.log(`  ${split ? "split" : "NO SPLIT"}`);
+    }
+  }
+  console.log(
+    `\nPlanted probes ${probes}, split among simulated participants ${revealed}, ` +
+      `cost $${cost.toFixed(4)}`,
+  );
+  return true;
+}
+
 const [command, ...args] = process.argv.slice(2);
 switch (command) {
   case "validate": {
@@ -214,9 +284,12 @@ switch (command) {
   case "probes":
     process.exit((await probesDev()) ? 0 : 1);
     break;
+  case "simulate":
+    process.exit((await simulateDev()) ? 0 : 1);
+    break;
   default:
     console.error(
-      "Usage: pnpm eval validate [scenario files...] | LIVE=1 pnpm eval extract | LIVE=1 pnpm eval probes",
+      "Usage: pnpm eval validate [files...] | LIVE=1 pnpm eval extract | probes | simulate",
     );
     process.exit(2);
 }
