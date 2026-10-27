@@ -1,0 +1,64 @@
+{
+  "key": {
+    "stage": "draftRecordProse",
+    "promptVersion": "draftRecordProse.v1",
+    "hash": "3fb79b66e8a38fc2fab1fdf7ef1897fc7765359ec75044236f07004987e6cb52"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You write a short plain-language draft of a meeting's decision record. The record itself does not change: your text is shown next to it, labelled as a draft that a participant can edit.\n\nThe record has three kinds of items:\n\n- `stated`: words someone said in the meeting, quoted exactly. Saying something is not the same as everyone understanding it the same way.\n- `confirmed`: a resolution every active participant confirmed, with its recheck result.\n- `unresolved`: something still open, with the reason.\n\nRules:\n\n- Rephrase only what each item says. Do not add names, dates, times, numbers, reasons or next steps that the item does not contain.\n- Keep each item's category. Never describe a stated or unresolved item as agreed, confirmed or settled.\n- For an unresolved item, say plainly what is still open.\n- Write one sentence per item and give it the item's ID.\n- `summary`: two or three sentences saying what was confirmed and what is still open. Use only facts from the items."
+      },
+      {
+        "role": "user",
+        "content": "Meeting: Pilot customer check-in\nHeld: 2026-10-26T15:00:00-04:00\n\nItems, as [item ID] (category) text\n[demo-sso-pilot:item:0] (stated) OK, so SSO is ready by Friday. Marco, that's yours?\n[demo-sso-pilot:item:1] (stated) Yep, I'll have it ready by Friday.\n[demo-sso-pilot:item:2] (stated) Great, I'll tell them Friday.\n[demo-sso-pilot:item:3] (stated) Let's cover user provisioning in the pilot.\n[demo-sso-pilot:item:4] (stated) Fine by me.\n[demo-sso-pilot:item:5] (stated) Good, I'll put it in the pilot plan.\n[demo-sso-pilot:item:6] (confirmed) SSO is done by Friday.; confirmed by Priya, Marco, Dana; recheck: not conclusive\n[demo-sso-pilot:item:7] (unresolved) Left open by agreement (scope): User provisioning will be covered in the pilot."
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "summary": "SSO being done by Friday was confirmed by Priya, Marco and Dana, with a recheck that was not conclusive. Whether user provisioning will be covered in the pilot is still open.",
+    "items": [
+      {
+        "itemId": "demo-sso-pilot:item:0",
+        "prose": "It was stated that SSO is ready by Friday and asked if that is Marco's."
+      },
+      {
+        "itemId": "demo-sso-pilot:item:1",
+        "prose": "It was stated that it would be ready by Friday."
+      },
+      {
+        "itemId": "demo-sso-pilot:item:2",
+        "prose": "It was stated that they would be told on Friday."
+      },
+      {
+        "itemId": "demo-sso-pilot:item:3",
+        "prose": "It was stated that user provisioning should be covered in the pilot."
+      },
+      {
+        "itemId": "demo-sso-pilot:item:4",
+        "prose": "It was stated that it was fine."
+      },
+      {
+        "itemId": "demo-sso-pilot:item:5",
+        "prose": "It was stated that it would be put in the pilot plan."
+      },
+      {
+        "itemId": "demo-sso-pilot:item:6",
+        "prose": "It was confirmed by Priya, Marco, and Dana that SSO is done by Friday, with a recheck result of not conclusive."
+      },
+      {
+        "itemId": "demo-sso-pilot:item:7",
+        "prose": "The question of covering user provisioning in the pilot is still open for scope reasons."
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 551,
+    "outputTokens": 2344,
+    "reasoningTokens": 2011
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "key": {
+    "stage": "generateProbes",
+    "promptVersion": "generateProbes.v1",
+    "hash": "346ee2977e049a74c0614225f45f2188e21ac0ea964552b3858719b405a07f6c"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You detect hidden misalignment between meeting participants by writing diagnostic multiple-choice questions. Each participant answers privately. A good question makes people who hold different readings of the same agreement pick different options.\n\nYou are given one item the meeting appeared to agree on, the quotes it rests on, one dimension of it that may be unclear, and the readings participants might hold. Write one question that tells those readings apart.\n\nPrinciples:\n\n1. Probe the implicit. The participants appeared to agree. Ask what they meant, not whether they agree.\n2. One question, one gap. Ask only about the given dimension. Do not bundle a second issue into the question.\n3. Make it concrete. Phrase the question as an operational situation or a choice someone acts on, not an opinion poll.\n   - Good: \"When the dashboard is shown on Thursday, what will be on screen?\"\n   - Bad: \"How important is the dashboard to you?\"\n\nQuestion design:\n\n- Two to four options. Each option matches one of the readings, or another reading a participant could reasonably hold.\n- Each option must be a different belief, not a rewording of another option.\n- Every option must be plausible. No decoys and no option that looks like the right answer.\n- Keep options about the same length, within a factor of two of each other.\n- Use your own words. Do not copy a phrase of five or more words from the quotes into any option.\n- Use neutral wording. Never use \"disagree\", \"misunderstood\", \"confusion\", \"correct\" or \"obviously\" in the question.\n- Do not add \"not sure\", \"other\" or \"none of these\". The app adds its own \"not sure\" choice.\n- Write dates as the speakers did, or as a weekday and day of the month (\"Friday the 30th\"). Use the meeting date to work out which day is meant.\n\nReturn a list with one question. Return an empty list if no fair question separates the readings."
+      },
+      {
+        "role": "user",
+        "content": "Meeting: Pilot customer check-in\nHeld: Monday, October 26, 2026 at 15:00 (America/New_York)\nParticipants: Priya, Marco, Dana\n\nItem, as [item ID] (kind, status) statement\n[demo-sso-pilot:dec:0] (commitment, explicit) Marco will have SSO ready by Friday.\n  owner: Marco\n  deadline: by Friday\n  quote: \"OK, so SSO is ready by Friday. Marco, that's yours?\"\n  quote: \"Yep, I'll have it ready by Friday.\"\n\nDimension: outcome\nReadings participants might hold:\n- SSO is working on staging for the internal team to check by Friday\n- SSO is deployed where the pilot customer can try it themselves by Friday"
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "probes": [
+      {
+        "stem": "On Friday the 30th, what will count as Marco having delivered SSO?",
+        "options": [
+          {
+            "text": "Team members can log in with SSO in the internal test environment"
+          },
+          {
+            "text": "The pilot customer can log in with SSO in their own environment"
+          }
+        ]
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "reasoningTokens": null
+  }
+}

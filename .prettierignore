@@ -4,3 +4,5 @@ next-env.d.ts
 eval-results/
 LICENSE
 packages/db/migrations/meta/
+packages/ai/fixtures/
+packages/eval/test/__snapshots__/

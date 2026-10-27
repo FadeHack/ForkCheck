@@ -1,0 +1,204 @@
+{
+  "meetingId": "demo-sso-pilot",
+  "title": "Pilot customer check-in",
+  "heldAt": "2026-10-26T15:00:00-04:00",
+  "generatedAt": "2026-10-26T15:00:00-04:00",
+  "participants": [
+    {
+      "id": "Priya",
+      "meetingId": "demo-sso-pilot",
+      "displayName": "Priya",
+      "isSimulated": true,
+      "status": "active"
+    },
+    {
+      "id": "Marco",
+      "meetingId": "demo-sso-pilot",
+      "displayName": "Marco",
+      "isSimulated": true,
+      "status": "active"
+    },
+    {
+      "id": "Dana",
+      "meetingId": "demo-sso-pilot",
+      "displayName": "Dana",
+      "isSimulated": true,
+      "status": "active"
+    }
+  ],
+  "items": [
+    {
+      "id": "demo-sso-pilot:item:0",
+      "meetingId": "demo-sso-pilot",
+      "category": "stated",
+      "text": "OK, so SSO is ready by Friday. Marco, that's yours?",
+      "sourceRefs": [
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:3",
+          "quote": "OK, so SSO is ready by Friday. Marco, that's yours?",
+          "origin": "paste"
+        }
+      ],
+      "confirmedBy": [],
+      "absent": [],
+      "recheck": "not_run",
+      "splitId": null,
+      "deadline": null
+    },
+    {
+      "id": "demo-sso-pilot:item:1",
+      "meetingId": "demo-sso-pilot",
+      "category": "stated",
+      "text": "Yep, I'll have it ready by Friday.",
+      "sourceRefs": [
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:4",
+          "quote": "Yep, I'll have it ready by Friday.",
+          "origin": "paste"
+        }
+      ],
+      "confirmedBy": [],
+      "absent": [],
+      "recheck": "not_run",
+      "splitId": null,
+      "deadline": null
+    },
+    {
+      "id": "demo-sso-pilot:item:2",
+      "meetingId": "demo-sso-pilot",
+      "category": "stated",
+      "text": "Great, I'll tell them Friday.",
+      "sourceRefs": [
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:5",
+          "quote": "Great, I'll tell them Friday.",
+          "origin": "paste"
+        }
+      ],
+      "confirmedBy": [],
+      "absent": [],
+      "recheck": "not_run",
+      "splitId": null,
+      "deadline": null
+    },
+    {
+      "id": "demo-sso-pilot:item:3",
+      "meetingId": "demo-sso-pilot",
+      "category": "stated",
+      "text": "Let's cover user provisioning in the pilot.",
+      "sourceRefs": [
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:7",
+          "quote": "Let's cover user provisioning in the pilot.",
+          "origin": "paste"
+        }
+      ],
+      "confirmedBy": [],
+      "absent": [],
+      "recheck": "not_run",
+      "splitId": null,
+      "deadline": null
+    },
+    {
+      "id": "demo-sso-pilot:item:4",
+      "meetingId": "demo-sso-pilot",
+      "category": "stated",
+      "text": "Fine by me.",
+      "sourceRefs": [
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:8",
+          "quote": "Fine by me.",
+          "origin": "paste"
+        }
+      ],
+      "confirmedBy": [],
+      "absent": [],
+      "recheck": "not_run",
+      "splitId": null,
+      "deadline": null
+    },
+    {
+      "id": "demo-sso-pilot:item:5",
+      "meetingId": "demo-sso-pilot",
+      "category": "stated",
+      "text": "Good, I'll put it in the pilot plan.",
+      "sourceRefs": [
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:9",
+          "quote": "Good, I'll put it in the pilot plan.",
+          "origin": "paste"
+        }
+      ],
+      "confirmedBy": [],
+      "absent": [],
+      "recheck": "not_run",
+      "splitId": null,
+      "deadline": null
+    },
+    {
+      "id": "demo-sso-pilot:item:6",
+      "meetingId": "demo-sso-pilot",
+      "sourceRefs": [
+        {
+          "kind": "confirmation",
+          "resolutionId": "demo-sso-pilot:cand:1:probe:0:split:res:0"
+        },
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:3",
+          "quote": "OK, so SSO is ready by Friday. Marco, that's yours?",
+          "origin": "paste"
+        },
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:4",
+          "quote": "Yep, I'll have it ready by Friday.",
+          "origin": "paste"
+        }
+      ],
+      "confirmedBy": [
+        "Priya",
+        "Marco",
+        "Dana"
+      ],
+      "absent": [],
+      "recheck": "passed",
+      "splitId": "demo-sso-pilot:cand:1:probe:0:split",
+      "deadline": null,
+      "category": "confirmed",
+      "text": "SSO with admin roles is live in production for the pilot customer by Friday 2026-10-30, 10:00 ET. Firm."
+    },
+    {
+      "id": "demo-sso-pilot:item:7",
+      "meetingId": "demo-sso-pilot",
+      "sourceRefs": [
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:7",
+          "quote": "Let's cover user provisioning in the pilot.",
+          "origin": "paste"
+        },
+        {
+          "kind": "segment",
+          "segmentId": "demo-sso-pilot:seg:8",
+          "quote": "Fine by me.",
+          "origin": "paste"
+        }
+      ],
+      "confirmedBy": [],
+      "absent": [],
+      "recheck": "not_run",
+      "splitId": "demo-sso-pilot:cand:3:probe:0:split",
+      "deadline": null,
+      "category": "unresolved",
+      "text": "Left open by agreement (scope): User provisioning will be covered in the pilot."
+    }
+  ],
+  "proseDraft": "SSO with admin roles was confirmed live in production for the pilot customer by Friday 2026-10-30 at 10:00 ET as firm, with recheck passed. Coverage of user provisioning in the pilot is still open.\n\nConfirmed by participants\n- SSO with admin roles is confirmed live in production for the pilot customer by Friday 2026-10-30 at 10:00 ET as firm, confirmed by Priya, Marco and Dana with recheck passed.\n\nUnresolved\n- Coverage of user provisioning in the pilot is still open.\n\nStated in the meeting\n- Someone asked if SSO is ready by Friday and if Marco will handle it.\n- Someone said they will have it ready by Friday.\n- Someone said they will tell them Friday.\n- Someone suggested covering user provisioning in the pilot.\n- Someone said that is fine by them.\n- Someone said they will put it in the pilot plan."
+}

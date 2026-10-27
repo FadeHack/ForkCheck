@@ -1,0 +1,133 @@
+{
+  "key": {
+    "stage": "findCandidates",
+    "promptVersion": "findCandidates.v1",
+    "hash": "5fc917471a6b917fa5c5db7927676c905ec774a8938e6687b69774db34614d60"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You read a meeting transcript and the items the meeting appeared to agree on. For each item, find the places where two reasonable participants could leave the meeting holding different readings of what was agreed, even though nobody objected.\n\nEach gap you report is tied to exactly one dimension:\n\n- `owner`: who actually does the work, or who does it on the day.\n- `deadline`: what the timing words mean (\"next Friday\", \"end of month\", \"early next week\") or how firm they are.\n- `scope`: what is included in the deliverable when it counts as done.\n- `criteria`: which check or bar has to pass before it counts as done.\n- `dependency`: what has to happen first, or who has to sign off first.\n- `outcome`: who sees or uses the result first, and in what form.\n\nFor each gap return:\n\n- `decisionId`: the ID of the item, exactly as given.\n- `dimension`: one of the six above. If a gap touches two dimensions, report two gaps.\n- `readings`: two to four concrete readings a participant could reasonably hold. Each reading is a short plain statement of what that person believes was agreed (\"the code is merged by Friday the 30th\", \"it is live for customers by Friday the 30th\"). Readings must differ in a way that would change what someone does. Do not include \"not sure\" or \"not decided\" as a reading.\n- `impact`, each `low`, `medium` or `high`:\n  - `reversibility`: how hard it is to undo if people act on the wrong reading (`high` means hard to undo).\n  - `blastRadius`: how many people, customers or teams are affected.\n  - `timeToImpact`: how soon the wrong reading causes harm (`high` means within days).\n\nRules:\n\n- Only report gaps the transcript leaves open. If the words used pin the meaning down, there is no gap.\n- Never report a gap on an item whose status is `debated`: that disagreement is already visible.\n- Do not report a gap that participants openly argued about in the transcript.\n- Report each (item, dimension) pair at most once.\n- Report nothing for an item with no gap. An empty list is a valid answer."
+      },
+      {
+        "role": "user",
+        "content": "Meeting: Pilot customer check-in\nHeld: Monday, October 26, 2026 at 15:00 (America/New_York)\nParticipants: Priya, Marco, Dana\n\nItems, as [item ID] (kind, status) statement\n[demo-sso-pilot:dec:0] (commitment, explicit) Marco will have SSO ready by Friday.\n  owner: Marco\n  deadline: by Friday\n  quote: \"OK, so SSO is ready by Friday. Marco, that's yours?\"\n  quote: \"Yep, I'll have it ready by Friday.\"\n[demo-sso-pilot:dec:1] (commitment, ambiguous) Dana will tell them Friday.\n  owner: Dana\n  deadline: Friday\n  quote: \"Great, I'll tell them Friday.\"\n[demo-sso-pilot:dec:2] (decision, explicit) User provisioning will be covered in the pilot.\n  quote: \"Let's cover user provisioning in the pilot.\"\n  quote: \"Fine by me.\"\n[demo-sso-pilot:dec:3] (commitment, ambiguous) Dana will put it in the pilot plan.\n  owner: Dana\n  quote: \"Good, I'll put it in the pilot plan.\"\n\nTranscript, one turn per line as [segment ID] speaker: text\n[demo-sso-pilot:seg:0] Priya: Quick one. Where are we on single sign-on for the pilot customer?\n[demo-sso-pilot:seg:1] Marco: Login works on staging. I still need to wire up the admin roles.\n[demo-sso-pilot:seg:2] Dana: The customer asked again yesterday. They want to try it this week.\n[demo-sso-pilot:seg:3] Priya: OK, so SSO is ready by Friday. Marco, that's yours?\n[demo-sso-pilot:seg:4] Marco: Yep, I'll have it ready by Friday.\n[demo-sso-pilot:seg:5] Dana: Great, I'll tell them Friday.\n[demo-sso-pilot:seg:6] Dana: They also asked about adding their users automatically from their directory.\n[demo-sso-pilot:seg:7] Priya: Let's cover user provisioning in the pilot.\n[demo-sso-pilot:seg:8] Marco: Fine by me.\n[demo-sso-pilot:seg:9] Dana: Good, I'll put it in the pilot plan."
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "candidates": [
+      {
+        "decisionId": "demo-sso-pilot:dec:0",
+        "dimension": "scope",
+        "readings": [
+          {
+            "text": "SSO counts as ready when login works for pilot users, admin roles can come later"
+          },
+          {
+            "text": "SSO counts as ready only when login and admin roles are both wired up"
+          }
+        ],
+        "impact": {
+          "reversibility": "medium",
+          "blastRadius": "medium",
+          "timeToImpact": "high"
+        }
+      },
+      {
+        "decisionId": "demo-sso-pilot:dec:0",
+        "dimension": "outcome",
+        "readings": [
+          {
+            "text": "SSO is working on staging for the internal team to check by Friday"
+          },
+          {
+            "text": "SSO is deployed where the pilot customer can try it themselves by Friday"
+          }
+        ],
+        "impact": {
+          "reversibility": "medium",
+          "blastRadius": "medium",
+          "timeToImpact": "high"
+        }
+      },
+      {
+        "decisionId": "demo-sso-pilot:dec:1",
+        "dimension": "dependency",
+        "readings": [
+          {
+            "text": "Dana messages the customer on Friday regardless of whether Marco has finished SSO"
+          },
+          {
+            "text": "Dana messages the customer on Friday only after Marco confirms SSO is ready"
+          }
+        ],
+        "impact": {
+          "reversibility": "medium",
+          "blastRadius": "medium",
+          "timeToImpact": "high"
+        }
+      },
+      {
+        "decisionId": "demo-sso-pilot:dec:2",
+        "dimension": "scope",
+        "readings": [
+          {
+            "text": "Pilot covers automatic syncing of users from the customer's directory"
+          },
+          {
+            "text": "Pilot covers any way to add users, manual adding counts as covered"
+          }
+        ],
+        "impact": {
+          "reversibility": "high",
+          "blastRadius": "medium",
+          "timeToImpact": "medium"
+        }
+      },
+      {
+        "decisionId": "demo-sso-pilot:dec:3",
+        "dimension": "scope",
+        "readings": [
+          {
+            "text": "Putting it in the plan means adding a one-line note that provisioning is in scope"
+          },
+          {
+            "text": "Putting it in the plan means adding tasks, owners and dates for provisioning"
+          }
+        ],
+        "impact": {
+          "reversibility": "low",
+          "blastRadius": "low",
+          "timeToImpact": "medium"
+        }
+      },
+      {
+        "decisionId": "demo-sso-pilot:dec:3",
+        "dimension": "outcome",
+        "readings": [
+          {
+            "text": "Dana shares the updated pilot plan internally with Priya and Marco"
+          },
+          {
+            "text": "Dana sends the updated pilot plan to the pilot customer"
+          }
+        ],
+        "impact": {
+          "reversibility": "low",
+          "blastRadius": "low",
+          "timeToImpact": "medium"
+        }
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "reasoningTokens": null
+  }
+}
