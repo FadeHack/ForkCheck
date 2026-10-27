@@ -1,0 +1,18 @@
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+coverage/
+.DS_Store
+
+# Environment: only the example is committed
+.env*
+!.env.example
+
+# Audio: recordings stay local; small generated fixtures may be committed
+*.wav
+*.m4a
+!scenarios/audio/fixtures/**/*.wav
+
+# Local audio storage
+/var/
