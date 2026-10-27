@@ -14,6 +14,7 @@
     "probe:transcribe": "tsx packages/asr/scripts/probe-transcribe.ts",
     "probe:baseten": "tsx packages/eval/scripts/probe-baseten.ts",
     "probe:schemas": "tsx packages/ai/scripts/probe-schemas.ts",
+    "smoke:model": "tsx packages/ai/scripts/smoke-call-model.ts",
     "db:up": "docker compose up -d --wait",
     "db:down": "docker compose stop",
     "db:migrate": "tsx packages/db/scripts/migrate.ts",
