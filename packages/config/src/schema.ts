@@ -2,12 +2,14 @@ import { z } from "zod";
 
 const secret = z.string().min(1);
 const usd = (fallback: number) => z.coerce.number().positive().default(fallback);
+const flag = z
+  .enum(["0", "1"])
+  .default("0")
+  .transform((value) => value === "1");
 
 export const envSchema = z.object({
-  LIVE: z
-    .enum(["0", "1"])
-    .default("0")
-    .transform((value) => value === "1"),
+  LIVE: flag,
+  RECORD_FIXTURES: flag,
   MODEL_API_KEY: secret.optional(),
   BASETEN_API_KEY: secret.optional(),
   DATABASE_URL: z.url({ protocol: /^postgres(ql)?$/ }).optional(),
