@@ -13,13 +13,16 @@ export interface Prompt {
 
 const loaded = new Map<string, Prompt>();
 
+// A leading HTML comment holds license and attribution notes; the model never sees it.
+const HEADER = /^\s*<!--[\s\S]*?-->/;
+
 /** Reads `prompts/<stage>.v<N>.md`. Wording changes get a new version file, never an edit. */
 export function loadPrompt(stage: StageName, version: number, dir = defaultPromptsDir): Prompt {
   const name = `${stage}.v${version}`;
   const path = join(dir, `${name}.md`);
   let prompt = loaded.get(path);
   if (!prompt) {
-    prompt = { version: name, text: readFileSync(path, "utf8").trim() };
+    prompt = { version: name, text: readFileSync(path, "utf8").replace(HEADER, "").trim() };
     loaded.set(path, prompt);
   }
   return prompt;

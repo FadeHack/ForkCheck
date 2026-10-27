@@ -51,9 +51,29 @@ const overlaps = (a: string, b: string) => {
 /**
  * Pairs each expected decision with the first unused extracted decision that shares a
  * quote (either contains the other). Quotes, not statements, so wording never decides it.
+ * Returns expected decision ID → index into `decisions`.
  */
-export function scoreExtraction(s: Scenario, decisions: DecisionWithEvidence[]): ExtractScore {
+export function matchDecisions(
+  s: Scenario,
+  decisions: DecisionWithEvidence[],
+): Map<string, number> {
+  const matches = new Map<string, number>();
   const used = new Set<number>();
+  for (const e of s.expectedDecisions) {
+    const i = decisions.findIndex(
+      (d, k) =>
+        !used.has(k) && d.evidence.some((ev) => e.quotes.some((q) => overlaps(ev.quote, q))),
+    );
+    if (i === -1) continue;
+    used.add(i);
+    matches.set(e.id, i);
+  }
+  return matches;
+}
+
+export function scoreExtraction(s: Scenario, decisions: DecisionWithEvidence[]): ExtractScore {
+  const matches = matchDecisions(s, decisions);
+  const used = new Set(matches.values());
   const missed: string[] = [];
   const differs: FieldNote[] = [];
   const transcript = fold(s.transcript);
@@ -81,15 +101,11 @@ export function scoreExtraction(s: Scenario, decisions: DecisionWithEvidence[]):
   }
 
   for (const e of s.expectedDecisions) {
-    const i = decisions.findIndex(
-      (d, k) =>
-        !used.has(k) && d.evidence.some((ev) => e.quotes.some((q) => overlaps(ev.quote, q))),
-    );
-    if (i === -1) {
+    const i = matches.get(e.id);
+    if (i === undefined) {
       missed.push(e.id);
       continue;
     }
-    used.add(i);
     const { decision } = decisions[i]!;
     if (
       decision.ownerText !== null &&
