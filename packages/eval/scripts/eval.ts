@@ -3,14 +3,13 @@
  * Usage:
  *   pnpm eval validate [scenario files...]   (default: every scenario under scenarios/)
  *   LIVE=1 pnpm eval extract                 (extraction precision and recall on the dev set)
- *   LIVE=1 pnpm eval probes                  (candidates against planted gaps, T2 probes, lint)
+ *   LIVE=1 pnpm eval probes                  (candidates against planted gaps, T2 probes after lint and critic)
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { EnvError, loadEnv, loadLocalEnvFile } from "@forkcheck/config";
 import { FileCallLog, FileModelCache, FileSpendLedger, MetaProvider } from "@forkcheck/ai";
-import { lintProbe } from "@forkcheck/core";
-import { extract, findCandidates, generateProbes, type StageTrace } from "@forkcheck/engine";
+import { extract, findCandidates, vetProbe, type StageTrace } from "@forkcheck/engine";
 import {
   lintScenario,
   parseScenario,
@@ -136,8 +135,11 @@ async function probesDev(): Promise<boolean> {
   let planted = 0;
   let hit = 0;
   let candidates = 0;
-  let probes = 0;
-  let clean = 0;
+  let generations = 0;
+  let published = 0;
+  let plantedPublished = 0;
+  let plantedLost = 0;
+  const dropReasons = new Map<string, number>();
   for (const s of devScenarios()) {
     const input = scenarioExtractInput(s);
     const extracted = await extract(input, model);
@@ -159,36 +161,43 @@ async function probesDev(): Promise<boolean> {
     const byId = new Map(decisions.map((d) => [d.decision.id, d]));
     for (const candidate of found.output.candidates) {
       const decision = byId.get(candidate.decisionId)!;
-      const generated = await generateProbes(
+      const vetted = await vetProbe(
         {
           meeting: input.meeting,
           participants: input.participants,
           decision,
           candidate,
           tier: "free",
+          segments: input.segments,
         },
         model,
       );
-      cost += traceCost(generated.trace);
-      const mark = score.onPlanted.has(candidate.id) ? "*" : " ";
-      for (const d of generated.trace.drops) console.log(`  dropped  ${d.reason}`);
-      for (const p of generated.output.probes) {
-        const findings = lintProbe(p, {
-          targets: [{ decision: decision.decision, dimension: candidate.dimension }],
-          segments: input.segments,
-        });
-        probes += 1;
-        if (findings.length === 0) clean += 1;
-        console.log(`  ${mark} [${candidate.dimension}] ${p.stem}`);
-        for (const o of p.options) console.log(`      - ${o.text}`);
-        for (const f of findings) console.log(`      lint ${f.rule}: ${f.detail}`);
+      cost += vetted.traces.reduce((t, tr) => t + traceCost(tr), 0);
+      generations += vetted.traces.filter((t) => t.stage === "generateProbes").length;
+      const onPlanted = score.onPlanted.has(candidate.id);
+      for (const d of vetted.drops) {
+        dropReasons.set(d.reason, (dropReasons.get(d.reason) ?? 0) + 1);
+        const item = d.item as { probe?: { stem: string }; problems?: string[] };
+        console.log(`  dropped  ${d.reason} [${candidate.dimension}] ${item.probe?.stem ?? ""}`);
+        for (const p of item.problems ?? []) console.log(`      ${p}`);
       }
+      const p = vetted.probe;
+      if (!p) {
+        if (onPlanted) plantedLost += 1;
+        continue;
+      }
+      published += 1;
+      if (onPlanted) plantedPublished += 1;
+      console.log(`  ${onPlanted ? "*" : " "} [${candidate.dimension}] ${p.stem}`);
+      for (const o of p.options) console.log(`      - ${o.text}`);
     }
   }
   console.log(
     `\nPlanted gaps found ${hit}/${planted}, candidates ${candidates}, ` +
-      `probes ${probes} (lint-clean ${clean}), cost $${cost.toFixed(4)}`,
+      `generations ${generations}, published ${published} ` +
+      `(on planted gaps ${plantedPublished}, planted lost ${plantedLost}), cost $${cost.toFixed(4)}`,
   );
+  console.log(`Drops: ${[...dropReasons].map(([r, n]) => `${r} ${n}`).join(", ") || "none"}`);
   return true;
 }
 
