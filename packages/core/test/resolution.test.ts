@@ -5,6 +5,7 @@ import {
   currentResolution,
   everyoneConfirmed,
   initialResolutionState,
+  RECHECK_OUTCOMES,
   type Actor,
   type ResolutionErrorCode,
   type ResolutionEvent,
@@ -104,6 +105,17 @@ describe("happy paths", () => {
     ]);
     expect(s.status).toBe("resolving");
     expect(s.resolutions.map((r) => r.status)).toEqual(["superseded", "proposed"]);
+  });
+});
+
+describe("recheck outcome mapping", () => {
+  it.each([
+    ["consistent", "rechecked", "passed"],
+    ["split", "reopened", "failed"],
+    ["insufficient", "confirmed", "not_conclusive"],
+  ] as const)("%s → split %s, record %s", (outcome, status, record) => {
+    expect(RECHECK_OUTCOMES[outcome]).toEqual({ status, record });
+    expect(run(confirmedState(), [{ type: "recheck", outcome }]).status).toBe(status);
   });
 });
 
