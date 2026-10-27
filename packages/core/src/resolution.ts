@@ -1,5 +1,6 @@
 import type { Participant } from "./model/meeting";
 import type { Confirmation, Resolution, SplitStatus } from "./model/probe";
+import type { RecordItem } from "./model/record";
 import type { DivergenceOutcome } from "./divergence";
 
 export interface ResolutionState {
@@ -120,6 +121,19 @@ function actingParticipant(
   return { ok: true, id: p.id };
 }
 
+/**
+ * R§5.5 recheck outcomes: the split's next status and the record's recheck value. An
+ * insufficient recheck leaves the split confirmed, marked not conclusive.
+ */
+export const RECHECK_OUTCOMES = {
+  consistent: { status: "rechecked", record: "passed" },
+  split: { status: "reopened", record: "failed" },
+  insufficient: { status: "confirmed", record: "not_conclusive" },
+} as const satisfies Record<
+  DivergenceOutcome,
+  { status: SplitStatus; record: RecordItem["recheck"] }
+>;
+
 const OPEN_FOR_PROPOSALS: readonly SplitStatus[] = ["open", "resolving", "reopened"];
 
 /**
@@ -210,13 +224,11 @@ export function applyResolutionEvent(s: ResolutionState, e: ResolutionEvent): Tr
       if (s.status !== "confirmed") {
         return fail("invalid_transition", `cannot recheck while the split is ${s.status}`);
       }
-      if (e.outcome === "consistent") {
-        return { ok: true, state: { ...s, status: "rechecked", recheckInconclusive: false } };
-      }
-      if (e.outcome === "split") {
-        return { ok: true, state: { ...s, status: "reopened", recheckInconclusive: false } };
-      }
-      return { ok: true, state: { ...s, recheckInconclusive: true } };
+      const { status } = RECHECK_OUTCOMES[e.outcome];
+      return {
+        ok: true,
+        state: { ...s, status, recheckInconclusive: e.outcome === "insufficient" },
+      };
     }
 
     case "set_participant_status": {

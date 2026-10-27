@@ -5,6 +5,7 @@
  *   LIVE=1 pnpm eval extract                 (extraction precision and recall on the dev set)
  *   LIVE=1 pnpm eval probes                  (candidates against planted gaps, T2 probes after lint and critic)
  *   LIVE=1 pnpm eval simulate                (simulated answers on the probes for planted gaps)
+ *   LIVE=1 pnpm eval recheck                 (rechecks of scripted resolutions: catch and pass rates)
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
@@ -16,18 +17,28 @@ import {
   MetaProvider,
   type ModelPort,
 } from "@forkcheck/ai";
-import { optionOrder } from "@forkcheck/core";
+import {
+  divergence,
+  optionOrder,
+  stemOverlap,
+  type DivergenceAnswer,
+  type DivergenceOutcome,
+  type Probe,
+} from "@forkcheck/core";
 import {
   extract,
   findCandidates,
   simulateAnswer,
   vetProbe,
+  vetRecheck,
+  type ParticipantBrief,
   type StageTrace,
 } from "@forkcheck/engine";
 import {
   isSplit,
   lintScenario,
   parseScenario,
+  recheckBriefs,
   scenario,
   scenarioBriefs,
   scenarioExtractInput,
@@ -172,6 +183,7 @@ async function scenarioProbes(s: Scenario, model: ModelPort) {
   const traces = [extracted.trace, found.trace, ...vetted.flatMap((v) => v.traces)];
   return {
     input,
+    decisions: byId,
     score,
     candidateDrops: found.trace.drops,
     vetted,
@@ -271,6 +283,116 @@ async function simulateDev(): Promise<boolean> {
   return true;
 }
 
+/** Every brief answers the probe in their own option order; returns the outcome and cost. */
+async function simulateRound(probe: Probe, briefs: ParticipantBrief[], model: ModelPort) {
+  const answers: DivergenceAnswer[] = [];
+  let cost = 0;
+  for (const brief of briefs) {
+    const shown = optionOrder(probe, brief.participantId);
+    const { output, trace } = await simulateAnswer({ brief, probe: shown }, model);
+    cost += traceCost(trace);
+    answers.push({
+      participantId: brief.participantId,
+      ...output.answer,
+      writeInText: null,
+      mappedOptionId: null,
+    });
+  }
+  const ids = briefs.map((b) => b.participantId);
+  return { answers, result: divergence(probe, ids, answers), cost };
+}
+
+/**
+ * For each planted gap with a published probe, recheck the precise and the vague scripted
+ * resolution. Catch rate: expected splits that split. Pass rate: expected consistent
+ * rechecks that came out consistent.
+ */
+async function recheckDev(): Promise<boolean> {
+  const model = liveMeta();
+  let cost = 0;
+  const tally = new Map<DivergenceOutcome, { hit: number; of: number }>();
+  let dropped = 0;
+  let regenerated = 0;
+  const overlaps: number[] = [];
+  for (const s of devScenarios()) {
+    const { input, decisions, vetted, cost: c } = await scenarioProbes(s, model);
+    cost += c;
+    for (const scripted of s.scriptedResolutions) {
+      const m = s.plantedMismatches.find((x) => x.id === scripted.mismatch)!;
+      const original = vetted.find(
+        (v) => v.onPlanted && v.probe && v.candidate.dimension === m.dimension,
+      );
+      if (!original?.probe) {
+        console.log(`${s.id} ${m.id}: no published probe on the planted gap, skipped`);
+        continue;
+      }
+      console.log(`${s.id} ${m.id}: ${original.probe.stem}`);
+      for (const variant of ["precise", "vague"] as const) {
+        const { text, expectedRecheck } = scripted[variant];
+        const recheck = await vetRecheck(
+          {
+            decision: decisions.get(original.candidate.decisionId)!,
+            originalProbe: original.probe,
+            resolution: {
+              id: `${m.id}-${variant}`,
+              splitId: `${s.id}:${m.id}`,
+              text,
+              proposedBy: s.participants[0]!,
+              draftedByModel: false,
+              status: "confirmed",
+            },
+            segments: input.segments,
+          },
+          model,
+        );
+        cost += recheck.traces.reduce((t, tr) => t + traceCost(tr), 0);
+        regenerated += recheck.drops.filter((d) => d.reason === "regenerated_after_lint").length;
+        const t = tally.get(expectedRecheck) ?? { hit: 0, of: 0 };
+        t.of += 1;
+        tally.set(expectedRecheck, t);
+        console.log(`  ${variant}: "${text}"`);
+        for (const d of recheck.drops) {
+          const item = d.item as { probe?: { stem: string }; problems?: string[] };
+          console.log(`    dropped  ${d.reason} ${item.probe?.stem ?? ""}`);
+          for (const x of item.problems ?? []) console.log(`        ${x}`);
+        }
+        if (!recheck.probe) {
+          dropped += 1;
+          console.log(`    NO RECHECK (expected ${expectedRecheck})`);
+          continue;
+        }
+        const overlap = stemOverlap(recheck.probe.stem, original.probe.stem);
+        overlaps.push(overlap);
+        console.log(`    consequence: ${recheck.consequence}`);
+        console.log(`    recheck: ${recheck.probe.stem} (overlap ${overlap.toFixed(2)})`);
+        for (const o of recheck.probe.options) console.log(`        - ${o.text}`);
+        const round = await simulateRound(recheck.probe, recheckBriefs(s, m.id, text), model);
+        cost += round.cost;
+        for (const a of round.answers) {
+          const chosen = recheck.probe.options.find((o) => o.id === a.optionId)?.text;
+          console.log(`      ${a.participantId}: ${chosen ?? "(not sure)"}`);
+        }
+        const outcome = round.result.outcome;
+        if (outcome === expectedRecheck) t.hit += 1;
+        console.log(
+          `    ${outcome === expectedRecheck ? "ok" : "MISS"} ${outcome} (expected ${expectedRecheck})`,
+        );
+      }
+    }
+  }
+  const rate = (o: DivergenceOutcome) => {
+    const t = tally.get(o) ?? { hit: 0, of: 0 };
+    return `${t.of === 0 ? "n/a" : `${((t.hit / t.of) * 100).toFixed(0)}%`} (${t.hit}/${t.of})`;
+  };
+  const maxOverlap = overlaps.length === 0 ? 0 : Math.max(...overlaps);
+  console.log(
+    `\nCatch rate ${rate("split")}, pass rate ${rate("consistent")}, ` +
+      `rechecks regenerated ${regenerated}, dropped ${dropped}, ` +
+      `max stem overlap ${maxOverlap.toFixed(2)}, cost $${cost.toFixed(4)}`,
+  );
+  return true;
+}
+
 const [command, ...args] = process.argv.slice(2);
 switch (command) {
   case "validate": {
@@ -287,9 +409,12 @@ switch (command) {
   case "simulate":
     process.exit((await simulateDev()) ? 0 : 1);
     break;
+  case "recheck":
+    process.exit((await recheckDev()) ? 0 : 1);
+    break;
   default:
     console.error(
-      "Usage: pnpm eval validate [files...] | LIVE=1 pnpm eval extract | probes | simulate",
+      "Usage: pnpm eval validate [files...] | LIVE=1 pnpm eval extract | probes | simulate | recheck",
     );
     process.exit(2);
 }

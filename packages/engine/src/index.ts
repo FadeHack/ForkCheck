@@ -5,3 +5,5 @@ export * from "./stages/generate-probes";
 export * from "./stages/critique";
 export * from "./vet-probe";
 export * from "./stages/simulate-answer";
+export * from "./stages/generate-recheck";
+export * from "./vet-recheck";
