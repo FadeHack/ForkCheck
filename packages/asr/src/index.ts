@@ -18,3 +18,11 @@ export {
   type WavProblemCode,
   type WavReport,
 } from "./wav";
+export {
+  CONVERT_ARGS,
+  TARGET_SAMPLE_RATE,
+  convertToWav,
+  type ConvertOptions,
+  type ConvertProblem,
+  type ConvertResult,
+} from "./convert";

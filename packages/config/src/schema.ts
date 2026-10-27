@@ -16,6 +16,7 @@ export const envSchema = z.object({
   STORAGE_DRIVER: z.enum(["local", "blob"]).default("local"),
   BLOB_READ_WRITE_TOKEN: secret.optional(),
   AUDIO_DIR: z.string().min(1).default("var/audio"),
+  FFMPEG_PATH: z.string().min(1).default("ffmpeg"),
   SPEND_CAP_USD: usd(100),
   BASETEN_SPEND_CAP_USD: usd(60),
 });
