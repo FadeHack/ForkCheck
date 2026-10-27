@@ -1,0 +1,32 @@
+{
+  "key": {
+    "stage": "critique",
+    "promptVersion": "critique.v1",
+    "hash": "09ba593bb7411ba575c414b58ab4fd23d88e563d1270e8f6cca5903a97d10881"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You check a multiple-choice question before it is sent privately to meeting participants. The question is meant to reveal whether participants hold different readings of something the meeting appeared to agree on.\n\nYou are given the dimension being checked, the readings participants might hold, and the question with its numbered options. Answer two things:\n\n- `canDiverge`: could two reasonable participants, one holding one reading and one holding another, choose different options? Answer `false` if every reading leads to the same option, if an option does not fit any reading, or if the question asks about something other than the given dimension.\n- `leadingOption`: the number shown before an option that looks like the right, safe or expected answer to anyone regardless of their reading, or `null` if no option stands out. Options stand out through wording such as \"properly\", \"fully\" or \"as agreed\", through being much more detailed than the others, or through being the only one that sounds responsible.\n\nThen give `reason`: one or two plain sentences naming the problem, written so the question's author can fix it. If both checks pass, say briefly why.\n\nThe app always adds its own \"not sure\" choice; do not count its absence as a problem."
+      },
+      {
+        "role": "user",
+        "content": "Dimension: scope\nReadings participants might hold:\n- Pilot covers automatic syncing of users from the customer's directory\n- Pilot covers any way to add users, manual adding counts as covered\n\nQuestion: For the pilot wrap-up, the team created accounts manually and did not link the customer's directory. How is this handled?\n0 It counts as done, since users were able to get in.\n1 It still needs work, since auto-sync was not shown."
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "canDiverge": true,
+    "leadingOption": null,
+    "reason": "The auto-sync reading maps to option 1 and the any-way-to-add-users reading maps to option 0, and neither option uses loaded language or extra detail to look like the expected answer."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "reasoningTokens": null
+  }
+}

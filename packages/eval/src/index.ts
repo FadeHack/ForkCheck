@@ -4,3 +4,5 @@ export * from "./scenario-lint";
 export * from "./extract-score";
 export * from "./candidate-score";
 export * from "./simulate";
+export * from "./loop";
+export * from "./record-md";

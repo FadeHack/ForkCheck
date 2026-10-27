@@ -9,14 +9,7 @@
  */
 import { readdirSync, readFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
-import { EnvError, loadEnv, loadLocalEnvFile } from "@forkcheck/config";
-import {
-  FileCallLog,
-  FileModelCache,
-  FileSpendLedger,
-  MetaProvider,
-  type ModelPort,
-} from "@forkcheck/ai";
+import type { ModelPort } from "@forkcheck/ai";
 import {
   divergence,
   optionOrder,
@@ -48,6 +41,7 @@ import {
   type ExtractScore,
   type Scenario,
 } from "../src/index";
+import { liveMeta } from "./live";
 
 const root = resolve(import.meta.dirname, "../../../scenarios");
 
@@ -90,31 +84,6 @@ function validate(files: string[]): boolean {
     }
   }
   return ok;
-}
-
-function liveMeta(): MetaProvider {
-  loadLocalEnvFile();
-  let env;
-  try {
-    env = loadEnv(process.env, { require: ["MODEL_API_KEY"] });
-  } catch (error) {
-    if (!(error instanceof EnvError)) throw error;
-    console.error(error.message);
-    process.exit(1);
-  }
-  if (!env.LIVE) {
-    console.error("Refusing to call the live API: set LIVE=1.");
-    process.exit(1);
-  }
-  const workspace = resolve(root, "..");
-  return new MetaProvider({
-    apiKey: env.MODEL_API_KEY ?? "",
-    spendCapUsd: env.SPEND_CAP_USD,
-    ledger: new FileSpendLedger(join(workspace, "var", "spend.json")),
-    log: new FileCallLog(join(workspace, "var", "model-calls.jsonl")),
-    // Reruns of an unchanged prompt on unchanged scenarios cost nothing.
-    cache: new FileModelCache(join(workspace, "var", "model-cache")),
-  });
 }
 
 function devScenarios() {

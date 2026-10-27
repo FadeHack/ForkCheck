@@ -31,7 +31,8 @@ export const scenario = z
     version: z.literal(1),
     id: key,
     title: z.string().min(1),
-    set: z.enum(["dev", "heldout"]),
+    /** `demo` scenarios drive the headless loop and fixtures; they are not scored. */
+    set: z.enum(["dev", "heldout", "demo"]),
     category: scenarioCategory,
     heldAt: z.iso.datetime({ offset: true }),
     timezone: z.string().min(1),
@@ -66,7 +67,13 @@ export const scenario = z
     }),
     /** One precise and one deliberately vague resolution per planted mismatch. */
     scriptedResolutions: z.array(
-      z.strictObject({ mismatch: key, precise: scriptedResolution, vague: scriptedResolution }),
+      z.strictObject({
+        mismatch: key,
+        precise: scriptedResolution,
+        vague: scriptedResolution,
+        /** The group ends the discussion by agreeing to disagree instead of confirming. */
+        endsIn: z.literal("agree_to_disagree").optional(),
+      }),
     ),
   })
   .superRefine((s, ctx) => {

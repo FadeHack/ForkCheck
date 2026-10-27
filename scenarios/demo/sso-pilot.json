@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "id": "demo-sso-pilot",
+  "title": "Pilot customer check-in",
+  "set": "demo",
+  "category": "deadline",
+  "heldAt": "2026-10-26T15:00:00-04:00",
+  "timezone": "America/New_York",
+  "participants": ["Priya", "Marco", "Dana"],
+  "transcript": "[00:00] Priya: Quick one. Where are we on single sign-on for the pilot customer?\n[00:06] Marco: Login works on staging. I still need to wire up the admin roles.\n[00:14] Dana: The customer asked again yesterday. They want to try it this week.\n[00:20] Priya: OK, so SSO is ready by Friday. Marco, that's yours?\n[00:25] Marco: Yep, I'll have it ready by Friday.\n[00:29] Dana: Great, I'll tell them Friday.\n[00:33] Dana: They also asked about adding their users automatically from their directory.\n[00:40] Priya: Let's cover user provisioning in the pilot.\n[00:44] Marco: Fine by me.\n[00:47] Dana: Good, I'll put it in the pilot plan.\n",
+  "expectedDecisions": [
+    {
+      "id": "sso-friday",
+      "kind": "commitment",
+      "statement": "Single sign-on for the pilot customer is ready by Friday.",
+      "owner": "Marco",
+      "deadline": "Friday",
+      "quotes": ["SSO is ready by Friday", "I'll have it ready by Friday"]
+    },
+    {
+      "id": "tell-customer",
+      "kind": "commitment",
+      "statement": "Dana tells the customer about Friday.",
+      "owner": "Dana",
+      "deadline": null,
+      "quotes": ["I'll tell them Friday."]
+    },
+    {
+      "id": "pilot-provisioning",
+      "kind": "decision",
+      "statement": "User provisioning is part of the pilot.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["Let's cover user provisioning in the pilot.", "Fine by me."]
+    },
+    {
+      "id": "pilot-plan",
+      "kind": "commitment",
+      "statement": "Dana adds provisioning to the pilot plan.",
+      "owner": "Dana",
+      "deadline": null,
+      "quotes": ["I'll put it in the pilot plan."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Priya",
+      "readings": [
+        {
+          "decision": "sso-friday",
+          "dimension": "deadline",
+          "reading": "Merged and deployed to staging by Friday; production the following week."
+        },
+        {
+          "decision": "pilot-provisioning",
+          "dimension": "scope",
+          "reading": "Directory sync is built during the pilot and switched on a few weeks in; until then users are added by hand."
+        }
+      ]
+    },
+    {
+      "participant": "Marco",
+      "readings": [
+        {
+          "decision": "sso-friday",
+          "dimension": "deadline",
+          "reading": "Code complete on staging by Friday end of day, including admin roles."
+        },
+        {
+          "decision": "pilot-provisioning",
+          "dimension": "scope",
+          "reading": "The pilot customer uploads a CSV of users; directory sync is a later project after the pilot."
+        }
+      ]
+    },
+    {
+      "participant": "Dana",
+      "readings": [
+        {
+          "decision": "sso-friday",
+          "dimension": "deadline",
+          "reading": "The customer's admins can log in to production on Friday morning."
+        },
+        {
+          "decision": "pilot-provisioning",
+          "dimension": "scope",
+          "reading": "Directory sync works from the customer's first pilot day, together with SSO."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "friday-meaning",
+      "decision": "sso-friday",
+      "dimension": "deadline",
+      "note": "Staging vs production: Dana promised the customer a production login."
+    },
+    {
+      "id": "provisioning-scope",
+      "decision": "pilot-provisioning",
+      "dimension": "scope",
+      "note": "Directory sync on day one, mid-pilot, or not in the pilot at all (CSV upload)."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Priya: \"SSO is ready by Friday\"",
+      "Marco: \"I'll have it ready by Friday\"",
+      "Dana: \"I'll tell them Friday.\"",
+      "Priya: \"Let's cover user provisioning in the pilot.\"",
+      "Dana: \"I'll put it in the pilot plan.\""
+    ],
+    "confirmed": [
+      "SSO with admin roles is live in production for the pilot customer by Friday 2026-10-30, 10:00 ET (firm)."
+    ],
+    "unresolved": ["Whether directory sync is part of the pilot: left open by agreement."]
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "friday-meaning",
+      "precise": {
+        "text": "SSO with admin roles is live in production for the pilot customer by Friday 2026-10-30, 10:00 ET. Firm.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": { "text": "SSO is done by Friday.", "expectedRecheck": "split" }
+    },
+    {
+      "mismatch": "provisioning-scope",
+      "precise": {
+        "text": "Pilot users are added by CSV upload. Directory sync is not in the pilot; it is planned for after the pilot ends.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": { "text": "Provisioning is part of the pilot.", "expectedRecheck": "split" },
+      "endsIn": "agree_to_disagree"
+    }
+  ]
+}
