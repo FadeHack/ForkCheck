@@ -27,6 +27,7 @@ describe("loadEnv", () => {
     });
     expect(env).toEqual({
       LIVE: true,
+      RECORD_FIXTURES: false,
       MODEL_API_KEY: "test-model-key",
       BASETEN_API_KEY: "bt-secret",
       DATABASE_URL: "postgres://forkcheck:forkcheck@localhost:5433/forkcheck",
@@ -41,6 +42,7 @@ describe("loadEnv", () => {
   it("applies defaults and needs no keys when not live", () => {
     expect(loadEnv({})).toEqual({
       LIVE: false,
+      RECORD_FIXTURES: false,
       STORAGE_DRIVER: "local",
       AUDIO_DIR: "var/audio",
       SPEND_CAP_USD: 100,
@@ -53,6 +55,15 @@ describe("loadEnv", () => {
     expect(error.problems).toEqual([
       { name: "MODEL_API_KEY", issue: "is missing (required when LIVE=1)" },
     ]);
+  });
+
+  it("refuses RECORD_FIXTURES=1 without LIVE=1", () => {
+    expect(loadError({ RECORD_FIXTURES: "1" }).problems).toEqual([
+      { name: "LIVE", issue: "must be 1 when RECORD_FIXTURES=1" },
+    ]);
+    expect(loadEnv({ RECORD_FIXTURES: "1", LIVE: "1", MODEL_API_KEY: "k" }).RECORD_FIXTURES).toBe(
+      true,
+    );
   });
 
   it("gives a one-line error naming MODEL_API_KEY when LIVE=1 and the key is missing", () => {

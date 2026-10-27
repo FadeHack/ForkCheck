@@ -38,6 +38,9 @@ export function loadEnv(source: EnvSource = process.env, options: LoadEnvOptions
   };
 
   if (raw.LIVE === "1") missing("MODEL_API_KEY", "required when LIVE=1");
+  if (raw.RECORD_FIXTURES === "1" && raw.LIVE !== "1") {
+    problems.set("LIVE", "must be 1 when RECORD_FIXTURES=1");
+  }
   if (raw.STORAGE_DRIVER === "blob")
     missing("BLOB_READ_WRITE_TOKEN", "required when STORAGE_DRIVER=blob");
   for (const name of options.require ?? []) missing(name);
