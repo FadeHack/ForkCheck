@@ -10,6 +10,7 @@ import {
   ownerOptions,
   ownerTemplate,
   templateProbe,
+  THOROUGHNESS_OPTIONS,
   withoutNames,
   type Dimension,
   type TemplateInput,
@@ -203,9 +204,25 @@ describe("deliverableFormTemplate", () => {
   });
 });
 
+describe("criteria template", () => {
+  it("asks how thorough the check is, with fixed options", () => {
+    const p = templateProbe(
+      input({
+        dimension: "criteria",
+        statement: "Release 4.2 is submitted Wednesday if the usual QA pass is clean.",
+      }),
+    )!;
+    expect(p.stem).toBe(
+      'For "Release 4.2 is submitted Wednesday if the usual QA pass is clean", which check has to pass first?',
+    );
+    expect(p.options.map((o) => o.text)).toEqual(THOROUGHNESS_OPTIONS);
+    expect(p.lint).toEqual([]);
+  });
+});
+
 describe("templateProbe", () => {
   it("has no template for the other dimensions", () => {
-    for (const dimension of ["criteria", "dependency", "outcome"] as const) {
+    for (const dimension of ["dependency", "outcome"] as const) {
       expect(templateProbe(input({ dimension }))).toBe(null);
     }
   });

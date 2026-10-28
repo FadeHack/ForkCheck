@@ -21,6 +21,7 @@ export const TIER_RUNS: readonly string[] = [
   "g1-assisted-20261028",
   "g1-template-20261028",
   "g1-config-form-20261028",
+  "g1-config-criteria-20261028",
 ];
 
 /**
@@ -37,8 +38,10 @@ export const TIERS: TierConfig = parseTierConfig({
   // deliverable-form template asks which version is meant (1/2 in g1-config-form-20261028,
   // where the miss plants readings the transcript never mentions).
   scope: "template",
-  // 1/3 with 2 false splits, 1/3 with none, 0/1.
-  criteria: "assisted",
+  // 1/3 with 2 false splits, 1/3 with none, 0/1. Model-written options guessed at checks
+  // nobody had in mind, so people answered "not sure"; T0 asks how thorough the check is
+  // (3/3 in g1-config-criteria-20261028).
+  criteria: "template",
   // Not planted in the dev set.
   dependency: "free",
   outcome: "free",

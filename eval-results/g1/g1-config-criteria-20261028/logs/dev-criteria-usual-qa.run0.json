@@ -1,0 +1,43 @@
+{
+  "runId": "g1-config-criteria-20261028",
+  "run": 0,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "criteria",
+      "mismatch": "what-usual-means",
+      "probeId": "dev-criteria-usual-qa:cand:0:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:t0",
+      "stem": "For \"Do the usual QA pass on the release build\", which check has to pass first?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:t0",
+      "stem": "For \"Do the usual QA pass on the release build\", what form does it take?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.08281555
+}

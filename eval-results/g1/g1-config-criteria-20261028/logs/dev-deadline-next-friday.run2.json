@@ -1,0 +1,56 @@
+{
+  "runId": "g1-config-criteria-20261028",
+  "run": 2,
+  "scenario": "dev-deadline-next-friday",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "which-friday",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "stem": "For \"Kwame owns the questionnaire and will get it back to Brightwater\", what has to exist by \"next Friday\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0",
+      "stem": "When Brightwater opens the file Kwame sends back, what will be in it for the region-specific items?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0",
+      "stem": "For \"Rosa will ask procurement whether they want the insurance certificate itself or just the coverage amounts\", what has to exist by \"when I write to procurement\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.12116910000000002
+}

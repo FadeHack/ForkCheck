@@ -1,0 +1,88 @@
+{
+  "runId": "g1-config-criteria-20261028",
+  "run": 2,
+  "scenario": "dev-deadline-end-of-month",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "end-of-month-firmness",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-end-of-month:cand:0",
+      "dimension": "deadline",
+      "mismatch": "end-of-month-firmness",
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:1:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:2:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:4",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:4:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:5",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0",
+      "stem": "For \"Tomasz will delete the old templates from the sender config\", what has to exist by \"after a day of clean sends\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:4:t0",
+      "stem": "For \"Tomasz will delete the old templates from the sender config after a day of clean sends\", which check has to pass first?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0",
+      "stem": "For \"The referral wording will stay frozen\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0",
+      "stem": "For \"The full switch-over is doable if finance gets back this week\", what has to exist by \"end of month\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:2:t0",
+      "stem": "For \"The full switch-over by end of month is doable if finance gets back this week\", which check has to pass first?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.12883809999999996
+}
