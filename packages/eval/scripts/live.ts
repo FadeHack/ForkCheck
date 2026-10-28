@@ -41,8 +41,11 @@ export function liveTranscriber(): TranscribeClient {
   });
 }
 
-/** The live Meta provider, behind LIVE=1, the spend cap, the call log and the response cache. */
-export function liveMeta(): MetaProvider {
+/**
+ * The live Meta provider, behind LIVE=1, the spend cap, the call log and the response cache.
+ * Eval runs pass `cache: false`: repeated runs must sample the model, not replay it.
+ */
+export function liveMeta({ cache = true }: { cache?: boolean } = {}): MetaProvider {
   const env = liveEnv();
   return new MetaProvider({
     apiKey: env.MODEL_API_KEY ?? "",
@@ -50,6 +53,6 @@ export function liveMeta(): MetaProvider {
     ledger: new FileSpendLedger(join(workspace, "var", "spend.json")),
     log: new FileCallLog(join(workspace, "var", "model-calls.jsonl")),
     // Reruns of an unchanged prompt on unchanged scenarios cost nothing.
-    cache: new FileModelCache(join(workspace, "var", "model-cache")),
+    ...(cache ? { cache: new FileModelCache(join(workspace, "var", "model-cache")) } : {}),
   });
 }

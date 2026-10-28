@@ -9,3 +9,4 @@ export * from "./record-md";
 export * from "./audio-render";
 export * from "./s1";
 export * from "./audio-loop";
+export * from "./gate";
