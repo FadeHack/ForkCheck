@@ -19,12 +19,22 @@ export interface VetProbeResult {
 export const MAX_GENERATIONS = 2;
 
 /**
- * Generate, lint, then critique one candidate's probe. A failing probe is rewritten once
+ * Generate, lint, then critique one candidate's probe. At T0 a fitting template is used as is;
+ * otherwise the candidate drops to T1. A failing probe is rewritten once
  * with its problems as feedback; if the rewrite fails too, it is dropped with the reason.
  * Lint runs first so the critic is never paid for a probe the code already rejects.
  */
 export async function vetProbe(input: VetProbeInput, model: ModelPort): Promise<VetProbeResult> {
-  if (input.tier === "template") return vetTemplate(input);
+  if (input.tier === "template") {
+    const probe = templateProbe({ ...input, decision: input.decision.decision });
+    if (probe) return vetTemplate(probe);
+    // No template fits this candidate, so ask with T1: a fixed stem and model-written options.
+    return vetModelProbe({ ...input, tier: "assisted" }, model);
+  }
+  return vetModelProbe(input, model);
+}
+
+async function vetModelProbe(input: VetProbeInput, model: ModelPort): Promise<VetProbeResult> {
   const { segments, ...generateInput } = input;
   const targets = [{ decision: input.decision.decision, dimension: input.candidate.dimension }];
   const traces: StageTrace[] = [];
@@ -68,11 +78,7 @@ export async function vetProbe(input: VetProbeInput, model: ModelPort): Promise<
  * T0: the template is fixed text from code, so there is nothing for the critic to judge and
  * nothing to rewrite; a template that fails lint is dropped.
  */
-function vetTemplate(input: VetProbeInput): VetProbeResult {
-  const probe = templateProbe({ ...input, decision: input.decision.decision });
-  if (!probe) {
-    return { probe: null, traces: [], drops: [{ reason: "no_template", item: input.candidate }] };
-  }
+function vetTemplate(probe: Probe): VetProbeResult {
   if (probe.lint.length > 0) {
     return {
       probe: null,

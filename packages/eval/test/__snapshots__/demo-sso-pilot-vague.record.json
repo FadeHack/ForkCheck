@@ -190,7 +190,7 @@
       "confirmedBy": [],
       "absent": [],
       "recheck": "not_run",
-      "splitId": "demo-sso-pilot:cand:2:t0:split",
+      "splitId": "demo-sso-pilot:cand:2:probe:0:split",
       "deadline": null,
       "category": "unresolved",
       "text": "Left open by agreement (scope): User provisioning will be covered in the pilot."

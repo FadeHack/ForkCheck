@@ -1,0 +1,88 @@
+{
+  "runId": "g1-config-scope-tiebreak-20261028",
+  "run": 1,
+  "scenario": "dev-partial-pricing-page",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "what-the-update-covers",
+      "dimension": "scope"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-partial-pricing-page:cand:0",
+      "dimension": "scope",
+      "mismatch": "what-the-update-covers",
+      "probeId": "dev-partial-pricing-page:cand:0:t0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:1:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:2:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:3:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:4:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-partial-pricing-page:cand:1:probe:0",
+      "stem": "For \"The pricing update is live with Jun owning it\", what has to exist by Friday, November 13?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:0:t0",
+      "stem": "For \"The pricing update is live on the 13th with Jun owning it\", what form does it take?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:3:probe:0",
+      "stem": "For \"Marisol will update the sales deck to match\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:4:probe:0",
+      "stem": "For \"Elena will rewrite that answer in the FAQ\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:5:probe:0",
+      "stem": "When \"Jun will swap in the new copy\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.15713455
+}

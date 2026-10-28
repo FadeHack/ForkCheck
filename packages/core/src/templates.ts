@@ -28,6 +28,14 @@ export const THOROUGHNESS_OPTIONS = [
   "A full regression plus extra checks for what changed",
 ];
 
+// Words that name a version of a deliverable rather than a part of it.
+const FORM_WORDS =
+  /\b(?:prototypes?|mock-?ups?|wireframes?|figma|staging|test data|sample data|production|real data)\b/i;
+
+// Verbs that put a deliverable in front of people, where which version is shown is the usual gap.
+const SHOWING_WORDS =
+  /\b(?:demo(?:s|ed|ing)?|launch(?:es|ed|ing)?|release[sd]?|ship(?:s|ped|ping)?|live|roll(?:s|ed|ing)? out|rollout)\b/i;
+
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /** The item as a clause: no trailing full stop, so it can sit inside a quoted stem. */
@@ -155,8 +163,20 @@ export function checkThoroughnessTemplate(input: TemplateInput): Probe {
 }
 
 /**
+ * Whether a scope gap is about which version is meant: a reading names one (a prototype, a
+ * staging build, production), or the item shows or ships the deliverable (a demo, a launch).
+ */
+export function scopeIsVersion(input: Pick<TemplateInput, "candidate" | "decision">): boolean {
+  return (
+    input.candidate.readings.some((r) => FORM_WORDS.test(r.text)) ||
+    SHOWING_WORDS.test(input.decision.statement)
+  );
+}
+
+/**
  * The T0 probe for a candidate: owner, deadline firmness, deliverable form and check
- * thoroughness. Null for other dimensions or a deadline candidate with no deadline phrase.
+ * thoroughness. Null for other dimensions, a deadline candidate with no deadline phrase, or
+ * a scope candidate that is about parts rather than versions.
  * The probe carries its lint findings; the caller drops one that has any.
  */
 export function templateProbe(input: TemplateInput): Probe | null {
@@ -166,7 +186,7 @@ export function templateProbe(input: TemplateInput): Probe | null {
     case "deadline":
       return deadlineFirmnessTemplate(input);
     case "scope":
-      return deliverableFormTemplate(input);
+      return scopeIsVersion(input) ? deliverableFormTemplate(input) : null;
     case "criteria":
       return checkThoroughnessTemplate(input);
     default:

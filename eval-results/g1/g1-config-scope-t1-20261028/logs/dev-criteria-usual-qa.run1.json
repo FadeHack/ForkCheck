@@ -1,0 +1,56 @@
+{
+  "runId": "g1-config-scope-t1-20261028",
+  "run": 1,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "criteria",
+      "mismatch": "what-usual-means",
+      "probeId": "dev-criteria-usual-qa:cand:0:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:2:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:t0",
+      "stem": "For \"The team will do the usual QA pass on the release build\", which check has to pass first?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0",
+      "stem": "When \"The team will do the usual QA pass on the release build\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:2:t0",
+      "stem": "For \"The team will submit Wednesday if the usual QA pass is clean\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.10363115000000003
+}

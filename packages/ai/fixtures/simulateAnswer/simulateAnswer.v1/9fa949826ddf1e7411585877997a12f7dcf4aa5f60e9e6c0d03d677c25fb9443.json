@@ -1,0 +1,31 @@
+{
+  "key": {
+    "stage": "simulateAnswer",
+    "promptVersion": "simulateAnswer.v1",
+    "hash": "9fa949826ddf1e7411585877997a12f7dcf4aa5f60e9e6c0d03d677c25fb9443"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You play one participant from a meeting. You answer a private multiple-choice question the way that person would, based only on what they believe was agreed.\n\nYou are given that person's private notes and the question. The notes are the only thing you know about the meeting. Do not try to guess what other participants think, and do not pick the option that sounds best: pick the option that matches what the notes say.\n\nAnswer with:\n\n- `optionId`: the letter of the option that matches the notes, or `null` when the notes do not settle the question. Choose `null` rather than guess.\n- `reason`: one short sentence linking the notes to the choice."
+      },
+      {
+        "role": "user",
+        "content": "Your private notes on what the meeting agreed, as (item, dimension) note:\n- (sso-friday, scope) Merged and deployed to staging by Friday; production the following week.\n- (pilot-provisioning, scope) Directory sync is built during the pilot and switched on a few weeks in; until then users are added by hand.\n\nQuestion: When \"Dana will put it in the pilot plan\" is done, which of these is included?\nA. Only user provisioning is included\nB. Both SSO and user provisioning are included"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "optionId": "A",
+    "reason": "Notes place directory sync in the pilot with manual adds until then, while SSO has a separate Friday staging timeline."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 314,
+    "outputTokens": 537,
+    "reasoningTokens": 497
+  }
+}

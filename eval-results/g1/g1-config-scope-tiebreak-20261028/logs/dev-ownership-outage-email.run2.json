@@ -1,0 +1,82 @@
+{
+  "runId": "g1-config-scope-tiebreak-20261028",
+  "run": 2,
+  "scenario": "dev-ownership-outage-email",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "who-sends",
+      "dimension": "owner"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-ownership-outage-email:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:0:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:1",
+      "dimension": "owner",
+      "mismatch": "who-sends",
+      "probeId": "dev-ownership-outage-email:cand:1:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:4",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0",
+      "stem": "By end of day Wednesday the 4th, who will have been sent a message about the outage?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0",
+      "stem": "Legal has opened the draft, read it through, but has not replied yet. What happens with the write-up?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:0:probe:0",
+      "stem": "When \"Felix will have the credits applied by Thursday\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:1:t0",
+      "stem": "For \"The group will handle the customer emails by tomorrow with plain language, the credit, and what we changed\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0",
+      "stem": "When \"Felix will add a step for it on the on-call checklist\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.14792669999999994
+}

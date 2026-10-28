@@ -1,0 +1,51 @@
+{
+  "runId": "g1-config-scope-t1-20261028",
+  "run": 0,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "config",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:t0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:2:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:t0",
+      "stem": "For \"Done means the old keys are revoked at the provider and the CI secrets are updated so the nightly build passes\", which check has to pass first?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0",
+      "stem": "After Grace reviews the dashboards on Wednesday morning, what happens next?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:2:t0",
+      "stem": "For \"Mateo will post in the infra channel as each one is done\", which check has to pass first?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.07162924999999998
+}

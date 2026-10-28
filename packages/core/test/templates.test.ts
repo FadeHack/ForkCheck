@@ -220,6 +220,43 @@ describe("criteria template", () => {
   });
 });
 
+describe("scope template choice", () => {
+  const scope = (readings: string[], statement = "Priya updates the pricing page.") =>
+    input({ dimension: "scope", readings, statement });
+
+  it("uses the form question when a reading names a version", () => {
+    const p = templateProbe(scope(["Login works on staging", "Login plus admin roles"]));
+    expect(p?.options.map((o) => o.text)).toEqual(DELIVERABLE_OPTIONS);
+  });
+
+  it("has no template when the readings differ in parts", () => {
+    expect(templateProbe(scope(["Only the new prices", "Prices plus an annual toggle"]))).toBe(
+      null,
+    );
+  });
+
+  it("uses the form question when the item shows or ships the deliverable", () => {
+    const p = templateProbe(
+      scope(
+        ["Fleet map and scorecard", "Fleet map only"],
+        "Oskar demos the dashboard on Thursday.",
+      ),
+    );
+    expect(p?.options.map((o) => o.text)).toEqual(DELIVERABLE_OPTIONS);
+  });
+
+  it("matches whole words only", () => {
+    expect(
+      templateProbe(
+        scope(
+          ["Prices only", "Prices with a reproduction of the table"],
+          "Priya delivers the page.",
+        ),
+      ),
+    ).toBe(null);
+  });
+});
+
 describe("templateProbe", () => {
   it("has no template for the other dimensions", () => {
     for (const dimension of ["dependency", "outcome"] as const) {
