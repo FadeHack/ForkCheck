@@ -11,6 +11,7 @@ import {
   validateRecord,
   type Candidate,
   type DecisionRecord,
+  type Dimension,
   type Divergence,
   type DivergenceAnswer,
   type DivergenceOutcome,
@@ -131,7 +132,15 @@ export interface ProbeRounds {
 export async function probeRounds(
   s: Scenario,
   model: ModelPort,
-  { segments, tier = TIERS }: { segments?: Segment[]; tier?: ProbeTier | TierConfig } = {},
+  {
+    segments,
+    tier = TIERS,
+    dimensions,
+  }: {
+    segments?: Segment[];
+    tier?: ProbeTier | TierConfig;
+    dimensions?: readonly Dimension[];
+  } = {},
 ): Promise<ProbeRounds> {
   const stages: StageTrace[] = [];
   const input = { ...scenarioExtractInput(s), ...(segments ? { segments } : {}) };
@@ -140,7 +149,10 @@ export async function probeRounds(
   const extracted = await extract(input, model);
   stages.push(extracted.trace);
   const { decisions } = extracted.output;
-  const found = await findCandidates({ ...input, decisions }, model);
+  const found = await findCandidates(
+    { ...input, decisions, ...(dimensions ? { dimensions } : {}) },
+    model,
+  );
   stages.push(found.trace);
 
   const matches = matchDecisions(s, decisions);
