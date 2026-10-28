@@ -70,8 +70,9 @@ export async function vetProbe(input: VetProbeInput, model: ModelPort): Promise<
  */
 function vetTemplate(input: VetProbeInput): VetProbeResult {
   const probe = templateProbe({ ...input, decision: input.decision.decision });
-  if (!probe)
+  if (!probe) {
     return { probe: null, traces: [], drops: [{ reason: "no_template", item: input.candidate }] };
+  }
   if (probe.lint.length > 0) {
     return {
       probe: null,
