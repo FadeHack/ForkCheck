@@ -1,0 +1,88 @@
+{
+  "runId": "g1-config-scope-tiebreak-20261028",
+  "run": 1,
+  "scenario": "dev-ownership-outage-email",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "who-sends",
+      "dimension": "owner"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-ownership-outage-email:cand:0",
+      "dimension": "owner",
+      "mismatch": "who-sends",
+      "probeId": "dev-ownership-outage-email:cand:0:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:4",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0",
+      "stem": "Legal has looked through the draft and left comments, but has not said it is cleared to share. What should Felix do next?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0",
+      "stem": "When the outage messages are ready to send by Wednesday the 4th, who is on the recipient list?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:0:t0",
+      "stem": "For \"The group will handle the customer emails by tomorrow, including plain language, the credit, and what we changed\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0",
+      "stem": "When \"Imani will close out the open tickets once the email is out, pointing to it\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:5:probe:0",
+      "stem": "When \"Felix will add a step for it on the on-call checklist\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.17321695
+}

@@ -1,0 +1,56 @@
+{
+  "runId": "g1-config-scope-tiebreak-20261028",
+  "run": 1,
+  "scenario": "dev-deadline-next-friday",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "which-friday",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0",
+      "stem": "It's next Friday and Lena's legal and insurance sections have not been merged yet. What does Kwame send?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "stem": "For \"Kwame owns the questionnaire and will return it back\", what has to exist by \"next Friday\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0",
+      "stem": "If Rosa has not yet said whether procurement needs the certificate itself or only the coverage figures, what will Lena hand over to Kwame?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.11583354999999998
+}

@@ -1,0 +1,56 @@
+{
+  "runId": "g1-config-scope-tiebreak-20261028",
+  "run": 2,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "criteria",
+      "mismatch": "what-usual-means",
+      "probeId": "dev-criteria-usual-qa:cand:0:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0",
+      "stem": "It's Wednesday and QA reports no blocking issues on the release build, while the offline drafts rotation fix is still in review. What should happen next?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:t0",
+      "stem": "For \"Do the usual QA pass on the release build\", which check has to pass first?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0",
+      "stem": "When \"Skip onboarding this round\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.11207149999999999
+}

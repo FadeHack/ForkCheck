@@ -1,0 +1,82 @@
+{
+  "runId": "g1-config-scope-tiebreak-20261028",
+  "run": 0,
+  "scenario": "dev-deadline-next-friday",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "which-friday",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:4",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "stem": "For \"Kwame owns the questionnaire, back to them\", what has to exist by \"next Friday\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0",
+      "stem": "When Kwame sends the questionnaire back on Friday the 6th, what happens with the summary attachment?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0",
+      "stem": "If Rosa is still waiting on procurement when Lena is ready to hand off, what does Lena send to Kwame?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:4:probe:0",
+      "stem": "When \"Put them in the shared folder, not email\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0",
+      "stem": "When \"Lena will do the legal and insurance sections and pass them to Kwame to merge in\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.14007944999999997
+}

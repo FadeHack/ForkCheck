@@ -1,0 +1,82 @@
+{
+  "runId": "g1-config-scope-tiebreak-20261028",
+  "run": 1,
+  "scenario": "dev-scope-dashboard-demo",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "which-dashboard",
+      "dimension": "scope"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-scope-dashboard-demo:cand:0",
+      "dimension": "scope",
+      "mismatch": "which-dashboard",
+      "probeId": "dev-scope-dashboard-demo:cand:0:t0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:3",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:3:t0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:4",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:0:t0",
+      "stem": "For \"Oskar will demo the dashboard to Halvorsen on Thursday\", what form does it take?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0",
+      "stem": "For \"Mei will tidy up the scorecard screens\", what has to exist by \"then\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0",
+      "stem": "For \"Mei will fix the colour scale on the lane chart\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:3:t0",
+      "stem": "For \"Someone will do a dry run on Wednesday\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:4:probe:0",
+      "stem": "Suppose Mei's tidied screens and colour fix are not ready when Wednesday the 4th arrives. What happens to Oskar's dry run?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.13037880000000002
+}

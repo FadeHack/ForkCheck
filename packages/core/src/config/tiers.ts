@@ -22,6 +22,8 @@ export const TIER_RUNS: readonly string[] = [
   "g1-template-20261028",
   "g1-config-form-20261028",
   "g1-config-criteria-20261028",
+  "g1-config-scope-t1-20261028",
+  "g1-config-scope-tiebreak-20261028",
 ];
 
 /**
@@ -35,8 +37,9 @@ export const TIERS: TierConfig = parseTierConfig({
   // 6/6, 6/6, 1/2.
   deadline: "assisted",
   // 0/6 in every tier with model-written stems, which ask about features; the T0
-  // deliverable-form template asks which version is meant (1/2 in g1-config-form-20261028,
-  // where the miss plants readings the transcript never mentions).
+  // deliverable-form template asks which version is meant. It only fits version gaps, so
+  // parts gaps fall back to T1 (dashboard 1/3 without the demo/launch tiebreak in
+  // g1-config-scope-t1-20261028, 3/3 with it in g1-config-scope-tiebreak-20261028).
   scope: "template",
   // 1/3 with 2 false splits, 1/3 with none, 0/1. Model-written options guessed at checks
   // nobody had in mind, so people answered "not sure"; T0 asks how thorough the check is

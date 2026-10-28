@@ -1,0 +1,69 @@
+{
+  "runId": "g1-config-scope-t1-20261028",
+  "run": 0,
+  "scenario": "dev-deadline-next-friday",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "which-friday",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0",
+      "stem": "Rosa is assembling the draft reply and has not yet heard from Lena about NDA coverage. What does the draft look like?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "stem": "For \"Kwame owns the questionnaire and will return it to them\", what has to exist by \"next Friday\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0",
+      "stem": "When the data residency section is sent to Brightwater, what will they see about the backup setup?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0",
+      "stem": "When Lena passes her sections to Kwame to merge, what describes the insurance section relative to Rosa's update from Brightwater?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.13668785000000003
+}

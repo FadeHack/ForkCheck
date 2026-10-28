@@ -1,0 +1,69 @@
+{
+  "runId": "g1-config-scope-tiebreak-20261028",
+  "run": 0,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "criteria",
+      "mismatch": "what-usual-means",
+      "probeId": "dev-criteria-usual-qa:cand:0:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:2:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:t0",
+      "stem": "For \"The release build will go through the usual QA pass\", which check has to pass first?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:t0",
+      "stem": "For \"The release build will go through the usual QA pass\", what form does it take?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0",
+      "stem": "When \"Zara will skip onboarding this round\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:2:t0",
+      "stem": "For \"The onboarding screens will be turned on once the A/B setup is ready\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.09454344999999999
+}

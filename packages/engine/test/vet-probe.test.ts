@@ -204,12 +204,27 @@ describe("vetProbe at tier T0", () => {
     expect(r.traces).toEqual([]);
   });
 
-  it("drops a dimension with no template", async () => {
+  it("falls back to T1 when no template fits the candidate", async () => {
+    const model = new ScriptedProvider({
+      generateProbes: [{ options: [{ text: "Key benefits stay" }, { text: "KFS replaces them" }] }],
+      critique: [pass],
+    });
     const r = await vetProbe(
-      { ...input, tier: "template", candidate: { ...candidate, dimension: "dependency" } },
-      noModel(),
+      {
+        ...input,
+        tier: "template",
+        candidate: {
+          ...candidate,
+          dimension: "scope",
+          readings: [
+            { id: "m1:cand:0:r:0", text: "Add the KFS link next to the existing boxes" },
+            { id: "m1:cand:0:r:1", text: "Replace the two boxes with the KFS block" },
+          ],
+        },
+      },
+      model,
     );
-    expect(r.probe).toBeNull();
-    expect(r.drops.map((d) => d.reason)).toEqual(["no_template"]);
+    expect(r.probe).toMatchObject({ tier: "assisted", lint: [] });
+    expect(r.probe?.stem).toMatch(/^When ".*" is done, which of these is included\?$/);
   });
 });

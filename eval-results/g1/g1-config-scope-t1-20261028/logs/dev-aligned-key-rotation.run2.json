@@ -1,0 +1,25 @@
+{
+  "runId": "g1-config-scope-t1-20261028",
+  "run": 2,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "config",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0",
+      "stem": "On Wednesday morning once the revocation status has been reviewed, where will the confirmation be shared?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.07060644999999999
+}

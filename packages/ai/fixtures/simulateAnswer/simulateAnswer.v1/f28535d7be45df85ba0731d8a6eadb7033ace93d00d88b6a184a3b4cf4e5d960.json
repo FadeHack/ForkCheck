@@ -24,8 +24,8 @@
   "recorded": {
     "provider": "meta",
     "model": "muse-spark-1.3",
-    "inputTokens": 357,
-    "outputTokens": 311,
-    "reasoningTokens": 276
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "reasoningTokens": null
   }
 }

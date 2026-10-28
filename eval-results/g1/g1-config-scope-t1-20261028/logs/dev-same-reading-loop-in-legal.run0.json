@@ -1,0 +1,10 @@
+{
+  "runId": "g1-config-scope-t1-20261028",
+  "run": 0,
+  "scenario": "dev-same-reading-loop-in-legal",
+  "tier": "config",
+  "planted": [],
+  "candidates": [],
+  "rounds": [],
+  "costUsd": 0.051473649999999996
+}

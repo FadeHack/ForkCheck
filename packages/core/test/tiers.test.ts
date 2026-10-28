@@ -34,6 +34,8 @@ describe("chosen tiers", () => {
       "g1-template-20261028",
       "g1-config-form-20261028",
       "g1-config-criteria-20261028",
+      "g1-config-scope-t1-20261028",
+      "g1-config-scope-tiebreak-20261028",
     ]);
     expect(TIERS).toMatchObject({
       owner: "template",
