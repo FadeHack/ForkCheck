@@ -10,3 +10,4 @@ export * from "./resolution";
 export * from "./record";
 export * from "./templates";
 export * from "./config/tiers";
+export * from "./config/dimensions";

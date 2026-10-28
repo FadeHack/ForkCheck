@@ -139,4 +139,27 @@ describe("findCandidates", () => {
       "fewer_than_two_readings",
     ]);
   });
+
+  it("keeps only the dimensions PROBE_DIMENSIONS allows", async () => {
+    const model = new ScriptedProvider({
+      findCandidates: [
+        {
+          candidates: [
+            draft(),
+            draft({
+              dimension: "criteria",
+              readings: [{ text: "unit tests" }, { text: "QA pass" }],
+            }),
+            draft({ dimension: "owner", readings: [{ text: "Marco" }, { text: "Priya" }] }),
+          ],
+        },
+      ],
+    });
+    const { output, trace } = await findCandidates(
+      { ...input, dimensions: ["owner", "deadline", "scope"] },
+      model,
+    );
+    expect(output.candidates.map((c) => c.dimension)).toEqual(["deadline", "owner"]);
+    expect(trace.drops.map((d) => d.reason)).toEqual(["dimension_not_checked"]);
+  });
 });

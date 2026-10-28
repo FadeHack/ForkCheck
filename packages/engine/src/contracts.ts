@@ -58,6 +58,8 @@ export interface FindCandidatesInput {
   participants: Participant[];
   segments: Segment[];
   decisions: DecisionWithEvidence[];
+  /** Dimensions to probe (PROBE_DIMENSIONS); omitted means all of them. */
+  dimensions?: readonly Dimension[];
 }
 export interface FindCandidatesOutput {
   candidates: Candidate[];

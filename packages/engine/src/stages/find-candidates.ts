@@ -49,6 +49,10 @@ export const findCandidates: Stages["findCandidates"] = async (input, model) => 
       drops.push({ reason: "unknown_decision", item: draft });
       continue;
     }
+    if (input.dimensions && !input.dimensions.includes(draft.dimension)) {
+      drops.push({ reason: "dimension_not_checked", item: draft });
+      continue;
+    }
     if (decision.status === "debated") {
       drops.push({ reason: "debated_decision", item: draft });
       continue;

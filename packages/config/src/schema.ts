@@ -19,6 +19,8 @@ export const envSchema = z.object({
   FFMPEG_PATH: z.string().min(1).default("ffmpeg"),
   SPEND_CAP_USD: usd(100),
   BASETEN_SPEND_CAP_USD: usd(60),
+  // Names are checked by parseProbeDimensions in core; config stays free of the domain model.
+  PROBE_DIMENSIONS: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;
