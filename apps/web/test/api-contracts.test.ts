@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   createMeetingRequest,
+  editProbeRequest,
   editSegmentRequest,
   submitAnswerRequest,
 } from "../src/contracts/api";
@@ -38,5 +39,14 @@ describe("API request contracts", () => {
   it("rejects an empty segment edit", () => {
     expect(editSegmentRequest.safeParse({}).success).toBe(false);
     expect(editSegmentRequest.safeParse({ participantId: null }).success).toBe(true);
+  });
+
+  it("rejects an empty probe edit and blank option text", () => {
+    expect(editProbeRequest.safeParse({}).success).toBe(false);
+    expect(editProbeRequest.safeParse({ options: ["Admins", " "] }).success).toBe(false);
+    expect(editProbeRequest.parse({ stem: " Who signs in? ", withdrawn: false })).toEqual({
+      stem: "Who signs in?",
+      withdrawn: false,
+    });
   });
 });

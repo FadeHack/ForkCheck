@@ -117,6 +117,24 @@ export interface OpenRoundResponse {
   roundId: string;
 }
 
+// PATCH /api/probes/:id → the probe, re-linted after an edit
+/**
+ * Edits apply to drafts only. `withdrawn: true` removes a draft, or a question from a round
+ * that is still open; `false` restores a withdrawn draft that was never published.
+ */
+export const editProbeRequest = z
+  .strictObject({
+    stem: z.string().trim().min(1).optional(),
+    /** Option texts in order; IDs are reassigned. Count and length are lint findings. */
+    options: z.array(z.string().trim().min(1)).optional(),
+    withdrawn: z.boolean().optional(),
+  })
+  .refine((b) => b.stem !== undefined || b.options !== undefined || b.withdrawn !== undefined, {
+    message: "send stem, options or withdrawn",
+  });
+export type EditProbeRequest = z.infer<typeof editProbeRequest>;
+export type EditProbeResponse = Probe;
+
 // GET /api/p/:token
 /** A probe as a participant sees it: options in their own shuffled order, no lint or tier. */
 export interface ParticipantProbe {
