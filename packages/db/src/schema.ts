@@ -43,6 +43,8 @@ export const meetingStatus = pgEnum("meeting_status", [
   "recorded",
   "failed",
 ]);
+/** Analysis steps in run order; a retry resumes after the last one that finished. */
+export const analysisStep = pgEnum("analysis_step", ["extract", "candidates", "probes"]);
 export const meetingSource = pgEnum("meeting_source", ["paste", "audio"]);
 export const participantStatus = pgEnum("participant_status", ["active", "absent"]);
 export const segmentOrigin = pgEnum("segment_origin", ["paste", "asr"]);
@@ -103,6 +105,10 @@ export const meeting = pgTable("meeting", {
   organizerTokenHash: text("organizer_token_hash").notNull().unique(),
   transcriptVersion: integer("transcript_version").notNull().default(0),
   error: text("error"),
+  /** The transcript version the stored analysis belongs to, and how far it got. */
+  analysisVersion: integer("analysis_version"),
+  analysisStep: analysisStep("analysis_step"),
+  failedStep: analysisStep("failed_step"),
   createdAt: at("created_at").notNull(),
   deleteAfter: at("delete_after"),
 });
@@ -216,6 +222,8 @@ export const probe = pgTable(
     lint: jsonb("lint").$type<LintFinding[]>().notNull(),
     promptVersion: text("prompt_version").notNull(),
     status: probeStatus("status").notNull(),
+    /** Draft order from analysis, highest impact first; null for recheck probes. */
+    rank: integer("rank"),
   },
   (t) => [index("probe_meeting_idx").on(t.meetingId), index("probe_round_idx").on(t.roundId)],
 );

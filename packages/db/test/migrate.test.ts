@@ -14,6 +14,6 @@ describe("migrations on PGlite", () => {
     const result = await db.execute<{ count: number }>(
       sql`select count(*)::int as count from drizzle.__drizzle_migrations`,
     );
-    expect(result.rows).toEqual([{ count: 2 }]);
+    expect(result.rows).toEqual([{ count: 3 }]);
   });
 });

@@ -1,9 +1,9 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { fileURLToPath } from "node:url";
 import type { StageName } from "./port";
+import { workspaceRoot } from "./workspace";
 
-export const defaultPromptsDir = fileURLToPath(new URL("../../../prompts/", import.meta.url));
+export const defaultPromptsDir = join(workspaceRoot, "prompts");
 
 export interface Prompt {
   /** Logged with every call, e.g. `extract.v1`. */

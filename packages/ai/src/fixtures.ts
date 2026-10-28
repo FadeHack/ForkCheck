@@ -1,7 +1,6 @@
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import type { Env } from "@forkcheck/config";
 import type {
   ModelCallInfo,
@@ -12,8 +11,9 @@ import type {
   ReasoningEffort,
   StageName,
 } from "./port";
+import { workspaceRoot } from "./workspace";
 
-export const defaultFixturesDir = fileURLToPath(new URL("../fixtures/", import.meta.url));
+export const defaultFixturesDir = join(workspaceRoot, "packages", "ai", "fixtures");
 
 export interface FixtureKey {
   stage: StageName;

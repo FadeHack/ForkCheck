@@ -9,7 +9,7 @@ export const NOW = new Date("2026-10-27T20:00:00.000Z");
 /** A PGlite database behind the route handlers, for one test file. */
 export async function useTestDeps(): Promise<Deps> {
   const { db, close } = await createMemoryDb();
-  const deps = createDeps(db, () => NOW);
+  const deps = createDeps(db, { now: () => NOW });
   setDeps(deps);
   afterEach(() => setDeps(deps));
   afterAll(async () => {
