@@ -5,6 +5,8 @@ export { connect, type Db, type DbHandle } from "./client";
 export { DbCallLog, type ModelCallRecord } from "./call-log";
 export {
   MeetingRepo,
+  type AnalysisProgress,
+  type AnalysisStep,
   type NewMeeting,
   type StoredAnalysis,
   type StoredDecision,

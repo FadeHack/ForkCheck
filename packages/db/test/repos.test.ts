@@ -250,7 +250,12 @@ describe("repositories", () => {
     const db = await createTestDb();
     const { meetings, rounds, splits } = await seed(db);
 
-    expect(await meetings.get(M)).toEqual(meeting);
+    expect(await meetings.get(M)).toEqual({ ...meeting, status: "probing" });
+    expect(await meetings.analysisProgress(M)).toEqual({
+      version: 1,
+      step: "probes",
+      failedStep: null,
+    });
     expect(await meetings.organizerTokenHash(M)).toBe("org-hash");
     expect(await meetings.organizerTokenHash("nope")).toBeNull();
     expect(await meetings.findParticipantByTokenHash("p-hash-1")).toEqual(ben);
@@ -393,5 +398,43 @@ describe("repositories", () => {
       status: "absent",
     });
     expect(await meetings.setParticipantStatus("other", ben.id, "absent")).toBeNull();
+  });
+
+  it("records analysis progress step by step and only one caller starts it", async () => {
+    const db = await createTestDb();
+    const meetings = new MeetingRepo(db);
+    await meetings.create({
+      meeting,
+      organizerTokenHash: "h",
+      participants: people.map((p, i) => ({ participant: p, tokenHash: `h-${i}` })),
+      segments,
+    });
+    const started = await Promise.all([
+      meetings.startAnalysis(M, ["draft", "failed"]),
+      meetings.startAnalysis(M, ["draft", "failed"]),
+    ]);
+    expect(started.sort()).toEqual([false, true]);
+    await meetings.resetAnalysis(M, 1);
+    await meetings.saveDecisions(M, [decision]);
+    expect(await meetings.analysisProgress(M)).toEqual({
+      version: 1,
+      step: "extract",
+      failedStep: null,
+    });
+    await meetings.failAnalysis(M, "candidates", "timeout");
+    expect(await meetings.get(M)).toMatchObject({ status: "failed", error: "timeout" });
+    expect(await meetings.analysisProgress(M)).toEqual({
+      version: 1,
+      step: "extract",
+      failedStep: "candidates",
+    });
+    expect(await meetings.startAnalysis(M, ["draft"])).toBe(false);
+    expect(await meetings.startAnalysis(M, ["failed"])).toBe(true);
+    expect(await meetings.analysisProgress(M)).toMatchObject({ failedStep: null });
+    await meetings.saveCandidates(M, [candidate]);
+    const second = { ...probe, id: `${probe.id}b`, stem: "Second by rank" };
+    await meetings.saveDraftProbes(M, [second, probe]);
+    expect((await meetings.analysis(M)).probes.map((p) => p.id)).toEqual([second.id, probe.id]);
+    expect(await meetings.get(M)).toMatchObject({ status: "probing", error: null });
   });
 });

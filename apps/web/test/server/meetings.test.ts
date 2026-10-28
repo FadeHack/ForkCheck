@@ -174,7 +174,12 @@ describe("PATCH /api/meetings/:id/participants/:pid", () => {
 describe("DELETE /api/meetings/:id", () => {
   it("removes the meeting, its rows and its stored audio", async () => {
     const deleted: string[] = [];
-    setDeps(createDeps(deps.db, () => NOW, { delete: async (key) => void deleted.push(key) }));
+    setDeps(
+      createDeps(deps.db, {
+        now: () => NOW,
+        storage: { delete: async (key) => void deleted.push(key) },
+      }),
+    );
     const res = await created();
     await deps.db.insert(tables.audioAsset).values([
       { id: `${res.meetingId}:audio:0`, meetingId: res.meetingId, storageKey: "kept.wav" },

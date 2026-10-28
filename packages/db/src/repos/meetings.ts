@@ -8,7 +8,7 @@ import type {
   Probe,
   Segment,
 } from "@forkcheck/core";
-import { and, asc, eq, inArray, isNull } from "drizzle-orm";
+import { and, asc, eq, inArray, isNull, sql } from "drizzle-orm";
 import { toIso, toIsoOrNull, type Db } from "../client";
 import * as t from "../schema";
 
@@ -29,6 +29,14 @@ export interface StoredAnalysis {
   decisions: StoredDecision[];
   candidates: Candidate[];
   probes: Probe[];
+}
+
+export type AnalysisStep = (typeof t.analysisStep.enumValues)[number];
+
+export interface AnalysisProgress {
+  version: number | null;
+  step: AnalysisStep | null;
+  failedStep: AnalysisStep | null;
 }
 
 type MeetingRow = typeof t.meeting.$inferSelect;
@@ -62,6 +70,7 @@ export const toProbe = (r: ProbeRow): Probe => ({
 });
 
 export const probeRow = (p: Probe): typeof t.probe.$inferInsert => ({ ...p });
+const probeOrder = [sql`${t.probe.rank} asc nulls last`, asc(t.probe.id)];
 
 const participantColumns = {
   id: t.participant.id,
@@ -148,22 +157,93 @@ export class MeetingRepo {
     return row ?? null;
   }
 
-  /** Replaces any earlier analysis of the meeting in one transaction. */
-  async saveAnalysis(meetingId: string, analysis: StoredAnalysis): Promise<void> {
+  async analysisProgress(id: string): Promise<AnalysisProgress | null> {
+    const [row] = await this.db
+      .select({
+        version: t.meeting.analysisVersion,
+        step: t.meeting.analysisStep,
+        failedStep: t.meeting.failedStep,
+      })
+      .from(t.meeting)
+      .where(eq(t.meeting.id, id));
+    return row ?? null;
+  }
+
+  /**
+   * Moves the meeting to `analyzing` if its status is one of `from`. The check and the update
+   * are one statement, so of two concurrent callers only one gets `true`.
+   */
+  async startAnalysis(id: string, from: readonly MeetingStatus[]): Promise<boolean> {
+    const rows = await this.db
+      .update(t.meeting)
+      .set({ status: "analyzing", error: null, failedStep: null })
+      .where(and(eq(t.meeting.id, id), inArray(t.meeting.status, [...from])))
+      .returning({ id: t.meeting.id });
+    return rows.length > 0;
+  }
+
+  /** Drops any earlier analysis and binds the next one to `version`. */
+  async resetAnalysis(meetingId: string, version: number): Promise<void> {
     await this.db.transaction(async (tx) => {
       await tx.delete(t.probe).where(eq(t.probe.meetingId, meetingId));
       await tx.delete(t.decision).where(eq(t.decision.meetingId, meetingId));
-      const decisions = analysis.decisions.map((d) => d.decision);
-      const evidence = analysis.decisions.flatMap((d) => d.evidence);
-      if (decisions.length > 0) await tx.insert(t.decision).values(decisions);
-      if (evidence.length > 0) await tx.insert(t.evidence).values(evidence);
-      if (analysis.candidates.length > 0) {
-        await tx.insert(t.candidate).values(analysis.candidates);
-      }
-      if (analysis.probes.length > 0) {
-        await tx.insert(t.probe).values(analysis.probes.map(probeRow));
-      }
+      await tx
+        .update(t.meeting)
+        .set({ analysisVersion: version, analysisStep: null })
+        .where(eq(t.meeting.id, meetingId));
     });
+  }
+
+  async saveDecisions(meetingId: string, decisions: StoredDecision[]): Promise<void> {
+    await this.db.transaction(async (tx) => {
+      const rows = decisions.map((d) => d.decision);
+      const evidence = decisions.flatMap((d) => d.evidence);
+      if (rows.length > 0) await tx.insert(t.decision).values(rows);
+      if (evidence.length > 0) await tx.insert(t.evidence).values(evidence);
+      await tx
+        .update(t.meeting)
+        .set({ analysisStep: "extract" })
+        .where(eq(t.meeting.id, meetingId));
+    });
+  }
+
+  async saveCandidates(meetingId: string, candidates: Candidate[]): Promise<void> {
+    await this.db.transaction(async (tx) => {
+      if (candidates.length > 0) await tx.insert(t.candidate).values(candidates);
+      await tx
+        .update(t.meeting)
+        .set({ analysisStep: "candidates" })
+        .where(eq(t.meeting.id, meetingId));
+    });
+  }
+
+  /** Stores drafts in the given order and finishes the analysis: the meeting moves to `probing`. */
+  async saveDraftProbes(meetingId: string, probes: Probe[]): Promise<void> {
+    await this.db.transaction(async (tx) => {
+      if (probes.length > 0) {
+        await tx.insert(t.probe).values(probes.map((p, rank) => ({ ...probeRow(p), rank })));
+      }
+      await tx
+        .update(t.meeting)
+        .set({ analysisStep: "probes", status: "probing", error: null, failedStep: null })
+        .where(eq(t.meeting.id, meetingId));
+    });
+  }
+
+  async failAnalysis(id: string, step: AnalysisStep, error: string): Promise<void> {
+    await this.db
+      .update(t.meeting)
+      .set({ status: "failed", failedStep: step, error })
+      .where(eq(t.meeting.id, id));
+  }
+
+  /** All three steps at once, for seeding. */
+  async saveAnalysis(meetingId: string, analysis: StoredAnalysis): Promise<void> {
+    const meeting = await this.get(meetingId);
+    await this.resetAnalysis(meetingId, meeting?.transcriptVersion ?? 0);
+    await this.saveDecisions(meetingId, analysis.decisions);
+    await this.saveCandidates(meetingId, analysis.candidates);
+    await this.saveDraftProbes(meetingId, analysis.probes);
   }
 
   async analysis(meetingId: string): Promise<StoredAnalysis> {
@@ -192,7 +272,7 @@ export class MeetingRepo {
         .select()
         .from(t.probe)
         .where(and(eq(t.probe.meetingId, meetingId), eq(t.probe.kind, "diagnostic")))
-        .orderBy(asc(t.probe.id)),
+        .orderBy(...probeOrder),
     ]);
     return {
       decisions: decisionRows.map((decision) => ({
@@ -210,7 +290,7 @@ export class MeetingRepo {
       .select()
       .from(t.probe)
       .where(eq(t.probe.meetingId, meetingId))
-      .orderBy(asc(t.probe.id));
+      .orderBy(...probeOrder);
     return rows.map((r) => ({ probe: toProbe(r), roundId: r.roundId }));
   }
 
