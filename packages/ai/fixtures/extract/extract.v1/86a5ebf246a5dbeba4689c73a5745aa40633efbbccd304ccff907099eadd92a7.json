@@ -1,0 +1,91 @@
+{
+  "key": {
+    "stage": "extract",
+    "promptVersion": "extract.v1",
+    "hash": "86a5ebf246a5dbeba4689c73a5745aa40633efbbccd304ccff907099eadd92a7"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You read a meeting transcript and list what the meeting settled or left open. Each item is one of:\n\n- `decision`: the group chose something (\"we'll ship without the export\").\n- `commitment`: someone took on a task (\"I'll send the invite\").\n- `assumption`: a plan rests on a condition or a belief about the future (\"if legal is fine with 48 hours, we're done\").\n- `open_item`: something raised that still needs an answer or an owner.\n\nSkip small talk, reports of work already finished, and questions that led nowhere.\n\nFor each item return:\n\n- `statement`: one neutral sentence in plain words. Keep the speakers' wording for anything that could be read more than one way. If someone said \"Friday\" or \"the dashboard\", write \"Friday\" or \"the dashboard\". Never turn a relative day into a date and never pick a reading.\n- `ownerText`: the participant who owns the item, only when a quote names them or they commit themselves in the first person (\"I'll…\"). If the transcript only says \"we\", \"someone\" or a team, use `null`. Never guess an owner from someone's role.\n- `deadlineText`: the deadline words exactly as spoken (\"by Friday\", \"end of month\"), or `null` if none was said. Do not convert them.\n- `status`:\n  - `explicit`: agreed, and the owner, the deliverable and the timing are each stated plainly enough that nobody could reasonably read them differently.\n  - `ambiguous`: agreed, but some part admits more than one reasonable reading. Examples: \"next Friday\", \"end of month\", \"the usual QA pass\", \"the dashboard\", \"we'll handle it\".\n  - `unresolved`: raised but not settled.\n  - `debated`: participants openly disagreed, or deferred it (\"let's revisit\").\n- `evidence`: one to three quotes that support the item. Each quote is copied character for character from a single turn, with that turn's segment ID. Copy only the words that carry the item; never join text across turns, never add ellipses, never paraphrase.\n\nUse only what the transcript says. An item without a supporting quote must not be listed.\n\nThe meeting's date and time zone are given so you can tell which days are near, but the output must keep deadlines as spoken."
+      },
+      {
+        "role": "user",
+        "content": "Meeting: Pilot customer check-in\nHeld: Monday, October 26, 2026 at 15:00 (America/New_York)\nParticipants: Priya, Marco, Dana\n\nTranscript, one turn per line as [segment ID] speaker: text\n[demo-sso-pilot:seg:0] Marco: Quick one, where are we on single sign on for the pilot customer?\n[demo-sso-pilot:seg:1] Marco: Login works on staging. I still need to wire up the admin roles.\n[demo-sso-pilot:seg:2] Priya: The customer asked again yesterday. They want to want to try it this week. Okay, so SSO is ready by Friday. Marco, that's yours?\n[demo-sso-pilot:seg:3] Marco: Yeah, I'll have it ready by Friday.\n[demo-sso-pilot:seg:4] Dana: Great. I'll tell them Friday. They also asked about adding their users automatically from their directory.\n[demo-sso-pilot:seg:5] Priya: Let's cover user provisioning in the pilot.\n[demo-sso-pilot:seg:6] Marco: Fine by me.\n[demo-sso-pilot:seg:7] Dana: Good. I'll put it in the pilot plan."
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "decisions": [
+      {
+        "kind": "commitment",
+        "statement": "Marco will have SSO ready by Friday.",
+        "ownerText": "Marco",
+        "deadlineText": "by Friday",
+        "status": "explicit",
+        "evidence": [
+          {
+            "segmentId": "demo-sso-pilot:seg:2",
+            "quote": "Okay, so SSO is ready by Friday. Marco, that's yours?"
+          },
+          {
+            "segmentId": "demo-sso-pilot:seg:3",
+            "quote": "Yeah, I'll have it ready by Friday."
+          }
+        ]
+      },
+      {
+        "kind": "commitment",
+        "statement": "Dana will tell them Friday.",
+        "ownerText": "Dana",
+        "deadlineText": "Friday",
+        "status": "ambiguous",
+        "evidence": [
+          {
+            "segmentId": "demo-sso-pilot:seg:4",
+            "quote": "Great. I'll tell them Friday."
+          }
+        ]
+      },
+      {
+        "kind": "decision",
+        "statement": "User provisioning will be covered in the pilot.",
+        "ownerText": null,
+        "deadlineText": null,
+        "status": "explicit",
+        "evidence": [
+          {
+            "segmentId": "demo-sso-pilot:seg:5",
+            "quote": "Let's cover user provisioning in the pilot."
+          },
+          {
+            "segmentId": "demo-sso-pilot:seg:6",
+            "quote": "Fine by me."
+          }
+        ]
+      },
+      {
+        "kind": "commitment",
+        "statement": "Dana will put it in the pilot plan.",
+        "ownerText": "Dana",
+        "deadlineText": null,
+        "status": "ambiguous",
+        "evidence": [
+          {
+            "segmentId": "demo-sso-pilot:seg:7",
+            "quote": "I'll put it in the pilot plan."
+          }
+        ]
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 944,
+    "outputTokens": 5355,
+    "reasoningTokens": 5004
+  }
+}

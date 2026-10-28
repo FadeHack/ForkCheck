@@ -1,0 +1,32 @@
+{
+  "key": {
+    "stage": "critique",
+    "promptVersion": "critique.v1",
+    "hash": "2538eddcc2ccc98e070f5ca09ec518f8a7e5914e094387b47feca04a63206a64"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You check a multiple-choice question before it is sent privately to meeting participants. The question is meant to reveal whether participants hold different readings of something the meeting appeared to agree on.\n\nYou are given the dimension being checked, the readings participants might hold, and the question with its numbered options. Answer two things:\n\n- `canDiverge`: could two reasonable participants, one holding one reading and one holding another, choose different options? Answer `false` if every reading leads to the same option, if an option does not fit any reading, or if the question asks about something other than the given dimension.\n- `leadingOption`: the number shown before an option that looks like the right, safe or expected answer to anyone regardless of their reading, or `null` if no option stands out. Options stand out through wording such as \"properly\", \"fully\" or \"as agreed\", through being much more detailed than the others, or through being the only one that sounds responsible.\n\nThen give `reason`: one or two plain sentences naming the problem, written so the question's author can fix it. If both checks pass, say briefly why.\n\nThe app always adds its own \"not sure\" choice; do not count its absence as a problem."
+      },
+      {
+        "role": "user",
+        "content": "Dimension: outcome\nReadings participants might hold:\n- ready means working on staging for an internal check\n- ready means enabled for the pilot customer to try themselves this week\n\nQuestion: On Friday the 30th, what will the team be able to do with SSO?\n0 Sign in with it in the staging environment for an internal review\n1 Ask the pilot contact to sign in with it in their own workspace this week"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "canDiverge": true,
+    "leadingOption": null,
+    "reason": "Each reading maps cleanly to a different option and neither option uses loaded or more detailed wording, so the question will separate the two understandings."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 415,
+    "outputTokens": 509,
+    "reasoningTokens": 452
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "sessionId": "7a6b9c59-f829-44f2-84da-b4f6252de9ea",
+  "transcript": "Quick one, where are we on single sign on for the pilot customer? Login works on staging. I still need to wire up the admin roles. The customer asked again yesterday. They want to want to try it this week. Okay, so SSO is ready by Friday. Marco, that's yours? Yeah, I'll have it ready by Friday. Great. I'll tell them Friday. They also asked about adding their users automatically from their directory. Let's cover user provisioning in the pilot. Fine by me. Good. I'll put it in the pilot plan.",
+  "audioDurationMs": 33920,
+  "turns": [
+    {
+      "turnId": 0,
+      "startMs": 60,
+      "endMs": 4460,
+      "transcript": "Quick one, where are we on single sign on for the pilot customer?",
+      "speaker": "A"
+    },
+    {
+      "turnId": 1,
+      "startMs": 4460,
+      "endMs": 4620,
+      "transcript": ""
+    },
+    {
+      "turnId": 2,
+      "startMs": 4620,
+      "endMs": 9180,
+      "transcript": "Login works on staging. I still need to wire up the admin roles.",
+      "speaker": "A"
+    },
+    {
+      "turnId": 3,
+      "startMs": 9180,
+      "endMs": 18060,
+      "transcript": "The customer asked again yesterday. They want to want to try it this week. Okay, so SSO is ready by Friday. Marco, that's yours?",
+      "speaker": "B"
+    },
+    {
+      "turnId": 4,
+      "startMs": 18140,
+      "endMs": 20620,
+      "transcript": "Yeah, I'll have it ready by Friday.",
+      "speaker": "A"
+    },
+    {
+      "turnId": 5,
+      "startMs": 20700,
+      "endMs": 27180,
+      "transcript": "Great. I'll tell them Friday. They also asked about adding their users automatically from their directory.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 6,
+      "startMs": 27420,
+      "endMs": 29980,
+      "transcript": "Let's cover user provisioning in the pilot.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 7,
+      "startMs": 30060,
+      "endMs": 31500,
+      "transcript": "Fine by me.",
+      "speaker": "A"
+    },
+    {
+      "turnId": 8,
+      "startMs": 31500,
+      "endMs": 33420,
+      "transcript": "Good. I'll put it in the pilot plan.",
+      "speaker": "C"
+    }
+  ]
+}

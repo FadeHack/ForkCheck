@@ -1,0 +1,32 @@
+{
+  "key": {
+    "stage": "critique",
+    "promptVersion": "critique.v1",
+    "hash": "aeaa8bca36953771e0d5f526435d1d494450376e0ac821a1c3220720174213f9"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You check a multiple-choice question before it is sent privately to meeting participants. The question is meant to reveal whether participants hold different readings of something the meeting appeared to agree on.\n\nYou are given the dimension being checked, the readings participants might hold, and the question with its numbered options. Answer two things:\n\n- `canDiverge`: could two reasonable participants, one holding one reading and one holding another, choose different options? Answer `false` if every reading leads to the same option, if an option does not fit any reading, or if the question asks about something other than the given dimension.\n- `leadingOption`: the number shown before an option that looks like the right, safe or expected answer to anyone regardless of their reading, or `null` if no option stands out. Options stand out through wording such as \"properly\", \"fully\" or \"as agreed\", through being much more detailed than the others, or through being the only one that sounds responsible.\n\nThen give `reason`: one or two plain sentences naming the problem, written so the question's author can fix it. If both checks pass, say briefly why.\n\nThe app always adds its own \"not sure\" choice; do not count its absence as a problem."
+      },
+      {
+        "role": "user",
+        "content": "Dimension: scope\nReadings participants might hold:\n- SSO ready means login works on staging; admin roles wiring is a later follow-up\n- SSO ready means login plus admin roles are wired up\n\nQuestion: When Marco shows the pilot login on Friday the 30th, what happens for an admin user?\n0 They sign in with SSO on staging, then use a separate step for admin access\n1 They sign in with SSO on staging with admin permissions applied at once"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "canDiverge": true,
+    "leadingOption": null,
+    "reason": "Each scope reading maps cleanly to a different option, and both options are similarly detailed and neutrally worded so neither looks like the expected answer."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 424,
+    "outputTokens": 550,
+    "reasoningTokens": 492
+  }
+}

@@ -39,6 +39,8 @@ export type ResolutionVariant = "precise" | "vague";
 
 export interface LoopOptions {
   resolution: ResolutionVariant;
+  /** Transcribed, speaker-mapped segments to use instead of parsing the scenario transcript. */
+  segments?: Segment[];
 }
 
 export interface LoopRound {
@@ -69,6 +71,8 @@ export interface LoopSplit {
 export interface LoopTrace {
   scenario: string;
   resolution: ResolutionVariant;
+  /** `audio` when the segments came from transcription. */
+  source: "paste" | "audio";
   /** Every stage call in order, with its model calls and drops. */
   stages: StageTrace[];
   candidates: {
@@ -112,10 +116,10 @@ function apply(state: ResolutionState, event: ResolutionEvent): ResolutionState 
 export async function runLoop(
   s: Scenario,
   model: ModelPort,
-  { resolution }: LoopOptions,
+  { resolution, segments }: LoopOptions,
 ): Promise<LoopResult> {
   const stages: StageTrace[] = [];
-  const input = scenarioExtractInput(s);
+  const input = { ...scenarioExtractInput(s), ...(segments ? { segments } : {}) };
   const participantIds = input.participants.map((p) => p.id);
   const at = s.heldAt;
 
@@ -293,6 +297,7 @@ export async function runLoop(
     trace: {
       scenario: s.id,
       resolution,
+      source: input.segments.some((seg) => seg.origin === "asr") ? "audio" : "paste",
       stages,
       candidates: vetted.map((v) => ({
         id: v.candidate.id,
