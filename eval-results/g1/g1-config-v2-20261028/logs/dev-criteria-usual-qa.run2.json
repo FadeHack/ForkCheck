@@ -1,0 +1,69 @@
+{
+  "runId": "g1-config-v2-20261028",
+  "run": 2,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "criteria",
+      "mismatch": "what-usual-means",
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:2:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0",
+      "stem": "Which check must pass before \"Do the usual QA pass on the release build\" counts as done?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0",
+      "stem": "Which check must pass before \"Submit Release 4.2 on Wednesday if the usual QA pass is clean\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0",
+      "stem": "During the QA pass for Release 4.2, what will Zara test around onboarding?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:2:t0",
+      "stem": "For \"Turn them on once the A/B setup is ready\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.16626525
+}

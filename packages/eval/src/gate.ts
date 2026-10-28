@@ -15,7 +15,8 @@ export const gateLog = z.strictObject({
   runId: z.string().min(1),
   run: z.number().int().nonnegative(),
   scenario: z.string().min(1),
-  tier: probeTier,
+  /** One tier for every probe, or `config` for the per-dimension TIERS. */
+  tier: probeTier.or(z.literal("config")),
   planted: z.array(z.strictObject({ id: z.string(), dimension })),
   candidates: z.array(
     z.object({

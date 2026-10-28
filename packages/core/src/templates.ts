@@ -17,6 +17,11 @@ export interface TemplateInput {
 
 export const FIRMNESS_OPTIONS = ["Still on time", "Late but acceptable", "A missed commitment"];
 export const NO_OWNER_OPTION = "No one is named yet";
+export const DELIVERABLE_OPTIONS = [
+  "Designs or a mock-up",
+  "A working build on test data",
+  "The live version on real data",
+];
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -126,8 +131,17 @@ export function deadlineFirmnessTemplate(input: TemplateInput): Probe | null {
   );
 }
 
+/** "What form does [task] take?": designs, a working build, or the live version. */
+export function deliverableFormTemplate(input: TemplateInput): Probe {
+  return build(
+    input,
+    `For "${task(input.decision.statement)}", what form does it take?`,
+    DELIVERABLE_OPTIONS,
+  );
+}
+
 /**
- * The T0 probe for a candidate: owner and deadline firmness only. Null for other dimensions
+ * The T0 probe for a candidate: owner, deadline firmness and deliverable form. Null for other dimensions
  * or a deadline candidate with no deadline phrase. The probe carries its lint findings; the
  * caller drops one that has any.
  */
@@ -137,6 +151,8 @@ export function templateProbe(input: TemplateInput): Probe | null {
       return ownerTemplate(input);
     case "deadline":
       return deadlineFirmnessTemplate(input);
+    case "scope":
+      return deliverableFormTemplate(input);
     default:
       return null;
   }

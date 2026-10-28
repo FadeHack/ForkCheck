@@ -3,7 +3,7 @@ import { candidatesOutput, loadPrompt, stageConfig } from "@forkcheck/ai";
 import type { Drop, FindCandidatesInput, Stages } from "../contracts";
 import { decisionBlock, meetingHeader, transcriptLines } from "./format";
 
-export const FIND_CANDIDATES_PROMPT_VERSION = 1;
+export const FIND_CANDIDATES_PROMPT_VERSION = 2;
 
 export function findCandidatesUserMessage({
   meeting,

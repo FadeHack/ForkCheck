@@ -24,7 +24,9 @@ const runs = dirs.map((d) => {
     .map((f) => gateLog.parse(JSON.parse(readFileSync(join(logs, f), "utf8"))));
   const first = parsed[0];
   if (!first) throw new Error(`no logs in ${logs}`);
-  return { tier: first.tier, runId: first.runId, verdict: gateVerdict(parsed) };
+  if (first.tier === "config") throw new Error(`${d} ran the per-dimension config, not one tier`);
+  const tier = first.tier;
+  return { tier, runId: first.runId, verdict: gateVerdict(parsed) };
 });
 
 const lines = [

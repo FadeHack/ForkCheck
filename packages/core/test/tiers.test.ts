@@ -28,7 +28,17 @@ describe("tier config", () => {
 
 describe("chosen tiers", () => {
   it("records the gate runs they came from", () => {
-    expect(TIER_RUNS).toEqual(["g1-free-20261028", "g1-assisted-20261028", "g1-template-20261028"]);
-    expect(TIERS).toMatchObject({ owner: "template", deadline: "assisted", criteria: "assisted" });
+    expect(TIER_RUNS).toEqual([
+      "g1-free-20261028",
+      "g1-assisted-20261028",
+      "g1-template-20261028",
+      "g1-config-form-20261028",
+    ]);
+    expect(TIERS).toMatchObject({
+      owner: "template",
+      deadline: "assisted",
+      scope: "template",
+      criteria: "assisted",
+    });
   });
 });

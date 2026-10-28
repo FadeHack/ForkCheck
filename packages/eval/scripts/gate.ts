@@ -1,18 +1,20 @@
 /**
  * Question-quality gate G1 (R§6.5) on the dev set.
  * Usage:
- *   LIVE=1 pnpm gate [--runs 3] [--tier free] [--run-id <id>]
+ *   LIVE=1 pnpm gate [--runs 3] [--tier free|assisted|template|config] [--run-id <id>]
  *   pnpm gate --from eval-results/g1/<run-id>
  * A live run asks each dev scenario's selected probes to simulated participants, `--runs`
  * times without the response cache, logging every scenario run to
  * eval-results/g1/<run-id>/logs/ and full traces to var/gate/<run-id>/. Passing an existing
- * `--run-id` resumes it and skips logged scenario runs. `--from` recomputes the verdict from
+ * `--run-id` resumes it and skips logged scenario runs. `--tier config` uses the
+ * per-dimension TIERS from core. `--from` recomputes the verdict from
  * the logs alone. Either way the verdict is written to report.md next to the logs.
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { parseArgs } from "node:util";
-import { probeTier } from "@forkcheck/core";
+import { z } from "zod";
+import { probeTier, TIERS } from "@forkcheck/core";
 import {
   gateLog,
   gateVerdict,
@@ -38,7 +40,7 @@ const { values } = parseArgs({
 });
 const runs = Number(values.runs);
 const concurrency = Number(values.concurrency);
-const parsedTier = probeTier.safeParse(values.tier);
+const parsedTier = probeTier.or(z.literal("config")).safeParse(values.tier);
 if (!Number.isInteger(runs) || runs < 1 || !Number.isInteger(concurrency) || concurrency < 1) {
   console.error(usage);
   process.exit(2);
@@ -99,7 +101,7 @@ console.log(
 async function work(): Promise<void> {
   for (let job = pending.shift(); job; job = pending.shift()) {
     const { run, s } = job;
-    const r = await probeRounds(s, model, { tier: tier });
+    const r = await probeRounds(s, model, { tier: tier === "config" ? TIERS : tier });
     const costUsd = r.stages.reduce((t, st) => t + st.calls.reduce((u, c) => u + c.costUsd, 0), 0);
     const log: GateLog = {
       runId,

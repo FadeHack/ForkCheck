@@ -3,6 +3,8 @@ import {
   assistedStem,
   deadlineFirmnessTemplate,
   deadlineWords,
+  DELIVERABLE_OPTIONS,
+  deliverableFormTemplate,
   FIRMNESS_OPTIONS,
   NO_OWNER_OPTION,
   ownerOptions,
@@ -185,9 +187,25 @@ describe("assistedStem", () => {
   });
 });
 
+describe("deliverableFormTemplate", () => {
+  it("asks what form the item takes, with fixed options", () => {
+    const p = deliverableFormTemplate(
+      input({
+        dimension: "scope",
+        statement: "Oskar demos the dashboard to Halvorsen on Thursday.",
+      }),
+    );
+    expect(p.stem).toBe(
+      'For "Oskar demos the dashboard to Halvorsen on Thursday", what form does it take?',
+    );
+    expect(p.options.map((o) => o.text)).toEqual(DELIVERABLE_OPTIONS);
+    expect(p.lint).toEqual([]);
+  });
+});
+
 describe("templateProbe", () => {
   it("has no template for the other dimensions", () => {
-    for (const dimension of ["scope", "criteria", "dependency", "outcome"] as const) {
+    for (const dimension of ["criteria", "dependency", "outcome"] as const) {
       expect(templateProbe(input({ dimension }))).toBe(null);
     }
   });

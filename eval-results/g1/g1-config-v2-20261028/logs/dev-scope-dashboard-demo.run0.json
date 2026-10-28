@@ -1,0 +1,69 @@
+{
+  "runId": "g1-config-v2-20261028",
+  "run": 0,
+  "scenario": "dev-scope-dashboard-demo",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "which-dashboard",
+      "dimension": "scope"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-scope-dashboard-demo:cand:0",
+      "dimension": "scope",
+      "mismatch": "which-dashboard",
+      "probeId": "dev-scope-dashboard-demo:cand:0:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:3",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:3:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:0:probe:0",
+      "stem": "When Oskar shares his screen with Halvorsen on Thursday, what will he show?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0",
+      "stem": "When Oskar starts the demo for Halvorsen on Thursday the 5th, what will the dashboard show?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0",
+      "stem": "For \"Mei will tidy up the scorecard screens\", what has to exist by \"then\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:3:t0",
+      "stem": "For \"Someone will do a dry run on Wednesday\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.14041794999999999
+}

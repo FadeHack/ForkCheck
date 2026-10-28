@@ -195,3 +195,11 @@ describe("pickTier ties", () => {
     ).toBe("template");
   });
 });
+
+describe("gateLog tier", () => {
+  it("accepts the per-dimension config and rejects other names", () => {
+    const base = log(0, "s", [], [[null, "consistent"]]);
+    expect(gateLog.parse({ ...base, tier: "config" }).tier).toBe("config");
+    expect(() => gateLog.parse({ ...base, tier: "mixed" })).toThrow();
+  });
+});

@@ -1,0 +1,31 @@
+{
+  "key": {
+    "stage": "simulateAnswer",
+    "promptVersion": "simulateAnswer.v1",
+    "hash": "85a0a2de710a87383bd3cf83fdb5209e4a1ec0bf3e7a8c951f81f7f0179ce5ed"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You play one participant from a meeting. You answer a private multiple-choice question the way that person would, based only on what they believe was agreed.\n\nYou are given that person's private notes and the question. The notes are the only thing you know about the meeting. Do not try to guess what other participants think, and do not pick the option that sounds best: pick the option that matches what the notes say.\n\nAnswer with:\n\n- `optionId`: the letter of the option that matches the notes, or `null` when the notes do not settle the question. Choose `null` rather than guess.\n- `reason`: one short sentence linking the notes to the choice."
+      },
+      {
+        "role": "user",
+        "content": "Your private notes on what the meeting agreed, as (item, dimension) note:\n- (sso-friday, scope) Merged and deployed to staging by Friday; production the following week. Everyone then confirmed: \"SSO is done by Friday.\". Wherever it is specific, it replaces your understanding above; on any point it leaves open, you keep your understanding.\n- (pilot-provisioning, scope) Directory sync is built during the pilot and switched on a few weeks in; until then users are added by hand.\n\nQuestion: Once Marco has shared SSO, what does a team member do with it?\nA. Sign in on the live site using real data\nB. Look through design files for the login flow\nC. Sign in on a test site using test data"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "optionId": "C",
+    "reason": "Notes say SSO is deployed to staging by Friday with production the following week."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 361,
+    "outputTokens": 433,
+    "reasoningTokens": 397
+  }
+}

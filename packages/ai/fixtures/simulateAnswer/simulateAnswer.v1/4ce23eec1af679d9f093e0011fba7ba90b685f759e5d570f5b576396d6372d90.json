@@ -1,0 +1,31 @@
+{
+  "key": {
+    "stage": "simulateAnswer",
+    "promptVersion": "simulateAnswer.v1",
+    "hash": "4ce23eec1af679d9f093e0011fba7ba90b685f759e5d570f5b576396d6372d90"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You play one participant from a meeting. You answer a private multiple-choice question the way that person would, based only on what they believe was agreed.\n\nYou are given that person's private notes and the question. The notes are the only thing you know about the meeting. Do not try to guess what other participants think, and do not pick the option that sounds best: pick the option that matches what the notes say.\n\nAnswer with:\n\n- `optionId`: the letter of the option that matches the notes, or `null` when the notes do not settle the question. Choose `null` rather than guess.\n- `reason`: one short sentence linking the notes to the choice."
+      },
+      {
+        "role": "user",
+        "content": "Your private notes on what the meeting agreed, as (item, dimension) note:\n- (sso-friday, scope) Code complete on staging by Friday end of day, including admin roles.\n- (pilot-provisioning, scope) The pilot customer uploads a CSV of users; directory sync is a later project after the pilot.\n\nQuestion: If Marco has not confirmed SSO is ready by Friday the 30th, what will Dana do that day?\nA. Send the pilot customer an update on where SSO work stands\nB. Wait to contact the pilot customer until Marco confirms SSO is ready"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "optionId": null,
+    "reason": "Notes cover SSO staging deadline and CSV provisioning but say nothing about Dana's customer update."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 322,
+    "outputTokens": 282,
+    "reasoningTokens": 245
+  }
+}

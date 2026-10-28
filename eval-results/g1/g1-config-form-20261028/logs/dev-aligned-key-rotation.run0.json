@@ -1,0 +1,38 @@
+{
+  "runId": "g1-config-form-20261028",
+  "run": 0,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "config",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:1:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:1:t0",
+      "stem": "For \"Grace will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked\", what form does it take?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0",
+      "stem": "After the Wednesday morning review, where will Grace share what she found?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.08685480000000001
+}

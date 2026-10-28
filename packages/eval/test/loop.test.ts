@@ -43,12 +43,14 @@ describe("headless loop on the demo scenario (fixtures)", () => {
     );
   });
 
-  it("vague: the recheck is not conclusive and the record still validates", async () => {
+  it("vague: the recheck splits, the split reopens and the record still validates", async () => {
     const { record, trace } = await runLoop(demo, new FakeProvider(), { resolution: "vague" });
+    expect(scripted("friday-meaning").vague.expectedRecheck).toBe("split");
     expect(trace.validation.ok).toBe(true);
-    const confirmed = record.items.filter((i) => i.category === "confirmed");
-    expect(confirmed.map((i) => [i.text, i.recheck])).toEqual([
-      [scripted("friday-meaning").vague.text, "not_conclusive"],
+    expect(record.items.filter((i) => i.category === "confirmed")).toEqual([]);
+    expect(trace.splits.map((s) => [s.mismatch, s.state.status])).toEqual([
+      ["friday-meaning", "reopened"],
+      ["provisioning-scope", "unresolved"],
     ]);
     await expect(`${JSON.stringify(record, null, 2)}\n`).toMatchFileSnapshot(
       "./__snapshots__/demo-sso-pilot-vague.record.json",

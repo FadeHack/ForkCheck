@@ -1,0 +1,31 @@
+{
+  "key": {
+    "stage": "simulateAnswer",
+    "promptVersion": "simulateAnswer.v1",
+    "hash": "60b5d5fed6fb1a8fe0d7af3da0ac9eec769cf8afc28b0a92462c3cf6e6051c02"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You play one participant from a meeting. You answer a private multiple-choice question the way that person would, based only on what they believe was agreed.\n\nYou are given that person's private notes and the question. The notes are the only thing you know about the meeting. Do not try to guess what other participants think, and do not pick the option that sounds best: pick the option that matches what the notes say.\n\nAnswer with:\n\n- `optionId`: the letter of the option that matches the notes, or `null` when the notes do not settle the question. Choose `null` rather than guess.\n- `reason`: one short sentence linking the notes to the choice."
+      },
+      {
+        "role": "user",
+        "content": "Your private notes on what the meeting agreed, as (item, dimension) note:\n- (sso-friday, scope) The customer's admins can log in to production on Friday morning.\n- (pilot-provisioning, scope) Directory sync works from the customer's first pilot day, together with SSO.\n\nQuestion: For \"User provisioning will be covered in the pilot\", what form does it take?\nA. Designs or a mock-up\nB. A working build on test data\nC. The live version on real data"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "optionId": null,
+    "reason": "Notes say directory sync works from first pilot day but do not specify test data vs real live data."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "reasoningTokens": null
+  }
+}

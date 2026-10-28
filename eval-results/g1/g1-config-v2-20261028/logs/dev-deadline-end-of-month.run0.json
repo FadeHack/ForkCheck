@@ -1,0 +1,88 @@
+{
+  "runId": "g1-config-v2-20261028",
+  "run": 0,
+  "scenario": "dev-deadline-end-of-month",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "end-of-month-firmness",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-end-of-month:cand:0",
+      "dimension": "deadline",
+      "mismatch": "end-of-month-firmness",
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:4",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:5",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0",
+      "stem": "For \"Tomasz will delete the old templates from the sender config\", what has to exist by \"after a day of clean sends\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0",
+      "stem": "Which check must pass before \"Tomasz will delete the old templates from the sender config after a day of clean sends\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0",
+      "stem": "For \"Aim for for the full switch-over to the new templates\", what has to exist by \"end of month\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:1:probe:0",
+      "stem": "It is Saturday the 31st, the invoice, failed payment and receipt templates are ready, but the logo still looks muddy in dark mode. What should happen then?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0",
+      "stem": "For \"Keep the referral wording frozen\", what has to exist by \"after this week\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.14661065
+}

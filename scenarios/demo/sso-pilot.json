@@ -3,7 +3,7 @@
   "id": "demo-sso-pilot",
   "title": "Pilot customer check-in",
   "set": "demo",
-  "category": "deadline",
+  "category": "scope",
   "heldAt": "2026-10-26T15:00:00-04:00",
   "timezone": "America/New_York",
   "participants": ["Priya", "Marco", "Dana"],
@@ -48,7 +48,7 @@
       "readings": [
         {
           "decision": "sso-friday",
-          "dimension": "deadline",
+          "dimension": "scope",
           "reading": "Merged and deployed to staging by Friday; production the following week."
         },
         {
@@ -63,7 +63,7 @@
       "readings": [
         {
           "decision": "sso-friday",
-          "dimension": "deadline",
+          "dimension": "scope",
           "reading": "Code complete on staging by Friday end of day, including admin roles."
         },
         {
@@ -78,7 +78,7 @@
       "readings": [
         {
           "decision": "sso-friday",
-          "dimension": "deadline",
+          "dimension": "scope",
           "reading": "The customer's admins can log in to production on Friday morning."
         },
         {
@@ -93,7 +93,7 @@
     {
       "id": "friday-meaning",
       "decision": "sso-friday",
-      "dimension": "deadline",
+      "dimension": "scope",
       "note": "Staging vs production: Dana promised the customer a production login."
     },
     {

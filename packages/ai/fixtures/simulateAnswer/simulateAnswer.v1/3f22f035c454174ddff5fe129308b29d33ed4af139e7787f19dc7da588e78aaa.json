@@ -1,0 +1,31 @@
+{
+  "key": {
+    "stage": "simulateAnswer",
+    "promptVersion": "simulateAnswer.v1",
+    "hash": "3f22f035c454174ddff5fe129308b29d33ed4af139e7787f19dc7da588e78aaa"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You play one participant from a meeting. You answer a private multiple-choice question the way that person would, based only on what they believe was agreed.\n\nYou are given that person's private notes and the question. The notes are the only thing you know about the meeting. Do not try to guess what other participants think, and do not pick the option that sounds best: pick the option that matches what the notes say.\n\nAnswer with:\n\n- `optionId`: the letter of the option that matches the notes, or `null` when the notes do not settle the question. Choose `null` rather than guess.\n- `reason`: one short sentence linking the notes to the choice."
+      },
+      {
+        "role": "user",
+        "content": "Your private notes on what the meeting agreed, as (item, dimension) note:\n- (sso-friday, scope) The customer's admins can log in to production on Friday morning. Everyone then confirmed: \"SSO with admin roles is live in production for the pilot customer by Friday 2026-10-30, 10:00 ET. Firm.\". Wherever it is specific, it replaces your understanding above; on any point it leaves open, you keep your understanding.\n- (pilot-provisioning, scope) Directory sync works from the customer's first pilot day, together with SSO.\n\nQuestion: On Friday the 30th in the afternoon, what does the pilot customer do with SSO?\nA. They give feedback on images showing how SSO would look\nB. They do real work through SSO with live accounts and data\nC. They try SSO with sample accounts and test data"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "optionId": "B",
+    "reason": "Notes say SSO with admin roles is live in production by Friday 10:00 ET."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 382,
+    "outputTokens": 357,
+    "reasoningTokens": 318
+  }
+}
