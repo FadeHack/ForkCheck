@@ -38,5 +38,5 @@ export {
   type FixtureInput,
   type FixtureKey,
 } from "./fixtures";
-export { defaultPromptsDir, loadPrompt, type Prompt } from "./prompts";
+export { defaultPromptsDir, loadPrompt, type Prompt, type PromptVariant } from "./prompts";
 export { ScriptedProvider } from "./scripted";

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  assistedStem,
   deadlineFirmnessTemplate,
   deadlineWords,
   FIRMNESS_OPTIONS,
@@ -154,6 +155,33 @@ describe("deadlineFirmnessTemplate", () => {
 
   it("options are the fixed firmness scale", () => {
     expect(deadlineFirmnessTemplate(input())!.options.map((o) => o.text)).toEqual(FIRMNESS_OPTIONS);
+  });
+});
+
+describe("assistedStem", () => {
+  it("fills the item into a fixed stem per dimension", () => {
+    const stems = (["deadline", "scope", "criteria", "dependency", "outcome"] as const).map((d) =>
+      assistedStem(input({ dimension: d })),
+    );
+    expect(stems).toMatchInlineSnapshot(`
+      [
+        "For "Priya sends the outage email to affected customers", what has to exist by Friday, October 30?",
+        "When "Priya sends the outage email to affected customers by Friday" is done, which of these is included?",
+        "Which check must pass before "Priya sends the outage email to affected customers by Friday" counts as done?",
+        "What has to happen before "Priya sends the outage email to affected customers by Friday" can start?",
+        "Who sees or uses "Priya sends the outage email to affected customers by Friday" first, and in what form?",
+      ]
+    `);
+  });
+
+  it("deadline without a phrase asks about the deadline itself", () => {
+    expect(assistedStem(input({ dimension: "deadline", deadlineText: null }))).toBe(
+      'For "Priya sends the outage email to affected customers by Friday", what has to exist by the deadline?',
+    );
+  });
+
+  it("owner has no T1 stem", () => {
+    expect(assistedStem(input({ dimension: "owner" }))).toBe(null);
   });
 });
 

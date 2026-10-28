@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
 import {
+  assistedOptionsOutput,
   checkStrictRules,
   responseFormatName,
   stageJsonSchema,
@@ -22,6 +23,10 @@ describe("stage schemas", () => {
     const schema = stageJsonSchema(stage);
     expect(schema).not.toHaveProperty("$schema");
     expect(checkStrictRules(schema)).toEqual([]);
+  });
+
+  it("the T1 options schema passes the strict-rules checker", () => {
+    expect(checkStrictRules(toStrictJsonSchema("t", assistedOptionsOutput))).toEqual([]);
   });
 
   it("names response formats in snake case", () => {

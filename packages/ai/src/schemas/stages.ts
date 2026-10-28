@@ -40,6 +40,9 @@ export const probesOutput = z.strictObject({
   probes: z.array(z.strictObject({ stem: text, options: z.array(optionDraft) })),
 });
 
+/** Tier T1: the stem is fixed in code, so the model returns only the options. */
+export const assistedOptionsOutput = z.strictObject({ options: z.array(optionDraft) });
+
 export const critiqueOutput = z.strictObject({
   /** Could two participants holding different readings pick different options? */
   canDiverge: z.boolean(),

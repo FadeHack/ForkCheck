@@ -1,7 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { probe as probeSchema, type Candidate, type Participant } from "@forkcheck/core";
+import {
+  assistedStem,
+  probe as probeSchema,
+  type Candidate,
+  type Participant,
+} from "@forkcheck/core";
 import { ScriptedProvider } from "@forkcheck/ai";
 import {
+  assistedOptionsUserMessage,
   generateProbes,
   generateProbesUserMessage,
   isNotSureOption,
@@ -135,8 +141,93 @@ describe("generateProbes", () => {
     expect(trace.drops.map((d) => d.reason)).toEqual(["empty_stem"]);
   });
 
-  it("refuses tiers other than free generation", async () => {
-    await expect(run([], { tier: "assisted" })).rejects.toThrow(/tier "free" only/);
+  it("refuses the template tier, which needs no model", async () => {
+    await expect(run([], { tier: "template" })).rejects.toThrow(/no "template" tier/);
+  });
+});
+
+describe("generateProbes, tier T1 (assisted)", () => {
+  const assisted = (dimension: Candidate["dimension"] = "deadline") => ({
+    ...input,
+    tier: "assisted" as const,
+    candidate: { ...candidate, dimension },
+  });
+  async function runAssisted(options: unknown[], over = assisted()) {
+    const model = new ScriptedProvider({ generateProbes: [{ options }] });
+    const result = await generateProbes(over, model);
+    return { ...result, model };
+  }
+
+  it.each(["deadline", "scope", "criteria", "dependency", "outcome"] as const)(
+    "%s: the stem equals the template stem byte for byte, even if the model sends one",
+    async (dimension) => {
+      const over = assisted(dimension);
+      const expected = assistedStem({
+        meeting: over.meeting,
+        decision: over.decision.decision,
+        candidate: over.candidate,
+      });
+      const model = new ScriptedProvider({
+        generateProbes: [
+          (req: { schema: { parse: (x: unknown) => unknown } }) => {
+            // A stem key is not part of the T1 schema, so the model cannot supply one.
+            expect(() => req.schema.parse({ stem: "Rewritten?", options: [] })).toThrow();
+            return { options: opts("Friday the 30th", "Friday the 6th") };
+          },
+        ],
+      });
+      const { output } = await generateProbes(over, model);
+      const [p] = output.probes;
+      expect(Buffer.from(p!.stem).equals(Buffer.from(expected!))).toBe(true);
+      expect(p).toMatchObject({ tier: "assisted", promptVersion: "generateProbesAssisted.v1" });
+      expect(p!.options.map((o) => o.text)).toEqual(["Friday the 30th", "Friday the 6th"]);
+      expect(probeSchema.parse(p)).toEqual(p);
+    },
+  );
+
+  it("sends the assisted prompt with the fixed question and the readings", async () => {
+    const { model } = await runAssisted(opts("A", "B"));
+    const [req] = model.requests;
+    expect(req!.promptVersion).toBe("generateProbesAssisted.v1");
+    const user = req!.messages[1]!.content;
+    expect(user).toContain(
+      'Fixed question: For "Marco has SSO ready", what has to exist by "next Friday"?',
+    );
+    expect(user).toContain("- Friday the 6th");
+  });
+
+  it("owner has no T1 stem: no call, no probe, a drop", async () => {
+    const model = new ScriptedProvider({});
+    const { output, trace } = await generateProbes(assisted("owner"), model);
+    expect(model.requests).toHaveLength(0);
+    expect(output.probes).toEqual([]);
+    expect(trace.drops.map((d) => d.reason)).toEqual(["no_assisted_stem"]);
+  });
+
+  it("an empty option list is the model declining", async () => {
+    const { output } = await runAssisted([]);
+    expect(output.probes).toEqual([]);
+  });
+
+  it("removes a model-written not-sure option", async () => {
+    const { output, trace } = await runAssisted(opts("The draft", "Not sure", "The signed copy"));
+    expect(output.probes[0]!.options.map((o) => o.text)).toEqual(["The draft", "The signed copy"]);
+    expect(trace.drops.map((d) => d.reason)).toEqual(["model_not_sure_option"]);
+  });
+
+  it("feedback lists the rejected options and the problems", () => {
+    const msg = assistedOptionsUserMessage(assisted(), "Q?", {
+      probe: {
+        stem: "Q?",
+        options: [
+          { id: "o0", text: "Short" },
+          { id: "o1", text: "A much longer option text here" },
+        ],
+      },
+      problems: ["longest option is 6× the shortest"],
+    });
+    expect(msg).toContain("Earlier options for this question were rejected:\n- Short");
+    expect(msg).toContain("- longest option is 6× the shortest");
   });
 });
 
