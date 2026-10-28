@@ -1,0 +1,31 @@
+{
+  "key": {
+    "stage": "simulateAnswer",
+    "promptVersion": "simulateAnswer.v1",
+    "hash": "b5f8548dc3a2c8b590b6732be5fe45f3eac38ecbae340a5dcd02e4abe7f1a35f"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You play one participant from a meeting. You answer a private multiple-choice question the way that person would, based only on what they believe was agreed.\n\nYou are given that person's private notes and the question. The notes are the only thing you know about the meeting. Do not try to guess what other participants think, and do not pick the option that sounds best: pick the option that matches what the notes say.\n\nAnswer with:\n\n- `optionId`: the letter of the option that matches the notes, or `null` when the notes do not settle the question. Choose `null` rather than guess.\n- `reason`: one short sentence linking the notes to the choice."
+      },
+      {
+        "role": "user",
+        "content": "Your private notes on what the meeting agreed, as (item, dimension) note:\n- (sso-friday, deadline) The customer's admins can log in to production on Friday morning.\n- (pilot-provisioning, scope) Directory sync works from the customer's first pilot day, together with SSO.\n\nQuestion: When Marco shows the pilot login on Friday the 30th, what happens for an admin user?\nA. They sign in with SSO on staging, then use a separate step for admin access\nB. They sign in with SSO on staging with admin permissions applied at once"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "optionId": "B",
+    "reason": "Notes say directory sync works together with SSO from the first pilot day."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 319,
+    "outputTokens": 1003,
+    "reasoningTokens": 971
+  }
+}

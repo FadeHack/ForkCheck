@@ -4,14 +4,11 @@
  * Each WAV needs a sibling <name>.truth.json. Responses are cached in var/audio/asr/, so only
  * WAVs without a cached response are transcribed, and only with LIVE=1.
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { basename, dirname, join, resolve } from "node:path";
+import { writeFileSync } from "node:fs";
 import { parseArgs } from "node:util";
-import { transcribeResponse, type TranscribeResponse } from "@forkcheck/asr";
-import { audioTruth, parseScenario, scoreTranscription, type Scenario } from "../src/index";
-import { liveTranscriber } from "./live";
+import { scoreTranscription } from "../src/index";
+import { loadAudioInput, loadScenarios } from "./audio-input";
 
-const workspace = resolve(import.meta.dirname, "../../..");
 const { values, positionals } = parseArgs({
   allowPositionals: true,
   options: { out: { type: "string" } },
@@ -21,23 +18,7 @@ if (positionals.length === 0) {
   process.exit(2);
 }
 
-const scenarios = new Map<string, Scenario>();
-const walk = (dir: string): string[] =>
-  readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
-    e.isDirectory() ? walk(join(dir, e.name)) : e.name.endsWith(".json") ? [join(dir, e.name)] : [],
-  );
-for (const file of walk(join(workspace, "scenarios"))) {
-  try {
-    const s = parseScenario(readFileSync(file, "utf8"));
-    scenarios.set(s.id, s);
-  } catch {
-    // Not a scenario file (fixtures, samples in another format).
-  }
-}
-
-const cacheDir = join(workspace, "var", "audio", "asr");
-mkdirSync(cacheDir, { recursive: true });
-let client: ReturnType<typeof liveTranscriber> | undefined;
+const scenarios = loadScenarios();
 let spentUsd = 0;
 
 const rows: string[] = [];
@@ -45,27 +26,8 @@ const lostLines: string[] = [];
 const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
 
 for (const wavPath of positionals) {
-  const name = basename(wavPath, ".wav");
-  const truth = audioTruth.parse(
-    JSON.parse(readFileSync(join(dirname(wavPath), `${name}.truth.json`), "utf8")),
-  );
-  const scenario = scenarios.get(truth.scenarioId);
-  if (!scenario) throw new Error(`no scenario with id ${truth.scenarioId}`);
-
-  const cached = join(cacheDir, `${name}.json`);
-  let response: TranscribeResponse;
-  if (existsSync(cached)) {
-    response = transcribeResponse.parse(JSON.parse(readFileSync(cached, "utf8")));
-  } else {
-    client ??= liveTranscriber();
-    const result = await client.transcribe(readFileSync(wavPath), {
-      keywords: scenario.participants,
-    });
-    spentUsd += result.costUsd;
-    response = result.response;
-    writeFileSync(cached, JSON.stringify(response, null, 2) + "\n");
-    console.error(`transcribed ${name}: ${result.latencyMs} ms, $${result.costUsd.toFixed(5)}`);
-  }
+  const { name, truth, scenario, response, costUsd } = await loadAudioInput(wavPath, scenarios);
+  spentUsd += costUsd;
 
   const r = scoreTranscription(scenario, truth, response.turns);
   const mapping = Object.entries(r.speakers.mapping)

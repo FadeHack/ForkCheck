@@ -1,0 +1,32 @@
+{
+  "key": {
+    "stage": "critique",
+    "promptVersion": "critique.v1",
+    "hash": "3bfaa2baec2f345afb28b547ca78b7cfb217a8c52c012daceb7955aad26ec945"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You check a multiple-choice question before it is sent privately to meeting participants. The question is meant to reveal whether participants hold different readings of something the meeting appeared to agree on.\n\nYou are given the dimension being checked, the readings participants might hold, and the question with its numbered options. Answer two things:\n\n- `canDiverge`: could two reasonable participants, one holding one reading and one holding another, choose different options? Answer `false` if every reading leads to the same option, if an option does not fit any reading, or if the question asks about something other than the given dimension.\n- `leadingOption`: the number shown before an option that looks like the right, safe or expected answer to anyone regardless of their reading, or `null` if no option stands out. Options stand out through wording such as \"properly\", \"fully\" or \"as agreed\", through being much more detailed than the others, or through being the only one that sounds responsible.\n\nThen give `reason`: one or two plain sentences naming the problem, written so the question's author can fix it. If both checks pass, say briefly why.\n\nThe app always adds its own \"not sure\" choice; do not count its absence as a problem."
+      },
+      {
+        "role": "user",
+        "content": "Dimension: scope\nReadings participants might hold:\n- pilot covers automatic user sync from the customer's directory\n- pilot covers manual user setup only; automatic directory sync is out of scope\n\nQuestion: When the pilot starts, how will the customer's users get access?\n0 Each login is created manually with no directory link\n1 Logins sync automatically through a directory link"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "canDiverge": true,
+    "leadingOption": null,
+    "reason": "Each reading maps clearly to a different option, so different views will pick different answers. Neither option uses leading language or extra detail."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 402,
+    "outputTokens": 413,
+    "reasoningTokens": 359
+  }
+}

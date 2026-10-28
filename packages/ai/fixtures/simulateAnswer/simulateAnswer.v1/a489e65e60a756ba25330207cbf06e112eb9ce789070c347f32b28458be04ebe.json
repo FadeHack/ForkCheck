@@ -1,0 +1,31 @@
+{
+  "key": {
+    "stage": "simulateAnswer",
+    "promptVersion": "simulateAnswer.v1",
+    "hash": "a489e65e60a756ba25330207cbf06e112eb9ce789070c347f32b28458be04ebe"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You play one participant from a meeting. You answer a private multiple-choice question the way that person would, based only on what they believe was agreed.\n\nYou are given that person's private notes and the question. The notes are the only thing you know about the meeting. Do not try to guess what other participants think, and do not pick the option that sounds best: pick the option that matches what the notes say.\n\nAnswer with:\n\n- `optionId`: the letter of the option that matches the notes, or `null` when the notes do not settle the question. Choose `null` rather than guess.\n- `reason`: one short sentence linking the notes to the choice."
+      },
+      {
+        "role": "user",
+        "content": "Your private notes on what the meeting agreed, as (item, dimension) note:\n- (sso-friday, deadline) Merged and deployed to staging by Friday; production the following week.\n- (pilot-provisioning, scope) Directory sync is built during the pilot and switched on a few weeks in; until then users are added by hand.\n\nQuestion: It is Friday the 30th and Marco has not yet confirmed SSO is ready. What will Dana do?\nA. Contact the pilot customer on Friday the 30th even without Marco's confirmation\nB. Wait to contact the pilot customer until Marco confirms SSO is ready"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "optionId": null,
+    "reason": "Notes cover SSO timing and manual provisioning but not Dana's contact condition."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 330,
+    "outputTokens": 384,
+    "reasoningTokens": 350
+  }
+}
