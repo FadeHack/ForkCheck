@@ -9,11 +9,11 @@ describe("migrations on PGlite", () => {
     expect(result.rows).toEqual([{ one: 1 }]);
   });
 
-  it("record the baseline migration", async () => {
+  it("record every migration", async () => {
     const db = await createTestDb();
     const result = await db.execute<{ count: number }>(
       sql`select count(*)::int as count from drizzle.__drizzle_migrations`,
     );
-    expect(result.rows).toEqual([{ count: 1 }]);
+    expect(result.rows).toEqual([{ count: 2 }]);
   });
 });
