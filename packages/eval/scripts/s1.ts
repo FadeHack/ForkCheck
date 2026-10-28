@@ -23,11 +23,13 @@ let spentUsd = 0;
 
 const rows: string[] = [];
 const lostLines: string[] = [];
+let humanVoices = false;
 const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
 
 for (const wavPath of positionals) {
   const { name, truth, scenario, response, costUsd } = await loadAudioInput(wavPath, scenarios);
   spentUsd += costUsd;
+  humanVoices ||= Object.values(truth.voices).includes("human");
 
   const r = scoreTranscription(scenario, truth, response.turns);
   const mapping = Object.entries(r.speakers.mapping)
@@ -53,6 +55,12 @@ const report = [
   "",
   lostLines.length ? "Lost commitment terms:" : "No commitment terms lost.",
   ...lostLines,
+  ...(humanVoices
+    ? [
+        "",
+        "One human voice played every role in the human recordings, so their speaker accuracy is a harder-than-real test of diarization.",
+      ]
+    : []),
   "",
 ].join("\n");
 console.log(report);

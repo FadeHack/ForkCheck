@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "id": "rec-ios-release",
+  "title": "Ship iOS 4.2 on Monday",
+  "set": "dev",
+  "category": "aligned",
+  "heldAt": "2026-11-02T09:00:00Z",
+  "timezone": "UTC",
+  "participants": ["Hana", "Luis"],
+  "transcript": "[00:00] Hana: The iOS release. Where are we?\n[00:04] Luis: Build 4.2 is in TestFlight. Two crash reports from beta testers, both on older iPads.\n[00:11] Hana: Is that a blocker?\n[00:12] Luis: Not for phones. I'd ship phones now and fix the iPad crash in 4.2.1.\n[00:18] Hana: OK. Submit to App Store review on Wednesday, then.\n[00:23] Luis: Wednesday morning. Review usually takes a day, so we'd go live Thursday or Friday.\n[00:29] Hana: Hold the release until Monday. I don't want a launch going out on a Friday with nobody on call.\n[00:36] Luis: Fair. Manual release, Monday at 10 a.m.\n[00:39] Hana: And I'll write the release notes and send them to you by Tuesday.\n[00:44] Luis: Great. Keep them under four lines, the store cuts off the rest.\n",
+  "expectedDecisions": [
+    {
+      "id": "submit-review",
+      "kind": "commitment",
+      "statement": "Luis submits build 4.2 to App Store review on Wednesday morning.",
+      "owner": "Luis",
+      "deadline": "Wednesday morning",
+      "quotes": ["Submit to App Store review on Wednesday, then.", "Wednesday morning."]
+    },
+    {
+      "id": "release-monday",
+      "kind": "decision",
+      "statement": "Hold the release and release manually on Monday at 10 a.m.",
+      "owner": null,
+      "deadline": "Monday at 10 a.m.",
+      "quotes": ["Hold the release until Monday.", "Manual release, Monday at 10 a.m."]
+    },
+    {
+      "id": "ipad-fix",
+      "kind": "decision",
+      "statement": "Ship for phones now and fix the iPad crash in 4.2.1.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["fix the iPad crash in 4.2.1."]
+    },
+    {
+      "id": "release-notes",
+      "kind": "commitment",
+      "statement": "Hana writes the release notes and sends them to Luis.",
+      "owner": "Hana",
+      "deadline": "Tuesday",
+      "quotes": ["I'll write the release notes and send them to you by Tuesday."]
+    }
+  ],
+  "briefs": [],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": [
+      "Hana: \"Submit to App Store review on Wednesday, then.\"",
+      "Hana: \"Hold the release until Monday.\"",
+      "Luis: \"fix the iPad crash in 4.2.1.\"",
+      "Hana: \"I'll write the release notes and send them to you by Tuesday.\""
+    ],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}
