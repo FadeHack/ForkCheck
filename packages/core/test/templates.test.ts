@@ -141,6 +141,9 @@ describe("deadlineFirmnessTemplate", () => {
     expect(deadlineWords("next Friday", "2026-10-27T15:00:00Z", "America/New_York")).toBe(
       '"next Friday"',
     );
+    expect(deadlineWords("by next Friday", "2026-10-27T15:00:00Z", "America/New_York")).toBe(
+      '"next Friday"',
+    );
   });
 
   it("null without a deadline phrase", () => {

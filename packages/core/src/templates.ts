@@ -46,10 +46,12 @@ function withoutDeadline(text: string, deadline: string): string {
     .trim();
 }
 
+const LEADING_PREPOSITION = /^(?:by|on|before|until)\s+/i;
+
 /** A single resolved date as "Friday, November 6"; the phrase as said when it has no single reading. */
 export function deadlineWords(phrase: string, heldAt: string, timezone: string): string {
   const readings = resolveDatePhrase(phrase, heldAt, timezone);
-  if (readings.length !== 1) return `"${phrase.trim()}"`;
+  if (readings.length !== 1) return `"${phrase.trim().replace(LEADING_PREPOSITION, "")}"`;
   return new Date(`${readings[0]!.date}T00:00:00Z`).toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
