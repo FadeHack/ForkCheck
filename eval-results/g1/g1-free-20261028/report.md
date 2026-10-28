@@ -23,11 +23,11 @@ Per run (R§6.5): planted mismatch revealed in at least 5 of 6, at least 6 of 8 
 | dev-same-reading-loop-in-legal | control | 1/3 | 5, 5, 5 | 0, 1, 1 |
 | dev-scope-dashboard-demo | mismatch | 0/3 | 5, 5, 5 | 0, 1, 1 |
 
-## Per planted dimension
+## Per dimension
 
-| Dimension | Revealed |
-| --- | --- |
-| criteria | 1/3 (33%) |
-| deadline | 6/6 (100%) |
-| owner | 3/3 (100%) |
-| scope | 0/6 (0%) |
+| Dimension | Revealed | Control false splits |
+| --- | --- | --- |
+| criteria | 1/3 (33%) | 2 |
+| deadline | 6/6 (100%) | 0 |
+| owner | 3/3 (100%) | 0 |
+| scope | 0/6 (0%) | 0 |

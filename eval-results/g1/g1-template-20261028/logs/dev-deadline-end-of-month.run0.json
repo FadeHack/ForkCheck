@@ -1,0 +1,81 @@
+{
+  "runId": "g1-template-20261028",
+  "run": 0,
+  "scenario": "dev-deadline-end-of-month",
+  "tier": "template",
+  "planted": [
+    {
+      "id": "end-of-month-firmness",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-end-of-month:cand:0",
+      "dimension": "deadline",
+      "mismatch": "end-of-month-firmness",
+      "probeId": "dev-deadline-end-of-month:cand:0:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:1:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:3:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:4",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:5",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:5:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-end-of-month:cand:3:t0",
+      "stem": "For \"Tomasz will delete the old templates from the sender config\", if it lands two working days after \"after a day of clean sends\", how does that count?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:0:t0",
+      "stem": "For \"Aim for for the full switch-over\", if it lands two working days after \"end of month\", how does that count?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:5:t0",
+      "stem": "For \"Keep the referral wording frozen\", if it lands two working days after \"after this week\", how does that count?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:1:t0",
+      "stem": "For \"End of month should be doable if finance gets back to me\", if it lands two working days after \"this week\", how does that count?",
+      "divergence": {
+        "outcome": "split"
+      }
+    }
+  ],
+  "costUsd": 0.0960672
+}

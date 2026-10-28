@@ -9,3 +9,4 @@ export * from "./divergence";
 export * from "./resolution";
 export * from "./record";
 export * from "./templates";
+export * from "./config/tiers";

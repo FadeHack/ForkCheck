@@ -1,0 +1,85 @@
+{
+  "runId": "g1-template-20261028",
+  "run": 0,
+  "scenario": "dev-scope-dashboard-demo",
+  "tier": "template",
+  "planted": [
+    {
+      "id": "which-dashboard",
+      "dimension": "scope"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-scope-dashboard-demo:cand:0",
+      "dimension": "scope",
+      "mismatch": "which-dashboard",
+      "probeId": null
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:3:t0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:4",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:5",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:6",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:7",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:7:t0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:8",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": null
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:3:t0",
+      "stem": "For \"Mei will tidy up the scorecard screens\", if it lands two working days after \"then\", how does that count?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:7:t0",
+      "stem": "For \"Someone will do a dry run on Wednesday\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.0893599
+}

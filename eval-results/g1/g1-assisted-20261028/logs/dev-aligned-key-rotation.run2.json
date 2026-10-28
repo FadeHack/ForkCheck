@@ -1,0 +1,57 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 2,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "assisted",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:2:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:3",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": null
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:2:probe:0",
+      "stem": "Which check must pass before \"Mateo will post in the infra channel as each one is done\" counts as done?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0",
+      "stem": "For \"Grace will check the provider dashboards and confirm the old keys show as revoked\", what has to exist by Wednesday, November 4?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0",
+      "stem": "Who sees or uses \"Grace will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked\" first, and in what form?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.08795889999999999
+}

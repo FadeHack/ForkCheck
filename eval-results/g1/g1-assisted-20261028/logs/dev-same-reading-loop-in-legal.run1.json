@@ -1,0 +1,10 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 1,
+  "scenario": "dev-same-reading-loop-in-legal",
+  "tier": "assisted",
+  "planted": [],
+  "candidates": [],
+  "rounds": [],
+  "costUsd": 0.0623822
+}

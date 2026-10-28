@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   gateLog,
   gateVerdict,
+  pickTier,
   renderGateReport,
   scoreGateScenario,
   type GateLog,
@@ -100,8 +101,8 @@ describe("gateVerdict", () => {
       [6, 8, 0, true],
       [5, 6, 1, true],
     ]);
-    expect(v.byDimension.deadline).toEqual({ revealed: 6, of: 6 });
-    expect(v.byDimension.scope).toEqual({ revealed: 4, of: 6 });
+    expect(v.byDimension.deadline).toEqual({ revealed: 6, of: 6, falseSplits: 0 });
+    expect(v.byDimension.scope).toEqual({ revealed: 4, of: 6, falseSplits: 2 });
     expect(v.costUsd).toBeCloseTo(0.24);
   });
 
@@ -155,5 +156,42 @@ describe("gateVerdict", () => {
     expect(md).toMatch(/^# Gate G1: GO\n/);
     expect(md).toContain("| 0 | 5/6 | 6/8 | 1 | pass |");
     expect(md).toContain("| control-0 | control | 0/1 | 2 | 1 |");
+  });
+});
+
+describe("per-dimension scores and tier picking", () => {
+  it("counts control splits against the split probe's dimension", () => {
+    const v = gateVerdict(run(0, 6, [2, 0]));
+    expect(v.byDimension.scope).toEqual({ revealed: 2, of: 2, falseSplits: 2 });
+    expect(v.byDimension.deadline).toEqual({ revealed: 2, of: 2, falseSplits: 0 });
+  });
+
+  const c = (tier: "template" | "assisted" | "free", revealed: number, falseSplits: number) => ({
+    tier,
+    runId: `g1-${tier}`,
+    score: { revealed, of: 6, falseSplits },
+  });
+
+  it("picks the best reveal rate, then the fewest false splits", () => {
+    expect(pickTier([c("free", 3, 0), c("assisted", 5, 2), c("template", 5, 1)])?.tier).toBe(
+      "template",
+    );
+  });
+
+  it("picks nothing when no tier revealed the dimension", () => {
+    expect(pickTier([c("free", 0, 0), c("assisted", 0, 0)])).toBeNull();
+  });
+});
+
+describe("pickTier ties", () => {
+  it("prefers the more fixed tier when scores tie", () => {
+    const score = { revealed: 3, of: 3, falseSplits: 0 };
+    expect(
+      pickTier([
+        { tier: "free", runId: "a", score },
+        { tier: "template", runId: "b", score },
+        { tier: "assisted", runId: "c", score },
+      ])?.tier,
+    ).toBe("template");
   });
 });

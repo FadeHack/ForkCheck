@@ -1,0 +1,94 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 2,
+  "scenario": "dev-scope-dashboard-demo",
+  "tier": "assisted",
+  "planted": [
+    {
+      "id": "which-dashboard",
+      "dimension": "scope"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-scope-dashboard-demo:cand:0",
+      "dimension": "scope",
+      "mismatch": "which-dashboard",
+      "probeId": "dev-scope-dashboard-demo:cand:0:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:3:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:4",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:4:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:5",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:6",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:6:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:4:probe:0",
+      "stem": "When \"Thursday will stay to the product with pricing left for the renewal call\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:0:probe:0",
+      "stem": "When \"Oskar will demo the dashboard to Halvorsen on Thursday\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0",
+      "stem": "For \"Oskar will demo the dashboard to Halvorsen\", what has to exist by Thursday, November 5?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0",
+      "stem": "For \"Mei will tidy up the scorecard screens\", what has to exist by \"then\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:3:probe:0",
+      "stem": "For \"Mei will fix the colour scale on the lane chart where red means on time\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.16192129999999996
+}

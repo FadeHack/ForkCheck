@@ -1,0 +1,25 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 1,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "assisted",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0",
+      "stem": "For \"Grace will check the provider dashboards and confirm the old keys show as revoked\", what has to exist by Wednesday, November 4?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.07272265
+}

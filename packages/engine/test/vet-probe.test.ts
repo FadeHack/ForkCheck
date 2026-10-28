@@ -193,3 +193,23 @@ describe("critique", () => {
     expect((await judge({ ...pass, leadingOption: 7 })).output.pass).toBe(true);
   });
 });
+
+describe("vetProbe at tier T0", () => {
+  // No scripted replies: any model call fails the test.
+  const noModel = () => new ScriptedProvider({});
+
+  it("returns the template probe without calling the model", async () => {
+    const r = await vetProbe({ ...input, tier: "template" }, noModel());
+    expect(r.probe).toMatchObject({ id: "m1:cand:0:t0", tier: "template", lint: [] });
+    expect(r.traces).toEqual([]);
+  });
+
+  it("drops a dimension with no template", async () => {
+    const r = await vetProbe(
+      { ...input, tier: "template", candidate: { ...candidate, dimension: "scope" } },
+      noModel(),
+    );
+    expect(r.probe).toBeNull();
+    expect(r.drops.map((d) => d.reason)).toEqual(["no_template"]);
+  });
+});

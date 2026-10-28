@@ -1,0 +1,49 @@
+{
+  "runId": "g1-template-20261028",
+  "run": 0,
+  "scenario": "dev-same-reading-loop-in-legal",
+  "tier": "template",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:0",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:4:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:4:t0",
+      "stem": "For \"Bashir will update the public subprocessor page\", if it lands two working days after \"same day as the DPA list\", how does that count?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.0686944
+}

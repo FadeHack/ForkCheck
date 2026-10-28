@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { dimension, probeTier, type Dimension } from "@forkcheck/core";
+import { dimension, probeTier, type Dimension, type ProbeTier } from "@forkcheck/core";
 
 /** R§6.5 thresholds for an 8-scenario set of 6 planted mismatches and 2 controls. */
 export const G1 = {
@@ -58,12 +58,21 @@ export interface GateRunResult {
   reasons: string[];
 }
 
+export interface DimensionScore {
+  revealed: number;
+  of: number;
+  falseSplits: number;
+}
+
 export interface GateVerdict {
   go: boolean;
   runsNeeded: number;
   runs: GateRunResult[];
-  /** Planted mismatches revealed over all runs, per planted dimension. */
-  byDimension: Partial<Record<Dimension, { revealed: number; of: number }>>;
+  /**
+   * Over all runs, per dimension: planted mismatches revealed, and splits in the controls
+   * on probes of that dimension.
+   */
+  byDimension: Partial<Record<Dimension, DimensionScore>>;
   costUsd: number;
 }
 
@@ -135,13 +144,18 @@ export function gateVerdict(logs: GateLog[]): GateVerdict {
   const runsNeeded = Math.floor(runs.length / 2) + 1;
 
   const byDimension: GateVerdict["byDimension"] = {};
+  const score = (d: Dimension) => (byDimension[d] ??= { revealed: 0, of: 0, falseSplits: 0 });
   for (const log of logs) {
     const { revealed } = scoreGateScenario(log);
     for (const m of log.planted) {
-      const t = byDimension[m.dimension] ?? { revealed: 0, of: 0 };
-      t.of += 1;
-      if (revealed.includes(m.id)) t.revealed += 1;
-      byDimension[m.dimension] = t;
+      score(m.dimension).of += 1;
+      if (revealed.includes(m.id)) score(m.dimension).revealed += 1;
+    }
+    if (log.planted.length > 0) continue;
+    const dimensionOf = new Map(log.candidates.map((c) => [c.probeId, c.dimension]));
+    for (const r of log.rounds) {
+      const d = dimensionOf.get(r.probeId);
+      if (d && r.divergence.outcome === "split") score(d).falseSplits += 1;
     }
   }
   return {
@@ -195,9 +209,39 @@ export function renderGateReport(verdict: GateVerdict, logs: GateLog[]): string 
         `${per.map((s) => s.probes).join(", ")} | ${per.map((s) => s.unplantedSplits).join(", ")} |`,
     );
   }
-  lines.push("", "## Per planted dimension", "", "| Dimension | Revealed |", "| --- | --- |");
+  lines.push(
+    "",
+    "## Per dimension",
+    "",
+    "| Dimension | Revealed | Control false splits |",
+    "| --- | --- | --- |",
+  );
   for (const [d, t] of Object.entries(verdict.byDimension)) {
-    lines.push(`| ${d} | ${t.revealed}/${t.of} (${pct(t.revealed, t.of)}) |`);
+    lines.push(`| ${d} | ${t.revealed}/${t.of} (${pct(t.revealed, t.of)}) | ${t.falseSplits} |`);
   }
   return `${lines.join("\n")}\n`;
+}
+
+export interface TierCandidate {
+  tier: ProbeTier;
+  runId: string;
+  score: DimensionScore;
+}
+
+/**
+ * M3.4: for one dimension, the tier with the highest reveal rate, then the fewest false
+ * splits in the controls, then the least model-written wording (R§6.2). A tier that never
+ * revealed the dimension is not picked.
+ */
+export function pickTier(candidates: TierCandidate[]): TierCandidate | null {
+  const rate = (c: TierCandidate) => (c.score.of === 0 ? 0 : c.score.revealed / c.score.of);
+  const ranked = candidates
+    .filter((c) => c.score.revealed > 0)
+    .sort(
+      (a, b) =>
+        rate(b) - rate(a) ||
+        a.score.falseSplits - b.score.falseSplits ||
+        probeTier.options.indexOf(a.tier) - probeTier.options.indexOf(b.tier),
+    );
+  return ranked[0] ?? null;
 }
