@@ -1,0 +1,82 @@
+{
+  "runId": "g1-config-v2-20261028",
+  "run": 0,
+  "scenario": "dev-deadline-next-friday",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "which-friday",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:4",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0",
+      "stem": "For \"Kwame owns the questionnaire, back to them\", what has to exist by \"next Friday\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:4:probe:0",
+      "stem": "When the questionnaire files are shared without using email, what will have been placed in the shared folder?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "stem": "When Kwame submits the data residency section, what will it include?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0",
+      "stem": "For \"Lena will do the legal and insurance sections and pass them to Kwame to merge in\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0",
+      "stem": "It's Monday the 2nd and Rosa has not yet heard back from procurement. What does Lena do with the insurance sections?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.19935845000000002
+}

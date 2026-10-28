@@ -1,0 +1,100 @@
+{
+  "runId": "g1-config-v2-20261028",
+  "run": 2,
+  "scenario": "dev-deadline-end-of-month",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "end-of-month-firmness",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-end-of-month:cand:0",
+      "dimension": "deadline",
+      "mismatch": "end-of-month-firmness",
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:4",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:6",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:6:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:7",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:7:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0",
+      "stem": "For \"The group will aim for for the full switch-over\", what has to exist by \"end of month\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:1:probe:0",
+      "stem": "Suppose on Friday the 30th the invoice, failed payment and receipt messages are live for all customers, but the dark-mode logo still looks muddy and the old versions are still kept in the sender settings. What best describes the full switch-over?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0",
+      "stem": "For \"Tomasz will delete them from the sender config\", what has to exist by \"after a day of clean sends\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0",
+      "stem": "Which check must pass before \"Tomasz will delete them from the sender config after a day of clean sends\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:6:probe:0",
+      "stem": "For \"The group will keep that wording frozen\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.18848499999999996
+}

@@ -1,0 +1,88 @@
+{
+  "runId": "g1-config-form-20261028",
+  "run": 0,
+  "scenario": "dev-deadline-end-of-month",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "end-of-month-firmness",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-end-of-month:cand:0",
+      "dimension": "deadline",
+      "mismatch": "end-of-month-firmness",
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:1:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:3",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:5",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0",
+      "stem": "Which check must pass before \"Tomasz will delete old templates from the sender config after a day of clean sends\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0",
+      "stem": "For \"Tomasz will delete old templates from the sender config\", what has to exist by \"after a day of clean sends\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:2:probe:0",
+      "stem": "If Finance has not provided the reverse-charge wording by the end of month, what happens to the templates at that point?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0",
+      "stem": "For \"Referral wording will stay frozen\", what has to exist by \"after this week\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0",
+      "stem": "For \"Full switch-over to the new templates is aimed for\", what has to exist by \"end of month\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    }
+  ],
+  "costUsd": 0.14153155
+}

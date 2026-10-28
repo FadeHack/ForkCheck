@@ -7,6 +7,7 @@ import {
   optionOrder,
   selectProbes,
   tierFor,
+  TIERS,
   validateRecord,
   type Candidate,
   type DecisionRecord,
@@ -123,13 +124,14 @@ export interface ProbeRounds {
 }
 
 /**
- * The detection half of the loop: extract, candidates, vetted probes, selection, then one
- * round of simulated private answers per selected probe with its divergence.
+ * The detection half of the loop: extract, candidates, vetted probes (at the M3.4 tiers by
+ * default), selection, then one round of simulated private answers per selected probe with
+ * its divergence.
  */
 export async function probeRounds(
   s: Scenario,
   model: ModelPort,
-  { segments, tier = "free" }: { segments?: Segment[]; tier?: ProbeTier | TierConfig } = {},
+  { segments, tier = TIERS }: { segments?: Segment[]; tier?: ProbeTier | TierConfig } = {},
 ): Promise<ProbeRounds> {
   const stages: StageTrace[] = [];
   const input = { ...scenarioExtractInput(s), ...(segments ? { segments } : {}) };

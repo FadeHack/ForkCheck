@@ -1,0 +1,31 @@
+{
+  "key": {
+    "stage": "simulateAnswer",
+    "promptVersion": "simulateAnswer.v1",
+    "hash": "53fdccafae66540ded642f92259a89927ed59ccb129a45b5521b9538f3b64719"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You play one participant from a meeting. You answer a private multiple-choice question the way that person would, based only on what they believe was agreed.\n\nYou are given that person's private notes and the question. The notes are the only thing you know about the meeting. Do not try to guess what other participants think, and do not pick the option that sounds best: pick the option that matches what the notes say.\n\nAnswer with:\n\n- `optionId`: the letter of the option that matches the notes, or `null` when the notes do not settle the question. Choose `null` rather than guess.\n- `reason`: one short sentence linking the notes to the choice."
+      },
+      {
+        "role": "user",
+        "content": "Your private notes on what the meeting agreed, as (item, dimension) note:\n- (sso-friday, scope) Code complete on staging by Friday end of day, including admin roles. Everyone then confirmed: \"SSO with admin roles is live in production for the pilot customer by Friday 2026-10-30, 10:00 ET. Firm.\". Wherever it is specific, it replaces your understanding above; on any point it leaves open, you keep your understanding.\n- (pilot-provisioning, scope) The pilot customer uploads a CSV of users; directory sync is a later project after the pilot.\n\nQuestion: On Friday the 30th in the afternoon, what does the pilot customer do with SSO?\nA. They do real work through SSO with live accounts and data\nB. They give feedback on images showing how SSO would look\nC. They try SSO with sample accounts and test data"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "optionId": "A",
+    "reason": "Notes confirm SSO with admin roles is live in production for the pilot by Friday 10:00 ET."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 389,
+    "outputTokens": 540,
+    "reasoningTokens": 498
+  }
+}

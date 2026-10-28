@@ -1,0 +1,82 @@
+{
+  "key": {
+    "stage": "findCandidates",
+    "promptVersion": "findCandidates.v2",
+    "hash": "84e1d93a9f2baff9f8322ee12b50b7bbbcccc6b8af993aceb032accac2b51373"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You read a meeting transcript and the items the meeting appeared to agree on. For each item, find the places where two reasonable participants could leave the meeting holding different readings of what was agreed, even though nobody objected.\n\nEach gap you report is tied to exactly one dimension:\n\n- `owner`: who actually does the work, or who does it on the day.\n- `deadline`: what the timing words mean (\"next Friday\", \"end of month\", \"early next week\") or how firm they are.\n- `scope`: what the deliverable is when it counts as done: which version of it (designs, a working internal build, the live product) and which parts it includes.\n- `criteria`: which check has to pass before it counts as done: what the check consists of (which tests, run where, by whom) and what result counts as passing.\n- `dependency`: what has to happen first, or who has to sign off first.\n- `outcome`: who sees or uses the result first, and in what form.\n\nWhere gaps usually hide:\n\n- A deliverable named by a general noun (\"the dashboard\", \"the update\", \"the migration\"). People in the room may picture different versions of it or different parts of it. Readings should name those concrete versions or parts, using what the transcript mentions.\n- A check named by habit (\"the usual review\", \"the normal QA pass\", \"the standard sign-off\"). People may each picture the check they usually run. Readings should name what each check consists of; that is `criteria`, not `scope`.\n\nFor each gap return:\n\n- `decisionId`: the ID of the item, exactly as given. When the same deliverable appears in more than one item, use the item that commits to delivering it.\n- `dimension`: one of the six above. If a gap touches two dimensions, report two gaps.\n- `readings`: two to four concrete readings a participant could reasonably hold. Each reading is a short plain statement of what that person believes was agreed (\"the code is merged by Friday the 30th\", \"it is live for customers by Friday the 30th\"). Readings must differ in a way that would change what someone does. Do not include \"not sure\" or \"not decided\" as a reading.\n- `impact`, each `low`, `medium` or `high`:\n  - `reversibility`: how hard it is to undo if people act on the wrong reading (`high` means hard to undo).\n  - `blastRadius`: how many people, customers or teams are affected.\n  - `timeToImpact`: how soon the wrong reading causes harm (`high` means within days).\n\nRules:\n\n- Only report gaps the transcript leaves open. If the words used pin the meaning down, there is no gap.\n- Never report a gap on an item whose status is `debated`: that disagreement is already visible.\n- Do not report a gap that participants openly argued about in the transcript.\n- Do not report readings that differ only by a few hours on the same day, unless the transcript makes the hour matter.\n- Report each (item, dimension) pair at most once.\n- Report nothing for an item with no gap. An empty list is a valid answer."
+      },
+      {
+        "role": "user",
+        "content": "Meeting: Pilot customer check-in\nHeld: Monday, October 26, 2026 at 15:00 (America/New_York)\nParticipants: Priya, Marco, Dana\n\nItems, as [item ID] (kind, status) statement\n[demo-sso-pilot:dec:0] (commitment, explicit) Marco will have SSO ready by Friday.\n  owner: Marco\n  deadline: by Friday\n  quote: \"OK, so SSO is ready by Friday. Marco, that's yours?\"\n  quote: \"Yep, I'll have it ready by Friday.\"\n[demo-sso-pilot:dec:1] (commitment, ambiguous) Dana will tell them Friday.\n  owner: Dana\n  deadline: Friday\n  quote: \"Great, I'll tell them Friday.\"\n[demo-sso-pilot:dec:2] (decision, explicit) User provisioning will be covered in the pilot.\n  quote: \"Let's cover user provisioning in the pilot.\"\n  quote: \"Fine by me.\"\n[demo-sso-pilot:dec:3] (commitment, ambiguous) Dana will put it in the pilot plan.\n  owner: Dana\n  quote: \"Good, I'll put it in the pilot plan.\"\n\nTranscript, one turn per line as [segment ID] speaker: text\n[demo-sso-pilot:seg:0] Priya: Quick one. Where are we on single sign-on for the pilot customer?\n[demo-sso-pilot:seg:1] Marco: Login works on staging. I still need to wire up the admin roles.\n[demo-sso-pilot:seg:2] Dana: The customer asked again yesterday. They want to try it this week.\n[demo-sso-pilot:seg:3] Priya: OK, so SSO is ready by Friday. Marco, that's yours?\n[demo-sso-pilot:seg:4] Marco: Yep, I'll have it ready by Friday.\n[demo-sso-pilot:seg:5] Dana: Great, I'll tell them Friday.\n[demo-sso-pilot:seg:6] Dana: They also asked about adding their users automatically from their directory.\n[demo-sso-pilot:seg:7] Priya: Let's cover user provisioning in the pilot.\n[demo-sso-pilot:seg:8] Marco: Fine by me.\n[demo-sso-pilot:seg:9] Dana: Good, I'll put it in the pilot plan."
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "candidates": [
+      {
+        "decisionId": "demo-sso-pilot:dec:0",
+        "dimension": "scope",
+        "readings": [
+          {
+            "text": "SSO is ready by Friday when login works on staging, without admin roles wired up"
+          },
+          {
+            "text": "SSO is ready by Friday only when login works and admin roles are wired up"
+          }
+        ],
+        "impact": {
+          "reversibility": "medium",
+          "blastRadius": "medium",
+          "timeToImpact": "high"
+        }
+      },
+      {
+        "decisionId": "demo-sso-pilot:dec:1",
+        "dimension": "dependency",
+        "readings": [
+          {
+            "text": "Dana tells the pilot customer on Friday that SSO is ready, only after Marco has finished SSO"
+          },
+          {
+            "text": "Dana sends the pilot customer a Friday status update on SSO whether or not Marco has finished it"
+          }
+        ],
+        "impact": {
+          "reversibility": "low",
+          "blastRadius": "medium",
+          "timeToImpact": "high"
+        }
+      },
+      {
+        "decisionId": "demo-sso-pilot:dec:2",
+        "dimension": "scope",
+        "readings": [
+          {
+            "text": "The pilot includes adding users automatically from the customer's directory"
+          },
+          {
+            "text": "The pilot includes basic user provisioning only, without automatic import from the customer's directory"
+          }
+        ],
+        "impact": {
+          "reversibility": "medium",
+          "blastRadius": "medium",
+          "timeToImpact": "medium"
+        }
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "reasoningTokens": null
+  }
+}

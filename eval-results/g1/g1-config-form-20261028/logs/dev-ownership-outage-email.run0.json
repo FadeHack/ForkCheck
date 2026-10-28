@@ -1,0 +1,88 @@
+{
+  "runId": "g1-config-form-20261028",
+  "run": 0,
+  "scenario": "dev-ownership-outage-email",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "who-sends",
+      "dimension": "owner"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-ownership-outage-email:cand:0",
+      "dimension": "owner",
+      "mismatch": "who-sends",
+      "probeId": "dev-ownership-outage-email:cand:0:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:1:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:2:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:3:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:4",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:5:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-ownership-outage-email:cand:1:t0",
+      "stem": "For \"The group will handle the customer emails by tomorrow covering plain language, the credit, and what we changed\", what form does it take?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:2:t0",
+      "stem": "For \"Felix will have the credits applied by Thursday\", what form does it take?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0",
+      "stem": "Which check must pass before \"Felix will publish the postmortem on the blog after legal reads it\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:0:t0",
+      "stem": "For \"The group will handle the customer emails by tomorrow covering plain language, the credit, and what we changed\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:3:t0",
+      "stem": "For \"Imani will close out the open tickets once the email is out, pointing to it\", what form does it take?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.10330905
+}

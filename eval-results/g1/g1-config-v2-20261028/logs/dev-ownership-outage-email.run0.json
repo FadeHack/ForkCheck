@@ -1,0 +1,88 @@
+{
+  "runId": "g1-config-v2-20261028",
+  "run": 0,
+  "scenario": "dev-ownership-outage-email",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "who-sends",
+      "dimension": "owner"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-ownership-outage-email:cand:0",
+      "dimension": "owner",
+      "mismatch": "who-sends",
+      "probeId": "dev-ownership-outage-email:cand:0:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:4",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0",
+      "stem": "Suppose legal opens the draft on Tuesday evening and leaves no comment. On Wednesday the 4th, what should happen?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0",
+      "stem": "By Wednesday the 4th, who will have received a direct email about the outage?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0",
+      "stem": "An affected customer opens their billing page on Thursday evening to look for the outage credit. What will they find?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0",
+      "stem": "Once the customer email has gone out, what does Imani do in the ticket queue?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:0:t0",
+      "stem": "For \"The customer emails will be handled by tomorrow with plain language, the credit, and what we changed\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "split"
+      }
+    }
+  ],
+  "costUsd": 0.15000640000000004
+}

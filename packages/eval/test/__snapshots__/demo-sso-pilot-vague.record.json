@@ -146,10 +146,6 @@
       "meetingId": "demo-sso-pilot",
       "sourceRefs": [
         {
-          "kind": "confirmation",
-          "resolutionId": "demo-sso-pilot:cand:1:probe:0:split:res:0"
-        },
-        {
           "kind": "segment",
           "segmentId": "demo-sso-pilot:seg:3",
           "quote": "OK, so SSO is ready by Friday. Marco, that's yours?",
@@ -168,11 +164,11 @@
         "Dana"
       ],
       "absent": [],
-      "recheck": "not_conclusive",
-      "splitId": "demo-sso-pilot:cand:1:probe:0:split",
+      "recheck": "failed",
+      "splitId": "demo-sso-pilot:cand:0:t0:split",
       "deadline": null,
-      "category": "confirmed",
-      "text": "SSO is done by Friday."
+      "category": "unresolved",
+      "text": "A recheck found different readings of: SSO is done by Friday."
     },
     {
       "id": "demo-sso-pilot:item:7",
@@ -194,11 +190,11 @@
       "confirmedBy": [],
       "absent": [],
       "recheck": "not_run",
-      "splitId": "demo-sso-pilot:cand:3:probe:0:split",
+      "splitId": "demo-sso-pilot:cand:2:t0:split",
       "deadline": null,
       "category": "unresolved",
       "text": "Left open by agreement (scope): User provisioning will be covered in the pilot."
     }
   ],
-  "proseDraft": "SSO being done by Friday was confirmed by Priya, Marco and Dana, with a recheck that was not conclusive. Whether user provisioning will be covered in the pilot is still open.\n\nConfirmed by participants\n- It was confirmed by Priya, Marco, and Dana that SSO is done by Friday, with a recheck result of not conclusive.\n\nUnresolved\n- The question of covering user provisioning in the pilot is still open for scope reasons.\n\nStated in the meeting\n- It was stated that SSO is ready by Friday and asked if that is Marco's.\n- It was stated that it would be ready by Friday.\n- It was stated that they would be told on Friday.\n- It was stated that user provisioning should be covered in the pilot.\n- It was stated that it was fine.\n- It was stated that it would be put in the pilot plan."
+  "proseDraft": "No item was confirmed. SSO being done by Friday is still open after a failed recheck with different readings, and covering user provisioning in the pilot is still open on scope.\n\nUnresolved\n- It is still open whether SSO is done by Friday because the recheck failed with different readings.\n- It is still open whether user provisioning will be covered in the pilot, left open on scope.\n\nStated in the meeting\n- Someone asked if Marco would have SSO ready by Friday.\n- Someone said they would have it ready by Friday.\n- Someone said they would tell them on Friday.\n- Someone suggested covering user provisioning in the pilot.\n- Someone said the suggestion was fine with them.\n- Someone said they would put it in the pilot plan."
 }

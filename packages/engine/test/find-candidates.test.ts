@@ -92,7 +92,7 @@ describe("findCandidates", () => {
   it("sends the versioned prompt with item IDs, quotes and a named transcript", async () => {
     const { model, trace } = await run([]);
     const [req] = model.requests;
-    expect(req).toMatchObject({ stage: "findCandidates", promptVersion: "findCandidates.v1" });
+    expect(req).toMatchObject({ stage: "findCandidates", promptVersion: "findCandidates.v2" });
     const user = req!.messages[1]!.content;
     expect(user).toBe(findCandidatesUserMessage(input));
     expect(user).toContain(

@@ -147,7 +147,7 @@
       "sourceRefs": [
         {
           "kind": "confirmation",
-          "resolutionId": "demo-sso-pilot:cand:1:probe:0:split:res:0"
+          "resolutionId": "demo-sso-pilot:cand:0:t0:split:res:0"
         },
         {
           "kind": "segment",
@@ -169,7 +169,7 @@
       ],
       "absent": [],
       "recheck": "passed",
-      "splitId": "demo-sso-pilot:cand:1:probe:0:split",
+      "splitId": "demo-sso-pilot:cand:0:t0:split",
       "deadline": null,
       "category": "confirmed",
       "text": "SSO with admin roles is live in production for the pilot customer by Friday 2026-10-30, 10:00 ET. Firm."
@@ -194,7 +194,7 @@
       "confirmedBy": [],
       "absent": [],
       "recheck": "not_run",
-      "splitId": "demo-sso-pilot:cand:3:probe:0:split",
+      "splitId": "demo-sso-pilot:cand:2:t0:split",
       "deadline": null,
       "category": "unresolved",
       "text": "Left open by agreement (scope): User provisioning will be covered in the pilot."

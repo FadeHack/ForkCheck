@@ -1,0 +1,56 @@
+{
+  "runId": "g1-config-v2-20261028",
+  "run": 1,
+  "scenario": "dev-deadline-next-friday",
+  "tier": "config",
+  "planted": [
+    {
+      "id": "which-friday",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "stem": "For \"Kwame owns the questionnaire, back to them\", what has to exist by \"next Friday\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0",
+      "stem": "When the questionnaire is returned, what will the data residency response cover?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0",
+      "stem": "For \"Rosa will ask procurement whether they want the certificate itself or just the coverage amounts\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.1474243
+}
