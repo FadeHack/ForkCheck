@@ -1,5 +1,5 @@
 import { EnvError, loadEnv, loadLocalEnvFile } from "@forkcheck/config";
-import { migrateDatabase } from "../src/index";
+import { migrateDatabase } from "../src/migrate";
 
 loadLocalEnvFile();
 

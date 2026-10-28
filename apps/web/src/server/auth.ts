@@ -27,7 +27,7 @@ function bearerToken(req: Request): string | null {
   return match?.[1] ?? null;
 }
 
-async function guarded(req: Request, run: () => Promise<Response>): Promise<Response> {
+export async function guarded(req: Request, run: () => Promise<Response>): Promise<Response> {
   try {
     return await run();
   } catch (error) {
