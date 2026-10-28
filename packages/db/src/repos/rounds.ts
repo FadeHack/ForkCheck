@@ -155,4 +155,26 @@ export class RoundRepo {
       .set({ closedAt: new Date(closedAt), closeReason: reason })
       .where(eq(t.round.id, id));
   }
+
+  /** Closes the round if it is still open; false means another request closed it first. */
+  async closeIfOpen(
+    id: string,
+    closedAt: string,
+    reason: NonNullable<Round["closeReason"]>,
+  ): Promise<boolean> {
+    const rows = await this.db
+      .update(t.round)
+      .set({ closedAt: new Date(closedAt), closeReason: reason })
+      .where(and(eq(t.round.id, id), isNull(t.round.closedAt)))
+      .returning({ id: t.round.id });
+    return rows.length > 0;
+  }
+
+  /** Stores the model's mapping of a write-in; null leaves it unmapped. */
+  async mapWriteIn(answerId: string, mappedOptionId: string | null): Promise<void> {
+    await this.db
+      .update(t.answer)
+      .set({ mappedOptionId, mappedByModel: mappedOptionId !== null })
+      .where(eq(t.answer.id, answerId));
+  }
 }

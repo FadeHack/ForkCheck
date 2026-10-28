@@ -154,33 +154,32 @@ const toParticipantProbe = (p: Probe): ParticipantProbe => ({
 });
 
 /**
- * Splits of closed rounds with every answer, identical for every viewer. Options keep their
- * stored order here so all participants compare the same list.
+ * Revealed splits, in question rank order, with every answer: the same for every viewer.
+ * Options keep their stored order here so everyone compares the same list.
  */
-export async function revealedSplits(deps: Deps, meetingId: string): Promise<RevealedSplit[]> {
+export async function revealedSplits(
+  deps: Deps,
+  meetingId: string,
+  roundId?: string,
+): Promise<RevealedSplit[]> {
   const splits = await deps.splits.list(meetingId);
   if (splits.length === 0) return [];
-  const [rounds, probes] = await Promise.all([
-    deps.rounds.list(meetingId),
-    deps.meetings.probes(meetingId),
-  ]);
-  const closed = new Set(rounds.filter((r) => r.closedAt !== null).map((r) => r.id));
-  const byId = new Map(probes.map((p) => [p.probe.id, p]));
-  const shown = splits.filter((s) => {
-    const roundId = byId.get(s.probeId)?.roundId;
-    return roundId != null && closed.has(roundId);
-  });
+  const probes = await deps.meetings.probes(meetingId);
+  const byProbe = new Map(splits.map((s) => [s.probeId, s]));
+  const shown = probes
+    .filter((p) => byProbe.has(p.probe.id) && (roundId === undefined || p.roundId === roundId))
+    .map((p) => ({ probe: p.probe, split: byProbe.get(p.probe.id)! }));
   const [answers, resolutions] = await Promise.all([
-    deps.rounds.answers(shown.map((s) => s.probeId)),
-    deps.splits.resolutions(shown.map((s) => s.id)),
+    deps.rounds.answers(shown.map((s) => s.probe.id)),
+    deps.splits.resolutions(shown.map((s) => s.split.id)),
   ]);
   const confirmations = await deps.splits.confirmations(resolutions.map((r) => r.id));
-  return shown.map((split) => {
+  return shown.map(({ probe, split }) => {
     const own = resolutions.filter((r) => r.splitId === split.id);
     return {
       split,
-      probe: toParticipantProbe(byId.get(split.probeId)!.probe),
-      answers: answers.filter((a) => a.probeId === split.probeId),
+      probe: toParticipantProbe(probe),
+      answers: answers.filter((a) => a.probeId === probe.id),
       resolutions: own,
       confirmations: confirmations.filter((c) => own.some((r) => r.id === c.resolutionId)),
     };

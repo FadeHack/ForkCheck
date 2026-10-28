@@ -144,6 +144,19 @@ export class MeetingRepo {
     await this.db.update(t.meeting).set({ status, error }).where(eq(t.meeting.id, id));
   }
 
+  /**
+   * Clears the meeting's error if it is still `error`. A retry after a failed step calls this
+   * first, so only one of two concurrent retries resumes.
+   */
+  async claimError(id: string, error: string): Promise<boolean> {
+    const rows = await this.db
+      .update(t.meeting)
+      .set({ error: null })
+      .where(and(eq(t.meeting.id, id), eq(t.meeting.error, error)))
+      .returning({ id: t.meeting.id });
+    return rows.length > 0;
+  }
+
   async setParticipantStatus(
     meetingId: string,
     participantId: string,
