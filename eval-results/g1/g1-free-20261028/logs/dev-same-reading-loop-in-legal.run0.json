@@ -1,0 +1,77 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 0,
+  "scenario": "dev-same-reading-loop-in-legal",
+  "tier": "free",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:0",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:0:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:1:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:2:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:3:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:2:probe:0",
+      "stem": "Legal says on a call that the 48-hour wording looks fine, but sends nothing in writing. What happens next?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:3:probe:0",
+      "stem": "If Owen speaks with the privacy officer and they suggest a revised breach-notice timeline, what happens next?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:1:probe:0",
+      "stem": "It's Wednesday the 28th and Owen is pulling together what goes to legal. What is the expectation for Bashir's revised subprocessor paperwork?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:4:probe:0",
+      "stem": "If Bashir sends Chiara the revised internal list on Wednesday the 28th, and the approved version goes to Larkspur after legal review on Friday the 30th, when does the public listing go live?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:0:probe:0",
+      "stem": "If Bashir's revised list has not arrived by the end of Tuesday the 27th, what has legal received from Chiara by then?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.16145305000000004
+}

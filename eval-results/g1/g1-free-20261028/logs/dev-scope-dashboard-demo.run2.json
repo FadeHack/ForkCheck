@@ -1,0 +1,100 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 2,
+  "scenario": "dev-scope-dashboard-demo",
+  "tier": "free",
+  "planted": [
+    {
+      "id": "which-dashboard",
+      "dimension": "scope"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-scope-dashboard-demo:cand:0",
+      "dimension": "scope",
+      "mismatch": "which-dashboard",
+      "probeId": "dev-scope-dashboard-demo:cand:0:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:3:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:4:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:5:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:6",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:6:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:7",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:7:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:5:probe:0",
+      "stem": "During the demo to Halvorsen on Thursday the 5th, Halvorsen asks what the renewal will cost. What happens next?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:0:probe:0",
+      "stem": "When Oskar shares his screen with Halvorsen on Thursday the 5th, what will he show?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0",
+      "stem": "Before Thursday's demo, Gabriel looks for the Halvorsen material he requested. What does he expect to find?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:3:probe:0",
+      "stem": "When the scorecard views are shown to Halvorsen on Thursday the 5th, what will they look like?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0",
+      "stem": "When the team runs through the demo internally on Wednesday the 4th, what will be true about the scorecard screens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.19483984999999998
+}
