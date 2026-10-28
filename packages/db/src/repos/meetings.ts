@@ -98,12 +98,13 @@ export class MeetingRepo {
     return row ? toMeeting(row) : null;
   }
 
-  async findByOrganizerTokenHash(hash: string): Promise<Meeting | null> {
+  /** The stored hash, so the caller can compare in constant time. */
+  async organizerTokenHash(id: string): Promise<string | null> {
     const [row] = await this.db
-      .select()
+      .select({ hash: t.meeting.organizerTokenHash })
       .from(t.meeting)
-      .where(eq(t.meeting.organizerTokenHash, hash));
-    return row ? toMeeting(row) : null;
+      .where(eq(t.meeting.id, id));
+    return row?.hash ?? null;
   }
 
   async findParticipantByTokenHash(hash: string): Promise<Participant | null> {

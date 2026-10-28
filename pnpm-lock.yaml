@@ -75,6 +75,9 @@ importers:
         specifier: ^4.6.7
         version: 4.6.7
     devDependencies:
+      '@electric-sql/pglite':
+        specifier: 0.5.9
+        version: 0.5.9
       '@types/react':
         specifier: ^19.3.0
         version: 19.3.0
