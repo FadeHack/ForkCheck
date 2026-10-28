@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "id": "rec-analytics-renewal",
+  "title": "Renegotiate the analytics contract",
+  "set": "dev",
+  "category": "aligned",
+  "heldAt": "2026-10-27T15:00:00Z",
+  "timezone": "UTC",
+  "participants": ["Nadia", "Tomasz"],
+  "transcript": "[00:00] Nadia: The analytics contract renews on November 30th. Do we keep them?\n[00:07] Tomasz: Usage is down. Only the growth team still logs in every week.\n[00:14] Nadia: Then let's renegotiate instead of renewing as is. Can you get a quote for ten seats instead of twenty-five?\n[00:24] Tomasz: Sure. I'll ask their account manager for the ten-seat price by Thursday.\n[00:31] Nadia: If it's under eight thousand a year, we sign. If not, we look at alternatives.\n[00:39] Tomasz: Under eight thousand, got it. Should I give them notice that we might not renew?\n[00:46] Nadia: Yes, the contract needs thirty days' notice, so send it before October 31st.\n[00:52] Tomasz: I'll send the notice tomorrow and copy you.\n[00:56] Nadia: Thanks. And export last year's dashboards in case we switch.\n[01:01] Tomasz: Will do. I'll put the exports in the shared drive.\n",
+  "expectedDecisions": [
+    {
+      "id": "get-quote",
+      "kind": "commitment",
+      "statement": "Tomasz asks the account manager for a ten-seat quote.",
+      "owner": "Tomasz",
+      "deadline": "Thursday",
+      "quotes": [
+        "Can you get a quote for ten seats instead of twenty-five?",
+        "I'll ask their account manager for the ten-seat price by Thursday."
+      ]
+    },
+    {
+      "id": "sign-threshold",
+      "kind": "decision",
+      "statement": "Sign if the ten-seat price is under eight thousand a year; otherwise look at alternatives.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["If it's under eight thousand a year, we sign."]
+    },
+    {
+      "id": "send-notice",
+      "kind": "commitment",
+      "statement": "Tomasz sends notice that the contract might not renew, before October 31st.",
+      "owner": "Tomasz",
+      "deadline": "before October 31st",
+      "quotes": ["send it before October 31st.", "I'll send the notice tomorrow and copy you."]
+    },
+    {
+      "id": "export-dashboards",
+      "kind": "commitment",
+      "statement": "Tomasz exports last year's dashboards to the shared drive.",
+      "owner": "Tomasz",
+      "deadline": null,
+      "quotes": [
+        "export last year's dashboards in case we switch.",
+        "I'll put the exports in the shared drive."
+      ]
+    }
+  ],
+  "briefs": [],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": [
+      "Nadia: \"Can you get a quote for ten seats instead of twenty-five?\"",
+      "Nadia: \"If it's under eight thousand a year, we sign.\"",
+      "Nadia: \"send it before October 31st.\"",
+      "Nadia: \"export last year's dashboards in case we switch.\""
+    ],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}

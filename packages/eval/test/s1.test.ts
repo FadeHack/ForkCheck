@@ -37,6 +37,31 @@ describe("normalizeWords", () => {
 });
 
 describe("clock times", () => {
+  it("write spoken numbers and ordinals as digits", () => {
+    expect(normalizeWords("Tuesday the third, the 3rd, thirty-first or thirty first")).toEqual([
+      "tuesday",
+      "the",
+      "3",
+      "the",
+      "3",
+      "31",
+      "or",
+      "31",
+    ]);
+    expect(normalizeWords("six to eight, eight thousand, a ten-seat quote, 20 min")).toEqual([
+      "6",
+      "to",
+      "8",
+      "8",
+      "thousand",
+      "a",
+      "10-seat",
+      "quote",
+      "20",
+      "min",
+    ]);
+  });
+
   it("drop the colon so 17:00 and 1700 compare equal", () => {
     expect(normalizeWords("by 17:00 UTC, 9:30")).toEqual(["by", "1700", "utc", "930"]);
   });
@@ -225,6 +250,21 @@ describe("commitment survival", () => {
     const name = [{ term: "jun", kind: "name" as const, scriptIdx: 1, speaker: "Kwame" }];
     const longer = [hyp("B", 3400, 7000, "June owns it.")];
     expect(commitmentSurvival(name, truth, longer, mapping).survived).toBe(0);
+  });
+
+  it("matches spoken numbers, whole-hour times and possessives", () => {
+    const mapping = { B: "Kwame" };
+    const at = (term: string) => [
+      { term, kind: "number" as const, scriptIdx: 1, speaker: "Kwame" },
+    ];
+    const said = (text: string) => [hyp("B", 3400, 7000, text)];
+    const survived = (term: string, text: string) =>
+      commitmentSurvival(at(term), truth, said(text), mapping).survived;
+    expect(survived(normalizeWords("31st")[0]!, "before October thirty first")).toBe(1);
+    expect(survived(normalizeWords("17:00")[0]!, "Tuesday, seventeen UTC")).toBe(1);
+    expect(survived(normalizeWords("17:00")[0]!, "Tuesday, seven UTC")).toBe(0);
+    expect(survived("year's", "export last year dashboards")).toBe(1);
+    expect(survived(normalizeWords("ten-seat")[0]!, "the ten seat price")).toBe(1);
   });
 
   it("requires the term in the right speaker's overlapping turn", () => {

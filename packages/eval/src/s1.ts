@@ -8,19 +8,79 @@ export interface HypothesisTurn {
   speaker?: string | undefined;
 }
 
+const UNIT_WORDS =
+  "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(
+    " ",
+  );
+const UNIT_ORDINALS =
+  "zeroth first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth thirteenth fourteenth fifteenth sixteenth seventeenth eighteenth nineteenth".split(
+    " ",
+  );
+const TEN_WORDS = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split(" ");
+const TEN_ORDINALS =
+  "_ _ twentieth thirtieth fortieth fiftieth sixtieth seventieth eightieth ninetieth".split(" ");
+
+function unitValue(word: string): number | undefined {
+  const i = Math.max(UNIT_WORDS.indexOf(word), UNIT_ORDINALS.indexOf(word));
+  return i >= 0 ? i : undefined;
+}
+function tenValue(word: string): number | undefined {
+  const i = Math.max(TEN_WORDS.indexOf(word), TEN_ORDINALS.indexOf(word));
+  return i >= 2 ? i * 10 : undefined;
+}
+
+/**
+ * Spoken numbers as digits, since ASR writes either ("third", "3rd" and "3" all become "3";
+ * "thirty first" and "thirty-first" become "31"). Scale words stay words ("8 thousand"), so a
+ * quote normalized word by word matches the transcript normalized as a whole.
+ */
+function numbersAsDigits(words: readonly string[]): string[] {
+  const out: string[] = [];
+  const tokens = words.flatMap((w) => {
+    const [a, b, ...rest] = w.split("-");
+    if (rest.length > 0 || !a || !b) return [w];
+    if (tenValue(a) !== undefined && unitValue(b) !== undefined) return [a, b];
+    // "ten-seat" → "10-seat", so it still matches "ten seat" written as two words.
+    return [[a, b].map((part) => String(unitValue(part) ?? tenValue(part) ?? part)).join("-")];
+  });
+  for (let i = 0; i < tokens.length; i++) {
+    const word = tokens[i]!;
+    const ordinal = /^(\d+)(st|nd|rd|th)$/.exec(word);
+    if (ordinal) {
+      out.push(ordinal[1]!);
+      continue;
+    }
+    let value = unitValue(word) ?? tenValue(word);
+    if (value === undefined) {
+      out.push(word);
+      continue;
+    }
+    const next = tokens[i + 1];
+    const unit = next === undefined ? undefined : unitValue(next);
+    if (value >= 20 && unit !== undefined && unit > 0 && unit < 10) {
+      value += unit;
+      i++;
+    }
+    out.push(String(value));
+  }
+  return out;
+}
+
 /**
  * Lowercase words; punctuation dropped, inner apostrophes and hyphens kept ("i'll", "mm-hm").
- * Clock times lose their colon, since ASR writes "17:00" as "1700".
+ * Clock times lose their colon, since ASR writes "17:00" as "1700"; spoken numbers become digits.
  */
 export function normalizeWords(text: string): string[] {
-  return text
-    .toLowerCase()
-    .replace(/[’‘]/g, "'")
-    .replace(/(\d):(\d\d)\b/g, "$1$2")
-    .replace(/[^\p{L}\p{N}'\- ]+/gu, " ")
-    .split(/\s+/)
-    .map((w) => w.replace(/^['-]+|['-]+$/g, ""))
-    .filter(Boolean);
+  return numbersAsDigits(
+    text
+      .toLowerCase()
+      .replace(/[’‘]/g, "'")
+      .replace(/(\d):(\d\d)\b/g, "$1$2")
+      .replace(/[^\p{L}\p{N}'\- ]+/gu, " ")
+      .split(/\s+/)
+      .map((w) => w.replace(/^['-]+|['-]+$/g, ""))
+      .filter(Boolean),
+  );
 }
 
 export interface WerResult {
@@ -257,14 +317,22 @@ export interface SurvivalResult {
   lost: CommitmentTerm[];
 }
 
-/** True when `term` is one word of `words`, or 2–3 consecutive words written together ("sub processor"). */
+const bare = (word: string) => word.replace(/-/g, "").replace(/'s$/, "");
+
+/**
+ * True when `term` is one word of `words`, or 2–3 consecutive words written together
+ * ("sub processor", "5 45"). Possessives match the plain word, and a whole-hour time
+ * ("1700") matches its spoken hour ("17").
+ */
 function hasTerm(words: readonly string[], term: string): boolean {
+  const hour = /^(\d{1,2})00$/.exec(term)?.[1];
+  const targets = [bare(term), ...(hour ? [hour] : [])];
   for (let i = 0; i < words.length; i++) {
     let joined = "";
     for (let n = 0; n < 3 && i + n < words.length; n++) {
-      joined += words[i + n]!.replace(/-/g, "");
-      if (joined === term.replace(/-/g, "")) return true;
-      if (joined.length >= term.length) break;
+      joined += bare(words[i + n]!);
+      if (targets.includes(joined)) return true;
+      if (joined.length >= bare(term).length) break;
     }
   }
   return false;

@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "id": "rec-postgres-upgrade",
+  "title": "Postgres upgrade window",
+  "set": "dev",
+  "category": "aligned",
+  "heldAt": "2026-11-02T10:00:00Z",
+  "timezone": "Europe/Berlin",
+  "participants": ["Amara", "Felix"],
+  "transcript": "[00:00] Amara: The Postgres upgrade. We agreed on a maintenance window, right?\n[00:05] Felix: Saturday the 7th, from 6 to 8 a.m. Central European Time.\n[00:10] Amara: That's when traffic is lowest. Who's running it?\n[00:14] Felix: Me. Siobhan is backup if something goes wrong.\n[00:18] Amara: What's the rollback plan?\n[00:20] Felix: We take a snapshot at 5:45. If the upgrade fails, we restore it. That takes about twenty minutes.\n[00:26] Amara: Then the status page goes up on Thursday, two days before.\n[00:31] Felix: I'll post it Thursday and email the five biggest customers directly.\n[00:35] Amara: Good. And send me a short summary on Monday, even if everything goes fine.\n[00:41] Felix: Will do. Monday, summary to you.\n",
+  "expectedDecisions": [
+    {
+      "id": "run-upgrade",
+      "kind": "commitment",
+      "statement": "Felix runs the Postgres upgrade on Saturday the 7th, 6 to 8 a.m. CET, with Siobhan as backup.",
+      "owner": "Felix",
+      "deadline": "Saturday the 7th, 6 to 8 a.m. CET",
+      "quotes": [
+        "Saturday the 7th, from 6 to 8 a.m. Central European Time.",
+        "Me. Siobhan is backup if something goes wrong."
+      ]
+    },
+    {
+      "id": "rollback",
+      "kind": "decision",
+      "statement": "Take a snapshot at 5:45 and restore it if the upgrade fails.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["We take a snapshot at 5:45. If the upgrade fails, we restore it."]
+    },
+    {
+      "id": "status-page",
+      "kind": "commitment",
+      "statement": "Felix posts the status page on Thursday and emails the five biggest customers.",
+      "owner": "Felix",
+      "deadline": "Thursday",
+      "quotes": [
+        "the status page goes up on Thursday, two days before.",
+        "I'll post it Thursday and email the five biggest customers directly."
+      ]
+    },
+    {
+      "id": "summary",
+      "kind": "commitment",
+      "statement": "Felix sends Amara a short summary on Monday.",
+      "owner": "Felix",
+      "deadline": "Monday",
+      "quotes": ["send me a short summary on Monday", "Monday, summary to you."]
+    }
+  ],
+  "briefs": [],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": [
+      "Felix: \"Saturday the 7th, from 6 to 8 a.m. Central European Time.\"",
+      "Felix: \"We take a snapshot at 5:45. If the upgrade fails, we restore it.\"",
+      "Amara: \"the status page goes up on Thursday, two days before.\"",
+      "Amara: \"send me a short summary on Monday\""
+    ],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}
