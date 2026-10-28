@@ -251,7 +251,8 @@ describe("repositories", () => {
     const { meetings, rounds, splits } = await seed(db);
 
     expect(await meetings.get(M)).toEqual(meeting);
-    expect(await meetings.findByOrganizerTokenHash("org-hash")).toEqual(meeting);
+    expect(await meetings.organizerTokenHash(M)).toBe("org-hash");
+    expect(await meetings.organizerTokenHash("nope")).toBeNull();
     expect(await meetings.findParticipantByTokenHash("p-hash-1")).toEqual(ben);
     expect(await meetings.participants(M)).toEqual(people);
     expect(await meetings.segments(M)).toEqual(segments);

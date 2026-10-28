@@ -5,6 +5,18 @@ import type { NextConfig } from "next";
 loadLocalEnvFile();
 
 const nextConfig: NextConfig = {
+  // Participant pages carry their token in the path.
+  async headers() {
+    return [
+      {
+        source: "/p/:path*",
+        headers: [
+          { key: "Referrer-Policy", value: "no-referrer" },
+          { key: "Cache-Control", value: "no-store" },
+        ],
+      },
+    ];
+  },
   transpilePackages: [
     "@forkcheck/ai",
     "@forkcheck/asr",
