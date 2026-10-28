@@ -8,3 +8,4 @@ export * from "./shuffle";
 export * from "./divergence";
 export * from "./resolution";
 export * from "./record";
+export * from "./templates";
