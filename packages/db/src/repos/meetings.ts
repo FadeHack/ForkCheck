@@ -8,7 +8,7 @@ import type {
   Probe,
   Segment,
 } from "@forkcheck/core";
-import { and, asc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, inArray, isNull } from "drizzle-orm";
 import { toIso, toIsoOrNull, type Db } from "../client";
 import * as t from "../schema";
 
@@ -202,6 +202,25 @@ export class MeetingRepo {
       candidates,
       probes: probeRows.map(toProbe),
     };
+  }
+
+  /** Every probe of the meeting, diagnostic and recheck, with the round it was published in. */
+  async probes(meetingId: string): Promise<{ probe: Probe; roundId: string | null }[]> {
+    const rows = await this.db
+      .select()
+      .from(t.probe)
+      .where(eq(t.probe.meetingId, meetingId))
+      .orderBy(asc(t.probe.id));
+    return rows.map((r) => ({ probe: toProbe(r), roundId: r.roundId }));
+  }
+
+  /** Storage keys of audio not yet deleted, so a meeting delete can remove the files too. */
+  async audioKeys(meetingId: string): Promise<string[]> {
+    const rows = await this.db
+      .select({ key: t.audioAsset.storageKey })
+      .from(t.audioAsset)
+      .where(and(eq(t.audioAsset.meetingId, meetingId), isNull(t.audioAsset.deletedAt)));
+    return rows.map((r) => r.key);
   }
 
   /** Child rows go with it through `on delete cascade`. */

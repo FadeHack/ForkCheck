@@ -256,6 +256,10 @@ describe("repositories", () => {
     expect(await meetings.findParticipantByTokenHash("p-hash-1")).toEqual(ben);
     expect(await meetings.participants(M)).toEqual(people);
     expect(await meetings.segments(M)).toEqual(segments);
+    expect(await meetings.probes(M)).toEqual([
+      { probe: { ...probe, status: "published" }, roundId: "r0" },
+    ]);
+    expect(await meetings.audioKeys(M)).toEqual(["k"]);
     expect(await meetings.analysis(M)).toEqual({
       decisions: [decision],
       candidates: [candidate],
