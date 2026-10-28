@@ -1,0 +1,100 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 2,
+  "scenario": "dev-ownership-outage-email",
+  "tier": "assisted",
+  "planted": [
+    {
+      "id": "who-sends",
+      "dimension": "owner"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-ownership-outage-email:cand:0",
+      "dimension": "owner",
+      "mismatch": "who-sends",
+      "probeId": null
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:4",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:5",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:6",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:6:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:7",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:7:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-ownership-outage-email:cand:6:probe:0",
+      "stem": "What has to happen before \"Felix will publish the postmortem on the blog after legal reads it\" can start?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0",
+      "stem": "For \"Felix will have the credits applied\", what has to exist by Thursday, November 5?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0",
+      "stem": "Which check must pass before \"Felix will have the credits applied by Thursday\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0",
+      "stem": "For \"The group will handle the customer emails, using plain language and including the credit and what was changed\", what has to exist by Wednesday, November 4?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:7:probe:0",
+      "stem": "When \"Felix will add a step for it to the on-call checklist\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.17173175000000002
+}

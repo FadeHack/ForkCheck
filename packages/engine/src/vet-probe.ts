@@ -1,4 +1,4 @@
-import { lintProbe, type Probe, type Segment } from "@forkcheck/core";
+import { lintProbe, templateProbe, type Probe, type Segment } from "@forkcheck/core";
 import type { Drop, GenerateProbesInput, ModelPort, StageTrace } from "./contracts";
 import { critique } from "./stages/critique";
 import { generateProbesWith, type ProbeFeedback } from "./stages/generate-probes";
@@ -24,6 +24,7 @@ export const MAX_GENERATIONS = 2;
  * Lint runs first so the critic is never paid for a probe the code already rejects.
  */
 export async function vetProbe(input: VetProbeInput, model: ModelPort): Promise<VetProbeResult> {
+  if (input.tier === "template") return vetTemplate(input);
   const { segments, ...generateInput } = input;
   const targets = [{ decision: input.decision.decision, dimension: input.candidate.dimension }];
   const traces: StageTrace[] = [];
@@ -61,4 +62,22 @@ export async function vetProbe(input: VetProbeInput, model: ModelPort): Promise<
     }
   }
   return { probe: null, traces, drops };
+}
+
+/**
+ * T0: the template is fixed text from code, so there is nothing for the critic to judge and
+ * nothing to rewrite; a template that fails lint is dropped.
+ */
+function vetTemplate(input: VetProbeInput): VetProbeResult {
+  const probe = templateProbe({ ...input, decision: input.decision.decision });
+  if (!probe)
+    return { probe: null, traces: [], drops: [{ reason: "no_template", item: input.candidate }] };
+  if (probe.lint.length > 0) {
+    return {
+      probe: null,
+      traces: [],
+      drops: [{ reason: "template_failed_lint", item: { probe, findings: probe.lint } }],
+    };
+  }
+  return { probe, traces: [], drops: [] };
 }

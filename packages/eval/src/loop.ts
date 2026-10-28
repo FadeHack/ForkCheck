@@ -6,6 +6,7 @@ import {
   initialResolutionState,
   optionOrder,
   selectProbes,
+  tierFor,
   validateRecord,
   type Candidate,
   type DecisionRecord,
@@ -13,11 +14,13 @@ import {
   type DivergenceAnswer,
   type DivergenceOutcome,
   type Probe,
+  type ProbeTier,
   type RecordInput,
   type RecordValidation,
   type ResolutionEvent,
   type ResolutionState,
   type Segment,
+  type TierConfig,
 } from "@forkcheck/core";
 import {
   draftRecordProse,
@@ -126,7 +129,7 @@ export interface ProbeRounds {
 export async function probeRounds(
   s: Scenario,
   model: ModelPort,
-  { segments, tier = "free" }: { segments?: Segment[]; tier?: Probe["tier"] } = {},
+  { segments, tier = "free" }: { segments?: Segment[]; tier?: ProbeTier | TierConfig } = {},
 ): Promise<ProbeRounds> {
   const stages: StageTrace[] = [];
   const input = { ...scenarioExtractInput(s), ...(segments ? { segments } : {}) };
@@ -154,7 +157,7 @@ export async function probeRounds(
         participants: input.participants,
         decision,
         candidate,
-        tier,
+        tier: typeof tier === "string" ? tier : tierFor(candidate.dimension, tier),
         segments: input.segments,
       },
       model,

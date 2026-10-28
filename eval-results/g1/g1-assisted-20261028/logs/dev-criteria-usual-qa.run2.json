@@ -1,0 +1,88 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 2,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "assisted",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "criteria",
+      "mismatch": "what-usual-means",
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:3",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:4",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:4:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0",
+      "stem": "Which check must pass before \"Submit Release 4.2 on Wednesday if the usual QA pass is clean\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0",
+      "stem": "Which check must pass before \"Do the usual QA pass on the release build\" counts as done?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:5:probe:0",
+      "stem": "When \"Skip onboarding this round\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0",
+      "stem": "Who sees or uses \"Draft the release notes from the changelog and send them to you\" first, and in what form?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:4:probe:0",
+      "stem": "Which check must pass before \"Turn them on once the A/B setup is ready\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.15849074999999999
+}

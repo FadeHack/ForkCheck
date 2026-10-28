@@ -1,0 +1,66 @@
+{
+  "runId": "g1-template-20261028",
+  "run": 0,
+  "scenario": "dev-deadline-next-friday",
+  "tier": "template",
+  "planted": [
+    {
+      "id": "which-friday",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:0:t0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:4",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:5",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:6",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": null
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:t0",
+      "stem": "For \"Kwame owns the questionnaire, back to them\", if it lands two working days after \"next Friday\", how does that count?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.0895392
+}

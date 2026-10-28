@@ -1,0 +1,106 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 1,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "assisted",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:4:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:5",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:5:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:6",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:7",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:7:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:8",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:8:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0",
+      "stem": "Which check must pass before \"Submit Wednesday if the usual QA pass is clean\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0",
+      "stem": "When \"Do the usual QA pass on the release build\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:5:probe:0",
+      "stem": "What has to happen before \"Lead release notes with the rotation fix\" can start?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:8:probe:0",
+      "stem": "When \"Zara will skip onboarding this round\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0",
+      "stem": "For \"Submit if the usual QA pass is clean\", what has to exist by Wednesday, October 28?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.1771918
+}

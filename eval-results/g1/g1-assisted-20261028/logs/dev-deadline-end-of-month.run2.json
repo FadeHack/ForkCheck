@@ -1,0 +1,112 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 2,
+  "scenario": "dev-deadline-end-of-month",
+  "tier": "assisted",
+  "planted": [
+    {
+      "id": "end-of-month-firmness",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-end-of-month:cand:0",
+      "dimension": "deadline",
+      "mismatch": "end-of-month-firmness",
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:3:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:5",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:6",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:6:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:7",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:7:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:8",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:8:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:9",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:9:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0",
+      "stem": "For \"Tomasz will delete them from the sender config\", what has to exist by \"after a day of clean sends\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0",
+      "stem": "Which check must pass before \"Tomasz will delete them from the sender config after a day of clean sends\" counts as done?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:6:probe:0",
+      "stem": "When \"Tomasz will delete them from the sender config after a day of clean sends\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0",
+      "stem": "For \"The full switch-over to the new templates is aimed for\", what has to exist by \"end of month\"?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:8:probe:0",
+      "stem": "For \"Keep that wording frozen\", what has to exist by \"after this week\"?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.1766238
+}

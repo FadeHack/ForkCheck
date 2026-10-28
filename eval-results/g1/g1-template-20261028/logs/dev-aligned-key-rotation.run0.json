@@ -1,0 +1,44 @@
+{
+  "runId": "g1-template-20261028",
+  "run": 0,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "template",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:t0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:2",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:2:t0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:2:t0",
+      "stem": "For \"If a rotation breaks something, roll forward and do not restore the old key\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:t0",
+      "stem": "For \"Grace will check the provider dashboards and confirm the old keys show as revoked\", if it lands two working days after Wednesday, November 4, how does that count?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    }
+  ],
+  "costUsd": 0.05963819999999999
+}

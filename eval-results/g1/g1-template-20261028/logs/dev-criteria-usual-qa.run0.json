@@ -1,0 +1,48 @@
+{
+  "runId": "g1-template-20261028",
+  "run": 0,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "template",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:t0",
+      "stem": "For \"Do the usual QA pass on the release build\", who does it on the day it happens?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.07554269999999999
+}

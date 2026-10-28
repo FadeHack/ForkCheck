@@ -1,0 +1,82 @@
+{
+  "runId": "g1-assisted-20261028",
+  "run": 0,
+  "scenario": "dev-partial-pricing-page",
+  "tier": "assisted",
+  "planted": [
+    {
+      "id": "what-the-update-covers",
+      "dimension": "scope"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-partial-pricing-page:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:0:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:1:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:2:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:3:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-partial-pricing-page:cand:0:probe:0",
+      "stem": "For \"The pricing update is live\", what has to exist by Friday, November 13?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:1:probe:0",
+      "stem": "When \"Starter goes from twelve to fifteen, Team from twenty-nine to thirty-two, and enterprise stays as contact us\" is done, which of these is included?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:4:probe:0",
+      "stem": "For \"Elena will send the new copy to Jun\", what has to exist by the deadline?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:2:probe:0",
+      "stem": "Who sees or uses \"Jun will build the pricing update on a branch and send you a preview link on Monday\" first, and in what form?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:3:probe:0",
+      "stem": "What has to happen before \"Marisol will update the sales deck to match\" can start?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.14571475
+}
