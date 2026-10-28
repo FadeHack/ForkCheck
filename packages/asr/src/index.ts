@@ -37,3 +37,4 @@ export {
   type TranscribeResult,
   type TranscribeSpendLedger,
 } from "./client";
+export { toSegments, type AsrSegment, type AsrSegments, type ToSegmentsOptions } from "./segments";

@@ -1,0 +1,49 @@
+{
+  "sessionId": "03501e8d-ddf1-4570-a13c-5957743eead9",
+  "transcript": "Morning Marco. Let's lock the plan for the pricing pricing page. Sure. I can have the new copy ready by by Thursday afternoon. Great. Then we ship on Friday Friday after the legal review. Who is booking the legal review? I assumed you were. I'll book it today and send you the invite. Perfect. And done means the page is live not just merged.",
+  "audioDurationMs": 22560,
+  "turns": [
+    {
+      "turnId": 0,
+      "startMs": 60,
+      "endMs": 3820,
+      "transcript": "Morning Marco. Let's lock the plan for the pricing pricing page.",
+      "speaker": "A"
+    },
+    {
+      "turnId": 1,
+      "startMs": 3980,
+      "endMs": 7980,
+      "transcript": "Sure. I can have the new copy ready by by Thursday afternoon.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 2,
+      "startMs": 8460,
+      "endMs": 11980,
+      "transcript": "Great. Then we ship on Friday Friday after the legal review.",
+      "speaker": "A"
+    },
+    {
+      "turnId": 3,
+      "startMs": 12060,
+      "endMs": 15500,
+      "transcript": "Who is booking the legal review? I assumed you were.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 4,
+      "startMs": 15580,
+      "endMs": 17980,
+      "transcript": "I'll book it today and send you the invite.",
+      "speaker": "A"
+    },
+    {
+      "turnId": 5,
+      "startMs": 18220,
+      "endMs": 22060,
+      "transcript": "Perfect. And done means the page is live not just merged.",
+      "speaker": "B"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "sessionId": "synthetic-irregular",
+  "transcript": "Mm-hm. We ship Friday. Okay.",
+  "audioDurationMs": 9000,
+  "turns": [
+    {
+      "turnId": "t2",
+      "startMs": 4100.4,
+      "endMs": 6900.6,
+      "transcript": " We ship Friday. ",
+      "speaker": "B"
+    },
+    { "turnId": "t1", "startMs": 500, "endMs": 900, "transcript": "Mm-hm.", "speaker": "A" },
+    { "turnId": "t3", "startMs": 4100.4, "endMs": 4000, "transcript": "Okay.", "speaker": " " },
+    { "turnId": "t4", "startMs": 8000, "endMs": 8800, "transcript": "", "speaker": "C" }
+  ]
+}
