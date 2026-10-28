@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // The dev request log prints paths, and these paths contain participant tokens.
+  logging: { incomingRequests: { ignore: [/^\/(?:api\/)?p\//] } },
   transpilePackages: [
     "@forkcheck/ai",
     "@forkcheck/asr",

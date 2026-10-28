@@ -332,6 +332,30 @@ describe("repositories", () => {
     expect(await rounds.answers([probe.id])).toHaveLength(2);
   });
 
+  it("opens one round at a time and takes answers only while it is open", async () => {
+    const db = await createTestDb();
+    const { rounds } = await seed(db);
+    const r1 = {
+      id: "r1",
+      meetingId: M,
+      kind: "diagnostic" as const,
+      openedAt: "2026-10-27T19:00:00.000Z",
+      closedAt: null,
+      closeReason: null,
+    };
+    const both = await Promise.all([rounds.open(r1, []), rounds.open({ ...r1, id: "r2" }, [])]);
+    expect(both.sort()).toEqual([false, true]);
+    const opened = await rounds.openRound(M);
+    expect(opened).toEqual({ ...r1, id: opened!.id });
+    expect(await rounds.list(M)).toHaveLength(2);
+    expect(await rounds.open({ ...r1, id: "r3" }, [])).toBe(false);
+
+    // r0 closed in the seed: the answer is refused and the stored one is unchanged.
+    const late = { ...answers[0]!, id: "late", choice: "unsure" as const, optionId: null };
+    expect(await rounds.putAnswerIfOpen("r0", late)).toBeNull();
+    expect((await rounds.answers([probe.id]))[0]).toEqual(answers[0]);
+  });
+
   it("confirmations are idempotent", async () => {
     const db = await createTestDb();
     const { splits } = await seed(db);
