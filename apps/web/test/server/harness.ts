@@ -1,4 +1,4 @@
-import type { Meeting, Participant } from "@forkcheck/core";
+import type { Candidate, Dimension, Meeting, Participant, Probe } from "@forkcheck/core";
 import { createMemoryDb } from "@forkcheck/db/testing";
 import { afterAll, afterEach } from "vitest";
 import { createDeps, setDeps, type Deps } from "../../src/server/deps";
@@ -64,6 +64,70 @@ export async function seedMeeting(
     segments: [],
   });
   return { meeting, organizerToken, participants };
+}
+
+const DIMENSIONS: Dimension[] = ["owner", "deadline", "scope", "criteria", "dependency", "outcome"];
+
+/**
+ * A meeting after analysis: one decision, and `count` lint-clean draft questions with two
+ * options each, ranked in ID order. Status is `probing`.
+ */
+export async function seedDrafts(
+  deps: Deps,
+  id: string,
+  names = ["Ana", "Ben"],
+  count = 3,
+): Promise<SeededMeeting & { drafts: Probe[] }> {
+  const seeded = await seedMeeting(deps, id, names);
+  const decisionId = `${id}:dec:0`;
+  const candidates: Candidate[] = Array.from({ length: count }, (_, k) => ({
+    id: `${id}:cand:${k}`,
+    decisionId,
+    dimension: DIMENSIONS[k % DIMENSIONS.length]!,
+    readings: [
+      { id: `${id}:cand:${k}:r:0`, text: "staging" },
+      { id: `${id}:cand:${k}:r:1`, text: "production" },
+    ],
+    impact: { reversibility: "medium", blastRadius: "high", timeToImpact: "high" },
+  }));
+  const drafts: Probe[] = candidates.map((c, k) => ({
+    id: `${c.id}:probe:0`,
+    meetingId: id,
+    kind: "diagnostic",
+    candidateId: c.id,
+    splitId: null,
+    tier: "template",
+    stem: `Question ${k}: where does SSO run on Friday?`,
+    options: [
+      { id: `${c.id}:probe:0:opt:0`, text: "On staging" },
+      { id: `${c.id}:probe:0:opt:1`, text: "In production" },
+    ],
+    lint: [],
+    promptVersion: "template.v1",
+    status: "draft",
+  }));
+  await deps.meetings.saveAnalysis(id, {
+    decisions: [
+      {
+        decision: {
+          id: decisionId,
+          meetingId: id,
+          idx: 0,
+          kind: "decision",
+          statement: "Ship SSO on Friday",
+          ownerText: null,
+          deadlineText: "Friday",
+          ownerInferred: false,
+          deadlineInferred: false,
+          status: "ambiguous",
+        },
+        evidence: [],
+      },
+    ],
+    candidates,
+    probes: drafts,
+  });
+  return { ...seeded, meeting: { ...seeded.meeting, status: "probing" }, drafts };
 }
 
 type Handler<P> = (req: Request, ctx: { params: Promise<P> }) => Promise<Response>;

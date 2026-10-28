@@ -70,7 +70,7 @@ export const toProbe = (r: ProbeRow): Probe => ({
 });
 
 export const probeRow = (p: Probe): typeof t.probe.$inferInsert => ({ ...p });
-const probeOrder = [sql`${t.probe.rank} asc nulls last`, asc(t.probe.id)];
+export const probeOrder = [sql`${t.probe.rank} asc nulls last`, asc(t.probe.id)];
 
 const participantColumns = {
   id: t.participant.id,
