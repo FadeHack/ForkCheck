@@ -69,7 +69,7 @@ export async function createMeeting(
   };
 }
 
-/** Answers of probes in open rounds stay sealed, for the organizer too: only counts are returned. */
+/** Answers stay sealed until their split is saved, for the organizer too: only counts are returned. */
 export async function organizerState(deps: Deps, meeting: Meeting): Promise<OrganizerMeetingState> {
   const [participants, segments, analysis, probes, rounds, splits] = await Promise.all([
     deps.meetings.participants(meeting.id),
@@ -79,12 +79,11 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
     deps.rounds.list(meeting.id),
     deps.splits.list(meeting.id),
   ]);
-  const closedRounds = new Set(rounds.filter((r) => r.closedAt !== null).map((r) => r.id));
+  // A question's answers are revealed once its split exists, not when its round closes:
+  // write-ins are still being matched in between.
   const published = probes.filter((p) => p.roundId !== null);
   const answers = await deps.rounds.answers(published.map((p) => p.probe.id));
-  const revealedProbes = new Set(
-    published.filter((p) => closedRounds.has(p.roundId!)).map((p) => p.probe.id),
-  );
+  const revealedProbes = new Set(splits.map((s) => s.probeId));
   const active = participants.filter((p) => p.status === "active").length;
   const answerCounts: ProbeAnswerCount[] = published
     .filter((p) => p.probe.status !== "withdrawn" && !revealedProbes.has(p.probe.id))

@@ -10,6 +10,17 @@ export class SplitRepo {
     if (splits.length > 0) await this.db.insert(t.split).values(splits);
   }
 
+  /** Saves a round's splits and marks the meeting revealed, together. */
+  async saveReveal(meetingId: string, splits: Split[]): Promise<void> {
+    await this.db.transaction(async (tx) => {
+      if (splits.length > 0) await tx.insert(t.split).values(splits);
+      await tx
+        .update(t.meeting)
+        .set({ status: "revealed", error: null })
+        .where(eq(t.meeting.id, meetingId));
+    });
+  }
+
   async get(id: string): Promise<Split | null> {
     const [row] = await this.db.select().from(t.split).where(eq(t.split.id, id));
     return row ?? null;
