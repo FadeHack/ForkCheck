@@ -22,6 +22,11 @@ export const DELIVERABLE_OPTIONS = [
   "A working build on test data",
   "The live version on real data",
 ];
+export const THOROUGHNESS_OPTIONS = [
+  "A quick smoke test of the main flows",
+  "A full regression pass",
+  "A full regression plus extra checks for what changed",
+];
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -140,10 +145,19 @@ export function deliverableFormTemplate(input: TemplateInput): Probe {
   );
 }
 
+/** "Which check has to pass first?": a smoke test, a full regression, or a regression plus more. */
+export function checkThoroughnessTemplate(input: TemplateInput): Probe {
+  return build(
+    input,
+    `For "${task(input.decision.statement)}", which check has to pass first?`,
+    THOROUGHNESS_OPTIONS,
+  );
+}
+
 /**
- * The T0 probe for a candidate: owner, deadline firmness and deliverable form. Null for other dimensions
- * or a deadline candidate with no deadline phrase. The probe carries its lint findings; the
- * caller drops one that has any.
+ * The T0 probe for a candidate: owner, deadline firmness, deliverable form and check
+ * thoroughness. Null for other dimensions or a deadline candidate with no deadline phrase.
+ * The probe carries its lint findings; the caller drops one that has any.
  */
 export function templateProbe(input: TemplateInput): Probe | null {
   switch (input.candidate.dimension) {
@@ -153,6 +167,8 @@ export function templateProbe(input: TemplateInput): Probe | null {
       return deadlineFirmnessTemplate(input);
     case "scope":
       return deliverableFormTemplate(input);
+    case "criteria":
+      return checkThoroughnessTemplate(input);
     default:
       return null;
   }

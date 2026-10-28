@@ -206,7 +206,7 @@ describe("vetProbe at tier T0", () => {
 
   it("drops a dimension with no template", async () => {
     const r = await vetProbe(
-      { ...input, tier: "template", candidate: { ...candidate, dimension: "criteria" } },
+      { ...input, tier: "template", candidate: { ...candidate, dimension: "dependency" } },
       noModel(),
     );
     expect(r.probe).toBeNull();
