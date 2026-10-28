@@ -141,3 +141,31 @@ export function templateProbe(input: TemplateInput): Probe | null {
       return null;
   }
 }
+
+/**
+ * R§6.2 tier T1 stem for a candidate: fixed text from code with the item filled in; only
+ * the options come from the model. Null for owner, which has no T1 template.
+ */
+export function assistedStem(
+  input: Pick<TemplateInput, "meeting" | "decision" | "candidate">,
+): string | null {
+  const item = task(input.decision.statement);
+  switch (input.candidate.dimension) {
+    case "deadline": {
+      const deadline = input.decision.deadlineText?.trim();
+      if (!deadline) return `For "${item}", what has to exist by the deadline?`;
+      const when = deadlineWords(deadline, input.meeting.heldAt, input.meeting.timezone);
+      return `For "${withoutDeadline(item, deadline)}", what has to exist by ${when}?`;
+    }
+    case "scope":
+      return `When "${item}" is done, which of these is included?`;
+    case "criteria":
+      return `Which check must pass before "${item}" counts as done?`;
+    case "dependency":
+      return `What has to happen before "${item}" can start?`;
+    case "outcome":
+      return `Who sees or uses "${item}" first, and in what form?`;
+    case "owner":
+      return null;
+  }
+}

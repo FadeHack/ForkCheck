@@ -16,14 +16,21 @@ const loaded = new Map<string, Prompt>();
 // A leading HTML comment holds license and attribution notes; the model never sees it.
 const HEADER = /^\s*<!--[\s\S]*?-->/;
 
-/** Reads `prompts/<stage>.v<N>.md`. Wording changes get a new version file, never an edit. */
-export function loadPrompt(stage: StageName, version: number, dir = defaultPromptsDir): Prompt {
-  const name = `${stage}.v${version}`;
+/** Prompts a stage uses besides its own, e.g. tier T1 options under `generateProbes`. */
+export type PromptVariant = "generateProbesAssisted";
+
+/** Reads `prompts/<name>.v<N>.md`. Wording changes get a new version file, never an edit. */
+export function loadPrompt(
+  prompt: StageName | PromptVariant,
+  version: number,
+  dir = defaultPromptsDir,
+): Prompt {
+  const name = `${prompt}.v${version}`;
   const path = join(dir, `${name}.md`);
-  let prompt = loaded.get(path);
-  if (!prompt) {
-    prompt = { version: name, text: readFileSync(path, "utf8").replace(HEADER, "").trim() };
-    loaded.set(path, prompt);
+  let cached = loaded.get(path);
+  if (!cached) {
+    cached = { version: name, text: readFileSync(path, "utf8").replace(HEADER, "").trim() };
+    loaded.set(path, cached);
   }
-  return prompt;
+  return cached;
 }
