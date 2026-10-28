@@ -1,13 +1,15 @@
+import { appendFile, mkdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { EnvError, loadEnv, loadLocalEnvFile } from "@forkcheck/config";
+import { TranscribeClient } from "@forkcheck/asr";
+import { EnvError, loadEnv, loadLocalEnvFile, type Env } from "@forkcheck/config";
 import { FileCallLog, FileModelCache, FileSpendLedger, MetaProvider } from "@forkcheck/ai";
 
 const workspace = resolve(import.meta.dirname, "../../..");
 
-/** The live Meta provider, behind LIVE=1, the spend cap, the call log and the response cache. */
-export function liveMeta(): MetaProvider {
+/** The environment for a live run; exits unless LIVE=1 and the Meta key is set. */
+function liveEnv(): Env {
   loadLocalEnvFile();
-  let env;
+  let env: Env;
   try {
     env = loadEnv(process.env, { require: ["MODEL_API_KEY"] });
   } catch (error) {
@@ -19,6 +21,29 @@ export function liveMeta(): MetaProvider {
     console.error("Refusing to call the live API: set LIVE=1.");
     process.exit(1);
   }
+  return env;
+}
+
+/** Live Voice Transcribe, billed to the same Meta ledger, logged to var/transcribe-calls.jsonl. */
+export function liveTranscriber(): TranscribeClient {
+  const env = liveEnv();
+  const logPath = join(workspace, "var", "transcribe-calls.jsonl");
+  return new TranscribeClient({
+    apiKey: env.MODEL_API_KEY ?? "",
+    spendCapUsd: env.SPEND_CAP_USD,
+    ledger: new FileSpendLedger(join(workspace, "var", "spend.json")),
+    log: {
+      write: async (entry) => {
+        await mkdir(join(workspace, "var"), { recursive: true });
+        await appendFile(logPath, `${JSON.stringify(entry)}\n`);
+      },
+    },
+  });
+}
+
+/** The live Meta provider, behind LIVE=1, the spend cap, the call log and the response cache. */
+export function liveMeta(): MetaProvider {
+  const env = liveEnv();
   return new MetaProvider({
     apiKey: env.MODEL_API_KEY ?? "",
     spendCapUsd: env.SPEND_CAP_USD,

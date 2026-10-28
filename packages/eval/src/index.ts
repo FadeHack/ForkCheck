@@ -7,3 +7,4 @@ export * from "./simulate";
 export * from "./loop";
 export * from "./record-md";
 export * from "./audio-render";
+export * from "./s1";
