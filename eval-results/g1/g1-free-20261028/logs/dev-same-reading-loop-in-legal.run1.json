@@ -1,0 +1,77 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 1,
+  "scenario": "dev-same-reading-loop-in-legal",
+  "tier": "free",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:0",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:0:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:1:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:2:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:3:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:3:probe:0",
+      "stem": "If legal rejects 48 hours and Owen talks with the privacy officer about another window, what happens next?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:4:probe:0",
+      "stem": "Bashir circulates the draft list internally for legal review. What happens to the outward-facing listing at that point?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:2:probe:0",
+      "stem": "Legal replies that the 48-hour breach notice is acceptable and says nothing about subprocessors. What should the team do next?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:0:probe:0",
+      "stem": "If Bashir's updated list has not arrived by late on Tuesday the 27th, what will Chiara share with legal that day?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:1:probe:0",
+      "stem": "When will Bashir provide the subprocessor list for the legal handoff?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.16096449999999995
+}

@@ -1,0 +1,77 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 2,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "free",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:2:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:3",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:3:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:4",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0",
+      "stem": "Suppose Mateo applies the last secret change on Monday the 2nd. Which overnight result marks the rotation as finished?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:4:probe:0",
+      "stem": "After Mateo rotates the staging keys, the payments service starts failing on the new key. What happens next?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0",
+      "stem": "Mateo checks for Grace's update at 10:30 UTC on Wednesday the 4th before starting follow-on work. What will he find?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:3:probe:0",
+      "stem": "Mateo has revoked the first staging key and updated its CI secret on Monday the 2nd, but the nightly build covering it has not run yet. What will Grace see?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:2:probe:0",
+      "stem": "On Wednesday morning after checking the revocation status, where will Grace share the confirmation?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.13416805
+}

@@ -1,0 +1,82 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 1,
+  "scenario": "dev-ownership-outage-email",
+  "tier": "free",
+  "planted": [
+    {
+      "id": "who-sends",
+      "dimension": "owner"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-ownership-outage-email:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:0:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:1",
+      "dimension": "owner",
+      "mismatch": "who-sends",
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:4",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0",
+      "stem": "Legal has opened the draft but has not sent any approval yet. What does the agreement imply for the blog post?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0",
+      "stem": "On Wednesday the 4th, who will draft and send the customer email?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0",
+      "stem": "When the messages go out on Wednesday the 4th, who will be on the recipient list?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:0:probe:0",
+      "stem": "If a customer checks their balance at 9am on Thursday the 5th, what do you expect?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0",
+      "stem": "During the next outage, what will Felix's new checklist step require the on-call to do?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.13812420000000003
+}

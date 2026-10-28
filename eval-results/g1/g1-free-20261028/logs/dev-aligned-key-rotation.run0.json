@@ -1,0 +1,51 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 0,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "free",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:2:probe:0",
+      "stem": "Mateo has revoked and replaced the first staging key, but the CI secrets update and the nightly build are still pending. What will he do about the status update?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0",
+      "stem": "If Mateo looks for Grace's revocation update at 09:30 UTC on Wednesday the 4th, what should he expect?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0",
+      "stem": "After Grace checks the dashboards on Wednesday morning, where will she share the revocation result?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.1013978
+}

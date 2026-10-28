@@ -1,0 +1,100 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 2,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "free",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:4",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:4:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:5",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:5:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:6",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:6:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:7",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:7:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0",
+      "stem": "QA closes Tuesday with no blockers or criticals but two minor display glitches still open. What happens on Wednesday the 28th?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0",
+      "stem": "When QA receives the Release 4.2 build, what will they do before sign-off?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0",
+      "stem": "QA wraps up on Wednesday the 28th with a couple of minor notes and no blockers. What happens to the submission?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:7:probe:0",
+      "stem": "When Zara finishes her QA pass for 4.2, what will her onboarding coverage look like?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0",
+      "stem": "The release build is waiting and the offline drafts fix has not landed yet. What does QA do?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.19057150000000003
+}

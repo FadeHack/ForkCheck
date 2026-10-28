@@ -1,0 +1,69 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 1,
+  "scenario": "dev-deadline-next-friday",
+  "tier": "free",
+  "planted": [
+    {
+      "id": "which-friday",
+      "dimension": "deadline"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:3",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0",
+      "stem": "It's next Friday and Lena hasn't yet confirmed whether the NDA covers security documents. What happens to the summary letter?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "stem": "By when will Kwame have the completed questionnaire with Brightwater?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0",
+      "stem": "After the legal and insurance sections are saved, where do you look to find them?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0",
+      "stem": "When procurement opens the return on Friday the 6th, where will they find the note about the combined EU/US response?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.12400655
+}

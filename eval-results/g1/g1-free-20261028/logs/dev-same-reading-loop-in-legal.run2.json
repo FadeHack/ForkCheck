@@ -1,0 +1,77 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 2,
+  "scenario": "dev-same-reading-loop-in-legal",
+  "tier": "free",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:0:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:1:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:2:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:3:probe:0"
+    },
+    {
+      "id": "dev-same-reading-loop-in-legal:cand:4",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-same-reading-loop-in-legal:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:1:probe:0",
+      "stem": "Bashir emails the draft list to Chiara for legal review. What happens to the public subprocessor page on that day?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:0:probe:0",
+      "stem": "When should Chiara expect Bashir's subprocessor update in her inbox for the legal package?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:4:probe:0",
+      "stem": "On Wednesday the 28th, someone in legal emails that a two-day hold is acceptable, without attaching an approved markup. What should happen next?",
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:3:probe:0",
+      "stem": "After legal says the 48-hour window works, what is required before signing?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-same-reading-loop-in-legal:cand:2:probe:0",
+      "stem": "After hearing that legal rejected the 48-hour term, when will Owen contact Larkspur's privacy officer?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.1788604
+}

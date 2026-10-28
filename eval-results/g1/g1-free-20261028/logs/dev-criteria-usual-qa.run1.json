@@ -1,0 +1,82 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 1,
+  "scenario": "dev-criteria-usual-qa",
+  "tier": "free",
+  "planted": [
+    {
+      "id": "what-usual-means",
+      "dimension": "criteria"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:3",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:4",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0",
+      "stem": "Suppose the check run ends with two minor visual glitches still open and nothing else flagged. What should happen on Wednesday the 28th?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:probe:0",
+      "stem": "Which build does Zara start the QA pass with?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:4:probe:0",
+      "stem": "During the QA pass for Release 4.2, what will Zara do for onboarding?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:2:probe:0",
+      "stem": "After the usual QA pass, Diego is ready to share the draft. Who receives it?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:3:probe:0",
+      "stem": "When the experimentation setup is prepared and the new onboarding flow is ready to go live, who makes it live?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.15128210000000006
+}

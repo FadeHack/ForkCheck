@@ -1,0 +1,51 @@
+{
+  "runId": "g1-free-20261028",
+  "run": 1,
+  "scenario": "dev-aligned-key-rotation",
+  "tier": "free",
+  "planted": [],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:2:probe:0",
+      "stem": "Mateo has a new staging key working, but the old key is still active at the provider and CI still uses the old value. What will he do for this key?",
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:probe:0",
+      "stem": "On Wednesday the 4th, when should Mateo start treating Grace's verification as overdue if no update has been posted?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0",
+      "stem": "On Wednesday morning, once Grace has finished checking the dashboards, where will the revocation update be shared?",
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "costUsd": 0.0913207
+}

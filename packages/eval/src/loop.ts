@@ -26,6 +26,7 @@ import {
   simulateAnswer,
   vetProbe,
   vetRecheck,
+  type DecisionWithEvidence,
   type Drop,
   type ModelPort,
   type ParticipantBrief,
@@ -105,23 +106,31 @@ function apply(state: ResolutionState, event: ResolutionEvent): ResolutionState 
   return result.state;
 }
 
+export interface ProbeRounds {
+  input: ReturnType<typeof scenarioExtractInput>;
+  decisions: DecisionWithEvidence[];
+  /** Every stage call so far; `ask` appends to it. */
+  stages: StageTrace[];
+  candidates: LoopTrace["candidates"];
+  selected: string[];
+  rounds: LoopRound[];
+  /** Published probes whose first round split, in asking order. */
+  splitting: { probe: Probe; candidate: Candidate; splitId: string }[];
+  ask: (probe: Probe, briefs: ParticipantBrief[]) => Promise<LoopRound>;
+}
+
 /**
- * The whole loop in memory: extract, candidates, vetted probes, selection, simulated private
- * answers, divergence, the scenario's scripted resolution on each planted split, recheck,
- * then a validated record with a draft summary. Each planted mismatch resolves one split on
- * its decision, preferring the same dimension, since the model may file the gap under a
- * neighbouring dimension. Splits the scenario did not plant stay open.
- * The run's clock is the meeting's time, so a replay builds the same record.
+ * The detection half of the loop: extract, candidates, vetted probes, selection, then one
+ * round of simulated private answers per selected probe with its divergence.
  */
-export async function runLoop(
+export async function probeRounds(
   s: Scenario,
   model: ModelPort,
-  { resolution, segments }: LoopOptions,
-): Promise<LoopResult> {
+  { segments, tier = "free" }: { segments?: Segment[]; tier?: Probe["tier"] } = {},
+): Promise<ProbeRounds> {
   const stages: StageTrace[] = [];
   const input = { ...scenarioExtractInput(s), ...(segments ? { segments } : {}) };
   const participantIds = input.participants.map((p) => p.id);
-  const at = s.heldAt;
 
   const extracted = await extract(input, model);
   stages.push(extracted.trace);
@@ -130,12 +139,10 @@ export async function runLoop(
   stages.push(found.trace);
 
   const matches = matchDecisions(s, decisions);
-  const onDecision = (m: Scenario["plantedMismatches"][number], c: Candidate) => {
-    const i = matches.get(m.decision);
-    return i !== undefined && decisions[i]!.decision.id === c.decisionId;
-  };
   const mismatchOf = (c: Candidate) =>
-    s.plantedMismatches.find((m) => onDecision(m, c) && m.dimension === c.dimension) ?? null;
+    s.plantedMismatches.find(
+      (m) => onPlantedDecision(matches, decisions, m, c) && m.dimension === c.dimension,
+    ) ?? null;
   const byId = new Map(decisions.map((d) => [d.decision.id, d]));
 
   const vetted = [];
@@ -147,7 +154,7 @@ export async function runLoop(
         participants: input.participants,
         decision,
         candidate,
-        tier: "free",
+        tier,
         segments: input.segments,
       },
       model,
@@ -191,7 +198,7 @@ export async function runLoop(
 
   const briefs = scenarioBriefs(s);
   const rounds: LoopRound[] = [];
-  const splitting: { probe: Probe; candidate: Candidate; splitId: string }[] = [];
+  const splitting: ProbeRounds["splitting"] = [];
   for (const { probe: draft, candidate } of selected) {
     const probe: Probe = { ...draft, status: "published" };
     const round = await ask(probe, briefs);
@@ -200,6 +207,57 @@ export async function runLoop(
       splitting.push({ probe, candidate, splitId: `${probe.id}:split` });
     }
   }
+
+  return {
+    input,
+    decisions,
+    stages,
+    candidates: vetted.map((v) => ({
+      id: v.candidate.id,
+      decisionId: v.candidate.decisionId,
+      dimension: v.candidate.dimension,
+      mismatch: mismatchOf(v.candidate)?.id ?? null,
+      probeId: v.probe?.id ?? null,
+      drops: v.drops,
+    })),
+    selected: selected.map((x) => x.probe.id),
+    rounds,
+    splitting,
+    ask,
+  };
+}
+
+function onPlantedDecision(
+  matches: Map<string, number>,
+  decisions: DecisionWithEvidence[],
+  m: Scenario["plantedMismatches"][number],
+  c: Candidate,
+): boolean {
+  const i = matches.get(m.decision);
+  return i !== undefined && decisions[i]!.decision.id === c.decisionId;
+}
+
+/**
+ * The whole loop in memory: the probe rounds, the scenario's scripted resolution on each
+ * planted split, recheck, then a validated record with a draft summary. Each planted
+ * mismatch resolves one split on its decision, preferring the same dimension, since the
+ * model may file the gap under a neighbouring dimension. Splits the scenario did not plant
+ * stay open.
+ * The run's clock is the meeting's time, so a replay builds the same record.
+ */
+export async function runLoop(
+  s: Scenario,
+  model: ModelPort,
+  { resolution, segments }: LoopOptions,
+): Promise<LoopResult> {
+  const { input, decisions, stages, candidates, selected, rounds, splitting, ask } =
+    await probeRounds(s, model, segments ? { segments } : {});
+  const participantIds = input.participants.map((p) => p.id);
+  const at = s.heldAt;
+  const matches = matchDecisions(s, decisions);
+  const onDecision = (m: Scenario["plantedMismatches"][number], c: Candidate) =>
+    onPlantedDecision(matches, decisions, m, c);
+  const byId = new Map(decisions.map((d) => [d.decision.id, d]));
 
   const planted = new Map<string, { id: string; matchedOn: "dimension" | "decision" }>();
   for (const m of s.plantedMismatches) {
@@ -299,15 +357,8 @@ export async function runLoop(
       resolution,
       source: input.segments.some((seg) => seg.origin === "asr") ? "audio" : "paste",
       stages,
-      candidates: vetted.map((v) => ({
-        id: v.candidate.id,
-        decisionId: v.candidate.decisionId,
-        dimension: v.candidate.dimension,
-        mismatch: mismatchOf(v.candidate)?.id ?? null,
-        probeId: v.probe?.id ?? null,
-        drops: v.drops,
-      })),
-      selected: selected.map((x) => x.probe.id),
+      candidates,
+      selected,
       rounds,
       splits: splits.map(({ candidate: _, ...rest }) => rest),
       validation,

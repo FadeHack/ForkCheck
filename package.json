@@ -18,6 +18,7 @@
     "smoke:transcribe": "tsx packages/eval/scripts/smoke-transcribe.ts",
     "eval": "tsx packages/eval/scripts/eval.ts",
     "loop": "tsx packages/eval/scripts/loop.ts",
+    "gate": "tsx packages/eval/scripts/gate.ts",
     "audio:render": "tsx packages/eval/scripts/audio-render.ts",
     "eval:s1": "tsx packages/eval/scripts/s1.ts",
     "db:up": "docker compose up -d --wait",
