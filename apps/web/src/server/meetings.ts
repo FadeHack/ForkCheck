@@ -89,11 +89,10 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
   const active = participants.filter((p) => p.status === "active").length;
   const answerCounts: ProbeAnswerCount[] = published
     .filter((p) => p.probe.status !== "withdrawn" && !revealedProbes.has(p.probe.id))
-    .map(({ probe }) => ({
-      probeId: probe.id,
-      answered: answers.filter((a) => a.probeId === probe.id).length,
-      active,
-    }));
+    .map(({ probe }) => {
+      const answeredBy = answers.filter((a) => a.probeId === probe.id).map((a) => a.participantId);
+      return { probeId: probe.id, answered: answeredBy.length, active, answeredBy };
+    });
   const resolutions = await deps.splits.resolutions(splits.map((s) => s.id));
   const confirmations = await deps.splits.confirmations(resolutions.map((r) => r.id));
 

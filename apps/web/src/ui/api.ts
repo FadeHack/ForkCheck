@@ -68,3 +68,12 @@ export function organizerToken(meetingId: string): string | null {
 export function organizerUrl(meetingId: string, token: string): string {
   return `/m/${encodeURIComponent(meetingId)}#k=${encodeURIComponent(token)}`;
 }
+
+/** `callApi` with this meeting's organizer token attached. */
+export function organizerCall(meetingId: string) {
+  return <T>(path: string, init: RequestInit = {}) =>
+    callApi<T>(path, { ...init, token: organizerToken(meetingId) ?? "" });
+}
+
+export const MISSING_KEY =
+  "This workspace link is missing its key. Open the organizer link you kept when you created the meeting check.";

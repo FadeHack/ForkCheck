@@ -3,11 +3,13 @@ import {
   lintProbe,
   optionOrder,
   PROBE_BUDGET,
+  probeQuote,
   type Answer,
   type LintFinding,
   type Meeting,
   type Participant,
   type Probe,
+  type QuoteSources,
   type Round,
 } from "@forkcheck/core";
 import type {
@@ -149,6 +151,7 @@ export async function editProbe(
 const toParticipantProbe = (p: Probe): ParticipantProbe => ({
   id: p.id,
   kind: p.kind,
+  splitId: p.splitId,
   stem: p.stem,
   options: p.options,
 });
@@ -164,7 +167,18 @@ export async function revealedSplits(
 ): Promise<RevealedSplit[]> {
   const splits = await deps.splits.list(meetingId);
   if (splits.length === 0) return [];
-  const probes = await deps.meetings.probes(meetingId);
+  const [probes, analysis, segments] = await Promise.all([
+    deps.meetings.probes(meetingId),
+    deps.meetings.analysis(meetingId),
+    deps.meetings.segments(meetingId),
+  ]);
+  const sources: QuoteSources = {
+    probes: probes.map((p) => p.probe),
+    splits,
+    candidates: analysis.candidates,
+    decisions: analysis.decisions,
+    segments,
+  };
   const byProbe = new Map(splits.map((s) => [s.probeId, s]));
   const shown = probes
     .filter((p) => byProbe.has(p.probe.id) && (roundId === undefined || p.roundId === roundId))
@@ -179,6 +193,7 @@ export async function revealedSplits(
     return {
       split,
       probe: toParticipantProbe(probe),
+      quote: probeQuote(probe.id, sources),
       answers: answers.filter((a) => a.probeId === probe.id),
       resolutions: own,
       confirmations: confirmations.filter((c) => own.some((r) => r.id === c.resolutionId)),
@@ -187,12 +202,14 @@ export async function revealedSplits(
 }
 
 /** Who else still owes an answer on the open questions, by name only. */
-async function waitingOn(deps: Deps, viewer: Participant, open: Probe[]): Promise<string[]> {
+async function waitingOn(
+  deps: Deps,
+  viewer: Participant,
+  participants: Participant[],
+  open: Probe[],
+): Promise<string[]> {
   if (open.length === 0) return [];
-  const [participants, answers] = await Promise.all([
-    deps.meetings.participants(viewer.meetingId),
-    deps.rounds.answers(open.map((p) => p.id)),
-  ]);
+  const answers = await deps.rounds.answers(open.map((p) => p.id));
   const answered = new Map<string, number>();
   for (const a of answers) answered.set(a.participantId, (answered.get(a.participantId) ?? 0) + 1);
   return participants
@@ -211,12 +228,14 @@ export async function participantState(
   const probes = (open === null ? [] : await deps.rounds.probes(open.id)).filter(
     (p) => p.status === "published",
   );
+  const participants = await deps.meetings.participants(meeting.id);
   return {
     participant,
+    participants,
     meeting: { id: meeting.id, title: meeting.title, status: meeting.status },
     openProbes: probes.map((p) => toParticipantProbe(optionOrder(p, participant.id))),
     ownAnswers: await deps.rounds.answersBy(participant.id),
-    waitingOn: await waitingOn(deps, participant, probes),
+    waitingOn: await waitingOn(deps, participant, participants, probes),
     revealed: await revealedSplits(deps, meeting.id),
   };
 }

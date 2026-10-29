@@ -326,7 +326,11 @@
   margin: var(--space-6) 0 var(--space-8);
 }
 
+/* Every step is as tall as a linked one, so links and plain steps share a baseline. */
 .stage-rail li {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
   margin: 0;
   color: var(--ink-muted);
 }
@@ -543,4 +547,350 @@
 
 .sent-answers {
   margin-bottom: var(--space-6);
+}
+
+/* Round monitor */
+.round-focal {
+  font-size: 1.375rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.people-list {
+  list-style: none;
+  padding: 0;
+}
+
+.people-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.person-status {
+  flex: 1 1 8rem;
+  color: var(--ink-muted);
+}
+
+/* Dialog: with the toast, the only element above the page, so it carries the shadow. */
+.dialog {
+  max-width: min(32rem, calc(100vw - 2 * var(--space-4)));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--paper);
+  color: var(--ink);
+  padding: var(--space-6);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.2);
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+
+.dialog p {
+  margin-top: 0;
+}
+
+/* Reveal: forks run full width with room between them (the RHYTHM 2 break). */
+.reveal-item + .reveal-item {
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--line-subtle);
+}
+
+.validity {
+  border: 0;
+  padding: 0;
+  margin: var(--space-4) 0;
+  min-width: 0;
+}
+
+.validity legend {
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: var(--space-3);
+}
+
+.choice:has(input:disabled) {
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}
+
+/* Resolve: the proposal reads like the record it will become; the model's draft stays boxed apart. */
+.resolve {
+  margin-top: var(--space-6);
+}
+
+.resolve .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.confirm-confirmed {
+  color: var(--confirmed);
+  font-weight: 600;
+}
+
+.confirm-confirmed svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: var(--space-2);
+  vertical-align: -0.15em;
+}
+
+.proposal-form {
+  margin-top: var(--space-4);
+}
+
+.proposal-form textarea {
+  width: 100%;
+}
+
+.model-draft {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3) var(--space-4);
+  margin-block: var(--space-4);
+}
+
+.model-draft-label {
+  margin: 0 0 var(--space-2);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.model-draft blockquote {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-reading);
+}
+
+/*
+ * Record: the shareable outcome. Confirmed items keep a single stem in the confirmed color;
+ * unresolved items keep theirs in the unresolved color, and their forks are under "Questions asked".
+ */
+.record-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.record-item {
+  padding: var(--space-4) 0 var(--space-4) var(--space-4);
+  border-left: 2px solid var(--line);
+  margin-bottom: var(--space-6);
+}
+
+.record-item[data-category="confirmed"] {
+  border-left-color: var(--confirmed);
+}
+
+.record-item[data-category="unresolved"] {
+  border-left-color: var(--unresolved);
+}
+
+.record-item[data-category="stated"] {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.record-status {
+  margin: 0 0 var(--space-2);
+}
+
+.record-item .quote {
+  margin-bottom: 0;
+}
+
+.record-text {
+  font-family: var(--font-reading);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin: 0 0 var(--space-3);
+}
+
+.record-label,
+.record-kicker {
+  font-weight: 600;
+  margin: var(--space-3) 0 0;
+}
+
+.record-kicker {
+  color: var(--ink-muted);
+  margin: 0 0 var(--space-2);
+}
+
+.record-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-4);
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+}
+
+/* Each link is its own tap target on a phone, not a run of inline words. */
+.record-sources a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.record-question + .record-question {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line-subtle);
+}
+
+.record-footer {
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.record-no-split {
+  font-weight: 600;
+}
+
+/* A followed source link shows where it landed. */
+.record :target {
+  scroll-margin-top: var(--space-6);
+  outline: 2px solid var(--action);
+  outline-offset: var(--space-2);
+}
+
+@media print {
+  .site-header,
+  .record-actions {
+    display: none;
+  }
+
+  body {
+    background: none;
+  }
+
+  .record a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .record :target {
+    outline: 0;
+  }
+
+  /* Backgrounds don't print by default, so a quote keeps a rule to set it apart. */
+  .quote {
+    border-left: 2px solid var(--line);
+  }
+
+  .record-item,
+  .record-question,
+  .record-segment,
+  .fork-branch,
+  .quote {
+    break-inside: avoid;
+  }
+
+  .record h2,
+  .record h3 {
+    break-after: avoid;
+  }
+}
+
+/* Trace panel: organizer only, closed by default; numbers line up in columns. */
+.trace {
+  margin-top: var(--space-12);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-4);
+}
+
+.trace summary {
+  cursor: pointer;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Flex drops the browser's own marker, so the open and closed state is drawn here. */
+.trace summary {
+  list-style: none;
+  gap: var(--space-2);
+}
+
+.trace summary::-webkit-details-marker {
+  display: none;
+}
+
+.trace summary::before {
+  content: "▸";
+  color: var(--ink-muted);
+}
+
+.trace details[open] > summary::before {
+  content: "▾";
+}
+
+.trace summary h2 {
+  display: inline;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.trace h3 {
+  font-size: 1.0625rem;
+  margin-top: var(--space-6);
+}
+
+/* Wide tables scroll inside their own box, so the page itself never scrolls sideways. */
+.table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.trace-table {
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9375rem;
+  min-width: 40rem;
+}
+
+.trace-table th,
+.trace-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.trace-table thead th {
+  border-bottom-color: var(--line);
+}
+
+.trace-table tbody th {
+  font-weight: 600;
+}
+
+.trace-table td {
+  white-space: nowrap;
+}
+
+.trace-version,
+.trace-failed {
+  display: block;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.trace-failed {
+  color: var(--unresolved);
+}
+
+@media print {
+  .trace {
+    display: none;
+  }
 }

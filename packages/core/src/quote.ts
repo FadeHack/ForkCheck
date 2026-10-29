@@ -1,4 +1,4 @@
-import type { Segment } from "./model/index";
+import type { Candidate, Decision, Evidence, Probe, Segment, Split } from "./model/index";
 
 export type QuoteMatch =
   { ok: true; start: number; end: number } | { ok: false; reason: "empty_quote" | "not_found" };
@@ -114,4 +114,42 @@ export function suggestNearMatches(
   }
   found.sort((a, b) => b.score - a.score || a.start - b.start);
   return found.slice(0, limit);
+}
+
+/** A decision quote as a reveal shows it: the words and where in the meeting they were said. */
+export interface SourceQuote {
+  quote: string;
+  segment: Pick<Segment, "id" | "participantId" | "startMs" | "origin" | "edited">;
+}
+
+export interface QuoteSources {
+  probes: Pick<Probe, "id" | "candidateId" | "splitId">[];
+  splits: Pick<Split, "id" | "probeId">[];
+  candidates: Pick<Candidate, "id" | "decisionId">[];
+  decisions: {
+    decision: Pick<Decision, "id">;
+    evidence: Pick<Evidence, "segmentId" | "quote">[];
+  }[];
+  segments: Pick<Segment, "id" | "participantId" | "startMs" | "origin" | "edited" | "text">[];
+}
+
+/**
+ * The first quote behind the decision a question asks about that still matches its segment,
+ * or null. A recheck question asks about its original question's decision.
+ */
+export function probeQuote(probeId: string, src: QuoteSources): SourceQuote | null {
+  let probe = src.probes.find((p) => p.id === probeId);
+  if (probe?.candidateId === null && probe.splitId !== null) {
+    const original = src.splits.find((s) => s.id === probe!.splitId);
+    probe = src.probes.find((p) => p.id === original?.probeId);
+  }
+  const candidate = src.candidates.find((c) => c.id === probe?.candidateId);
+  const evidence = src.decisions.find((d) => d.decision.id === candidate?.decisionId)?.evidence;
+  for (const e of evidence ?? []) {
+    const segment = src.segments.find((s) => s.id === e.segmentId);
+    if (!segment || !verifyQuote(segment, e.quote).ok) continue;
+    const { id, participantId, startMs, origin, edited } = segment;
+    return { quote: e.quote, segment: { id, participantId, startMs, origin, edited } };
+  }
+  return null;
 }

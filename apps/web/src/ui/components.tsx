@@ -1,7 +1,14 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-import type { Answer, ProbeOption, Segment, Split, SplitStatus } from "@forkcheck/core";
-import { outcomeLabel, SIMULATED, splitStatusLabel } from "./labels";
+import type {
+  Answer,
+  Participant,
+  ProbeOption,
+  SourceQuote,
+  Split,
+  SplitStatus,
+} from "@forkcheck/core";
+import { nameList, outcomeLabel, SIMULATED, splitStatusLabel } from "./labels";
 
 export function Loading({ children }: { children: string }) {
   return (
@@ -16,6 +23,16 @@ export function ErrorNotice({ children }: { children: string }) {
     <div role="alert" className="notice-error">
       <p>{children}</p>
     </div>
+  );
+}
+
+/** A page that couldn't load: it still has a heading, so it never opens untitled. */
+export function PageError({ title, children }: { title: string; children: string }) {
+  return (
+    <>
+      <h1>{title}</h1>
+      <ErrorNotice>{children}</ErrorNotice>
+    </>
   );
 }
 
@@ -150,7 +167,7 @@ export function StatusLabel({ status }: { status: Status }) {
   );
 }
 
-function timestamp(ms: number): string {
+export function timestamp(ms: number): string {
   const s = Math.floor(ms / 1000);
   return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
 }
@@ -161,7 +178,7 @@ export function QuoteBlock({
   speaker,
 }: {
   quote: string;
-  segment: Segment | undefined;
+  segment: SourceQuote["segment"] | undefined;
   speaker: string | null;
 }) {
   return (
@@ -205,42 +222,64 @@ export function Toast({ message }: { message: string }) {
 
 /**
  * One revealed question as a fork: the stem, then a branch per chosen option naming who chose
- * it. Names come from `names`; anyone not in it is counted.
+ * it. Everyone sees the same fork, so it names people the same way for every viewer. People
+ * asked are the active participants plus anyone who answered before being marked absent.
  */
 export function ForkView({
+  quote = null,
   stem,
   options,
   split,
   answers,
-  names,
+  people,
 }: {
+  /** The decision's quote, where the fork's stem drops from. */
+  quote?: SourceQuote | null;
   stem: string;
   options: ProbeOption[];
   split: Split;
   answers: Answer[];
-  names: ReadonlyMap<string, string>;
+  people: Participant[];
 }) {
-  const optionOf = (a: Answer) => (a.choice === "option" ? a.optionId : a.mappedOptionId);
-  const who = (list: Answer[]) => {
-    const named = list.flatMap((a) => {
-      const name = names.get(a.participantId);
-      return name === undefined ? [] : [a.simulated ? `${name} (${SIMULATED})` : name];
-    });
-    const others = list.length - named.length;
-    if (others > 0) named.push(others === 1 ? "1 other person" : `${others} other people`);
-    return named.join(", ");
+  const byId = new Map(people.map((p) => [p.id, p]));
+  const name = (id: string, simulated = false) => {
+    const p = byId.get(id);
+    if (!p) return "Someone";
+    return simulated || p.isSimulated ? `${p.displayName} (${SIMULATED})` : p.displayName;
   };
+  const optionOf = (a: Answer) => (a.choice === "option" ? a.optionId : a.mappedOptionId);
+  const who = (list: Answer[]) => nameList(list.map((a) => name(a.participantId, a.simulated)));
+  const answeredIds = new Set(answers.map((a) => a.participantId));
+  const silent = people.filter((p) => p.status === "active" && !answeredIds.has(p.id));
+  const asked = answeredIds.size + silent.length;
   const unsure = answers.filter((a) => a.choice === "unsure");
   const unmatched = answers.filter((a) => a.choice === "write_in" && a.mappedOptionId === null);
   const chosen = options.filter((o) => answers.some((a) => optionOf(a) === o.id));
-  const answeredCount = answers.length - unsure.length;
+  const answered = answers.length - unsure.length;
   return (
     <article className="fork" data-outcome={split.outcome}>
+      {quote && (
+        <QuoteBlock
+          quote={quote.quote}
+          segment={quote.segment}
+          speaker={
+            quote.segment.participantId
+              ? (byId.get(quote.segment.participantId)?.displayName ?? null)
+              : null
+          }
+        />
+      )}
       <h3 className="fork-stem">{stem}</h3>
       <p className="fork-status">
         <StatusLabel status={split.outcome} />
         {split.outcome === "split" && <>: a difference to discuss.</>}
-        {split.outcome === "consistent" && <> ({answeredCount} answered).</>}
+        {split.outcome === "consistent" && (
+          <>
+            {" "}
+            ({answered} of {asked} answered).
+          </>
+        )}
+        {split.outcome === "insufficient" && <> to compare.</>}
       </p>
       {chosen.length > 0 && (
         <ul className="fork-branches">
@@ -262,7 +301,12 @@ export function ForkView({
           })}
         </ul>
       )}
-      {unsure.length > 0 && <p>Not sure: {who(unsure)}</p>}
+      {unsure.length > 0 && (
+        <p>
+          {who(unsure)} {unsure.length === 1 ? "was" : "were"} not sure.
+        </p>
+      )}
+      {silent.length > 0 && <p>{nameList(silent.map((p) => name(p.id)))} didn&apos;t answer.</p>}
       {unmatched.length > 0 && (
         <p>
           Written answers with no matching option:{" "}

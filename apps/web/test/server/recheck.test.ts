@@ -119,7 +119,7 @@ describe("POST /api/splits/:id/recheck", () => {
 
     const view = (await call(participantGet, "/x", { token: token(m, 1) }))
       .body as ParticipantState;
-    expect(view.openProbes.map((p) => p.id)).toEqual([started.probe.id]);
+    expect(view.openProbes.map((p) => [p.id, p.splitId])).toEqual([[started.probe.id, m.splitId]]);
 
     const closed = await answerAndClose(m, started, [0, 0, 0]);
     expect(closed.status).toBe(200);
@@ -128,6 +128,7 @@ describe("POST /api/splits/:id/recheck", () => {
     expect(body.splits.map((s) => [s.probe.id, s.split.outcome])).toEqual([
       [started.probe.id, "consistent"],
     ]);
+    expect(body.splits[0]!.probe.splitId).toBe(m.splitId);
     expect((await original(m)).status).toBe("rechecked");
     expect((await deps.meetings.get(m.meeting.id))!.status).toBe("revealed");
     // A repeat close returns the same reveal.

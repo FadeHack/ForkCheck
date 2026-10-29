@@ -9,7 +9,7 @@ import type {
   OpenRoundResponse,
   OrganizerMeetingState,
 } from "../../contracts/api";
-import { callApi, organizerToken } from "../api";
+import { organizerCall } from "../api";
 import { Button, ErrorNotice, Field, Loading, QuoteBlock, Toast } from "../components";
 import { decisionStatusLabel, dimensionLabel, lintNote, tierLabel } from "../labels";
 import { useToast } from "../use-toast";
@@ -29,11 +29,6 @@ export function initialSelection(drafts: readonly Probe[]): string[] {
 
 export function publishLabel(n: number): string {
   return `Publish ${n} ${n === 1 ? "question" : "questions"}`;
-}
-
-function organizerCall(meetingId: string) {
-  return <T,>(path: string, init: RequestInit = {}) =>
-    callApi<T>(path, { ...init, token: organizerToken(meetingId) ?? "" });
 }
 
 /** Starts analysis, or resumes it from the step that failed; the server picks the step. */

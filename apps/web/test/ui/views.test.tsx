@@ -1,9 +1,10 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import type { DecisionRecord, RecordItem } from "@forkcheck/core";
+import { probeQuote, type DecisionRecord, type RecordItem } from "@forkcheck/core";
 import { ErrorNotice, Loading } from "../../src/ui/components";
 import { initialSelection, publishLabel, QuestionsView } from "../../src/ui/organizer/questions";
-import { RevealView, RoundView } from "../../src/ui/organizer/views";
+import { RevealView } from "../../src/ui/organizer/views";
+import { RoundMonitor } from "../../src/ui/organizer/round";
 import { WorkspaceView } from "../../src/ui/organizer/workspace";
 import { ParticipantView } from "../../src/ui/participant/view";
 import { RecordView } from "../../src/ui/record/view";
@@ -196,22 +197,28 @@ describe("QuestionsView", () => {
   });
 });
 
-describe("RoundView", () => {
-  it("shows counts and names, never answers", () => {
+describe("RoundMonitor", () => {
+  it("shows who has answered, never what", () => {
     const state = organizerState({
       probes: [probe("q1")],
       rounds: [round("r1")],
-      answerCounts: [{ probeId: "q1", answered: 2, active: 3 }],
+      answerCounts: [{ probeId: "q1", answered: 1, active: 2, answeredBy: ["p0"] }],
       participants: [participants[0]!, participants[1]!, { ...participants[2]!, status: "absent" }],
     });
-    const out = html(<RoundView state={state} />);
-    expect(out).toContain("Question q1: 2 of 3 have answered.");
-    expect(text(<RoundView state={state} />)).toContain("Dana: absent, not asked");
+    const out = text(<RoundMonitor state={state} />);
+    expect(out).toContain("1 of 2 have answered.");
+    expect(out).toContain("PriyaAnswered");
+    expect(out).toContain("MarcoNot answered yet");
+    expect(out).toContain("DanaAbsent, not asked");
+    expect(out).toContain("Only 1 person has answered. At least 2 people need to answer first.");
+    expect(html(<RoundMonitor state={state} />)).toMatch(
+      /<button[^>]*disabled=""[^>]*>Reveal answers/,
+    );
     expect(out).not.toContain("Staging");
   });
 
   it("says when no question is open", () => {
-    expect(html(<RoundView state={organizerState()} />)).toContain(
+    expect(html(<RoundMonitor state={organizerState()} />)).toContain(
       "No questions are open right now.",
     );
   });
@@ -233,7 +240,7 @@ describe("RevealView", () => {
     expect(out).toContain("a difference to discuss.");
     expect(out).toContain("Chosen by Priya");
     expect(out).toContain("Chosen by Marco");
-    expect(out).toContain("Not sure: Dana");
+    expect(out).toContain("Dana was not sure.");
   });
 
   it("labels simulated answers", () => {
@@ -262,6 +269,7 @@ describe("ParticipantView", () => {
   const open = {
     id: "q1",
     kind: "diagnostic" as const,
+    splitId: null,
     stem: "Which environment?",
     options: [{ id: "o1", text: "Staging" }],
   };
@@ -294,22 +302,79 @@ describe("ParticipantView", () => {
     expect(waiting).not.toContain("Send my answers");
   });
 
-  it("names only the participant after the reveal and counts the others", () => {
+  it("shows the same named fork as the organizer, quote first, with the label question", () => {
+    const options = [...open.options, { id: "o2", text: "Production" }];
+    const revealedAnswers = [
+      answer("p0", "q1", "o1"),
+      answer("p1", "q1", "o2"),
+      answer("p2", "q1", "o2"),
+    ];
+    const organizer = organizerState({
+      segments: [
+        {
+          id: "seg1",
+          meetingId: "m1",
+          idx: 0,
+          speakerLabel: null,
+          participantId: "p1",
+          startMs: 20_000,
+          endMs: null,
+          text: "OK, so SSO is ready by Friday.",
+          origin: "paste",
+          edited: false,
+        },
+      ],
+      decisions: [
+        {
+          ...decisionFixture,
+          evidence: [
+            {
+              id: "e1",
+              decisionId: "d1",
+              resolutionId: null,
+              segmentId: "seg1",
+              quote: "SSO is ready by Friday",
+            },
+          ],
+        },
+      ],
+      candidates: [
+        {
+          id: "c1",
+          decisionId: "d1",
+          dimension: "scope",
+          readings: [
+            { id: "r1", text: "staging" },
+            { id: "r2", text: "production" },
+          ],
+          impact: { reversibility: "low", blastRadius: "high", timeToImpact: "high" },
+        },
+      ],
+      probes: [probe("q1", { stem: open.stem, options })],
+      splits: [split("s1", "q1")],
+      revealedAnswers,
+    });
     const state = participantState({
       revealed: [
         {
           split: split("s1", "q1"),
-          probe: { ...open, options: [...open.options, { id: "o2", text: "Production" }] },
-          answers: [answer("p0", "q1", "o1"), answer("p1", "q1", "o2"), answer("p2", "q1", "o2")],
+          probe: { ...open, options },
+          // The server builds this with the same function from the same stored rows.
+          quote: probeQuote("q1", organizer),
+          answers: revealedAnswers,
           resolutions: [],
           confirmations: [],
         },
       ],
     });
     const out = html(<ParticipantView state={state} token="t" />);
-    expect(out).toContain("Chosen by You");
-    expect(out).toContain("Chosen by 2 other people");
-    expect(out).not.toContain("Marco");
+    expect(out).toContain("<p>SSO is ready by Friday</p>");
+    expect(out).toContain("<figcaption>Marco at 00:20</figcaption>");
+    expect(out).toContain("Chosen by Priya");
+    expect(out).toContain("Chosen by Marco and Dana");
+    expect(out).toContain("<legend>Is this a real difference?</legend>");
+    const fork = (s: string) => s.slice(s.indexOf("<article"), s.indexOf("</article>"));
+    expect(fork(out)).toBe(fork(html(<RevealView state={organizer} />)));
   });
 });
 
@@ -341,7 +406,14 @@ describe("RecordView", () => {
 
   it("shows empty sections with their own copy and never claims alignment", () => {
     const out = html(
-      <RecordView data={{ record: record([item({})]), validation: { ok: true, findings: [] } }} />,
+      <RecordView
+        data={{
+          record: record([item({})]),
+          validation: { ok: true, findings: [] },
+          sources: [],
+          questions: [],
+        }}
+      />,
     );
     expect(out).toContain("Nothing confirmed yet.");
     expect(out).toContain("Nothing unresolved.");
@@ -369,15 +441,20 @@ describe("RecordView", () => {
               { rule: "quote", itemId: "a", detail: "A quote doesn't match the transcript." },
             ],
           },
+          sources: [],
+          questions: [],
         }}
       />,
     );
     expect(out.indexOf("Confirmed by participants")).toBeLessThan(out.indexOf("Unresolved"));
     expect(out.indexOf("Unresolved")).toBeLessThan(out.indexOf("Stated in meeting"));
-    expect(out).toContain("Confirmed by Priya, Marco.");
+    const text = out.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+    expect(text).toContain("Confirmed by Priya Confirmed Marco Confirmed Dana Not yet");
     expect(out.replace(/<[^>]+>/g, "")).toContain("Recheck passed: everyone gave the same answer.");
     expect(out).toContain("Absent, not asked: Dana.");
     expect(out).toContain("A quote doesn&#x27;t match the transcript.");
+    // A failing check links to the item it is about.
+    expect(out).toContain('href="#item-a">Item 1</a>');
   });
 });
 

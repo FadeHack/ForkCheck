@@ -22,6 +22,7 @@ import {
   type Resolution,
   type Round,
   type Segment,
+  type SourceQuote,
   type Split,
 } from "@forkcheck/core";
 import type { DecisionWithEvidence } from "@forkcheck/engine";
@@ -82,6 +83,8 @@ export interface ProbeAnswerCount {
   probeId: string;
   answered: number;
   active: number;
+  /** Who has answered, by participant ID: never what they chose. */
+  answeredBy: string[];
 }
 /** Answers stay sealed until their round closes: open rounds expose counts only. */
 export interface OrganizerMeetingState {
@@ -170,12 +173,16 @@ export type EditProbeResponse = Probe;
 export interface ParticipantProbe {
   id: string;
   kind: Probe["kind"];
+  /** For a recheck question, the difference it follows up; null otherwise. */
+  splitId: string | null;
   stem: string;
   options: ProbeOption[];
 }
 export interface RevealedSplit {
   split: Split;
   probe: ParticipantProbe;
+  /** What was said about the decision, so every viewer starts from the same words. */
+  quote: SourceQuote | null;
   answers: Answer[];
   resolutions: Resolution[];
   confirmations: Confirmation[];
@@ -183,6 +190,8 @@ export interface RevealedSplit {
 /** Never includes other participants' answers before their round closes. */
 export interface ParticipantState {
   participant: Participant;
+  /** Everyone in the meeting, the viewer included, so a reveal names who chose what. */
+  participants: Participant[];
   meeting: Pick<Meeting, "id" | "title" | "status">;
   openProbes: ParticipantProbe[];
   ownAnswers: Answer[];
@@ -263,6 +272,42 @@ export interface StartRecheckResponse {
 export interface RecordResponse {
   record: DecisionRecord;
   validation: RecordValidation;
+  /** The transcript segments the record quotes, so each quote links to where it was said. */
+  sources: RecordSource[];
+  /** Every revealed question with its answers, in rank order: the forks the record links to. */
+  questions: RevealedSplit[];
+}
+export type RecordSource = Pick<
+  Segment,
+  "id" | "participantId" | "startMs" | "origin" | "edited" | "text"
+>;
+
+// GET /api/meetings/:id/trace (organizer only)
+/** One logged model call. The log never holds prompts, replies or answers. */
+export interface TraceCall {
+  at: string;
+  stage: string;
+  /** `fake` is a replay of a recorded reply: it takes no time and costs nothing. */
+  provider: string;
+  model: string;
+  promptVersion: string;
+  cacheHit: boolean;
+  latencyMs: number;
+  inputTokens: number;
+  outputTokens: number;
+  reasoningTokens: number | null;
+  costUsd: number;
+  ok: boolean;
+  error: string | null;
+}
+export interface TraceResponse {
+  calls: TraceCall[];
+  /** What code decided, as counts. Null until a round has been revealed. */
+  computed: {
+    questions: { split: number; consistent: number; insufficient: number };
+    confirmations: number;
+    record: { confirmed: number; unresolved: number; stated: number };
+  } | null;
 }
 
 // DELETE /api/meetings/:id → 204, no body

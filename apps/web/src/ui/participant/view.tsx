@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { ParticipantState } from "../../contracts/api";
 import { callApi, type Loaded } from "../api";
-import { Button, ErrorNotice, ForkView, Loading, StatusLabel } from "../components";
+import { Button, Loading, PageError } from "../components";
 import { waitingLine } from "../labels";
-import { participantStage } from "../stages";
+import { RevealList } from "../reveal";
+import { participantStage, type ParticipantStage } from "../stages";
 import { AnswerForm, answerText } from "./answers";
 
 export const ANSWER_INTRO =
@@ -20,7 +21,7 @@ function Sent({ state, onChange }: { state: ParticipantState; onChange: () => vo
   return (
     <>
       <p role="status">Sent. You can change an answer until answers are revealed.</p>
-      <p>{waitingLine(state.waitingOn)}</p>
+      <p role="status">{waitingLine(state.waitingOn)}</p>
       <dl className="sent-answers">
         {state.openProbes.map((p) => {
           const a = byProbe.get(p.id);
@@ -39,6 +40,32 @@ function Sent({ state, onChange }: { state: ParticipantState; onChange: () => vo
   );
 }
 
+const arrived: Partial<Record<ParticipantStage, string>> = {
+  answer: "Your questions have arrived.",
+  recheck: "One more question has arrived.",
+  reveal: "Everyone's answers are now shown on this page.",
+  record: "The record is ready.",
+};
+
+/**
+ * Announces a stage this page moved to while open, once. Polling swaps the content without a
+ * page load, so a screen reader would otherwise not hear that the answers were revealed.
+ */
+function StageAnnouncer({ stage }: { stage: ParticipantStage }) {
+  const shown = useRef(stage);
+  const [message, setMessage] = useState("");
+  useEffect(() => {
+    if (shown.current === stage) return;
+    shown.current = stage;
+    setMessage(arrived[stage] ?? "");
+  }, [stage]);
+  return (
+    <p role="status" className="visually-hidden">
+      {message}
+    </p>
+  );
+}
+
 export function ParticipantView({
   state,
   token,
@@ -51,15 +78,15 @@ export function ParticipantView({
   const stage = participantStage(state);
   const [changing, setChanging] = useState(false);
 
-  // Nobody pushes the reveal to this page, so it asks again while the participant waits.
+  // Nothing pushes changes to this page, so it asks again unless the participant is typing.
+  const live = stage === "not_started" || stage === "waiting" || stage === "reveal";
   useEffect(() => {
-    if (stage !== "waiting" || changing || !reload) return;
+    if (!live || changing || !reload) return;
     const timer = setInterval(() => void reload(), POLL_MS);
     return () => clearInterval(timer);
-  }, [stage, changing, reload]);
+  }, [live, changing, reload]);
 
   const answering = stage === "answer" || stage === "recheck" || (stage === "waiting" && changing);
-  const names = new Map([[state.participant.id, "You"]]);
   const recordHref = `/p/${encodeURIComponent(token)}/record`;
   return (
     <>
@@ -67,6 +94,7 @@ export function ParticipantView({
         <h1>{state.meeting.title}</h1>
         <p>You are answering as {state.participant.displayName}.</p>
       </header>
+      <StageAnnouncer stage={stage} />
       {stage === "not_started" && (
         <p>The organizer hasn&apos;t sent any questions yet. Come back to this link later.</p>
       )}
@@ -94,25 +122,11 @@ export function ParticipantView({
         </section>
       )}
       {(stage === "reveal" || stage === "record") && (
-        <section aria-labelledby="revealed-heading">
-          <h2 id="revealed-heading">Revealed answers</h2>
-          {state.revealed.map((r) => (
-            <div key={r.split.id}>
-              <ForkView
-                stem={r.probe.stem}
-                options={r.probe.options}
-                split={r.split}
-                answers={r.answers}
-                names={names}
-              />
-              {r.split.outcome === "split" && (
-                <p>
-                  <StatusLabel status={r.split.status} />
-                </p>
-              )}
-            </div>
-          ))}
-        </section>
+        <RevealList
+          items={state.revealed}
+          people={state.participants}
+          actor={{ token, viewerId: state.participant.id, onChange: reload }}
+        />
       )}
       {stage === "record" && (
         <p>
@@ -150,6 +164,8 @@ export function Participant({ token }: { token: string }) {
   }, [token]);
 
   if (loaded.state === "loading") return <Loading>Opening your questions.</Loading>;
-  if (loaded.state === "error") return <ErrorNotice>{loaded.message}</ErrorNotice>;
+  if (loaded.state === "error") {
+    return <PageError title="Your questions didn't open">{loaded.message}</PageError>;
+  }
   return <ParticipantView state={loaded.data} token={token} reload={reload} />;
 }

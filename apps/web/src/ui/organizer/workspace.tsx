@@ -3,16 +3,18 @@
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import type { OrganizerMeetingState } from "../../contracts/api";
-import { callApi, organizerToken, type Loaded } from "../api";
-import { ErrorNotice, Loading } from "../components";
+import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
+import { Loading, PageError } from "../components";
 import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, organizerStages, type OrganizerStage } from "../stages";
 import { formatHeldAt } from "../time";
 import { QuestionsView } from "./questions";
-import { RecheckView, RecordLink, ResolveView, RevealView, RoundView, StageRail } from "./views";
+import { RoundMonitor } from "./round";
+import { RecheckView } from "./recheck";
+import { TracePanel } from "./trace";
+import { RecordLink, RevealView, StageRail } from "./views";
 
-export const MISSING_KEY =
-  "This workspace link is missing its key. Open the organizer link you kept when you created the meeting check.";
+const POLL_MS = 5000;
 
 /** Shows an earlier stage when `?stage=` names one; never a stage the meeting hasn't reached. */
 export function viewedStage(current: OrganizerStage, requested: string | null): OrganizerStage {
@@ -47,11 +49,11 @@ export function WorkspaceView({
         // Remounts when drafting finishes, so the selection starts from the new drafts.
         <QuestionsView key={state.meeting.status} state={state} onChange={reload} />
       )}
-      {stage === "round" && <RoundView state={state} />}
-      {stage === "reveal" && <RevealView state={state} />}
-      {stage === "resolve" && <ResolveView state={state} />}
-      {stage === "recheck" && <RecheckView state={state} />}
+      {stage === "round" && <RoundMonitor state={state} onChange={reload} />}
+      {(stage === "reveal" || stage === "resolve") && <RevealView state={state} />}
+      {stage === "recheck" && <RecheckView state={state} onChange={reload} />}
       {stage === "record" && <RecordLink meetingId={id} />}
+      <TracePanel meetingId={id} />
     </>
   );
 }
@@ -85,7 +87,24 @@ export function Workspace({ meetingId }: { meetingId: string }) {
     };
   }, [meetingId]);
 
+  // Answers, labels and confirmations arrive from other people's phones. Drafting has its own
+  // progress check, and the record no longer changes.
+  const live =
+    loaded.state === "ready" &&
+    ["round", "reveal", "resolve", "recheck"].includes(organizerStage(loaded.data));
+  useEffect(() => {
+    if (!live) return;
+    // A failed refresh keeps the page the organizer already has.
+    const timer = setInterval(async () => {
+      const next = await fetchState(meetingId);
+      if (next.state === "ready") setLoaded(next);
+    }, POLL_MS);
+    return () => clearInterval(timer);
+  }, [live, meetingId]);
+
   if (loaded.state === "loading") return <Loading>Opening the meeting check.</Loading>;
-  if (loaded.state === "error") return <ErrorNotice>{loaded.message}</ErrorNotice>;
+  if (loaded.state === "error") {
+    return <PageError title="This meeting check didn't open">{loaded.message}</PageError>;
+  }
   return <WorkspaceView state={loaded.data} viewing={viewing} reload={reload} />;
 }

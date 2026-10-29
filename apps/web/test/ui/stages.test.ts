@@ -69,6 +69,26 @@ describe("organizerStage", () => {
   });
 });
 
+describe("a recheck without enough answers", () => {
+  const state = (outcome: "insufficient" | "split") =>
+    organizerState({
+      probes: [probe("q1"), probe("rq", { kind: "recheck", splitId: "s1" })],
+      rounds: [round("r1", closed), round("r2", { ...closed, kind: "recheck" })],
+      splits: [
+        split("s1", "q1", { status: "confirmed" }),
+        split("s2", "rq", { outcome, status: "confirmed" }),
+      ],
+    });
+
+  it("leaves the wording confirmed for good, so the meeting moves on to the record", () => {
+    expect(organizerStage(state("insufficient"))).toBe("record");
+  });
+
+  it("doesn't settle wording confirmed again after an earlier recheck reopened it", () => {
+    expect(organizerStage(state("split"))).toBe("recheck");
+  });
+});
+
 describe("viewedStage", () => {
   it("shows an earlier stage on request, never a later one or the source", () => {
     expect(viewedStage("reveal", "questions")).toBe("questions");
@@ -80,7 +100,7 @@ describe("viewedStage", () => {
 });
 
 describe("participantStage", () => {
-  const open = { id: "q1", kind: "diagnostic" as const, stem: "Q", options: [] };
+  const open = { id: "q1", kind: "diagnostic" as const, splitId: null, stem: "Q", options: [] };
 
   it("is not_started before any question is sent", () => {
     expect(participantStage(participantState())).toBe("not_started");
@@ -104,12 +124,23 @@ describe("participantStage", () => {
     const revealed = (status: "open" | "rechecked") => ({
       split: split("s1", "q1", { status }),
       probe: open,
+      quote: null,
       answers: [],
       resolutions: [],
       confirmations: [],
     });
     expect(participantStage(participantState({ revealed: [revealed("open")] }))).toBe("reveal");
     expect(participantStage(participantState({ revealed: [revealed("rechecked")] }))).toBe(
+      "record",
+    );
+    const inconclusive = {
+      ...revealed("open"),
+      split: split("s2", "rq", { outcome: "insufficient", status: "confirmed" }),
+      probe: { ...open, id: "rq", kind: "recheck" as const, splitId: "s1" },
+    };
+    const confirmed = { ...revealed("open"), split: split("s1", "q1", { status: "confirmed" }) };
+    expect(participantStage(participantState({ revealed: [confirmed] }))).toBe("reveal");
+    expect(participantStage(participantState({ revealed: [confirmed, inconclusive] }))).toBe(
       "record",
     );
   });
