@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { Probe, Split } from "@forkcheck/core";
 import type { OrganizerMeetingState, StartRecheckResponse } from "../../contracts/api";
@@ -15,6 +16,8 @@ export const RECHECK_HINT =
   "The model writes one new question about what this wording means in practice. If everyone answers it the same way, the wording held.";
 export const RECHECK_SENT =
   "Sent to everyone as a new question. Nobody sees the earlier answers while answering it.";
+export const SKIP_HINT =
+  "The record lists this wording as confirmed but not rechecked. You can still send a recheck later.";
 const NOTHING_TO_RECHECK =
   "A recheck starts once everyone has confirmed the wording for a difference.";
 
@@ -131,6 +134,17 @@ export function RecheckView({
           </article>
         );
       })}
+      <p className="publish skip-recheck">
+        <Link
+          href={`/m/${encodeURIComponent(state.meeting.id)}/record`}
+          aria-describedby="skip-recheck-hint"
+        >
+          Open the record without a recheck
+        </Link>
+        <span id="skip-recheck-hint" className="field-hint">
+          {SKIP_HINT}
+        </span>
+      </p>
     </section>
   );
 }

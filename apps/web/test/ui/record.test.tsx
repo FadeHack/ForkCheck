@@ -128,6 +128,10 @@ describe("RecordView", () => {
     expect(out).toContain("<strong>Automatic transcription.</strong>");
     expect(out).toContain("Absent, not asked");
     expect(out).toContain("Recheck passed");
+    expect(out).not.toContain("Not rechecked.");
+    const skipped = { ...data.record.items[1]!, recheck: "not_run" as const };
+    const unchecked = { ...data, record: { ...data.record, items: [skipped] } };
+    expect(html(<RecordView data={unchecked} />)).toContain("<p>Not rechecked.</p>");
     expect(out).toContain("No split found on 1 of 2 questions.");
   });
 });

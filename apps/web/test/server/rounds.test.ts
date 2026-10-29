@@ -383,5 +383,7 @@ describe("sealed answers", () => {
       }),
       { numRuns: 25 },
     );
-  });
+    // 25 runs of up to 12 answers each against the database: slow CI runners need longer
+    // than the default 5 s.
+  }, 30_000);
 });

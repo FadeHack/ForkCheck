@@ -73,6 +73,23 @@ export function organizerStage(state: OrganizerMeetingState): OrganizerStage {
 export type ParticipantStage =
   "not_started" | "answer" | "waiting" | "recheck" | "reveal" | "record";
 
+/** Revealed differences from diagnostic questions, with the recheck results tied to them. */
+function participantSplits(state: ParticipantState) {
+  const toSettle = state.revealed.filter(
+    (r) => r.split.outcome === "split" && r.probe.kind === "diagnostic",
+  );
+  const rechecks = state.revealed.flatMap((r) =>
+    r.probe.splitId === null ? [] : [{ of: r.probe.splitId, split: r.split }],
+  );
+  return { toSettle, rechecks };
+}
+
+/** True when the organizer can still send a recheck for wording already confirmed. */
+export function recheckMayFollow(state: ParticipantState): boolean {
+  const { toSettle, rechecks } = participantSplits(state);
+  return toSettle.some((r) => !isSettled(r.split, rechecks));
+}
+
 export function participantStage(state: ParticipantState): ParticipantStage {
   if (state.openProbes.length > 0) {
     const answered = new Set(state.ownAnswers.map((a) => a.probeId));
@@ -81,11 +98,10 @@ export function participantStage(state: ParticipantState): ParticipantStage {
     return unanswered.some((p) => p.kind === "recheck") ? "recheck" : "answer";
   }
   if (state.revealed.length === 0) return "not_started";
-  const toSettle = state.revealed.filter(
-    (r) => r.split.outcome === "split" && r.probe.kind === "diagnostic",
-  );
-  const rechecks = state.revealed.flatMap((r) =>
-    r.probe.splitId === null ? [] : [{ of: r.probe.splitId, split: r.split }],
-  );
-  return toSettle.every((r) => isSettled(r.split, rechecks)) ? "record" : "reveal";
+  const { toSettle, rechecks } = participantSplits(state);
+  // Confirmed wording needs nothing more from participants: the organizer may skip the
+  // recheck, and if one is sent it arrives as a new question.
+  return toSettle.every((r) => r.split.status === "confirmed" || isSettled(r.split, rechecks))
+    ? "record"
+    : "reveal";
 }

@@ -7,7 +7,7 @@ import { callApi, type Loaded } from "../api";
 import { Button, Loading, PageError } from "../components";
 import { waitingLine } from "../labels";
 import { RevealList } from "../reveal";
-import { participantStage, type ParticipantStage } from "../stages";
+import { participantStage, recheckMayFollow, type ParticipantStage } from "../stages";
 import { AnswerForm, answerText } from "./answers";
 
 export const ANSWER_INTRO =
@@ -79,7 +79,12 @@ export function ParticipantView({
   const [changing, setChanging] = useState(false);
 
   // Nothing pushes changes to this page, so it asks again unless the participant is typing.
-  const live = stage === "not_started" || stage === "waiting" || stage === "reveal";
+  // At the record stage it keeps asking while a recheck question could still arrive.
+  const live =
+    stage === "not_started" ||
+    stage === "waiting" ||
+    stage === "reveal" ||
+    (stage === "record" && recheckMayFollow(state));
   useEffect(() => {
     if (!live || changing || !reload) return;
     const timer = setInterval(() => void reload(), POLL_MS);
