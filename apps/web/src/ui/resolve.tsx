@@ -17,6 +17,8 @@ export const UNRESOLVED_CONFIRM =
   "Record this difference as unresolved? Both readings go into the record as not agreed, and nobody can propose wording for it after this.";
 export const UNRESOLVED_NOTE =
   "Recorded as unresolved: the group agreed to disagree. Both readings go into the record as not agreed.";
+export const REOPENED_NOTE =
+  "Everyone confirmed this wording, but the recheck answers differed. Propose clearer wording, or agree to disagree.";
 const ABSENT_VIEWER = "The organizer marked you absent, so you can't propose or confirm wording.";
 const EMPTY_WORDING = "Write the wording first, or use the model's draft.";
 
@@ -267,6 +269,7 @@ export function ResolvePanel({
             <figcaption>{proposedByText(proposal, people)}</figcaption>
           </figure>
           <ConfirmList lines={lines} />
+          {split.status === "reopened" && <p>{REOPENED_NOTE}</p>}
         </>
       )}
       {!proposal && open && !canAct && <p>Nobody has proposed wording yet.</p>}

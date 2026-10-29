@@ -10,7 +10,8 @@ import { organizerStage, organizerStages, type OrganizerStage } from "../stages"
 import { formatHeldAt } from "../time";
 import { QuestionsView } from "./questions";
 import { RoundMonitor } from "./round";
-import { RecheckView, RecordLink, RevealView, StageRail } from "./views";
+import { RecheckView } from "./recheck";
+import { RecordLink, RevealView, StageRail } from "./views";
 
 const POLL_MS = 5000;
 
@@ -52,7 +53,7 @@ export function WorkspaceView({
       )}
       {stage === "round" && <RoundMonitor state={state} onChange={reload} />}
       {(stage === "reveal" || stage === "resolve") && <RevealView state={state} />}
-      {stage === "recheck" && <RecheckView state={state} />}
+      {stage === "recheck" && <RecheckView state={state} onChange={reload} />}
       {stage === "record" && <RecordLink meetingId={id} />}
     </>
   );

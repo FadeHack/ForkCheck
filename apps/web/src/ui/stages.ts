@@ -15,6 +15,33 @@ export type OrganizerStage = (typeof organizerStages)[number]["id"];
 /** Split states that need nothing more from anyone. */
 const SETTLED: readonly SplitStatus[] = ["rechecked", "unresolved"];
 
+/** A recheck question's own split, tied to the difference it followed up. */
+export interface RecheckResult {
+  of: string;
+  split: Split;
+}
+
+/**
+ * True when a difference needs nothing more. A recheck without enough answers leaves the
+ * wording confirmed for good, since that wording can't be rechecked again.
+ */
+export function isSettled(split: Split, rechecks: readonly RecheckResult[]): boolean {
+  if (SETTLED.includes(split.status)) return true;
+  return (
+    split.status === "confirmed" &&
+    rechecks.some((r) => r.of === split.id && r.split.outcome === "insufficient")
+  );
+}
+
+export function organizerRechecks(
+  state: Pick<OrganizerMeetingState, "probes" | "splits">,
+): RecheckResult[] {
+  return state.probes.flatMap((p) => {
+    const split = state.splits.find((s) => s.probeId === p.id);
+    return p.kind === "recheck" && p.splitId !== null && split ? [{ of: p.splitId, split }] : [];
+  });
+}
+
 /** Splits found by a diagnostic question: the ones the meeting has to resolve. */
 export function splitsToSettle(
   splits: readonly Split[],
@@ -33,11 +60,12 @@ export function organizerStage(state: OrganizerMeetingState): OrganizerStage {
   if (diagnostic.length === 0) return "questions";
   if (diagnostic.some((r) => r.closedAt === null)) return "round";
   const toSettle = splitsToSettle(state.splits, state.probes);
-  if (toSettle.length === 0 || toSettle.every((s) => SETTLED.includes(s.status))) {
-    return "record";
-  }
+  const rechecks = organizerRechecks(state);
+  if (toSettle.every((s) => isSettled(s, rechecks))) return "record";
   const recheckOpen = state.rounds.some((r) => r.kind === "recheck" && r.closedAt === null);
-  if (recheckOpen || toSettle.some((s) => s.status === "confirmed")) return "recheck";
+  if (recheckOpen || toSettle.some((s) => s.status === "confirmed" && !isSettled(s, rechecks))) {
+    return "recheck";
+  }
   if (state.resolutions.length > 0 || toSettle.some((s) => s.status !== "open")) return "resolve";
   return "reveal";
 }
@@ -56,5 +84,8 @@ export function participantStage(state: ParticipantState): ParticipantStage {
   const toSettle = state.revealed.filter(
     (r) => r.split.outcome === "split" && r.probe.kind === "diagnostic",
   );
-  return toSettle.every((r) => SETTLED.includes(r.split.status)) ? "record" : "reveal";
+  const rechecks = state.revealed.flatMap((r) =>
+    r.probe.splitId === null ? [] : [{ of: r.probe.splitId, split: r.split }],
+  );
+  return toSettle.every((r) => isSettled(r.split, rechecks)) ? "record" : "reveal";
 }

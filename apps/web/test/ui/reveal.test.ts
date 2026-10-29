@@ -4,7 +4,7 @@ import { participants, split } from "./fixtures";
 
 const item = (id: string, outcome: "split" | "consistent" | "insufficient"): RevealItem => ({
   split: { ...split(id, `q-${id}`), outcome },
-  probe: { id: `q-${id}`, stem: id, options: [] },
+  probe: { id: `q-${id}`, kind: "diagnostic", splitId: null, stem: id, options: [] },
   quote: null,
   resolutions: [],
   confirmations: [],

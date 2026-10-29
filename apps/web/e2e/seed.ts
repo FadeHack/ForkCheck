@@ -10,6 +10,7 @@ import type {
 import { analyzeMeeting } from "../src/server/analyze";
 import { createDeps } from "../src/server/deps";
 import { createMeeting } from "../src/server/meetings";
+import { startRecheck } from "../src/server/recheck";
 
 const transcript = [
   "[00:00] Priya: Where are we on single sign-on for the pilot customer?",
@@ -114,6 +115,29 @@ export async function seedAnalyzedMeeting(origin: string): Promise<CreateMeeting
     const outcome = await analyzeMeeting(deps, meeting);
     if (!outcome.ok) throw new Error(`seed analysis failed: ${outcome.message}`);
     return created;
+  } finally {
+    await close();
+  }
+}
+
+/**
+ * What the organizer's "Send a recheck question" does, run here with a scripted model reply
+ * because the app's own server has no recorded reply for a fresh meeting.
+ */
+export async function recheckWithScript(
+  meetingId: string,
+  splitId: string,
+  reply: { consequence: string; stem: string; options: { text: string }[] },
+): Promise<{ status: number; body: unknown }> {
+  loadLocalEnvFile();
+  const env = loadEnv(process.env, { require: ["DATABASE_URL"] });
+  const { db, close } = connect(env.DATABASE_URL!);
+  try {
+    const deps = createDeps(db, {
+      model: () => new ScriptedProvider({ generateRecheck: [reply] }),
+    });
+    const res = await startRecheck(deps, (await deps.meetings.get(meetingId))!, splitId);
+    return { status: res.status, body: await res.json() };
   } finally {
     await close();
   }

@@ -13,13 +13,13 @@ import {
 } from "@forkcheck/core";
 import type { LabelValidityResponse, ParticipantProbe } from "../contracts/api";
 import { callApi } from "./api";
-import { ForkView, StatusLabel } from "./components";
+import { ForkView, StatusLabel, type Status } from "./components";
 import { nameList, validityText } from "./labels";
 import { ResolvePanel, type Actor } from "./resolve";
 
 export interface RevealItem {
   split: Split;
-  probe: Pick<ParticipantProbe, "id" | "stem" | "options">;
+  probe: Pick<ParticipantProbe, "id" | "kind" | "splitId" | "stem" | "options">;
   quote: SourceQuote | null;
   answers: Answer[];
   resolutions: Resolution[];
@@ -28,6 +28,33 @@ export interface RevealItem {
 
 export const VALIDITY_PROMPT = "Is this a real difference?";
 const LABELS_LOCKED = "Someone has proposed wording, so labels on this question can't change now.";
+
+/** What a recheck's answers mean for the wording it followed up. */
+export const recheckOutcome: Record<Split["outcome"], { status: Status; text: string }> = {
+  consistent: { status: "rechecked", text: ": everyone gave the same answer." },
+  split: { status: "reopened", text: ": answers differed, so the wording didn't settle it." },
+  insufficient: { status: "not_conclusive", text: ": not enough answers." },
+};
+
+function RecheckResult({ item, people }: { item: RevealItem; people: Participant[] }) {
+  const { status, text } = recheckOutcome[item.split.outcome];
+  return (
+    <div className="recheck-result">
+      <h4>Recheck</h4>
+      <p>
+        <StatusLabel status={status} />
+        {text}
+      </p>
+      <ForkView
+        stem={item.probe.stem}
+        options={item.probe.options}
+        split={item.split}
+        answers={item.answers}
+        people={people}
+      />
+    </div>
+  );
+}
 
 /** Differences first, since they are what the group came to discuss; rank order otherwise. */
 export function revealOrder<T extends RevealItem>(items: T[]): T[] {
@@ -123,57 +150,64 @@ export function RevealList({
   people: Participant[];
   actor?: Actor | undefined;
 }) {
-  if (items.length === 0) return <p>No answers have been revealed yet.</p>;
+  const questions = items.filter((i) => i.probe.kind === "diagnostic");
+  if (questions.length === 0) return <p>No answers have been revealed yet.</p>;
   return (
     <section aria-labelledby="reveal-heading" className="reveal">
       <h2 id="reveal-heading">Revealed answers</h2>
-      {revealOrder(items).map(({ split, probe, quote, answers, resolutions, confirmations }) => {
-        const tally = validityTally(split, people);
-        return (
-          <div key={split.id} className="reveal-item">
-            <ForkView
-              quote={quote}
-              stem={probe.stem}
-              options={probe.options}
-              split={split}
-              answers={answers}
-              people={people}
-            />
-            {split.outcome === "split" && (
-              <>
-                <p>
-                  <StatusLabel status={split.status} />
-                </p>
-                {actor && (
-                  <ValidityControl
+      {revealOrder(questions).map(
+        ({ split, probe, quote, answers, resolutions, confirmations }) => {
+          const tally = validityTally(split, people);
+          const rechecks = items.filter((i) => i.probe.splitId === split.id);
+          return (
+            <div key={split.id} className="reveal-item">
+              <ForkView
+                quote={quote}
+                stem={probe.stem}
+                options={probe.options}
+                split={split}
+                answers={answers}
+                people={people}
+              />
+              {split.outcome === "split" && (
+                <>
+                  <p>
+                    <StatusLabel status={split.status} />
+                  </p>
+                  {actor && (
+                    <ValidityControl
+                      split={split}
+                      token={actor.token}
+                      viewerId={actor.viewerId}
+                      onChange={actor.onChange}
+                    />
+                  )}
+                  {tally.length > 0 && (
+                    <>
+                      <h4>Labels so far</h4>
+                      <ul>
+                        {tally.map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {rechecks.map((r) => (
+                    <RecheckResult key={r.split.id} item={r} people={people} />
+                  ))}
+                  <ResolvePanel
                     split={split}
-                    token={actor.token}
-                    viewerId={actor.viewerId}
-                    onChange={actor.onChange}
+                    resolutions={resolutions}
+                    confirmations={confirmations}
+                    people={people}
+                    actor={actor}
                   />
-                )}
-                {tally.length > 0 && (
-                  <>
-                    <h4>Labels so far</h4>
-                    <ul>
-                      {tally.map((line) => (
-                        <li key={line}>{line}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-                <ResolvePanel
-                  split={split}
-                  resolutions={resolutions}
-                  confirmations={confirmations}
-                  people={people}
-                  actor={actor}
-                />
-              </>
-            )}
-          </div>
-        );
-      })}
+                </>
+              )}
+            </div>
+          );
+        },
+      )}
     </section>
   );
 }

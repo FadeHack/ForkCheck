@@ -72,8 +72,8 @@ describe("POST /api/meetings/:id/rounds", () => {
       // Rank order, options in this participant's seeded order, no lint or tier.
       expect(mine.openProbes).toEqual(
         [m.drafts[0]!, m.drafts[2]!].map((p) => {
-          const { id, kind, stem, options } = optionOrder(p, participant.id);
-          return { id, kind, stem, options };
+          const { id, kind, splitId, stem, options } = optionOrder(p, participant.id);
+          return { id, kind, splitId, stem, options };
         }),
       );
       expect(await view(token)).toEqual(mine);

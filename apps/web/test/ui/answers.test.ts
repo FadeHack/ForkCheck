@@ -6,6 +6,7 @@ import { answer } from "./fixtures";
 const q = (id: string): ParticipantProbe => ({
   id,
   kind: "diagnostic",
+  splitId: null,
   stem: `Question ${id}`,
   options: [
     { id: `${id}-a`, text: "Staging" },

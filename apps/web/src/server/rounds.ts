@@ -151,6 +151,7 @@ export async function editProbe(
 const toParticipantProbe = (p: Probe): ParticipantProbe => ({
   id: p.id,
   kind: p.kind,
+  splitId: p.splitId,
   stem: p.stem,
   options: p.options,
 });

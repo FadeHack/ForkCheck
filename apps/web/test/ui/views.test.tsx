@@ -269,6 +269,7 @@ describe("ParticipantView", () => {
   const open = {
     id: "q1",
     kind: "diagnostic" as const,
+    splitId: null,
     stem: "Which environment?",
     options: [{ id: "o1", text: "Staging" }],
   };

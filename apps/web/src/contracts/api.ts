@@ -173,6 +173,8 @@ export type EditProbeResponse = Probe;
 export interface ParticipantProbe {
   id: string;
   kind: Probe["kind"];
+  /** For a recheck question, the difference it follows up; null otherwise. */
+  splitId: string | null;
   stem: string;
   options: ProbeOption[];
 }
