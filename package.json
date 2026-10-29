@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "pnpm --filter @forkcheck/web dev",
     "build": "pnpm --filter @forkcheck/web build",
+    "e2e": "pnpm --filter @forkcheck/web e2e",
     "env:check": "tsx packages/config/scripts/check-env.ts",
     "probe:meta": "tsx packages/ai/scripts/probe-meta.ts",
     "probe:transcribe": "tsx packages/asr/scripts/probe-transcribe.ts",
