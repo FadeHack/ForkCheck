@@ -36,6 +36,43 @@ jobs:
       - run: pnpm verify
       - run: pnpm build
 
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: forkcheck
+          POSTGRES_PASSWORD: forkcheck
+          POSTGRES_DB: forkcheck
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U forkcheck -d forkcheck"
+          --health-interval 2s --health-timeout 5s --health-retries 15
+    env:
+      DATABASE_URL: postgres://forkcheck:forkcheck@localhost:5433/forkcheck
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Check live calls are off
+        run: test -z "${LIVE:-}" || { echo "LIVE must not be set in CI"; exit 1; }
+      - run: pnpm --filter @forkcheck/web exec playwright install --with-deps chromium
+      - run: pnpm db:migrate
+      - run: pnpm e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-traces
+          path: apps/web/test-results/
+          retention-days: 7
+
   secrets:
     runs-on: ubuntu-latest
     timeout-minutes: 5

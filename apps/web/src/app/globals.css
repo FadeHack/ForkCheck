@@ -1,0 +1,4 @@
+/* Links carry long tokens; without this they push narrow screens sideways. */
+a {
+  overflow-wrap: anywhere;
+}
