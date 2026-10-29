@@ -274,14 +274,19 @@ describe("ParticipantView", () => {
       <ParticipantView state={participantState({ openProbes: [open] })} token="t" />,
     );
     expect(answering).toContain("Nobody sees your answers until everyone has answered");
-    expect(answering).toContain("<li>Not sure</li>");
-    const waiting = participantState({
-      openProbes: [open],
-      ownAnswers: [answer("p0", "q1", "o1")],
-    });
-    expect(html(<ParticipantView state={waiting} token="t" />)).toContain(
-      "You can change an answer until answers are revealed.",
+    expect(answering).toContain('<span class="probe-stem">Which environment?</span>');
+    expect(answering).toContain("Not sure");
+    expect(answering).toContain("Write my own answer");
+    expect(answering).toContain("Send my answers");
+    const waiting = html(
+      <ParticipantView
+        state={participantState({ openProbes: [open], ownAnswers: [answer("p0", "q1", "o1")] })}
+        token="t"
+      />,
     );
+    expect(waiting).toContain("You can change an answer until answers are revealed.");
+    expect(waiting).toContain("<dt>Which environment?</dt><dd>Staging</dd>");
+    expect(waiting).not.toContain("Send my answers");
   });
 
   it("names only the participant after the reveal and counts the others", () => {

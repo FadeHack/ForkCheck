@@ -1,35 +1,63 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import type { ParticipantProbe, ParticipantState } from "../../contracts/api";
+import { useCallback, useEffect, useState } from "react";
+import type { ParticipantState } from "../../contracts/api";
 import { callApi, type Loaded } from "../api";
-import { ErrorNotice, ForkView, Loading, StatusLabel } from "../components";
+import { Button, ErrorNotice, ForkView, Loading, StatusLabel } from "../components";
 import { participantStage } from "../stages";
+import { AnswerForm, answerText } from "./answers";
 
 export const ANSWER_INTRO =
   "Answer on your own. Nobody sees your answers until everyone has answered or the organizer reveals them.";
 
-function Questions({ probes }: { probes: ParticipantProbe[] }) {
+const POLL_MS = 5000;
+
+/** What the participant sent, with a way back into the form until the reveal. */
+function Sent({ state, onChange }: { state: ParticipantState; onChange: () => void }) {
+  const byProbe = new Map(state.ownAnswers.map((a) => [a.probeId, a]));
   return (
-    <ol>
-      {probes.map((p) => (
-        <li key={p.id}>
-          <h3>{p.stem}</h3>
-          <ul>
-            {p.options.map((o) => (
-              <li key={o.id}>{o.text}</li>
-            ))}
-            <li>Not sure</li>
-          </ul>
-        </li>
-      ))}
-    </ol>
+    <>
+      <p role="status">Sent. You can change an answer until answers are revealed.</p>
+      <p>Waiting for the others to answer.</p>
+      <dl className="sent-answers">
+        {state.openProbes.map((p) => {
+          const a = byProbe.get(p.id);
+          return (
+            <div key={p.id}>
+              <dt>{p.stem}</dt>
+              <dd>{a ? answerText(p, a) : ""}</dd>
+            </div>
+          );
+        })}
+      </dl>
+      <Button variant="secondary" onClick={onChange}>
+        Change an answer
+      </Button>
+    </>
   );
 }
 
-export function ParticipantView({ state, token }: { state: ParticipantState; token: string }) {
+export function ParticipantView({
+  state,
+  token,
+  reload,
+}: {
+  state: ParticipantState;
+  token: string;
+  reload?: (() => Promise<void>) | undefined;
+}) {
   const stage = participantStage(state);
+  const [changing, setChanging] = useState(false);
+
+  // Nobody pushes the reveal to this page, so it asks again while the participant waits.
+  useEffect(() => {
+    if (stage !== "waiting" || changing || !reload) return;
+    const timer = setInterval(() => void reload(), POLL_MS);
+    return () => clearInterval(timer);
+  }, [stage, changing, reload]);
+
+  const answering = stage === "answer" || stage === "recheck" || (stage === "waiting" && changing);
   const names = new Map([[state.participant.id, "You"]]);
   const recordHref = `/p/${encodeURIComponent(token)}/record`;
   return (
@@ -41,17 +69,28 @@ export function ParticipantView({ state, token }: { state: ParticipantState; tok
       {stage === "not_started" && (
         <p>The organizer hasn&apos;t sent any questions yet. Come back to this link later.</p>
       )}
-      {(stage === "answer" || stage === "recheck") && (
+      {answering && (
         <section aria-labelledby="questions-heading">
           <h2 id="questions-heading">
             {stage === "recheck" ? "One more question about what happens next" : "Your questions"}
           </h2>
           <p>{ANSWER_INTRO}</p>
-          <Questions probes={state.openProbes} />
+          <AnswerForm
+            probes={state.openProbes}
+            ownAnswers={state.ownAnswers}
+            token={token}
+            onSent={async () => {
+              await reload?.();
+              setChanging(false);
+            }}
+          />
         </section>
       )}
-      {stage === "waiting" && (
-        <p role="status">Sent. You can change an answer until answers are revealed.</p>
+      {stage === "waiting" && !changing && (
+        <section aria-labelledby="sent-heading">
+          <h2 id="sent-heading">Your answers</h2>
+          <Sent state={state} onChange={() => setChanging(true)} />
+        </section>
       )}
       {(stage === "reveal" || stage === "record") && (
         <section aria-labelledby="revealed-heading">
@@ -83,21 +122,27 @@ export function ParticipantView({ state, token }: { state: ParticipantState; tok
   );
 }
 
+async function fetchState(token: string): Promise<Loaded<ParticipantState>> {
+  const res = await callApi<ParticipantState>(`/api/p/${encodeURIComponent(token)}`);
+  return res.ok
+    ? { state: "ready", data: res.data }
+    : { state: "error", message: res.message, status: res.status };
+}
+
 export function Participant({ token }: { token: string }) {
   const [loaded, setLoaded] = useState<Loaded<ParticipantState>>({ state: "loading" });
 
+  // A failed refresh keeps the page the participant already has.
+  const reload = useCallback(async () => {
+    const next = await fetchState(token);
+    if (next.state === "ready") setLoaded(next);
+  }, [token]);
+
   useEffect(() => {
     let live = true;
-    async function load() {
-      const res = await callApi<ParticipantState>(`/api/p/${encodeURIComponent(token)}`);
-      if (!live) return;
-      setLoaded(
-        res.ok
-          ? { state: "ready", data: res.data }
-          : { state: "error", message: res.message, status: res.status },
-      );
-    }
-    void load();
+    void fetchState(token).then((next) => {
+      if (live) setLoaded(next);
+    });
     return () => {
       live = false;
     };
@@ -105,5 +150,5 @@ export function Participant({ token }: { token: string }) {
 
   if (loaded.state === "loading") return <Loading>Opening your questions.</Loading>;
   if (loaded.state === "error") return <ErrorNotice>{loaded.message}</ErrorNotice>;
-  return <ParticipantView state={loaded.data} token={token} />;
+  return <ParticipantView state={loaded.data} token={token} reload={reload} />;
 }
