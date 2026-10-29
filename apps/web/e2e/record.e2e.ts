@@ -87,6 +87,15 @@ test("every record item links to its sources, for the organizer and for particip
   await expect(page.getByRole("heading", { name: "Record checks" })).toBeVisible();
   await noAxeViolations(page);
 
+  // The button opens the browser's print dialog; here print() is replaced to count the call.
+  await page.evaluate(() => {
+    const w = window as unknown as { printed: number };
+    w.printed = 0;
+    window.print = () => void w.printed++;
+  });
+  await page.getByRole("button", { name: "Print record" }).click();
+  expect(await page.evaluate(() => (window as unknown as { printed: number }).printed)).toBe(1);
+
   // Print: the page chrome goes, the record stays, and colors are the light theme's.
   await page.emulateMedia({ media: "print", colorScheme: "dark" });
   await expect(page.locator(".site-header")).toBeHidden();

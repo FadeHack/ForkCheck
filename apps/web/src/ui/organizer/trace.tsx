@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type SyntheticEvent } from "react";
+import { useState, type KeyboardEvent, type SyntheticEvent } from "react";
 import type { TraceCall, TraceResponse } from "../../contracts/api";
 import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
 import { ErrorNotice, Loading } from "../components";
@@ -138,9 +138,16 @@ export function TracePanel({ meetingId }: { meetingId: string }) {
     );
   }
 
+  /** Escape closes the panel and puts focus back on its heading. */
+  function closeOnEscape(e: KeyboardEvent<HTMLDetailsElement>) {
+    if (e.key !== "Escape" || !e.currentTarget.open) return;
+    e.currentTarget.open = false;
+    e.currentTarget.querySelector("summary")?.focus();
+  }
+
   return (
     <aside className="trace" aria-labelledby="trace-heading">
-      <details onToggle={onToggle}>
+      <details onToggle={onToggle} onKeyDown={closeOnEscape}>
         <summary>
           <h2 id="trace-heading">What the model did</h2>
         </summary>

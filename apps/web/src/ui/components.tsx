@@ -26,6 +26,16 @@ export function ErrorNotice({ children }: { children: string }) {
   );
 }
 
+/** A page that couldn't load: it still has a heading, so it never opens untitled. */
+export function PageError({ title, children }: { title: string; children: string }) {
+  return (
+    <>
+      <h1>{title}</h1>
+      <ErrorNotice>{children}</ErrorNotice>
+    </>
+  );
+}
+
 export function Button({
   variant = "primary",
   type = "button",

@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import type { OrganizerMeetingState } from "../../contracts/api";
 import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
-import { ErrorNotice, Loading } from "../components";
+import { Loading, PageError } from "../components";
 import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, organizerStages, type OrganizerStage } from "../stages";
 import { formatHeldAt } from "../time";
@@ -103,6 +103,8 @@ export function Workspace({ meetingId }: { meetingId: string }) {
   }, [live, meetingId]);
 
   if (loaded.state === "loading") return <Loading>Opening the meeting check.</Loading>;
-  if (loaded.state === "error") return <ErrorNotice>{loaded.message}</ErrorNotice>;
+  if (loaded.state === "error") {
+    return <PageError title="This meeting check didn't open">{loaded.message}</PageError>;
+  }
   return <WorkspaceView state={loaded.data} viewing={viewing} reload={reload} />;
 }

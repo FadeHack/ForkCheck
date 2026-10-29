@@ -7,9 +7,9 @@ import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
 import {
   Banner,
   Button,
-  ErrorNotice,
   ForkView,
   Loading,
+  PageError,
   QuoteBlock,
   SourceLink,
   SpeakerChip,
@@ -342,6 +342,8 @@ export function RecordPage(props: { meetingId: string } | { token: string }) {
   }, [meetingId, token]);
 
   if (loaded.state === "loading") return <Loading>Building the record.</Loading>;
-  if (loaded.state === "error") return <ErrorNotice>{loaded.message}</ErrorNotice>;
+  if (loaded.state === "error") {
+    return <PageError title="The record didn't open">{loaded.message}</PageError>;
+  }
   return <RecordView data={loaded.data} />;
 }
