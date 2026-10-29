@@ -245,7 +245,8 @@ async function rowCount(db: Db, table: PgTable): Promise<number> {
   return row!.n;
 }
 
-describe("repositories", () => {
+// Each test boots a fresh PGlite and migrates it, which can pass 5 s when the full suite runs in parallel.
+describe("repositories", { timeout: 20_000 }, () => {
   it("round-trip every aggregate through its domain type", async () => {
     const db = await createTestDb();
     const { meetings, rounds, splits } = await seed(db);
