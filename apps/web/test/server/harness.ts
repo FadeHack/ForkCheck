@@ -1,6 +1,9 @@
 import type { Candidate, Dimension, Meeting, Participant, Probe } from "@forkcheck/core";
 import { createMemoryDb } from "@forkcheck/db/testing";
 import { afterAll, afterEach } from "vitest";
+import { POST as openRoute } from "../../src/app/api/meetings/[id]/rounds/route";
+import { POST as answerRoute } from "../../src/app/api/p/[token]/answers/route";
+import { POST as closeRoute } from "../../src/app/api/rounds/[id]/close/route";
 import { createDeps, setDeps, type Deps } from "../../src/server/deps";
 import { hashToken, newToken } from "../../src/server/tokens";
 
@@ -156,4 +159,34 @@ export async function call<P>(
   const res = await handler(req, { params: Promise.resolve(params) });
   const text = await res.text();
   return { status: res.status, headers: res.headers, body: text === "" ? null : JSON.parse(text) };
+}
+
+/** Ana, Ben and Cy answer one question differently and the answers are revealed. */
+export async function seedRevealed(deps: Deps, id: string) {
+  const m = await seedDrafts(deps, id, ["Ana", "Ben", "Cy"], 1);
+  const probe = m.drafts[0]!;
+  await call(
+    openRoute,
+    "/x",
+    { id },
+    { method: "POST", token: m.organizerToken, body: { probeIds: [probe.id] } },
+  );
+  for (const [who, k] of [0, 1, 1].entries()) {
+    await call(
+      answerRoute,
+      "/x",
+      { token: m.participants[who]!.token },
+      {
+        method: "POST",
+        body: { probeId: probe.id, choice: "option", optionId: probe.options[k]!.id },
+      },
+    );
+  }
+  await call(
+    closeRoute,
+    "/x",
+    { id: `${id}:round:0` },
+    { method: "POST", token: m.organizerToken },
+  );
+  return { ...m, splitId: `${probe.id}:split` };
 }

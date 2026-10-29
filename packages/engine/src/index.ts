@@ -9,4 +9,5 @@ export * from "./stages/generate-recheck";
 export * from "./vet-recheck";
 export * from "./stages/draft-record-prose";
 export * from "./stages/map-write-in";
+export * from "./stages/draft-resolution";
 export * from "./draft-probes";
