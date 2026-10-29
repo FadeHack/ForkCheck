@@ -8,6 +8,7 @@ export {
   type AnalysisProgress,
   type AnalysisStep,
   type NewMeeting,
+  type StepClaim,
   type StoredAnalysis,
   type StoredDecision,
 } from "./repos/meetings";

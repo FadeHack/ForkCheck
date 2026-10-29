@@ -8,7 +8,7 @@ import type {
   Probe,
   Segment,
 } from "@forkcheck/core";
-import { and, asc, eq, inArray, isNull, sql } from "drizzle-orm";
+import { and, asc, eq, inArray, isNull, lt, or, sql } from "drizzle-orm";
 import { toIso, toIsoOrNull, type Db } from "../client";
 import * as t from "../schema";
 
@@ -41,6 +41,15 @@ export interface AnalysisProgress {
   version: number | null;
   step: AnalysisStep | null;
   failedStep: AnalysisStep | null;
+  /** When the run holding the meeting last showed it was alive. */
+  heartbeatAt: string | null;
+}
+
+/** A run claiming a long step; a holder silent since `staleBefore` may be replaced. */
+export interface StepClaim {
+  runId: string;
+  now: Date;
+  staleBefore: Date;
 }
 
 type MeetingRow = typeof t.meeting.$inferSelect;
@@ -193,21 +202,57 @@ export class MeetingRepo {
         version: t.meeting.analysisVersion,
         step: t.meeting.analysisStep,
         failedStep: t.meeting.failedStep,
+        heartbeatAt: t.meeting.stepHeartbeatAt,
       })
       .from(t.meeting)
       .where(eq(t.meeting.id, id));
-    return row ?? null;
+    return row ? { ...row, heartbeatAt: toIsoOrNull(row.heartbeatAt) } : null;
   }
 
   /**
-   * Moves the meeting to `analyzing` if its status is one of `from`. The check and the update
-   * are one statement, so of two concurrent callers only one gets `true`.
+   * Moves the meeting to `analyzing` for this run if its status is one of `from`, or if an
+   * earlier run has been silent since `staleBefore`. The check and the update are one
+   * statement, so of two concurrent callers only one gets `true`.
    */
-  async startAnalysis(id: string, from: readonly MeetingStatus[]): Promise<boolean> {
+  async startAnalysis(
+    id: string,
+    from: readonly MeetingStatus[],
+    claim: StepClaim,
+  ): Promise<boolean> {
     const rows = await this.db
       .update(t.meeting)
-      .set({ status: "analyzing", error: null, failedStep: null })
-      .where(and(eq(t.meeting.id, id), inArray(t.meeting.status, [...from])))
+      .set({
+        status: "analyzing",
+        error: null,
+        failedStep: null,
+        stepRunId: claim.runId,
+        stepHeartbeatAt: claim.now,
+      })
+      .where(
+        and(
+          eq(t.meeting.id, id),
+          or(
+            inArray(t.meeting.status, [...from]),
+            and(
+              eq(t.meeting.status, "analyzing"),
+              or(
+                isNull(t.meeting.stepHeartbeatAt),
+                lt(t.meeting.stepHeartbeatAt, claim.staleBefore),
+              ),
+            ),
+          ),
+        ),
+      )
+      .returning({ id: t.meeting.id });
+    return rows.length > 0;
+  }
+
+  /** Records that the run is alive; false once another run has taken the step over. */
+  async heartbeat(id: string, runId: string, now: Date): Promise<boolean> {
+    const rows = await this.db
+      .update(t.meeting)
+      .set({ stepHeartbeatAt: now })
+      .where(and(eq(t.meeting.id, id), eq(t.meeting.stepRunId, runId)))
       .returning({ id: t.meeting.id });
     return rows.length > 0;
   }
@@ -255,16 +300,23 @@ export class MeetingRepo {
       }
       await tx
         .update(t.meeting)
-        .set({ analysisStep: "probes", status: "probing", error: null, failedStep: null })
+        .set({
+          analysisStep: "probes",
+          status: "probing",
+          error: null,
+          failedStep: null,
+          stepRunId: null,
+        })
         .where(eq(t.meeting.id, meetingId));
     });
   }
 
-  async failAnalysis(id: string, step: AnalysisStep, error: string): Promise<void> {
+  /** Marks the step failed, unless another run has taken it over since. */
+  async failAnalysis(id: string, runId: string, step: AnalysisStep, error: string): Promise<void> {
     await this.db
       .update(t.meeting)
-      .set({ status: "failed", failedStep: step, error })
-      .where(eq(t.meeting.id, id));
+      .set({ status: "failed", failedStep: step, error, stepRunId: null })
+      .where(and(eq(t.meeting.id, id), eq(t.meeting.stepRunId, runId)));
   }
 
   /** All three steps at once, for seeding. */

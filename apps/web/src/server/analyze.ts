@@ -1,9 +1,11 @@
+import { randomUUID } from "node:crypto";
 import type { Meeting, MeetingStatus } from "@forkcheck/core";
 import type { AnalysisStep } from "@forkcheck/db";
 import { draftProbes, extract, findCandidates, type MeetingContext } from "@forkcheck/engine";
 import type { AnalyzeResponse } from "../contracts/api";
 import type { Deps } from "./deps";
 import { logError } from "./log";
+import { stepClaim, StepTakenOver, withHeartbeat } from "./steps";
 
 /** Statuses analysis may start from. Once questions exist the meeting is `probing` or later. */
 const STARTABLE: readonly MeetingStatus[] = ["draft", "review", "failed"];
@@ -26,8 +28,8 @@ async function stored(deps: Deps, meetingId: string): Promise<AnalyzeResponse> {
 
 /**
  * Runs extract, candidates and probe drafting, saving after each step. A finished analysis of
- * the current transcript version is returned as stored; a failed one resumes after its last
- * finished step.
+ * the current transcript version is returned as stored; a failed one, or one whose run went
+ * silent past the step lease, resumes after its last finished step.
  */
 export async function analyzeMeeting(deps: Deps, meeting: Meeting): Promise<AnalyzeOutcome> {
   const before = await deps.meetings.analysisProgress(meeting.id);
@@ -42,14 +44,16 @@ export async function analyzeMeeting(deps: Deps, meeting: Meeting): Promise<Anal
       message: "There is no transcript to analyze yet. Paste one or finish transcription first.",
     };
   }
-  if (!(await deps.meetings.startAnalysis(meeting.id, STARTABLE))) {
+  const runId = randomUUID();
+  if (!(await deps.meetings.startAnalysis(meeting.id, STARTABLE, stepClaim(deps, runId)))) {
     const current = await deps.meetings.get(meeting.id);
     return current?.status === "analyzing"
       ? {
           ok: false,
           status: 409,
           code: "analysis_running",
-          message: "Analysis is already running for this meeting. Wait for it to finish.",
+          message:
+            "Analysis is already running for this meeting. Wait for it to finish, or retry if it stops showing progress.",
         }
       : {
           ok: false,
@@ -65,7 +69,7 @@ export async function analyzeMeeting(deps: Deps, meeting: Meeting): Promise<Anal
     await deps.meetings.resetAnalysis(meeting.id, meeting.transcriptVersion);
   }
   const done = progress?.version === meeting.transcriptVersion ? progress.step : null;
-  const model = deps.model(meeting.id);
+  const model = withHeartbeat(deps, meeting.id, runId, deps.model(meeting.id));
   const context: MeetingContext = {
     id: meeting.id,
     title: meeting.title,
@@ -100,9 +104,17 @@ export async function analyzeMeeting(deps: Deps, meeting: Meeting): Promise<Anal
     );
     await deps.meetings.saveDraftProbes(meeting.id, probes);
   } catch (error) {
+    if (error instanceof StepTakenOver) {
+      return {
+        ok: false,
+        status: 409,
+        code: "analysis_running",
+        message: "A newer request took over this analysis. Its progress shows on the meeting.",
+      };
+    }
     logError(`analyze ${meeting.id} at ${step}`, error);
     const message = `Drafting stopped at '${STEP_LABELS[step]}'. Retry from that step.`;
-    await deps.meetings.failAnalysis(meeting.id, step, message);
+    await deps.meetings.failAnalysis(meeting.id, runId, step, message);
     return { ok: false, status: 502, code: "analysis_failed", message };
   }
   return { ok: true, response: await stored(deps, meeting.id) };
