@@ -223,7 +223,7 @@ export interface StartRecheckResponse {
   probe: Probe;
 }
 
-// GET /api/meetings/:id/record
+// GET /api/meetings/:id/record, and read-only for participants at GET /api/p/:token/record
 export interface RecordResponse {
   record: DecisionRecord;
   validation: RecordValidation;

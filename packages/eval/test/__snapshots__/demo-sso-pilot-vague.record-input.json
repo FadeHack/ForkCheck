@@ -1,0 +1,341 @@
+{
+  "meeting": {
+    "id": "demo-sso-pilot",
+    "title": "Pilot customer check-in",
+    "heldAt": "2026-10-26T15:00:00-04:00",
+    "timezone": "America/New_York"
+  },
+  "generatedAt": "2026-10-26T15:00:00-04:00",
+  "participants": [
+    {
+      "id": "Priya",
+      "meetingId": "demo-sso-pilot",
+      "displayName": "Priya",
+      "isSimulated": true,
+      "status": "active"
+    },
+    {
+      "id": "Marco",
+      "meetingId": "demo-sso-pilot",
+      "displayName": "Marco",
+      "isSimulated": true,
+      "status": "active"
+    },
+    {
+      "id": "Dana",
+      "meetingId": "demo-sso-pilot",
+      "displayName": "Dana",
+      "isSimulated": true,
+      "status": "active"
+    }
+  ],
+  "segments": [
+    {
+      "id": "demo-sso-pilot:seg:0",
+      "meetingId": "demo-sso-pilot",
+      "idx": 0,
+      "speakerLabel": null,
+      "participantId": "Priya",
+      "startMs": 0,
+      "endMs": null,
+      "text": "Quick one. Where are we on single sign-on for the pilot customer?",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:1",
+      "meetingId": "demo-sso-pilot",
+      "idx": 1,
+      "speakerLabel": null,
+      "participantId": "Marco",
+      "startMs": 6000,
+      "endMs": null,
+      "text": "Login works on staging. I still need to wire up the admin roles.",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:2",
+      "meetingId": "demo-sso-pilot",
+      "idx": 2,
+      "speakerLabel": null,
+      "participantId": "Dana",
+      "startMs": 14000,
+      "endMs": null,
+      "text": "The customer asked again yesterday. They want to try it this week.",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:3",
+      "meetingId": "demo-sso-pilot",
+      "idx": 3,
+      "speakerLabel": null,
+      "participantId": "Priya",
+      "startMs": 20000,
+      "endMs": null,
+      "text": "OK, so SSO is ready by Friday. Marco, that's yours?",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:4",
+      "meetingId": "demo-sso-pilot",
+      "idx": 4,
+      "speakerLabel": null,
+      "participantId": "Marco",
+      "startMs": 25000,
+      "endMs": null,
+      "text": "Yep, I'll have it ready by Friday.",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:5",
+      "meetingId": "demo-sso-pilot",
+      "idx": 5,
+      "speakerLabel": null,
+      "participantId": "Dana",
+      "startMs": 29000,
+      "endMs": null,
+      "text": "Great, I'll tell them Friday.",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:6",
+      "meetingId": "demo-sso-pilot",
+      "idx": 6,
+      "speakerLabel": null,
+      "participantId": "Dana",
+      "startMs": 33000,
+      "endMs": null,
+      "text": "They also asked about adding their users automatically from their directory.",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:7",
+      "meetingId": "demo-sso-pilot",
+      "idx": 7,
+      "speakerLabel": null,
+      "participantId": "Priya",
+      "startMs": 40000,
+      "endMs": null,
+      "text": "Let's cover user provisioning in the pilot.",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:8",
+      "meetingId": "demo-sso-pilot",
+      "idx": 8,
+      "speakerLabel": null,
+      "participantId": "Marco",
+      "startMs": 44000,
+      "endMs": null,
+      "text": "Fine by me.",
+      "origin": "paste",
+      "edited": false
+    },
+    {
+      "id": "demo-sso-pilot:seg:9",
+      "meetingId": "demo-sso-pilot",
+      "idx": 9,
+      "speakerLabel": null,
+      "participantId": "Dana",
+      "startMs": 47000,
+      "endMs": null,
+      "text": "Good, I'll put it in the pilot plan.",
+      "origin": "paste",
+      "edited": false
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "demo-sso-pilot:dec:0",
+        "meetingId": "demo-sso-pilot",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Marco will have SSO ready by Friday.",
+        "ownerText": "Marco",
+        "deadlineText": "by Friday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "demo-sso-pilot:dec:0:ev:0",
+          "decisionId": "demo-sso-pilot:dec:0",
+          "resolutionId": null,
+          "segmentId": "demo-sso-pilot:seg:3",
+          "quote": "OK, so SSO is ready by Friday. Marco, that's yours?"
+        },
+        {
+          "id": "demo-sso-pilot:dec:0:ev:1",
+          "decisionId": "demo-sso-pilot:dec:0",
+          "resolutionId": null,
+          "segmentId": "demo-sso-pilot:seg:4",
+          "quote": "Yep, I'll have it ready by Friday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "demo-sso-pilot:dec:1",
+        "meetingId": "demo-sso-pilot",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Dana will tell them Friday.",
+        "ownerText": "Dana",
+        "deadlineText": "Friday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "demo-sso-pilot:dec:1:ev:0",
+          "decisionId": "demo-sso-pilot:dec:1",
+          "resolutionId": null,
+          "segmentId": "demo-sso-pilot:seg:5",
+          "quote": "Great, I'll tell them Friday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "demo-sso-pilot:dec:2",
+        "meetingId": "demo-sso-pilot",
+        "idx": 2,
+        "kind": "decision",
+        "statement": "User provisioning will be covered in the pilot.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "demo-sso-pilot:dec:2:ev:0",
+          "decisionId": "demo-sso-pilot:dec:2",
+          "resolutionId": null,
+          "segmentId": "demo-sso-pilot:seg:7",
+          "quote": "Let's cover user provisioning in the pilot."
+        },
+        {
+          "id": "demo-sso-pilot:dec:2:ev:1",
+          "decisionId": "demo-sso-pilot:dec:2",
+          "resolutionId": null,
+          "segmentId": "demo-sso-pilot:seg:8",
+          "quote": "Fine by me."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "demo-sso-pilot:dec:3",
+        "meetingId": "demo-sso-pilot",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Dana will put it in the pilot plan.",
+        "ownerText": "Dana",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "demo-sso-pilot:dec:3:ev:0",
+          "decisionId": "demo-sso-pilot:dec:3",
+          "resolutionId": null,
+          "segmentId": "demo-sso-pilot:seg:9",
+          "quote": "Good, I'll put it in the pilot plan."
+        }
+      ]
+    }
+  ],
+  "splits": [
+    {
+      "decisionId": "demo-sso-pilot:dec:0",
+      "dimension": "scope",
+      "state": {
+        "splitId": "demo-sso-pilot:cand:0:t0:split",
+        "status": "reopened",
+        "participants": [
+          {
+            "id": "Priya",
+            "status": "active"
+          },
+          {
+            "id": "Marco",
+            "status": "active"
+          },
+          {
+            "id": "Dana",
+            "status": "active"
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "demo-sso-pilot:cand:0:t0:split:res:0",
+            "splitId": "demo-sso-pilot:cand:0:t0:split",
+            "text": "SSO is done by Friday.",
+            "proposedBy": "Priya",
+            "draftedByModel": false,
+            "status": "confirmed"
+          }
+        ],
+        "confirmations": [
+          {
+            "resolutionId": "demo-sso-pilot:cand:0:t0:split:res:0",
+            "participantId": "Priya",
+            "at": "2026-10-26T15:00:00-04:00"
+          },
+          {
+            "resolutionId": "demo-sso-pilot:cand:0:t0:split:res:0",
+            "participantId": "Marco",
+            "at": "2026-10-26T15:00:00-04:00"
+          },
+          {
+            "resolutionId": "demo-sso-pilot:cand:0:t0:split:res:0",
+            "participantId": "Dana",
+            "at": "2026-10-26T15:00:00-04:00"
+          }
+        ],
+        "recheckInconclusive": false
+      },
+      "deadline": null
+    },
+    {
+      "decisionId": "demo-sso-pilot:dec:2",
+      "dimension": "scope",
+      "state": {
+        "splitId": "demo-sso-pilot:cand:2:probe:0:split",
+        "status": "unresolved",
+        "participants": [
+          {
+            "id": "Priya",
+            "status": "active"
+          },
+          {
+            "id": "Marco",
+            "status": "active"
+          },
+          {
+            "id": "Dana",
+            "status": "active"
+          }
+        ],
+        "resolutions": [],
+        "confirmations": [],
+        "recheckInconclusive": false
+      },
+      "deadline": null
+    }
+  ]
+}
