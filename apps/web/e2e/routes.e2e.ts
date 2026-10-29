@@ -38,9 +38,12 @@ async function createMeeting(request: APIRequestContext): Promise<CreateMeetingR
   return (await res.json()) as CreateMeetingResponse;
 }
 
-test("start page creates a meeting check and shows its links", async ({ page }) => {
+test("start page creates a meeting check and shows its links", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "ForkCheck", level: 1 })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Check what your meeting decided", level: 1 }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "Create meeting check" }).click();
   await expect(page.getByText("Confirm that everyone agreed")).toBeVisible();
 
@@ -55,6 +58,9 @@ test("start page creates a meeting check and shows its links", async ({ page }) 
   await expect(page.getByRole("heading", { name: "Meeting check created" })).toBeVisible();
   await expect(page.getByRole("link", { name: /\/m\/.+#k=/ })).toBeVisible();
   await expect(page.getByRole("listitem").filter({ hasText: "Marco:" })).toBeVisible();
+  await page.getByRole("button", { name: "Copy link for Marco" }).click();
+  await expect(page.getByRole("status")).toHaveText("Link copied");
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toMatch(/^http.*\/p\/.+/);
   // Links carry long tokens: they must wrap rather than widen the page on the narrowest phone.
   await page.setViewportSize({ width: 320, height: 640 });
   const overflow = await page.evaluate(

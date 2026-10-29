@@ -4,8 +4,9 @@ import { useState, type FormEvent } from "react";
 import type { CreateMeetingRequest, CreateMeetingResponse } from "../../contracts/api";
 import type { ValidationError } from "../../server/http";
 import { callApi, organizerUrl } from "../api";
-import { ErrorNotice } from "../components";
+import { Button, ErrorNotice, Field, Toast } from "../components";
 import { wallTimeToInstant } from "../time";
+import { useToast } from "../use-toast";
 
 const CREATE_FAILED = "We couldn't create the meeting check. Nothing was saved. Try again.";
 
@@ -24,25 +25,57 @@ function fieldErrors(body: unknown): FieldErrors {
   return out;
 }
 
+function absolute(url: string): string {
+  return new URL(url, window.location.origin).href;
+}
+
 export function CreatedLinks({ created }: { created: CreateMeetingResponse }) {
   const organizer = organizerUrl(created.meetingId, created.organizerToken);
+  const [toast, showToast] = useToast();
+
+  async function copy(url: string) {
+    try {
+      await navigator.clipboard.writeText(absolute(url));
+      showToast("Link copied");
+    } catch {
+      showToast("Couldn't copy. Select the link and copy it instead.");
+    }
+  }
+
   return (
     <section aria-labelledby="created-heading">
       <h2 id="created-heading">Meeting check created</h2>
       <h3>Your organizer link</h3>
       <p>Keep this link. It&apos;s the only way back to this workspace.</p>
-      <p>
-        <a href={organizer}>{organizer}</a>
-      </p>
+      <ul className="link-list">
+        <li>
+          <a href={organizer}>{organizer}</a>
+          <Button
+            variant="secondary"
+            aria-label="Copy link to your workspace"
+            onClick={() => copy(organizer)}
+          >
+            Copy link
+          </Button>
+        </li>
+      </ul>
       <h3>Participant links</h3>
       <p>Send each person their own link. Each link opens that person&apos;s private questions.</p>
-      <ul>
+      <ul className="link-list">
         {created.participantLinks.map((l) => (
           <li key={l.participantId}>
             {l.displayName}: <a href={l.url}>{l.url}</a>
+            <Button
+              variant="secondary"
+              aria-label={`Copy link for ${l.displayName}`}
+              onClick={() => copy(l.url)}
+            >
+              Copy link
+            </Button>
           </li>
         ))}
       </ul>
+      <Toast message={toast} />
     </section>
   );
 }
@@ -104,84 +137,61 @@ export function CreateMeeting() {
 
   if (created) return <CreatedLinks created={created} />;
 
-  const describedBy = (field: keyof FieldErrors) => (errors[field] ? `${field}-error` : undefined);
-  const fieldError = (field: keyof FieldErrors) =>
-    errors[field] ? <p id={`${field}-error`}>{errors[field]}</p> : null;
-
   return (
     <form onSubmit={submit} noValidate>
       {failure && <ErrorNotice>{failure}</ErrorNotice>}
-      <div>
-        <label htmlFor="title">Meeting title</label>
-        <input id="title" name="title" required aria-describedby={describedBy("title")} />
-        {fieldError("title")}
-      </div>
-      <div>
-        <label htmlFor="heldAt">Meeting date and time</label>
-        <input
-          id="heldAt"
-          name="heldAt"
-          type="datetime-local"
-          required
-          aria-describedby={describedBy("heldAt")}
-        />
-        {fieldError("heldAt")}
-      </div>
-      <div>
-        <label htmlFor="timezone">Time zone</label>
-        <input
-          id="timezone"
-          name="timezone"
-          ref={fillBrowserZone}
-          required
-          aria-describedby={describedBy("timezone")}
-        />
-        {fieldError("timezone")}
-      </div>
-      <div>
-        <label htmlFor="participants">Participant names, one per line</label>
-        <textarea
-          id="participants"
-          name="participants"
-          rows={4}
-          required
-          aria-describedby={describedBy("participants")}
-        />
-        {fieldError("participants")}
-      </div>
-      <div>
-        <label htmlFor="transcript">Transcript</label>
-        <textarea
-          id="transcript"
-          name="transcript"
-          rows={12}
-          required
-          aria-describedby={["transcript-hint", describedBy("transcript")]
-            .filter(Boolean)
-            .join(" ")}
-        />
-        <span id="transcript-hint">
-          One line per turn, starting with the speaker&apos;s name: &quot;Dana: text&quot;.
-        </span>
-        {fieldError("transcript")}
-      </div>
-      <div>
-        <input
-          id="consent"
-          name="consent"
-          type="checkbox"
-          required
-          aria-describedby={describedBy("consent")}
-        />
-        <label htmlFor="consent">
-          Everyone in this meeting agreed to have it checked. The transcript is sent to Meta&apos;s
-          model API for analysis.
-        </label>
-        {fieldError("consent")}
-      </div>
-      <button type="submit" disabled={sending}>
+      <Field id="title" label="Meeting title" error={errors.title}>
+        {(d) => <input id="title" name="title" required aria-describedby={d} />}
+      </Field>
+      <Field id="heldAt" label="Meeting date and time" error={errors.heldAt}>
+        {(d) => (
+          <input id="heldAt" name="heldAt" type="datetime-local" required aria-describedby={d} />
+        )}
+      </Field>
+      <Field id="timezone" label="Time zone" error={errors.timezone}>
+        {(d) => (
+          <input
+            id="timezone"
+            name="timezone"
+            ref={fillBrowserZone}
+            required
+            aria-describedby={d}
+          />
+        )}
+      </Field>
+      <Field id="participants" label="Participant names, one per line" error={errors.participants}>
+        {(d) => (
+          <textarea id="participants" name="participants" rows={4} required aria-describedby={d} />
+        )}
+      </Field>
+      <Field
+        id="transcript"
+        label="Transcript"
+        hint={
+          <>One line per turn, starting with the speaker&apos;s name: &quot;Dana: text&quot;.</>
+        }
+        error={errors.transcript}
+      >
+        {(d) => (
+          <textarea id="transcript" name="transcript" rows={12} required aria-describedby={d} />
+        )}
+      </Field>
+      <Field
+        id="consent"
+        check
+        label={
+          <>
+            Everyone in this meeting agreed to have it checked. The transcript is sent to
+            Meta&apos;s model API for analysis.
+          </>
+        }
+        error={errors.consent}
+      >
+        {(d) => <input id="consent" name="consent" type="checkbox" required aria-describedby={d} />}
+      </Field>
+      <Button type="submit" disabled={sending}>
         {sending ? "Creating meeting check" : "Create meeting check"}
-      </button>
+      </Button>
     </form>
   );
 }

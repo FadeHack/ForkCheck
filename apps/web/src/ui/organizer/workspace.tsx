@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import type { OrganizerMeetingState } from "../../contracts/api";
 import { callApi, organizerToken, type Loaded } from "../api";
 import { ErrorNotice, Loading } from "../components";
+import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, organizerStages, type OrganizerStage } from "../stages";
 import { formatHeldAt } from "../time";
 import {
@@ -44,6 +45,7 @@ export function WorkspaceView({
         <h1>{state.meeting.title}</h1>
         <p>Held {formatHeldAt(state.meeting.heldAt, state.meeting.timezone)}</p>
       </header>
+      {state.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
       <StageRail current={current} viewing={stage} href={href} />
       {stage === "questions" && <QuestionsView state={state} />}
       {stage === "round" && <RoundView state={state} />}

@@ -4,8 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { ParticipantProbe, ParticipantState } from "../../contracts/api";
 import { callApi, type Loaded } from "../api";
-import { ErrorNotice, ForkList, Loading } from "../components";
-import { splitStatusLabel } from "../labels";
+import { ErrorNotice, ForkView, Loading, StatusLabel } from "../components";
 import { participantStage } from "../stages";
 
 export const ANSWER_INTRO =
@@ -59,7 +58,7 @@ export function ParticipantView({ state, token }: { state: ParticipantState; tok
           <h2 id="revealed-heading">Revealed answers</h2>
           {state.revealed.map((r) => (
             <div key={r.split.id}>
-              <ForkList
+              <ForkView
                 stem={r.probe.stem}
                 options={r.probe.options}
                 split={r.split}
@@ -68,7 +67,7 @@ export function ParticipantView({ state, token }: { state: ParticipantState; tok
               />
               {r.split.outcome === "split" && (
                 <p>
-                  <strong>{splitStatusLabel[r.split.status]}</strong>
+                  <StatusLabel status={r.split.status} />
                 </p>
               )}
             </div>

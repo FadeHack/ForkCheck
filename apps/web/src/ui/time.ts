@@ -36,9 +36,13 @@ export function wallTimeToInstant(local: string, timeZone: string): string | nul
 
 export function formatHeldAt(instant: string, timeZone: string): string {
   try {
+    // dateStyle and timeStyle can't be combined with timeZoneName, so the fields are spelled out.
     return new Intl.DateTimeFormat("en-US", {
-      dateStyle: "medium",
-      timeStyle: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
       timeZone,
       timeZoneName: "short",
     }).format(new Date(instant));

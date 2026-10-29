@@ -1,6 +1,13 @@
 import Link from "next/link";
 import type { OrganizerMeetingState } from "../../contracts/api";
-import { ErrorNotice, ForkList, Loading, QuoteBlock, SimulatedTag } from "../components";
+import {
+  ErrorNotice,
+  ForkView,
+  Loading,
+  QuoteBlock,
+  SpeakerChip,
+  StatusLabel,
+} from "../components";
 import { dimensionLabel, splitStatusLabel, tierLabel, validityText } from "../labels";
 import { organizerStages, splitsToSettle, type OrganizerStage } from "../stages";
 
@@ -21,7 +28,7 @@ export function StageRail({
 }) {
   const currentIdx = organizerStages.findIndex((s) => s.id === current);
   return (
-    <nav aria-label="Meeting check stages">
+    <nav aria-label="Meeting check stages" className="stage-rail">
       <ol>
         {organizerStages.map((s, i) => (
           <li key={s.id} aria-current={s.id === current ? "step" : undefined}>
@@ -159,8 +166,7 @@ export function RoundView({ state }: { state: State }) {
         <ul>
           {state.participants.map((p) => (
             <li key={p.id}>
-              {p.displayName}
-              {p.isSimulated && <SimulatedTag />}
+              <SpeakerChip name={p.displayName} simulated={p.isSimulated} />
               {p.status === "absent" && <>: absent, not asked</>}
             </li>
           ))}
@@ -183,7 +189,7 @@ export function RevealView({ state }: { state: State }) {
       <h2 id="reveal-heading">Revealed answers</h2>
       {revealed.map(({ probe, split }) => (
         <div key={split.id}>
-          <ForkList
+          <ForkView
             stem={probe.stem}
             options={probe.options}
             split={split}
@@ -222,7 +228,7 @@ export function ResolveView({ state }: { state: State }) {
           <article key={split.id}>
             <h3>{byId.get(split.probeId)?.stem}</h3>
             <p>
-              <strong>{splitStatusLabel[split.status]}</strong>
+              <StatusLabel status={split.status} />
             </p>
             {resolutions.length === 0 ? (
               <p>Nobody has proposed wording yet.</p>

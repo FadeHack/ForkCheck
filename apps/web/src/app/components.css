@@ -1,0 +1,348 @@
+/* Styles for src/ui/components.tsx and the site header. Tokens live in globals.css. */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.wordmark {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-decoration: none;
+  padding-block: 0.625rem;
+}
+
+.theme-select {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--ink-muted);
+}
+
+/* Button: primary for the one action a screen exists for, secondary for the rest. */
+.button {
+  font: inherit;
+  font-weight: 600;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-control);
+  border: 1px solid var(--action);
+  cursor: pointer;
+}
+
+.button-primary {
+  background: var(--action);
+  color: var(--on-action);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--action);
+}
+
+.button-secondary:hover {
+  background: var(--surface);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--ink-muted);
+}
+
+/* Field: label above, control, hint, then the error, so the error sits where the eye ends. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-6);
+}
+
+.field > input:not([type="checkbox"]),
+.field > textarea,
+.field > select {
+  width: 100%;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+.field-check {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.field-check > input {
+  margin-top: 0.15rem;
+  flex: none;
+}
+
+.field-check label {
+  flex: 1 1 0;
+  font-weight: 400;
+}
+
+.field-check .field-error {
+  flex-basis: 100%;
+}
+
+.field-hint {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.field-error {
+  color: var(--unresolved);
+  font-weight: 600;
+  margin: 0;
+}
+
+.notice-error {
+  border: 2px solid var(--unresolved);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.notice-error p {
+  margin: 0;
+}
+
+.loading {
+  color: var(--ink-muted);
+}
+
+/* QuoteBlock: square edges because a quote is part of the document, not a control. */
+.quote {
+  background: var(--surface);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.quote blockquote {
+  font-family: var(--font-reading);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.quote blockquote p {
+  margin: 0 0 var(--space-2);
+}
+
+.quote figcaption {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.speaker {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: 0 var(--space-2);
+  color: var(--ink);
+}
+
+.speaker-simulated {
+  color: var(--ink-muted);
+}
+
+.status {
+  font-weight: 600;
+}
+
+.status svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: var(--space-2);
+  vertical-align: -0.15em;
+}
+
+.status-confirmed,
+.status-confirmed svg {
+  color: var(--confirmed);
+}
+
+.status-unresolved,
+.status-unresolved svg {
+  color: var(--unresolved);
+}
+
+.status-split svg {
+  color: var(--split);
+}
+
+.status-neutral svg {
+  color: var(--ink-muted);
+}
+
+/*
+ * ForkView: a stem drops from the question, then one branch per chosen option. Branches take
+ * the accent only when answers differ; a single answer keeps the plain line.
+ */
+.fork {
+  --branch: var(--line);
+  margin-bottom: var(--space-8);
+}
+
+.fork[data-outcome="split"] {
+  --branch: var(--split);
+}
+
+.fork-status {
+  margin: 0;
+}
+
+.fork-stem {
+  font-family: var(--font-reading);
+  font-weight: 600;
+  font-size: 1.1875rem;
+  line-height: 1.4;
+}
+
+.fork-branches {
+  position: relative;
+  list-style: none;
+  margin: 0 0 var(--space-4) 0.4375rem;
+  padding: var(--space-4) 0 0;
+}
+
+.fork-branches::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: var(--space-4);
+  border-left: 2px solid var(--line);
+}
+
+.fork-branch {
+  position: relative;
+  padding: 0 0 var(--space-4) var(--space-6);
+}
+
+.fork-branch + .fork-branch {
+  margin-top: 0;
+}
+
+.fork-branch::before,
+.fork-branch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.fork-branch::before {
+  top: 0;
+  bottom: 0;
+  border-left: 2px solid var(--branch);
+}
+
+.fork-branch:last-child::before {
+  bottom: auto;
+  height: calc(0.75em + 2px);
+}
+
+.fork-branch::after {
+  top: 0.75em;
+  width: var(--space-4);
+  border-top: 2px solid var(--branch);
+}
+
+.fork-option {
+  font-weight: 600;
+  margin: 0;
+}
+
+.fork-branch p + p {
+  margin: var(--space-1) 0 0;
+  color: var(--ink-muted);
+}
+
+.banner {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.banner p {
+  margin: 0;
+}
+
+/* Toast: the one element above the page besides dialogs, so it alone carries a shadow. */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-6);
+  transform: translateX(-50%);
+  max-width: calc(100vw - 2 * var(--space-4));
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.2);
+}
+
+/* Kept in the page while empty so screen readers already watch it when a message arrives. */
+.toast:empty {
+  padding: 0;
+  box-shadow: none;
+}
+
+.stage-rail ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0 var(--space-8);
+}
+
+.stage-rail li {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+.stage-rail li[aria-current="step"] {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom: 2px solid var(--ink);
+}
+
+.stage-rail a {
+  display: inline-block;
+  padding-block: 0.625rem;
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+}
+
+.link-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.link-list a {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
