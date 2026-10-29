@@ -40,6 +40,14 @@ async function loadState(
     recheckInconclusive: false,
   };
   const current = currentResolution(state);
+  if (current && split.status === "confirmed") {
+    // A recheck's split is stored under its probe, `<splitId>:recheck:<resolutionId>`.
+    const [recheck] = await db
+      .select({ outcome: t.split.outcome })
+      .from(t.split)
+      .where(eq(t.split.id, `${split.id}:recheck:${current.id}:split`));
+    state.recheckInconclusive = recheck?.outcome === "insufficient";
+  }
   if (current) {
     const rows = await db
       .select()
@@ -184,6 +192,30 @@ export class SplitRepo {
       const result = step(before);
       if (result.ok) await saveState(tx, before, result.state);
       return { before, result };
+    });
+  }
+
+  /**
+   * Saves a recheck's split and applies its outcome to the split it rechecked, together.
+   * The recheck split takes no labels or resolutions; the original split carries the state.
+   * Returns the original split's transition, or null if that split is gone.
+   */
+  async saveRecheck(recheck: Split, originalId: string): Promise<TransitionResult | null> {
+    return this.db.transaction(async (tx) => {
+      const [row] = await tx
+        .select({ split: t.split, meetingId: t.probe.meetingId })
+        .from(t.split)
+        .innerJoin(t.probe, eq(t.probe.id, t.split.probeId))
+        .where(eq(t.split.id, originalId))
+        .for("update", { of: t.split });
+      if (!row) return null;
+      const before = await loadState(tx, row.split, await meetingParticipants(tx, row.meetingId));
+      const result = applyResolutionEvent(before, { type: "recheck", outcome: recheck.outcome });
+      if (!result.ok) return result;
+      // The recheck's own split keeps the status its outcome led to, as a record of that step.
+      await tx.insert(t.split).values({ ...recheck, status: result.state.status });
+      await saveState(tx, before, result.state);
+      return result;
     });
   }
 
