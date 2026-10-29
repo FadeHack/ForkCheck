@@ -1,29 +1,18 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import type { CreateMeetingRequest, CreateMeetingResponse } from "../../contracts/api";
-import type { ValidationError } from "../../server/http";
+import { useMemo, useState, type FormEvent } from "react";
+import type { CreateMeetingResponse } from "../../contracts/api";
 import { callApi, organizerUrl } from "../api";
 import { Button, ErrorNotice, Field, Toast } from "../components";
-import { wallTimeToInstant } from "../time";
 import { useToast } from "../use-toast";
+import {
+  serverFieldErrors,
+  transcriptWarnings,
+  validateMeeting,
+  type FieldErrors,
+} from "./validate";
 
 const CREATE_FAILED = "We couldn't create the meeting check. Nothing was saved. Try again.";
-
-/** Field errors keyed by form field; the API reports `participants.1` style paths. */
-type Field = "title" | "heldAt" | "timezone" | "participants" | "transcript" | "consent";
-type FieldErrors = Partial<Record<Field, string>>;
-const API_FIELDS: readonly string[] = ["title", "heldAt", "timezone", "participants", "transcript"];
-
-function fieldErrors(body: unknown): FieldErrors {
-  const fields = (body as ValidationError | null)?.error?.fields ?? {};
-  const out: FieldErrors = {};
-  for (const [path, messages] of Object.entries(fields)) {
-    const key = path.split(".")[0] ?? "";
-    if (API_FIELDS.includes(key)) out[key as Field] ??= messages.join(" ");
-  }
-  return out;
-}
 
 function absolute(url: string): string {
   return new URL(url, window.location.origin).href;
@@ -91,38 +80,35 @@ export function CreateMeeting() {
   const [sending, setSending] = useState(false);
   const [created, setCreated] = useState<CreateMeetingResponse | null>(null);
 
+  const [participants, setParticipants] = useState("");
+  const [transcript, setTranscript] = useState("");
+  const warnings = useMemo(
+    () => transcriptWarnings(participants, transcript),
+    [participants, transcript],
+  );
+
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const text = (name: string) => String(form.get(name) ?? "").trim();
-    const timezone = text("timezone");
-    const heldAt = wallTimeToInstant(text("heldAt"), timezone);
-    const local: FieldErrors = {};
-    if (heldAt === null) {
-      local.heldAt = "Enter the date and time the meeting started, in the time zone below.";
-    }
-    if (form.get("consent") === null) {
-      local.consent = "Confirm that everyone agreed to have this meeting checked.";
-    }
-    if (Object.keys(local).length > 0) {
-      setErrors(local);
+    const text = (name: string) => String(form.get(name) ?? "");
+    const checked = validateMeeting({
+      title: text("title"),
+      heldAt: text("heldAt"),
+      timezone: text("timezone"),
+      participants,
+      transcript,
+      consent: form.get("consent") !== null,
+    });
+    if (!checked.ok) {
+      setErrors(checked.errors);
+      setFailure(null);
       return;
     }
-    const body: CreateMeetingRequest = {
-      title: text("title"),
-      heldAt: heldAt!,
-      timezone,
-      participants: text("participants")
-        .split("\n")
-        .map((n) => n.trim())
-        .filter(Boolean),
-      transcript: text("transcript"),
-    };
     setSending(true);
     setFailure(null);
     const res = await callApi<CreateMeetingResponse>("/api/meetings", {
       method: "POST",
-      body: JSON.stringify(body),
+      body: JSON.stringify(checked.body),
     });
     setSending(false);
     if (res.ok) {
@@ -130,7 +116,7 @@ export function CreateMeeting() {
       setCreated(res.data);
       return;
     }
-    const fields = fieldErrors(res.body);
+    const fields = serverFieldErrors(res.body);
     setErrors(fields);
     setFailure(Object.keys(fields).length > 0 ? res.message : CREATE_FAILED);
   }
@@ -161,7 +147,15 @@ export function CreateMeeting() {
       </Field>
       <Field id="participants" label="Participant names, one per line" error={errors.participants}>
         {(d) => (
-          <textarea id="participants" name="participants" rows={4} required aria-describedby={d} />
+          <textarea
+            id="participants"
+            name="participants"
+            rows={4}
+            required
+            value={participants}
+            onChange={(e) => setParticipants(e.target.value)}
+            aria-describedby={d}
+          />
         )}
       </Field>
       <Field
@@ -170,10 +164,19 @@ export function CreateMeeting() {
         hint={
           <>One line per turn, starting with the speaker&apos;s name: &quot;Dana: text&quot;.</>
         }
+        warning={warnings.length > 0 ? warnings.map((w) => <p key={w}>{w}</p>) : undefined}
         error={errors.transcript}
       >
         {(d) => (
-          <textarea id="transcript" name="transcript" rows={12} required aria-describedby={d} />
+          <textarea
+            id="transcript"
+            name="transcript"
+            rows={12}
+            required
+            value={transcript}
+            onChange={(e) => setTranscript(e.target.value)}
+            aria-describedby={d}
+          />
         )}
       </Field>
       <Field

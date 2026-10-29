@@ -104,6 +104,19 @@
   font-size: 0.9375rem;
 }
 
+.field-warning {
+  border-left: 3px solid var(--unresolved);
+  padding-left: var(--space-3);
+}
+
+.field-warning > p {
+  margin: 0;
+}
+
+.field-warning > p + p {
+  margin-top: var(--space-2);
+}
+
 .field-error {
   color: var(--unresolved);
   font-weight: 600;
