@@ -1,6 +1,6 @@
-import { expect, test, type APIRequestContext } from "@playwright/test";
-import type { OrganizerMeetingState, ParticipantState } from "../src/contracts/api";
-import { seedAnalyzedMeeting } from "./seed";
+import { expect, test } from "@playwright/test";
+import type { ParticipantState } from "../src/contracts/api";
+import { openRound, seedAnalyzedMeeting } from "./seed";
 
 let consoleErrors: string[] = [];
 
@@ -14,19 +14,6 @@ test.beforeEach(({ page }) => {
 test.afterEach(() => {
   expect(consoleErrors).toEqual([]);
 });
-
-/** Publishes every passing draft, as the organizer's "Publish" button would. */
-async function openRound(request: APIRequestContext, meetingId: string, token: string) {
-  const headers = { authorization: `Bearer ${token}` };
-  const res = await request.get(`/api/meetings/${meetingId}`, { headers });
-  const state = (await res.json()) as OrganizerMeetingState;
-  const probeIds = state.probes.filter((p) => p.status === "draft").map((p) => p.id);
-  const opened = await request.post(`/api/meetings/${meetingId}/rounds`, {
-    headers,
-    data: { probeIds },
-  });
-  expect(opened.ok()).toBe(true);
-}
 
 test.use({ viewport: { width: 320, height: 720 } });
 

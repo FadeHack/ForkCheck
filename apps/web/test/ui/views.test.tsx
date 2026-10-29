@@ -3,7 +3,8 @@ import { describe, expect, it } from "vitest";
 import type { DecisionRecord, RecordItem } from "@forkcheck/core";
 import { ErrorNotice, Loading } from "../../src/ui/components";
 import { initialSelection, publishLabel, QuestionsView } from "../../src/ui/organizer/questions";
-import { RevealView, RoundView } from "../../src/ui/organizer/views";
+import { RevealView } from "../../src/ui/organizer/views";
+import { RoundMonitor } from "../../src/ui/organizer/round";
 import { WorkspaceView } from "../../src/ui/organizer/workspace";
 import { ParticipantView } from "../../src/ui/participant/view";
 import { RecordView } from "../../src/ui/record/view";
@@ -196,22 +197,28 @@ describe("QuestionsView", () => {
   });
 });
 
-describe("RoundView", () => {
-  it("shows counts and names, never answers", () => {
+describe("RoundMonitor", () => {
+  it("shows who has answered, never what", () => {
     const state = organizerState({
       probes: [probe("q1")],
       rounds: [round("r1")],
-      answerCounts: [{ probeId: "q1", answered: 2, active: 3 }],
+      answerCounts: [{ probeId: "q1", answered: 1, active: 2, answeredBy: ["p0"] }],
       participants: [participants[0]!, participants[1]!, { ...participants[2]!, status: "absent" }],
     });
-    const out = html(<RoundView state={state} />);
-    expect(out).toContain("Question q1: 2 of 3 have answered.");
-    expect(text(<RoundView state={state} />)).toContain("Dana: absent, not asked");
+    const out = text(<RoundMonitor state={state} />);
+    expect(out).toContain("1 of 2 have answered.");
+    expect(out).toContain("PriyaAnswered");
+    expect(out).toContain("MarcoNot answered yet");
+    expect(out).toContain("DanaAbsent, not asked");
+    expect(out).toContain("Only 1 person has answered. At least 2 people need to answer first.");
+    expect(html(<RoundMonitor state={state} />)).toMatch(
+      /<button[^>]*disabled=""[^>]*>Reveal answers/,
+    );
     expect(out).not.toContain("Staging");
   });
 
   it("says when no question is open", () => {
-    expect(html(<RoundView state={organizerState()} />)).toContain(
+    expect(html(<RoundMonitor state={organizerState()} />)).toContain(
       "No questions are open right now.",
     );
   });

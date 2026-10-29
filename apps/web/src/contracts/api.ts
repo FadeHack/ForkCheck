@@ -82,6 +82,8 @@ export interface ProbeAnswerCount {
   probeId: string;
   answered: number;
   active: number;
+  /** Who has answered, by participant ID: never what they chose. */
+  answeredBy: string[];
 }
 /** Answers stay sealed until their round closes: open rounds expose counts only. */
 export interface OrganizerMeetingState {

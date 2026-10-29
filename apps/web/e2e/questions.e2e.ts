@@ -67,7 +67,7 @@ test("publishing sends the chosen drafts and opens the round", async ({ page, ba
   await expect(page.getByRole("navigation", { name: "Meeting check stages" })).toContainText(
     "Reveal, not yet",
   );
-  await expect(page.getByText(/: 0 of 3 have answered\./)).toHaveCount(1);
+  await expect(page.getByText("0 of 3 have answered.")).toBeVisible();
 });
 
 test("drafting starts from the workspace and offers a retry when a step fails", async ({

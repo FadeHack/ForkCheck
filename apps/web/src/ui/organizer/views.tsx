@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { OrganizerMeetingState } from "../../contracts/api";
-import { ForkView, SpeakerChip, StatusLabel } from "../components";
+import { ForkView, StatusLabel } from "../components";
 import { splitStatusLabel, validityText } from "../labels";
 import { organizerStages, splitsToSettle, type OrganizerStage } from "../stages";
 
@@ -38,41 +38,6 @@ export function StageRail({
         ))}
       </ol>
     </nav>
-  );
-}
-
-export function RoundView({ state }: { state: State }) {
-  const byId = new Map(state.probes.map((p) => [p.id, p]));
-  const active = state.participants.filter((p) => p.status === "active");
-  return (
-    <>
-      <section aria-labelledby="progress-heading">
-        <h2 id="progress-heading">Answers so far</h2>
-        {state.answerCounts.length === 0 ? (
-          <p>No questions are open right now.</p>
-        ) : (
-          <ul>
-            {state.answerCounts.map((c) => (
-              <li key={c.probeId}>
-                {byId.get(c.probeId)?.stem ?? "Question"}: {c.answered} of {c.active} have answered.
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-      <section aria-labelledby="people-heading">
-        <h2 id="people-heading">Participants</h2>
-        <p>{active.length} active. Answers stay sealed until they are revealed, for you too.</p>
-        <ul>
-          {state.participants.map((p) => (
-            <li key={p.id}>
-              <SpeakerChip name={p.displayName} simulated={p.isSimulated} />
-              {p.status === "absent" && <>: absent, not asked</>}
-            </li>
-          ))}
-        </ul>
-      </section>
-    </>
   );
 }
 

@@ -184,7 +184,10 @@ describe("POST /api/rounds/:id/close", () => {
     const sealed = await organizer(m);
     expect(sealed.meeting).toMatchObject({ status: "probing", error: REVEAL_FAILED });
     expect(sealed.revealedAnswers).toEqual([]);
-    expect(sealed.answerCounts).toEqual([{ probeId: p0!.id, answered: 2, active: 3 }]);
+    expect(sealed.answerCounts).toEqual([
+      { probeId: p0!.id, answered: 2, active: 3, answeredBy: expect.any(Array) },
+    ]);
+    expect(sealed.answerCounts[0]!.answeredBy).toHaveLength(2);
     expect((await participant(m, 0)).revealed).toEqual([]);
     // The round stays closed: no answer can change between the failure and the retry.
     expect((await say(m, 2, option(p0!, 1))).status).toBe(409);

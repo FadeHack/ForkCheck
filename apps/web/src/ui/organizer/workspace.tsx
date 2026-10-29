@@ -9,7 +9,8 @@ import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, organizerStages, type OrganizerStage } from "../stages";
 import { formatHeldAt } from "../time";
 import { QuestionsView } from "./questions";
-import { RecheckView, RecordLink, ResolveView, RevealView, RoundView, StageRail } from "./views";
+import { RoundMonitor } from "./round";
+import { RecheckView, RecordLink, ResolveView, RevealView, StageRail } from "./views";
 
 export const MISSING_KEY =
   "This workspace link is missing its key. Open the organizer link you kept when you created the meeting check.";
@@ -47,7 +48,7 @@ export function WorkspaceView({
         // Remounts when drafting finishes, so the selection starts from the new drafts.
         <QuestionsView key={state.meeting.status} state={state} onChange={reload} />
       )}
-      {stage === "round" && <RoundView state={state} />}
+      {stage === "round" && <RoundMonitor state={state} onChange={reload} />}
       {stage === "reveal" && <RevealView state={state} />}
       {stage === "resolve" && <ResolveView state={state} />}
       {stage === "recheck" && <RecheckView state={state} />}

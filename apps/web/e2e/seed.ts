@@ -1,7 +1,12 @@
+import { expect, type APIRequestContext } from "@playwright/test";
 import { ScriptedProvider } from "@forkcheck/ai";
 import { loadEnv, loadLocalEnvFile } from "@forkcheck/config";
 import { connect } from "@forkcheck/db";
-import type { CreateMeetingResponse } from "../src/contracts/api";
+import type {
+  CreateMeetingResponse,
+  OrganizerMeetingState,
+  ParticipantState,
+} from "../src/contracts/api";
 import { analyzeMeeting } from "../src/server/analyze";
 import { createDeps } from "../src/server/deps";
 import { createMeeting } from "../src/server/meetings";
@@ -111,5 +116,40 @@ export async function seedAnalyzedMeeting(origin: string): Promise<CreateMeeting
     return created;
   } finally {
     await close();
+  }
+}
+
+/** Publishes every draft, as the organizer's "Publish" button would. */
+export async function openRound(request: APIRequestContext, meetingId: string, token: string) {
+  const headers = { authorization: `Bearer ${token}` };
+  const res = await request.get(`/api/meetings/${meetingId}`, { headers });
+  const state = (await res.json()) as OrganizerMeetingState;
+  const probeIds = state.probes.filter((p) => p.status === "draft").map((p) => p.id);
+  const opened = await request.post(`/api/meetings/${meetingId}/rounds`, {
+    headers,
+    data: { probeIds },
+  });
+  expect(opened.ok()).toBe(true);
+}
+
+/**
+ * Answers open questions through the participant API. `pick` returns the option text to choose
+ * for a question's stem, `null` for its first option, or `undefined` to leave it unanswered.
+ */
+export async function answerOpen(
+  request: APIRequestContext,
+  token: string,
+  pick: (stem: string) => string | null | undefined,
+) {
+  const res = await request.get(`/api/p/${token}`);
+  const { openProbes } = (await res.json()) as ParticipantState;
+  for (const probe of openProbes) {
+    const text = pick(probe.stem);
+    if (text === undefined) continue;
+    const option = probe.options.find((o) => o.text === text) ?? probe.options[0]!;
+    const sent = await request.post(`/api/p/${token}/answers`, {
+      data: { probeId: probe.id, choice: "option", optionId: option.id },
+    });
+    expect(sent.ok()).toBe(true);
   }
 }

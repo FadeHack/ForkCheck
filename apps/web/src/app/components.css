@@ -544,3 +544,48 @@
 .sent-answers {
   margin-bottom: var(--space-6);
 }
+
+/* Round monitor */
+.round-focal {
+  font-size: 1.375rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.people-list {
+  list-style: none;
+  padding: 0;
+}
+
+.people-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.person-status {
+  flex: 1 1 8rem;
+  color: var(--ink-muted);
+}
+
+/* Dialog: with the toast, the only element above the page, so it carries the shadow. */
+.dialog {
+  max-width: min(32rem, calc(100vw - 2 * var(--space-4)));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--paper);
+  color: var(--ink);
+  padding: var(--space-6);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.2);
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+
+.dialog p {
+  margin-top: 0;
+}
