@@ -38,13 +38,19 @@ describe("headless loop on the demo scenario (fixtures)", () => {
     await expect(`${JSON.stringify(record, null, 2)}\n`).toMatchFileSnapshot(
       "./__snapshots__/demo-sso-pilot-precise.record.json",
     );
+    // The app's record endpoint test seeds its database from this and expects the same record.
+    await expect(`${JSON.stringify(recordInput, null, 2)}\n`).toMatchFileSnapshot(
+      "./__snapshots__/demo-sso-pilot-precise.record-input.json",
+    );
     await expect(renderRecordMarkdown(record, segments)).toMatchFileSnapshot(
       "./__snapshots__/demo-sso-pilot-precise.record.md",
     );
   });
 
   it("vague: the recheck splits, the split reopens and the record still validates", async () => {
-    const { record, trace } = await runLoop(demo, new FakeProvider(), { resolution: "vague" });
+    const { record, recordInput, trace } = await runLoop(demo, new FakeProvider(), {
+      resolution: "vague",
+    });
     expect(scripted("friday-meaning").vague.expectedRecheck).toBe("split");
     expect(trace.validation.ok).toBe(true);
     expect(record.items.filter((i) => i.category === "confirmed")).toEqual([]);
@@ -54,6 +60,9 @@ describe("headless loop on the demo scenario (fixtures)", () => {
     ]);
     await expect(`${JSON.stringify(record, null, 2)}\n`).toMatchFileSnapshot(
       "./__snapshots__/demo-sso-pilot-vague.record.json",
+    );
+    await expect(`${JSON.stringify(recordInput, null, 2)}\n`).toMatchFileSnapshot(
+      "./__snapshots__/demo-sso-pilot-vague.record-input.json",
     );
   });
 });
