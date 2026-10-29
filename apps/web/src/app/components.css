@@ -614,3 +614,53 @@
   cursor: not-allowed;
   color: var(--ink-muted);
 }
+
+/* Resolve: the proposal reads like the record it will become; the model's draft stays boxed apart. */
+.resolve {
+  margin-top: var(--space-6);
+}
+
+.resolve .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.confirm-confirmed {
+  color: var(--confirmed);
+  font-weight: 600;
+}
+
+.confirm-confirmed svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: var(--space-2);
+  vertical-align: -0.15em;
+}
+
+.proposal-form {
+  margin-top: var(--space-4);
+}
+
+.proposal-form textarea {
+  width: 100%;
+}
+
+.model-draft {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3) var(--space-4);
+  margin-block: var(--space-4);
+}
+
+.model-draft-label {
+  margin: 0 0 var(--space-2);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.model-draft blockquote {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-reading);
+}

@@ -132,6 +132,17 @@ export async function openRound(request: APIRequestContext, meetingId: string, t
   expect(opened.ok()).toBe(true);
 }
 
+/** Reveals the open round, as the organizer's "Reveal answers" button would. */
+export async function closeRound(request: APIRequestContext, meetingId: string, token: string) {
+  const headers = { authorization: `Bearer ${token}` };
+  const state = (await (
+    await request.get(`/api/meetings/${meetingId}`, { headers })
+  ).json()) as OrganizerMeetingState;
+  const round = state.rounds.find((r) => r.closedAt === null)!;
+  const closed = await request.post(`/api/rounds/${round.id}/close`, { headers });
+  expect(closed.ok()).toBe(true);
+}
+
 /**
  * Answers open questions through the participant API. `pick` returns the option text to choose
  * for a question's stem, `null` for its first option, or `undefined` to leave it unanswered.

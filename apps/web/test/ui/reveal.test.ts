@@ -6,6 +6,8 @@ const item = (id: string, outcome: "split" | "consistent" | "insufficient"): Rev
   split: { ...split(id, `q-${id}`), outcome },
   probe: { id: `q-${id}`, stem: id, options: [] },
   quote: null,
+  resolutions: [],
+  confirmations: [],
   answers: [],
 });
 

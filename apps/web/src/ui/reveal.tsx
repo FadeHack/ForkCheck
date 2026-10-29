@@ -4,7 +4,9 @@ import { useState } from "react";
 import {
   validityLabel,
   type Answer,
+  type Confirmation,
   type Participant,
+  type Resolution,
   type SourceQuote,
   type Split,
   type ValidityLabel,
@@ -13,12 +15,15 @@ import type { LabelValidityResponse, ParticipantProbe } from "../contracts/api";
 import { callApi } from "./api";
 import { ForkView, StatusLabel } from "./components";
 import { nameList, validityText } from "./labels";
+import { ResolvePanel, type Actor } from "./resolve";
 
 export interface RevealItem {
   split: Split;
   probe: Pick<ParticipantProbe, "id" | "stem" | "options">;
   quote: SourceQuote | null;
   answers: Answer[];
+  resolutions: Resolution[];
+  confirmations: Confirmation[];
 }
 
 export const VALIDITY_PROMPT = "Is this a real difference?";
@@ -105,27 +110,24 @@ function ValidityControl({
 }
 
 /**
- * Every revealed question as the same fork for every viewer. A participant also gets the
- * "real difference" label control on each difference; the organizer sees the tally only.
+ * Every revealed question as the same fork for every viewer, and under each difference its
+ * labels and wording. A participant also gets the controls; the organizer sees the same page
+ * without them.
  */
 export function RevealList({
   items,
   people,
-  labeller,
+  actor,
 }: {
   items: RevealItem[];
   people: Participant[];
-  labeller?: {
-    token: string;
-    viewerId: string;
-    onChange?: (() => Promise<void>) | undefined;
-  };
+  actor?: Actor | undefined;
 }) {
   if (items.length === 0) return <p>No answers have been revealed yet.</p>;
   return (
     <section aria-labelledby="reveal-heading" className="reveal">
       <h2 id="reveal-heading">Revealed answers</h2>
-      {revealOrder(items).map(({ split, probe, quote, answers }) => {
+      {revealOrder(items).map(({ split, probe, quote, answers, resolutions, confirmations }) => {
         const tally = validityTally(split, people);
         return (
           <div key={split.id} className="reveal-item">
@@ -142,12 +144,12 @@ export function RevealList({
                 <p>
                   <StatusLabel status={split.status} />
                 </p>
-                {labeller && (
+                {actor && (
                   <ValidityControl
                     split={split}
-                    token={labeller.token}
-                    viewerId={labeller.viewerId}
-                    onChange={labeller.onChange}
+                    token={actor.token}
+                    viewerId={actor.viewerId}
+                    onChange={actor.onChange}
                   />
                 )}
                 {tally.length > 0 && (
@@ -160,6 +162,13 @@ export function RevealList({
                     </ul>
                   </>
                 )}
+                <ResolvePanel
+                  split={split}
+                  resolutions={resolutions}
+                  confirmations={confirmations}
+                  people={people}
+                  actor={actor}
+                />
               </>
             )}
           </div>

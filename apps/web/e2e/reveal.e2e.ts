@@ -1,26 +1,10 @@
-import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type APIRequestContext, type Page } from "@playwright/test";
-import type { OrganizerMeetingState } from "../src/contracts/api";
-import { answerOpen, openRound, seedAnalyzedMeeting } from "./seed";
+import { expect, test, type Page } from "@playwright/test";
+import { noAxeViolations } from "./axe";
+import { answerOpen, closeRound, openRound, seedAnalyzedMeeting } from "./seed";
 
 const where = "Where does single sign-on run on Friday?";
 
-async function closeRound(request: APIRequestContext, meetingId: string, token: string) {
-  const headers = { authorization: `Bearer ${token}` };
-  const state = (await (
-    await request.get(`/api/meetings/${meetingId}`, { headers })
-  ).json()) as OrganizerMeetingState;
-  const round = state.rounds.find((r) => r.closedAt === null)!;
-  const closed = await request.post(`/api/rounds/${round.id}/close`, { headers });
-  expect(closed.ok()).toBe(true);
-}
-
 const forks = (page: Page) => page.locator(".reveal article").allInnerTexts();
-
-async function noAxeViolations(page: Page) {
-  const { violations } = await new AxeBuilder({ page }).analyze();
-  expect(violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target).join(" | ")}`)).toEqual([]);
-}
 
 test("answers stay sealed until the reveal, then every viewer sees the same forks", async ({
   browser,

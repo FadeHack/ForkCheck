@@ -98,7 +98,7 @@ export function ParticipantView({
         <RevealList
           items={state.revealed.filter((r) => r.probe.kind === "diagnostic")}
           people={state.participants}
-          labeller={{ token, viewerId: state.participant.id, onChange: reload }}
+          actor={{ token, viewerId: state.participant.id, onChange: reload }}
         />
       )}
       {stage === "record" && (
