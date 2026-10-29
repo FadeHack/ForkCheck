@@ -208,7 +208,12 @@ export interface ConfirmResolutionResponse {
   resolution: Resolution;
   confirmedBy: string[];
   pending: string[];
+  /** Participants marked absent: not waited for, and named so everyone can see who. */
+  absent: string[];
 }
+
+// POST /api/p/:token/splits/:id/unresolved → the split, marked "agree to disagree"; no body
+export type MarkUnresolvedResponse = Split;
 
 // POST /api/splits/:id/recheck (only after confirmed)
 export interface StartRecheckResponse {
