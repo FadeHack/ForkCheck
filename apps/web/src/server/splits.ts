@@ -110,8 +110,7 @@ export async function proposeResolution(
       actor: actor(participant),
       resolutionId,
       text: body.text,
-      // The participant submits text in their own field; a model draft is theirs once placed there.
-      draftedByModel: false,
+      draftedByModel: body.draftedByModel ?? false,
     });
   }))!;
   if (!done.result.ok) return refused(done.result.error, done.before);
