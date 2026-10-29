@@ -43,6 +43,10 @@ test("the trace panel and the agree-to-disagree dialog work from the keyboard al
   await expect(dialog).toBeHidden();
   await expect(button).toBeFocused();
   await expect(p.getByText("Recorded as unresolved")).toHaveCount(0);
+
+  // The wordmark is the one link every page has.
+  await p.getByRole("link", { name: "ForkCheck" }).click();
+  await expect(p).toHaveURL(/\/$/);
 });
 
 test("a participant waiting on others hears when the answers are revealed", async ({
