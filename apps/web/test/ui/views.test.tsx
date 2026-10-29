@@ -19,11 +19,13 @@ import {
 } from "./fixtures";
 
 const html = (node: React.ReactElement) => renderToStaticMarkup(node);
+/** The visible text, for copy that spans components such as a status label and its sentence. */
+const text = (node: React.ReactElement) => html(node).replace(/<[^>]+>/g, "");
 
 describe("shared states", () => {
   it("announces loading as status and failures as alerts", () => {
-    expect(html(<Loading>Opening your questions.</Loading>)).toBe(
-      '<p role="status">Opening your questions.</p>',
+    expect(html(<Loading>Opening your questions.</Loading>)).toContain(
+      'role="status" class="loading">Opening your questions.</p>',
     );
     expect(html(<ErrorNotice>Nothing was saved.</ErrorNotice>)).toContain('role="alert"');
   });
@@ -128,7 +130,7 @@ describe("RoundView", () => {
     });
     const out = html(<RoundView state={state} />);
     expect(out).toContain("Question q1: 2 of 3 have answered.");
-    expect(out).toContain("Dana: absent, not asked");
+    expect(text(<RoundView state={state} />)).toContain("Dana: absent, not asked");
     expect(out).not.toContain("Staging");
   });
 
@@ -287,7 +289,7 @@ describe("RecordView", () => {
     expect(out.indexOf("Confirmed by participants")).toBeLessThan(out.indexOf("Unresolved"));
     expect(out.indexOf("Unresolved")).toBeLessThan(out.indexOf("Stated in meeting"));
     expect(out).toContain("Confirmed by Priya, Marco.");
-    expect(out).toContain("Recheck passed: everyone gave the same answer.");
+    expect(out.replace(/<[^>]+>/g, "")).toContain("Recheck passed: everyone gave the same answer.");
     expect(out).toContain("Absent, not asked: Dana.");
     expect(out).toContain("A quote doesn&#x27;t match the transcript.");
   });

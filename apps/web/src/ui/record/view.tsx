@@ -4,19 +4,21 @@ import { useEffect, useState } from "react";
 import type { RecordItem } from "@forkcheck/core";
 import type { RecordResponse } from "../../contracts/api";
 import { callApi, organizerToken, type Loaded } from "../api";
-import { ErrorNotice, Loading, SimulatedTag } from "../components";
+import { ErrorNotice, Loading, SpeakerChip, StatusLabel, type Status } from "../components";
+import { SimulatedBanner } from "../simulated-banner";
 import { formatHeldAt } from "../time";
 import { MISSING_KEY } from "../organizer/workspace";
 
-const recheckText: Record<RecordItem["recheck"], string | null> = {
-  passed: "Recheck passed: everyone gave the same answer.",
-  failed: "Reopened: answers differed, so the wording didn't settle it.",
-  not_conclusive: "Not conclusive: not enough answers.",
+const recheckText: Record<RecordItem["recheck"], [Status, string] | null> = {
+  passed: ["rechecked", "everyone gave the same answer."],
+  failed: ["reopened", "answers differed, so the wording didn't settle it."],
+  not_conclusive: ["not_conclusive", "not enough answers."],
   not_run: null,
 };
 
 function Item({ item, names }: { item: RecordItem; names: ReadonlyMap<string, string> }) {
   const name = (id: string) => names.get(id) ?? "A participant";
+  const recheck = recheckText[item.recheck];
   return (
     <li>
       <p>{item.text}</p>
@@ -39,7 +41,11 @@ function Item({ item, names }: { item: RecordItem; names: ReadonlyMap<string, st
         ))}
       {item.confirmedBy.length > 0 && <p>Confirmed by {item.confirmedBy.map(name).join(", ")}.</p>}
       {item.absent.length > 0 && <p>Absent, not asked: {item.absent.map(name).join(", ")}.</p>}
-      {recheckText[item.recheck] && <p>{recheckText[item.recheck]}</p>}
+      {recheck && (
+        <p>
+          <StatusLabel status={recheck[0]} />: {recheck[1]}
+        </p>
+      )}
     </li>
   );
 }
@@ -66,13 +72,13 @@ export function RecordView({ data }: { data: RecordResponse }) {
           Participants:{" "}
           {record.participants.map((p, i) => (
             <span key={p.id}>
-              {i > 0 && ", "}
-              {p.displayName}
-              {p.isSimulated && <SimulatedTag />}
+              {i > 0 && " "}
+              <SpeakerChip name={p.displayName} simulated={p.isSimulated} />
             </span>
           ))}
         </p>
       </header>
+      {record.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
       {sections.map((s) => {
         const items = record.items.filter((i) => i.category === s.category);
         return (

@@ -4,7 +4,7 @@ import { CheckedDimensions } from "./checked-dimensions";
 export default function HomePage() {
   return (
     <main>
-      <h1>ForkCheck</h1>
+      <h1>Check what your meeting decided</h1>
       <p>
         Paste a meeting transcript. ForkCheck finds decisions whose details could be read more than
         one way, asks each participant short private questions about them, and shows where the
