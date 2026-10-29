@@ -106,3 +106,46 @@ test("vague wording everyone confirmed is reopened when the recheck answers diff
   expect(errors).toEqual([]);
   await Promise.all(contexts.map((c) => c.close()));
 });
+
+test("the organizer can open the record without a recheck, and it says so", async ({
+  page,
+  request,
+  baseURL,
+}) => {
+  const WORDING = "Single sign-on runs on staging on Friday.";
+  const m = await seedAnalyzedMeeting(baseURL!);
+  await openRound(request, m.meetingId, m.organizerToken);
+  const [priya, marco, dana] = m.participantLinks;
+  const same = "Designs or a mock-up";
+  await answerOpen(request, priya!.token, (s) => (s === where ? "In production" : same));
+  await answerOpen(request, marco!.token, (s) => (s === where ? "On staging only" : same));
+  await closeRound(request, m.meetingId, m.organizerToken);
+  const state = (await (await request.get(`/api/p/${priya!.token}`)).json()) as ParticipantState;
+  const splitId = state.revealed.find((r) => r.probe.stem === where)!.split.id;
+  const proposed = (await (
+    await request.post(`/api/p/${priya!.token}/resolutions`, { data: { splitId, text: WORDING } })
+  ).json()) as ProposeResolutionResponse;
+  for (const who of [priya!, marco!]) {
+    await request.post(`/api/p/${who.token}/resolutions/${proposed.id}/confirm`);
+  }
+  await request.patch(`/api/meetings/${m.meetingId}/participants/${dana!.participantId}`, {
+    headers: { authorization: `Bearer ${m.organizerToken}` },
+    data: { status: "absent" },
+  });
+
+  // The participant has nothing left to do, so the record is open to them already.
+  await page.goto(`/p/${marco!.token}`);
+  await expect(page.getByRole("link", { name: "Open record" })).toBeVisible();
+
+  await page.goto(`/m/${m.meetingId}#k=${m.organizerToken}`);
+  await expect(page.locator('[aria-current="step"]')).toContainText("Recheck");
+  await page.getByRole("link", { name: "Open the record without a recheck" }).click();
+  const confirmed = page.getByRole("region", { name: "Confirmed by participants" });
+  await expect(confirmed.getByText(WORDING)).toBeVisible();
+  await expect(confirmed.getByText("Not rechecked.")).toBeVisible();
+  await expect(page.getByText("Every item passed the record checks.")).toBeVisible();
+
+  // Skipping changes nothing stored: the recheck can still be sent afterwards.
+  await page.goBack();
+  await expect(page.getByRole("button", { name: "Send a recheck question" })).toBeVisible();
+});

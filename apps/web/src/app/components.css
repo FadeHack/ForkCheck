@@ -734,7 +734,8 @@
 }
 
 /* Each link is its own tap target on a phone, not a run of inline words. */
-.record-sources a {
+.record-sources a,
+.skip-recheck a {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;

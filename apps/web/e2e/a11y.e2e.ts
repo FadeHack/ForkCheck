@@ -13,7 +13,7 @@ const WIDTHS = [320, 768, 1280];
 
 /** Controls that must be at least 44 px tall. Links inside running text are exempt. */
 const TARGETS =
-  'button, select, summary, textarea, input:not([type="radio"]):not([type="checkbox"]), .choice, .record-sources a';
+  'button, select, summary, textarea, input:not([type="radio"]):not([type="checkbox"]), .choice, .record-sources a, .skip-recheck a';
 
 async function smallTargets(page: Page): Promise<string[]> {
   return page.evaluate((selector) => {

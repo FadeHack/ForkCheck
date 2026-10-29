@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { organizerStage, participantStage } from "../../src/ui/stages";
+import { organizerStage, participantStage, recheckMayFollow } from "../../src/ui/stages";
 import { viewedStage } from "../../src/ui/organizer/workspace";
 import { answer, organizerState, participantState, probe, round, split } from "./fixtures";
 
@@ -120,7 +120,7 @@ describe("participantStage", () => {
     expect(participantStage(state)).toBe("recheck");
   });
 
-  it("is reveal until every split is settled, then record", () => {
+  it("is reveal until every split is confirmed or settled, then record", () => {
     const revealed = (status: "open" | "rechecked") => ({
       split: split("s1", "q1", { status }),
       probe: open,
@@ -139,9 +139,15 @@ describe("participantStage", () => {
       probe: { ...open, id: "rq", kind: "recheck" as const, splitId: "s1" },
     };
     const confirmed = { ...revealed("open"), split: split("s1", "q1", { status: "confirmed" }) };
-    expect(participantStage(participantState({ revealed: [confirmed] }))).toBe("reveal");
+    expect(participantStage(participantState({ revealed: [confirmed] }))).toBe("record");
+    expect(participantStage(participantState({ revealed: [confirmed, revealed("open")] }))).toBe(
+      "reveal",
+    );
     expect(participantStage(participantState({ revealed: [confirmed, inconclusive] }))).toBe(
       "record",
     );
+    expect(recheckMayFollow(participantState({ revealed: [confirmed] }))).toBe(true);
+    expect(recheckMayFollow(participantState({ revealed: [confirmed, inconclusive] }))).toBe(false);
+    expect(recheckMayFollow(participantState({ revealed: [revealed("rechecked")] }))).toBe(false);
   });
 });

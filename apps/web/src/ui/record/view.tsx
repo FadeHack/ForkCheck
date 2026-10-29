@@ -129,6 +129,7 @@ function Item({ item, ctx }: { item: RecordItem; ctx: Context }) {
           <StatusLabel status={recheck[0]} />: {recheck[1]}
         </p>
       )}
+      {item.category === "confirmed" && item.recheck === "not_run" && <p>Not rechecked.</p>}
       {hasSources && (
         <ul className="record-sources" aria-label="Sources">
           {quotes.map((r) => (

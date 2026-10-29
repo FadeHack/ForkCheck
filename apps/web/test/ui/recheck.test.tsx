@@ -36,6 +36,8 @@ describe("RecheckView", () => {
     expect(out).toContain("Where does SSO run?");
     expect(out).toContain("SSO is ready soon.");
     expect(out).toContain(">Send a recheck question</button>");
+    expect(out).toContain('href="/m/m1/record"');
+    expect(out).toContain("Open the record without a recheck");
   });
 
   it("says when nothing is ready", () => {
