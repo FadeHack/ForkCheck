@@ -121,6 +121,8 @@ export const participant = pgTable(
     displayName: text("display_name").notNull(),
     tokenHash: text("token_hash").notNull().unique(),
     isSimulated: boolean("is_simulated").notNull().default(false),
+    /** What the simulator answers from; private, so never part of the Participant model. */
+    simulatorNotes: text("simulator_notes"),
     status: participantStatus("status").notNull().default("active"),
   },
   (t) => [index("participant_meeting_idx").on(t.meetingId)],
@@ -243,6 +245,7 @@ export const answer = pgTable(
     writeInText: text("write_in_text"),
     mappedOptionId: text("mapped_option_id"),
     mappedByModel: boolean("mapped_by_model").notNull().default(false),
+    simulated: boolean("simulated").notNull().default(false),
   },
   (t) => [
     unique("answer_probe_participant_unique").on(t.probeId, t.participantId),

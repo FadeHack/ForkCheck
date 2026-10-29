@@ -124,6 +124,7 @@ const answers: Answer[] = [
     writeInText: null,
     mappedOptionId: null,
     mappedByModel: false,
+    simulated: false,
   },
   {
     id: "a1",
@@ -134,6 +135,7 @@ const answers: Answer[] = [
     writeInText: "prod for the pilot tenant",
     mappedOptionId: probe.options[1]!.id,
     mappedByModel: true,
+    simulated: false,
   },
 ];
 

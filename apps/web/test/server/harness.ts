@@ -28,11 +28,14 @@ export interface SeededMeeting {
   participants: { participant: Participant; token: string }[];
 }
 
+/** A name, or a simulated participant with the notes the simulator answers from. */
+export type SeedName = string | { name: string; notes: string };
+
 /** A meeting written straight through the repository, with known tokens. */
 export async function seedMeeting(
   deps: Deps,
   id: string,
-  names = ["Ana", "Ben"],
+  names: SeedName[] = ["Ana", "Ben"],
 ): Promise<SeededMeeting> {
   const meeting: Meeting = {
     id,
@@ -47,12 +50,13 @@ export async function seedMeeting(
     deleteAfter: null,
   };
   const organizerToken = newToken();
-  const participants = names.map((displayName, i) => ({
+  const notes = names.map((name) => (typeof name === "string" ? undefined : name.notes));
+  const participants = names.map((name, i) => ({
     participant: {
       id: `${id}:p:${i}`,
       meetingId: id,
-      displayName,
-      isSimulated: false,
+      displayName: typeof name === "string" ? name : name.name,
+      isSimulated: typeof name !== "string",
       status: "active" as const,
     },
     token: newToken(),
@@ -60,9 +64,10 @@ export async function seedMeeting(
   await deps.meetings.create({
     meeting,
     organizerTokenHash: hashToken(organizerToken),
-    participants: participants.map((p) => ({
+    participants: participants.map((p, i) => ({
       participant: p.participant,
       tokenHash: hashToken(p.token),
+      simulatorNotes: notes[i],
     })),
     segments: [],
   });
@@ -78,7 +83,7 @@ const DIMENSIONS: Dimension[] = ["owner", "deadline", "scope", "criteria", "depe
 export async function seedDrafts(
   deps: Deps,
   id: string,
-  names = ["Ana", "Ben"],
+  names: SeedName[] = ["Ana", "Ben"],
   count = 3,
 ): Promise<SeededMeeting & { drafts: Probe[] }> {
   const seeded = await seedMeeting(deps, id, names);
@@ -162,8 +167,12 @@ export async function call<P>(
 }
 
 /** Ana, Ben and Cy answer one question differently and the answers are revealed. */
-export async function seedRevealed(deps: Deps, id: string) {
-  const m = await seedDrafts(deps, id, ["Ana", "Ben", "Cy"], 1);
+export async function seedRevealed(
+  deps: Deps,
+  id: string,
+  names: SeedName[] = ["Ana", "Ben", "Cy"],
+) {
+  const m = await seedDrafts(deps, id, names, 1);
   const probe = m.drafts[0]!;
   await call(
     openRoute,

@@ -128,6 +128,8 @@ export interface DraftRecordProseOutput {
 export interface ParticipantBrief {
   participantId: string;
   readings: { decisionId: string; dimension: Dimension; reading: string }[];
+  /** Free-text notes an organizer wrote for a simulated participant in the app. */
+  notes?: string;
 }
 export interface SimulateAnswerInput {
   brief: ParticipantBrief;

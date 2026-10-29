@@ -15,7 +15,11 @@ import * as t from "../schema";
 export interface NewMeeting {
   meeting: Meeting;
   organizerTokenHash: string;
-  participants: { participant: Participant; tokenHash: string }[];
+  participants: {
+    participant: Participant;
+    tokenHash: string;
+    simulatorNotes?: string | undefined;
+  }[];
   segments: Segment[];
 }
 
@@ -94,9 +98,13 @@ export class MeetingRepo {
         organizerTokenHash: input.organizerTokenHash,
       });
       if (input.participants.length > 0) {
-        await tx
-          .insert(t.participant)
-          .values(input.participants.map((p) => ({ ...p.participant, tokenHash: p.tokenHash })));
+        await tx.insert(t.participant).values(
+          input.participants.map((p) => ({
+            ...p.participant,
+            tokenHash: p.tokenHash,
+            simulatorNotes: p.simulatorNotes ?? null,
+          })),
+        );
       }
       if (input.segments.length > 0) await tx.insert(t.segment).values(input.segments);
     });
@@ -130,6 +138,15 @@ export class MeetingRepo {
       .from(t.participant)
       .where(eq(t.participant.meetingId, meetingId))
       .orderBy(asc(t.participant.displayName), asc(t.participant.id));
+  }
+
+  /** The private notes each simulated participant answers from, by participant ID. */
+  async simulatorNotes(meetingId: string): Promise<Map<string, string>> {
+    const rows = await this.db
+      .select({ id: t.participant.id, notes: t.participant.simulatorNotes })
+      .from(t.participant)
+      .where(and(eq(t.participant.meetingId, meetingId), eq(t.participant.isSimulated, true)));
+    return new Map(rows.map((r) => [r.id, r.notes ?? ""]));
   }
 
   async segments(meetingId: string): Promise<Segment[]> {

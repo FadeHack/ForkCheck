@@ -83,6 +83,28 @@ describe("POST /api/meetings", () => {
     expect(s.segments).toEqual([]);
   });
 
+  it("marks simulated participants and keeps their notes out of every response", async () => {
+    const notes = "Pilot runs on staging until the 6th.";
+    const res = await create({
+      ...body,
+      participants: ["Priya", { name: "Sim Marco", simulated: true, notes }],
+    });
+    expect(res.status).toBe(201);
+    expect(JSON.stringify(res.body)).not.toContain(notes);
+    const { meetingId, organizerToken } = res.body as CreateMeetingResponse;
+    const state = await call(GET, "/x", { id: meetingId }, { token: organizerToken });
+    expect(JSON.stringify(state.body)).not.toContain(notes);
+    expect(
+      (state.body as OrganizerMeetingState).participants.map((p) => [p.displayName, p.isSimulated]),
+    ).toEqual([
+      ["Priya", false],
+      ["Sim Marco", true],
+    ]);
+    expect(await deps.meetings.simulatorNotes(meetingId)).toEqual(
+      new Map([[`${meetingId}:p:1`, notes]]),
+    );
+  });
+
   it("stores only token hashes", async () => {
     const res = await created();
     const rows = await deps.db.select().from(tables.participant);
@@ -96,6 +118,7 @@ describe("POST /api/meetings", () => {
     [{ ...body, title: " " }, ["title"]],
     [{ ...body, participants: ["Solo"] }, ["participants"]],
     [{ ...body, participants: ["Priya", ""] }, ["participants.1"]],
+    [{ ...body, participants: ["Priya", { name: "Sim", simulated: true }] }, ["participants.1"]],
     [{ ...body, heldAt: "Friday" }, ["heldAt"]],
     [{ ...body, extra: true }, [""]],
     [{ title: "x" }, ["heldAt", "timezone", "participants"]],

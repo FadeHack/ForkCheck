@@ -27,14 +27,15 @@ export async function createMeeting(
     createdAt: deps.now().toISOString(),
     deleteAfter: null,
   };
-  const participants = body.participants.map((displayName, i) => ({
+  const participants = body.participants.map((p, i) => ({
     participant: {
       id: `${id}:p:${i}`,
       meetingId: id,
-      displayName,
-      isSimulated: false,
+      displayName: typeof p === "string" ? p : p.name,
+      isSimulated: typeof p !== "string",
       status: "active",
     } satisfies Participant,
+    simulatorNotes: typeof p === "string" ? undefined : p.notes,
     token: newToken(),
   }));
   const segments =
@@ -53,6 +54,7 @@ export async function createMeeting(
     participants: participants.map((p) => ({
       participant: p.participant,
       tokenHash: hashToken(p.token),
+      simulatorNotes: p.simulatorNotes,
     })),
     segments,
   });
