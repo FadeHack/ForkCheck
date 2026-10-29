@@ -282,4 +282,32 @@ export type RecordSource = Pick<
   "id" | "participantId" | "startMs" | "origin" | "edited" | "text"
 >;
 
+// GET /api/meetings/:id/trace (organizer only)
+/** One logged model call. The log never holds prompts, replies or answers. */
+export interface TraceCall {
+  at: string;
+  stage: string;
+  /** `fake` is a replay of a recorded reply: it takes no time and costs nothing. */
+  provider: string;
+  model: string;
+  promptVersion: string;
+  cacheHit: boolean;
+  latencyMs: number;
+  inputTokens: number;
+  outputTokens: number;
+  reasoningTokens: number | null;
+  costUsd: number;
+  ok: boolean;
+  error: string | null;
+}
+export interface TraceResponse {
+  calls: TraceCall[];
+  /** What code decided, as counts. Null until a round has been revealed. */
+  computed: {
+    questions: { split: number; consistent: number; insufficient: number };
+    confirmations: number;
+    record: { confirmed: number; unresolved: number; stated: number };
+  } | null;
+}
+
 // DELETE /api/meetings/:id → 204, no body

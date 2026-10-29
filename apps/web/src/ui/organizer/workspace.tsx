@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import type { OrganizerMeetingState } from "../../contracts/api";
-import { callApi, organizerToken, type Loaded } from "../api";
+import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
 import { ErrorNotice, Loading } from "../components";
 import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, organizerStages, type OrganizerStage } from "../stages";
@@ -11,12 +11,10 @@ import { formatHeldAt } from "../time";
 import { QuestionsView } from "./questions";
 import { RoundMonitor } from "./round";
 import { RecheckView } from "./recheck";
+import { TracePanel } from "./trace";
 import { RecordLink, RevealView, StageRail } from "./views";
 
 const POLL_MS = 5000;
-
-export const MISSING_KEY =
-  "This workspace link is missing its key. Open the organizer link you kept when you created the meeting check.";
 
 /** Shows an earlier stage when `?stage=` names one; never a stage the meeting hasn't reached. */
 export function viewedStage(current: OrganizerStage, requested: string | null): OrganizerStage {
@@ -55,6 +53,7 @@ export function WorkspaceView({
       {(stage === "reveal" || stage === "resolve") && <RevealView state={state} />}
       {stage === "recheck" && <RecheckView state={state} onChange={reload} />}
       {stage === "record" && <RecordLink meetingId={id} />}
+      <TracePanel meetingId={id} />
     </>
   );
 }

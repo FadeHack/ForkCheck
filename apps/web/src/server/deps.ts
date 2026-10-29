@@ -3,6 +3,7 @@ import {
   ConsoleCallLog,
   FakeProvider,
   FileSpendLedger,
+  LoggedProvider,
   MetaProvider,
   MultiCallLog,
   type ModelPort,
@@ -49,7 +50,10 @@ export function createDeps(db: Db, overrides: DepsOverrides = {}): Deps {
 
 /** Recorded fixtures unless LIVE=1; live calls share the CLI's spend ledger and cap. */
 function modelFactory(env: Env, db: Db): (meetingId: string) => ModelPort {
-  if (!env.LIVE) return () => new FakeProvider();
+  // Replays are logged too, so the trace panel shows a replayed demo's calls.
+  if (!env.LIVE) {
+    return (meetingId) => new LoggedProvider(new FakeProvider(), new DbCallLog(db, { meetingId }));
+  }
   const root = findWorkspaceRoot() ?? process.cwd();
   const ledger = new FileSpendLedger(join(root, "var", "spend.json"));
   return (meetingId) =>

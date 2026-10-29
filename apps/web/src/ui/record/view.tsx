@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Participant, RecordItem, SourceRef } from "@forkcheck/core";
 import type { RecordResponse, RecordSource, RevealedSplit } from "../../contracts/api";
-import { callApi, organizerToken, type Loaded } from "../api";
+import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
 import {
   Banner,
   Button,
@@ -21,7 +21,6 @@ import { nameList } from "../labels";
 import { ConfirmList, type ConfirmLine } from "../resolve";
 import { SimulatedBanner } from "../simulated-banner";
 import { formatHeldAt } from "../time";
-import { MISSING_KEY } from "../organizer/workspace";
 
 const recheckText: Record<RecordItem["recheck"], [Status, string] | null> = {
   passed: ["rechecked", "everyone gave the same answer."],

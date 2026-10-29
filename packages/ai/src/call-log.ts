@@ -1,6 +1,6 @@
 import { appendFile, mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
-import type { ModelCallInfo } from "./port";
+import type { ModelCallInfo, ModelPort, ModelRequest, ModelResponse } from "./port";
 
 /** A logged call. Never carries message content, keys or tokens. */
 export interface ModelCallEntry extends ModelCallInfo {
@@ -49,5 +49,24 @@ export class MultiCallLog implements ModelCallLog {
 
   async write(entry: ModelCallEntry): Promise<void> {
     await Promise.all(this.#logs.map((l) => l.write(entry)));
+  }
+}
+
+/** Logs every call another port makes. Replays have no log of their own, so this gives them one. */
+export class LoggedProvider implements ModelPort {
+  readonly #inner: ModelPort;
+  readonly #log: ModelCallLog;
+  readonly #now: () => Date;
+
+  constructor(inner: ModelPort, log: ModelCallLog, now: () => Date = () => new Date()) {
+    this.#inner = inner;
+    this.#log = log;
+    this.#now = now;
+  }
+
+  async call<T>(request: ModelRequest<T>): Promise<ModelResponse<T>> {
+    const response = await this.#inner.call(request);
+    await this.#log.write({ ...response.call, at: this.#now().toISOString() });
+    return response;
   }
 }

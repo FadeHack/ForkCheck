@@ -796,3 +796,97 @@
     break-after: avoid;
   }
 }
+
+/* Trace panel: organizer only, closed by default; numbers line up in columns. */
+.trace {
+  margin-top: var(--space-12);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-4);
+}
+
+.trace summary {
+  cursor: pointer;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Flex drops the browser's own marker, so the open and closed state is drawn here. */
+.trace summary {
+  list-style: none;
+  gap: var(--space-2);
+}
+
+.trace summary::-webkit-details-marker {
+  display: none;
+}
+
+.trace summary::before {
+  content: "▸";
+  color: var(--ink-muted);
+}
+
+.trace details[open] > summary::before {
+  content: "▾";
+}
+
+.trace summary h2 {
+  display: inline;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.trace h3 {
+  font-size: 1.0625rem;
+  margin-top: var(--space-6);
+}
+
+/* Wide tables scroll inside their own box, so the page itself never scrolls sideways. */
+.table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.trace-table {
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9375rem;
+  min-width: 40rem;
+}
+
+.trace-table th,
+.trace-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.trace-table thead th {
+  border-bottom-color: var(--line);
+}
+
+.trace-table tbody th {
+  font-weight: 600;
+}
+
+.trace-table td {
+  white-space: nowrap;
+}
+
+.trace-version,
+.trace-failed {
+  display: block;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.trace-failed {
+  color: var(--unresolved);
+}
+
+@media print {
+  .trace {
+    display: none;
+  }
+}

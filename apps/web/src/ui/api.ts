@@ -74,3 +74,6 @@ export function organizerCall(meetingId: string) {
   return <T>(path: string, init: RequestInit = {}) =>
     callApi<T>(path, { ...init, token: organizerToken(meetingId) ?? "" });
 }
+
+export const MISSING_KEY =
+  "This workspace link is missing its key. Open the organizer link you kept when you created the meeting check.";

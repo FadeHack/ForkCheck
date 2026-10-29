@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
-import type { Db } from "./client";
+import { asc, eq } from "drizzle-orm";
+import { toIso, type Db } from "./client";
 import { modelCall } from "./schema";
 
 /** The ai package's ModelCallEntry, restated because db may not import ai. */
@@ -35,4 +36,17 @@ export class DbCallLog {
       at: new Date(entry.at),
     });
   }
+}
+
+/** A meeting's logged model calls, oldest first. */
+export async function meetingModelCalls(db: Db, meetingId: string): Promise<ModelCallRecord[]> {
+  const rows = await db
+    .select()
+    .from(modelCall)
+    .where(eq(modelCall.meetingId, meetingId))
+    .orderBy(asc(modelCall.at), asc(modelCall.id));
+  return rows.map(({ id: _id, meetingId: _m, evalRunId: _e, at, ...rest }) => ({
+    ...rest,
+    at: toIso(at),
+  }));
 }

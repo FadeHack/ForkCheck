@@ -2,7 +2,7 @@ export const packageName = "@forkcheck/db";
 
 // Migrations live at `@forkcheck/db/migrate`: the app bundler cannot resolve the migrations folder.
 export { connect, type Db, type DbHandle } from "./client";
-export { DbCallLog, type ModelCallRecord } from "./call-log";
+export { DbCallLog, meetingModelCalls, type ModelCallRecord } from "./call-log";
 export {
   MeetingRepo,
   type AnalysisProgress,

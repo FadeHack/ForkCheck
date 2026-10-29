@@ -14,6 +14,7 @@ export { FileModelCache, MemoryModelCache, type ModelCache } from "./cache";
 export {
   ConsoleCallLog,
   FileCallLog,
+  LoggedProvider,
   MemoryCallLog,
   MultiCallLog,
   type ModelCallEntry,

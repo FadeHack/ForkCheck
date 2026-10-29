@@ -1,7 +1,7 @@
 import { expect, type APIRequestContext } from "@playwright/test";
-import { ScriptedProvider } from "@forkcheck/ai";
+import { LoggedProvider, ScriptedProvider } from "@forkcheck/ai";
 import { loadEnv, loadLocalEnvFile } from "@forkcheck/config";
-import { connect } from "@forkcheck/db";
+import { connect, DbCallLog } from "@forkcheck/db";
 import type {
   CreateMeetingResponse,
   OrganizerMeetingState,
@@ -110,7 +110,11 @@ export async function seedAnalyzedMeeting(origin: string): Promise<CreateMeeting
       },
       origin,
     );
-    const deps = createDeps(db, { model: () => script(created.meetingId) });
+    // Logged like the app logs replays, so the trace panel has the analysis calls to show.
+    const log = new DbCallLog(db, { meetingId: created.meetingId });
+    const deps = createDeps(db, {
+      model: () => new LoggedProvider(script(created.meetingId), log),
+    });
     const meeting = (await deps.meetings.get(created.meetingId))!;
     const outcome = await analyzeMeeting(deps, meeting);
     if (!outcome.ok) throw new Error(`seed analysis failed: ${outcome.message}`);
