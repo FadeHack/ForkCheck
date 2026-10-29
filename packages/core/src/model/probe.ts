@@ -44,6 +44,8 @@ export const answer = z
     writeInText: z.string().nullable(),
     mappedOptionId: id.nullable(),
     mappedByModel: z.boolean(),
+    /** Written by the simulator for a simulated participant; shown as SIMULATED everywhere. */
+    simulated: z.boolean(),
   })
   .superRefine((a, ctx) => {
     const fail = (message: string) => ctx.addIssue({ code: "custom", message });

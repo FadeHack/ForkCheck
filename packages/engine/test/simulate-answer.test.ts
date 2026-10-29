@@ -61,6 +61,15 @@ describe("simulateAnswer", () => {
     expect(all).not.toContain("Kwame");
   });
 
+  it("uses an organizer's free-text notes in place of keyed readings", () => {
+    const brief = { participantId: "Rosa", readings: [], notes: "Questionnaire back by the 30th." };
+    expect(simulateAnswerUserMessage({ brief, probe }).split("\n").slice(0, 3)).toEqual([
+      "Your private notes on what the meeting agreed:",
+      "Questionnaire back by the 30th.",
+      "",
+    ]);
+  });
+
   it("shows options in the participant's shuffled order and maps the letter back", async () => {
     const shuffled = optionOrder(probe, kwame.participantId);
     const msg = simulateAnswerUserMessage({ brief: kwame, probe: shuffled });

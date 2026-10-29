@@ -10,6 +10,7 @@ const baseAnswer = {
   writeInText: null,
   mappedOptionId: null,
   mappedByModel: false,
+  simulated: false,
 };
 
 describe("answer", () => {

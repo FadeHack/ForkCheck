@@ -32,11 +32,24 @@ export interface ApiError {
 }
 
 // POST /api/meetings
+const displayName = z.string().trim().min(1);
+/**
+ * A name, or a simulated participant: the simulator answers for them from these private
+ * notes, and every answer it gives is labeled SIMULATED. The notes are never returned.
+ */
+export const newParticipant = z.union([
+  displayName,
+  z.strictObject({
+    name: displayName,
+    simulated: z.literal(true),
+    notes: z.string().trim().min(1),
+  }),
+]);
 export const createMeetingRequest = z.strictObject({
   title: z.string().trim().min(1),
   heldAt: instant,
   timezone,
-  participants: z.array(z.string().trim().min(1)).min(2),
+  participants: z.array(newParticipant).min(2),
   /** `Name: text` per line, optional `[mm:ss]`. Omitted for audio meetings. */
   transcript: z.string().min(1).optional(),
 });
@@ -83,6 +96,12 @@ export interface OrganizerMeetingState {
   splits: Split[];
   resolutions: Resolution[];
   confirmations: Confirmation[];
+}
+
+// POST /api/meetings/:id/simulate → answers the open round for simulated participants; no body
+/** A count only: the answers stay sealed until the round closes, as for any participant. */
+export interface SimulateAnswersResponse {
+  submitted: number;
 }
 
 // PUT /api/meetings/:id/speakers (many labels may map to one participant)

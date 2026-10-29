@@ -1,4 +1,4 @@
-import type { ParticipantBrief } from "@forkcheck/engine";
+import { confirmedResolutionNote, type ParticipantBrief } from "@forkcheck/engine";
 import type { Scenario } from "./scenario";
 
 /** Each participant's brief, keyed the way `scenarioExtractInput` keys participants. */
@@ -19,9 +19,8 @@ export const isSplit = (optionIds: (string | null)[]) =>
 
 /**
  * Briefs for a recheck round: each participant keeps their own reading of the planted gap
- * and now also holds the resolution the group confirmed. A precise resolution overrides
- * the old reading; where a vague one leaves a point open, people fill it with their own,
- * which is how a vague resolution hides the same split.
+ * and now also holds the resolution the group confirmed, which is how a vague resolution
+ * hides the same split.
  */
 export function recheckBriefs(
   s: Scenario,
@@ -36,7 +35,7 @@ export function recheckBriefs(
       r.decisionId === m.decision && r.dimension === m.dimension
         ? {
             ...r,
-            reading: `${r.reading} Everyone then confirmed: "${resolutionText}". Wherever it is specific, it replaces your understanding above; on any point it leaves open, you keep your understanding.`,
+            reading: `${r.reading} ${confirmedResolutionNote(resolutionText)}`,
           }
         : r,
     ),

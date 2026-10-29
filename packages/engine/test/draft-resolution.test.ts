@@ -32,6 +32,7 @@ const answer = (participantId: string, a: Partial<Answer>): Answer => ({
   writeInText: null,
   mappedOptionId: null,
   mappedByModel: false,
+  simulated: false,
   ...a,
 });
 const input: DraftResolutionInput = {

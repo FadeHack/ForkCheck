@@ -236,6 +236,8 @@ export async function submitAnswer(
     writeInText: body.writeIn ?? null,
     mappedOptionId: null,
     mappedByModel: false,
+    // Whoever types on a simulated participant's link, the answer is not a real person's.
+    simulated: participant.isSimulated,
   };
   const saved = await deps.rounds.putAnswerIfOpen(roundId, answer);
   return saved === null
