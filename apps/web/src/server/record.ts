@@ -1,6 +1,7 @@
 import { buildRecord, validateRecord, type Meeting, type RecordInput } from "@forkcheck/core";
 import type { RecordResponse } from "../contracts/api";
 import type { Deps } from "./deps";
+import { revealedSplits } from "./rounds";
 
 /**
  * The meeting's record, built in code from what is stored now and validated on every read.
@@ -39,5 +40,25 @@ export async function meetingRecord(deps: Deps, meeting: Meeting): Promise<Recor
     splits,
   };
   const record = buildRecord(input);
-  return { record, validation: validateRecord(record, input) };
+  const quoted = new Set(
+    record.items.flatMap((i) =>
+      i.sourceRefs.flatMap((r) => (r.kind === "segment" ? [r.segmentId] : [])),
+    ),
+  );
+  const sources = segments
+    .filter((s) => quoted.has(s.id))
+    .map(({ id, participantId, startMs, origin, edited, text }) => ({
+      id,
+      participantId,
+      startMs,
+      origin,
+      edited,
+      text,
+    }));
+  return {
+    record,
+    validation: validateRecord(record, input),
+    sources,
+    questions: await revealedSplits(deps, meeting.id),
+  };
 }

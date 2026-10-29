@@ -161,6 +161,17 @@ describe("GET /api/meetings/:id/record", () => {
           }),
         );
         expect(body.validation).toEqual({ ok: true, findings: [] });
+        // Every quote links to its segment, and the segment holds the quoted words.
+        const quoted = body.record.items
+          .flatMap((i) => i.sourceRefs)
+          .filter((r) => r.kind === "segment");
+        expect(quoted.length).toBeGreaterThan(0);
+        for (const ref of quoted) {
+          expect(body.sources.find((s) => s.id === ref.segmentId)?.text).toContain(ref.quote);
+        }
+        expect(new Set(body.sources.map((s) => s.id))).toEqual(
+          new Set(quoted.map((r) => r.segmentId)),
+        );
 
         const asParticipant = await call(participantRecord, "/x", { token: participantToken });
         expect(asParticipant).toMatchObject({ status: 200, body });

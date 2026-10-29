@@ -664,3 +664,135 @@
   margin: 0 0 var(--space-3);
   font-family: var(--font-reading);
 }
+
+/*
+ * Record: the shareable outcome. Confirmed items keep a single stem in the confirmed color;
+ * unresolved items keep theirs in the unresolved color, and their forks are under "Questions asked".
+ */
+.record-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.record-item {
+  padding: var(--space-4) 0 var(--space-4) var(--space-4);
+  border-left: 2px solid var(--line);
+  margin-bottom: var(--space-6);
+}
+
+.record-item[data-category="confirmed"] {
+  border-left-color: var(--confirmed);
+}
+
+.record-item[data-category="unresolved"] {
+  border-left-color: var(--unresolved);
+}
+
+.record-item[data-category="stated"] {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.record-status {
+  margin: 0 0 var(--space-2);
+}
+
+.record-item .quote {
+  margin-bottom: 0;
+}
+
+.record-text {
+  font-family: var(--font-reading);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin: 0 0 var(--space-3);
+}
+
+.record-label,
+.record-kicker {
+  font-weight: 600;
+  margin: var(--space-3) 0 0;
+}
+
+.record-kicker {
+  color: var(--ink-muted);
+  margin: 0 0 var(--space-2);
+}
+
+.record-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-4);
+  list-style: none;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+}
+
+/* Each link is its own tap target on a phone, not a run of inline words. */
+.record-sources a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.record-question + .record-question {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line-subtle);
+}
+
+.record-footer {
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.record-no-split {
+  font-weight: 600;
+}
+
+/* A followed source link shows where it landed. */
+.record :target {
+  scroll-margin-top: var(--space-6);
+  outline: 2px solid var(--action);
+  outline-offset: var(--space-2);
+}
+
+@media print {
+  .site-header,
+  .record-actions {
+    display: none;
+  }
+
+  body {
+    background: none;
+  }
+
+  .record a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .record :target {
+    outline: 0;
+  }
+
+  /* Backgrounds don't print by default, so a quote keeps a rule to set it apart. */
+  .quote {
+    border-left: 2px solid var(--line);
+  }
+
+  .record-item,
+  .record-question,
+  .record-segment,
+  .fork-branch,
+  .quote {
+    break-inside: avoid;
+  }
+
+  .record h2,
+  .record h3 {
+    break-after: avoid;
+  }
+}

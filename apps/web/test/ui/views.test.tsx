@@ -406,7 +406,14 @@ describe("RecordView", () => {
 
   it("shows empty sections with their own copy and never claims alignment", () => {
     const out = html(
-      <RecordView data={{ record: record([item({})]), validation: { ok: true, findings: [] } }} />,
+      <RecordView
+        data={{
+          record: record([item({})]),
+          validation: { ok: true, findings: [] },
+          sources: [],
+          questions: [],
+        }}
+      />,
     );
     expect(out).toContain("Nothing confirmed yet.");
     expect(out).toContain("Nothing unresolved.");
@@ -434,15 +441,20 @@ describe("RecordView", () => {
               { rule: "quote", itemId: "a", detail: "A quote doesn't match the transcript." },
             ],
           },
+          sources: [],
+          questions: [],
         }}
       />,
     );
     expect(out.indexOf("Confirmed by participants")).toBeLessThan(out.indexOf("Unresolved"));
     expect(out.indexOf("Unresolved")).toBeLessThan(out.indexOf("Stated in meeting"));
-    expect(out).toContain("Confirmed by Priya, Marco.");
+    const text = out.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+    expect(text).toContain("Confirmed by Priya Confirmed Marco Confirmed Dana Not yet");
     expect(out.replace(/<[^>]+>/g, "")).toContain("Recheck passed: everyone gave the same answer.");
     expect(out).toContain("Absent, not asked: Dana.");
     expect(out).toContain("A quote doesn&#x27;t match the transcript.");
+    // A failing check links to the item it is about.
+    expect(out).toContain('href="#item-a">Item 1</a>');
   });
 });
 

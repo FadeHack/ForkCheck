@@ -272,6 +272,14 @@ export interface StartRecheckResponse {
 export interface RecordResponse {
   record: DecisionRecord;
   validation: RecordValidation;
+  /** The transcript segments the record quotes, so each quote links to where it was said. */
+  sources: RecordSource[];
+  /** Every revealed question with its answers, in rank order: the forks the record links to. */
+  questions: RevealedSplit[];
 }
+export type RecordSource = Pick<
+  Segment,
+  "id" | "participantId" | "startMs" | "origin" | "edited" | "text"
+>;
 
 // DELETE /api/meetings/:id → 204, no body

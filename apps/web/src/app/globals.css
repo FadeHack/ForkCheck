@@ -202,3 +202,24 @@ select {
     transition: none !important;
   }
 }
+
+/*
+ * Print uses the light values whatever the screen theme, on the selectors the dark rules use
+ * so it outranks them. The contrast test reads the first rule for each selector, above.
+ */
+@media print {
+  :root:not([data-theme="light"]) {
+    color-scheme: light;
+    --paper: #fbf8f3;
+    --surface: #f2ede4;
+    --ink: #1f1b16;
+    --ink-muted: #5c5549;
+    --line: #857b6c;
+    --line-subtle: #ddd5c8;
+    --action: #2b4c7e;
+    --on-action: #ffffff;
+    --confirmed: #1e5c45;
+    --unresolved: #7a4e00;
+    --split: #b3321b;
+  }
+}

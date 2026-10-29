@@ -157,7 +157,7 @@ export function StatusLabel({ status }: { status: Status }) {
   );
 }
 
-function timestamp(ms: number): string {
+export function timestamp(ms: number): string {
   const s = Math.floor(ms / 1000);
   return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
 }
