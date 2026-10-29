@@ -2,7 +2,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import type { DecisionRecord, RecordItem } from "@forkcheck/core";
 import { ErrorNotice, Loading } from "../../src/ui/components";
-import { QuestionsView, RevealView, RoundView } from "../../src/ui/organizer/views";
+import { initialSelection, publishLabel, QuestionsView } from "../../src/ui/organizer/questions";
+import { RevealView, RoundView } from "../../src/ui/organizer/views";
 import { WorkspaceView } from "../../src/ui/organizer/workspace";
 import { ParticipantView } from "../../src/ui/participant/view";
 import { RecordView } from "../../src/ui/record/view";
@@ -31,6 +32,22 @@ describe("shared states", () => {
   });
 });
 
+const decisionFixture = {
+  decision: {
+    id: "d1",
+    meetingId: "m1",
+    idx: 0,
+    kind: "commitment" as const,
+    statement: "SSO is ready by Friday.",
+    ownerText: null,
+    deadlineText: null,
+    ownerInferred: false,
+    deadlineInferred: false,
+    status: "explicit" as const,
+  },
+  evidence: [],
+};
+
 describe("QuestionsView", () => {
   it("shows loading, failure and not-yet-drafted states", () => {
     const view = (status: typeof meeting.status, error: string | null = null) =>
@@ -40,6 +57,8 @@ describe("QuestionsView", () => {
       view("failed", "Drafting stopped at 'find open details'. Retry from that step."),
     ).toContain("Drafting stopped at &#x27;find open details&#x27;");
     expect(view("draft")).toContain("Questions haven&#x27;t been drafted");
+    expect(view("draft")).toContain(">Draft questions</button>");
+    expect(view("failed", "Drafting stopped.")).toContain(">Retry from that step</button>");
   });
 
   it("says so when no decisions were found", () => {
@@ -105,9 +124,7 @@ describe("QuestionsView", () => {
         probe("q1", {
           status: "draft",
           tier: "assisted",
-          lint: [
-            { rule: "presumes", detail: "Uses the word 'disagree', which presumes the answer" },
-          ],
+          lint: [{ rule: "presupposition", detail: 'stem uses "disagree"' }],
         }),
       ],
     });
@@ -116,7 +133,66 @@ describe("QuestionsView", () => {
     expect(out).toContain("Priya at 00:20");
     expect(out).toContain("Template with model options");
     expect(out).toContain("<dd>Scope</dd>");
-    expect(out).toContain("which presumes the answer");
+    expect(out).toContain("Open to more than one reading");
+    expect(out).toContain("Uses the word &quot;disagree&quot;, which presumes the answer.");
+  });
+
+  it("won't let a draft that fails a check be chosen, and says why", () => {
+    const state = organizerState({
+      decisions: [decisionFixture],
+      probes: [
+        probe("q1", { status: "draft" }),
+        probe("q2", {
+          status: "draft",
+          lint: [{ rule: "presupposition", detail: 'stem uses "disagree"' }],
+        }),
+      ],
+    });
+    const out = html(<QuestionsView state={state} />);
+    expect(out).toMatch(/id="q1-send" type="checkbox" checked=""/);
+    expect(out).toMatch(/id="q2-send" type="checkbox" disabled=""/);
+    expect(out).toContain("Fix the failing check to send this question.");
+    expect(out).toContain(">Publish 1 question</button>");
+  });
+
+  it("disables publishing when nothing can be sent", () => {
+    const state = organizerState({
+      decisions: [decisionFixture],
+      probes: [probe("q1", { status: "draft", lint: [{ rule: "duplicate", detail: "" }] })],
+    });
+    const out = html(<QuestionsView state={state} />);
+    expect(out).toMatch(/<button[^>]*disabled=""[^>]*>Publish 0 questions<\/button>/);
+    expect(out).toContain("Choose at least one question that passes every check.");
+  });
+
+  it("lists withdrawn drafts with a way back", () => {
+    const state = organizerState({
+      decisions: [decisionFixture],
+      probes: [probe("q1", { status: "withdrawn", stem: "Who owns it?" })],
+    });
+    const out = html(<QuestionsView state={state} />);
+    expect(out).toContain('aria-label="Restore &quot;Who owns it?&quot;"');
+    expect(out).toContain("No draft questions are left.");
+  });
+
+  it("shows what was sent once a round exists, with nothing to publish", () => {
+    const state = organizerState({
+      decisions: [decisionFixture],
+      probes: [probe("q1", { stem: "Who owns it?" })],
+      rounds: [round("r1")],
+    });
+    const out = html(<QuestionsView state={state} />);
+    expect(out).toContain("Questions sent");
+    expect(out).not.toContain("Publish");
+  });
+
+  it("preselects passing drafts in rank order, up to five", () => {
+    const drafts = ["a", "b", "c", "d", "e", "f", "g"].map((id) =>
+      probe(id, { status: "draft", lint: id === "b" ? [{ rule: "duplicate", detail: "" }] : [] }),
+    );
+    expect(initialSelection(drafts)).toEqual(["a", "c", "d", "e", "f"]);
+    expect(publishLabel(1)).toBe("Publish 1 question");
+    expect(publishLabel(3)).toBe("Publish 3 questions");
   });
 });
 

@@ -1,22 +1,15 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { OrganizerMeetingState } from "../../contracts/api";
 import { callApi, organizerToken, type Loaded } from "../api";
 import { ErrorNotice, Loading } from "../components";
 import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, organizerStages, type OrganizerStage } from "../stages";
 import { formatHeldAt } from "../time";
-import {
-  QuestionsView,
-  RecheckView,
-  RecordLink,
-  ResolveView,
-  RevealView,
-  RoundView,
-  StageRail,
-} from "./views";
+import { QuestionsView } from "./questions";
+import { RecheckView, RecordLink, ResolveView, RevealView, RoundView, StageRail } from "./views";
 
 export const MISSING_KEY =
   "This workspace link is missing its key. Open the organizer link you kept when you created the meeting check.";
@@ -31,9 +24,12 @@ export function viewedStage(current: OrganizerStage, requested: string | null): 
 export function WorkspaceView({
   state,
   viewing,
+  reload,
 }: {
   state: OrganizerMeetingState;
   viewing: string | null;
+  /** Fetches the state again after an action changed it. */
+  reload?: () => Promise<void>;
 }) {
   const current = organizerStage(state);
   const stage = viewedStage(current, viewing);
@@ -47,7 +43,10 @@ export function WorkspaceView({
       </header>
       {state.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
       <StageRail current={current} viewing={stage} href={href} />
-      {stage === "questions" && <QuestionsView state={state} />}
+      {stage === "questions" && (
+        // Remounts when drafting finishes, so the selection starts from the new drafts.
+        <QuestionsView key={state.meeting.status} state={state} onChange={reload} />
+      )}
       {stage === "round" && <RoundView state={state} />}
       {stage === "reveal" && <RevealView state={state} />}
       {stage === "resolve" && <ResolveView state={state} />}
@@ -57,30 +56,30 @@ export function WorkspaceView({
   );
 }
 
+async function fetchState(meetingId: string): Promise<Loaded<OrganizerMeetingState>> {
+  const token = organizerToken(meetingId);
+  if (token === null) return { state: "error", message: MISSING_KEY, status: null };
+  const res = await callApi<OrganizerMeetingState>(
+    `/api/meetings/${encodeURIComponent(meetingId)}`,
+    { token },
+  );
+  return res.ok
+    ? { state: "ready", data: res.data }
+    : { state: "error", message: res.message, status: res.status };
+}
+
 export function Workspace({ meetingId }: { meetingId: string }) {
   const [loaded, setLoaded] = useState<Loaded<OrganizerMeetingState>>({ state: "loading" });
   const viewing = useSearchParams().get("stage");
 
+  // A reload keeps the current state on screen until the new one arrives, so open forms stay mounted.
+  const reload = useCallback(async () => setLoaded(await fetchState(meetingId)), [meetingId]);
+
   useEffect(() => {
     let live = true;
-    async function load() {
-      const token = organizerToken(meetingId);
-      if (token === null) {
-        setLoaded({ state: "error", message: MISSING_KEY, status: null });
-        return;
-      }
-      const res = await callApi<OrganizerMeetingState>(
-        `/api/meetings/${encodeURIComponent(meetingId)}`,
-        { token },
-      );
-      if (!live) return;
-      setLoaded(
-        res.ok
-          ? { state: "ready", data: res.data }
-          : { state: "error", message: res.message, status: res.status },
-      );
-    }
-    void load();
+    void fetchState(meetingId).then((next) => {
+      if (live) setLoaded(next);
+    });
     return () => {
       live = false;
     };
@@ -88,5 +87,5 @@ export function Workspace({ meetingId }: { meetingId: string }) {
 
   if (loaded.state === "loading") return <Loading>Opening the meeting check.</Loading>;
   if (loaded.state === "error") return <ErrorNotice>{loaded.message}</ErrorNotice>;
-  return <WorkspaceView state={loaded.data} viewing={viewing} />;
+  return <WorkspaceView state={loaded.data} viewing={viewing} reload={reload} />;
 }

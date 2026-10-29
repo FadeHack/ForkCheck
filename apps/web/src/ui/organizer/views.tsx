@@ -1,14 +1,7 @@
 import Link from "next/link";
 import type { OrganizerMeetingState } from "../../contracts/api";
-import {
-  ErrorNotice,
-  ForkView,
-  Loading,
-  QuoteBlock,
-  SpeakerChip,
-  StatusLabel,
-} from "../components";
-import { dimensionLabel, splitStatusLabel, tierLabel, validityText } from "../labels";
+import { ForkView, SpeakerChip, StatusLabel } from "../components";
+import { splitStatusLabel, validityText } from "../labels";
 import { organizerStages, splitsToSettle, type OrganizerStage } from "../stages";
 
 type State = OrganizerMeetingState;
@@ -45,99 +38,6 @@ export function StageRail({
         ))}
       </ol>
     </nav>
-  );
-}
-
-export function QuestionsView({ state }: { state: State }) {
-  const { meeting } = state;
-  if (meeting.status === "analyzing") {
-    return <Loading>Reading the transcript and drafting questions.</Loading>;
-  }
-  if (meeting.status === "failed") {
-    return (
-      <ErrorNotice>
-        {meeting.error ?? "Drafting questions failed. Retry from that step."}
-      </ErrorNotice>
-    );
-  }
-  if (meeting.status === "draft") {
-    return <p>Questions haven&apos;t been drafted for this transcript yet.</p>;
-  }
-  if (state.decisions.length === 0) {
-    return <p>No decisions with open details were found in this transcript.</p>;
-  }
-  const names = participantNames(state);
-  const segments = new Map(state.segments.map((s) => [s.id, s]));
-  const candidates = new Map(state.candidates.map((c) => [c.id, c]));
-  const drafts = state.probes.filter((p) => p.kind === "diagnostic" && p.status !== "withdrawn");
-  return (
-    <>
-      <section aria-labelledby="decisions-heading">
-        <h2 id="decisions-heading">Decisions found</h2>
-        <ol>
-          {state.decisions.map(({ decision, evidence }) => (
-            <li key={decision.id}>
-              <p>{decision.statement}</p>
-              {evidence.map((e) => {
-                const segment = segments.get(e.segmentId);
-                const speaker = segment?.participantId
-                  ? (names.get(segment.participantId) ?? null)
-                  : null;
-                return (
-                  <QuoteBlock key={e.id} quote={e.quote} segment={segment} speaker={speaker} />
-                );
-              })}
-            </li>
-          ))}
-        </ol>
-      </section>
-      <section aria-labelledby="drafts-heading">
-        <h2 id="drafts-heading">Draft questions</h2>
-        {drafts.length === 0 ? (
-          <p>No questions were drafted for these decisions.</p>
-        ) : (
-          <ol>
-            {drafts.map((p) => {
-              const candidate = p.candidateId ? candidates.get(p.candidateId) : undefined;
-              return (
-                <li key={p.id}>
-                  <h3>{p.stem}</h3>
-                  <ul>
-                    {p.options.map((o) => (
-                      <li key={o.id}>{o.text}</li>
-                    ))}
-                  </ul>
-                  <dl>
-                    {candidate && (
-                      <>
-                        <dt>Detail</dt>
-                        <dd>{dimensionLabel[candidate.dimension]}</dd>
-                      </>
-                    )}
-                    <dt>Written as</dt>
-                    <dd>{tierLabel[p.tier]}</dd>
-                    <dt>Status</dt>
-                    <dd>{p.status === "published" ? "Sent" : "Draft"}</dd>
-                    <dt>Checks</dt>
-                    <dd>
-                      {p.lint.length === 0 ? (
-                        "Passes every check"
-                      ) : (
-                        <ul>
-                          {p.lint.map((f) => (
-                            <li key={f.rule}>{f.detail || f.rule}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </dd>
-                  </dl>
-                </li>
-              );
-            })}
-          </ol>
-        )}
-      </section>
-    </>
   );
 }
 

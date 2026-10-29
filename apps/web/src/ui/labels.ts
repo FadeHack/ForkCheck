@@ -1,4 +1,12 @@
-import type { Dimension, ProbeTier, Split, SplitStatus, ValidityLabel } from "@forkcheck/core";
+import type {
+  Decision,
+  Dimension,
+  LintFinding,
+  ProbeTier,
+  Split,
+  SplitStatus,
+  ValidityLabel,
+} from "@forkcheck/core";
 
 export const dimensionLabel: Record<Dimension, string> = {
   owner: "Owner",
@@ -14,6 +22,45 @@ export const tierLabel: Record<ProbeTier, string> = {
   assisted: "Template with model options",
   free: "Model-written",
 };
+
+export const decisionStatusLabel: Record<Decision["status"], string> = {
+  explicit: "Stated clearly",
+  ambiguous: "Open to more than one reading",
+  unresolved: "Left open",
+  debated: "Still being debated",
+};
+
+/** A lint finding as a sentence that names the problem and the fix (the detail is for logs). */
+export function lintNote({ rule, detail }: LintFinding): string {
+  switch (rule) {
+    case "option_count": {
+      const n = /^(\d+)/.exec(detail)?.[1];
+      return `${n ? `Has ${n} options. ` : ""}A question needs 2 to 4 options.`;
+    }
+    case "length_ratio":
+      return "One option is much longer than another, which hints at the answer. Make them similar in length.";
+    case "verbatim_speaker": {
+      const m = /option (\d+) repeats "(.*)"/.exec(detail);
+      return m
+        ? `Option ${m[1]} repeats what someone said ("${m[2]}"), which points at one person. Reword it.`
+        : "An option repeats what someone said, which points at one person. Reword it.";
+    }
+    case "presupposition": {
+      const word = /stem uses "(.*)"/.exec(detail)?.[1];
+      return word
+        ? `Uses the word "${word}", which presumes the answer. Ask without it.`
+        : "Its wording presumes the answer. Ask it neutrally.";
+    }
+    case "one_dimension":
+      return "Asks about more than one thing. Keep it to one question.";
+    case "debated_target":
+      return "Asks about a decision the meeting was still debating, so there is nothing settled to check.";
+    case "duplicate":
+      return "Asks the same thing as another question. Withdraw one of them.";
+    default:
+      return detail || rule;
+  }
+}
 
 export const outcomeLabel: Record<Split["outcome"], string> = {
   split: "Different answers",
