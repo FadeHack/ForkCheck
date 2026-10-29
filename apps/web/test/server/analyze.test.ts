@@ -1,4 +1,4 @@
-import { ScriptedProvider } from "@forkcheck/ai";
+import { ScriptedProvider, type ModelPort } from "@forkcheck/ai";
 import { probe as probeSchema } from "@forkcheck/core";
 import { count, eq } from "drizzle-orm";
 import { tables } from "@forkcheck/db";
@@ -6,12 +6,15 @@ import { beforeAll, describe, expect, it } from "vitest";
 import { POST as createRoute } from "../../src/app/api/meetings/route";
 import { GET } from "../../src/app/api/meetings/[id]/route";
 import { POST as analyzeRoute } from "../../src/app/api/meetings/[id]/analyze/route";
+import { GET as progressRoute } from "../../src/app/api/meetings/[id]/progress/route";
 import type {
   AnalyzeResponse,
   CreateMeetingResponse,
+  MeetingProgressResponse,
   OrganizerMeetingState,
 } from "../../src/contracts/api";
 import { createDeps, setDeps, type Deps } from "../../src/server/deps";
+import { STEP_LEASE_MS } from "../../src/server/steps";
 import { call, NOW, useTestDeps } from "./harness";
 
 const transcript = [
@@ -122,8 +125,8 @@ function script(meetingId: string, fail?: "extract" | "findCandidates" | "genera
   return new ScriptedProvider(replies);
 }
 
-function useModel(model: ScriptedProvider) {
-  setDeps(createDeps(deps.db, { now: () => NOW, model: () => model }));
+function useModel(model: ModelPort, now = NOW) {
+  setDeps(createDeps(deps.db, { now: () => now, model: () => model }));
 }
 
 const analyze = (m: CreateMeetingResponse) =>
@@ -295,6 +298,95 @@ describe("POST /api/meetings/:id/analyze", () => {
         method: "POST",
         token: m.participantLinks[0]!.token,
       },
+    );
+    expect(res.status).toBe(401);
+  });
+});
+
+/** Holds the first findCandidates call until released, like a request whose process died. */
+function stuckAtCandidates(inner: ScriptedProvider) {
+  let release!: () => void;
+  const held = new Promise<void>((resolve) => (release = resolve));
+  let reached!: () => void;
+  const atCandidates = new Promise<void>((resolve) => (reached = resolve));
+  const model: ModelPort = {
+    async call(request) {
+      if (request.stage === "findCandidates") {
+        reached();
+        await held;
+      }
+      return inner.call(request);
+    },
+  };
+  return { model, atCandidates, release };
+}
+
+const progress = async (m: CreateMeetingResponse) =>
+  (await call(progressRoute, "/x", { id: m.meetingId }, { token: m.organizerToken }))
+    .body as MeetingProgressResponse;
+
+describe("a long analysis", () => {
+  it("is taken over once its run goes silent past the lease, resuming after the saved step", async () => {
+    const m = await newMeeting();
+    const stuck = stuckAtCandidates(script(m.meetingId));
+    useModel(stuck.model);
+    const abandoned = analyze(m);
+    await stuck.atCandidates;
+    expect(await progress(m)).toEqual({
+      status: "analyzing",
+      step: "candidates",
+      stalled: false,
+      error: null,
+    });
+    expect(await analyze(m)).toMatchObject({
+      status: 409,
+      body: { error: { code: "analysis_running" } },
+    });
+
+    const later = new Date(NOW.getTime() + STEP_LEASE_MS + 1);
+    const model = script(m.meetingId);
+    useModel(model, later);
+    expect(await progress(m)).toMatchObject({ step: "candidates", stalled: true });
+    expect((await analyze(m)).status).toBe(200);
+    expect(model.requests.filter((r) => r.stage === "extract")).toHaveLength(0);
+    expect(await rows(m.meetingId)).toEqual({ decisions: 2, candidates: 2, probes: 2 });
+
+    // The old run wakes up, sees it lost the step, and saves nothing.
+    stuck.release();
+    expect(await abandoned).toMatchObject({
+      status: 409,
+      body: { error: { code: "analysis_running" } },
+    });
+    expect(await meetingOf(m)).toMatchObject({ status: "probing", error: null });
+    expect(await rows(m.meetingId)).toEqual({ decisions: 2, candidates: 2, probes: 2 });
+    expect(await progress(m)).toEqual({
+      status: "probing",
+      step: null,
+      stalled: false,
+      error: null,
+    });
+  });
+
+  it("reports the failed step and its message for polling", async () => {
+    const m = await newMeeting();
+    useModel(script(m.meetingId, "generateProbes"));
+    await analyze(m);
+    expect(await progress(m)).toEqual({
+      status: "failed",
+      step: "probes",
+      stalled: false,
+      error: "Drafting stopped at 'draft questions'. Retry from that step.",
+    });
+  });
+
+  it("answers progress polls only for the meeting's organizer", async () => {
+    const m = await newMeeting();
+    expect(await progress(m)).toEqual({ status: "draft", step: null, stalled: false, error: null });
+    const res = await call(
+      progressRoute,
+      "/x",
+      { id: m.meetingId },
+      { token: m.participantLinks[0]!.token },
     );
     expect(res.status).toBe(401);
   });

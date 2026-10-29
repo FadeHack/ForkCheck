@@ -14,6 +14,7 @@ import {
   type Confirmation,
   type DecisionRecord,
   type Meeting,
+  type MeetingStatus,
   type Participant,
   type Probe,
   type ProbeOption,
@@ -102,6 +103,16 @@ export interface OrganizerMeetingState {
 /** A count only: the answers stay sealed until the round closes, as for any participant. */
 export interface SimulateAnswersResponse {
   submitted: number;
+}
+
+// GET /api/meetings/:id/progress, polled while transcription or analysis runs
+export interface MeetingProgressResponse {
+  status: MeetingStatus;
+  /** The step running now, or the one that failed; null when nothing is running. */
+  step: "transcribe" | "extract" | "candidates" | "probes" | null;
+  /** The running step has shown no sign of life for 10 minutes: a retry takes it over. */
+  stalled: boolean;
+  error: string | null;
 }
 
 // PUT /api/meetings/:id/speakers (many labels may map to one participant)

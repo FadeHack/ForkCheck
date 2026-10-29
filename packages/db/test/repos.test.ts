@@ -38,6 +38,10 @@ const meeting: Meeting = {
   deleteAfter: null,
 };
 
+const T0 = new Date("2026-10-27T16:30:00.000Z");
+/** A claim at T0 that treats any run silent since T0 as gone. */
+const claim = (runId: string) => ({ runId, now: T0, staleBefore: T0 });
+
 const people: Participant[] = ["Ana", "Ben"].map((name, i) => ({
   id: `${M}:p:${i}`,
   meetingId: M,
@@ -258,6 +262,7 @@ describe("repositories", { timeout: 20_000 }, () => {
       version: 1,
       step: "probes",
       failedStep: null,
+      heartbeatAt: null,
     });
     expect(await meetings.organizerTokenHash(M)).toBe("org-hash");
     expect(await meetings.organizerTokenHash("nope")).toBeNull();
@@ -427,6 +432,25 @@ describe("repositories", { timeout: 20_000 }, () => {
     expect(await meetings.setParticipantStatus("other", ben.id, "absent")).toBeNull();
   });
 
+  it("lets a new run take over a step whose run went silent, and fences out the old one", async () => {
+    const db = await createTestDb();
+    const meetings = new MeetingRepo(db);
+    await meetings.create({ meeting, organizerTokenHash: "h", participants: [], segments: [] });
+    expect(await meetings.startAnalysis(M, ["draft"], claim("old"))).toBe(true);
+    const later = new Date(T0.getTime() + 60_000);
+    expect(await meetings.heartbeat(M, "old", later)).toBe(true);
+    // Alive since T0 + 1 min: a claim that counts silence from then on cannot take over.
+    expect(await meetings.startAnalysis(M, [], { ...claim("new"), staleBefore: later })).toBe(
+      false,
+    );
+    const stale = new Date(later.getTime() + 1);
+    expect(await meetings.startAnalysis(M, [], { ...claim("new"), staleBefore: stale })).toBe(true);
+    expect(await meetings.heartbeat(M, "old", stale)).toBe(false);
+    await meetings.failAnalysis(M, "old", "extract", "timeout");
+    expect(await meetings.get(M)).toMatchObject({ status: "analyzing", error: null });
+    expect(await meetings.heartbeat(M, "new", stale)).toBe(true);
+  });
+
   it("records analysis progress step by step and only one caller starts it", async () => {
     const db = await createTestDb();
     const meetings = new MeetingRepo(db);
@@ -437,26 +461,31 @@ describe("repositories", { timeout: 20_000 }, () => {
       segments,
     });
     const started = await Promise.all([
-      meetings.startAnalysis(M, ["draft", "failed"]),
-      meetings.startAnalysis(M, ["draft", "failed"]),
+      meetings.startAnalysis(M, ["draft", "failed"], claim("run-a")),
+      meetings.startAnalysis(M, ["draft", "failed"], claim("run-b")),
     ]);
-    expect(started.sort()).toEqual([false, true]);
+    const runId = started[0] ? "run-a" : "run-b";
+    expect([...started].sort()).toEqual([false, true]);
     await meetings.resetAnalysis(M, 1);
     await meetings.saveDecisions(M, [decision]);
     expect(await meetings.analysisProgress(M)).toEqual({
       version: 1,
       step: "extract",
       failedStep: null,
+      heartbeatAt: T0.toISOString(),
     });
-    await meetings.failAnalysis(M, "candidates", "timeout");
+    // Only the run holding the step can fail it.
+    await meetings.failAnalysis(M, "someone-else", "candidates", "timeout");
+    expect(await meetings.get(M)).toMatchObject({ status: "analyzing" });
+    await meetings.failAnalysis(M, runId, "candidates", "timeout");
     expect(await meetings.get(M)).toMatchObject({ status: "failed", error: "timeout" });
-    expect(await meetings.analysisProgress(M)).toEqual({
+    expect(await meetings.analysisProgress(M)).toMatchObject({
       version: 1,
       step: "extract",
       failedStep: "candidates",
     });
-    expect(await meetings.startAnalysis(M, ["draft"])).toBe(false);
-    expect(await meetings.startAnalysis(M, ["failed"])).toBe(true);
+    expect(await meetings.startAnalysis(M, ["draft"], claim("run-c"))).toBe(false);
+    expect(await meetings.startAnalysis(M, ["failed"], claim("run-c"))).toBe(true);
     expect(await meetings.analysisProgress(M)).toMatchObject({ failedStep: null });
     await meetings.saveCandidates(M, [candidate]);
     const second = { ...probe, id: `${probe.id}b`, stem: "Second by rank" };

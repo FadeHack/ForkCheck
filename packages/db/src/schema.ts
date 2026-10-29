@@ -109,6 +109,9 @@ export const meeting = pgTable("meeting", {
   analysisVersion: integer("analysis_version"),
   analysisStep: analysisStep("analysis_step"),
   failedStep: analysisStep("failed_step"),
+  /** The run holding a long step (analysis, later transcription) and its last sign of life. */
+  stepRunId: text("step_run_id"),
+  stepHeartbeatAt: at("step_heartbeat_at"),
   createdAt: at("created_at").notNull(),
   deleteAfter: at("delete_after"),
 });
