@@ -22,15 +22,24 @@ async function roundAnswers(deps: Deps, round: Round) {
   return { probes, active, answers };
 }
 
+/** True once the round's splits are saved: answers are revealed and the round is finished. */
+async function revealDone(deps: Deps, meeting: Meeting, round: Round): Promise<boolean> {
+  if (round.kind === "diagnostic") return meeting.status !== "probing";
+  const probes = await deps.rounds.probes(round.id);
+  const splits = await deps.splits.list(meeting.id);
+  return probes.every((p) => splits.some((s) => s.probeId === p.id));
+}
+
 /**
  * Closes a round when every active participant has answered every question, or on the
  * organizer's say with at least 2 people answering. Then write-ins are matched by the model,
- * divergence is computed in code, and splits are saved. A closed round that already has its
- * reveal returns it again; one whose matching failed resumes.
+ * divergence is computed in code, and splits are saved. A recheck round's outcome is applied
+ * to the split it rechecked. A closed round that already has its reveal returns it again;
+ * one whose matching failed resumes.
  */
 export async function closeRound(deps: Deps, meeting: Meeting, round: Round): Promise<Response> {
   if (round.closedAt === null) {
-    if (meeting.status !== "probing") {
+    if (round.kind === "diagnostic" && meeting.status !== "probing") {
       return apiError(409, "not_probing", "This meeting has no round waiting to be revealed.");
     }
     const { probes, active, answers } = await roundAnswers(deps, round);
@@ -51,15 +60,13 @@ export async function closeRound(deps: Deps, meeting: Meeting, round: Round): Pr
     if (!(await deps.rounds.closeIfOpen(round.id, deps.now().toISOString(), reason))) {
       return running();
     }
-  } else if (meeting.status === "probing") {
-    if (
-      meeting.error !== REVEAL_FAILED ||
-      !(await deps.meetings.claimError(meeting.id, REVEAL_FAILED))
-    ) {
-      return running();
-    }
-  } else {
+  } else if (await revealDone(deps, meeting, round)) {
     return json(await response(deps, round.id));
+  } else if (
+    meeting.error !== REVEAL_FAILED ||
+    !(await deps.meetings.claimError(meeting.id, REVEAL_FAILED))
+  ) {
+    return running();
   }
 
   // Read again after the close: an answer may have landed just before it.
@@ -75,7 +82,7 @@ export async function closeRound(deps: Deps, meeting: Meeting, round: Round): Pr
     }
   } catch (error) {
     logError(`reveal ${round.id}`, error);
-    await deps.meetings.setStatus(meeting.id, "probing", REVEAL_FAILED);
+    await deps.meetings.setStatus(meeting.id, meeting.status, REVEAL_FAILED);
     return apiError(502, "reveal_failed", REVEAL_FAILED);
   }
 
@@ -90,7 +97,15 @@ export async function closeRound(deps: Deps, meeting: Meeting, round: Round): Pr
     validity: [],
     status: "open",
   }));
-  await deps.splits.saveReveal(meeting.id, splits);
+  if (round.kind === "diagnostic") {
+    await deps.splits.saveReveal(meeting.id, splits);
+  } else {
+    for (const split of splits) {
+      const original = probes.find((p) => p.id === split.probeId)!.splitId!;
+      const result = await deps.splits.saveRecheck(split, original);
+      if (!result?.ok) throw new Error(`recheck ${split.id} could not be applied to ${original}`);
+    }
+  }
   return json(await response(deps, round.id));
 }
 

@@ -24,11 +24,30 @@ import type { Deps } from "./deps";
 import { apiError, json, notFound } from "./http";
 import { logError } from "./log";
 
-/** The split, if it belongs to this meeting. Splits of other meetings look unknown. */
-async function splitIn(deps: Deps, meetingId: string, splitId: string): Promise<Split | null> {
+/**
+ * The split, if it belongs to this meeting; splits of other meetings look unknown. A
+ * recheck's split only shows the recheck answers, so it takes no labels or resolutions.
+ */
+async function splitIn(
+  deps: Deps,
+  meetingId: string,
+  splitId: string,
+): Promise<{ split: Split } | { refused: Response }> {
   const split = await deps.splits.get(splitId);
   const found = split && (await deps.rounds.getProbe(split.probeId));
-  return split && found && found.probe.meetingId === meetingId ? split : null;
+  if (!split || !found || found.probe.meetingId !== meetingId) {
+    return { refused: notFound("Question") };
+  }
+  if (found.probe.kind === "recheck") {
+    return {
+      refused: apiError(
+        409,
+        "recheck_question",
+        "This question rechecked a resolution. Discuss it on the original question.",
+      ),
+    };
+  }
+  return { split };
 }
 
 /**
@@ -40,8 +59,9 @@ export async function labelValidity(
   participant: Participant,
   body: LabelValidityRequest,
 ): Promise<Response> {
-  const split = await splitIn(deps, participant.meetingId, body.splitId);
-  if (split === null) return notFound("Question");
+  const found = await splitIn(deps, participant.meetingId, body.splitId);
+  if ("refused" in found) return found.refused;
+  const { split } = found;
   const saved = await deps.splits.labelIfOpen(split.id, participant.id, body.label);
   if (saved === null) {
     return apiError(
@@ -100,8 +120,9 @@ export async function proposeResolution(
   participant: Participant,
   body: ProposeResolutionRequest,
 ): Promise<Response> {
-  const split = await splitIn(deps, participant.meetingId, body.splitId);
-  if (split === null) return notFound("Question");
+  const found = await splitIn(deps, participant.meetingId, body.splitId);
+  if ("refused" in found) return found.refused;
+  const { split } = found;
   let resolutionId = "";
   const done = (await deps.splits.transition(split.id, (s) => {
     resolutionId = `${s.splitId}:res:${s.resolutions.length}`;
@@ -128,8 +149,9 @@ export async function draftResolutionFor(
   participant: Participant,
   body: DraftResolutionRequest,
 ): Promise<Response> {
-  const split = await splitIn(deps, participant.meetingId, body.splitId);
-  if (split === null) return notFound("Question");
+  const found = await splitIn(deps, participant.meetingId, body.splitId);
+  if ("refused" in found) return found.refused;
+  const { split } = found;
   if (!PROPOSALS_OPEN.includes(split.status)) {
     return apiError(409, "invalid_transition", WHERE_IT_STANDS[split.status]);
   }
@@ -167,8 +189,10 @@ export async function confirmResolution(
   resolutionId: string,
 ): Promise<Response> {
   const resolution = await deps.splits.getResolution(resolutionId);
-  const split = resolution && (await splitIn(deps, participant.meetingId, resolution.splitId));
-  if (!resolution || !split) return notFound("Resolution");
+  if (resolution === null) return notFound("Resolution");
+  const found = await splitIn(deps, participant.meetingId, resolution.splitId);
+  if ("refused" in found) return notFound("Resolution");
+  const { split } = found;
 
   let superseded = false;
   const done = (await deps.splits.transition(split.id, (s) => {
@@ -220,8 +244,9 @@ export async function markUnresolved(
   participant: Participant,
   splitId: string,
 ): Promise<Response> {
-  const split = await splitIn(deps, participant.meetingId, splitId);
-  if (split === null) return notFound("Question");
+  const found = await splitIn(deps, participant.meetingId, splitId);
+  if ("refused" in found) return found.refused;
+  const { split } = found;
   const done = (await deps.splits.transition(split.id, (s) =>
     applyResolutionEvent(s, { type: "agree_to_disagree", actor: actor(participant) }),
   ))!;
