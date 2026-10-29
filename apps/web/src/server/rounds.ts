@@ -186,6 +186,21 @@ export async function revealedSplits(
   });
 }
 
+/** Who else still owes an answer on the open questions, by name only. */
+async function waitingOn(deps: Deps, viewer: Participant, open: Probe[]): Promise<string[]> {
+  if (open.length === 0) return [];
+  const [participants, answers] = await Promise.all([
+    deps.meetings.participants(viewer.meetingId),
+    deps.rounds.answers(open.map((p) => p.id)),
+  ]);
+  const answered = new Map<string, number>();
+  for (const a of answers) answered.set(a.participantId, (answered.get(a.participantId) ?? 0) + 1);
+  return participants
+    .filter((p) => p.id !== viewer.id && p.status === "active")
+    .filter((p) => (answered.get(p.id) ?? 0) < open.length)
+    .map((p) => p.displayName);
+}
+
 /** Open questions in this participant's option order, their own answers, and closed rounds. */
 export async function participantState(
   deps: Deps,
@@ -193,14 +208,15 @@ export async function participantState(
   meeting: Meeting,
 ): Promise<ParticipantState> {
   const open = await deps.rounds.openRound(meeting.id);
-  const probes = open === null ? [] : await deps.rounds.probes(open.id);
+  const probes = (open === null ? [] : await deps.rounds.probes(open.id)).filter(
+    (p) => p.status === "published",
+  );
   return {
     participant,
     meeting: { id: meeting.id, title: meeting.title, status: meeting.status },
-    openProbes: probes
-      .filter((p) => p.status === "published")
-      .map((p) => toParticipantProbe(optionOrder(p, participant.id))),
+    openProbes: probes.map((p) => toParticipantProbe(optionOrder(p, participant.id))),
     ownAnswers: await deps.rounds.answersBy(participant.id),
+    waitingOn: await waitingOn(deps, participant, probes),
     revealed: await revealedSplits(deps, meeting.id),
   };
 }

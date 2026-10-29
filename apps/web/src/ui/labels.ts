@@ -62,6 +62,19 @@ export function lintNote({ rule, detail }: LintFinding): string {
   }
 }
 
+/** "Dana", "Dana and Leo", "Dana, Leo and Sam". */
+export function nameList(names: readonly string[]): string {
+  if (names.length <= 1) return names[0] ?? "";
+  return `${names.slice(0, -1).join(", ")} and ${names.at(-1)!}`;
+}
+
+/** The participant's waiting line: names only, never what anyone chose. */
+export function waitingLine(names: readonly string[]): string {
+  return names.length === 0
+    ? "Everyone has answered. Answers show here once the organizer reveals them."
+    : `Waiting for ${nameList(names)}.`;
+}
+
 export const outcomeLabel: Record<Split["outcome"], string> = {
   split: "Different answers",
   consistent: "Same answer",

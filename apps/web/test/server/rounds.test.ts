@@ -5,6 +5,7 @@ import { GET as organizerGet } from "../../src/app/api/meetings/[id]/route";
 import { POST as openRoute } from "../../src/app/api/meetings/[id]/rounds/route";
 import { GET as participantGet } from "../../src/app/api/p/[token]/route";
 import { POST as answerRoute } from "../../src/app/api/p/[token]/answers/route";
+import { PATCH as participantPatch } from "../../src/app/api/meetings/[id]/participants/[pid]/route";
 import { PATCH as editRoute } from "../../src/app/api/probes/[id]/route";
 import type {
   OpenRoundResponse,
@@ -256,6 +257,33 @@ describe("POST /api/p/:token/answers", () => {
       [a0.body, a1.body].sort((x, y) => (x as Answer).probeId.localeCompare((y as Answer).probeId)),
     );
     expect((await view(ben!.token)).ownAnswers).toEqual([b0.body]);
+  });
+
+  it("names who else still owes an answer, until they answer every open question", async () => {
+    const m = await seedDrafts(deps, "wait-1", ["Ana", "Ben", "Cy", "Dee"], 2);
+    const [p0, p1] = m.drafts;
+    const [ana, ben, cy, dee] = m.participants;
+    expect((await view(ana!.token)).waitingOn).toEqual([]);
+    await open(m, [p0!.id, p1!.id]);
+    expect((await view(ana!.token)).waitingOn).toEqual(["Ben", "Cy", "Dee"]);
+
+    await answer(ben!.token, pick(p0!, 0));
+    await answer(cy!.token, pick(p0!, 1));
+    await answer(cy!.token, { probeId: p1!.id, choice: "unsure" });
+    await call(
+      participantPatch,
+      "/x",
+      { id: m.meeting.id, pid: dee!.participant.id },
+      { method: "PATCH", token: m.organizerToken, body: { status: "absent" } },
+    );
+    // Ben answered one of two; Cy answered both; Dee is absent; Ana never counts herself.
+    const state = await view(ana!.token);
+    expect(state.waitingOn).toEqual(["Ben"]);
+    // Names only: nothing in Ana's view refers to anyone else's answers.
+    for (const other of [ben, cy, dee]) {
+      expect(JSON.stringify(state)).not.toContain(other!.participant.id);
+    }
+    expect((await view(ben!.token)).waitingOn).toEqual(["Ana"]);
   });
 
   it("is idempotent per question, and a new choice replaces the old one", async () => {

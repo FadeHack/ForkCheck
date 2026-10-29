@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { lintNote } from "../../src/ui/labels";
+import { lintNote, nameList, waitingLine } from "../../src/ui/labels";
 
 describe("lintNote", () => {
   it.each([
@@ -31,6 +31,17 @@ describe("lintNote", () => {
   it("falls back to the detail for a rule it doesn't know", () => {
     expect(lintNote({ rule: "new_rule", detail: "Something specific." })).toBe(
       "Something specific.",
+    );
+  });
+});
+
+describe("waitingLine", () => {
+  it("names who is left in plain English", () => {
+    expect(nameList(["Dana"])).toBe("Dana");
+    expect(nameList(["Dana", "Leo"])).toBe("Dana and Leo");
+    expect(waitingLine(["Dana", "Leo", "Sam"])).toBe("Waiting for Dana, Leo and Sam.");
+    expect(waitingLine([])).toBe(
+      "Everyone has answered. Answers show here once the organizer reveals them.",
     );
   });
 });
