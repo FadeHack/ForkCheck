@@ -77,6 +77,23 @@ describe("resolutions", () => {
     expect(label.status).toBe(200);
   });
 
+  it("records a submitted model draft as drafted by the model", async () => {
+    const m = await seedRevealed(deps, "res-drafted");
+    const res = await call(
+      resolutionsRoute,
+      "/x",
+      { token: token(m, ANA) },
+      {
+        method: "POST",
+        body: { splitId: m.splitId, text: "SSO runs on staging on Friday.", draftedByModel: true },
+      },
+    );
+    expect(res).toMatchObject({
+      status: 201,
+      body: { proposedBy: pid(m, ANA), draftedByModel: true, status: "proposed" },
+    });
+  });
+
   it("confirms only once every active participant has, and names the absent", async () => {
     const m = await seedRevealed(deps, "res-confirm");
     const proposed = await propose(m, ANA, "We run SSO on staging first, then production.");

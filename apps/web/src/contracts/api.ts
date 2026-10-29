@@ -192,6 +192,8 @@ export type LabelValidityResponse = Split;
 export const proposeResolutionRequest = z.strictObject({
   splitId: id,
   text: z.string().trim().min(1),
+  /** The participant is submitting a model draft, edited or not. Omitted means their own words. */
+  draftedByModel: z.boolean().optional(),
 });
 export type ProposeResolutionRequest = z.infer<typeof proposeResolutionRequest>;
 export type ProposeResolutionResponse = Resolution;
