@@ -43,6 +43,7 @@ export function Field({
   id,
   label,
   hint,
+  warning,
   error,
   check = false,
   children,
@@ -50,13 +51,16 @@ export function Field({
   id: string;
   label: ReactNode;
   hint?: ReactNode;
+  /** Shown above the error; it doesn't stop the form from being sent. */
+  warning?: ReactNode;
   error?: string | undefined;
   check?: boolean;
   children: (describedBy: string | undefined) => ReactNode;
 }) {
   const hintId = hint ? `${id}-hint` : null;
+  const warningId = warning ? `${id}-warning` : null;
   const errorId = error ? `${id}-error` : null;
-  const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
+  const describedBy = [hintId, warningId, errorId].filter(Boolean).join(" ") || undefined;
   const labelEl = <label htmlFor={id}>{label}</label>;
   return (
     <div className={check ? "field field-check" : "field"}>
@@ -67,6 +71,11 @@ export function Field({
         <span id={hintId} className="field-hint">
           {hint}
         </span>
+      )}
+      {warningId && (
+        <div id={warningId} className="field-warning">
+          {warning}
+        </div>
       )}
       {errorId && (
         <p id={errorId} className="field-error">
