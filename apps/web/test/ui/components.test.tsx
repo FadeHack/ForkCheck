@@ -38,6 +38,16 @@ describe("Field", () => {
     expect(out).toContain('<p id="t-error" class="field-error">Paste a transcript.</p>');
   });
 
+  it("adds a warning between the hint and the error", () => {
+    const out = html(
+      <Field id="t" label="Transcript" hint="One turn per line." warning={<p>Sam is unknown.</p>}>
+        {(d) => <textarea id="t" aria-describedby={d} />}
+      </Field>,
+    );
+    expect(out).toContain('aria-describedby="t-hint t-warning"');
+    expect(out).toContain('<div id="t-warning" class="field-warning"><p>Sam is unknown.</p></div>');
+  });
+
   it("leaves the control undescribed when there is nothing to say", () => {
     const out = html(
       <Field id="t" label="Title">
