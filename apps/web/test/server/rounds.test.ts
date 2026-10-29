@@ -279,10 +279,9 @@ describe("POST /api/p/:token/answers", () => {
     // Ben answered one of two; Cy answered both; Dee is absent; Ana never counts herself.
     const state = await view(ana!.token);
     expect(state.waitingOn).toEqual(["Ben"]);
-    // Names only: nothing in Ana's view refers to anyone else's answers.
-    for (const other of [ben, cy, dee]) {
-      expect(JSON.stringify(state)).not.toContain(other!.participant.id);
-    }
+    // Names only: outside the participant list, nothing in Ana's view refers to anyone else.
+    const rest = JSON.stringify({ ...state, participants: [] });
+    for (const other of [ben, cy, dee]) expect(rest).not.toContain(other!.participant.id);
     expect((await view(ben!.token)).waitingOn).toEqual(["Ana"]);
   });
 
@@ -377,9 +376,8 @@ describe("sealed answers", () => {
         for (const { viewer, body } of bodies) {
           for (const [owner, ownerMarks] of marks.entries()) {
             if (owner === viewer) continue;
-            // The organizer sees the participant list, but no answer IDs or write-ins.
-            const sealed = viewer === "organizer" ? ownerMarks.slice(1) : ownerMarks;
-            for (const mark of sealed) expect(body).not.toContain(mark);
+            // Everyone sees the participant list, but no one else's answer IDs or write-ins.
+            for (const mark of ownerMarks.slice(1)) expect(body).not.toContain(mark);
           }
         }
       }),

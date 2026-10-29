@@ -12,6 +12,8 @@ import { QuestionsView } from "./questions";
 import { RoundMonitor } from "./round";
 import { RecheckView, RecordLink, ResolveView, RevealView, StageRail } from "./views";
 
+const POLL_MS = 5000;
+
 export const MISSING_KEY =
   "This workspace link is missing its key. Open the organizer link you kept when you created the meeting check.";
 
@@ -85,6 +87,21 @@ export function Workspace({ meetingId }: { meetingId: string }) {
       live = false;
     };
   }, [meetingId]);
+
+  // Answers, labels and confirmations arrive from other people's phones. Drafting has its own
+  // progress check, and the record no longer changes.
+  const live =
+    loaded.state === "ready" &&
+    ["round", "reveal", "resolve", "recheck"].includes(organizerStage(loaded.data));
+  useEffect(() => {
+    if (!live) return;
+    // A failed refresh keeps the page the organizer already has.
+    const timer = setInterval(async () => {
+      const next = await fetchState(meetingId);
+      if (next.state === "ready") setLoaded(next);
+    }, POLL_MS);
+    return () => clearInterval(timer);
+  }, [live, meetingId]);
 
   if (loaded.state === "loading") return <Loading>Opening the meeting check.</Loading>;
   if (loaded.state === "error") return <ErrorNotice>{loaded.message}</ErrorNotice>;

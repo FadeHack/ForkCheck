@@ -589,3 +589,28 @@
 .dialog p {
   margin-top: 0;
 }
+
+/* Reveal: forks run full width with room between them (the RHYTHM 2 break). */
+.reveal-item + .reveal-item {
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--line-subtle);
+}
+
+.validity {
+  border: 0;
+  padding: 0;
+  margin: var(--space-4) 0;
+  min-width: 0;
+}
+
+.validity legend {
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: var(--space-3);
+}
+
+.choice:has(input:disabled) {
+  cursor: not-allowed;
+  color: var(--ink-muted);
+}

@@ -185,6 +185,8 @@ export interface RevealedSplit {
 /** Never includes other participants' answers before their round closes. */
 export interface ParticipantState {
   participant: Participant;
+  /** Everyone in the meeting, the viewer included, so a reveal names who chose what. */
+  participants: Participant[];
   meeting: Pick<Meeting, "id" | "title" | "status">;
   openProbes: ParticipantProbe[];
   ownAnswers: Answer[];

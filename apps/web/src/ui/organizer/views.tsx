@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { OrganizerMeetingState } from "../../contracts/api";
-import { ForkView, StatusLabel } from "../components";
-import { splitStatusLabel, validityText } from "../labels";
+import { StatusLabel } from "../components";
+import { RevealList } from "../reveal";
+import { splitStatusLabel } from "../labels";
 import { organizerStages, splitsToSettle, type OrganizerStage } from "../stages";
 
 type State = OrganizerMeetingState;
@@ -42,41 +43,14 @@ export function StageRail({
 }
 
 export function RevealView({ state }: { state: State }) {
-  const names = participantNames(state);
-  const diagnostic = state.probes.filter((p) => p.kind === "diagnostic");
-  const revealed = diagnostic.flatMap((probe) => {
-    const split = state.splits.find((s) => s.probeId === probe.id);
-    return split ? [{ probe, split }] : [];
-  });
-  if (revealed.length === 0) return <p>No answers have been revealed yet.</p>;
-  return (
-    <section aria-labelledby="reveal-heading">
-      <h2 id="reveal-heading">Revealed answers</h2>
-      {revealed.map(({ probe, split }) => (
-        <div key={split.id}>
-          <ForkView
-            stem={probe.stem}
-            options={probe.options}
-            split={split}
-            answers={state.revealedAnswers.filter((a) => a.probeId === probe.id)}
-            names={names}
-          />
-          {split.validity.length > 0 && (
-            <>
-              <h4>Is this a real difference?</h4>
-              <ul>
-                {split.validity.map((v) => (
-                  <li key={v.participantId}>
-                    {names.get(v.participantId) ?? "A participant"}: {validityText[v.label]}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-        </div>
-      ))}
-    </section>
-  );
+  const items = state.probes
+    .filter((p) => p.kind === "diagnostic")
+    .flatMap((probe) => {
+      const split = state.splits.find((s) => s.probeId === probe.id);
+      const answers = state.revealedAnswers.filter((a) => a.probeId === probe.id);
+      return split ? [{ probe, split, answers }] : [];
+    });
+  return <RevealList items={items} people={state.participants} />;
 }
 
 export function ResolveView({ state }: { state: State }) {

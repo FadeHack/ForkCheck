@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import type { Participant } from "@forkcheck/core";
 import type { CloseRoundResponse, OrganizerMeetingState } from "../../contracts/api";
 import { organizerCall } from "../api";
@@ -9,7 +9,6 @@ import { nameList } from "../labels";
 
 type State = OrganizerMeetingState;
 
-const POLL_MS = 5000;
 /** The server's rule: everyone has answered, or at least this many people have. */
 export const QUORUM = 2;
 export const QUORUM_NOTE =
@@ -100,14 +99,6 @@ export function RoundMonitor({
   const dialog = useRef<HTMLDialogElement>(null);
   const [busy, setBusy] = useState(false);
   const [failure, setFailure] = useState("");
-
-  // Answers arrive from other people's phones, so the counts refresh while the round is open.
-  const open = round?.closedAt === null;
-  useEffect(() => {
-    if (!open || !onChange) return;
-    const timer = setInterval(() => void onChange(), POLL_MS);
-    return () => clearInterval(timer);
-  }, [open, onChange]);
 
   if (round === undefined) return <p>No questions are open right now.</p>;
 

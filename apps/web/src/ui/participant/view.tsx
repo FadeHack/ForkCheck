@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import type { ParticipantState } from "../../contracts/api";
 import { callApi, type Loaded } from "../api";
-import { Button, ErrorNotice, ForkView, Loading, StatusLabel } from "../components";
+import { Button, ErrorNotice, Loading } from "../components";
 import { waitingLine } from "../labels";
+import { RevealList } from "../reveal";
 import { participantStage } from "../stages";
 import { AnswerForm, answerText } from "./answers";
 
@@ -51,15 +52,15 @@ export function ParticipantView({
   const stage = participantStage(state);
   const [changing, setChanging] = useState(false);
 
-  // Nobody pushes the reveal to this page, so it asks again while the participant waits.
+  // Nothing pushes changes to this page, so it asks again unless the participant is typing.
+  const live = stage === "not_started" || stage === "waiting" || stage === "reveal";
   useEffect(() => {
-    if (stage !== "waiting" || changing || !reload) return;
+    if (!live || changing || !reload) return;
     const timer = setInterval(() => void reload(), POLL_MS);
     return () => clearInterval(timer);
-  }, [stage, changing, reload]);
+  }, [live, changing, reload]);
 
   const answering = stage === "answer" || stage === "recheck" || (stage === "waiting" && changing);
-  const names = new Map([[state.participant.id, "You"]]);
   const recordHref = `/p/${encodeURIComponent(token)}/record`;
   return (
     <>
@@ -94,25 +95,11 @@ export function ParticipantView({
         </section>
       )}
       {(stage === "reveal" || stage === "record") && (
-        <section aria-labelledby="revealed-heading">
-          <h2 id="revealed-heading">Revealed answers</h2>
-          {state.revealed.map((r) => (
-            <div key={r.split.id}>
-              <ForkView
-                stem={r.probe.stem}
-                options={r.probe.options}
-                split={r.split}
-                answers={r.answers}
-                names={names}
-              />
-              {r.split.outcome === "split" && (
-                <p>
-                  <StatusLabel status={r.split.status} />
-                </p>
-              )}
-            </div>
-          ))}
-        </section>
+        <RevealList
+          items={state.revealed.filter((r) => r.probe.kind === "diagnostic")}
+          people={state.participants}
+          labeller={{ token, viewerId: state.participant.id, onChange: reload }}
+        />
       )}
       {stage === "record" && (
         <p>

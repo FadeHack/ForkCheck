@@ -95,6 +95,7 @@ export function organizerState(
 export function participantState(overrides: Partial<ParticipantState> = {}): ParticipantState {
   return {
     participant: participants[0]!,
+    participants,
     meeting: { id: "m1", title: meeting.title, status: meeting.status },
     openProbes: [],
     ownAnswers: [],

@@ -240,7 +240,7 @@ describe("RevealView", () => {
     expect(out).toContain("a difference to discuss.");
     expect(out).toContain("Chosen by Priya");
     expect(out).toContain("Chosen by Marco");
-    expect(out).toContain("Not sure: Dana");
+    expect(out).toContain("Dana was not sure.");
   });
 
   it("labels simulated answers", () => {
@@ -301,7 +301,7 @@ describe("ParticipantView", () => {
     expect(waiting).not.toContain("Send my answers");
   });
 
-  it("names only the participant after the reveal and counts the others", () => {
+  it("shows the same named fork as the organizer, with the label question", () => {
     const state = participantState({
       revealed: [
         {
@@ -314,9 +314,20 @@ describe("ParticipantView", () => {
       ],
     });
     const out = html(<ParticipantView state={state} token="t" />);
-    expect(out).toContain("Chosen by You");
-    expect(out).toContain("Chosen by 2 other people");
-    expect(out).not.toContain("Marco");
+    expect(out).toContain("Chosen by Priya");
+    expect(out).toContain("Chosen by Marco and Dana");
+    expect(out).toContain("<legend>Is this a real difference?</legend>");
+    const organizer = html(
+      <RevealView
+        state={organizerState({
+          probes: [probe("q1", { stem: open.stem, options: state.revealed[0]!.probe.options })],
+          splits: [split("s1", "q1")],
+          revealedAnswers: state.revealed[0]!.answers,
+        })}
+      />,
+    );
+    const fork = (s: string) => s.slice(s.indexOf("<article"), s.indexOf("</article>"));
+    expect(fork(out)).toBe(fork(organizer));
   });
 });
 

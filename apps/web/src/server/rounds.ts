@@ -187,12 +187,14 @@ export async function revealedSplits(
 }
 
 /** Who else still owes an answer on the open questions, by name only. */
-async function waitingOn(deps: Deps, viewer: Participant, open: Probe[]): Promise<string[]> {
+async function waitingOn(
+  deps: Deps,
+  viewer: Participant,
+  participants: Participant[],
+  open: Probe[],
+): Promise<string[]> {
   if (open.length === 0) return [];
-  const [participants, answers] = await Promise.all([
-    deps.meetings.participants(viewer.meetingId),
-    deps.rounds.answers(open.map((p) => p.id)),
-  ]);
+  const answers = await deps.rounds.answers(open.map((p) => p.id));
   const answered = new Map<string, number>();
   for (const a of answers) answered.set(a.participantId, (answered.get(a.participantId) ?? 0) + 1);
   return participants
@@ -211,12 +213,14 @@ export async function participantState(
   const probes = (open === null ? [] : await deps.rounds.probes(open.id)).filter(
     (p) => p.status === "published",
   );
+  const participants = await deps.meetings.participants(meeting.id);
   return {
     participant,
+    participants,
     meeting: { id: meeting.id, title: meeting.title, status: meeting.status },
     openProbes: probes.map((p) => toParticipantProbe(optionOrder(p, participant.id))),
     ownAnswers: await deps.rounds.answersBy(participant.id),
-    waitingOn: await waitingOn(deps, participant, probes),
+    waitingOn: await waitingOn(deps, participant, participants, probes),
     revealed: await revealedSplits(deps, meeting.id),
   };
 }

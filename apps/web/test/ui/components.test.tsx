@@ -10,7 +10,8 @@ import {
   Toast,
   type Status,
 } from "../../src/ui/components";
-import { answer, probe, split } from "./fixtures";
+import type { Answer } from "@forkcheck/core";
+import { answer, participants, probe, split } from "./fixtures";
 
 const html = (node: React.ReactElement) => renderToStaticMarkup(node);
 
@@ -96,40 +97,54 @@ describe("StatusLabel", () => {
 
 describe("ForkView", () => {
   const q = probe("q1");
-  const answers = [answer("p1", "q1", "q1-a"), answer("p2", "q1", "q1-b")];
-  const names = new Map([
-    ["p1", "Priya"],
-    ["p2", "Marco"],
-  ]);
-
-  it("draws one branch per chosen option and marks the split", () => {
-    const out = html(
+  const fork = (outcome: "split" | "consistent" | "insufficient", answers: Answer[]) =>
+    html(
       <ForkView
         stem={q.stem}
         options={q.options}
-        split={split("s1", "q1")}
+        split={{ ...split("s1", "q1"), outcome }}
         answers={answers}
-        names={names}
+        people={participants}
       />,
     );
+  const text = (s: string) => s.replace(/<[^>]+>/g, "").replaceAll("&#x27;", "'");
+
+  it("draws one branch per chosen option and marks the split", () => {
+    const out = fork("split", [answer("p0", "q1", "q1-a"), answer("p1", "q1", "q1-b")]);
     expect(out).toContain('data-outcome="split"');
     expect(out.match(/class="fork-branch"/g)).toHaveLength(2);
+    expect(text(out)).toContain("Different answers: a difference to discuss.");
+    expect(text(out)).toContain("Dana didn't answer.");
   });
 
-  it("keeps a single stem when everyone chose the same option", () => {
-    const same = [answer("p1", "q1", "q1-a"), answer("p2", "q1", "q1-a")];
+  it("keeps a single stem when everyone chose the same option, with coverage", () => {
+    const out = fork("consistent", [answer("p0", "q1", "q1-a"), answer("p1", "q1", "q1-a")]);
+    expect(out).toContain('data-outcome="consistent"');
+    expect(out.match(/class="fork-branch"/g)).toHaveLength(1);
+    expect(text(out)).toContain("Chosen by Priya and Marco");
+    expect(text(out)).toContain("Same answer (2 of 3 answered).");
+  });
+
+  it("says why there is not enough to compare", () => {
+    const out = text(fork("insufficient", [answer("p0", "q1", "q1-a"), answer("p2", "q1", null)]));
+    expect(out).toContain("Not enough answers to compare.");
+    expect(out).toContain("Dana was not sure.");
+    expect(out).toContain("Marco didn't answer.");
+  });
+
+  it("does not count an absent participant as asked", () => {
+    const people = participants.map((p, i) => (i === 2 ? { ...p, status: "absent" as const } : p));
     const out = html(
       <ForkView
         stem={q.stem}
         options={q.options}
         split={{ ...split("s1", "q1"), outcome: "consistent" }}
-        answers={same}
-        names={names}
+        answers={[answer("p0", "q1", "q1-a"), answer("p1", "q1", "q1-a")]}
+        people={people}
       />,
     );
-    expect(out).toContain('data-outcome="consistent"');
-    expect(out.match(/class="fork-branch"/g)).toHaveLength(1);
-    expect(out).toContain("Chosen by Priya, Marco");
+    expect(text(out)).toContain("Same answer (2 of 2 answered).");
+    expect(out).not.toContain("Dana");
   });
 });
 
