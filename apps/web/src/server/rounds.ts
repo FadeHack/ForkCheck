@@ -3,11 +3,13 @@ import {
   lintProbe,
   optionOrder,
   PROBE_BUDGET,
+  probeQuote,
   type Answer,
   type LintFinding,
   type Meeting,
   type Participant,
   type Probe,
+  type QuoteSources,
   type Round,
 } from "@forkcheck/core";
 import type {
@@ -164,7 +166,18 @@ export async function revealedSplits(
 ): Promise<RevealedSplit[]> {
   const splits = await deps.splits.list(meetingId);
   if (splits.length === 0) return [];
-  const probes = await deps.meetings.probes(meetingId);
+  const [probes, analysis, segments] = await Promise.all([
+    deps.meetings.probes(meetingId),
+    deps.meetings.analysis(meetingId),
+    deps.meetings.segments(meetingId),
+  ]);
+  const sources: QuoteSources = {
+    probes: probes.map((p) => p.probe),
+    splits,
+    candidates: analysis.candidates,
+    decisions: analysis.decisions,
+    segments,
+  };
   const byProbe = new Map(splits.map((s) => [s.probeId, s]));
   const shown = probes
     .filter((p) => byProbe.has(p.probe.id) && (roundId === undefined || p.roundId === roundId))
@@ -179,6 +192,7 @@ export async function revealedSplits(
     return {
       split,
       probe: toParticipantProbe(probe),
+      quote: probeQuote(probe.id, sources),
       answers: answers.filter((a) => a.probeId === probe.id),
       resolutions: own,
       confirmations: confirmations.filter((c) => own.some((r) => r.id === c.resolutionId)),

@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import type { DecisionRecord, RecordItem } from "@forkcheck/core";
+import { probeQuote, type DecisionRecord, type RecordItem } from "@forkcheck/core";
 import { ErrorNotice, Loading } from "../../src/ui/components";
 import { initialSelection, publishLabel, QuestionsView } from "../../src/ui/organizer/questions";
 import { RevealView } from "../../src/ui/organizer/views";
@@ -301,33 +301,79 @@ describe("ParticipantView", () => {
     expect(waiting).not.toContain("Send my answers");
   });
 
-  it("shows the same named fork as the organizer, with the label question", () => {
+  it("shows the same named fork as the organizer, quote first, with the label question", () => {
+    const options = [...open.options, { id: "o2", text: "Production" }];
+    const revealedAnswers = [
+      answer("p0", "q1", "o1"),
+      answer("p1", "q1", "o2"),
+      answer("p2", "q1", "o2"),
+    ];
+    const organizer = organizerState({
+      segments: [
+        {
+          id: "seg1",
+          meetingId: "m1",
+          idx: 0,
+          speakerLabel: null,
+          participantId: "p1",
+          startMs: 20_000,
+          endMs: null,
+          text: "OK, so SSO is ready by Friday.",
+          origin: "paste",
+          edited: false,
+        },
+      ],
+      decisions: [
+        {
+          ...decisionFixture,
+          evidence: [
+            {
+              id: "e1",
+              decisionId: "d1",
+              resolutionId: null,
+              segmentId: "seg1",
+              quote: "SSO is ready by Friday",
+            },
+          ],
+        },
+      ],
+      candidates: [
+        {
+          id: "c1",
+          decisionId: "d1",
+          dimension: "scope",
+          readings: [
+            { id: "r1", text: "staging" },
+            { id: "r2", text: "production" },
+          ],
+          impact: { reversibility: "low", blastRadius: "high", timeToImpact: "high" },
+        },
+      ],
+      probes: [probe("q1", { stem: open.stem, options })],
+      splits: [split("s1", "q1")],
+      revealedAnswers,
+    });
     const state = participantState({
       revealed: [
         {
           split: split("s1", "q1"),
-          probe: { ...open, options: [...open.options, { id: "o2", text: "Production" }] },
-          answers: [answer("p0", "q1", "o1"), answer("p1", "q1", "o2"), answer("p2", "q1", "o2")],
+          probe: { ...open, options },
+          // The server builds this with the same function from the same stored rows.
+          quote: probeQuote("q1", organizer),
+          answers: revealedAnswers,
           resolutions: [],
           confirmations: [],
         },
       ],
     });
     const out = html(<ParticipantView state={state} token="t" />);
+    expect(out).toContain("<p>SSO is ready by Friday</p>");
+    expect(out).toContain("<figcaption>Marco at 00:20</figcaption>");
     expect(out).toContain("Chosen by Priya");
     expect(out).toContain("Chosen by Marco and Dana");
     expect(out).toContain("<legend>Is this a real difference?</legend>");
-    const organizer = html(
-      <RevealView
-        state={organizerState({
-          probes: [probe("q1", { stem: open.stem, options: state.revealed[0]!.probe.options })],
-          splits: [split("s1", "q1")],
-          revealedAnswers: state.revealed[0]!.answers,
-        })}
-      />,
-    );
     const fork = (s: string) => s.slice(s.indexOf("<article"), s.indexOf("</article>"));
-    expect(fork(out)).toBe(fork(organizer));
+    expect(fork(out)).toBe(fork(html(<RevealView state={organizer} />)));
   });
 });
 

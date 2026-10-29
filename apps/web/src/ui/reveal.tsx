@@ -5,6 +5,7 @@ import {
   validityLabel,
   type Answer,
   type Participant,
+  type SourceQuote,
   type Split,
   type ValidityLabel,
 } from "@forkcheck/core";
@@ -16,6 +17,7 @@ import { nameList, validityText } from "./labels";
 export interface RevealItem {
   split: Split;
   probe: Pick<ParticipantProbe, "id" | "stem" | "options">;
+  quote: SourceQuote | null;
   answers: Answer[];
 }
 
@@ -123,11 +125,12 @@ export function RevealList({
   return (
     <section aria-labelledby="reveal-heading" className="reveal">
       <h2 id="reveal-heading">Revealed answers</h2>
-      {revealOrder(items).map(({ split, probe, answers }) => {
+      {revealOrder(items).map(({ split, probe, quote, answers }) => {
         const tally = validityTally(split, people);
         return (
           <div key={split.id} className="reveal-item">
             <ForkView
+              quote={quote}
               stem={probe.stem}
               options={probe.options}
               split={split}

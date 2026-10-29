@@ -65,6 +65,9 @@ test("answers stay sealed until the reveal, then every viewer sees the same fork
   const shown = await forks(pPage!);
   expect(shown).toEqual(await forks(mPage!));
   // The difference comes first, named and drawn as branches.
+  // Each fork starts from what was said in the meeting.
+  expect(shown[0]).toContain("I'll tell them Friday.");
+  expect(shown[0]).toContain("Dana at 00:31");
   expect(shown[0]).toContain(where);
   expect(shown[0]).toContain("Different answers: a difference to discuss.");
   expect(shown[0]).toContain("Chosen by Priya");

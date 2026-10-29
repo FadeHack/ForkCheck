@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { probeQuote } from "@forkcheck/core";
 import type { OrganizerMeetingState } from "../../contracts/api";
 import { StatusLabel } from "../components";
 import { RevealList } from "../reveal";
@@ -48,7 +49,7 @@ export function RevealView({ state }: { state: State }) {
     .flatMap((probe) => {
       const split = state.splits.find((s) => s.probeId === probe.id);
       const answers = state.revealedAnswers.filter((a) => a.probeId === probe.id);
-      return split ? [{ probe, split, answers }] : [];
+      return split ? [{ probe, split, quote: probeQuote(probe.id, state), answers }] : [];
     });
   return <RevealList items={items} people={state.participants} />;
 }

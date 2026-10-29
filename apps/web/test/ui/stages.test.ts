@@ -104,6 +104,7 @@ describe("participantStage", () => {
     const revealed = (status: "open" | "rechecked") => ({
       split: split("s1", "q1", { status }),
       probe: open,
+      quote: null,
       answers: [],
       resolutions: [],
       confirmations: [],

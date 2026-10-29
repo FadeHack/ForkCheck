@@ -22,6 +22,7 @@ import {
   type Resolution,
   type Round,
   type Segment,
+  type SourceQuote,
   type Split,
 } from "@forkcheck/core";
 import type { DecisionWithEvidence } from "@forkcheck/engine";
@@ -178,6 +179,8 @@ export interface ParticipantProbe {
 export interface RevealedSplit {
   split: Split;
   probe: ParticipantProbe;
+  /** What was said about the decision, so every viewer starts from the same words. */
+  quote: SourceQuote | null;
   answers: Answer[];
   resolutions: Resolution[];
   confirmations: Confirmation[];

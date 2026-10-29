@@ -4,7 +4,7 @@ import type {
   Answer,
   Participant,
   ProbeOption,
-  Segment,
+  SourceQuote,
   Split,
   SplitStatus,
 } from "@forkcheck/core";
@@ -168,7 +168,7 @@ export function QuoteBlock({
   speaker,
 }: {
   quote: string;
-  segment: Segment | undefined;
+  segment: SourceQuote["segment"] | undefined;
   speaker: string | null;
 }) {
   return (
@@ -216,12 +216,15 @@ export function Toast({ message }: { message: string }) {
  * asked are the active participants plus anyone who answered before being marked absent.
  */
 export function ForkView({
+  quote = null,
   stem,
   options,
   split,
   answers,
   people,
 }: {
+  /** The decision's quote, where the fork's stem drops from. */
+  quote?: SourceQuote | null;
   stem: string;
   options: ProbeOption[];
   split: Split;
@@ -245,6 +248,17 @@ export function ForkView({
   const answered = answers.length - unsure.length;
   return (
     <article className="fork" data-outcome={split.outcome}>
+      {quote && (
+        <QuoteBlock
+          quote={quote.quote}
+          segment={quote.segment}
+          speaker={
+            quote.segment.participantId
+              ? (byId.get(quote.segment.participantId)?.displayName ?? null)
+              : null
+          }
+        />
+      )}
       <h3 className="fork-stem">{stem}</h3>
       <p className="fork-status">
         <StatusLabel status={split.outcome} />

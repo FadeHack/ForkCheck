@@ -1,5 +1,5 @@
 import { ScriptedProvider } from "@forkcheck/ai";
-import type { Probe } from "@forkcheck/core";
+import { probeQuote, type Probe } from "@forkcheck/core";
 import { beforeAll, describe, expect, it } from "vitest";
 import { GET as organizerGet } from "../../src/app/api/meetings/[id]/route";
 import { POST as openRoute } from "../../src/app/api/meetings/[id]/rounds/route";
@@ -105,6 +105,8 @@ describe("POST /api/rounds/:id/close", () => {
     expect(state.splits).toEqual(body.splits.map((s) => s.split));
     expect(state.revealedAnswers).toEqual(body.splits.flatMap((s) => s.answers));
     expect(state.answerCounts).toEqual([]);
+    // The organizer page derives each quote from its own state with the same function.
+    for (const s of body.splits) expect(s.quote).toEqual(probeQuote(s.probe.id, state));
   });
 
   it("lists an unmapped write-in without counting it", async () => {

@@ -1,6 +1,13 @@
 import fc from "fast-check";
 import { describe, expect, it } from "vitest";
-import { normalizeQuote, parseTranscript, suggestNearMatches, verifyQuote } from "../src/index";
+import {
+  normalizeQuote,
+  parseTranscript,
+  probeQuote,
+  suggestNearMatches,
+  verifyQuote,
+  type QuoteSources,
+} from "../src/index";
 
 const seg = (text: string) => ({ text });
 
@@ -135,5 +142,51 @@ describe("suggestNearMatches", () => {
 
   it("respects the limit", () => {
     expect(suggestNearMatches(segments, "ready by Friday", { limit: 2 })).toHaveLength(2);
+  });
+});
+
+describe("probeQuote", () => {
+  const segment = (id: string, text: string) => ({
+    id,
+    participantId: "p1",
+    startMs: 61000,
+    origin: "paste" as const,
+    edited: false,
+    text,
+  });
+  const src: QuoteSources = {
+    probes: [
+      { id: "q1", candidateId: "c1", splitId: null },
+      { id: "q2", candidateId: null, splitId: "s1" },
+      { id: "q3", candidateId: "c-missing", splitId: null },
+    ],
+    splits: [{ id: "s1", probeId: "q1" }],
+    candidates: [{ id: "c1", decisionId: "d1" }],
+    decisions: [
+      {
+        decision: { id: "d1" },
+        evidence: [
+          { segmentId: "seg1", quote: "said something else" },
+          { segmentId: "seg2", quote: "SSO ready by Friday" },
+        ],
+      },
+    ],
+    segments: [segment("seg1", "Not in here."), segment("seg2", "I'll have SSO ready by Friday.")],
+  };
+
+  it("skips a quote that no longer matches its segment and keeps no transcript text", () => {
+    expect(probeQuote("q1", src)).toEqual({
+      quote: "SSO ready by Friday",
+      segment: { id: "seg2", participantId: "p1", startMs: 61000, origin: "paste", edited: false },
+    });
+  });
+
+  it("gives a recheck question its original question's quote", () => {
+    expect(probeQuote("q2", src)).toEqual(probeQuote("q1", src));
+  });
+
+  it("is null without a decision to quote", () => {
+    expect(probeQuote("q3", src)).toBeNull();
+    expect(probeQuote("nope", src)).toBeNull();
   });
 });
