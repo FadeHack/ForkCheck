@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { ParticipantState } from "../../contracts/api";
 import { callApi, type Loaded } from "../api";
 import { Button, ErrorNotice, ForkView, Loading, StatusLabel } from "../components";
+import { waitingLine } from "../labels";
 import { participantStage } from "../stages";
 import { AnswerForm, answerText } from "./answers";
 
@@ -19,7 +20,7 @@ function Sent({ state, onChange }: { state: ParticipantState; onChange: () => vo
   return (
     <>
       <p role="status">Sent. You can change an answer until answers are revealed.</p>
-      <p>Waiting for the others to answer.</p>
+      <p>{waitingLine(state.waitingOn)}</p>
       <dl className="sent-answers">
         {state.openProbes.map((p) => {
           const a = byProbe.get(p.id);

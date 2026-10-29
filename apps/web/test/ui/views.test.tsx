@@ -280,12 +280,17 @@ describe("ParticipantView", () => {
     expect(answering).toContain("Send my answers");
     const waiting = html(
       <ParticipantView
-        state={participantState({ openProbes: [open], ownAnswers: [answer("p0", "q1", "o1")] })}
+        state={participantState({
+          openProbes: [open],
+          ownAnswers: [answer("p0", "q1", "o1")],
+          waitingOn: ["Marco", "Dana"],
+        })}
         token="t"
       />,
     );
     expect(waiting).toContain("You can change an answer until answers are revealed.");
     expect(waiting).toContain("<dt>Which environment?</dt><dd>Staging</dd>");
+    expect(waiting).toContain("Waiting for Marco and Dana.");
     expect(waiting).not.toContain("Send my answers");
   });
 

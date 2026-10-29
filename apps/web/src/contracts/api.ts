@@ -186,6 +186,12 @@ export interface ParticipantState {
   meeting: Pick<Meeting, "id" | "title" | "status">;
   openProbes: ParticipantProbe[];
   ownAnswers: Answer[];
+  /**
+   * Display names of the other active participants who haven't answered every open question.
+   * Alphabetical. Names only: never which questions or what they chose. Empty when no round
+   * is open.
+   */
+  waitingOn: string[];
   /** Closed rounds only. */
   revealed: RevealedSplit[];
 }

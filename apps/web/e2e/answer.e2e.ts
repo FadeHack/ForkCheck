@@ -72,7 +72,8 @@ test("a participant answers every question and sees only their own answers", asy
   await expect(
     page.getByText("Sent. You can change an answer until answers are revealed."),
   ).toBeVisible();
-  await expect(page.getByText("Waiting for the others to answer.")).toBeVisible();
+  // Marco answered one of the two questions, so he is still listed. Names are alphabetical.
+  await expect(page.getByText("Waiting for Dana and Marco.")).toBeVisible();
   await expect(
     page.getByText('In your own words: "Only once Marco says it\'s live"'),
   ).toBeVisible();
