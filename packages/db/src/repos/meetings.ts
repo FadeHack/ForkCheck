@@ -376,6 +376,26 @@ export class MeetingRepo {
     return rows.map((r) => ({ probe: toProbe(r), roundId: r.roundId }));
   }
 
+  /** Records an uploaded file; audio is not kept after review unless `retain` is set later. */
+  async addAudio(input: { id: string; meetingId: string; storageKey: string }): Promise<void> {
+    await this.db.insert(t.audioAsset).values(input);
+  }
+
+  /** Whether `storageKey` is live audio of this meeting, so a client-sent key cannot reach another meeting's file. */
+  async hasAudio(meetingId: string, storageKey: string): Promise<boolean> {
+    const rows = await this.db
+      .select({ id: t.audioAsset.id })
+      .from(t.audioAsset)
+      .where(
+        and(
+          eq(t.audioAsset.meetingId, meetingId),
+          eq(t.audioAsset.storageKey, storageKey),
+          isNull(t.audioAsset.deletedAt),
+        ),
+      );
+    return rows.length > 0;
+  }
+
   /** Storage keys of audio not yet deleted, so a meeting delete can remove the files too. */
   async audioKeys(meetingId: string): Promise<string[]> {
     const rows = await this.db

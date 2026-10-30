@@ -4,7 +4,7 @@ import { POST as createRoute } from "../../src/app/api/meetings/route";
 import { DELETE, GET } from "../../src/app/api/meetings/[id]/route";
 import { PATCH } from "../../src/app/api/meetings/[id]/participants/[pid]/route";
 import type { CreateMeetingResponse, OrganizerMeetingState } from "../../src/contracts/api";
-import { createDeps, setDeps, type Deps } from "../../src/server/deps";
+import { createDeps, noStorage, setDeps, type Deps } from "../../src/server/deps";
 import { tables } from "@forkcheck/db";
 import { newToken } from "../../src/server/tokens";
 import { call, NOW, seedMeeting, useTestDeps } from "./harness";
@@ -200,7 +200,7 @@ describe("DELETE /api/meetings/:id", () => {
     setDeps(
       createDeps(deps.db, {
         now: () => NOW,
-        storage: { delete: async (key) => void deleted.push(key) },
+        storage: { ...noStorage, delete: async (key) => void deleted.push(key) },
       }),
     );
     const res = await created();
