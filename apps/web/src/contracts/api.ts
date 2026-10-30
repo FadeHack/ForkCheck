@@ -325,10 +325,12 @@ export interface RecordResponse {
   sources: RecordSource[];
   /** Every revealed question with its answers, in rank order: the forks the record links to. */
   questions: RevealedSplit[];
+  /** Quotes can be played: the organizer kept the recording and is the one reading. */
+  playback: boolean;
 }
 export type RecordSource = Pick<
   Segment,
-  "id" | "participantId" | "startMs" | "origin" | "edited" | "text"
+  "id" | "participantId" | "startMs" | "endMs" | "origin" | "edited" | "text"
 >;
 
 // GET /api/meetings/:id/trace (organizer only)

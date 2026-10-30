@@ -412,6 +412,7 @@ describe("RecordView", () => {
           validation: { ok: true, findings: [] },
           sources: [],
           questions: [],
+          playback: false,
         }}
       />,
     );
@@ -443,6 +444,7 @@ describe("RecordView", () => {
           },
           sources: [],
           questions: [],
+          playback: false,
         }}
       />,
     );

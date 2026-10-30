@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Segment } from "@forkcheck/core";
-import { organizerToken } from "../api";
-import { fetchRecording } from "../audio";
-import { Button, ErrorNotice, timestamp } from "../components";
+import { organizerToken } from "./api";
+import { fetchRecording } from "./audio";
+import { Button, ErrorNotice, timestamp } from "./components";
 
 type Turn = Pick<Segment, "id" | "startMs" | "endMs">;
 

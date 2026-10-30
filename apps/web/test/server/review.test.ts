@@ -8,10 +8,12 @@ import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { POST as analyzeRoute } from "../../src/app/api/meetings/[id]/analyze/route";
 import { GET as audioRoute } from "../../src/app/api/meetings/[id]/audio/route";
 import { POST as reviewRoute } from "../../src/app/api/meetings/[id]/review/route";
+import { GET as recordRoute } from "../../src/app/api/meetings/[id]/record/route";
 import { GET as getRoute } from "../../src/app/api/meetings/[id]/route";
+import { GET as participantRecordRoute } from "../../src/app/api/p/[token]/record/route";
 import { PUT as speakersRoute } from "../../src/app/api/meetings/[id]/speakers/route";
 import { PATCH as segmentRoute } from "../../src/app/api/segments/[id]/route";
-import type { OrganizerMeetingState } from "../../src/contracts/api";
+import type { OrganizerMeetingState, RecordResponse } from "../../src/contracts/api";
 import { createDeps, setDeps, type Deps } from "../../src/server/deps";
 import { LocalDiskStorage } from "../../src/server/storage";
 import { call, NOW, seedMeeting, seedTranscribed, useTestDeps, type SeedTurn } from "./harness";
@@ -34,7 +36,12 @@ const turns: SeedTurn[] = [
   ["A", 6100, 9000, "Staging first."],
 ];
 
-type M = { meeting: { id: string }; organizerToken: string; storageKey: string };
+type M = {
+  meeting: { id: string };
+  organizerToken: string;
+  storageKey: string;
+  participants: { token: string }[];
+};
 
 /** A transcribed meeting with A mapped to Ana and B to Ben, and its file in storage. */
 async function reviewing(id: string): Promise<M> {
@@ -231,5 +238,33 @@ describe("POST /api/meetings/:id/review", () => {
     const m = await reviewing("rv-11");
     await deps.meetings.setStatus("rv-11", "probing");
     expect((await finish(m, false)).body).toMatchObject({ error: { code: "wrong_status" } });
+  });
+});
+
+describe("record playback", () => {
+  const playback = async (m: M) => {
+    const organizer = await call(
+      recordRoute,
+      "/x",
+      { id: m.meeting.id },
+      { token: m.organizerToken },
+    );
+    const token = m.participants[0]!.token;
+    const participant = await call(participantRecordRoute, "/x", { token });
+    return [
+      (organizer.body as RecordResponse).playback,
+      (participant.body as RecordResponse).playback,
+    ];
+  };
+
+  it("lets only the organizer play quotes, and only while the recording is kept", async () => {
+    const kept = await reviewing("rv-12");
+    expect(await playback(kept)).toEqual([false, false]);
+    await finish(kept, true);
+    expect(await playback(kept)).toEqual([true, false]);
+
+    const deleted = await reviewing("rv-13");
+    await finish(deleted, false);
+    expect(await playback(deleted)).toEqual([false, false]);
   });
 });

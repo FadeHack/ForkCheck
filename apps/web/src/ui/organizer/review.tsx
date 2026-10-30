@@ -14,7 +14,7 @@ import type {
 import { organizerCall } from "../api";
 import { Button, ErrorNotice, Field, Loading, timestamp } from "../components";
 import { nameList, turnSpeaker } from "../labels";
-import { PlayButton, PlayerFailure, useTurnPlayer, type TurnPlayer } from "./player";
+import { PlayButton, PlayerFailure, useTurnPlayer, type TurnPlayer } from "../player";
 
 type State = OrganizerMeetingState;
 type Reload = (() => Promise<void>) | undefined;

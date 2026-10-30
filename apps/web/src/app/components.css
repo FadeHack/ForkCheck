@@ -766,7 +766,8 @@
 
 @media print {
   .site-header,
-  .record-actions {
+  .record-actions,
+  .quote-play {
     display: none;
   }
 
@@ -1029,4 +1030,8 @@
 
 .finish-review {
   margin-top: var(--space-6);
+}
+
+.quote-play {
+  margin-top: var(--space-2);
 }

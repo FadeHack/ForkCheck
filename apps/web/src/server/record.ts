@@ -8,13 +8,18 @@ import { revealedSplits } from "./rounds";
  * Only diagnostic questions that split become record splits; a recheck's outcome is already
  * in its original split's state. Failing items stay in the record and the report names them.
  */
-export async function meetingRecord(deps: Deps, meeting: Meeting): Promise<RecordResponse> {
-  const [participants, segments, analysis, probes, stored] = await Promise.all([
+export async function meetingRecord(
+  deps: Deps,
+  meeting: Meeting,
+  reader: "organizer" | "participant",
+): Promise<RecordResponse> {
+  const [participants, segments, analysis, probes, stored, audio] = await Promise.all([
     deps.meetings.participants(meeting.id),
     deps.meetings.segments(meeting.id),
     deps.meetings.analysis(meeting.id),
     deps.meetings.probes(meeting.id),
     deps.splits.list(meeting.id),
+    deps.meetings.liveAudio(meeting.id),
   ]);
   const splits: RecordInput["splits"] = [];
   // Probes come in rank order, so record splits follow the order the questions were ranked.
@@ -47,10 +52,11 @@ export async function meetingRecord(deps: Deps, meeting: Meeting): Promise<Recor
   );
   const sources = segments
     .filter((s) => quoted.has(s.id))
-    .map(({ id, participantId, startMs, origin, edited, text }) => ({
+    .map(({ id, participantId, startMs, endMs, origin, edited, text }) => ({
       id,
       participantId,
       startMs,
+      endMs,
       origin,
       edited,
       text,
@@ -60,5 +66,7 @@ export async function meetingRecord(deps: Deps, meeting: Meeting): Promise<Recor
     validation: validateRecord(record, input),
     sources,
     questions: await revealedSplits(deps, meeting.id),
+    // The recording is served to the organizer only, and only if kept past review.
+    playback: reader === "organizer" && audio?.retain === true,
   };
 }

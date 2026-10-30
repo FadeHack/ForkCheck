@@ -18,7 +18,7 @@ import {
   type RecordingInfo,
 } from "../audio";
 import { Button, ErrorNotice, Field, Loading } from "../components";
-import { PlayButton, PlayerFailure, useTurnPlayer } from "./player";
+import { PlayButton, PlayerFailure, useTurnPlayer } from "../player";
 
 type State = OrganizerMeetingState;
 type Reload = (() => Promise<void>) | undefined;
