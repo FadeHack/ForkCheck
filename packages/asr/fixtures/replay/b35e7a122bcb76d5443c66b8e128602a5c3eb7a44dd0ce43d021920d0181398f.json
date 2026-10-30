@@ -1,0 +1,389 @@
+{
+  "sessionId": "22922e6a-68ca-4329-8ea8-54fc4f83b30d",
+  "transcript": "Morning everyone, this is the pilot launch check-in for the North Wind customer. We have about five minutes. So So let's go through single sign on. on. The data import and the launch email. Sounds good. I can start with single sign on. Go ahead. Login works on staging now. The identity provider handshake is fine and the test accounts from North Wind can sign in. What I still need is the is the admin roles. Right now every user comes in as a regular member so nobody on their side can invite colleagues. How long do the admin roles take? Two or three days. I think. The mapping itself is small but I want to test it with their real directory groups and and they haven't sent me those yet. I can chase them for the groups. I have a call with their IT lead tomorrow. That would help a lot. Okay. So single sign on is ready by Friday. Marco, that's yours? Yes. I'll have it ready by Friday. Great. Dana, you'll get the directory groups from their IT lead tomorrow. Yes, I'll ask on the call and send them to Marco straight after. Next, the data import. Where are we? The import script runs end to end on the sample file they gave us. It took about 40 minutes for 12,000 records. The full export is closer to 90,000 records, records. So that would be around five hours. Five hours is fine if we run it overnight. That was my thinking. We run it the night before launch and check the counts in the morning. Who checks the counts? I can do it but but I would like a second pair of eyes on the duplicates report. Last time we missed a few merged accounts. I'll look at the duplicates report with with you. Good. Let's say the import runs the night before launch Dana checks the the counts and Marco reviews duplicates with her Works for me. Now the launch email. Northwind wants to tell their staff before they get the invite. Right. Their communications team asked for a draft from us by next week. I have an have an outline but I need the final login link and the support hours. The login link depends on single sign on being done. It does. I can give you the staging link today and the production one once the roles are finished. Then I'll write the draft with the staging link and swap it later. And support hours. We said nine to five Eastern for the pilot right? That's what I remember nine to five Monday to Friday I thought we agreed on extended hours for the first week something like eight to eight Let's not decide that here I'll check with the support lead and confirm Okay I'll leave a placeholder for the hours So the launch email draft goes to their communications team next week with a placeholder for hours Yes I'll send it to to them by Wednesday Which Wednesday this one or next Next Wednesday this week is too tight Fine one more thing the launch date itself are we still saying the 14th If if single sign on is ready Friday and the import runs the night before the 14th works works The 14th works for me too as long as the email goes out a few days earlier. Then we Then we launch on the 14th. I'll tell Northwind's project manager today. should we keep a fallback date in case the roles slip? Let's say the 21st as as a fallback but we don't announce announce it. Agreed. Internal only. Last question. Who is on call during launch day? I can be on call in the morning. I'll take the afternoon. And I'll cover the evening. Let's keep a shared channel open with their IT lead. I'll set up the channel. Great. to recap Marco has single sign on ready by Friday and Friday and sets up the launch channel Dana gets the directory groups tomorrow runs the import the night before launch and sends the email draft draft by next Wednesday I confirm the support hours and tell Northwind about the 14th anything I missed I think that's everything Same here thanks everyone Thanks talk soon",
+  "audioDurationMs": 293200,
+  "turns": [
+    {
+      "turnId": 0,
+      "startMs": 140,
+      "endMs": 11580,
+      "transcript": "Morning everyone, this is the pilot launch check-in for the North Wind customer. We have about five minutes. So So let's go through single sign on. on. The data import and the launch email.",
+      "speaker": "A"
+    },
+    {
+      "turnId": 1,
+      "startMs": 12700,
+      "endMs": 16220,
+      "transcript": "Sounds good. I can start with single sign on.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 2,
+      "startMs": 17020,
+      "endMs": 18380,
+      "transcript": "Go ahead.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 3,
+      "startMs": 18460,
+      "endMs": 36140,
+      "transcript": "Login works on staging now. The identity provider handshake is fine and the test accounts from North Wind can sign in. What I still need is the is the admin roles. Right now every user comes in as a regular member so nobody on their side can invite colleagues.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 4,
+      "startMs": 36860,
+      "endMs": 39740,
+      "transcript": "How long do the admin roles take?",
+      "speaker": "B"
+    },
+    {
+      "turnId": 5,
+      "startMs": 39900,
+      "endMs": 40060,
+      "transcript": ""
+    },
+    {
+      "turnId": 6,
+      "startMs": 40060,
+      "endMs": 50780,
+      "transcript": "Two or three days. I think. The mapping itself is small but I want to test it with their real directory groups and and they haven't sent me those yet.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 7,
+      "startMs": 50940,
+      "endMs": 55660,
+      "transcript": "I can chase them for the groups. I have a call with their IT lead tomorrow.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 8,
+      "startMs": 56140,
+      "endMs": 57820,
+      "transcript": "That would help a lot.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 9,
+      "startMs": 58300,
+      "endMs": 64860,
+      "transcript": "Okay. So single sign on is ready by Friday. Marco, that's yours?",
+      "speaker": "B"
+    },
+    {
+      "turnId": 10,
+      "startMs": 64940,
+      "endMs": 65020,
+      "transcript": ""
+    },
+    {
+      "turnId": 11,
+      "startMs": 65020,
+      "endMs": 68140,
+      "transcript": "Yes. I'll have it ready by Friday.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 12,
+      "startMs": 68380,
+      "endMs": 74140,
+      "transcript": "Great. Dana, you'll get the directory groups from their IT lead tomorrow.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 13,
+      "startMs": 74380,
+      "endMs": 78940,
+      "transcript": "Yes, I'll ask on the call and send them to Marco straight after.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 14,
+      "startMs": 79020,
+      "endMs": 82860,
+      "transcript": "Next, the data import. Where are we?",
+      "speaker": "B"
+    },
+    {
+      "turnId": 15,
+      "startMs": 83180,
+      "endMs": 93900,
+      "transcript": "The import script runs end to end on the sample file they gave us. It took about 40 minutes for 12,000 records. The full export is closer to 90,000 records, records.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 16,
+      "startMs": 94140,
+      "endMs": 97020,
+      "transcript": "So that would be around five hours.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 17,
+      "startMs": 97100,
+      "endMs": 100460,
+      "transcript": "Five hours is fine if we run it overnight.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 18,
+      "startMs": 100620,
+      "endMs": 106460,
+      "transcript": "That was my thinking. We run it the night before launch and check the counts in the morning.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 19,
+      "startMs": 106540,
+      "endMs": 108940,
+      "transcript": "Who checks the counts?",
+      "speaker": "B"
+    },
+    {
+      "turnId": 20,
+      "startMs": 109340,
+      "endMs": 117580,
+      "transcript": "I can do it but but I would like a second pair of eyes on the duplicates report. Last time we missed a few merged accounts.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 21,
+      "startMs": 117740,
+      "endMs": 121100,
+      "transcript": "I'll look at the duplicates report with with you.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 22,
+      "startMs": 121260,
+      "endMs": 129500,
+      "transcript": "Good. Let's say the import runs the night before launch Dana checks the the counts and Marco reviews duplicates with her",
+      "speaker": "B"
+    },
+    {
+      "turnId": 23,
+      "startMs": 129740,
+      "endMs": 131420,
+      "transcript": "Works for me.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 24,
+      "startMs": 131820,
+      "endMs": 137580,
+      "transcript": "Now the launch email. Northwind wants to tell their staff before they get the invite.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 25,
+      "startMs": 137660,
+      "endMs": 148060,
+      "transcript": "Right. Their communications team asked for a draft from us by next week. I have an have an outline but I need the final login link and the support hours.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 26,
+      "startMs": 148300,
+      "endMs": 152220,
+      "transcript": "The login link depends on single sign on being done.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 27,
+      "startMs": 152620,
+      "endMs": 159580,
+      "transcript": "It does. I can give you the staging link today and the production one once the roles are finished.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 28,
+      "startMs": 159900,
+      "endMs": 164300,
+      "transcript": "Then I'll write the draft with the staging link and swap it later.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 29,
+      "startMs": 164380,
+      "endMs": 169740,
+      "transcript": "And support hours. We said nine to five Eastern for the pilot right?",
+      "speaker": "B"
+    },
+    {
+      "turnId": 30,
+      "startMs": 169820,
+      "endMs": 174700,
+      "transcript": "That's what I remember nine to five Monday to Friday",
+      "speaker": "D"
+    },
+    {
+      "turnId": 31,
+      "startMs": 174780,
+      "endMs": 181260,
+      "transcript": "I thought we agreed on extended hours for the first week something like eight to eight",
+      "speaker": "C"
+    },
+    {
+      "turnId": 32,
+      "startMs": 181420,
+      "endMs": 186380,
+      "transcript": "Let's not decide that here I'll check with the support lead and confirm",
+      "speaker": "B"
+    },
+    {
+      "turnId": 33,
+      "startMs": 186700,
+      "endMs": 190780,
+      "transcript": "Okay I'll leave a placeholder for the hours",
+      "speaker": "D"
+    },
+    {
+      "turnId": 34,
+      "startMs": 190860,
+      "endMs": 198220,
+      "transcript": "So the launch email draft goes to their communications team next week with a placeholder for hours",
+      "speaker": "B"
+    },
+    {
+      "turnId": 35,
+      "startMs": 198300,
+      "endMs": 201980,
+      "transcript": "Yes I'll send it to to them by Wednesday",
+      "speaker": "D"
+    },
+    {
+      "turnId": 36,
+      "startMs": 202300,
+      "endMs": 205180,
+      "transcript": "Which Wednesday this one or next",
+      "speaker": "B"
+    },
+    {
+      "turnId": 37,
+      "startMs": 205660,
+      "endMs": 209020,
+      "transcript": "Next Wednesday this week is too tight",
+      "speaker": "D"
+    },
+    {
+      "turnId": 38,
+      "startMs": 209340,
+      "endMs": 215740,
+      "transcript": "Fine one more thing the launch date itself are we still saying the 14th",
+      "speaker": "B"
+    },
+    {
+      "turnId": 39,
+      "startMs": 215820,
+      "endMs": 215980,
+      "transcript": "If"
+    },
+    {
+      "turnId": 40,
+      "startMs": 215980,
+      "endMs": 222540,
+      "transcript": "if single sign on is ready Friday and the import runs the night before the 14th works works",
+      "speaker": "C"
+    },
+    {
+      "turnId": 41,
+      "startMs": 222700,
+      "endMs": 228540,
+      "transcript": "The 14th works for me too as long as the email goes out a few days earlier.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 42,
+      "startMs": 228940,
+      "endMs": 234700,
+      "transcript": "Then we Then we launch on the 14th. I'll tell Northwind's project manager today.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 43,
+      "startMs": 234860,
+      "endMs": 238460,
+      "transcript": "should we keep a fallback date in case the roles slip?",
+      "speaker": "C"
+    },
+    {
+      "turnId": 44,
+      "startMs": 238940,
+      "endMs": 243580,
+      "transcript": "Let's say the 21st as as a fallback but we don't announce announce it.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 45,
+      "startMs": 243660,
+      "endMs": 246380,
+      "transcript": "Agreed. Internal only.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 46,
+      "startMs": 246460,
+      "endMs": 250620,
+      "transcript": "Last question. Who is on call during launch day?",
+      "speaker": "B"
+    },
+    {
+      "turnId": 47,
+      "startMs": 250700,
+      "endMs": 253580,
+      "transcript": "I can be on call in the morning.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 48,
+      "startMs": 253660,
+      "endMs": 255980,
+      "transcript": "I'll take the afternoon.",
+      "speaker": "D"
+    },
+    {
+      "turnId": 49,
+      "startMs": 256380,
+      "endMs": 261900,
+      "transcript": "And I'll cover the evening. Let's keep a shared channel open with their IT lead.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 50,
+      "startMs": 262140,
+      "endMs": 264140,
+      "transcript": "I'll set up the channel.",
+      "speaker": "C"
+    },
+    {
+      "turnId": 51,
+      "startMs": 264220,
+      "endMs": 284460,
+      "transcript": "Great. to recap Marco has single sign on ready by Friday and Friday and sets up the launch channel Dana gets the directory groups tomorrow runs the import the night before launch and sends the email draft draft by next Wednesday I confirm the support hours and tell Northwind about the 14th anything I missed",
+      "speaker": "B"
+    },
+    {
+      "turnId": 52,
+      "startMs": 284780,
+      "endMs": 287020,
+      "transcript": "I think that's everything",
+      "speaker": "D"
+    },
+    {
+      "turnId": 53,
+      "startMs": 287340,
+      "endMs": 290380,
+      "transcript": "Same here thanks everyone",
+      "speaker": "C"
+    },
+    {
+      "turnId": 54,
+      "startMs": 290620,
+      "endMs": 292700,
+      "transcript": "Thanks talk soon",
+      "speaker": "B"
+    }
+  ]
+}

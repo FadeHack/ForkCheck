@@ -1,4 +1,4 @@
-import type { Meeting, Split, SplitStatus } from "@forkcheck/core";
+import { speakersMapped, type Meeting, type Split, type SplitStatus } from "@forkcheck/core";
 import type { OrganizerMeetingState, ParticipantState } from "../contracts/api";
 
 export const organizerStages = [
@@ -69,8 +69,11 @@ export function splitsToSettle(
  */
 export function organizerStage(state: OrganizerMeetingState): OrganizerStage {
   const m = state.meeting;
-  if (m.source === "audio" && (m.transcriptVersion === 0 || m.status === "review")) {
-    return "speakers";
+  if (m.source === "audio") {
+    if (m.transcriptVersion === 0) return "speakers";
+    if (m.status === "review") {
+      return speakersMapped(state.segments, state.speakers) ? "review" : "speakers";
+    }
   }
   const diagnostic = state.rounds.filter((r) => r.kind === "diagnostic");
   if (diagnostic.length === 0) return "questions";

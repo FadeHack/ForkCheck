@@ -15,6 +15,6 @@ describe("migrations on PGlite", { timeout: 20_000 }, () => {
     const result = await db.execute<{ count: number }>(
       sql`select count(*)::int as count from drizzle.__drizzle_migrations`,
     );
-    expect(result.rows).toEqual([{ count: 5 }]);
+    expect(result.rows).toEqual([{ count: 6 }]);
   });
 });

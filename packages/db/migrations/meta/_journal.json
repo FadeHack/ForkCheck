@@ -36,6 +36,13 @@
       "when": 1793267508585,
       "tag": "0004_step_lease",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1793377304526,
+      "tag": "0005_speaker_map",
+      "breakpoints": true
     }
   ]
 }

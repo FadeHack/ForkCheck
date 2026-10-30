@@ -20,6 +20,7 @@ import {
 import { nameList } from "../labels";
 import { ConfirmList, type ConfirmLine } from "../resolve";
 import { SimulatedBanner } from "../simulated-banner";
+import { PlayButton, PlayerFailure, useTurnPlayer, type TurnPlayer } from "../player";
 import { formatHeldAt } from "../time";
 
 const recheckText: Record<RecordItem["recheck"], [Status, string] | null> = {
@@ -39,6 +40,12 @@ interface Context {
   people: Participant[];
   sources: ReadonlyMap<string, RecordSource>;
   questions: RevealedSplit[];
+  /** Null unless the response allows playback. */
+  player: TurnPlayer | null;
+}
+
+function playFor(segment: RecordSource | undefined, player: TurnPlayer | null) {
+  return player && segment ? <PlayButton player={player} turn={segment} /> : undefined;
 }
 
 const nameOf = (id: string, people: Participant[]) =>
@@ -97,6 +104,7 @@ function Item({ item, ctx }: { item: RecordItem; ctx: Context }) {
           quote={item.text}
           segment={statedSegment}
           speaker={speakerOf(source, ctx.people)}
+          play={playFor(source, ctx.player)}
         />
       ) : (
         <>
@@ -193,7 +201,14 @@ export function noSplitLine(questions: RevealedSplit[]): string {
 export function RecordView({ data }: { data: RecordResponse }) {
   const { record, validation, questions } = data;
   const people = record.participants;
-  const ctx: Context = { people, sources: new Map(data.sources.map((s) => [s.id, s])), questions };
+  const turnPlayer = useTurnPlayer(record.meetingId);
+  const player = data.playback ? turnPlayer : null;
+  const ctx: Context = {
+    people,
+    sources: new Map(data.sources.map((s) => [s.id, s])),
+    questions,
+    player,
+  };
   const itemNumber = new Map(record.items.map((item, i) => [item.id, i + 1]));
   return (
     <article className="record">
@@ -268,12 +283,19 @@ export function RecordView({ data }: { data: RecordResponse }) {
       {data.sources.length > 0 && (
         <section aria-labelledby="record-transcript">
           <h2 id="record-transcript">Where it was said</h2>
+          {player && (
+            <>
+              {player.element}
+              <PlayerFailure player={player} />
+            </>
+          )}
           {data.sources.map((segment) => (
             <div key={segment.id} id={anchor("segment", segment.id)} className="record-segment">
               <QuoteBlock
                 quote={segment.text}
                 segment={segment}
                 speaker={speakerOf(segment, people)}
+                play={playFor(segment, player)}
               />
             </div>
           ))}

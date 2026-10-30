@@ -34,16 +34,15 @@ describe("toSegments", () => {
     expect(segments.map((s) => s.speakerLabel)).toEqual(["A", "B", "A", "B", "A", "B"]);
   });
 
-  it("orders by start time, normalizes times and keeps every turn", () => {
+  it("orders by start time, normalizes times and drops turns without words", () => {
     const response = fixture("irregular");
     const { segments } = toSegments(response, { meetingId: "m1", newId: ids() });
 
-    expect(segments).toHaveLength(response.turns.length);
+    // The empty turn would otherwise add a voice "C" with nothing to hear or map.
     expect(segments.map((s) => [s.idx, s.text, s.startMs, s.endMs, s.speakerLabel])).toEqual([
       [0, "Mm-hm.", 500, 900, "A"],
       [1, "We ship Friday.", 4100, 6901, "B"],
       [2, "Okay.", 4100, 4100, null],
-      [3, "", 8000, 8800, "C"],
     ]);
   });
 

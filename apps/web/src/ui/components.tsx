@@ -172,14 +172,17 @@ export function timestamp(ms: number): string {
   return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
 }
 
+/** `play` is a control to hear the quote, passed only while the recording is kept. */
 export function QuoteBlock({
   quote,
   segment,
   speaker,
+  play,
 }: {
   quote: string;
   segment: SourceQuote["segment"] | undefined;
   speaker: string | null;
+  play?: ReactNode;
 }) {
   return (
     <figure className="quote">
@@ -192,6 +195,7 @@ export function QuoteBlock({
         {segment?.origin === "asr" && <>. From automatic transcription</>}
         {segment?.edited && <>. Edited</>}
       </figcaption>
+      {play && <div className="quote-play">{play}</div>}
     </figure>
   );
 }

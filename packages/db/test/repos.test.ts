@@ -210,6 +210,7 @@ async function seed(db: Db) {
   });
   await splits.saveRecord(M, [recordItem]);
   await db.insert(tables.audioAsset).values({ id: "audio0", meetingId: M, storageKey: "k" });
+  await meetings.saveSpeakerMap(M, [{ label: "A", participantId: ana.id }]);
   await db.insert(tables.segmentEdit).values({
     id: "edit0",
     segmentId: segments[0]!.id,

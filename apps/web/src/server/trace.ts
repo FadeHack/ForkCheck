@@ -14,7 +14,7 @@ export async function meetingTrace(deps: Deps, meeting: Meeting): Promise<TraceR
     deps.splits.list(meeting.id),
   ]);
   if (splits.length === 0) return { calls, computed: null };
-  const { record, questions } = await meetingRecord(deps, meeting);
+  const { record, questions } = await meetingRecord(deps, meeting, "organizer");
   const outcomes = questions
     .filter((q) => q.probe.kind === "diagnostic")
     .map((q) => q.split.outcome);

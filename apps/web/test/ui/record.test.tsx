@@ -78,12 +78,14 @@ const data: RecordResponse = {
       id: "seg1",
       participantId: "p2",
       startMs: 252_000,
+      endMs: 255_000,
       origin: "asr",
       edited: false,
       text: "Dana will tell them Friday. Probably on staging.",
     },
   ],
   questions: [q1, revealed("q2", "consistent"), revealed("rq", "consistent", "recheck")],
+  playback: false,
 };
 
 describe("noSplitLine", () => {
@@ -133,5 +135,26 @@ describe("RecordView", () => {
     const unchecked = { ...data, record: { ...data.record, items: [skipped] } };
     expect(html(<RecordView data={unchecked} />)).toContain("<p>Not rechecked.</p>");
     expect(out).toContain("No split found on 1 of 2 questions.");
+  });
+
+  describe("audio provenance", () => {
+    const edited = {
+      ...data,
+      sources: [{ ...data.sources[0]!, edited: true }],
+    };
+
+    it("marks transcribed and edited quotes with their time, and plays them while kept", () => {
+      const kept = html(<RecordView data={{ ...edited, playback: true }} />);
+      expect(kept).toContain("Dana at 04:12. From automatic transcription. Edited");
+      expect(kept).toContain("Play from 04:12");
+      expect(kept).toContain('data-testid="turn-player"');
+    });
+
+    it("renders no play link once the recording is deleted", () => {
+      const deleted = html(<RecordView data={{ ...edited, playback: false }} />);
+      expect(deleted).toContain("Dana at 04:12. From automatic transcription. Edited");
+      expect(deleted).not.toContain("Play from");
+      expect(deleted).not.toContain("turn-player");
+    });
   });
 });

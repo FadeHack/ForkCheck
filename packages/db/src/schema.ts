@@ -140,6 +140,19 @@ export const audioAsset = pgTable("audio_asset", {
   deletedAt: at("deleted_at"),
 });
 
+/** Who each transcription label is. A null participant is the organizer's explicit "unknown". */
+export const speakerMap = pgTable(
+  "speaker_map",
+  {
+    meetingId: meetingRef(),
+    label: text("label").notNull(),
+    participantId: text("participant_id").references(() => participant.id, {
+      onDelete: "set null",
+    }),
+  },
+  (t) => [primaryKey({ columns: [t.meetingId, t.label] })],
+);
+
 export const segment = pgTable(
   "segment",
   {

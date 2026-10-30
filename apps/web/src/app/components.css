@@ -766,7 +766,8 @@
 
 @media print {
   .site-header,
-  .record-actions {
+  .record-actions,
+  .quote-play {
     display: none;
   }
 
@@ -908,4 +909,129 @@
   padding: 0;
   margin-bottom: var(--space-2);
   font-weight: 600;
+}
+
+/* Speaker mapping: one voice per group, with the turns to recognize it by above its choice. */
+.voice {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--space-8);
+  min-width: 0;
+}
+
+.voice legend {
+  padding: 0;
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.voice-count {
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.voice-turns {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+
+.voice-turns li {
+  background: var(--surface);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.voice-turns p {
+  font-family: var(--font-reading);
+  line-height: 1.6;
+  margin: 0 0 var(--space-2);
+}
+
+/* Transcript review: speaker and time above each turn, the words in the reading face. */
+.turns {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-6);
+}
+
+.turns li {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.turn-speaker {
+  margin: 0 0 var(--space-1);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.turn-text {
+  margin: 0;
+  font-family: var(--font-reading);
+  line-height: 1.6;
+}
+
+/* A turn mentioning a date, name or number: an outline and a note, not color alone. */
+.turns li.turn-check {
+  border: 2px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-2) 0;
+}
+
+.turn-note {
+  margin: var(--space-2) 0 0;
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+.turn-edited {
+  margin-left: var(--space-2);
+  padding: 0 var(--space-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  font-size: 0.875rem;
+}
+
+.turn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.turn-editor {
+  margin-top: var(--space-2);
+}
+
+.turn-log {
+  margin-top: var(--space-3);
+  font-size: 0.9375rem;
+}
+
+.turn-log summary {
+  cursor: pointer;
+  color: var(--ink-muted);
+}
+
+.turn-log ol {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-6);
+}
+
+.turn-log li {
+  padding: var(--space-1) 0;
+  border: 0;
+  overflow-wrap: anywhere;
+}
+
+.finish-review {
+  margin-top: var(--space-6);
+}
+
+.quote-play {
+  margin-top: var(--space-2);
 }

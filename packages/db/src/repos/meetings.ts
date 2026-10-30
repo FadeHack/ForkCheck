@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import type {
   Candidate,
   Decision,
@@ -8,7 +9,7 @@ import type {
   Probe,
   Segment,
 } from "@forkcheck/core";
-import { and, asc, eq, inArray, isNull, lt, or, sql } from "drizzle-orm";
+import { and, asc, eq, inArray, isNull, lt, notInArray, or, sql } from "drizzle-orm";
 import { toIso, toIsoOrNull, type Db } from "../client";
 import * as t from "../schema";
 
@@ -21,6 +22,28 @@ export interface NewMeeting {
     simulatorNotes?: string | undefined;
   }[];
   segments: Segment[];
+}
+
+/** A transcription label and who it is; null is the organizer's explicit "unknown". */
+export interface SpeakerAssignment {
+  label: string;
+  participantId: string | null;
+}
+
+/** One logged change to a turn during transcript review. */
+export interface SegmentEdit {
+  id: string;
+  segmentId: string;
+  field: "text" | "participantId";
+  /** A participant ID for `participantId`; null is an unknown speaker. */
+  before: string | null;
+  after: string | null;
+  at: string;
+}
+
+export interface SegmentChange {
+  text?: string | undefined;
+  participantId?: string | null | undefined;
 }
 
 /** Same shape as the engine's DecisionWithEvidence; db may not import the engine. */
@@ -164,6 +187,76 @@ export class MeetingRepo {
       .from(t.segment)
       .where(eq(t.segment.meetingId, meetingId))
       .orderBy(asc(t.segment.idx));
+  }
+
+  async segment(id: string): Promise<Segment | null> {
+    const [row] = await this.db.select().from(t.segment).where(eq(t.segment.id, id));
+    return row ?? null;
+  }
+
+  /**
+   * Applies the fields that differ, logs each one and bumps the transcript version, so stored
+   * analysis no longer matches. Nothing is written when no field changes. Returns null if the
+   * meeting left `review` in the meantime.
+   */
+  async editSegment(
+    id: string,
+    change: SegmentChange,
+    by: string,
+    at: Date,
+  ): Promise<Segment | null> {
+    return this.db.transaction(async (tx) => {
+      const [current] = await tx.select().from(t.segment).where(eq(t.segment.id, id));
+      if (!current) return null;
+      const fields = (["text", "participantId"] as const).filter(
+        (f) => change[f] !== undefined && change[f] !== current[f],
+      );
+      if (fields.length === 0) return current;
+      const bumped = await tx
+        .update(t.meeting)
+        .set({ transcriptVersion: sql`${t.meeting.transcriptVersion} + 1` })
+        .where(and(eq(t.meeting.id, current.meetingId), eq(t.meeting.status, "review")))
+        .returning({ id: t.meeting.id });
+      if (bumped.length === 0) return null;
+      await tx.insert(t.segmentEdit).values(
+        fields.map((field) => ({
+          id: randomUUID(),
+          segmentId: id,
+          field,
+          before: current[field],
+          after: change[field] ?? null,
+          editedBy: by,
+          at,
+        })),
+      );
+      const [updated] = await tx
+        .update(t.segment)
+        .set({ ...Object.fromEntries(fields.map((f) => [f, change[f]])), edited: true })
+        .where(eq(t.segment.id, id))
+        .returning();
+      return updated!;
+    });
+  }
+
+  async segmentEdits(meetingId: string): Promise<SegmentEdit[]> {
+    const rows = await this.db
+      .select({
+        id: t.segmentEdit.id,
+        segmentId: t.segmentEdit.segmentId,
+        field: t.segmentEdit.field,
+        before: t.segmentEdit.before,
+        after: t.segmentEdit.after,
+        at: t.segmentEdit.at,
+      })
+      .from(t.segmentEdit)
+      .innerJoin(t.segment, eq(t.segment.id, t.segmentEdit.segmentId))
+      .where(eq(t.segment.meetingId, meetingId))
+      .orderBy(asc(t.segmentEdit.at), asc(t.segmentEdit.field));
+    return rows.map((r) => ({
+      ...r,
+      field: r.field as SegmentEdit["field"],
+      at: toIso(r.at),
+    }));
   }
 
   async setStatus(id: string, status: MeetingStatus, error: string | null = null): Promise<void> {
@@ -360,6 +453,8 @@ export class MeetingRepo {
       if (rows.length === 0) return false;
       await tx.delete(t.segment).where(eq(t.segment.meetingId, meetingId));
       if (input.segments.length > 0) await tx.insert(t.segment).values(input.segments);
+      // Labels belong to one transcription; a new one starts unmapped.
+      await tx.delete(t.speakerMap).where(eq(t.speakerMap.meetingId, meetingId));
       await tx
         .update(t.audioAsset)
         .set({ durationMs: input.durationMs })
@@ -435,6 +530,49 @@ export class MeetingRepo {
     return rows.map((r) => ({ probe: toProbe(r), roundId: r.roundId }));
   }
 
+  async speakerMap(meetingId: string): Promise<SpeakerAssignment[]> {
+    return this.db
+      .select({ label: t.speakerMap.label, participantId: t.speakerMap.participantId })
+      .from(t.speakerMap)
+      .where(eq(t.speakerMap.meetingId, meetingId))
+      .orderBy(asc(t.speakerMap.label));
+  }
+
+  /**
+   * Saves who each label is and sets every turn with that label to them, except turns the
+   * organizer reassigned one by one in review. The caller checks the mapping covers each label
+   * once and names only this meeting's participants.
+   */
+  async saveSpeakerMap(meetingId: string, mapping: SpeakerAssignment[]): Promise<Segment[]> {
+    return this.db.transaction(async (tx) => {
+      await tx.delete(t.speakerMap).where(eq(t.speakerMap.meetingId, meetingId));
+      if (mapping.length > 0) {
+        await tx.insert(t.speakerMap).values(mapping.map((m) => ({ meetingId, ...m })));
+      }
+      const reassigned = tx
+        .select({ id: t.segmentEdit.segmentId })
+        .from(t.segmentEdit)
+        .where(eq(t.segmentEdit.field, "participantId"));
+      for (const { label, participantId } of mapping) {
+        await tx
+          .update(t.segment)
+          .set({ participantId })
+          .where(
+            and(
+              eq(t.segment.meetingId, meetingId),
+              eq(t.segment.speakerLabel, label),
+              notInArray(t.segment.id, reassigned),
+            ),
+          );
+      }
+      return tx
+        .select()
+        .from(t.segment)
+        .where(eq(t.segment.meetingId, meetingId))
+        .orderBy(asc(t.segment.idx));
+    });
+  }
+
   /** Records an uploaded file; audio is not kept after review unless `retain` is set later. */
   async addAudio(input: { id: string; meetingId: string; storageKey: string }): Promise<void> {
     await this.db.insert(t.audioAsset).values(input);
@@ -468,6 +606,14 @@ export class MeetingRepo {
       .from(t.audioAsset)
       .where(and(eq(t.audioAsset.meetingId, meetingId), isNull(t.audioAsset.deletedAt)));
     return row ?? null;
+  }
+
+  /** Keeps the live recording after review, so quotes in the record can be played. */
+  async retainAudio(meetingId: string): Promise<void> {
+    await this.db
+      .update(t.audioAsset)
+      .set({ retain: true })
+      .where(and(eq(t.audioAsset.meetingId, meetingId), isNull(t.audioAsset.deletedAt)));
   }
 
   /** Records that the stored files are gone; the rows stay as the deletion log. */

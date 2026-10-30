@@ -3,7 +3,9 @@ import type { DecisionWithEvidence, MeetingContext } from "../contracts";
 
 export function speakerName(segment: Segment, participants: Participant[]): string {
   const p = participants.find((x) => x.id === segment.participantId);
-  return p?.displayName ?? (segment.speakerLabel ? `Speaker ${segment.speakerLabel}` : "Unknown");
+  if (p) return p.displayName;
+  // Named so an owner taken from an unmapped voice reads as one, not as a participant.
+  return segment.speakerLabel ? `Speaker ${segment.speakerLabel} (unmapped)` : "Unknown";
 }
 
 /** Title and local date, so the model can tell which days are near. */

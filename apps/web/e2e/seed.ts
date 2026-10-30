@@ -192,3 +192,84 @@ export async function answerOpen(
     expect(sent.ok()).toBe(true);
   }
 }
+
+/**
+ * What "Finish review" asks the server to draft, run here with scripted model replies tied to
+ * the meeting's real turns: the app's own server has no recorded replies for a fresh meeting.
+ * Each decision quotes the first turn containing its keyword.
+ */
+export async function analyzeWithScript(meetingId: string): Promise<unknown> {
+  loadLocalEnvFile();
+  const env = loadEnv(process.env, { require: ["DATABASE_URL"] });
+  const { db, close } = connect(env.DATABASE_URL!);
+  try {
+    const plain = createDeps(db);
+    const segments = await plain.meetings.segments(meetingId);
+    const turn = (word: string) =>
+      segments.find((s) => s.text.toLowerCase().includes(word)) ?? segments[0]!;
+    const sso = turn("ready by friday");
+    const email = turn("wednesday");
+    const model = new ScriptedProvider({
+      extract: [
+        {
+          decisions: [
+            {
+              kind: "commitment",
+              statement: "Marco has single sign-on ready by Friday.",
+              ownerText: "Marco",
+              deadlineText: "by Friday",
+              status: "ambiguous",
+              evidence: [{ segmentId: sso.id, quote: sso.text }],
+            },
+            {
+              kind: "commitment",
+              statement: "Dana sends the launch email draft by next Wednesday.",
+              ownerText: "Dana",
+              deadlineText: "by next Wednesday",
+              status: "explicit",
+              evidence: [{ segmentId: email.id, quote: email.text }],
+            },
+          ],
+        },
+      ],
+      findCandidates: [
+        {
+          candidates: [
+            {
+              decisionId: `${meetingId}:dec:0`,
+              dimension: "scope",
+              readings: [{ text: "running on staging" }, { text: "live in production" }],
+              impact: high,
+            },
+            {
+              decisionId: `${meetingId}:dec:1`,
+              dimension: "outcome",
+              readings: [{ text: "a draft for their review" }, { text: "the final email" }],
+              impact: low,
+            },
+          ],
+        },
+      ],
+      // The scope question comes from a template, so only the outcome question is written here.
+      generateProbes: [
+        {
+          probes: [
+            {
+              stem: "What goes to their communications team by Wednesday?",
+              options: [{ text: "A draft for review" }, { text: "The final email" }],
+            },
+          ],
+        },
+      ],
+      critique: [{ canDiverge: true, leadingOption: null, reason: "Draft and final differ." }],
+    });
+    const deps = createDeps(db, {
+      model: () => new LoggedProvider(model, new DbCallLog(db, { meetingId })),
+    });
+    const outcome = await analyzeMeeting(deps, (await deps.meetings.get(meetingId))!);
+    if (!outcome.ok) throw new Error(`scripted analysis failed: ${outcome.message}`);
+    return outcome.response;
+  } finally {
+    await close();
+  }
+}

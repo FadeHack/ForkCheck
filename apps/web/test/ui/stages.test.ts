@@ -19,11 +19,38 @@ describe("audio stages", () => {
     ).toEqual(["source", "speakers", "review", "questions"]);
   });
 
-  it("is speakers until there is a transcript, and while it waits for review", () => {
+  it("is speakers until there is a transcript and every voice is mapped, then review", () => {
     for (const status of ["draft", "transcribing", "failed"] as const) {
       expect(organizerStage(audio({ status, transcriptVersion: 0 }))).toBe("speakers");
     }
-    expect(organizerStage(audio({ status: "review", transcriptVersion: 1 }))).toBe("speakers");
+    const turn = (idx: number, speakerLabel: string) => ({
+      id: `s${idx}`,
+      meetingId: "m1",
+      idx,
+      speakerLabel,
+      participantId: null,
+      startMs: idx * 1000,
+      endMs: null,
+      text: "Yes.",
+      origin: "asr" as const,
+      edited: false,
+    });
+    const transcribed = (speakers: { label: string; participantId: string | null }[]) =>
+      organizerState({
+        meeting: { ...meeting, source: "audio", status: "review", transcriptVersion: 1 },
+        segments: [turn(0, "A"), turn(1, "B")],
+        speakers,
+      });
+    expect(organizerStage(transcribed([]))).toBe("speakers");
+    expect(organizerStage(transcribed([{ label: "A", participantId: "p0" }]))).toBe("speakers");
+    expect(
+      organizerStage(
+        transcribed([
+          { label: "A", participantId: "p0" },
+          { label: "B", participantId: null },
+        ]),
+      ),
+    ).toBe("review");
   });
 
   it("leaves an analysis failure after transcription to the questions stage", () => {

@@ -107,3 +107,23 @@ export async function uploadAndTranscribe(
   if (!upload.ok) return { ok: false, message: upload.message };
   return startTranscription(meetingId, token, upload.data.storageKey, keywords);
 }
+
+/** The stored recording, fetched with the organizer token, which an audio element can't send. */
+export async function fetchRecording(
+  meetingId: string,
+  token: string,
+): Promise<{ ok: true; blob: Blob } | { ok: false; message: string }> {
+  const path = `/api/meetings/${encodeURIComponent(meetingId)}/audio`;
+  let res: Response;
+  try {
+    res = await fetch(path, { cache: "no-store", headers: { authorization: `Bearer ${token}` } });
+  } catch {
+    return { ok: false, message: "ForkCheck couldn't reach the server to load the recording." };
+  }
+  if (res.ok) return { ok: true, blob: await res.blob() };
+  const body = (await res.json().catch(() => null)) as { error?: { message?: string } } | null;
+  return {
+    ok: false,
+    message: body?.error?.message ?? `The recording didn't load (status ${res.status}).`,
+  };
+}

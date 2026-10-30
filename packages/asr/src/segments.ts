@@ -30,12 +30,14 @@ export interface AsrSegments {
 }
 
 /**
- * One segment per turn, in time order. Turn boundaries are "not a precise acoustic
+ * One segment per turn with words, in time order; the service also returns empty turns for
+ * pauses, which have nothing to quote or review. Turn boundaries are "not a precise acoustic
  * boundary" (R§4.1), so times are only normalized: integers, end never before start.
  */
 export function toSegments(response: TranscribeResponse, options: ToSegmentsOptions): AsrSegments {
   const ordered = response.turns
     .map((turn, position) => ({ turn, position }))
+    .filter(({ turn }) => turn.transcript.trim() !== "")
     .sort((a, b) => a.turn.startMs - b.turn.startMs || a.position - b.position);
 
   const segments = ordered.map(({ turn }, idx): AsrSegment => {
