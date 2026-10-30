@@ -44,7 +44,7 @@ export async function uploadAudio(
       message: "This meeting was started from a pasted transcript, so it takes no recording.",
     };
   }
-  if (!UPLOADABLE.has(meeting.status)) {
+  if (!UPLOADABLE.has(meeting.status) || meeting.transcriptVersion > 0) {
     return {
       ok: false,
       status: 409,

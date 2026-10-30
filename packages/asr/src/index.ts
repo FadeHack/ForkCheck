@@ -38,3 +38,4 @@ export {
   type TranscribeSpendLedger,
 } from "./client";
 export { toSegments, type AsrSegment, type AsrSegments, type ToSegmentsOptions } from "./segments";
+export { RecordingTranscriber, ReplayTranscriber, replayPath, type Transcriber } from "./replay";

@@ -219,10 +219,28 @@ export class MeetingRepo {
     from: readonly MeetingStatus[],
     claim: StepClaim,
   ): Promise<boolean> {
+    return this.claimStep(id, "analyzing", from, claim);
+  }
+
+  /** As `startAnalysis`, for `transcribing`. */
+  async startTranscription(
+    id: string,
+    from: readonly MeetingStatus[],
+    claim: StepClaim,
+  ): Promise<boolean> {
+    return this.claimStep(id, "transcribing", from, claim);
+  }
+
+  private async claimStep(
+    id: string,
+    running: "analyzing" | "transcribing",
+    from: readonly MeetingStatus[],
+    claim: StepClaim,
+  ): Promise<boolean> {
     const rows = await this.db
       .update(t.meeting)
       .set({
-        status: "analyzing",
+        status: running,
         error: null,
         failedStep: null,
         stepRunId: claim.runId,
@@ -234,7 +252,7 @@ export class MeetingRepo {
           or(
             inArray(t.meeting.status, [...from]),
             and(
-              eq(t.meeting.status, "analyzing"),
+              eq(t.meeting.status, running),
               or(
                 isNull(t.meeting.stepHeartbeatAt),
                 lt(t.meeting.stepHeartbeatAt, claim.staleBefore),
@@ -316,6 +334,47 @@ export class MeetingRepo {
     await this.db
       .update(t.meeting)
       .set({ status: "failed", failedStep: step, error, stepRunId: null })
+      .where(and(eq(t.meeting.id, id), eq(t.meeting.stepRunId, runId)));
+  }
+
+  /**
+   * Replaces the meeting's segments with a transcription and moves it to `review`. A new
+   * transcript version invalidates any earlier analysis. False if another run took over.
+   */
+  async saveTranscript(
+    meetingId: string,
+    runId: string,
+    input: { segments: Segment[]; storageKey: string; durationMs: number },
+  ): Promise<boolean> {
+    return this.db.transaction(async (tx) => {
+      const rows = await tx
+        .update(t.meeting)
+        .set({
+          status: "review",
+          error: null,
+          stepRunId: null,
+          transcriptVersion: sql`${t.meeting.transcriptVersion} + 1`,
+        })
+        .where(and(eq(t.meeting.id, meetingId), eq(t.meeting.stepRunId, runId)))
+        .returning({ id: t.meeting.id });
+      if (rows.length === 0) return false;
+      await tx.delete(t.segment).where(eq(t.segment.meetingId, meetingId));
+      if (input.segments.length > 0) await tx.insert(t.segment).values(input.segments);
+      await tx
+        .update(t.audioAsset)
+        .set({ durationMs: input.durationMs })
+        .where(
+          and(eq(t.audioAsset.meetingId, meetingId), eq(t.audioAsset.storageKey, input.storageKey)),
+        );
+      return true;
+    });
+  }
+
+  /** Marks transcription failed, unless another run has taken it over since. */
+  async failTranscription(id: string, runId: string, error: string): Promise<void> {
+    await this.db
+      .update(t.meeting)
+      .set({ status: "failed", error, stepRunId: null })
       .where(and(eq(t.meeting.id, id), eq(t.meeting.stepRunId, runId)));
   }
 
