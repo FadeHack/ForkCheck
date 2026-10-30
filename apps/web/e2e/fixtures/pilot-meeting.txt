@@ -1,0 +1,51 @@
+Priya: Morning everyone. This is the pilot launch check-in for the Northwind customer. We have about five minutes, so let's go through single sign-on, the data import, and the launch email.
+Marco: Sounds good. I can start with single sign-on.
+Priya: Go ahead.
+Marco: Login works on staging now. The identity provider handshake is fine, and the test accounts from Northwind can sign in. What I still need is the admin roles. Right now every user comes in as a regular member, so nobody on their side can invite colleagues.
+Priya: How long do the admin roles take?
+Marco: Two or three days, I think. The mapping itself is small, but I want to test it with their real directory groups, and they haven't sent me those yet.
+Dana: I can chase them for the groups. I have a call with their IT lead tomorrow.
+Marco: That would help a lot.
+Priya: OK. So single sign-on is ready by Friday. Marco, that's yours?
+Marco: Yes, I'll have it ready by Friday.
+Priya: Great. Dana, you'll get the directory groups from their IT lead tomorrow.
+Dana: Yes, I'll ask on the call and send them to Marco straight after.
+Priya: Next, the data import. Where are we?
+Dana: The import script runs end to end on the sample file they gave us. It took about forty minutes for twelve thousand records. The full export is closer to ninety thousand records, so that would be around five hours.
+Marco: Five hours is fine if we run it overnight.
+Dana: That was my thinking. We run it the night before launch and check the counts in the morning.
+Priya: Who checks the counts?
+Dana: I can do it, but I would like a second pair of eyes on the duplicates report. Last time we missed a few merged accounts.
+Marco: I'll look at the duplicates report with you.
+Priya: Good. Let's say the import runs the night before launch, Dana checks the counts, and Marco reviews duplicates with her.
+Dana: Works for me.
+Priya: Now the launch email. Northwind wants to tell their staff before they get the invite.
+Dana: Right. Their communications team asked for a draft from us by next week. I have an outline, but I need the final login link and the support hours.
+Priya: The login link depends on single sign-on being done.
+Marco: It does. I can give you the staging link today, and the production one once the roles are finished.
+Dana: Then I'll write the draft with the staging link and swap it later.
+Priya: And support hours. We said nine to five Eastern for the pilot, right?
+Dana: That's what I remember. Nine to five, Monday to Friday.
+Marco: I thought we agreed on extended hours for the first week. Something like eight to eight.
+Priya: Hmm. Let's not decide that here. I'll check with the support lead and confirm.
+Dana: OK, I'll leave a placeholder for the hours.
+Priya: So, the launch email draft goes to their communications team next week, with a placeholder for hours.
+Dana: Yes. I'll send it to them by Wednesday.
+Priya: Which Wednesday? This one or next?
+Dana: Next Wednesday. This week is too tight.
+Priya: Fine. One more thing. The launch date itself. Are we still saying the fourteenth?
+Marco: If single sign-on is ready Friday and the import runs the night before, the fourteenth works.
+Dana: The fourteenth works for me too, as long as the email goes out a few days earlier.
+Priya: Then we launch on the fourteenth. I'll tell Northwind's project manager today.
+Marco: Should we keep a fallback date in case the roles slip?
+Priya: Let's say the twenty first as a fallback, but we don't announce it.
+Dana: Agreed. Internal only.
+Priya: Last question. Who is on call during launch day?
+Marco: I can be on call in the morning.
+Dana: I'll take the afternoon.
+Priya: And I'll cover the evening. Let's keep a shared channel open with their IT lead.
+Marco: I'll set up the channel.
+Priya: Great. To recap. Marco has single sign-on ready by Friday and sets up the launch channel. Dana gets the directory groups tomorrow, runs the import the night before launch, and sends the email draft by next Wednesday. I confirm the support hours and tell Northwind about the fourteenth. Anything I missed?
+Dana: I think that's everything.
+Marco: Same here. Thanks everyone.
+Priya: Thanks. Talk soon.
