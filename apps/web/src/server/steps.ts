@@ -64,8 +64,16 @@ export async function meetingProgress(
       const step = current === null ? "extract" : NEXT_STEP[current];
       return { ...base, step, stalled };
     }
-    case "failed":
-      return { ...base, step: progress?.failedStep ?? null, stalled: false };
+    case "transcribing":
+      return { ...base, step: "transcribe", stalled };
+    case "failed": {
+      // Transcription is the only step that fails before there is a transcript.
+      const step =
+        meeting.source === "audio" && meeting.transcriptVersion === 0
+          ? "transcribe"
+          : (progress?.failedStep ?? null);
+      return { ...base, step, stalled: false };
+    }
     default:
       return { ...base, step: null, stalled: false };
   }

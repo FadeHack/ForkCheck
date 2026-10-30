@@ -19,7 +19,8 @@ export type TranscribeErrorKind =
   | "timeout"
   | "network"
   | "invalid_response"
-  | "spend_cap";
+  | "spend_cap"
+  | "no_fixture";
 
 export class TranscribeError extends Error {
   constructor(
