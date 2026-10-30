@@ -125,10 +125,8 @@ test("a 5-minute recording becomes a checked record", async ({ page, request }) 
       .getAttribute("href");
     await page.goto(href!);
     const id = new URL(page.url()).pathname.split("/").at(-1)!;
-    const token = (await page.evaluate(
-      (key) => sessionStorage.getItem(key),
-      `forkcheck:organizer:${id}`,
-    ))!;
+    // The organizer key travels in the link's fragment; the page stores it only once it runs.
+    const token = new URLSearchParams(new URL(href!, "http://x").hash.slice(1)).get("k")!;
 
     await timed("Wait for transcription", async () => {
       await expect(page.getByRole("button", { name: "Save speakers" })).toBeVisible({
