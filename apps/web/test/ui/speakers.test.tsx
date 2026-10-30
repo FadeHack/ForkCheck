@@ -1,7 +1,9 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import type { Meeting, Segment } from "@forkcheck/core";
-import { SpeakersView } from "../../src/ui/organizer/speakers";
+import type { OrganizerMeetingState } from "../../src/contracts/api";
+import { ReviewView } from "../../src/ui/organizer/review";
+import { sampleTurns, SpeakersView } from "../../src/ui/organizer/speakers";
 import { meeting, organizerState } from "./fixtures";
 
 const text = (node: React.ReactElement) =>
@@ -14,25 +16,37 @@ const audio = { storageKey: "m1/f1", durationMs: 34_000, retain: false };
 
 function view(
   status: Meeting["status"],
-  { stored = true, error = null as string | null, segments = [] as Segment[] } = {},
+  {
+    stored = true,
+    error = null as string | null,
+    segments = [] as Segment[],
+    speakers = [] as OrganizerMeetingState["speakers"],
+  } = {},
 ) {
   const state = organizerState({
-    meeting: { ...meeting, source: "audio", status, error, transcriptVersion: 0 },
+    meeting: {
+      ...meeting,
+      source: "audio",
+      status,
+      error,
+      transcriptVersion: segments.length > 0 ? 1 : 0,
+    },
     audio: stored ? audio : null,
     segments,
+    speakers,
   });
   return text(<SpeakersView state={state} />);
 }
 
-const segment = (idx: number, speakerLabel: string | null): Segment => ({
+const segment = (idx: number, speakerLabel: string | null, ms = 900): Segment => ({
   id: `m1:seg:${idx}`,
   meetingId: "m1",
   idx,
   speakerLabel,
   participantId: null,
-  startMs: idx * 1000,
-  endMs: idx * 1000 + 900,
-  text: "We ship SSO on Friday.",
+  startMs: idx * 10_000,
+  endMs: idx * 10_000 + ms,
+  text: `Turn ${idx}.`,
   origin: "asr",
   edited: false,
 });
@@ -65,13 +79,75 @@ describe("SpeakersView", () => {
     expect(out).not.toContain("Start transcription");
   });
 
-  it("counts turns per voice once transcribed", () => {
+  it("asks who each voice is, with turns to play, once transcribed", () => {
     const out = view("review", {
       segments: [segment(0, "A"), segment(1, "B"), segment(2, "A"), segment(3, null)],
     });
-    expect(out).toContain("Transcribed 34 s of audio: 4 turns from 3 voices.");
-    expect(out).toContain("Speaker A: 2 turns");
-    expect(out).toContain("Speaker B: 1 turn");
-    expect(out).toContain("No speaker label: 1 turn");
+    expect(out).toContain("Transcribed 34 s of audio: 4 turns from 2 voices.");
+    expect(out).toContain("Speaker A (2 turns)");
+    expect(out).toContain("Speaker B (1 turn)");
+    expect(out).toContain("Who is Speaker A?");
+    expect(out).toContain("Play from 00:10");
+    expect(out).toContain("Save speakers");
+    expect(out).not.toContain("Map every speaker");
+  });
+
+  it("starts each choice from the saved mapping, and plays nothing once audio is gone", () => {
+    const html = renderToStaticMarkup(
+      <SpeakersView
+        state={organizerState({
+          meeting: { ...meeting, source: "audio", status: "review", transcriptVersion: 1 },
+          segments: [segment(0, "A"), segment(1, "B")],
+          speakers: [
+            { label: "A", participantId: "p1" },
+            { label: "B", participantId: null },
+          ],
+        })}
+      />,
+    );
+    expect(html).toMatch(/<option value="p1" selected="">Marco<\/option>/);
+    expect(html).toMatch(/<option value="unknown" selected="">Unknown<\/option>/);
+    expect(html).toContain("turns can&#x27;t be played");
+    expect(html).not.toContain("Play from");
+  });
+
+  it("lists the saved mapping once questions are drafted", () => {
+    const out = view("probing", {
+      segments: [segment(0, "A"), segment(1, "B")],
+      speakers: [
+        { label: "A", participantId: "p0" },
+        { label: "B", participantId: null },
+      ],
+    });
+    expect(out).toContain("Speaker A: Priya");
+    expect(out).toContain("Speaker B: Unknown");
+    expect(out).not.toContain("Save speakers");
+  });
+});
+
+describe("sampleTurns", () => {
+  it("keeps the three longest turns in transcript order", () => {
+    const turns = [segment(0, "A", 500), segment(1, "A", 4000), segment(2, "A", 900)];
+    turns.push(segment(3, "A", 3000), segment(4, "A", 100));
+    expect(sampleTurns(turns).map((t) => t.idx)).toEqual([1, 2, 3]);
+  });
+});
+
+describe("ReviewView", () => {
+  it("names mapped voices and marks the rest as unmapped", () => {
+    const segments = [segment(0, "A"), segment(1, "C"), segment(2, null)];
+    segments[0] = { ...segments[0]!, participantId: "p0" };
+    const out = text(
+      <ReviewView
+        state={organizerState({
+          meeting: { ...meeting, source: "audio", status: "review", transcriptVersion: 1 },
+          segments,
+        })}
+      />,
+    );
+    expect(out).toContain("Priya at 00:00 Turn 0.");
+    expect(out).toContain("Speaker C (unmapped) at 00:10 Turn 1.");
+    expect(out).toContain("Unknown speaker at 00:20 Turn 2.");
+    expect(out).toContain("Finish review");
   });
 });

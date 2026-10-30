@@ -148,3 +148,17 @@ export function parseTranscript(input: ParseTranscriptInput): ParsedTranscript {
 
   return { segments, warnings };
 }
+
+/** Transcription labels in the order the voices first speak. */
+export function speakerLabels(segments: Pick<Segment, "speakerLabel">[]): string[] {
+  return [...new Set(segments.flatMap((s) => (s.speakerLabel === null ? [] : [s.speakerLabel])))];
+}
+
+/** True when every voice has been named or marked unknown, which analysis waits for. */
+export function speakersMapped(
+  segments: Pick<Segment, "speakerLabel">[],
+  saved: { label: string }[],
+): boolean {
+  const mapped = new Set(saved.map((m) => m.label));
+  return speakerLabels(segments).every((l) => mapped.has(l));
+}

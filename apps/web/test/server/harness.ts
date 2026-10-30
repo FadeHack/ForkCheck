@@ -36,6 +36,7 @@ export async function seedMeeting(
   deps: Deps,
   id: string,
   names: SeedName[] = ["Ana", "Ben"],
+  overrides: Partial<Meeting> = {},
 ): Promise<SeededMeeting> {
   const meeting: Meeting = {
     id,
@@ -48,6 +49,7 @@ export async function seedMeeting(
     error: null,
     createdAt: NOW.toISOString(),
     deleteAfter: null,
+    ...overrides,
   };
   const organizerToken = newToken();
   const notes = names.map((name) => (typeof name === "string" ? undefined : name.notes));
@@ -72,6 +74,44 @@ export async function seedMeeting(
     segments: [],
   });
   return { meeting, organizerToken, participants };
+}
+
+/** One transcribed turn: speaker label, start and end in ms, and the words. */
+export type SeedTurn = [label: string | null, startMs: number, endMs: number, text: string];
+
+/**
+ * An audio meeting straight after transcription: status `review`, version 1, a stored file
+ * under `storageKey`, and one segment per turn with no participant yet.
+ */
+export async function seedTranscribed(
+  deps: Deps,
+  id: string,
+  turns: SeedTurn[],
+  names: SeedName[] = ["Ana", "Ben"],
+): Promise<SeededMeeting & { storageKey: string }> {
+  const seeded = await seedMeeting(deps, id, names, { source: "audio", transcriptVersion: 0 });
+  const storageKey = `${id}/file-1`;
+  await deps.meetings.addAudio({ id: `${id}:audio`, meetingId: id, storageKey });
+  const claim = { runId: "seed-run", now: NOW, staleBefore: NOW };
+  await deps.meetings.startTranscription(id, ["draft"], claim);
+  await deps.meetings.saveTranscript(id, "seed-run", {
+    storageKey,
+    durationMs: turns.at(-1)?.[2] ?? 0,
+    segments: turns.map(([label, startMs, endMs, text], idx) => ({
+      id: `${id}:seg:${idx}`,
+      meetingId: id,
+      idx,
+      speakerLabel: label,
+      participantId: null,
+      startMs,
+      endMs,
+      text,
+      origin: "asr" as const,
+      edited: false,
+    })),
+  });
+  const stored = await deps.meetings.get(id);
+  return { ...seeded, meeting: stored!, storageKey };
 }
 
 const DIMENSIONS: Dimension[] = ["owner", "deadline", "scope", "criteria", "dependency", "outcome"];

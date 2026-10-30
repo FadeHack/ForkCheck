@@ -181,6 +181,6 @@ describe("extractUserMessage", () => {
         { ...segments[0]!, text: "line one\nline two", participantId: null, speakerLabel: "B" },
       ],
     });
-    expect(text).toContain(`[${seg(0)}] Speaker B: line one line two`);
+    expect(text).toContain(`[${seg(0)}] Speaker B (unmapped): line one line two`);
   });
 });

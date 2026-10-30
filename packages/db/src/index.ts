@@ -8,6 +8,7 @@ export {
   type AnalysisProgress,
   type AnalysisStep,
   type NewMeeting,
+  type SpeakerAssignment,
   type StepClaim,
   type StoredAnalysis,
   type StoredDecision,

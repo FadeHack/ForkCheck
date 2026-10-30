@@ -23,6 +23,12 @@ export interface NewMeeting {
   segments: Segment[];
 }
 
+/** A transcription label and who it is; null is the organizer's explicit "unknown". */
+export interface SpeakerAssignment {
+  label: string;
+  participantId: string | null;
+}
+
 /** Same shape as the engine's DecisionWithEvidence; db may not import the engine. */
 export interface StoredDecision {
   decision: Decision;
@@ -360,6 +366,8 @@ export class MeetingRepo {
       if (rows.length === 0) return false;
       await tx.delete(t.segment).where(eq(t.segment.meetingId, meetingId));
       if (input.segments.length > 0) await tx.insert(t.segment).values(input.segments);
+      // Labels belong to one transcription; a new one starts unmapped.
+      await tx.delete(t.speakerMap).where(eq(t.speakerMap.meetingId, meetingId));
       await tx
         .update(t.audioAsset)
         .set({ durationMs: input.durationMs })
@@ -433,6 +441,38 @@ export class MeetingRepo {
       .where(eq(t.probe.meetingId, meetingId))
       .orderBy(...probeOrder);
     return rows.map((r) => ({ probe: toProbe(r), roundId: r.roundId }));
+  }
+
+  async speakerMap(meetingId: string): Promise<SpeakerAssignment[]> {
+    return this.db
+      .select({ label: t.speakerMap.label, participantId: t.speakerMap.participantId })
+      .from(t.speakerMap)
+      .where(eq(t.speakerMap.meetingId, meetingId))
+      .orderBy(asc(t.speakerMap.label));
+  }
+
+  /**
+   * Saves who each label is and sets every turn with that label to them. The caller checks the
+   * mapping covers each label once and names only this meeting's participants.
+   */
+  async saveSpeakerMap(meetingId: string, mapping: SpeakerAssignment[]): Promise<Segment[]> {
+    return this.db.transaction(async (tx) => {
+      await tx.delete(t.speakerMap).where(eq(t.speakerMap.meetingId, meetingId));
+      if (mapping.length > 0) {
+        await tx.insert(t.speakerMap).values(mapping.map((m) => ({ meetingId, ...m })));
+      }
+      for (const { label, participantId } of mapping) {
+        await tx
+          .update(t.segment)
+          .set({ participantId })
+          .where(and(eq(t.segment.meetingId, meetingId), eq(t.segment.speakerLabel, label)));
+      }
+      return tx
+        .select()
+        .from(t.segment)
+        .where(eq(t.segment.meetingId, meetingId))
+        .orderBy(asc(t.segment.idx));
+    });
   }
 
   /** Records an uploaded file; audio is not kept after review unless `retain` is set later. */

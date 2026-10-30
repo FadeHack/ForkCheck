@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { Meeting, MeetingStatus } from "@forkcheck/core";
+import { speakersMapped, type Meeting, type MeetingStatus } from "@forkcheck/core";
 import type { AnalysisStep } from "@forkcheck/db";
 import { draftProbes, extract, findCandidates, type MeetingContext } from "@forkcheck/engine";
 import type { AnalyzeResponse } from "../contracts/api";
@@ -43,6 +43,20 @@ export async function analyzeMeeting(deps: Deps, meeting: Meeting): Promise<Anal
       code: "no_transcript",
       message: "There is no transcript to analyze yet. Paste one or finish transcription first.",
     };
+  }
+  if (meeting.source === "audio") {
+    const [segments, saved] = await Promise.all([
+      deps.meetings.segments(meeting.id),
+      deps.meetings.speakerMap(meeting.id),
+    ]);
+    if (!speakersMapped(segments, saved)) {
+      return {
+        ok: false,
+        status: 409,
+        code: "speakers_unmapped",
+        message: "Map every speaker or mark them Unknown to continue.",
+      };
+    }
   }
   const runId = randomUUID();
   if (!(await deps.meetings.startAnalysis(meeting.id, STARTABLE, stepClaim(deps, runId)))) {

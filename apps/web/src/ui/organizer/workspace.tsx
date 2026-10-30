@@ -11,6 +11,7 @@ import { formatHeldAt } from "../time";
 import { QuestionsView } from "./questions";
 import { RoundMonitor } from "./round";
 import { RecheckView } from "./recheck";
+import { ReviewView } from "./review";
 import { SpeakersView } from "./speakers";
 import { TracePanel } from "./trace";
 import { RecordLink, RevealView, StageRail } from "./views";
@@ -52,6 +53,7 @@ export function WorkspaceView({
       {state.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
       <StageRail stages={stages} current={current} viewing={stage} href={href} />
       {stage === "speakers" && <SpeakersView state={state} onChange={reload} />}
+      {stage === "review" && <ReviewView state={state} onChange={reload} />}
       {stage === "questions" && (
         // Remounts when drafting finishes, so the selection starts from the new drafts.
         <QuestionsView key={state.meeting.status} state={state} onChange={reload} />

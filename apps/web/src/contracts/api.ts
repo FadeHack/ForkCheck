@@ -109,6 +109,14 @@ export interface OrganizerMeetingState {
   confirmations: Confirmation[];
   /** The meeting's recording while it is stored; a new upload replaces it. */
   audio: StoredAudio | null;
+  /** Saved speaker mapping, one entry per label; empty until the organizer saves it. */
+  speakers: SpeakerAssignment[];
+}
+
+export interface SpeakerAssignment {
+  label: string;
+  /** Null when the organizer marked the voice as unknown. */
+  participantId: string | null;
 }
 
 export interface StoredAudio {
@@ -135,7 +143,10 @@ export interface MeetingProgressResponse {
   error: string | null;
 }
 
+// GET /api/meetings/:id/audio → the stored recording's bytes, for playback; 404 once deleted
+
 // PUT /api/meetings/:id/speakers (many labels may map to one participant)
+/** Must name every label in the transcript; null marks a voice as unknown. */
 export const mapSpeakersRequest = z.strictObject({
   mapping: z.record(z.string().min(1), id.nullable()),
 });

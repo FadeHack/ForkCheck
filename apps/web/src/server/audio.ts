@@ -3,6 +3,7 @@ import { WAV_LIMITS } from "@forkcheck/asr";
 import type { Meeting, MeetingStatus } from "@forkcheck/core";
 import type { UploadAudioResponse } from "../contracts/api";
 import type { Deps } from "./deps";
+import { apiError, tokenRouteHeaders } from "./http";
 import { audioKey, TooLargeError } from "./storage";
 
 /** The original file may be MP3 or M4A, but the transcription limit is the useful ceiling for it too. */
@@ -76,4 +77,20 @@ export async function uploadAudio(
   for (const key of previous) await deps.storage.delete(key);
   await deps.meetings.markAudioDeleted(meeting.id, previous, deps.now());
   return { ok: true, response: { storageKey, bytes } };
+}
+
+/** The stored recording as it was uploaded, for the organizer to play turns back. */
+export async function audioFile(deps: Deps, meeting: Meeting): Promise<Response> {
+  const live = await deps.meetings.liveAudio(meeting.id);
+  const body = live === null ? null : await deps.storage.get(live.storageKey);
+  if (body === null) {
+    return apiError(
+      404,
+      "no_audio",
+      "This meeting has no stored recording. It is deleted after review unless you chose to keep it.",
+    );
+  }
+  return new Response(body, {
+    headers: { ...tokenRouteHeaders, "Content-Type": "application/octet-stream" },
+  });
 }

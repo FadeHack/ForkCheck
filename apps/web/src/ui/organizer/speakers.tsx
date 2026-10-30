@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
-import type { MeetingProgressResponse, OrganizerMeetingState } from "../../contracts/api";
+import { speakerLabels, type Segment } from "@forkcheck/core";
+import type {
+  MapSpeakersResponse,
+  MeetingProgressResponse,
+  OrganizerMeetingState,
+} from "../../contracts/api";
 import { organizerCall, organizerToken } from "../api";
 import {
   formatDuration,
@@ -13,6 +18,7 @@ import {
   type RecordingInfo,
 } from "../audio";
 import { Button, ErrorNotice, Field, Loading } from "../components";
+import { PlayButton, PlayerFailure, useTurnPlayer } from "./player";
 
 type State = OrganizerMeetingState;
 type Reload = (() => Promise<void>) | undefined;
@@ -22,16 +28,18 @@ const POLL_MS = 3000;
 const count = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
 export function SpeakersView({ state, onChange }: { state: State; onChange?: Reload }) {
-  const { status } = state.meeting;
+  const { status, transcriptVersion } = state.meeting;
   return (
     <section aria-labelledby="speakers-heading">
       <h2 id="speakers-heading">Speakers</h2>
       {status === "transcribing" ? (
         <Transcribing state={state} onChange={onChange} />
-      ) : status === "review" ? (
-        <TranscriptReady state={state} />
-      ) : (
+      ) : transcriptVersion === 0 ? (
         <NeedsTranscription state={state} onChange={onChange} />
+      ) : status === "review" ? (
+        <SpeakerMapper state={state} onChange={onChange} />
+      ) : (
+        <SavedSpeakers state={state} />
       )}
     </section>
   );
@@ -200,28 +208,150 @@ function UploadForm({
   );
 }
 
-/** What transcription found, until voices can be matched to participants here. */
-function TranscriptReady({ state }: { state: State }) {
-  const turns = new Map<string, number>();
-  for (const s of state.segments) {
-    const label = s.speakerLabel === null ? "No speaker label" : `Speaker ${s.speakerLabel}`;
-    turns.set(label, (turns.get(label) ?? 0) + 1);
-  }
+/** Turns per label, in the order the voices first speak. */
+function voices(segments: Segment[]): { label: string; turns: Segment[] }[] {
+  return speakerLabels(segments).map((label) => ({
+    label,
+    turns: segments.filter((s) => s.speakerLabel === label),
+  }));
+}
+
+// Transcribed turns carry times; the text length stands in when one doesn't.
+const length = (s: Segment) =>
+  s.startMs !== null && s.endMs !== null ? s.endMs - s.startMs : s.text.length;
+
+/** The three longest turns, the easiest to recognize a voice by, kept in transcript order. */
+export function sampleTurns(turns: Segment[]): Segment[] {
+  const longest = new Set(turns.toSorted((a, b) => length(b) - length(a)).slice(0, 3));
+  return turns.filter((t) => longest.has(t));
+}
+
+const UNKNOWN = "unknown";
+
+function Summary({ state }: { state: State }) {
   const duration = state.audio?.durationMs;
+  const labels = speakerLabels(state.segments).length;
+  return (
+    <p>
+      {duration != null && `Transcribed ${formatDuration(duration)} of audio: `}
+      {count(state.segments.length, "turn", "turns")} from {count(labels, "voice", "voices")}.
+    </p>
+  );
+}
+
+/** Label → participant, or "unknown"; each voice's choice starts from the saved mapping. */
+function SpeakerMapper({ state, onChange }: { state: State; onChange: Reload }) {
+  const id = state.meeting.id;
+  const groups = voices(state.segments);
+  const [choice, setChoice] = useState<Record<string, string>>(() =>
+    Object.fromEntries(state.speakers.map((m) => [m.label, m.participantId ?? UNKNOWN] as const)),
+  );
+  const [checked, setChecked] = useState(false);
+  const [failure, setFailure] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
+  const player = useTurnPlayer(id);
+  const open = groups.filter((g) => !choice[g.label]);
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setChecked(true);
+    if (open.length > 0) {
+      document.getElementById(`speaker-${open[0]!.label}`)?.focus();
+      return;
+    }
+    const mapping = Object.fromEntries(
+      groups.map(({ label }) => [label, choice[label] === UNKNOWN ? null : choice[label]!]),
+    );
+    setSending(true);
+    const res = await organizerCall(id)<MapSpeakersResponse>(
+      `/api/meetings/${encodeURIComponent(id)}/speakers`,
+      { method: "PUT", body: JSON.stringify({ mapping }) },
+    );
+    setSending(false);
+    if (!res.ok) return setFailure(res.message);
+    setFailure(null);
+    await onChange?.();
+  }
+
+  return (
+    <form onSubmit={submit} noValidate aria-describedby="speakers-intro">
+      <Summary state={state} />
+      <p id="speakers-intro">
+        Say who each voice is. Two voices can be the same person. Choose Unknown for anyone who
+        isn&apos;t a participant.
+      </p>
+      {state.audio === null && (
+        <p>The recording isn&apos;t stored any more, so turns can&apos;t be played.</p>
+      )}
+      {player.element}
+      <PlayerFailure player={player} />
+      {checked && open.length > 0 && (
+        <ErrorNotice>Map every speaker or mark them Unknown to continue.</ErrorNotice>
+      )}
+      {failure && <ErrorNotice>{failure}</ErrorNotice>}
+      {groups.map(({ label, turns }) => (
+        <fieldset key={label} className="voice">
+          <legend>
+            Speaker {label}{" "}
+            <span className="voice-count">({count(turns.length, "turn", "turns")})</span>
+          </legend>
+          <ul className="voice-turns">
+            {sampleTurns(turns).map((t) => (
+              <li key={t.id}>
+                <p>{t.text}</p>
+                {state.audio !== null && <PlayButton player={player} turn={t} />}
+              </li>
+            ))}
+          </ul>
+          <Field
+            id={`speaker-${label}`}
+            label={`Who is Speaker ${label}?`}
+            error={
+              checked && !choice[label] ? `Choose who Speaker ${label} is, or Unknown.` : undefined
+            }
+          >
+            {(d) => (
+              <select
+                id={`speaker-${label}`}
+                value={choice[label] ?? ""}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  setChoice((c) => ({ ...c, [label]: e.target.value }))
+                }
+                aria-describedby={d}
+              >
+                <option value="">Choose a person</option>
+                {state.participants.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.displayName}
+                  </option>
+                ))}
+                <option value={UNKNOWN}>Unknown</option>
+              </select>
+            )}
+          </Field>
+        </fieldset>
+      ))}
+      <Button type="submit" disabled={sending}>
+        {sending ? "Saving speakers" : "Save speakers"}
+      </Button>
+    </form>
+  );
+}
+
+/** After questions are drafted the mapping is fixed; it stays visible for reference. */
+function SavedSpeakers({ state }: { state: State }) {
+  const names = new Map(state.participants.map((p) => [p.id, p.displayName]));
   return (
     <>
-      <p>
-        {duration != null && `Transcribed ${formatDuration(duration)} of audio: `}
-        {count(state.segments.length, "turn", "turns")} from {count(turns.size, "voice", "voices")}.
-      </p>
+      <Summary state={state} />
       <ul>
-        {[...turns].map(([label, n]) => (
-          <li key={label}>
-            {label}: {count(n, "turn", "turns")}
+        {state.speakers.map((m) => (
+          <li key={m.label}>
+            Speaker {m.label}:{" "}
+            {m.participantId === null ? "Unknown" : (names.get(m.participantId) ?? "Unknown")}
           </li>
         ))}
       </ul>
-      <p>Matching voices to participants isn&apos;t available yet.</p>
     </>
   );
 }

@@ -73,9 +73,52 @@ test("uploads a recording, transcribes it and opens the Speakers stage", async (
   await expect(rail.locator('[aria-current="step"]')).toHaveText("Speakers");
   await expect(rail).toContainText("Transcript review, not yet");
   await expect(page.getByText("3 turns from 2 voices.")).toBeVisible({ timeout: 20_000 });
-  await expect(page.getByText("Speaker A: 2 turns")).toBeVisible();
   await expect(page.getByText("Transcribed 3 s of audio:")).toBeVisible();
   await noAxeViolations(page);
+});
+
+test("maps two voices to one person after playing their turns", async ({ page }) => {
+  await fillAudioForm(page, { name: "sync.wav", mimeType: "audio/wav", buffer: silentWav() });
+  await createAndOpen(page);
+  const speakerA = page.getByRole("group", { name: /Speaker A/ });
+  const speakerB = page.getByRole("group", { name: /Speaker B/ });
+  await expect(speakerA).toContainText("(2 turns)", { timeout: 20_000 });
+
+  // Saving with a voice still open names what is missing and goes back to it.
+  await page.getByRole("button", { name: "Save speakers" }).click();
+  await expect(page.getByText("Map every speaker or mark them Unknown to continue.")).toBeVisible();
+  await expect(page.getByLabel("Who is Speaker A?")).toBeFocused();
+  await expect(speakerB.locator(".field-error")).toHaveText("Choose who Speaker B is, or Unknown.");
+
+  // Playing a turn fetches the recording once and starts at the turn.
+  const player = page.getByTestId("turn-player");
+  await speakerB.getByRole("button", { name: "Play from 00:01" }).click();
+  await expect(speakerB.getByRole("button", { name: "Stop playing" })).toBeVisible();
+  await expect
+    .poll(() => player.evaluate((a: HTMLAudioElement) => a.currentTime))
+    .toBeGreaterThanOrEqual(1.1);
+  // It stops at the end of the turn by itself.
+  await expect(speakerB.getByRole("button", { name: "Play from 00:01" })).toBeVisible({
+    timeout: 5_000,
+  });
+  expect(await player.evaluate((a: HTMLAudioElement) => a.paused)).toBe(true);
+  await noAxeViolations(page);
+
+  await page.getByLabel("Who is Speaker A?").selectOption({ label: "Priya" });
+  await page.getByLabel("Who is Speaker B?").selectOption({ label: "Priya" });
+  await page.getByRole("button", { name: "Save speakers" }).click();
+
+  const rail = page.getByRole("navigation", { name: "Meeting check stages" });
+  await expect(rail.locator('[aria-current="step"]')).toHaveText("Transcript review");
+  const turns = page.locator(".turns li");
+  await expect(turns).toHaveCount(3);
+  await expect(turns.nth(1)).toContainText("Priya at 00:01");
+  await expect(turns.nth(1)).toContainText("I'll own the rollout.");
+  await noAxeViolations(page);
+
+  // The mapping can be reopened, with the saved choices in place.
+  await rail.getByRole("link", { name: /Speakers/ }).click();
+  await expect(page.getByLabel("Who is Speaker B?")).toHaveValue(/:p:0$/);
 });
 
 test("refuses a file over 32 MB before uploading it", async ({ page }) => {
