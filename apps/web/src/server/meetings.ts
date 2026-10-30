@@ -95,6 +95,7 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
     });
   const resolutions = await deps.splits.resolutions(splits.map((s) => s.id));
   const confirmations = await deps.splits.confirmations(resolutions.map((r) => r.id));
+  const audio = await deps.meetings.liveAudio(meeting.id);
 
   return {
     meeting,
@@ -109,6 +110,7 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
     splits,
     resolutions,
     confirmations,
+    audio,
   };
 }
 

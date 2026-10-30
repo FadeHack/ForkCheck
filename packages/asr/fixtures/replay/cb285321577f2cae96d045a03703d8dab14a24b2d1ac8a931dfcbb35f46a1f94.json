@@ -1,0 +1,28 @@
+{
+  "sessionId": "fixture/silent-3s",
+  "transcript": "We ship SSO on Friday. I'll own the rollout. It needs the staging tenant first.",
+  "audioDurationMs": 3000,
+  "turns": [
+    {
+      "turnId": 0,
+      "startMs": 0,
+      "endMs": 1000,
+      "transcript": "We ship SSO on Friday.",
+      "speaker": "A"
+    },
+    {
+      "turnId": 1,
+      "startMs": 1100,
+      "endMs": 2000,
+      "transcript": "I'll own the rollout.",
+      "speaker": "B"
+    },
+    {
+      "turnId": 2,
+      "startMs": 2100,
+      "endMs": 2900,
+      "transcript": "It needs the staging tenant first.",
+      "speaker": "A"
+    }
+  ]
+}
