@@ -6,21 +6,26 @@ import type { OrganizerMeetingState } from "../../contracts/api";
 import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
 import { Loading, PageError } from "../components";
 import { SimulatedBanner } from "../simulated-banner";
-import { organizerStage, organizerStages, type OrganizerStage } from "../stages";
+import { organizerStage, stagesFor, type OrganizerStage, type StageList } from "../stages";
 import { formatHeldAt } from "../time";
 import { QuestionsView } from "./questions";
 import { RoundMonitor } from "./round";
 import { RecheckView } from "./recheck";
+import { SpeakersView } from "./speakers";
 import { TracePanel } from "./trace";
 import { RecordLink, RevealView, StageRail } from "./views";
 
 const POLL_MS = 5000;
 
 /** Shows an earlier stage when `?stage=` names one; never a stage the meeting hasn't reached. */
-export function viewedStage(current: OrganizerStage, requested: string | null): OrganizerStage {
-  const idx = (id: string | null) => organizerStages.findIndex((s) => s.id === id);
+export function viewedStage(
+  current: OrganizerStage,
+  requested: string | null,
+  stages: StageList,
+): OrganizerStage {
+  const idx = (id: string | null) => stages.findIndex((s) => s.id === id);
   const r = idx(requested);
-  return r > 0 && r <= idx(current) ? organizerStages[r]!.id : current;
+  return r > 0 && r <= idx(current) ? stages[r]!.id : current;
 }
 
 export function WorkspaceView({
@@ -34,7 +39,8 @@ export function WorkspaceView({
   reload?: () => Promise<void>;
 }) {
   const current = organizerStage(state);
-  const stage = viewedStage(current, viewing);
+  const stages = stagesFor(state.meeting);
+  const stage = viewedStage(current, viewing, stages);
   const id = state.meeting.id;
   const href = (s: OrganizerStage) => `/m/${encodeURIComponent(id)}?stage=${s}`;
   return (
@@ -44,7 +50,8 @@ export function WorkspaceView({
         <p>Held {formatHeldAt(state.meeting.heldAt, state.meeting.timezone)}</p>
       </header>
       {state.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
-      <StageRail current={current} viewing={stage} href={href} />
+      <StageRail stages={stages} current={current} viewing={stage} href={href} />
+      {stage === "speakers" && <SpeakersView state={state} onChange={reload} />}
       {stage === "questions" && (
         // Remounts when drafting finishes, so the selection starts from the new drafts.
         <QuestionsView key={state.meeting.status} state={state} onChange={reload} />

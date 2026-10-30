@@ -895,3 +895,17 @@
     display: none;
   }
 }
+
+/* Paste or upload: one decision with two options, so it uses the same full-row choice as an answer. */
+.source-choice {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--space-6);
+  min-width: 0;
+}
+
+.source-choice legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+}

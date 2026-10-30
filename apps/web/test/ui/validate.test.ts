@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import type { RecordingInfo } from "../../src/ui/audio";
 import {
   serverFieldErrors,
   transcriptWarnings,
@@ -26,7 +27,51 @@ describe("validateMeeting", () => {
         participants: ["Priya", "Marco"],
         transcript: "Priya: Ready by Friday?\nMarco: Yes.",
       },
+      keywords: [],
     });
+  });
+
+  it("asks for a recording instead of a transcript when the source is audio", () => {
+    const audio: MeetingForm = { ...valid, source: "audio", transcript: "", recording: null };
+    expect(validateMeeting(audio)).toEqual({
+      ok: false,
+      errors: { recording: "Choose the recording to upload." },
+    });
+    expect(
+      validateMeeting({
+        ...audio,
+        recording: { size: 1_000_000, durationMs: 120_000 },
+        terms: " SSO \n\nOkta\nSSO",
+      }),
+    ).toEqual({
+      ok: true,
+      body: {
+        title: "Pilot customer check-in",
+        heldAt: "2026-10-26T19:00:00.000Z",
+        timezone: "America/New_York",
+        participants: ["Priya", "Marco"],
+      },
+      keywords: ["SSO", "Okta"],
+    });
+  });
+
+  it("refuses a recording that is too long or too large", () => {
+    const audio: MeetingForm = { ...valid, source: "audio", transcript: "" };
+    const errors = (recording: RecordingInfo) => {
+      const res = validateMeeting({ ...audio, recording });
+      return res.ok ? null : res.errors.recording;
+    };
+    expect(errors({ size: 20_000_000, durationMs: 14 * 60_000 + 5_000 })).toBe(
+      "This recording is 14 min 5 s. ForkCheck can take up to 10 minutes per recording. Trim it and upload again.",
+    );
+    expect(errors({ size: 41_200_000, durationMs: null })).toBe(
+      "This file is 41.2 MB. ForkCheck can take files up to 32 MB. Trim it, or export it as mono WAV, and upload again.",
+    );
+    expect(errors({ size: 0, durationMs: null })).toBe(
+      "This file is empty. Choose the recording again.",
+    );
+    // The length is unknown in some browsers; the server checks it after conversion.
+    expect(errors({ size: 32_000_000, durationMs: null })).toBeNull();
   });
 
   it("names the field and the fix for every empty field", () => {

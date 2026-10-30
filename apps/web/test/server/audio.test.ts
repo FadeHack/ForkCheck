@@ -3,9 +3,13 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { POST as createRoute } from "../../src/app/api/meetings/route";
-import { DELETE } from "../../src/app/api/meetings/[id]/route";
+import { DELETE, GET } from "../../src/app/api/meetings/[id]/route";
 import { POST as uploadRoute } from "../../src/app/api/meetings/[id]/audio/upload/route";
-import type { CreateMeetingResponse, UploadAudioResponse } from "../../src/contracts/api";
+import type {
+  CreateMeetingResponse,
+  OrganizerMeetingState,
+  UploadAudioResponse,
+} from "../../src/contracts/api";
 import { MAX_UPLOAD_BYTES } from "../../src/server/audio";
 import type { Deps } from "../../src/server/deps";
 import { LocalDiskStorage, TooLargeError } from "../../src/server/storage";
@@ -198,6 +202,35 @@ describe("POST /api/meetings/:id/audio/upload", () => {
     const res = await upload(m.meetingId, m.organizerToken, streamOf(new Uint8Array(10)));
     expect(res.status).toBe(409);
     expect(res.body).toMatchObject({ error: { code: "wrong_status" } });
+  });
+
+  it("replaces the earlier recording and reports the live one in the meeting state", async () => {
+    const m = await audioMeeting();
+    const state = async () =>
+      (
+        await call(
+          GET,
+          `/api/meetings/${m.meetingId}`,
+          { id: m.meetingId },
+          { token: m.organizerToken },
+        )
+      ).body as OrganizerMeetingState;
+    expect((await state()).audio).toBeNull();
+
+    const first = (await upload(m.meetingId, m.organizerToken, streamOf(new Uint8Array(100))))
+      .body as UploadAudioResponse;
+    expect((await state()).audio).toEqual({
+      storageKey: first.storageKey,
+      durationMs: null,
+      retain: false,
+    });
+
+    const second = (await upload(m.meetingId, m.organizerToken, streamOf(new Uint8Array(200))))
+      .body as UploadAudioResponse;
+    expect((await state()).audio?.storageKey).toBe(second.storageKey);
+    expect(await deps.storage.get(first.storageKey)).toBeNull();
+    expect(await deps.meetings.hasAudio(m.meetingId, first.storageKey)).toBe(false);
+    expect(await deps.meetings.audioKeys(m.meetingId)).toEqual([second.storageKey]);
   });
 
   it("removes the stored file when the meeting is deleted", async () => {

@@ -455,6 +455,30 @@ export class MeetingRepo {
     return rows.length > 0;
   }
 
+  /** The recording not yet deleted; uploads retire the previous one, so there is at most one. */
+  async liveAudio(
+    meetingId: string,
+  ): Promise<{ storageKey: string; durationMs: number | null; retain: boolean } | null> {
+    const [row] = await this.db
+      .select({
+        storageKey: t.audioAsset.storageKey,
+        durationMs: t.audioAsset.durationMs,
+        retain: t.audioAsset.retain,
+      })
+      .from(t.audioAsset)
+      .where(and(eq(t.audioAsset.meetingId, meetingId), isNull(t.audioAsset.deletedAt)));
+    return row ?? null;
+  }
+
+  /** Records that the stored files are gone; the rows stay as the deletion log. */
+  async markAudioDeleted(meetingId: string, keys: string[], at: Date): Promise<void> {
+    if (keys.length === 0) return;
+    await this.db
+      .update(t.audioAsset)
+      .set({ deletedAt: at })
+      .where(and(eq(t.audioAsset.meetingId, meetingId), inArray(t.audioAsset.storageKey, keys)));
+  }
+
   /** Storage keys of audio not yet deleted, so a meeting delete can remove the files too. */
   async audioKeys(meetingId: string): Promise<string[]> {
     const rows = await this.db

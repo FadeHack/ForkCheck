@@ -1,9 +1,39 @@
 import { describe, expect, it } from "vitest";
-import { organizerStage, participantStage, recheckMayFollow } from "../../src/ui/stages";
+import { organizerStage, participantStage, recheckMayFollow, stagesFor } from "../../src/ui/stages";
 import { viewedStage } from "../../src/ui/organizer/workspace";
-import { answer, organizerState, participantState, probe, round, split } from "./fixtures";
+import { organizerStages } from "../../src/ui/stages";
+import { answer, meeting, organizerState, participantState, probe, round, split } from "./fixtures";
 
 const closed = { closedAt: "2026-10-27T21:00:00.000Z", closeReason: "all_answered" as const };
+
+describe("audio stages", () => {
+  const audio = (overrides: Partial<typeof meeting>) =>
+    organizerState({ meeting: { ...meeting, source: "audio", ...overrides } });
+
+  it("lists Speakers and Transcript review only for a recording", () => {
+    expect(stagesFor({ source: "paste" }).map((s) => s.id)).not.toContain("speakers");
+    expect(
+      stagesFor({ source: "audio" })
+        .map((s) => s.id)
+        .slice(0, 4),
+    ).toEqual(["source", "speakers", "review", "questions"]);
+  });
+
+  it("is speakers until there is a transcript, and while it waits for review", () => {
+    for (const status of ["draft", "transcribing", "failed"] as const) {
+      expect(organizerStage(audio({ status, transcriptVersion: 0 }))).toBe("speakers");
+    }
+    expect(organizerStage(audio({ status: "review", transcriptVersion: 1 }))).toBe("speakers");
+  });
+
+  it("leaves an analysis failure after transcription to the questions stage", () => {
+    expect(organizerStage(audio({ status: "failed", transcriptVersion: 1 }))).toBe("questions");
+  });
+
+  it("never opens an audio stage for a pasted meeting", () => {
+    expect(viewedStage("questions", "speakers", stagesFor({ source: "paste" }))).toBe("questions");
+  });
+});
 
 describe("organizerStage", () => {
   it("is questions before any round opens", () => {
@@ -91,11 +121,11 @@ describe("a recheck without enough answers", () => {
 
 describe("viewedStage", () => {
   it("shows an earlier stage on request, never a later one or the source", () => {
-    expect(viewedStage("reveal", "questions")).toBe("questions");
-    expect(viewedStage("reveal", "record")).toBe("reveal");
-    expect(viewedStage("reveal", "source")).toBe("reveal");
-    expect(viewedStage("reveal", "nonsense")).toBe("reveal");
-    expect(viewedStage("reveal", null)).toBe("reveal");
+    expect(viewedStage("reveal", "questions", organizerStages)).toBe("questions");
+    expect(viewedStage("reveal", "record", organizerStages)).toBe("reveal");
+    expect(viewedStage("reveal", "source", organizerStages)).toBe("reveal");
+    expect(viewedStage("reveal", "nonsense", organizerStages)).toBe("reveal");
+    expect(viewedStage("reveal", null, organizerStages)).toBe("reveal");
   });
 });
 

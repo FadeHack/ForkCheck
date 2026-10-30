@@ -1,8 +1,10 @@
-import type { Split, SplitStatus } from "@forkcheck/core";
+import type { Meeting, Split, SplitStatus } from "@forkcheck/core";
 import type { OrganizerMeetingState, ParticipantState } from "../contracts/api";
 
 export const organizerStages = [
   { id: "source", label: "Source" },
+  { id: "speakers", label: "Speakers" },
+  { id: "review", label: "Transcript review" },
   { id: "questions", label: "Questions" },
   { id: "round", label: "Round" },
   { id: "reveal", label: "Reveal" },
@@ -11,6 +13,16 @@ export const organizerStages = [
   { id: "record", label: "Record" },
 ] as const;
 export type OrganizerStage = (typeof organizerStages)[number]["id"];
+export type StageList = readonly (typeof organizerStages)[number][];
+
+const AUDIO_ONLY: ReadonlySet<OrganizerStage> = new Set(["speakers", "review"]);
+
+/** A pasted transcript has no voices to name and nothing misheard, so it skips the audio stages. */
+export function stagesFor(meeting: Pick<Meeting, "source">): StageList {
+  return meeting.source === "audio"
+    ? organizerStages
+    : organizerStages.filter((s) => !AUDIO_ONLY.has(s.id));
+}
 
 /** Split states that need nothing more from anyone. */
 const SETTLED: readonly SplitStatus[] = ["rechecked", "unresolved"];
@@ -56,6 +68,10 @@ export function splitsToSettle(
  * stays `revealed` from the first reveal on.
  */
 export function organizerStage(state: OrganizerMeetingState): OrganizerStage {
+  const m = state.meeting;
+  if (m.source === "audio" && (m.transcriptVersion === 0 || m.status === "review")) {
+    return "speakers";
+  }
   const diagnostic = state.rounds.filter((r) => r.kind === "diagnostic");
   if (diagnostic.length === 0) return "questions";
   if (diagnostic.some((r) => r.closedAt === null)) return "round";

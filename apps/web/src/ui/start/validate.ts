@@ -1,17 +1,28 @@
 import { normalizeName, parseTranscript } from "@forkcheck/core";
 import type { CreateMeetingRequest } from "../../contracts/api";
 import type { ValidationError } from "../../server/http";
+import { recordingProblem, termList, type RecordingInfo } from "../audio";
 import { wallTimeToInstant } from "../time";
 
-export type FormField = "title" | "heldAt" | "timezone" | "participants" | "transcript" | "consent";
+export type FormField =
+  "title" | "heldAt" | "timezone" | "participants" | "transcript" | "recording" | "consent";
 export type FieldErrors = Partial<Record<FormField, string>>;
+
+export type SourceKind = "paste" | "audio";
 
 export interface MeetingForm {
   title: string;
   heldAt: string;
   timezone: string;
   participants: string;
+  /** Paste when absent. */
+  source?: SourceKind;
+  /** Paste only. */
   transcript: string;
+  /** Audio only: the chosen file, or null when none is. */
+  recording?: RecordingInfo | null;
+  /** Audio only: project terms for recognition, one per line. */
+  terms?: string;
   consent: boolean;
 }
 
@@ -22,6 +33,7 @@ const FIX: Record<FormField, string> = {
   timezone: "Enter a time zone name, such as America/New_York.",
   participants: "Enter at least two participant names, one per line.",
   transcript: "Paste the meeting transcript.",
+  recording: "Choose the recording to upload.",
   consent: "Confirm that everyone agreed to have this meeting checked.",
 };
 
@@ -53,7 +65,10 @@ function repeatedName(names: string[]): string | null {
 
 export function validateMeeting(
   form: MeetingForm,
-): { ok: true; body: CreateMeetingRequest } | { ok: false; errors: FieldErrors } {
+):
+  | { ok: true; body: CreateMeetingRequest; keywords: string[] }
+  | { ok: false; errors: FieldErrors } {
+  const audio = form.source === "audio";
   const title = form.title.trim();
   const timezone = form.timezone.trim();
   const participants = participantNames(form.participants);
@@ -71,11 +86,20 @@ export function validateMeeting(
   else if (repeated !== null) {
     errors.participants = `Each participant needs a different name. "${repeated}" is listed twice.`;
   }
-  if (transcript === "") errors.transcript = FIX.transcript;
+  if (audio) {
+    const problem = recordingProblem(form.recording ?? null);
+    if (problem !== null) errors.recording = problem;
+  } else if (transcript === "") errors.transcript = FIX.transcript;
   if (!form.consent) errors.consent = FIX.consent;
 
   if (Object.keys(errors).length > 0 || heldAt === null) return { ok: false, errors };
-  return { ok: true, body: { title, heldAt, timezone, participants, transcript } };
+  return audio
+    ? {
+        ok: true,
+        body: { title, heldAt, timezone, participants },
+        keywords: termList(form.terms ?? ""),
+      }
+    : { ok: true, body: { title, heldAt, timezone, participants, transcript }, keywords: [] };
 }
 
 /** Maps a 400's `participants.1` style paths onto the form's fields. */

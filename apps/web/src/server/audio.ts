@@ -70,6 +70,10 @@ export async function uploadAudio(
     await deps.storage.delete(storageKey);
     return empty;
   }
+  const previous = await deps.meetings.audioKeys(meeting.id);
   await deps.meetings.addAudio({ id: fileId, meetingId: meeting.id, storageKey });
+  // One recording per meeting: the one it replaces is deleted now, not left until the meeting goes.
+  for (const key of previous) await deps.storage.delete(key);
+  await deps.meetings.markAudioDeleted(meeting.id, previous, deps.now());
   return { ok: true, response: { storageKey, bytes } };
 }

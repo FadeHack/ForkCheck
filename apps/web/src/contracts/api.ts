@@ -107,6 +107,16 @@ export interface OrganizerMeetingState {
   splits: Split[];
   resolutions: Resolution[];
   confirmations: Confirmation[];
+  /** The meeting's recording while it is stored; a new upload replaces it. */
+  audio: StoredAudio | null;
+}
+
+export interface StoredAudio {
+  storageKey: string;
+  /** Known once transcribed. */
+  durationMs: number | null;
+  /** Kept after review, so quotes can link to playback. */
+  retain: boolean;
 }
 
 // POST /api/meetings/:id/simulate → answers the open round for simulated participants; no body
