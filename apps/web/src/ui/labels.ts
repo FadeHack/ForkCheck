@@ -102,14 +102,19 @@ export const validityText: Record<ValidityLabel, string> = {
 
 export const SIMULATED = "SIMULATED";
 
-/** Who said a turn: the mapped participant, else the transcription's label marked as unmapped. */
+/**
+ * Who said a turn: the participant, "Unknown speaker" when the organizer said so (or the turn
+ * has no label), else the transcription's label marked as unmapped.
+ */
 export function turnSpeaker(
   segment: Pick<Segment, "participantId" | "speakerLabel">,
   people: Pick<Participant, "id" | "displayName">[],
+  mapped: readonly { label: string }[] = [],
 ): string {
   const p = people.find((x) => x.id === segment.participantId);
   if (p) return p.displayName;
-  return segment.speakerLabel === null
+  const label = segment.speakerLabel;
+  return label === null || mapped.some((m) => m.label === label)
     ? "Unknown speaker"
-    : `Speaker ${segment.speakerLabel} (unmapped)`;
+    : `Speaker ${label} (unmapped)`;
 }

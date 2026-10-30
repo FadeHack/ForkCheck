@@ -110,7 +110,7 @@ test("maps two voices to one person after playing their turns", async ({ page })
 
   const rail = page.getByRole("navigation", { name: "Meeting check stages" });
   await expect(rail.locator('[aria-current="step"]')).toHaveText("Transcript review");
-  const turns = page.locator(".turns li");
+  const turns = page.locator(".turns > li");
   await expect(turns).toHaveCount(3);
   await expect(turns.nth(1)).toContainText("Priya at 00:01");
   await expect(turns.nth(1)).toContainText("I'll own the rollout.");
@@ -119,6 +119,74 @@ test("maps two voices to one person after playing their turns", async ({ page })
   // The mapping can be reopened, with the saved choices in place.
   await rail.getByRole("link", { name: /Speakers/ }).click();
   await expect(page.getByLabel("Who is Speaker B?")).toHaveValue(/:p:0$/);
+});
+
+test("edits a misheard turn, then finishes review and deletes the recording", async ({ page }) => {
+  await fillAudioForm(page, { name: "sync.wav", mimeType: "audio/wav", buffer: silentWav() });
+  await createAndOpen(page);
+  await expect(page.getByRole("group", { name: /Speaker A/ })).toContainText("(2 turns)", {
+    timeout: 20_000,
+  });
+  await page.getByLabel("Who is Speaker A?").selectOption({ label: "Priya" });
+  await page.getByLabel("Who is Speaker B?").selectOption({ label: "Marco" });
+  await page.getByRole("button", { name: "Save speakers" }).click();
+
+  const turns = page.locator(".turns > li");
+  await expect(turns).toHaveCount(3);
+  // "Friday" makes the first turn one to check first.
+  await expect(turns.nth(0)).toHaveClass(/turn-check/);
+  await expect(turns.nth(0)).toContainText("Check the date.");
+
+  // An empty turn is refused in place, and Cancel returns to the turn's Edit button.
+  const first = turns.nth(0);
+  await first.getByRole("button", { name: "Edit turn" }).click();
+  await expect(first.getByLabel("What was said")).toBeFocused();
+  await first.getByLabel("What was said").fill("  ");
+  await first.getByRole("button", { name: "Save turn" }).click();
+  await expect(first.locator(".field-error")).toHaveText(
+    "Type what was said, or cancel to keep the old wording.",
+  );
+  await expect(first.getByLabel("What was said")).toBeFocused();
+  await noAxeViolations(page);
+  await first.getByRole("button", { name: "Cancel" }).click();
+  await expect(first.getByRole("button", { name: "Edit turn" })).toBeFocused();
+
+  // Fix the words and the speaker of the second turn; both changes are logged.
+  const second = turns.nth(1);
+  await second.getByRole("button", { name: "Edit turn" }).click();
+  await second.getByLabel("What was said").fill("I'll own the rollout and the docs.");
+  await second.getByLabel("Who said it").selectOption({ label: "Priya" });
+  await second.getByRole("button", { name: "Save turn" }).click();
+  await expect(second.locator(".turn-speaker")).toHaveText(/^Priya at 00:01\s*Edited$/);
+  await expect(second.locator(".turn-text")).toHaveText("I'll own the rollout and the docs.");
+  await expect(second.getByRole("button", { name: "Edit turn" })).toBeFocused();
+  await second.getByText("2 changes").click();
+  await expect(second.locator(".turn-log")).toContainText(
+    "Words changed from “I'll own the rollout.” to “I'll own the rollout and the docs.”",
+  );
+  await expect(second.locator(".turn-log")).toContainText("Speaker changed from Marco to Priya");
+
+  await expect(page.getByText("The audio file will be deleted now.")).toBeVisible();
+  await noAxeViolations(page);
+
+  // Drafting needs recorded model replies for this transcript, which M6.6 adds; here the
+  // analyze call is answered empty so the test stops at the deletion.
+  await page.route("**/analyze", (route) =>
+    route.fulfill({ json: { decisions: [], candidates: [], draftProbes: [] } }),
+  );
+  await page.getByRole("button", { name: "Finish review" }).click();
+  await expect(page.getByLabel(/Keep the recording/)).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /Play from/ })).toHaveCount(0);
+
+  const id = new URL(page.url()).pathname.split("/").at(-1)!;
+  const token = await page.evaluate(
+    (key) => sessionStorage.getItem(key),
+    `forkcheck:organizer:${id}`,
+  );
+  const res = await page.request.get(`/api/meetings/${id}/audio`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  expect(res.status()).toBe(404);
 });
 
 test("refuses a file over 32 MB before uploading it", async ({ page }) => {

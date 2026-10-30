@@ -972,3 +972,61 @@
   font-family: var(--font-reading);
   line-height: 1.6;
 }
+
+/* A turn mentioning a date, name or number: an outline and a note, not color alone. */
+.turns li.turn-check {
+  border: 2px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-2) 0;
+}
+
+.turn-note {
+  margin: var(--space-2) 0 0;
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+.turn-edited {
+  margin-left: var(--space-2);
+  padding: 0 var(--space-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  font-size: 0.875rem;
+}
+
+.turn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.turn-editor {
+  margin-top: var(--space-2);
+}
+
+.turn-log {
+  margin-top: var(--space-3);
+  font-size: 0.9375rem;
+}
+
+.turn-log summary {
+  cursor: pointer;
+  color: var(--ink-muted);
+}
+
+.turn-log ol {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-6);
+}
+
+.turn-log li {
+  padding: var(--space-1) 0;
+  border: 0;
+  overflow-wrap: anywhere;
+}
+
+.finish-review {
+  margin-top: var(--space-6);
+}

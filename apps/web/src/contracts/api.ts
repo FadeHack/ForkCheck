@@ -111,6 +111,18 @@ export interface OrganizerMeetingState {
   audio: StoredAudio | null;
   /** Saved speaker mapping, one entry per label; empty until the organizer saves it. */
   speakers: SpeakerAssignment[];
+  /** Changes made to turns in transcript review, oldest first. */
+  edits: SegmentEdit[];
+}
+
+export interface SegmentEdit {
+  id: string;
+  segmentId: string;
+  field: "text" | "participantId";
+  /** A participant ID when `field` is participantId; null there is an unknown speaker. */
+  before: string | null;
+  after: string | null;
+  at: string;
 }
 
 export interface SpeakerAssignment {
@@ -155,7 +167,8 @@ export interface MapSpeakersResponse {
   segments: Segment[];
 }
 
-// PATCH /api/segments/:id (logged to segment_edit)
+// PATCH /api/segments/:id (logged to segment_edit; audio meetings in review only)
+/** Each changed field is logged, marks the turn edited and bumps the transcript version. */
 export const editSegmentRequest = z
   .strictObject({ text: z.string().optional(), participantId: id.nullable().optional() })
   .refine((b) => b.text !== undefined || b.participantId !== undefined, {
@@ -163,6 +176,14 @@ export const editSegmentRequest = z
   });
 export type EditSegmentRequest = z.infer<typeof editSegmentRequest>;
 export type EditSegmentResponse = Segment;
+
+// POST /api/meetings/:id/review → ends transcript review; the client then calls analyze
+/** Without `keepAudio` the recording is deleted now. Safe to repeat after a failed analysis. */
+export const finishReviewRequest = z.strictObject({ keepAudio: z.boolean() });
+export type FinishReviewRequest = z.infer<typeof finishReviewRequest>;
+export interface FinishReviewResponse {
+  audio: StoredAudio | null;
+}
 
 // POST /api/meetings/:id/analyze (idempotent per transcript version)
 export interface AnalyzeResponse {

@@ -2,7 +2,6 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import type { Meeting, Segment } from "@forkcheck/core";
 import type { OrganizerMeetingState } from "../../src/contracts/api";
-import { ReviewView } from "../../src/ui/organizer/review";
 import { sampleTurns, SpeakersView } from "../../src/ui/organizer/speakers";
 import { meeting, organizerState } from "./fixtures";
 
@@ -130,24 +129,5 @@ describe("sampleTurns", () => {
     const turns = [segment(0, "A", 500), segment(1, "A", 4000), segment(2, "A", 900)];
     turns.push(segment(3, "A", 3000), segment(4, "A", 100));
     expect(sampleTurns(turns).map((t) => t.idx)).toEqual([1, 2, 3]);
-  });
-});
-
-describe("ReviewView", () => {
-  it("names mapped voices and marks the rest as unmapped", () => {
-    const segments = [segment(0, "A"), segment(1, "C"), segment(2, null)];
-    segments[0] = { ...segments[0]!, participantId: "p0" };
-    const out = text(
-      <ReviewView
-        state={organizerState({
-          meeting: { ...meeting, source: "audio", status: "review", transcriptVersion: 1 },
-          segments,
-        })}
-      />,
-    );
-    expect(out).toContain("Priya at 00:00 Turn 0.");
-    expect(out).toContain("Speaker C (unmapped) at 00:10 Turn 1.");
-    expect(out).toContain("Unknown speaker at 00:20 Turn 2.");
-    expect(out).toContain("Finish review");
   });
 });

@@ -87,6 +87,7 @@ export function organizerState(
     revealedAnswers: [],
     audio: null,
     speakers: [],
+    edits: [],
     splits: [],
     resolutions: [],
     confirmations: [],
