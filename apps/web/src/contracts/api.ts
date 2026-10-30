@@ -68,6 +68,13 @@ export const updateParticipantRequest = participantSchema.pick({ status: true })
 export type UpdateParticipantRequest = z.infer<typeof updateParticipantRequest>;
 export type UpdateParticipantResponse = Participant;
 
+// POST /api/meetings/:id/audio/upload → 201; the body is the file's raw bytes
+export interface UploadAudioResponse {
+  /** Passed back in `POST /api/meetings/:id/audio`. */
+  storageKey: string;
+  bytes: number;
+}
+
 // POST /api/meetings/:id/audio → 202
 export const startTranscriptionRequest = z.strictObject({
   storageKey: z.string().min(1),

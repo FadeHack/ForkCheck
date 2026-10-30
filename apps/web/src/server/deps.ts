@@ -1,4 +1,4 @@
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import {
   ConsoleCallLog,
   FakeProvider,
@@ -11,13 +11,16 @@ import {
 import { findWorkspaceRoot, loadEnv, type Env } from "@forkcheck/config";
 import { parseProbeDimensions, type Dimension } from "@forkcheck/core";
 import { connect, DbCallLog, MeetingRepo, RoundRepo, SplitRepo, type Db } from "@forkcheck/db";
+import { LocalDiskStorage, type Storage } from "./storage";
 
-/** Stored audio. The local-disk and Blob implementations arrive with uploads. */
-export interface Storage {
-  delete(key: string): Promise<void>;
-}
-
-export const noStorage: Storage = { delete: async () => {} };
+/** For deps without audio: nothing is stored, so there is nothing to read or delete. */
+export const noStorage: Storage = {
+  put: async () => {
+    throw new Error("No audio storage is configured");
+  },
+  get: async () => null,
+  delete: async () => {},
+};
 
 export interface Deps {
   db: Db;
@@ -65,6 +68,14 @@ function modelFactory(env: Env, db: Db): (meetingId: string) => ModelPort {
     });
 }
 
+/** Vercel Blob is wired only if the app is deployed; local runs keep audio under AUDIO_DIR. */
+function storageFor(env: Env): Storage {
+  if (env.STORAGE_DRIVER === "blob") {
+    throw new Error("STORAGE_DRIVER=blob is not available yet; use STORAGE_DRIVER=local");
+  }
+  return new LocalDiskStorage(resolve(findWorkspaceRoot() ?? process.cwd(), env.AUDIO_DIR));
+}
+
 let current: Deps | undefined;
 
 /** One database connection per server process, opened on first use. */
@@ -74,6 +85,7 @@ export function getDeps(): Deps {
     const { db } = connect(env.DATABASE_URL!);
     current = createDeps(db, {
       model: modelFactory(env, db),
+      storage: storageFor(env),
       dimensions: parseProbeDimensions(env.PROBE_DIMENSIONS),
     });
   }

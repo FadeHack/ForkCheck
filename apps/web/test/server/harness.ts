@@ -4,15 +4,15 @@ import { afterAll, afterEach } from "vitest";
 import { POST as openRoute } from "../../src/app/api/meetings/[id]/rounds/route";
 import { POST as answerRoute } from "../../src/app/api/p/[token]/answers/route";
 import { POST as closeRoute } from "../../src/app/api/rounds/[id]/close/route";
-import { createDeps, setDeps, type Deps } from "../../src/server/deps";
+import { createDeps, setDeps, type Deps, type DepsOverrides } from "../../src/server/deps";
 import { hashToken, newToken } from "../../src/server/tokens";
 
 export const NOW = new Date("2026-10-27T20:00:00.000Z");
 
 /** A PGlite database behind the route handlers, for one test file. */
-export async function useTestDeps(): Promise<Deps> {
+export async function useTestDeps(overrides: DepsOverrides = {}): Promise<Deps> {
   const { db, close } = await createMemoryDb();
-  const deps = createDeps(db, { now: () => NOW });
+  const deps = createDeps(db, { now: () => NOW, ...overrides });
   setDeps(deps);
   afterEach(() => setDeps(deps));
   afterAll(async () => {
