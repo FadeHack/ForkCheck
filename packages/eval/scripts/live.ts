@@ -3,15 +3,16 @@ import { join, resolve } from "node:path";
 import { TranscribeClient } from "@forkcheck/asr";
 import { EnvError, loadEnv, loadLocalEnvFile, type Env } from "@forkcheck/config";
 import { FileCallLog, FileModelCache, FileSpendLedger, MetaProvider } from "@forkcheck/ai";
+import { BasetenProvider } from "@forkcheck/ai/baseten";
 
 const workspace = resolve(import.meta.dirname, "../../..");
 
-/** The environment for a live run; exits unless LIVE=1 and the Meta key is set. */
-function liveEnv(): Env {
+/** The environment for a live run; exits unless LIVE=1 and the provider's key is set. */
+function liveEnv(key: "MODEL_API_KEY" | "BASETEN_API_KEY" = "MODEL_API_KEY"): Env {
   loadLocalEnvFile();
   let env: Env;
   try {
-    env = loadEnv(process.env, { require: ["MODEL_API_KEY"] });
+    env = loadEnv(process.env, { require: [key] });
   } catch (error) {
     if (!(error instanceof EnvError)) throw error;
     console.error(error.message);
@@ -54,5 +55,16 @@ export function liveMeta({ cache = true }: { cache?: boolean } = {}): MetaProvid
     log: new FileCallLog(join(workspace, "var", "model-calls.jsonl")),
     // Reruns of an unchanged prompt on unchanged scenarios cost nothing.
     ...(cache ? { cache: new FileModelCache(join(workspace, "var", "model-cache")) } : {}),
+  });
+}
+
+/** Muse Spark Open on Baseten for the comparison: its own cap, the shared ledger and call log, no cache. */
+export function liveBaseten(): BasetenProvider {
+  const env = liveEnv("BASETEN_API_KEY");
+  return new BasetenProvider({
+    apiKey: env.BASETEN_API_KEY ?? "",
+    spendCapUsd: env.BASETEN_SPEND_CAP_USD,
+    ledger: new FileSpendLedger(join(workspace, "var", "spend.json")),
+    log: new FileCallLog(join(workspace, "var", "model-calls.jsonl")),
   });
 }
