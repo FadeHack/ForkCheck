@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "id": "heldout-scope-checkout-demo",
+  "title": "New checkout for the Hartwell demo",
+  "set": "heldout",
+  "category": "scope",
+  "heldAt": "2026-11-02T13:00:00-05:00",
+  "timezone": "America/Chicago",
+  "participants": ["Leila", "Sam", "Ottilie"],
+  "transcript": "[00:00] Leila: Hartwell Outdoor confirmed the demo for Thursday the 12th. Their CFO is joining.\n[00:06] Sam: Is this about the one-page checkout?\n[00:10] Leila: Yes. It's the main reason they're looking at us. Their current checkout is five steps.\n[00:17] Ottilie: The one-page flow works on my branch. Card and wallet payments both go through in test mode.\n[00:25] Sam: Tax calculation is still the old service, though. It's slow on the first call.\n[00:31] Ottilie: I can warm it before the demo.\n[00:35] Leila: Then let's have the new checkout ready for the Hartwell demo. Ottilie owns it, Sam helps with tax.\n[00:43] Ottilie: Ready for the twelfth, got it.\n[00:47] Sam: Sure, I'll look at caching the tax rates.\n[00:51] Leila: I'll send them the agenda tomorrow. Thirty minutes, checkout first.\n[00:56] Sam: Do we show the admin side too?\n[01:00] Leila: Only if they ask. Keep it on the buyer flow.\n[01:05] Ottilie: Makes sense.\n[01:09] Leila: Thanks, everyone.\n",
+  "expectedDecisions": [
+    {
+      "id": "checkout-ready",
+      "kind": "commitment",
+      "statement": "Ottilie has the new one-page checkout ready for the Hartwell demo on the 12th.",
+      "owner": "Ottilie",
+      "deadline": "Thursday the 12th",
+      "quotes": [
+        "let's have the new checkout ready for the Hartwell demo",
+        "Ready for the twelfth, got it."
+      ]
+    },
+    {
+      "id": "tax-caching",
+      "kind": "commitment",
+      "statement": "Sam looks at caching tax rates for the new checkout.",
+      "owner": "Sam",
+      "deadline": null,
+      "quotes": ["I'll look at caching the tax rates."]
+    },
+    {
+      "id": "demo-agenda",
+      "kind": "commitment",
+      "statement": "Leila sends Hartwell the demo agenda tomorrow.",
+      "owner": "Leila",
+      "deadline": "tomorrow",
+      "quotes": ["I'll send them the agenda tomorrow."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Leila",
+      "readings": [
+        {
+          "decision": "checkout-ready",
+          "dimension": "scope",
+          "reading": "Live in production behind a feature flag on Hartwell's trial account, so their CFO can try it on their own catalog."
+        }
+      ]
+    },
+    {
+      "participant": "Sam",
+      "readings": [
+        {
+          "decision": "checkout-ready",
+          "dimension": "scope",
+          "reading": "Live in production behind a feature flag, so Hartwell sees it with real tax rates."
+        }
+      ]
+    },
+    {
+      "participant": "Ottilie",
+      "readings": [
+        {
+          "decision": "checkout-ready",
+          "dimension": "scope",
+          "reading": "Running on the staging environment with test-mode payments; a click-through demo, not production."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "checkout-where",
+      "decision": "checkout-ready",
+      "dimension": "scope",
+      "note": "Prototype vs production: Ottilie plans a staging demo in test mode; Leila and Sam expect it in production behind a flag on Hartwell's trial account."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Leila: \"let's have the new checkout ready for the Hartwell demo\"",
+      "Sam: \"I'll look at caching the tax rates.\"",
+      "Leila: \"I'll send them the agenda tomorrow.\""
+    ],
+    "confirmed": [
+      "Ottilie deploys the one-page checkout to production behind a feature flag enabled only for Hartwell's trial account by Wednesday 2026-11-11, 17:00 CT."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "checkout-where",
+      "precise": {
+        "text": "The one-page checkout is in production behind a feature flag turned on only for Hartwell's trial account, by Wednesday 2026-11-11 at 17:00 Central.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "The new checkout will be ready for Hartwell on the twelfth.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

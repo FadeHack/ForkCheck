@@ -76,6 +76,28 @@ jobs:
           path: apps/web/test-results/
           retention-days: 7
 
+  heldout:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      # Held-out scenarios measure prompts that were never tuned on them, so a change
+      # to the prompts must not edit them in the same pull request.
+      - name: Prompt changes leave held-out scenarios alone
+        env:
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          changed=$(git diff --name-only "$PR_BASE...$PR_HEAD")
+          if echo "$changed" | grep -q '^prompts/' && echo "$changed" | grep -q '^scenarios/heldout/'; then
+            echo "This pull request changes prompts/ and scenarios/heldout/. Split it."
+            echo "$changed" | grep -E '^(prompts|scenarios/heldout)/'
+            exit 1
+          fi
+
   secrets:
     runs-on: ubuntu-latest
     timeout-minutes: 5

@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "id": "heldout-dependency-referral-legal",
+  "title": "Referral program after legal",
+  "set": "heldout",
+  "category": "dependency_outcome",
+  "heldAt": "2026-11-02T16:00:00-05:00",
+  "timezone": "America/New_York",
+  "participants": ["Rafael", "Sienna", "Tomas"],
+  "transcript": "[00:00] Rafael: Referral program. The landing page is built, the reward logic is tested.\n[00:06] Sienna: Fifty dollars credit for the referrer, a free month for the new account.\n[00:12] Tomas: And the cash option for partners. That's the part people actually asked for.\n[00:18] Rafael: Right. So we launch the referral program once legal is done.\n[00:23] Sienna: Makes sense. I'll have the launch email ready so we can go the same day.\n[00:30] Tomas: I'll keep the partner sign-up form hidden until then.\n[00:34] Rafael: Sienna, can you also brief support on the credit rules?\n[00:39] Sienna: Yes, I'll do a short doc for them.\n[00:43] Tomas: One thing. Do we cap referrals per account?\n[00:47] Rafael: Ten per month. It's already in the reward logic.\n[00:51] Tomas: Good.\n[00:55] Rafael: OK. Thanks.\n",
+  "expectedDecisions": [
+    {
+      "id": "referral-launch",
+      "kind": "decision",
+      "statement": "The referral program launches once legal is done.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["we launch the referral program once legal is done."]
+    },
+    {
+      "id": "launch-email",
+      "kind": "commitment",
+      "statement": "Sienna has the launch email ready for launch day.",
+      "owner": "Sienna",
+      "deadline": null,
+      "quotes": ["I'll have the launch email ready so we can go the same day."]
+    },
+    {
+      "id": "support-brief",
+      "kind": "commitment",
+      "statement": "Sienna writes a short doc on the credit rules for support.",
+      "owner": "Sienna",
+      "deadline": null,
+      "quotes": ["I'll do a short doc for them."]
+    },
+    {
+      "id": "referral-cap",
+      "kind": "decision",
+      "statement": "Referrals are capped at ten per account per month.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["Ten per month."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Rafael",
+      "readings": [
+        {
+          "decision": "referral-launch",
+          "dimension": "dependency",
+          "reading": "Legal approves the program terms page. That's the only thing blocking."
+        }
+      ]
+    },
+    {
+      "participant": "Sienna",
+      "readings": [
+        {
+          "decision": "referral-launch",
+          "dimension": "dependency",
+          "reading": "Legal approves the program terms page."
+        }
+      ]
+    },
+    {
+      "participant": "Tomas",
+      "readings": [
+        {
+          "decision": "referral-launch",
+          "dimension": "dependency",
+          "reading": "Legal approves the terms and also signs off the tax treatment of the cash payouts to partners, which needs the outside tax adviser."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "what-legal-done-means",
+      "decision": "referral-launch",
+      "dimension": "dependency",
+      "note": "'Once legal is done': Rafael and Sienna wait only for the terms page; Tomas also waits for the outside tax review of partner cash payouts."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Rafael: \"we launch the referral program once legal is done.\"",
+      "Sienna: \"I'll have the launch email ready so we can go the same day.\"",
+      "Rafael: \"Ten per month.\""
+    ],
+    "confirmed": [
+      "The referral program launches after legal approves the terms page and the outside tax adviser signs off partner cash payouts; the cash option stays hidden until both."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "what-legal-done-means",
+      "precise": {
+        "text": "Launch waits for two things: legal's approval of the terms page and the outside tax adviser's sign-off on partner cash payouts. The cash option stays hidden until both are in.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "We launch as soon as legal is done.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

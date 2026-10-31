@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "id": "heldout-deadline-end-of-day-timezones",
+  "title": "Release notes by end of day tomorrow",
+  "set": "heldout",
+  "category": "deadline",
+  "heldAt": "2026-11-03T09:00:00-06:00",
+  "timezone": "America/Chicago",
+  "participants": ["Ingrid", "Marcus", "Priya"],
+  "transcript": "[00:00] Ingrid: Morning from Berlin. Quick one on the 4.2 release. The build is green and QA signed off last night.\n[00:08] Marcus: Nice. Is the changelog still a mess?\n[00:12] Ingrid: It's forty raw commit titles. Customers can't read that.\n[00:16] Priya: Support wants the notes before the rollout so they can update the help center articles.\n[00:23] Ingrid: Right. Marcus, can you get the release notes to me by end of day tomorrow? I'll review and publish them.\n[00:32] Marcus: End of day tomorrow works. I'll group them by feature, fixes and deprecations.\n[00:38] Priya: Please call out the export change. That one will generate tickets.\n[00:43] Marcus: Will do. I'll put it at the top with a short how-to.\n[00:49] Ingrid: And the rollout itself starts Thursday at 08:00 my time, ten percent first.\n[00:55] Priya: I'll have the help center drafts ready to flip on Thursday.\n[01:00] Marcus: Do we mention the API rate limit change or keep that for the developer newsletter?\n[01:07] Ingrid: Mention it in one line and link to the developer docs.\n[01:12] Priya: Works for me.\n[01:16] Ingrid: Great. Thanks, both.\n",
+  "expectedDecisions": [
+    {
+      "id": "release-notes",
+      "kind": "commitment",
+      "statement": "Marcus sends Ingrid the 4.2 release notes by end of day tomorrow.",
+      "owner": "Marcus",
+      "deadline": "end of day tomorrow",
+      "quotes": [
+        "can you get the release notes to me by end of day tomorrow?",
+        "End of day tomorrow works."
+      ]
+    },
+    {
+      "id": "help-center-drafts",
+      "kind": "commitment",
+      "statement": "Priya has the help center drafts ready to publish on Thursday.",
+      "owner": "Priya",
+      "deadline": "Thursday",
+      "quotes": ["I'll have the help center drafts ready to flip on Thursday."]
+    },
+    {
+      "id": "rate-limit-line",
+      "kind": "decision",
+      "statement": "The release notes mention the API rate limit change in one line with a link to the developer docs.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["Mention it in one line and link to the developer docs."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Ingrid",
+      "readings": [
+        {
+          "decision": "release-notes",
+          "dimension": "deadline",
+          "reading": "18:00 Berlin time on Wednesday 4 November, so she can review and publish before she logs off."
+        }
+      ]
+    },
+    {
+      "participant": "Marcus",
+      "readings": [
+        {
+          "decision": "release-notes",
+          "dimension": "deadline",
+          "reading": "17:00 Central on Wednesday 4 November, the end of his own working day."
+        }
+      ]
+    },
+    {
+      "participant": "Priya",
+      "readings": [
+        {
+          "decision": "release-notes",
+          "dimension": "deadline",
+          "reading": "17:00 Central on Wednesday 4 November; support reads the notes Thursday morning US time."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "whose-end-of-day",
+      "decision": "release-notes",
+      "dimension": "deadline",
+      "note": "Time zone: Ingrid in Berlin means 18:00 CET (11:00 Central); Marcus and Priya hear 17:00 Central, six hours later."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Ingrid: \"can you get the release notes to me by end of day tomorrow?\"",
+      "Priya: \"I'll have the help center drafts ready to flip on Thursday.\""
+    ],
+    "confirmed": [
+      "Marcus sends the 4.2 release notes to Ingrid by Wednesday 2026-11-04, 11:00 CT (18:00 CET)."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "whose-end-of-day",
+      "precise": {
+        "text": "Marcus sends the 4.2 release notes to Ingrid by Wednesday 2026-11-04 at 11:00 Central, which is 18:00 in Berlin.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "Marcus gets the notes over by end of day tomorrow.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

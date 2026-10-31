@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "id": "heldout-scope-docs-migration",
+  "title": "Docs migration to the new site",
+  "set": "heldout",
+  "category": "scope",
+  "heldAt": "2026-11-03T10:00:00+01:00",
+  "timezone": "Europe/Amsterdam",
+  "participants": ["Farah", "Ivo", "Nkechi"],
+  "transcript": "[00:00] Farah: The old docs platform contract ends on the 30th, and they won't extend month to month.\n[00:07] Ivo: The new site is up. Search works, versioning works. It just has no content.\n[00:13] Nkechi: How many pages are we talking about?\n[00:17] Ivo: About three hundred on the old platform. Some of it hasn't been touched in two years.\n[00:24] Farah: OK. Nkechi, can you migrate the docs to the new site by the 20th? That gives us ten days of slack.\n[00:33] Nkechi: By the 20th, yes. I'll script the conversion and fix the tables by hand.\n[00:39] Ivo: Redirects too, please. We have a lot of inbound links from forums.\n[00:45] Nkechi: I'll generate a redirect map from the old URLs.\n[00:49] Farah: Ivo, can you set up the redirect rules once Nkechi has the map?\n[00:55] Ivo: Yes.\n[00:59] Farah: And let's freeze edits on the old platform from the 16th.\n[01:04] Nkechi: I'll post the freeze in the docs channel.\n[01:08] Farah: Great, thanks.\n",
+  "expectedDecisions": [
+    {
+      "id": "docs-migration",
+      "kind": "commitment",
+      "statement": "Nkechi migrates the docs to the new site by the 20th.",
+      "owner": "Nkechi",
+      "deadline": "the 20th",
+      "quotes": ["can you migrate the docs to the new site by the 20th?", "By the 20th, yes."]
+    },
+    {
+      "id": "redirect-map",
+      "kind": "commitment",
+      "statement": "Nkechi generates a redirect map from the old URLs.",
+      "owner": "Nkechi",
+      "deadline": null,
+      "quotes": ["I'll generate a redirect map from the old URLs."]
+    },
+    {
+      "id": "redirect-rules",
+      "kind": "commitment",
+      "statement": "Ivo sets up the redirect rules once the map exists.",
+      "owner": "Ivo",
+      "deadline": null,
+      "quotes": ["can you set up the redirect rules once Nkechi has the map?"]
+    },
+    {
+      "id": "edit-freeze",
+      "kind": "decision",
+      "statement": "Edits on the old docs platform freeze from the 16th.",
+      "owner": null,
+      "deadline": "the 16th",
+      "quotes": ["let's freeze edits on the old platform from the 16th."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Farah",
+      "readings": [
+        {
+          "decision": "docs-migration",
+          "dimension": "scope",
+          "reading": "Everything on the old platform, including the internal runbooks and the archived v1 docs."
+        }
+      ]
+    },
+    {
+      "participant": "Ivo",
+      "readings": [
+        {
+          "decision": "docs-migration",
+          "dimension": "scope",
+          "reading": "Everything on the old platform, including the internal runbooks, which on-call still links to."
+        }
+      ]
+    },
+    {
+      "participant": "Nkechi",
+      "readings": [
+        {
+          "decision": "docs-migration",
+          "dimension": "scope",
+          "reading": "The public product docs only, about 180 pages. Internal runbooks and archived v1 pages are dropped."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "which-docs",
+      "decision": "docs-migration",
+      "dimension": "scope",
+      "note": "'The docs': Nkechi plans the public product docs only; Farah and Ivo expect every page including internal runbooks and archived v1."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Farah: \"can you migrate the docs to the new site by the 20th?\"",
+      "Nkechi: \"I'll generate a redirect map from the old URLs.\"",
+      "Farah: \"let's freeze edits on the old platform from the 16th.\""
+    ],
+    "confirmed": [
+      "Nkechi migrates all pages on the old platform, including internal runbooks and archived v1 docs, to the new site by Friday 2026-11-20."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "which-docs",
+      "precise": {
+        "text": "All three hundred pages move, including internal runbooks (behind login) and archived v1 docs, by Friday 2026-11-20.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "Nkechi migrates the docs by the 20th, as agreed.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "id": "heldout-partial-invoice-redesign",
+  "title": "Invoice redesign live on the 16th",
+  "set": "heldout",
+  "category": "partial_agreement",
+  "heldAt": "2026-11-03T15:00:00-05:00",
+  "timezone": "America/Toronto",
+  "participants": ["Elif", "Noah", "Sunita"],
+  "transcript": "[00:00] Elif: Customers keep saying our invoices look like a receipt from 2005.\n[00:05] Noah: Fair. The template hasn't changed since we launched.\n[00:09] Sunita: The new design is approved. Logo, line items grouped by project, a clear due date.\n[00:16] Elif: Then let's get the invoice redesign live on Monday the 16th. Noah owns it.\n[00:22] Noah: The 16th is fine.\n[00:26] Sunita: I'll send Noah the final assets tomorrow.\n[00:30] Elif: And we should warn the accounting firms that parse our PDFs.\n[00:35] Noah: I'll email the three firms on the integration list this week.\n[00:40] Sunita: Thanks. Do we keep the old layout available as an option?\n[00:45] Elif: No. One layout.\n[00:49] Noah: Agreed.\n",
+  "expectedDecisions": [
+    {
+      "id": "invoice-redesign",
+      "kind": "commitment",
+      "statement": "Noah puts the invoice redesign live on Monday the 16th.",
+      "owner": "Noah",
+      "deadline": "Monday the 16th",
+      "quotes": [
+        "let's get the invoice redesign live on Monday the 16th. Noah owns it.",
+        "The 16th is fine."
+      ]
+    },
+    {
+      "id": "final-assets",
+      "kind": "commitment",
+      "statement": "Sunita sends Noah the final design assets tomorrow.",
+      "owner": "Sunita",
+      "deadline": "tomorrow",
+      "quotes": ["I'll send Noah the final assets tomorrow."]
+    },
+    {
+      "id": "accounting-firms",
+      "kind": "commitment",
+      "statement": "Noah emails the three accounting firms on the integration list this week.",
+      "owner": "Noah",
+      "deadline": "this week",
+      "quotes": ["I'll email the three firms on the integration list this week."]
+    },
+    {
+      "id": "one-layout",
+      "kind": "decision",
+      "statement": "Only the new invoice layout is offered; the old one is retired.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["No. One layout."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Elif",
+      "readings": [
+        {
+          "decision": "invoice-redesign",
+          "dimension": "deadline",
+          "reading": "Monday 16 November."
+        },
+        {
+          "decision": "invoice-redesign",
+          "dimension": "scope",
+          "reading": "The PDF invoice and the invoice email both get the new design."
+        }
+      ]
+    },
+    {
+      "participant": "Noah",
+      "readings": [
+        {
+          "decision": "invoice-redesign",
+          "dimension": "deadline",
+          "reading": "Monday 16 November."
+        },
+        {
+          "decision": "invoice-redesign",
+          "dimension": "scope",
+          "reading": "The PDF invoice only. The invoice email stays as it is for now."
+        }
+      ]
+    },
+    {
+      "participant": "Sunita",
+      "readings": [
+        {
+          "decision": "invoice-redesign",
+          "dimension": "deadline",
+          "reading": "Monday 16 November."
+        },
+        {
+          "decision": "invoice-redesign",
+          "dimension": "scope",
+          "reading": "The PDF invoice and the invoice email, since the design covers both."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "pdf-or-email-too",
+      "decision": "invoice-redesign",
+      "dimension": "scope",
+      "note": "Date agreed (the 16th), scope differs: Noah plans the PDF only; Elif and Sunita expect the PDF and the invoice email."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Elif: \"let's get the invoice redesign live on Monday the 16th. Noah owns it.\"",
+      "Sunita: \"I'll send Noah the final assets tomorrow.\"",
+      "Noah: \"I'll email the three firms on the integration list this week.\"",
+      "Elif: \"No. One layout.\""
+    ],
+    "confirmed": [
+      "On Monday 2026-11-16 Noah puts both the PDF invoice and the invoice email live in the new design."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "pdf-or-email-too",
+      "precise": {
+        "text": "On Monday 2026-11-16 both the PDF invoice and the invoice email switch to the new design.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "The redesign goes live on the 16th.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

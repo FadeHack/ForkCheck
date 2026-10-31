@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "id": "heldout-same-reading-usual-handoff",
+  "title": "Usual handoff to support",
+  "set": "heldout",
+  "category": "same_reading",
+  "heldAt": "2026-11-04T10:00:00-06:00",
+  "timezone": "America/Chicago",
+  "participants": ["Greta", "Omar", "Lucia"],
+  "transcript": "[00:00] Greta: Bulk edit for invoices ships Thursday. Last thing before then is support.\n[00:06] Omar: Do the usual handoff to support, then. They hate surprises.\n[00:11] Lucia: I'll do the usual handoff tomorrow.\n[00:15] Greta: Thanks. Any known issues they should hear about?\n[00:19] Omar: One. Bulk edit skips invoices that are locked for payment, and it doesn't say why.\n[00:26] Lucia: I'll put that in the known issues section.\n[00:30] Greta: And let's fix the message in the next sprint.\n[00:34] Omar: I'll file the ticket.\n[00:38] Greta: Good. Thanks.\n",
+  "expectedDecisions": [
+    {
+      "id": "support-handoff",
+      "kind": "commitment",
+      "statement": "Lucia does the usual support handoff for bulk edit tomorrow.",
+      "owner": "Lucia",
+      "deadline": "tomorrow",
+      "quotes": ["Do the usual handoff to support", "I'll do the usual handoff tomorrow."]
+    },
+    {
+      "id": "locked-invoice-ticket",
+      "kind": "commitment",
+      "statement": "Omar files a ticket to fix the locked-invoice message next sprint.",
+      "owner": "Omar",
+      "deadline": null,
+      "quotes": ["I'll file the ticket."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Greta",
+      "readings": [
+        {
+          "decision": "support-handoff",
+          "dimension": "scope",
+          "reading": "Post in the support handoff channel with the feature FAQ and known issues, and run a 30-minute walkthrough recorded for the late shift."
+        },
+        {
+          "decision": "support-handoff",
+          "dimension": "deadline",
+          "reading": "Thursday 5 November, before the Thursday afternoon release."
+        }
+      ]
+    },
+    {
+      "participant": "Omar",
+      "readings": [
+        {
+          "decision": "support-handoff",
+          "dimension": "scope",
+          "reading": "Post in the support handoff channel with the feature FAQ and known issues, and run a 30-minute walkthrough recorded for the late shift."
+        },
+        {
+          "decision": "support-handoff",
+          "dimension": "deadline",
+          "reading": "Thursday 5 November, before the Thursday afternoon release."
+        }
+      ]
+    },
+    {
+      "participant": "Lucia",
+      "readings": [
+        {
+          "decision": "support-handoff",
+          "dimension": "scope",
+          "reading": "Post in the support handoff channel with the feature FAQ and known issues, and run a 30-minute walkthrough recorded for the late shift."
+        },
+        {
+          "decision": "support-handoff",
+          "dimension": "deadline",
+          "reading": "Thursday 5 November, before the Thursday afternoon release."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": ["Lucia: \"I'll do the usual handoff tomorrow.\"", "Omar: \"I'll file the ticket.\""],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}

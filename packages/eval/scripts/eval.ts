@@ -2,13 +2,16 @@
  * Scenario tooling.
  * Usage:
  *   pnpm eval validate [scenario files...]   (default: every scenario under scenarios/)
+ *   pnpm eval audio-set [--synthetic <dir>] [--human <dir>]   (WAV checks on the 10-file audio set)
  *   LIVE=1 pnpm eval extract                 (extraction precision and recall on the dev set)
  *   LIVE=1 pnpm eval probes                  (candidates against planted gaps, T2 probes after lint and critic)
  *   LIVE=1 pnpm eval simulate                (simulated answers on the probes for planted gaps)
  *   LIVE=1 pnpm eval recheck                 (rechecks of scripted resolutions: catch and pass rates)
  */
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
+import { parseArgs } from "node:util";
+import { inspectWav } from "@forkcheck/asr";
 import type { ModelPort } from "@forkcheck/ai";
 import {
   divergence,
@@ -28,6 +31,7 @@ import {
   type StageTrace,
 } from "@forkcheck/engine";
 import {
+  AUDIO_SET,
   isSplit,
   lintScenario,
   parseScenario,
@@ -362,6 +366,35 @@ async function recheckDev(): Promise<boolean> {
   return true;
 }
 
+/** Runs the upload checks on every file in the audio set; recordings live outside git. */
+function checkAudioSet(args: string[]): boolean {
+  const { values } = parseArgs({
+    args,
+    options: {
+      synthetic: { type: "string", default: "var/audio/synthetic" },
+      human: { type: "string", default: "var/audio/human" },
+    },
+  });
+  let ok = true;
+  for (const entry of AUDIO_SET) {
+    const file = resolve(entry.source === "human" ? values.human : values.synthetic, entry.file);
+    const name = relative(process.cwd(), file);
+    if (!existsSync(file)) {
+      ok = false;
+      console.log(`miss  ${name}`);
+      continue;
+    }
+    const report = inspectWav(readFileSync(file));
+    ok &&= report.ok;
+    console.log(
+      report.ok
+        ? `pass  ${name}  ${entry.source}`
+        : `FAIL  ${name}  ${report.problems.map((p) => p.message).join(" ")}`,
+    );
+  }
+  return ok;
+}
+
 const [command, ...args] = process.argv.slice(2);
 switch (command) {
   case "validate": {
@@ -369,6 +402,9 @@ switch (command) {
     process.exit(validate(files) ? 0 : 1);
     break;
   }
+  case "audio-set":
+    process.exit(checkAudioSet(args) ? 0 : 1);
+    break;
   case "extract":
     process.exit((await extractDev()) ? 0 : 1);
     break;
@@ -383,7 +419,7 @@ switch (command) {
     break;
   default:
     console.error(
-      "Usage: pnpm eval validate [files...] | LIVE=1 pnpm eval extract | probes | simulate | recheck",
+      "Usage: pnpm eval validate [files...] | audio-set | LIVE=1 pnpm eval extract | probes | simulate | recheck",
     );
     process.exit(2);
 }

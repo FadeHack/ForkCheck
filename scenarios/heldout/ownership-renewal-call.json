@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "id": "heldout-ownership-renewal-call",
+  "title": "Northwind renewal call",
+  "set": "heldout",
+  "category": "ownership",
+  "heldAt": "2026-11-02T10:30:00-08:00",
+  "timezone": "America/Los_Angeles",
+  "participants": ["Hugo", "Maya", "Jonas"],
+  "transcript": "[00:00] Jonas: Northwind Freight's renewal is up on the 30th, and their usage dropped about a third since summer.\n[00:08] Maya: Their main champion left in September. The new ops lead hasn't logged in once.\n[00:14] Hugo: That's the risk. If nobody talks to the new lead before procurement does, they'll cut seats.\n[00:21] Jonas: Do we know what they actually use now?\n[00:25] Maya: Mostly route planning. Nobody touches the reporting module anymore.\n[00:29] Hugo: OK. We'll handle the renewal call with their new ops lead this month. Walk them through route planning, ask what reporting would need to do for them.\n[00:40] Maya: Sounds right.\n[00:44] Jonas: Should we offer a smaller tier if they push on price?\n[00:49] Hugo: Only if they bring it up. Don't lead with a discount.\n[00:54] Jonas: I'll pull their usage by team so we have numbers on the call.\n[01:00] Maya: And I'll send the new lead the onboarding guide this week, so they've seen the product before the call.\n[01:08] Hugo: Good. Let's keep this tight, it's a big account.\n[01:12] Jonas: Agreed.\n",
+  "expectedDecisions": [
+    {
+      "id": "renewal-call",
+      "kind": "commitment",
+      "statement": "Someone runs a renewal call with Northwind's new ops lead this month.",
+      "owner": null,
+      "deadline": "this month",
+      "quotes": ["We'll handle the renewal call with their new ops lead this month."]
+    },
+    {
+      "id": "usage-pull",
+      "kind": "commitment",
+      "statement": "Jonas pulls Northwind's usage by team for the call.",
+      "owner": "Jonas",
+      "deadline": null,
+      "quotes": ["I'll pull their usage by team"]
+    },
+    {
+      "id": "onboarding-guide",
+      "kind": "commitment",
+      "statement": "Maya sends the new ops lead the onboarding guide this week.",
+      "owner": "Maya",
+      "deadline": "this week",
+      "quotes": ["I'll send the new lead the onboarding guide this week"]
+    },
+    {
+      "id": "no-discount-lead",
+      "kind": "decision",
+      "statement": "Offer a smaller tier only if Northwind raises price; don't lead with a discount.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["Only if they bring it up. Don't lead with a discount."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Hugo",
+      "readings": [
+        {
+          "decision": "renewal-call",
+          "dimension": "owner",
+          "reading": "Maya books and runs the call; customer success owns the relationship. Hugo joins only if price comes up."
+        }
+      ]
+    },
+    {
+      "participant": "Maya",
+      "readings": [
+        {
+          "decision": "renewal-call",
+          "dimension": "owner",
+          "reading": "Hugo books and runs the call, since renewals sit with sales. She joins to cover product questions."
+        }
+      ]
+    },
+    {
+      "participant": "Jonas",
+      "readings": [
+        {
+          "decision": "renewal-call",
+          "dimension": "owner",
+          "reading": "Hugo books and runs it, as the account executive on Northwind."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "who-runs-renewal-call",
+      "decision": "renewal-call",
+      "dimension": "owner",
+      "note": "'We'll handle it': Hugo means customer success (Maya); Maya and Jonas hear sales (Hugo)."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Hugo: \"We'll handle the renewal call with their new ops lead this month.\"",
+      "Jonas: \"I'll pull their usage by team\"",
+      "Maya: \"I'll send the new lead the onboarding guide this week\""
+    ],
+    "confirmed": [
+      "Maya books and runs the renewal call with Northwind's new ops lead by Friday 2026-11-20; Hugo joins for pricing."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "who-runs-renewal-call",
+      "precise": {
+        "text": "Maya books and runs the call with Northwind's new ops lead, held by Friday 2026-11-20. Hugo joins only for the pricing part.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "We'll get the Northwind call done this month, between us.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "id": "heldout-outcome-reporting-pilot",
+  "title": "New reporting to the pilot group",
+  "set": "heldout",
+  "category": "dependency_outcome",
+  "heldAt": "2026-11-03T11:00:00-08:00",
+  "timezone": "America/Los_Angeles",
+  "participants": ["Ruth", "Pavel", "Ines"],
+  "transcript": "[00:00] Ruth: The new reporting dashboards are feature complete. Pavel, how's performance?\n[00:05] Pavel: Under two seconds for every chart on our biggest test workspace.\n[00:10] Ines: The CSV export from the charts is in too.\n[00:14] Ruth: Great. Then let's ship it to the pilot group on Monday.\n[00:19] Pavel: Monday works. I'll flip the flag first thing.\n[00:23] Ines: I'll write the what's-new note that shows up when they open reporting.\n[00:29] Ruth: Keep it short. Three bullets and a link.\n[00:33] Ines: Sure.\n[00:37] Pavel: Do we want usage tracking on each chart?\n[00:41] Ruth: Yes, chart opens and exports. I'll want those numbers in two weeks.\n[00:47] Pavel: I'll add the events before Monday.\n[00:51] Ruth: Thanks, both.\n",
+  "expectedDecisions": [
+    {
+      "id": "pilot-ship",
+      "kind": "decision",
+      "statement": "The new reporting dashboards ship to the pilot group on Monday.",
+      "owner": "Pavel",
+      "deadline": "Monday",
+      "quotes": ["let's ship it to the pilot group on Monday.", "I'll flip the flag first thing."]
+    },
+    {
+      "id": "whats-new-note",
+      "kind": "commitment",
+      "statement": "Ines writes the in-app what's-new note.",
+      "owner": "Ines",
+      "deadline": null,
+      "quotes": ["I'll write the what's-new note that shows up when they open reporting."]
+    },
+    {
+      "id": "usage-events",
+      "kind": "commitment",
+      "statement": "Pavel adds chart-open and export tracking before Monday.",
+      "owner": "Pavel",
+      "deadline": "before Monday",
+      "quotes": ["I'll add the events before Monday."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Ruth",
+      "readings": [
+        {
+          "decision": "pilot-ship",
+          "dimension": "outcome",
+          "reading": "Customers in the pilot see the dashboards on Monday: the six design-partner accounts."
+        }
+      ]
+    },
+    {
+      "participant": "Pavel",
+      "readings": [
+        {
+          "decision": "pilot-ship",
+          "dimension": "outcome",
+          "reading": "Only our own customer success team sees it Monday, so they can check it with real data before any customer does."
+        }
+      ]
+    },
+    {
+      "participant": "Ines",
+      "readings": [
+        {
+          "decision": "pilot-ship",
+          "dimension": "outcome",
+          "reading": "The six design-partner customer accounts see it on Monday."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "who-sees-it-first",
+      "decision": "pilot-ship",
+      "dimension": "outcome",
+      "note": "Who sees it first: Ruth and Ines expect the six design-partner customers on Monday; Pavel plans the internal CS team only."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Ruth: \"let's ship it to the pilot group on Monday.\"",
+      "Ines: \"I'll write the what's-new note that shows up when they open reporting.\"",
+      "Pavel: \"I'll add the events before Monday.\""
+    ],
+    "confirmed": [
+      "On Monday 2026-11-09 Pavel enables the new reporting for the six design-partner customer accounts; the internal CS team gets it at the same time."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "who-sees-it-first",
+      "precise": {
+        "text": "Monday 2026-11-09: the flag goes on for the six design-partner customer accounts and for our CS team at the same time.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "It goes to the pilot group on Monday as planned.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

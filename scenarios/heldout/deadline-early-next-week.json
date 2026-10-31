@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "id": "heldout-deadline-early-next-week",
+  "title": "Pricing FAQ early next week",
+  "set": "heldout",
+  "category": "deadline",
+  "heldAt": "2026-11-05T15:00:00-05:00",
+  "timezone": "America/New_York",
+  "participants": ["Tobias", "Wen", "Adaeze"],
+  "transcript": "[00:00] Tobias: Last item. The new annual plan goes live on the 16th, and sales keeps getting the same five questions.\n[00:08] Wen: Proration, seat changes mid-year, refunds, currency, and whether the discount stacks with the nonprofit one.\n[00:15] Adaeze: We need a pricing FAQ on the site before the launch email goes out.\n[00:21] Tobias: When does the launch email go?\n[00:25] Adaeze: The plan is the morning of the 16th, but marketing wants the FAQ link in the draft before then.\n[00:33] Wen: I can write the FAQ. Most of the answers are already in the sales notes.\n[00:40] Tobias: Great. Let's aim for early next week for the FAQ, then.\n[00:45] Wen: Early next week, sure.\n[00:49] Adaeze: Run the refund answer past finance before it goes up.\n[00:54] Wen: Yes, I'll send that one to Gareth first.\n[00:58] Tobias: And the nonprofit stacking question, the answer is no, they don't stack.\n[01:04] Adaeze: Then we should say that plainly. People will try.\n[01:08] Wen: Got it. Plain no, with a line on which discount wins.\n[01:13] Tobias: Perfect. Thanks, all.\n",
+  "expectedDecisions": [
+    {
+      "id": "pricing-faq",
+      "kind": "commitment",
+      "statement": "Wen writes the pricing FAQ for the annual plan, targeted for early next week.",
+      "owner": "Wen",
+      "deadline": "early next week",
+      "quotes": ["Let's aim for early next week for the FAQ, then.", "I can write the FAQ."]
+    },
+    {
+      "id": "refund-review",
+      "kind": "commitment",
+      "statement": "Wen sends the refund answer to finance before publishing.",
+      "owner": "Wen",
+      "deadline": null,
+      "quotes": ["I'll send that one to Gareth first."]
+    },
+    {
+      "id": "no-stacking",
+      "kind": "decision",
+      "statement": "The annual discount does not stack with the nonprofit discount, and the FAQ says so plainly.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["the answer is no, they don't stack"]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Tobias",
+      "readings": [
+        {
+          "decision": "pricing-faq",
+          "dimension": "deadline",
+          "reading": "A soft target: any time Monday 9 to Wednesday 11 November is fine."
+        }
+      ]
+    },
+    {
+      "participant": "Wen",
+      "readings": [
+        {
+          "decision": "pricing-faq",
+          "dimension": "deadline",
+          "reading": "A soft target: she plans to finish by Wednesday 11 November."
+        }
+      ]
+    },
+    {
+      "participant": "Adaeze",
+      "readings": [
+        {
+          "decision": "pricing-faq",
+          "dimension": "deadline",
+          "reading": "Firm: published by Monday 9 November, because marketing locks the launch email draft on Tuesday 10 November."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "early-next-week-firmness",
+      "decision": "pricing-faq",
+      "dimension": "deadline",
+      "note": "Firmness: Tobias and Wen treat 'aim for early next week' as a soft target through Wednesday; Adaeze needs it live Monday for the email draft."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Tobias: \"Let's aim for early next week for the FAQ, then.\"",
+      "Wen: \"I'll send that one to Gareth first.\"",
+      "Tobias: \"the answer is no, they don't stack\""
+    ],
+    "confirmed": [
+      "Wen publishes the pricing FAQ on the site by Monday 2026-11-09, 17:00 ET, so marketing can link it in the launch email draft on Tuesday."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "early-next-week-firmness",
+      "precise": {
+        "text": "The pricing FAQ is live on the site by Monday 2026-11-09 at 17:00 Eastern. Marketing locks the email draft on Tuesday morning.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "Wen aims to have the FAQ up early next week.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}
