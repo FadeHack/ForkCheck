@@ -102,6 +102,8 @@ export interface LoopResult {
   recordInput: RecordInput;
   /** Transcript turns with speakers, for rendering stated quotes. */
   segments: Segment[];
+  /** Extracted decisions with their evidence, for scoring S2. */
+  decisions: DecisionWithEvidence[];
   trace: LoopTrace;
 }
 
@@ -369,6 +371,7 @@ export async function runLoop(
     record,
     recordInput,
     segments: input.segments,
+    decisions,
     trace: {
       scenario: s.id,
       resolution,

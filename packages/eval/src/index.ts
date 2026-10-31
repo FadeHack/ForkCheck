@@ -11,3 +11,4 @@ export * from "./s1";
 export * from "./audio-loop";
 export * from "./gate";
 export * from "./audio-set";
+export * from "./metrics";
