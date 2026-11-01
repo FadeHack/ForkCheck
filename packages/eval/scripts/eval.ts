@@ -3,9 +3,9 @@
  * Usage:
  *   pnpm eval validate [scenario files...]   (default: every scenario under scenarios/)
  *   pnpm eval audio-set [--synthetic <dir>] [--human <dir>]   (WAV checks on the 10-file audio set)
- *   pnpm eval sheets <run dir> [--seed <s>]  (blind rating sheets from <run>/logs, key kept apart)
+ *   pnpm eval sheets <run dir...> [--out <dir>] [--seed <s>]   (blind rating sheets, key kept apart)
  *   pnpm eval import-sheets <run dir>        (validates the completed sheets, writes human.json)
- *   pnpm eval report <run dir...> [--date YYYY-MM-DD]   (eval-results/<date>/report.md from run logs)
+ *   pnpm eval report <run dir...> [--date YYYY-MM-DD] [--human <human.json>]   (eval-results/<date>/report.md)
  *   LIVE=1 pnpm eval extract                 (extraction precision and recall on the dev set)
  *   LIVE=1 pnpm eval probes                  (candidates against planted gaps, T2 probes after lint and critic)
  *   LIVE=1 pnpm eval simulate                (simulated answers on the probes for planted gaps)
@@ -418,18 +418,23 @@ function writeSheets(args: string[]): boolean {
   const { values, positionals } = parseArgs({
     args,
     allowPositionals: true,
-    options: { seed: { type: "string", default: "forkcheck-m7" } },
+    options: {
+      seed: { type: "string", default: "forkcheck-m7" },
+      out: { type: "string" },
+    },
   });
-  const dir = positionals[0];
-  if (!dir) {
-    console.error("Usage: pnpm eval sheets <run dir>");
+  const dir = values.out ?? positionals[0];
+  if (!dir || positionals.length === 0) {
+    console.error("Usage: pnpm eval sheets <run dir...> [--out <dir>]");
     return false;
   }
-  const logsDir = join(dir, "logs");
-  const logs = readdirSync(logsDir)
-    .filter((f) => f.endsWith(".json"))
-    .sort()
-    .map((f) => runLog.parse(JSON.parse(readFileSync(join(logsDir, f), "utf8"))));
+  // Every run in one set, so questions from both providers are mixed in one blind sheet.
+  const logs = positionals.flatMap((run) =>
+    readdirSync(join(run, "logs"))
+      .filter((f) => f.endsWith(".json"))
+      .sort()
+      .map((f) => runLog.parse(JSON.parse(readFileSync(join(run, "logs", f), "utf8")))),
+  );
   const scenarios = new Map(
     allScenarioFiles().map((f) => {
       const s = parseScenario(readFileSync(f, "utf8"));
@@ -483,7 +488,10 @@ function writeReport(args: string[]): boolean {
   const { values, positionals } = parseArgs({
     args,
     allowPositionals: true,
-    options: { date: { type: "string", default: new Date().toISOString().slice(0, 10) } },
+    options: {
+      date: { type: "string", default: new Date().toISOString().slice(0, 10) },
+      human: { type: "string" },
+    },
   });
   if (positionals.length === 0) {
     console.error("Usage: pnpm eval report <run dir...> [--date YYYY-MM-DD]");
@@ -504,7 +512,9 @@ function writeReport(args: string[]): boolean {
   const conditions = aggregate(scenarios, logs);
   const spark = conditions.find((c) => c.condition === "meta/paste/precise");
   const open = conditions.find((c) => c.condition === "baseten/paste/precise");
-  const humanFiles = positionals.map((d) => join(d, "human.json")).filter(existsSync);
+  const humanFiles = values.human
+    ? [values.human]
+    : positionals.map((d) => join(d, "human.json")).filter(existsSync);
   const human = humanFiles.length
     ? humanFiles.flatMap((f) => JSON.parse(readFileSync(f, "utf8")) as HumanScores[])
     : null;

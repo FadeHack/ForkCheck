@@ -111,6 +111,8 @@ export function parseCsv(text: string): string[][] {
   return rows.filter((r) => r.some((c) => c.trim() !== ""));
 }
 
+const numbered = (options: RunLog["rounds"][number]["options"]) =>
+  (options ?? []).map((o, i) => `${i + 1}. ${o.text}`);
 const condition = (l: RunLog) => `${l.source}/${l.resolution}`;
 /** Everything that tells two logs apart; hashed, so none of it reaches the sheet. */
 const logRef = (l: RunLog) => `${l.provider}/${l.runId}/${l.run}/${l.scenario}/${condition(l)}`;
@@ -149,7 +151,7 @@ export function buildSheets(
         item,
         scenario: l.scenario,
         question: r.stem,
-        options: (r.options ?? []).map((o, i) => `${i + 1}. ${o.text}`).join("\n"),
+        options: numbered(r.options).join("\n"),
       });
     }
     const claims = new Map(l.decisions.map((d) => [d.decision.id, d.decision.statement]));
@@ -197,7 +199,7 @@ export function buildSheets(
           scenario: name,
           participant: a.participantId,
           brief: (brief?.readings ?? []).map((x) => `${x.dimension}: ${x.reading}`).join("\n"),
-          question: r.stem,
+          question: [r.stem, ...numbered(r.options)].join("\n"),
           answer: a.choice === "option" ? (option?.text ?? a.optionId ?? "") : a.choice,
         });
       }
