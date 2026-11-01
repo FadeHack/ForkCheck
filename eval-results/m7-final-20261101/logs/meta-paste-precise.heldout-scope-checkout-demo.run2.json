@@ -1,0 +1,920 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 2,
+  "scenario": "heldout-scope-checkout-demo",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-scope-checkout-demo:seg:0",
+      "text": "Hartwell Outdoor confirmed the demo for Thursday the 12th. Their CFO is joining."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:1",
+      "text": "Is this about the one-page checkout?"
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:2",
+      "text": "Yes. It's the main reason they're looking at us. Their current checkout is five steps."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:3",
+      "text": "The one-page flow works on my branch. Card and wallet payments both go through in test mode."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:4",
+      "text": "Tax calculation is still the old service, though. It's slow on the first call."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:5",
+      "text": "I can warm it before the demo."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:6",
+      "text": "Then let's have the new checkout ready for the Hartwell demo. Ottilie owns it, Sam helps with tax."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:7",
+      "text": "Ready for the twelfth, got it."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:8",
+      "text": "Sure, I'll look at caching the tax rates."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:9",
+      "text": "I'll send them the agenda tomorrow. Thirty minutes, checkout first."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:10",
+      "text": "Do we show the admin side too?"
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:11",
+      "text": "Only if they ask. Keep it on the buyer flow."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:12",
+      "text": "Makes sense."
+    },
+    {
+      "id": "heldout-scope-checkout-demo:seg:13",
+      "text": "Thanks, everyone."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-scope-checkout-demo:dec:0",
+        "meetingId": "heldout-scope-checkout-demo",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "The new checkout will be ready for the Hartwell demo.",
+        "ownerText": "Ottilie",
+        "deadlineText": "for the twelfth",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-checkout-demo:dec:0:ev:0",
+          "decisionId": "heldout-scope-checkout-demo:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-checkout-demo:seg:6",
+          "quote": "Then let's have the new checkout ready for the Hartwell demo. Ottilie owns it, Sam helps with tax."
+        },
+        {
+          "id": "heldout-scope-checkout-demo:dec:0:ev:1",
+          "decisionId": "heldout-scope-checkout-demo:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-checkout-demo:seg:7",
+          "quote": "Ready for the twelfth, got it."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-scope-checkout-demo:dec:1",
+        "meetingId": "heldout-scope-checkout-demo",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Sam will look at caching the tax rates.",
+        "ownerText": "Sam",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-checkout-demo:dec:1:ev:0",
+          "decisionId": "heldout-scope-checkout-demo:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-checkout-demo:seg:8",
+          "quote": "Sure, I'll look at caching the tax rates."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-scope-checkout-demo:dec:2",
+        "meetingId": "heldout-scope-checkout-demo",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Leila will send them the agenda tomorrow.",
+        "ownerText": "Leila",
+        "deadlineText": "tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-checkout-demo:dec:2:ev:0",
+          "decisionId": "heldout-scope-checkout-demo:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-checkout-demo:seg:9",
+          "quote": "I'll send them the agenda tomorrow."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-scope-checkout-demo:dec:3",
+        "meetingId": "heldout-scope-checkout-demo",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "The demo will stay on the buyer flow and the admin side will only be shown if they ask.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-checkout-demo:dec:3:ev:0",
+          "decisionId": "heldout-scope-checkout-demo:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-checkout-demo:seg:10",
+          "quote": "Do we show the admin side too?"
+        },
+        {
+          "id": "heldout-scope-checkout-demo:dec:3:ev:1",
+          "decisionId": "heldout-scope-checkout-demo:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-checkout-demo:seg:11",
+          "quote": "Only if they ask. Keep it on the buyer flow."
+        },
+        {
+          "id": "heldout-scope-checkout-demo:dec:3:ev:2",
+          "decisionId": "heldout-scope-checkout-demo:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-checkout-demo:seg:12",
+          "quote": "Makes sense."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-scope-checkout-demo:cand:0",
+      "dimension": "scope",
+      "mismatch": "checkout-where",
+      "probeId": "heldout-scope-checkout-demo:cand:0:t0"
+    },
+    {
+      "id": "heldout-scope-checkout-demo:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-scope-checkout-demo:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-scope-checkout-demo:cand:0:t0",
+      "stem": "For \"The new checkout will be ready for the Hartwell demo\", what form does it take?",
+      "options": [
+        {
+          "id": "heldout-scope-checkout-demo:cand:0:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "heldout-scope-checkout-demo:cand:0:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "heldout-scope-checkout-demo:cand:0:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Leila",
+          "choice": "option",
+          "optionId": "heldout-scope-checkout-demo:cand:0:t0:opt:2"
+        },
+        {
+          "participantId": "Sam",
+          "choice": "option",
+          "optionId": "heldout-scope-checkout-demo:cand:0:t0:opt:2"
+        },
+        {
+          "participantId": "Ottilie",
+          "choice": "option",
+          "optionId": "heldout-scope-checkout-demo:cand:0:t0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "heldout-scope-checkout-demo:cand:1:probe:0",
+      "stem": "When \"Sam will look at caching the tax rates\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-scope-checkout-demo:cand:1:probe:0:opt:0",
+          "text": "A summary of ideas for temporarily storing levy calculations is shared, without altering the checkout implementation"
+        },
+        {
+          "id": "heldout-scope-checkout-demo:cand:1:probe:0:opt:1",
+          "text": "A functional checkout update that temporarily stores levy calculations is deployed in the flow"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Leila",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sam",
+          "choice": "option",
+          "optionId": "heldout-scope-checkout-demo:cand:1:probe:0:opt:1"
+        },
+        {
+          "participantId": "Ottilie",
+          "choice": "option",
+          "optionId": "heldout-scope-checkout-demo:cand:1:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    }
+  ],
+  "splits": [
+    {
+      "splitId": "heldout-scope-checkout-demo:cand:0:t0:split",
+      "probeId": "heldout-scope-checkout-demo:cand:0:t0",
+      "mismatch": "checkout-where",
+      "events": [
+        {
+          "type": "propose",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "recheck"
+        }
+      ],
+      "recheck": {
+        "probe": {
+          "stem": "After Hartwell tries the new checkout during the demo on Thursday the 12th, what can be viewed afterwards?"
+        },
+        "round": {
+          "probeId": "heldout-scope-checkout-demo:cand:0:t0:split:recheck:heldout-scope-checkout-demo:cand:0:t0:split:res:0",
+          "stem": "After Hartwell tries the new checkout during the demo on Thursday the 12th, what can be viewed afterwards?",
+          "options": [
+            {
+              "id": "heldout-scope-checkout-demo:cand:0:t0:split:recheck:heldout-scope-checkout-demo:cand:0:t0:split:res:0:opt:0",
+              "text": "Only design screens, no order record"
+            },
+            {
+              "id": "heldout-scope-checkout-demo:cand:0:t0:split:recheck:heldout-scope-checkout-demo:cand:0:t0:split:res:0:opt:1",
+              "text": "A sample order in test data"
+            },
+            {
+              "id": "heldout-scope-checkout-demo:cand:0:t0:split:recheck:heldout-scope-checkout-demo:cand:0:t0:split:res:0:opt:2",
+              "text": "A real order in Hartwell's account"
+            }
+          ],
+          "answers": [
+            {
+              "participantId": "Leila",
+              "choice": "option",
+              "optionId": "heldout-scope-checkout-demo:cand:0:t0:split:recheck:heldout-scope-checkout-demo:cand:0:t0:split:res:0:opt:2"
+            },
+            {
+              "participantId": "Sam",
+              "choice": "option",
+              "optionId": "heldout-scope-checkout-demo:cand:0:t0:split:recheck:heldout-scope-checkout-demo:cand:0:t0:split:res:0:opt:2"
+            },
+            {
+              "participantId": "Ottilie",
+              "choice": "option",
+              "optionId": "heldout-scope-checkout-demo:cand:0:t0:split:recheck:heldout-scope-checkout-demo:cand:0:t0:split:res:0:opt:2"
+            }
+          ],
+          "divergence": {
+            "outcome": "consistent"
+          }
+        }
+      },
+      "state": {
+        "status": "rechecked",
+        "participants": [
+          {
+            "id": "Leila",
+            "status": "active"
+          },
+          {
+            "id": "Sam",
+            "status": "active"
+          },
+          {
+            "id": "Ottilie",
+            "status": "active"
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "heldout-scope-checkout-demo:cand:0:t0:split:res:0",
+            "status": "confirmed"
+          }
+        ],
+        "confirmations": [
+          {
+            "resolutionId": "heldout-scope-checkout-demo:cand:0:t0:split:res:0",
+            "participantId": "Leila"
+          },
+          {
+            "resolutionId": "heldout-scope-checkout-demo:cand:0:t0:split:res:0",
+            "participantId": "Sam"
+          },
+          {
+            "resolutionId": "heldout-scope-checkout-demo:cand:0:t0:split:res:0",
+            "participantId": "Ottilie"
+          }
+        ]
+      }
+    },
+    {
+      "splitId": "heldout-scope-checkout-demo:cand:1:probe:0:split",
+      "probeId": "heldout-scope-checkout-demo:cand:1:probe:0",
+      "mismatch": null,
+      "events": [],
+      "recheck": null,
+      "state": {
+        "status": "open",
+        "participants": [
+          {
+            "id": "Leila",
+            "status": "active"
+          },
+          {
+            "id": "Sam",
+            "status": "active"
+          },
+          {
+            "id": "Ottilie",
+            "status": "active"
+          }
+        ],
+        "resolutions": [],
+        "confirmations": []
+      }
+    }
+  ],
+  "record": {
+    "meetingId": "heldout-scope-checkout-demo",
+    "title": "New checkout for the Hartwell demo",
+    "heldAt": "2026-11-02T13:00:00-05:00",
+    "generatedAt": "2026-11-02T13:00:00-05:00",
+    "participants": [
+      {
+        "id": "Leila",
+        "meetingId": "heldout-scope-checkout-demo",
+        "displayName": "Leila",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Sam",
+        "meetingId": "heldout-scope-checkout-demo",
+        "displayName": "Sam",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Ottilie",
+        "meetingId": "heldout-scope-checkout-demo",
+        "displayName": "Ottilie",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-scope-checkout-demo:item:0",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "stated",
+        "text": "Then let's have the new checkout ready for the Hartwell demo. Ottilie owns it, Sam helps with tax.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:6",
+            "quote": "Then let's have the new checkout ready for the Hartwell demo. Ottilie owns it, Sam helps with tax.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-checkout-demo:item:1",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "stated",
+        "text": "Ready for the twelfth, got it.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:7",
+            "quote": "Ready for the twelfth, got it.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-checkout-demo:item:2",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "stated",
+        "text": "Sure, I'll look at caching the tax rates.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:8",
+            "quote": "Sure, I'll look at caching the tax rates.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-checkout-demo:item:3",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "stated",
+        "text": "I'll send them the agenda tomorrow.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:9",
+            "quote": "I'll send them the agenda tomorrow.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-checkout-demo:item:4",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "stated",
+        "text": "Do we show the admin side too?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:10",
+            "quote": "Do we show the admin side too?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-checkout-demo:item:5",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "stated",
+        "text": "Only if they ask. Keep it on the buyer flow.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:11",
+            "quote": "Only if they ask. Keep it on the buyer flow.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-checkout-demo:item:6",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "stated",
+        "text": "Makes sense.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:12",
+            "quote": "Makes sense.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-checkout-demo:item:7",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "confirmed",
+        "text": "The one-page checkout is in production behind a feature flag turned on only for Hartwell's trial account, by Wednesday 2026-11-11 at 17:00 Central.",
+        "sourceRefs": [
+          {
+            "kind": "confirmation",
+            "resolutionId": "heldout-scope-checkout-demo:cand:0:t0:split:res:0"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:6",
+            "quote": "Then let's have the new checkout ready for the Hartwell demo. Ottilie owns it, Sam helps with tax.",
+            "origin": "paste"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:7",
+            "quote": "Ready for the twelfth, got it.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [
+          "Leila",
+          "Sam",
+          "Ottilie"
+        ],
+        "absent": [],
+        "recheck": "passed",
+        "splitId": "heldout-scope-checkout-demo:cand:0:t0:split",
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-checkout-demo:item:8",
+        "meetingId": "heldout-scope-checkout-demo",
+        "category": "unresolved",
+        "text": "Participants read the scope differently: Sam will look at caching the tax rates.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-checkout-demo:seg:8",
+            "quote": "Sure, I'll look at caching the tax rates.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": "heldout-scope-checkout-demo:cand:1:probe:0:split",
+        "deadline": null
+      }
+    ],
+    "proseDraft": "It was confirmed that the one-page checkout will be in production behind a feature flag turned on only for Hartwells trial account by the stated deadline. Other remarks about readiness, roles, the agenda and the buyer flow were only stated. It is still open that participants read the scope differently about Sam looking at caching the tax rates.\n\nConfirmed by participants\n- It was confirmed by Leila, Sam and Ottilie with a passed recheck that the one-page checkout will be in production behind a feature flag turned on only for Hartwells trial account by Wednesday 2026-11-11 at 17:00 Central.\n\nUnresolved\n- It is still open because participants read the scope differently about Sam looking at caching the tax rates.\n\nStated in the meeting\n- Someone said Ottilie owns having the new checkout ready for the Hartwell demo with Sam helping with tax.\n- Someone said it would be ready for the twelfth.\n- Someone said they will look at caching the tax rates.\n- Someone said they will send them the agenda tomorrow.\n- Someone asked whether to show the admin side too.\n- Someone said to keep it on the buyer flow and show the admin side only if they ask.\n- Someone said that makes sense."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 19514,
+          "inputTokens": 1108,
+          "outputTokens": 6352,
+          "reasoningTokens": 5934,
+          "costUsd": 0.0272711,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 29102,
+          "inputTokens": 1577,
+          "outputTokens": 7863,
+          "reasoningTokens": 7646,
+          "costUsd": 0.0345607,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6128,
+          "inputTokens": 545,
+          "outputTokens": 1440,
+          "reasoningTokens": 1386,
+          "costUsd": 0.00680125,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1845,
+          "inputTokens": 431,
+          "outputTokens": 560,
+          "reasoningTokens": 502,
+          "costUsd": 0.00265365,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1536,
+          "inputTokens": 297,
+          "outputTokens": 404,
+          "reasoningTokens": 370,
+          "costUsd": 0.00196395,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1421,
+          "inputTokens": 290,
+          "outputTokens": 309,
+          "reasoningTokens": 277,
+          "costUsd": 0.00155145,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1649,
+          "inputTokens": 290,
+          "outputTokens": 324,
+          "reasoningTokens": 292,
+          "costUsd": 0.0016152,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1716,
+          "inputTokens": 308,
+          "outputTokens": 554,
+          "reasoningTokens": 521,
+          "costUsd": 0.0026152,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2476,
+          "inputTokens": 301,
+          "outputTokens": 465,
+          "reasoningTokens": 429,
+          "costUsd": 0.0022281999999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 4408,
+          "inputTokens": 301,
+          "outputTokens": 1063,
+          "reasoningTokens": 1025,
+          "costUsd": 0.0047697,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateRecheck",
+      "calls": [
+        {
+          "stage": "generateRecheck",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateRecheck.v1",
+          "cacheHit": false,
+          "latencyMs": 10238,
+          "inputTokens": 732,
+          "outputTokens": 3499,
+          "reasoningTokens": 3405,
+          "costUsd": 0.01578575,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1841,
+          "inputTokens": 370,
+          "outputTokens": 483,
+          "reasoningTokens": 439,
+          "costUsd": 0.0023909499999999998,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1229,
+          "inputTokens": 363,
+          "outputTokens": 350,
+          "reasoningTokens": 312,
+          "costUsd": 0.0018169500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 6449,
+          "inputTokens": 363,
+          "outputTokens": 1689,
+          "reasoningTokens": 1647,
+          "costUsd": 0.0075077,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 5424,
+          "inputTokens": 625,
+          "outputTokens": 1722,
+          "reasoningTokens": 1289,
+          "costUsd": 0.00783465,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,943 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 2,
+  "scenario": "heldout-scope-docs-migration",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-scope-docs-migration:seg:0",
+      "text": "The old docs platform contract ends on the 30th, and they won't extend month to month."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:1",
+      "text": "The new site is up. Search works, versioning works. It just has no content."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:2",
+      "text": "How many pages are we talking about?"
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:3",
+      "text": "About three hundred on the old platform. Some of it hasn't been touched in two years."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:4",
+      "text": "OK. Nkechi, can you migrate the docs to the new site by the 20th? That gives us ten days of slack."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:5",
+      "text": "By the 20th, yes. I'll script the conversion and fix the tables by hand."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:6",
+      "text": "Redirects too, please. We have a lot of inbound links from forums."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:7",
+      "text": "I'll generate a redirect map from the old URLs."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:8",
+      "text": "Ivo, can you set up the redirect rules once Nkechi has the map?"
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:9",
+      "text": "Yes."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:10",
+      "text": "And let's freeze edits on the old platform from the 16th."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:11",
+      "text": "I'll post the freeze in the docs channel."
+    },
+    {
+      "id": "heldout-scope-docs-migration:seg:12",
+      "text": "Great, thanks."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-scope-docs-migration:dec:0",
+        "meetingId": "heldout-scope-docs-migration",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Nkechi will migrate the docs to the new site by the 20th.",
+        "ownerText": "Nkechi",
+        "deadlineText": "by the 20th",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-docs-migration:dec:0:ev:0",
+          "decisionId": "heldout-scope-docs-migration:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-docs-migration:seg:4",
+          "quote": "Nkechi, can you migrate the docs to the new site by the 20th?"
+        },
+        {
+          "id": "heldout-scope-docs-migration:dec:0:ev:1",
+          "decisionId": "heldout-scope-docs-migration:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-docs-migration:seg:5",
+          "quote": "By the 20th, yes. I'll script the conversion and fix the tables by hand."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-scope-docs-migration:dec:1",
+        "meetingId": "heldout-scope-docs-migration",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Nkechi will generate a redirect map from the old URLs.",
+        "ownerText": "Nkechi",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-docs-migration:dec:1:ev:0",
+          "decisionId": "heldout-scope-docs-migration:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-docs-migration:seg:6",
+          "quote": "Redirects too, please."
+        },
+        {
+          "id": "heldout-scope-docs-migration:dec:1:ev:1",
+          "decisionId": "heldout-scope-docs-migration:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-docs-migration:seg:7",
+          "quote": "I'll generate a redirect map from the old URLs."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-scope-docs-migration:dec:2",
+        "meetingId": "heldout-scope-docs-migration",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Ivo will set up the redirect rules once Nkechi has the map.",
+        "ownerText": "Ivo",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-docs-migration:dec:2:ev:0",
+          "decisionId": "heldout-scope-docs-migration:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-docs-migration:seg:8",
+          "quote": "Ivo, can you set up the redirect rules once Nkechi has the map?"
+        },
+        {
+          "id": "heldout-scope-docs-migration:dec:2:ev:1",
+          "decisionId": "heldout-scope-docs-migration:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-docs-migration:seg:9",
+          "quote": "Yes."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-scope-docs-migration:dec:3",
+        "meetingId": "heldout-scope-docs-migration",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "Edits on the old platform will be frozen from the 16th.",
+        "ownerText": null,
+        "deadlineText": "from the 16th",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-docs-migration:dec:3:ev:0",
+          "decisionId": "heldout-scope-docs-migration:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-docs-migration:seg:10",
+          "quote": "And let's freeze edits on the old platform from the 16th."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-scope-docs-migration:dec:4",
+        "meetingId": "heldout-scope-docs-migration",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Nkechi will post the freeze in the docs channel.",
+        "ownerText": "Nkechi",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-scope-docs-migration:dec:4:ev:0",
+          "decisionId": "heldout-scope-docs-migration:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-scope-docs-migration:seg:11",
+          "quote": "I'll post the freeze in the docs channel."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-scope-docs-migration:cand:0",
+      "dimension": "scope",
+      "mismatch": "which-docs",
+      "probeId": "heldout-scope-docs-migration:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-scope-docs-migration:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-scope-docs-migration:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-scope-docs-migration:cand:0:probe:0",
+      "stem": "When \"Nkechi will migrate the docs to the new site by the 20th\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-scope-docs-migration:cand:0:probe:0:opt:0",
+          "text": "The full set of around 300 pages, including material not revised in two years"
+        },
+        {
+          "id": "heldout-scope-docs-migration:cand:0:probe:0:opt:1",
+          "text": "Only the actively kept guides, excluding material not revised in two years"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Farah",
+          "choice": "option",
+          "optionId": "heldout-scope-docs-migration:cand:0:probe:0:opt:0"
+        },
+        {
+          "participantId": "Ivo",
+          "choice": "option",
+          "optionId": "heldout-scope-docs-migration:cand:0:probe:0:opt:0"
+        },
+        {
+          "participantId": "Nkechi",
+          "choice": "option",
+          "optionId": "heldout-scope-docs-migration:cand:0:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "heldout-scope-docs-migration:cand:1:probe:0",
+      "stem": "When \"Nkechi will generate a redirect map from the old URLs\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-scope-docs-migration:cand:1:probe:0:opt:0",
+          "text": "All former documentation pages, about 300 addresses in total."
+        },
+        {
+          "id": "heldout-scope-docs-migration:cand:1:probe:0:opt:1",
+          "text": "Only former pages linked to from community forum posts."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Farah",
+          "choice": "option",
+          "optionId": "heldout-scope-docs-migration:cand:1:probe:0:opt:0"
+        },
+        {
+          "participantId": "Ivo",
+          "choice": "option",
+          "optionId": "heldout-scope-docs-migration:cand:1:probe:0:opt:0"
+        },
+        {
+          "participantId": "Nkechi",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [
+    {
+      "splitId": "heldout-scope-docs-migration:cand:0:probe:0:split",
+      "probeId": "heldout-scope-docs-migration:cand:0:probe:0",
+      "mismatch": "which-docs",
+      "events": [
+        {
+          "type": "propose",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "recheck"
+        }
+      ],
+      "recheck": {
+        "probe": {
+          "stem": "On Saturday the 21st, what does a person browsing the new site encounter?"
+        },
+        "round": {
+          "probeId": "heldout-scope-docs-migration:cand:0:probe:0:split:recheck:heldout-scope-docs-migration:cand:0:probe:0:split:res:0",
+          "stem": "On Saturday the 21st, what does a person browsing the new site encounter?",
+          "options": [
+            {
+              "id": "heldout-scope-docs-migration:cand:0:probe:0:split:recheck:heldout-scope-docs-migration:cand:0:probe:0:split:res:0:opt:0",
+              "text": "Actively kept guides plus pages untouched for two years are viewable together"
+            },
+            {
+              "id": "heldout-scope-docs-migration:cand:0:probe:0:split:recheck:heldout-scope-docs-migration:cand:0:probe:0:split:res:0:opt:1",
+              "text": "Only actively kept guides are viewable, with pages untouched for two years absent"
+            }
+          ],
+          "answers": [
+            {
+              "participantId": "Farah",
+              "choice": "option",
+              "optionId": "heldout-scope-docs-migration:cand:0:probe:0:split:recheck:heldout-scope-docs-migration:cand:0:probe:0:split:res:0:opt:0"
+            },
+            {
+              "participantId": "Ivo",
+              "choice": "option",
+              "optionId": "heldout-scope-docs-migration:cand:0:probe:0:split:recheck:heldout-scope-docs-migration:cand:0:probe:0:split:res:0:opt:0"
+            },
+            {
+              "participantId": "Nkechi",
+              "choice": "option",
+              "optionId": "heldout-scope-docs-migration:cand:0:probe:0:split:recheck:heldout-scope-docs-migration:cand:0:probe:0:split:res:0:opt:0"
+            }
+          ],
+          "divergence": {
+            "outcome": "consistent"
+          }
+        }
+      },
+      "state": {
+        "status": "rechecked",
+        "participants": [
+          {
+            "id": "Farah",
+            "status": "active"
+          },
+          {
+            "id": "Ivo",
+            "status": "active"
+          },
+          {
+            "id": "Nkechi",
+            "status": "active"
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "heldout-scope-docs-migration:cand:0:probe:0:split:res:0",
+            "status": "confirmed"
+          }
+        ],
+        "confirmations": [
+          {
+            "resolutionId": "heldout-scope-docs-migration:cand:0:probe:0:split:res:0",
+            "participantId": "Farah"
+          },
+          {
+            "resolutionId": "heldout-scope-docs-migration:cand:0:probe:0:split:res:0",
+            "participantId": "Ivo"
+          },
+          {
+            "resolutionId": "heldout-scope-docs-migration:cand:0:probe:0:split:res:0",
+            "participantId": "Nkechi"
+          }
+        ]
+      }
+    }
+  ],
+  "record": {
+    "meetingId": "heldout-scope-docs-migration",
+    "title": "Docs migration to the new site",
+    "heldAt": "2026-11-03T10:00:00+01:00",
+    "generatedAt": "2026-11-03T10:00:00+01:00",
+    "participants": [
+      {
+        "id": "Farah",
+        "meetingId": "heldout-scope-docs-migration",
+        "displayName": "Farah",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Ivo",
+        "meetingId": "heldout-scope-docs-migration",
+        "displayName": "Ivo",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Nkechi",
+        "meetingId": "heldout-scope-docs-migration",
+        "displayName": "Nkechi",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-scope-docs-migration:item:0",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "stated",
+        "text": "Nkechi, can you migrate the docs to the new site by the 20th?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:4",
+            "quote": "Nkechi, can you migrate the docs to the new site by the 20th?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-docs-migration:item:1",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "stated",
+        "text": "By the 20th, yes. I'll script the conversion and fix the tables by hand.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:5",
+            "quote": "By the 20th, yes. I'll script the conversion and fix the tables by hand.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-docs-migration:item:2",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "stated",
+        "text": "Redirects too, please.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:6",
+            "quote": "Redirects too, please.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-docs-migration:item:3",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "stated",
+        "text": "I'll generate a redirect map from the old URLs.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:7",
+            "quote": "I'll generate a redirect map from the old URLs.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-docs-migration:item:4",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "stated",
+        "text": "Ivo, can you set up the redirect rules once Nkechi has the map?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:8",
+            "quote": "Ivo, can you set up the redirect rules once Nkechi has the map?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-docs-migration:item:5",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "stated",
+        "text": "Yes.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:9",
+            "quote": "Yes.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-docs-migration:item:6",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "stated",
+        "text": "And let's freeze edits on the old platform from the 16th.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:10",
+            "quote": "And let's freeze edits on the old platform from the 16th.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-docs-migration:item:7",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "stated",
+        "text": "I'll post the freeze in the docs channel.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:11",
+            "quote": "I'll post the freeze in the docs channel.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-scope-docs-migration:item:8",
+        "meetingId": "heldout-scope-docs-migration",
+        "category": "confirmed",
+        "text": "All three hundred pages move, including internal runbooks (behind login) and archived v1 docs, by Friday 2026-11-20.",
+        "sourceRefs": [
+          {
+            "kind": "confirmation",
+            "resolutionId": "heldout-scope-docs-migration:cand:0:probe:0:split:res:0"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:4",
+            "quote": "Nkechi, can you migrate the docs to the new site by the 20th?",
+            "origin": "paste"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-scope-docs-migration:seg:5",
+            "quote": "By the 20th, yes. I'll script the conversion and fix the tables by hand.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [
+          "Farah",
+          "Ivo",
+          "Nkechi"
+        ],
+        "absent": [],
+        "recheck": "passed",
+        "splitId": "heldout-scope-docs-migration:cand:0:probe:0:split",
+        "deadline": null
+      }
+    ],
+    "proseDraft": "It was confirmed that all three hundred pages, including internal runbooks behind login and archived v1 docs, move by Friday 2026-11-20. The requests about migration by the 20th, redirects, and freezing edits from the 16th were stated, and no unresolved item was listed.\n\nConfirmed by participants\n- The confirmed resolution is that all three hundred pages move, including internal runbooks behind login and archived v1 docs, by Friday 2026-11-20, confirmed by Farah, Ivo and Nkechi with a passed recheck.\n\nStated in the meeting\n- The stated request asked Nkechi to migrate the docs to the new site by the 20th.\n- The stated reply said yes by the 20th, with scripted conversion and manual fixing of the tables.\n- The stated request asked for redirects too.\n- The stated remark said a redirect map would be generated from the old URLs.\n- The stated request asked Ivo to set up the redirect rules once Nkechi has the map.\n- The stated reply was yes.\n- The stated suggestion was to freeze edits on the old platform from the 16th.\n- The stated remark said the freeze would be posted in the docs channel."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 26168,
+          "inputTokens": 1118,
+          "outputTokens": 8203,
+          "reasoningTokens": 7674,
+          "costUsd": 0.03626025,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 32357,
+          "inputTokens": 1672,
+          "outputTokens": 8183,
+          "reasoningTokens": 7928,
+          "costUsd": 0.036039449999999994,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4346,
+          "inputTokens": 652,
+          "outputTokens": 1480,
+          "reasoningTokens": 1428,
+          "costUsd": 0.0066991,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1587,
+          "inputTokens": 483,
+          "outputTokens": 387,
+          "reasoningTokens": 334,
+          "costUsd": 0.0019834,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3994,
+          "inputTokens": 572,
+          "outputTokens": 1300,
+          "reasoningTokens": 1256,
+          "costUsd": 0.0058341,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1955,
+          "inputTokens": 430,
+          "outputTokens": 533,
+          "reasoningTokens": 480,
+          "costUsd": 0.0025376500000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1732,
+          "inputTokens": 308,
+          "outputTokens": 355,
+          "reasoningTokens": 323,
+          "costUsd": 0.00176945,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1094,
+          "inputTokens": 309,
+          "outputTokens": 286,
+          "reasoningTokens": 251,
+          "costUsd": 0.00147745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1667,
+          "inputTokens": 312,
+          "outputTokens": 510,
+          "reasoningTokens": 471,
+          "costUsd": 0.0024332,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1429,
+          "inputTokens": 296,
+          "outputTokens": 343,
+          "reasoningTokens": 307,
+          "costUsd": 0.00170345,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2153,
+          "inputTokens": 297,
+          "outputTokens": 509,
+          "reasoningTokens": 474,
+          "costUsd": 0.0024102,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1876,
+          "inputTokens": 300,
+          "outputTokens": 462,
+          "reasoningTokens": 429,
+          "costUsd": 0.0022142,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateRecheck",
+      "calls": [
+        {
+          "stage": "generateRecheck",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateRecheck.v1",
+          "cacheHit": false,
+          "latencyMs": 8482,
+          "inputTokens": 757,
+          "outputTokens": 2877,
+          "reasoningTokens": 2786,
+          "costUsd": 0.0131735,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1876,
+          "inputTokens": 356,
+          "outputTokens": 429,
+          "reasoningTokens": 387,
+          "costUsd": 0.00214395,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1242,
+          "inputTokens": 357,
+          "outputTokens": 362,
+          "reasoningTokens": 324,
+          "costUsd": 0.00186045,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1980,
+          "inputTokens": 360,
+          "outputTokens": 538,
+          "reasoningTokens": 498,
+          "costUsd": 0.0026122,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 8250,
+          "inputTokens": 628,
+          "outputTokens": 2502,
+          "reasoningTokens": 2061,
+          "costUsd": 0.011153399999999999,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

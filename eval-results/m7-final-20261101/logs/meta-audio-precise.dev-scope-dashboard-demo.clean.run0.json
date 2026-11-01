@@ -1,0 +1,1436 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 0,
+  "scenario": "dev-scope-dashboard-demo",
+  "provider": "meta",
+  "source": "audio",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "dev-scope-dashboard-demo:seg:0",
+      "text": "morning, Halvorsen Fred asked to see the dashboard before they renew, they meet their board next week. Which parts do they care about?"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:1",
+      "text": "Late shipments by lane and the carrier scorecard. Their ops director brought up the scorecard twice."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:2",
+      "text": "The scorecard view is new. We only finished the scoring logic last sprint."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:3",
+      "text": "The designs for it are done done though. The fleet map, the scorecard, the lane breakdown."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:4",
+      "text": "Can we show it to them this week?"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:5",
+      "text": "Thursday works for me."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:6",
+      "text": "Thursday's is fine."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:7",
+      "text": "Great. So Oskar demos the dashboard to Halvorsen on Thursday. I'll send the invite."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:8",
+      "text": "Sure. Can you ask them for a sample sample of their shipment data? It's a better demo with their own lanes."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:9",
+      "text": "I'll ask but their IT is slow. Don't count on it."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:10",
+      "text": "I'll tidy up the scorecard screens before then. A couple of labels are still placeholders."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:11",
+      "text": "The color scale on the lane chart is off too. Red means on time right now."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:12",
+      "text": "Ha I'll fix that as well."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:13",
+      "text": "Should we mention the pricing change on the call?"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:14",
+      "text": "I'd leave pricing for the renewal call itself."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:15",
+      "text": "Fair. I'll keep Thursday to the product."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:16",
+      "text": "How long is the slot?"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:17",
+      "text": "45 minutes with 15 for questions."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:18",
+      "text": "Okay, I'll do a dry run on Wednesday."
+    },
+    {
+      "id": "dev-scope-dashboard-demo:seg:19",
+      "text": "Perfect. Thanks all."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "dev-scope-dashboard-demo:dec:0",
+        "meetingId": "dev-scope-dashboard-demo",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "Oskar will demo the dashboard to Halvorsen on Thursday.",
+        "ownerText": "Oskar",
+        "deadlineText": "on Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-scope-dashboard-demo:dec:0:ev:0",
+          "decisionId": "dev-scope-dashboard-demo:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:7",
+          "quote": "So Oskar demos the dashboard to Halvorsen on Thursday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-scope-dashboard-demo:dec:1",
+        "meetingId": "dev-scope-dashboard-demo",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Gabriel will send the invite.",
+        "ownerText": "Gabriel",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-scope-dashboard-demo:dec:1:ev:0",
+          "decisionId": "dev-scope-dashboard-demo:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:7",
+          "quote": "I'll send the invite."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-scope-dashboard-demo:dec:2",
+        "meetingId": "dev-scope-dashboard-demo",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Gabriel will ask them for a sample sample of their shipment data.",
+        "ownerText": "Gabriel",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-scope-dashboard-demo:dec:2:ev:0",
+          "decisionId": "dev-scope-dashboard-demo:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:8",
+          "quote": "Can you ask them for a sample sample of their shipment data?"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:dec:2:ev:1",
+          "decisionId": "dev-scope-dashboard-demo:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:9",
+          "quote": "I'll ask but their IT is slow. Don't count on it."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-scope-dashboard-demo:dec:3",
+        "meetingId": "dev-scope-dashboard-demo",
+        "idx": 3,
+        "kind": "assumption",
+        "statement": "The demo cannot count on Halvorsen's own shipment data because their IT is slow.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-scope-dashboard-demo:dec:3:ev:0",
+          "decisionId": "dev-scope-dashboard-demo:dec:3",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:9",
+          "quote": "I'll ask but their IT is slow. Don't count on it."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-scope-dashboard-demo:dec:4",
+        "meetingId": "dev-scope-dashboard-demo",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Mei will tidy up the scorecard screens before then.",
+        "ownerText": "Mei",
+        "deadlineText": "before then",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-scope-dashboard-demo:dec:4:ev:0",
+          "decisionId": "dev-scope-dashboard-demo:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:10",
+          "quote": "I'll tidy up the scorecard screens before then."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-scope-dashboard-demo:dec:5",
+        "meetingId": "dev-scope-dashboard-demo",
+        "idx": 5,
+        "kind": "commitment",
+        "statement": "Mei will fix the color scale on the lane chart where Red means on time right now.",
+        "ownerText": "Mei",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-scope-dashboard-demo:dec:5:ev:0",
+          "decisionId": "dev-scope-dashboard-demo:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:11",
+          "quote": "The color scale on the lane chart is off too. Red means on time right now."
+        },
+        {
+          "id": "dev-scope-dashboard-demo:dec:5:ev:1",
+          "decisionId": "dev-scope-dashboard-demo:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:12",
+          "quote": "Ha I'll fix that as well."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-scope-dashboard-demo:dec:6",
+        "meetingId": "dev-scope-dashboard-demo",
+        "idx": 6,
+        "kind": "decision",
+        "statement": "Thursday will be kept to the product, with pricing left for the renewal call.",
+        "ownerText": "Gabriel",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-scope-dashboard-demo:dec:6:ev:0",
+          "decisionId": "dev-scope-dashboard-demo:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:14",
+          "quote": "I'd leave pricing for the renewal call itself."
+        },
+        {
+          "id": "dev-scope-dashboard-demo:dec:6:ev:1",
+          "decisionId": "dev-scope-dashboard-demo:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:15",
+          "quote": "I'll keep Thursday to the product."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-scope-dashboard-demo:dec:7",
+        "meetingId": "dev-scope-dashboard-demo",
+        "idx": 7,
+        "kind": "commitment",
+        "statement": "Oskar will do a dry run on Wednesday.",
+        "ownerText": "Oskar",
+        "deadlineText": "on Wednesday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-scope-dashboard-demo:dec:7:ev:0",
+          "decisionId": "dev-scope-dashboard-demo:dec:7",
+          "resolutionId": null,
+          "segmentId": "dev-scope-dashboard-demo:seg:18",
+          "quote": "Okay, I'll do a dry run on Wednesday."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-scope-dashboard-demo:cand:0",
+      "dimension": "scope",
+      "mismatch": "which-dashboard",
+      "probeId": "dev-scope-dashboard-demo:cand:0:t0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:3",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:3:t0"
+    },
+    {
+      "id": "dev-scope-dashboard-demo:cand:4",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-scope-dashboard-demo:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:0:t0",
+      "stem": "For \"Oskar will demo the dashboard to Halvorsen on Thursday\", what form does it take?",
+      "options": [
+        {
+          "id": "dev-scope-dashboard-demo:cand:0:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:cand:0:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:cand:0:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Mei",
+          "choice": "option",
+          "optionId": "dev-scope-dashboard-demo:cand:0:t0:opt:0"
+        },
+        {
+          "participantId": "Oskar",
+          "choice": "option",
+          "optionId": "dev-scope-dashboard-demo:cand:0:t0:opt:1"
+        },
+        {
+          "participantId": "Gabriel",
+          "choice": "option",
+          "optionId": "dev-scope-dashboard-demo:cand:0:t0:opt:2"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:1:probe:0",
+      "stem": "When \"Gabriel will send the invite\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "dev-scope-dashboard-demo:cand:1:probe:0:opt:0",
+          "text": "A 45-minute slot covering both the walkthrough and questions"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:cand:1:probe:0:opt:1",
+          "text": "A 60-minute slot with questions scheduled after the walkthrough"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Mei",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Oskar",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Gabriel",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:2:probe:0",
+      "stem": "For \"Mei will tidy up the scorecard screens\", what has to exist by \"then\"?",
+      "options": [
+        {
+          "id": "dev-scope-dashboard-demo:cand:2:probe:0:opt:0",
+          "text": "Revised score views ready for review at Wednesday the 4th rehearsal"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:cand:2:probe:0:opt:1",
+          "text": "Revised score views ready for review at Thursday the 5th live demo"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Mei",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Oskar",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Gabriel",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:4:probe:0",
+      "stem": "If Mei's scorecard and lane chart work is still incomplete on Wednesday, what will Oskar do?",
+      "options": [
+        {
+          "id": "dev-scope-dashboard-demo:cand:4:probe:0:opt:0",
+          "text": "Delay the rehearsal until those updates are finished"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:cand:4:probe:0:opt:1",
+          "text": "Go ahead with the rehearsal using the current state"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Mei",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Oskar",
+          "choice": "option",
+          "optionId": "dev-scope-dashboard-demo:cand:4:probe:0:opt:1"
+        },
+        {
+          "participantId": "Gabriel",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-scope-dashboard-demo:cand:3:t0",
+      "stem": "For \"Someone will do a dry run on Wednesday\", who does it on the day it happens?",
+      "options": [
+        {
+          "id": "dev-scope-dashboard-demo:cand:3:t0:opt:0",
+          "text": "Mei does it"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:cand:3:t0:opt:1",
+          "text": "Oskar does it"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:cand:3:t0:opt:2",
+          "text": "Gabriel does it"
+        },
+        {
+          "id": "dev-scope-dashboard-demo:cand:3:t0:opt:3",
+          "text": "No one is named yet"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Mei",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Oskar",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Gabriel",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [
+    {
+      "splitId": "dev-scope-dashboard-demo:cand:0:t0:split",
+      "probeId": "dev-scope-dashboard-demo:cand:0:t0",
+      "mismatch": "which-dashboard",
+      "events": [
+        {
+          "type": "propose",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "recheck"
+        }
+      ],
+      "recheck": {
+        "probe": {
+          "stem": "By Friday the 6th, what has Halvorsen seen at Oskar's demo?"
+        },
+        "round": {
+          "probeId": "dev-scope-dashboard-demo:cand:0:t0:split:recheck:dev-scope-dashboard-demo:cand:0:t0:split:res:0",
+          "stem": "By Friday the 6th, what has Halvorsen seen at Oskar's demo?",
+          "options": [
+            {
+              "id": "dev-scope-dashboard-demo:cand:0:t0:split:recheck:dev-scope-dashboard-demo:cand:0:t0:split:res:0:opt:0",
+              "text": "Still images of the layout with drawn-in example panels"
+            },
+            {
+              "id": "dev-scope-dashboard-demo:cand:0:t0:split:recheck:dev-scope-dashboard-demo:cand:0:t0:split:res:0:opt:1",
+              "text": "A clickable dashboard running on internal example records"
+            },
+            {
+              "id": "dev-scope-dashboard-demo:cand:0:t0:split:recheck:dev-scope-dashboard-demo:cand:0:t0:split:res:0:opt:2",
+              "text": "A clickable dashboard running on Halvorsen company records"
+            }
+          ],
+          "answers": [
+            {
+              "participantId": "Mei",
+              "choice": "option",
+              "optionId": "dev-scope-dashboard-demo:cand:0:t0:split:recheck:dev-scope-dashboard-demo:cand:0:t0:split:res:0:opt:1"
+            },
+            {
+              "participantId": "Oskar",
+              "choice": "option",
+              "optionId": "dev-scope-dashboard-demo:cand:0:t0:split:recheck:dev-scope-dashboard-demo:cand:0:t0:split:res:0:opt:1"
+            },
+            {
+              "participantId": "Gabriel",
+              "choice": "option",
+              "optionId": "dev-scope-dashboard-demo:cand:0:t0:split:recheck:dev-scope-dashboard-demo:cand:0:t0:split:res:0:opt:1"
+            }
+          ],
+          "divergence": {
+            "outcome": "consistent"
+          }
+        }
+      },
+      "state": {
+        "status": "rechecked",
+        "participants": [
+          {
+            "id": "Mei",
+            "status": "active"
+          },
+          {
+            "id": "Oskar",
+            "status": "active"
+          },
+          {
+            "id": "Gabriel",
+            "status": "active"
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "dev-scope-dashboard-demo:cand:0:t0:split:res:0",
+            "status": "confirmed"
+          }
+        ],
+        "confirmations": [
+          {
+            "resolutionId": "dev-scope-dashboard-demo:cand:0:t0:split:res:0",
+            "participantId": "Mei"
+          },
+          {
+            "resolutionId": "dev-scope-dashboard-demo:cand:0:t0:split:res:0",
+            "participantId": "Oskar"
+          },
+          {
+            "resolutionId": "dev-scope-dashboard-demo:cand:0:t0:split:res:0",
+            "participantId": "Gabriel"
+          }
+        ]
+      }
+    }
+  ],
+  "record": {
+    "meetingId": "dev-scope-dashboard-demo",
+    "title": "Demo the dashboard to Halvorsen on Thursday",
+    "heldAt": "2026-11-02T09:30:00+05:30",
+    "generatedAt": "2026-11-02T09:30:00+05:30",
+    "participants": [
+      {
+        "id": "Mei",
+        "meetingId": "dev-scope-dashboard-demo",
+        "displayName": "Mei",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Oskar",
+        "meetingId": "dev-scope-dashboard-demo",
+        "displayName": "Oskar",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Gabriel",
+        "meetingId": "dev-scope-dashboard-demo",
+        "displayName": "Gabriel",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "dev-scope-dashboard-demo:item:0",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "So Oskar demos the dashboard to Halvorsen on Thursday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:7",
+            "quote": "So Oskar demos the dashboard to Halvorsen on Thursday.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:1",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "I'll send the invite.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:7",
+            "quote": "I'll send the invite.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:2",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "Can you ask them for a sample sample of their shipment data?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:8",
+            "quote": "Can you ask them for a sample sample of their shipment data?",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:3",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "I'll ask but their IT is slow. Don't count on it.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:9",
+            "quote": "I'll ask but their IT is slow. Don't count on it.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:4",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "I'll ask but their IT is slow. Don't count on it.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:9",
+            "quote": "I'll ask but their IT is slow. Don't count on it.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:5",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "I'll tidy up the scorecard screens before then.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:10",
+            "quote": "I'll tidy up the scorecard screens before then.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:6",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "The color scale on the lane chart is off too. Red means on time right now.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:11",
+            "quote": "The color scale on the lane chart is off too. Red means on time right now.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:7",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "Ha I'll fix that as well.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:12",
+            "quote": "Ha I'll fix that as well.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:8",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "I'd leave pricing for the renewal call itself.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:14",
+            "quote": "I'd leave pricing for the renewal call itself.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:9",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "I'll keep Thursday to the product.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:15",
+            "quote": "I'll keep Thursday to the product.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:10",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "stated",
+        "text": "Okay, I'll do a dry run on Wednesday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:18",
+            "quote": "Okay, I'll do a dry run on Wednesday.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-scope-dashboard-demo:item:11",
+        "meetingId": "dev-scope-dashboard-demo",
+        "category": "confirmed",
+        "text": "On Thursday 2026-11-05 Oskar demos the working staging build on our sample data. No prototype screens, and no Halvorsen data.",
+        "sourceRefs": [
+          {
+            "kind": "confirmation",
+            "resolutionId": "dev-scope-dashboard-demo:cand:0:t0:split:res:0"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "dev-scope-dashboard-demo:seg:7",
+            "quote": "So Oskar demos the dashboard to Halvorsen on Thursday.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [
+          "Mei",
+          "Oskar",
+          "Gabriel"
+        ],
+        "absent": [],
+        "recheck": "passed",
+        "splitId": "dev-scope-dashboard-demo:cand:0:t0:split",
+        "deadline": null
+      }
+    ],
+    "proseDraft": "It was confirmed by Mei, Oskar, and Gabriel, with recheck passed, that on Thursday 2026-11-05 Oskar will demo the working staging build on our sample data with no prototype screens and no Halvorsen data. The other remarks about the invite, shipment data sample, scorecard screens, lane chart colors, pricing, and dry run were stated and were not listed as confirmed.\n\nConfirmed by participants\n- It was confirmed by Mei, Oskar, and Gabriel, with recheck passed, that on Thursday 2026-11-05 Oskar will demo the working staging build on our sample data with no prototype screens and no Halvorsen data.\n\nStated in the meeting\n- It was said that Oskar will demo the dashboard to Halvorsen on Thursday.\n- It was stated that the invite will be sent.\n- It was asked whether a sample of their shipment data could be requested.\n- Someone said they would ask but their IT is slow and not to count on it.\n- Someone said they would ask but their IT is slow and not to count on it.\n- Someone said they will tidy up the scorecard screens before then.\n- It was stated that the color scale on the lane chart is off, with red currently meaning on time.\n- Someone said they will fix that as well.\n- It was suggested leaving pricing for the renewal call itself.\n- Someone said they will keep Thursday to the product.\n- Someone said they will do a dry run on Wednesday."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 26682,
+          "inputTokens": 1234,
+          "outputTokens": 7149,
+          "reasoningTokens": 6434,
+          "costUsd": 0.03123825,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 29676,
+          "inputTokens": 1895,
+          "outputTokens": 7375,
+          "reasoningTokens": 6878,
+          "costUsd": 0.032884199999999995,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3145,
+          "inputTokens": 538,
+          "outputTokens": 926,
+          "reasoningTokens": 879,
+          "costUsd": 0.0042021,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1675,
+          "inputTokens": 426,
+          "outputTokens": 428,
+          "reasoningTokens": 367,
+          "costUsd": 0.0023515,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 5090,
+          "inputTokens": 546,
+          "outputTokens": 1651,
+          "reasoningTokens": 1598,
+          "costUsd": 0.0072933500000000005,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2008,
+          "inputTokens": 422,
+          "outputTokens": 512,
+          "reasoningTokens": 460,
+          "costUsd": 0.0024384000000000003,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3753,
+          "inputTokens": 670,
+          "outputTokens": 1116,
+          "reasoningTokens": 1045,
+          "costUsd": 0.005033800000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1805,
+          "inputTokens": 422,
+          "outputTokens": 591,
+          "reasoningTokens": 527,
+          "costUsd": 0.00303925,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 923,
+          "inputTokens": 294,
+          "outputTokens": 256,
+          "reasoningTokens": 224,
+          "costUsd": 0.0013312,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1671,
+          "inputTokens": 293,
+          "outputTokens": 332,
+          "reasoningTokens": 303,
+          "costUsd": 0.00165295,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2049,
+          "inputTokens": 293,
+          "outputTokens": 412,
+          "reasoningTokens": 375,
+          "costUsd": 0.00185215,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1328,
+          "inputTokens": 294,
+          "outputTokens": 299,
+          "reasoningTokens": 269,
+          "costUsd": 0.00151395,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1123,
+          "inputTokens": 293,
+          "outputTokens": 224,
+          "reasoningTokens": 196,
+          "costUsd": 0.00119395,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1337,
+          "inputTokens": 293,
+          "outputTokens": 261,
+          "reasoningTokens": 230,
+          "costUsd": 0.0013512,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1657,
+          "inputTokens": 301,
+          "outputTokens": 339,
+          "reasoningTokens": 306,
+          "costUsd": 0.0015519000000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1417,
+          "inputTokens": 300,
+          "outputTokens": 373,
+          "reasoningTokens": 339,
+          "costUsd": 0.00183595,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1191,
+          "inputTokens": 300,
+          "outputTokens": 267,
+          "reasoningTokens": 232,
+          "costUsd": 0.0012446500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1464,
+          "inputTokens": 292,
+          "outputTokens": 306,
+          "reasoningTokens": 269,
+          "costUsd": 0.0015412,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1534,
+          "inputTokens": 291,
+          "outputTokens": 362,
+          "reasoningTokens": 328,
+          "costUsd": 0.0017779500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1564,
+          "inputTokens": 291,
+          "outputTokens": 461,
+          "reasoningTokens": 428,
+          "costUsd": 0.0021986999999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1313,
+          "inputTokens": 293,
+          "outputTokens": 327,
+          "reasoningTokens": 297,
+          "costUsd": 0.0016317,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1407,
+          "inputTokens": 292,
+          "outputTokens": 334,
+          "reasoningTokens": 300,
+          "costUsd": 0.0016602000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1418,
+          "inputTokens": 292,
+          "outputTokens": 312,
+          "reasoningTokens": 274,
+          "costUsd": 0.0015667,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateRecheck",
+      "calls": [
+        {
+          "stage": "generateRecheck",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateRecheck.v1",
+          "cacheHit": false,
+          "latencyMs": 14566,
+          "inputTokens": 698,
+          "outputTokens": 3737,
+          "reasoningTokens": 3641,
+          "costUsd": 0.01675475,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1231,
+          "inputTokens": 362,
+          "outputTokens": 323,
+          "reasoningTokens": 282,
+          "costUsd": 0.0017009500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1406,
+          "inputTokens": 361,
+          "outputTokens": 422,
+          "reasoningTokens": 379,
+          "costUsd": 0.00212045,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1552,
+          "inputTokens": 361,
+          "outputTokens": 426,
+          "reasoningTokens": 382,
+          "costUsd": 0.00213745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 6943,
+          "inputTokens": 669,
+          "outputTokens": 2224,
+          "reasoningTokens": 1701,
+          "costUsd": 0.01002315,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

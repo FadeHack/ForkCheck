@@ -1,0 +1,315 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 0,
+  "scenario": "heldout-same-reading-usual-handoff",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:0",
+      "text": "Bulk edit for invoices ships Thursday. Last thing before then is support."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:1",
+      "text": "Do the usual handoff to support, then. They hate surprises."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:2",
+      "text": "I'll do the usual handoff tomorrow."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:3",
+      "text": "Thanks. Any known issues they should hear about?"
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:4",
+      "text": "One. Bulk edit skips invoices that are locked for payment, and it doesn't say why."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:5",
+      "text": "I'll put that in the known issues section."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:6",
+      "text": "And let's fix the message in the next sprint."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:7",
+      "text": "I'll file the ticket."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:8",
+      "text": "Good. Thanks."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:0",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Lucia will do the usual handoff tomorrow.",
+        "ownerText": "Lucia",
+        "deadlineText": "tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:0:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:2",
+          "quote": "I'll do the usual handoff tomorrow."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:1",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Lucia will put that in the known issues section.",
+        "ownerText": "Lucia",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:1:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:5",
+          "quote": "I'll put that in the known issues section."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:2",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 2,
+        "kind": "decision",
+        "statement": "The group will fix the message in the next sprint.",
+        "ownerText": null,
+        "deadlineText": "in the next sprint",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:2:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:6",
+          "quote": "And let's fix the message in the next sprint."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:3",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Omar will file the ticket.",
+        "ownerText": "Omar",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:3:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:7",
+          "quote": "I'll file the ticket."
+        }
+      ]
+    }
+  ],
+  "candidates": [],
+  "rounds": [],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-same-reading-usual-handoff",
+    "title": "Usual handoff to support",
+    "heldAt": "2026-11-04T10:00:00-06:00",
+    "generatedAt": "2026-11-04T10:00:00-06:00",
+    "participants": [
+      {
+        "id": "Greta",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "displayName": "Greta",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Omar",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "displayName": "Omar",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Lucia",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "displayName": "Lucia",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-same-reading-usual-handoff:item:0",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "category": "stated",
+        "text": "I'll do the usual handoff tomorrow.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-same-reading-usual-handoff:seg:2",
+            "quote": "I'll do the usual handoff tomorrow.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-same-reading-usual-handoff:item:1",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "category": "stated",
+        "text": "I'll put that in the known issues section.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-same-reading-usual-handoff:seg:5",
+            "quote": "I'll put that in the known issues section.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-same-reading-usual-handoff:item:2",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "category": "stated",
+        "text": "And let's fix the message in the next sprint.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-same-reading-usual-handoff:seg:6",
+            "quote": "And let's fix the message in the next sprint.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-same-reading-usual-handoff:item:3",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "category": "stated",
+        "text": "I'll file the ticket.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-same-reading-usual-handoff:seg:7",
+            "quote": "I'll file the ticket.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "No confirmed resolutions and no unresolved items were recorded; the record contains only statements. The statements covered a handoff, an entry in the known issues section, a message fix, and filing a ticket.\n\nStated in the meeting\n- A participant stated they would do the usual handoff tomorrow.\n- A participant stated they would put that in the known issues section.\n- A participant stated about fixing the message in the next sprint.\n- A participant stated they would file the ticket."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 8657,
+          "inputTokens": 988,
+          "outputTokens": 2575,
+          "reasoningTokens": 2251,
+          "costUsd": 0.01120965,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 12001,
+          "inputTokens": 1405,
+          "outputTokens": 2833,
+          "reasoningTokens": 2819,
+          "costUsd": 0.0137965,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 4705,
+          "inputTokens": 459,
+          "outputTokens": 1224,
+          "reasoningTokens": 1021,
+          "costUsd": 0.00577575,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

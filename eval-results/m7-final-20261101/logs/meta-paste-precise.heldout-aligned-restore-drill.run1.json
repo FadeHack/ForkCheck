@@ -1,0 +1,554 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 1,
+  "scenario": "heldout-aligned-restore-drill",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-aligned-restore-drill:seg:0",
+      "text": "Quarterly restore drill. Auditors want evidence by the end of the month."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:1",
+      "text": "I'll run it. Restore last night's production snapshot into the isolated drill account."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:2",
+      "text": "When?"
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:3",
+      "text": "Thursday the 12th, starting 10:00 Central. It takes about three hours."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:4",
+      "text": "And what counts as a pass?"
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:5",
+      "text": "The restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:6",
+      "text": "Good. Write it up in the drill log by Friday the 13th, with screenshots."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:7",
+      "text": "Drill log by Friday the 13th. Yes."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:8",
+      "text": "I'll forward it to the auditors the following Monday."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:9",
+      "text": "Sounds good."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-aligned-restore-drill:dec:0",
+        "meetingId": "heldout-aligned-restore-drill",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Delphine will restore last night's production snapshot into the isolated drill account on Thursday the 12th starting at 10:00 Central.",
+        "ownerText": "Delphine",
+        "deadlineText": "Thursday the 12th, starting 10:00 Central",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-aligned-restore-drill:dec:0:ev:0",
+          "decisionId": "heldout-aligned-restore-drill:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:1",
+          "quote": "I'll run it. Restore last night's production snapshot into the isolated drill account."
+        },
+        {
+          "id": "heldout-aligned-restore-drill:dec:0:ev:1",
+          "decisionId": "heldout-aligned-restore-drill:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:3",
+          "quote": "Thursday the 12th, starting 10:00 Central."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-aligned-restore-drill:dec:1",
+        "meetingId": "heldout-aligned-restore-drill",
+        "idx": 1,
+        "kind": "decision",
+        "statement": "A pass is the restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-aligned-restore-drill:dec:1:ev:0",
+          "decisionId": "heldout-aligned-restore-drill:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:5",
+          "quote": "The restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-aligned-restore-drill:dec:2",
+        "meetingId": "heldout-aligned-restore-drill",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Write up the drill in the drill log by Friday the 13th with screenshots.",
+        "ownerText": "Delphine",
+        "deadlineText": "by Friday the 13th",
+        "ownerInferred": true,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-aligned-restore-drill:dec:2:ev:0",
+          "decisionId": "heldout-aligned-restore-drill:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:6",
+          "quote": "Write it up in the drill log by Friday the 13th, with screenshots."
+        },
+        {
+          "id": "heldout-aligned-restore-drill:dec:2:ev:1",
+          "decisionId": "heldout-aligned-restore-drill:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:7",
+          "quote": "Drill log by Friday the 13th. Yes."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-aligned-restore-drill:dec:3",
+        "meetingId": "heldout-aligned-restore-drill",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Hiroshi will forward it to the auditors the following Monday.",
+        "ownerText": "Hiroshi",
+        "deadlineText": "the following Monday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-aligned-restore-drill:dec:3:ev:0",
+          "decisionId": "heldout-aligned-restore-drill:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:8",
+          "quote": "I'll forward it to the auditors the following Monday."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-aligned-restore-drill:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-aligned-restore-drill:cand:0:t0"
+    },
+    {
+      "id": "heldout-aligned-restore-drill:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-aligned-restore-drill:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-aligned-restore-drill:cand:1:probe:0",
+      "stem": "For \"Hiroshi will forward it to the auditors\", what has to exist by \"the following Monday\"?",
+      "options": [
+        {
+          "id": "heldout-aligned-restore-drill:cand:1:probe:0:opt:0",
+          "text": "Hiroshi's sent drill summary for outside review by Monday the 9th"
+        },
+        {
+          "id": "heldout-aligned-restore-drill:cand:1:probe:0:opt:1",
+          "text": "Hiroshi's sent drill summary for outside review by Monday the 16th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hiroshi",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Delphine",
+          "choice": "option",
+          "optionId": "heldout-aligned-restore-drill:cand:1:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-aligned-restore-drill:cand:0:t0",
+      "stem": "For \"Delphine will restore last night's production snapshot into the isolated drill account on Thursday the 12th starting at 10:00 Central\", what form does it take?",
+      "options": [
+        {
+          "id": "heldout-aligned-restore-drill:cand:0:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "heldout-aligned-restore-drill:cand:0:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "heldout-aligned-restore-drill:cand:0:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hiroshi",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Delphine",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-aligned-restore-drill",
+    "title": "Quarterly restore drill",
+    "heldAt": "2026-11-02T09:00:00-05:00",
+    "generatedAt": "2026-11-02T09:00:00-05:00",
+    "participants": [
+      {
+        "id": "Hiroshi",
+        "meetingId": "heldout-aligned-restore-drill",
+        "displayName": "Hiroshi",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Delphine",
+        "meetingId": "heldout-aligned-restore-drill",
+        "displayName": "Delphine",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-aligned-restore-drill:item:0",
+        "meetingId": "heldout-aligned-restore-drill",
+        "category": "stated",
+        "text": "I'll run it. Restore last night's production snapshot into the isolated drill account.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-aligned-restore-drill:seg:1",
+            "quote": "I'll run it. Restore last night's production snapshot into the isolated drill account.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-aligned-restore-drill:item:1",
+        "meetingId": "heldout-aligned-restore-drill",
+        "category": "stated",
+        "text": "Thursday the 12th, starting 10:00 Central.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-aligned-restore-drill:seg:3",
+            "quote": "Thursday the 12th, starting 10:00 Central.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-aligned-restore-drill:item:2",
+        "meetingId": "heldout-aligned-restore-drill",
+        "category": "stated",
+        "text": "The restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-aligned-restore-drill:seg:5",
+            "quote": "The restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-aligned-restore-drill:item:3",
+        "meetingId": "heldout-aligned-restore-drill",
+        "category": "stated",
+        "text": "Write it up in the drill log by Friday the 13th, with screenshots.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-aligned-restore-drill:seg:6",
+            "quote": "Write it up in the drill log by Friday the 13th, with screenshots.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-aligned-restore-drill:item:4",
+        "meetingId": "heldout-aligned-restore-drill",
+        "category": "stated",
+        "text": "Drill log by Friday the 13th. Yes.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-aligned-restore-drill:seg:7",
+            "quote": "Drill log by Friday the 13th. Yes.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-aligned-restore-drill:item:5",
+        "meetingId": "heldout-aligned-restore-drill",
+        "category": "stated",
+        "text": "I'll forward it to the auditors the following Monday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-aligned-restore-drill:seg:8",
+            "quote": "I'll forward it to the auditors the following Monday.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "No items were listed as confirmed and no items were listed as still open. The record contains only stated remarks about restoring the snapshot, timing, success criteria, documentation, and forwarding to auditors.\n\nStated in the meeting\n- It was stated that the speaker would restore last night's production snapshot into the isolated drill account.\n- It was stated that the timing would be Thursday the 12th, starting at 10:00 Central.\n- It was stated that the restore would finish within four hours, row counts would match the snapshot manifest for every table, and the app would log in against it.\n- It was stated that it would be written up in the drill log by Friday the 13th, with screenshots.\n- It was stated with a yes that the drill log would be done by Friday the 13th.\n- It was stated that the speaker would forward it to the auditors the following Monday."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 22434,
+          "inputTokens": 1018,
+          "outputTokens": 7072,
+          "reasoningTokens": 6591,
+          "costUsd": 0.0313285,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 30825,
+          "inputTokens": 1567,
+          "outputTokens": 8045,
+          "reasoningTokens": 7817,
+          "costUsd": 0.0353217,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 5325,
+          "inputTokens": 565,
+          "outputTokens": 1416,
+          "reasoningTokens": 1361,
+          "costUsd": 0.00672425,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1961,
+          "inputTokens": 443,
+          "outputTokens": 402,
+          "reasoningTokens": 349,
+          "costUsd": 0.00199715,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2129,
+          "inputTokens": 339,
+          "outputTokens": 487,
+          "reasoningTokens": 438,
+          "costUsd": 0.0023691999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3239,
+          "inputTokens": 339,
+          "outputTokens": 942,
+          "reasoningTokens": 902,
+          "costUsd": 0.00430295,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2083,
+          "inputTokens": 344,
+          "outputTokens": 573,
+          "reasoningTokens": 540,
+          "costUsd": 0.00274095,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2822,
+          "inputTokens": 344,
+          "outputTokens": 749,
+          "reasoningTokens": 715,
+          "costUsd": 0.0034889499999999998,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 6298,
+          "inputTokens": 536,
+          "outputTokens": 1912,
+          "reasoningTokens": 1593,
+          "costUsd": 0.0085309,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

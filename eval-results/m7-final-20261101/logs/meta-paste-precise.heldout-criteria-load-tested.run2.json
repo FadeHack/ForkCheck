@@ -1,0 +1,659 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 2,
+  "scenario": "heldout-criteria-load-tested",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-criteria-load-tested:seg:0",
+      "text": "The new search endpoint is merged. Relevance looks much better in the side-by-side."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:1",
+      "text": "Latency is fine on my machine, but that's a hundred documents, not two million."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:2",
+      "text": "The index on production is a lot bigger, yes."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:3",
+      "text": "So, plan: once it's load tested, we switch traffic over."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:4",
+      "text": "OK. I'll do the load test this week."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:5",
+      "text": "I'll keep the old endpoint running for two weeks after the switch, in case we need to roll back."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:6",
+      "text": "Good. And the switch happens behind the search flag, not a deploy."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:7",
+      "text": "Yes, flag only."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:8",
+      "text": "Should we tell the mobile team? Their app calls search directly."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:9",
+      "text": "I'll message them today."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:10",
+      "text": "Thanks."
+    },
+    {
+      "id": "heldout-criteria-load-tested:seg:11",
+      "text": "That's all. Thanks."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-criteria-load-tested:dec:0",
+        "meetingId": "heldout-criteria-load-tested",
+        "idx": 0,
+        "kind": "assumption",
+        "statement": "Traffic will switch over once it's load tested.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-load-tested:dec:0:ev:0",
+          "decisionId": "heldout-criteria-load-tested:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-load-tested:seg:3",
+          "quote": "once it's load tested, we switch traffic over."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-criteria-load-tested:dec:1",
+        "meetingId": "heldout-criteria-load-tested",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Kofi will do the load test this week.",
+        "ownerText": "Kofi",
+        "deadlineText": "this week",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-load-tested:dec:1:ev:0",
+          "decisionId": "heldout-criteria-load-tested:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-load-tested:seg:4",
+          "quote": "I'll do the load test this week."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-criteria-load-tested:dec:2",
+        "meetingId": "heldout-criteria-load-tested",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "The old endpoint will be kept running for two weeks after the switch.",
+        "ownerText": "Jun",
+        "deadlineText": "for two weeks after the switch",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-load-tested:dec:2:ev:0",
+          "decisionId": "heldout-criteria-load-tested:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-load-tested:seg:5",
+          "quote": "I'll keep the old endpoint running for two weeks after the switch"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-criteria-load-tested:dec:3",
+        "meetingId": "heldout-criteria-load-tested",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "The switch happens behind the search flag, not a deploy.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-load-tested:dec:3:ev:0",
+          "decisionId": "heldout-criteria-load-tested:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-load-tested:seg:6",
+          "quote": "And the switch happens behind the search flag, not a deploy."
+        },
+        {
+          "id": "heldout-criteria-load-tested:dec:3:ev:1",
+          "decisionId": "heldout-criteria-load-tested:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-load-tested:seg:7",
+          "quote": "Yes, flag only."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-criteria-load-tested:dec:4",
+        "meetingId": "heldout-criteria-load-tested",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Mirela will message the mobile team today.",
+        "ownerText": "Mirela",
+        "deadlineText": "today",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-load-tested:dec:4:ev:0",
+          "decisionId": "heldout-criteria-load-tested:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-load-tested:seg:8",
+          "quote": "Should we tell the mobile team?"
+        },
+        {
+          "id": "heldout-criteria-load-tested:dec:4:ev:1",
+          "decisionId": "heldout-criteria-load-tested:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-load-tested:seg:9",
+          "quote": "I'll message them today."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-criteria-load-tested:cand:0",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "heldout-criteria-load-tested:cand:0:t0"
+    },
+    {
+      "id": "heldout-criteria-load-tested:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-criteria-load-tested:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-criteria-load-tested:cand:0:t0",
+      "stem": "For \"Kofi will do the load test this week\", which check has to pass first?",
+      "options": [
+        {
+          "id": "heldout-criteria-load-tested:cand:0:t0:opt:0",
+          "text": "A quick smoke test of the main flows"
+        },
+        {
+          "id": "heldout-criteria-load-tested:cand:0:t0:opt:1",
+          "text": "A full regression pass"
+        },
+        {
+          "id": "heldout-criteria-load-tested:cand:0:t0:opt:2",
+          "text": "A full regression plus extra checks for what changed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Mirela",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kofi",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Jun",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-criteria-load-tested:cand:1:probe:0",
+      "stem": "For \"Kofi will do the load test\", what has to exist by \"this week\"?",
+      "options": [
+        {
+          "id": "heldout-criteria-load-tested:cand:1:probe:0:opt:0",
+          "text": "Completed load test results from Kofi ready by end of Friday the 6th"
+        },
+        {
+          "id": "heldout-criteria-load-tested:cand:1:probe:0:opt:1",
+          "text": "Completed load test results from Kofi ready by end of Sunday the 8th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Mirela",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kofi",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Jun",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-criteria-load-tested",
+    "title": "Search endpoint after load testing",
+    "heldAt": "2026-11-05T09:30:00+01:00",
+    "generatedAt": "2026-11-05T09:30:00+01:00",
+    "participants": [
+      {
+        "id": "Mirela",
+        "meetingId": "heldout-criteria-load-tested",
+        "displayName": "Mirela",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Kofi",
+        "meetingId": "heldout-criteria-load-tested",
+        "displayName": "Kofi",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Jun",
+        "meetingId": "heldout-criteria-load-tested",
+        "displayName": "Jun",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-criteria-load-tested:item:0",
+        "meetingId": "heldout-criteria-load-tested",
+        "category": "stated",
+        "text": "once it's load tested, we switch traffic over.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-load-tested:seg:3",
+            "quote": "once it's load tested, we switch traffic over.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-load-tested:item:1",
+        "meetingId": "heldout-criteria-load-tested",
+        "category": "stated",
+        "text": "I'll do the load test this week.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-load-tested:seg:4",
+            "quote": "I'll do the load test this week.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-load-tested:item:2",
+        "meetingId": "heldout-criteria-load-tested",
+        "category": "stated",
+        "text": "I'll keep the old endpoint running for two weeks after the switch",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-load-tested:seg:5",
+            "quote": "I'll keep the old endpoint running for two weeks after the switch",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-load-tested:item:3",
+        "meetingId": "heldout-criteria-load-tested",
+        "category": "stated",
+        "text": "And the switch happens behind the search flag, not a deploy.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-load-tested:seg:6",
+            "quote": "And the switch happens behind the search flag, not a deploy.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-load-tested:item:4",
+        "meetingId": "heldout-criteria-load-tested",
+        "category": "stated",
+        "text": "Yes, flag only.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-load-tested:seg:7",
+            "quote": "Yes, flag only.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-load-tested:item:5",
+        "meetingId": "heldout-criteria-load-tested",
+        "category": "stated",
+        "text": "Should we tell the mobile team?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-load-tested:seg:8",
+            "quote": "Should we tell the mobile team?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-load-tested:item:6",
+        "meetingId": "heldout-criteria-load-tested",
+        "category": "stated",
+        "text": "I'll message them today.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-load-tested:seg:9",
+            "quote": "I'll message them today.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "This record lists no confirmed resolutions and no items marked as unresolved. Statements were made about load testing, switching traffic, the search flag, keeping the old endpoint running, asking about telling the mobile team, and messaging them today.\n\nStated in the meeting\n- It was stated that traffic will switch over once it is load tested.\n- Someone stated they will do the load test this week.\n- Someone stated they will keep the old endpoint running for two weeks after the switch.\n- It was stated that the switch happens behind the search flag, not a deploy.\n- It was stated that it is flag only.\n- Someone asked whether the mobile team should be told.\n- Someone stated they will message them today."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 18087,
+          "inputTokens": 1056,
+          "outputTokens": 5548,
+          "reasoningTokens": 5092,
+          "costUsd": 0.024899,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 29369,
+          "inputTokens": 1549,
+          "outputTokens": 6077,
+          "reasoningTokens": 5872,
+          "costUsd": 0.0277635,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 5625,
+          "inputTokens": 547,
+          "outputTokens": 1631,
+          "reasoningTokens": 1576,
+          "costUsd": 0.0072096,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2002,
+          "inputTokens": 428,
+          "outputTokens": 482,
+          "reasoningTokens": 428,
+          "costUsd": 0.0023184,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1654,
+          "inputTokens": 300,
+          "outputTokens": 324,
+          "reasoningTokens": 291,
+          "costUsd": 0.0016277000000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1703,
+          "inputTokens": 299,
+          "outputTokens": 287,
+          "reasoningTokens": 256,
+          "costUsd": 0.0014692000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1858,
+          "inputTokens": 298,
+          "outputTokens": 291,
+          "reasoningTokens": 257,
+          "costUsd": 0.00148495,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1123,
+          "inputTokens": 308,
+          "outputTokens": 251,
+          "reasoningTokens": 218,
+          "costUsd": 0.00132745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1435,
+          "inputTokens": 307,
+          "outputTokens": 313,
+          "reasoningTokens": 286,
+          "costUsd": 0.0015897,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1434,
+          "inputTokens": 306,
+          "outputTokens": 277,
+          "reasoningTokens": 245,
+          "costUsd": 0.00143545,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 6652,
+          "inputTokens": 523,
+          "outputTokens": 2015,
+          "reasoningTokens": 1715,
+          "costUsd": 0.0089524,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
