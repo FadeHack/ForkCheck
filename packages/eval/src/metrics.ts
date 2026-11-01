@@ -98,6 +98,8 @@ export const runLog = z.object({
   record: decisionRecord.nullable(),
   validation: recordValidation.nullable(),
   stages: z.array(z.object({ stage: z.string(), calls: z.array(modelCallEntry) })),
+  /** Set when the run stopped on an error; it still counts, with whatever it produced. */
+  error: z.string().optional(),
 });
 export type RunLog = z.infer<typeof runLog>;
 
@@ -267,6 +269,8 @@ export interface StageCost {
   costUsd: number;
   /** Calls whose first answer parsed, over calls that report it (repairing providers only). */
   validFirstTry: Ratio;
+  /** Calls that ended without a usable object: still invalid after repair, or cut off. */
+  invalidJson: number;
 }
 
 /** Nearest-rank percentile, so every reported latency is one that was measured. */
@@ -293,6 +297,7 @@ export function stageCosts(calls: ModelCallEntry[]): StageCost[] {
       outputTokens: cs.reduce((t, c) => t + c.outputTokens, 0),
       costUsd: cs.reduce((t, c) => t + c.costUsd, 0),
       validFirstTry: ratio(reported.filter((c) => c.validFirstTry).length, reported.length),
+      invalidJson: cs.filter((c) => /^(invalid_output|truncated):/.test(c.error ?? "")).length,
     };
   });
 }
@@ -302,6 +307,8 @@ export interface ConditionMetrics {
   condition: string;
   runIds: string[];
   scenarios: number;
+  /** Scenario runs that stopped on an error; they score as empty runs. */
+  failedRuns: Ratio;
   s2: { precision: Ratio; recall: Ratio; evidenceValid: Ratio; invented: number };
   s3: { reveal: Ratio; relevance: Ratio; lintPass: Ratio };
   s4: { precision: Ratio; recall: Ratio; falseSplits: number; controls: number };
@@ -311,6 +318,8 @@ export interface ConditionMetrics {
   cost: {
     stages: StageCost[];
     totalUsd: number;
+    /** Spend by the provider billed; Spark Open runs bill the simulator to Meta. */
+    byProvider: Record<string, number>;
     usdPerMeeting: number;
     callsPerMeeting: number;
     /** Calls that ended in an error, e.g. output still invalid after repair. */
@@ -343,6 +352,7 @@ export function aggregate(scenarios: Map<string, Scenario>, logs: RunLog[]): Con
         condition,
         runIds: [...new Set(group.map((l) => l.runId))].sort(),
         scenarios: group.length,
+        failedRuns: ratio(group.filter((l) => l.error !== undefined).length, group.length),
         s2: {
           precision: sum((m) => m.s2.precision),
           recall: sum((m) => m.s2.recall),
@@ -378,6 +388,14 @@ export function aggregate(scenarios: Map<string, Scenario>, logs: RunLog[]): Con
         cost: {
           stages: stageCosts(calls),
           totalUsd,
+          byProvider: Object.fromEntries(
+            [...new Set(calls.map((c) => c.provider))]
+              .sort()
+              .map((p) => [
+                p,
+                calls.filter((c) => c.provider === p).reduce((t, c) => t + c.costUsd, 0),
+              ]),
+          ),
           usdPerMeeting: group.length ? totalUsd / group.length : 0,
           callsPerMeeting: group.length ? calls.length / group.length : 0,
           failedCalls: ratio(calls.filter((c) => !c.ok).length, calls.length),
@@ -443,5 +461,34 @@ export function runLogFromRounds(
     record: null,
     validation: null,
     stages: r.stages.map(({ stage, calls }) => ({ stage, calls })),
+  };
+}
+
+/**
+ * The log of a run that threw: no output, but the calls it made, so a provider that fails
+ * on its JSON is charged for it in quality, cost and validity alike.
+ */
+export function runLogFromError(
+  meta: RunLogMeta,
+  run: Pick<RunLog, "scenario" | "source" | "resolution" | "depth">,
+  calls: ModelCallEntry[],
+  error: string,
+): RunLog {
+  const stages = [...new Set(calls.map((c) => c.stage))].map((stage) => ({
+    stage,
+    calls: calls.filter((c) => c.stage === stage),
+  }));
+  return {
+    ...meta,
+    ...run,
+    segments: [],
+    decisions: [],
+    candidates: [],
+    rounds: [],
+    splits: [],
+    record: null,
+    validation: null,
+    stages,
+    error,
   };
 }

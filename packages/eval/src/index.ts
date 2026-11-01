@@ -13,3 +13,6 @@ export * from "./gate";
 export * from "./audio-set";
 export * from "./metrics";
 export * from "./sheets";
+export * from "./route";
+export * from "./adoption";
+export * from "./report";

@@ -5,6 +5,7 @@
  *   pnpm eval audio-set [--synthetic <dir>] [--human <dir>]   (WAV checks on the 10-file audio set)
  *   pnpm eval sheets <run dir> [--seed <s>]  (blind rating sheets from <run>/logs, key kept apart)
  *   pnpm eval import-sheets <run dir>        (validates the completed sheets, writes human.json)
+ *   pnpm eval report <run dir...> [--date YYYY-MM-DD]   (eval-results/<date>/report.md from run logs)
  *   LIVE=1 pnpm eval extract                 (extraction precision and recall on the dev set)
  *   LIVE=1 pnpm eval probes                  (candidates against planted gaps, T2 probes after lint and critic)
  *   LIVE=1 pnpm eval simulate                (simulated answers on the probes for planted gaps)
@@ -33,6 +34,8 @@ import {
   type StageTrace,
 } from "@forkcheck/engine";
 import {
+  aggregate,
+  applyAdoptionRule,
   AUDIO_SET,
   buildSheets,
   importSheets,
@@ -41,6 +44,7 @@ import {
   lintScenario,
   parseScenario,
   recheckBriefs,
+  renderReport,
   runLog,
   scenario,
   scenarioBriefs,
@@ -52,6 +56,7 @@ import {
   summarizeRatings,
   summarizeScores,
   type ExtractScore,
+  type HumanScores,
   type Scenario,
   type SheetKind,
 } from "../src/index";
@@ -470,6 +475,54 @@ function importRatings(args: string[]): boolean {
   return true;
 }
 
+/**
+ * Aggregates the logs of the given run directories into eval-results/<date>/report.md, with
+ * the adoption rule when both providers ran and the human scores of any imported human.json.
+ */
+function writeReport(args: string[]): boolean {
+  const { values, positionals } = parseArgs({
+    args,
+    allowPositionals: true,
+    options: { date: { type: "string", default: new Date().toISOString().slice(0, 10) } },
+  });
+  if (positionals.length === 0) {
+    console.error("Usage: pnpm eval report <run dir...> [--date YYYY-MM-DD]");
+    return false;
+  }
+  const scenarios = new Map(
+    allScenarioFiles().map((f) => {
+      const s = parseScenario(readFileSync(f, "utf8"));
+      return [s.id, s];
+    }),
+  );
+  const logs = positionals.flatMap((dir) =>
+    readdirSync(join(dir, "logs"))
+      .filter((f) => f.endsWith(".json"))
+      .sort()
+      .map((f) => runLog.parse(JSON.parse(readFileSync(join(dir, "logs", f), "utf8")))),
+  );
+  const conditions = aggregate(scenarios, logs);
+  const spark = conditions.find((c) => c.condition === "meta/paste/precise");
+  const open = conditions.find((c) => c.condition === "baseten/paste/precise");
+  const humanFiles = positionals.map((d) => join(d, "human.json")).filter(existsSync);
+  const human = humanFiles.length
+    ? humanFiles.flatMap((f) => JSON.parse(readFileSync(f, "utf8")) as HumanScores[])
+    : null;
+  const md = renderReport({
+    date: values.date,
+    conditions,
+    adoption: spark && open ? applyAdoptionRule(spark, open) : null,
+    human,
+  });
+  const out = resolve(root, "..", "eval-results", values.date);
+  mkdirSync(out, { recursive: true });
+  writeFileSync(join(out, "report.md"), md);
+  console.log(
+    `${logs.length} scenario runs in ${conditions.length} conditions; ${join(out, "report.md")}`,
+  );
+  return true;
+}
+
 const [command, ...args] = process.argv.slice(2);
 switch (command) {
   case "validate": {
@@ -479,6 +532,9 @@ switch (command) {
   }
   case "audio-set":
     process.exit(checkAudioSet(args) ? 0 : 1);
+    break;
+  case "report":
+    process.exit(writeReport(args) ? 0 : 1);
     break;
   case "sheets":
     process.exit(writeSheets(args) ? 0 : 1);
@@ -500,7 +556,7 @@ switch (command) {
     break;
   default:
     console.error(
-      "Usage: pnpm eval validate [files...] | audio-set | sheets <run> | import-sheets <run> | LIVE=1 pnpm eval extract | probes | simulate | recheck",
+      "Usage: pnpm eval validate [files...] | audio-set | sheets <run> | import-sheets <run> | report <run...> | LIVE=1 pnpm eval extract | probes | simulate | recheck",
     );
     process.exit(2);
 }
