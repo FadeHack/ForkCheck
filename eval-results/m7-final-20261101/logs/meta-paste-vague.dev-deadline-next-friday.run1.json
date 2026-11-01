@@ -1,0 +1,1397 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 1,
+  "scenario": "dev-deadline-next-friday",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "dev-deadline-next-friday:seg:0",
+      "text": "Thanks for jumping on. Brightwater Logistics sent over their security questionnaire, and it's the long one. About two hundred questions."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:1",
+      "text": "I saw it. A lot of it maps to our SOC 2 answers, so maybe half is copy and paste."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:2",
+      "text": "The other half is the data residency section. They want to know where backups live."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:3",
+      "text": "Backups stay in the EU region for EU customers. I need to check whether Brightwater is set up as EU or US."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:4",
+      "text": "They're headquartered in the US, but the pilot team sits in Rotterdam."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:5",
+      "text": "Then I'll answer for both and flag it."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:6",
+      "text": "Do we attach the pen test summary or just reference it?"
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:7",
+      "text": "Attach the summary letter. Not the full report, that needs an NDA."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:8",
+      "text": "We have a mutual NDA with them already. I'll double check it covers security documents."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:9",
+      "text": "OK, timing. Their procurement lead said they need it back next Friday."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:10",
+      "text": "Next Friday is fine. I can block out time for it."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:11",
+      "text": "Great, so Kwame owns the questionnaire, back to them next Friday."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:12",
+      "text": "And I'll do the legal and insurance sections, those are mine anyway. I'll pass them to Kwame to merge in."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:13",
+      "text": "Works. Put them in the shared folder, not email."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:14",
+      "text": "I'll let their procurement lead know it's in progress."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:15",
+      "text": "Do they want it in their portal or as a spreadsheet?"
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:16",
+      "text": "Spreadsheet. They said the portal is being replaced."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:17",
+      "text": "Good. The portal versions always break our formatting."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:18",
+      "text": "One question on insurance. Do they want the certificate itself or just the coverage amounts?"
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:19",
+      "text": "I'll ask when I write to procurement."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:20",
+      "text": "Thanks."
+    },
+    {
+      "id": "dev-deadline-next-friday:seg:21",
+      "text": "That's it from me. Thanks, both."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:0",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "Kwame will answer for both and flag it.",
+        "ownerText": "Kwame",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:0:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:5",
+          "quote": "Then I'll answer for both and flag it."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:1",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 1,
+        "kind": "decision",
+        "statement": "Attach the summary letter, not the full report.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:1:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:7",
+          "quote": "Attach the summary letter. Not the full report, that needs an NDA."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:2",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Lena will double check the mutual NDA covers security documents.",
+        "ownerText": "Lena",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:2:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:8",
+          "quote": "We have a mutual NDA with them already. I'll double check it covers security documents."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:3",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Kwame owns the questionnaire, back to them next Friday.",
+        "ownerText": "Kwame",
+        "deadlineText": "next Friday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:3:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:3",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:11",
+          "quote": "Great, so Kwame owns the questionnaire, back to them next Friday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:4",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Lena will do the legal and insurance sections and pass them to Kwame to merge in.",
+        "ownerText": "Lena",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:4:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:12",
+          "quote": "And I'll do the legal and insurance sections, those are mine anyway. I'll pass them to Kwame to merge in."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:5",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 5,
+        "kind": "decision",
+        "statement": "Put them in the shared folder, not email.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:5:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:13",
+          "quote": "Works. Put them in the shared folder, not email."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:6",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 6,
+        "kind": "commitment",
+        "statement": "Rosa will let their procurement lead know it's in progress.",
+        "ownerText": "Rosa",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:6:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:14",
+          "quote": "I'll let their procurement lead know it's in progress."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:7",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 7,
+        "kind": "decision",
+        "statement": "Submit as a spreadsheet because the portal is being replaced.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:7:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:7",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:16",
+          "quote": "Spreadsheet. They said the portal is being replaced."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:8",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 8,
+        "kind": "open_item",
+        "statement": "Whether they want the certificate itself or just the coverage amounts still needs an answer.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "unresolved"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:8:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:8",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:18",
+          "quote": "One question on insurance. Do they want the certificate itself or just the coverage amounts?"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-next-friday:dec:9",
+        "meetingId": "dev-deadline-next-friday",
+        "idx": 9,
+        "kind": "commitment",
+        "statement": "Rosa will ask procurement whether they want the certificate itself or just the coverage amounts.",
+        "ownerText": "Rosa",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-next-friday:dec:9:ev:0",
+          "decisionId": "dev-deadline-next-friday:dec:9",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:19",
+          "quote": "I'll ask when I write to procurement."
+        },
+        {
+          "id": "dev-deadline-next-friday:dec:9:ev:1",
+          "decisionId": "dev-deadline-next-friday:dec:9",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-next-friday:seg:18",
+          "quote": "One question on insurance. Do they want the certificate itself or just the coverage amounts?"
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-next-friday:cand:0",
+      "dimension": "deadline",
+      "mismatch": "which-friday",
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-next-friday:cand:3",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "stem": "For \"Kwame owns the questionnaire, back to them\", what has to exist by \"next Friday\"?",
+      "options": [
+        {
+          "id": "dev-deadline-next-friday:cand:0:probe:0:opt:0",
+          "text": "The finished form sent back to Brightwater by Friday the 30th"
+        },
+        {
+          "id": "dev-deadline-next-friday:cand:0:probe:0:opt:1",
+          "text": "The finished form sent back to Brightwater by Friday the 6th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rosa",
+          "choice": "option",
+          "optionId": "dev-deadline-next-friday:cand:0:probe:0:opt:0"
+        },
+        {
+          "participantId": "Kwame",
+          "choice": "option",
+          "optionId": "dev-deadline-next-friday:cand:0:probe:0:opt:1"
+        },
+        {
+          "participantId": "Lena",
+          "choice": "option",
+          "optionId": "dev-deadline-next-friday:cand:0:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:3:probe:0",
+      "stem": "Once Lena finishes the legal and insurance sections, where will she store them?",
+      "options": [
+        {
+          "id": "dev-deadline-next-friday:cand:3:probe:0:opt:0",
+          "text": "In the team-only space for Kwame to merge into the full packet"
+        },
+        {
+          "id": "dev-deadline-next-friday:cand:3:probe:0:opt:1",
+          "text": "In the Brightwater-visible space for procurement to review directly"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rosa",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kwame",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Lena",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:1:probe:0",
+      "stem": "When \"Kwame will answer for both and flag it\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "dev-deadline-next-friday:cand:1:probe:0:opt:0",
+          "text": "Only the data residency section covers both regions, noting EU and US storage with a flag"
+        },
+        {
+          "id": "dev-deadline-next-friday:cand:1:probe:0:opt:1",
+          "text": "Every section of the questionnaire is completed twice, for EU and US deployments with a flag"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rosa",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kwame",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Lena",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-next-friday:cand:2:probe:0",
+      "stem": "If Kwame asks for the insurance section before Rosa hears back from procurement, what will Lena provide?",
+      "options": [
+        {
+          "id": "dev-deadline-next-friday:cand:2:probe:0:opt:0",
+          "text": "A draft with the coverage figures, to be updated if a certificate is required"
+        },
+        {
+          "id": "dev-deadline-next-friday:cand:2:probe:0:opt:1",
+          "text": "No draft yet; drafting begins once Rosa relays what is required"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rosa",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kwame",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Lena",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [
+    {
+      "splitId": "dev-deadline-next-friday:cand:0:probe:0:split",
+      "probeId": "dev-deadline-next-friday:cand:0:probe:0",
+      "mismatch": "which-friday",
+      "events": [
+        {
+          "type": "propose",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "recheck"
+        }
+      ],
+      "recheck": {
+        "probe": {
+          "stem": "On Monday the 2nd, where is the finished questionnaire?"
+        },
+        "round": {
+          "probeId": "dev-deadline-next-friday:cand:0:probe:0:split:recheck:dev-deadline-next-friday:cand:0:probe:0:split:res:0",
+          "stem": "On Monday the 2nd, where is the finished questionnaire?",
+          "options": [
+            {
+              "id": "dev-deadline-next-friday:cand:0:probe:0:split:recheck:dev-deadline-next-friday:cand:0:probe:0:split:res:0:opt:0",
+              "text": "Brightwater has the finished questionnaire"
+            },
+            {
+              "id": "dev-deadline-next-friday:cand:0:probe:0:split:recheck:dev-deadline-next-friday:cand:0:probe:0:split:res:0:opt:1",
+              "text": "Kwame has the questionnaire still to finish"
+            }
+          ],
+          "answers": [
+            {
+              "participantId": "Rosa",
+              "choice": "option",
+              "optionId": "dev-deadline-next-friday:cand:0:probe:0:split:recheck:dev-deadline-next-friday:cand:0:probe:0:split:res:0:opt:0"
+            },
+            {
+              "participantId": "Kwame",
+              "choice": "option",
+              "optionId": "dev-deadline-next-friday:cand:0:probe:0:split:recheck:dev-deadline-next-friday:cand:0:probe:0:split:res:0:opt:1"
+            },
+            {
+              "participantId": "Lena",
+              "choice": "option",
+              "optionId": "dev-deadline-next-friday:cand:0:probe:0:split:recheck:dev-deadline-next-friday:cand:0:probe:0:split:res:0:opt:1"
+            }
+          ],
+          "divergence": {
+            "outcome": "split"
+          }
+        }
+      },
+      "state": {
+        "status": "reopened",
+        "participants": [
+          {
+            "id": "Rosa",
+            "status": "active"
+          },
+          {
+            "id": "Kwame",
+            "status": "active"
+          },
+          {
+            "id": "Lena",
+            "status": "active"
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "dev-deadline-next-friday:cand:0:probe:0:split:res:0",
+            "status": "confirmed"
+          }
+        ],
+        "confirmations": [
+          {
+            "resolutionId": "dev-deadline-next-friday:cand:0:probe:0:split:res:0",
+            "participantId": "Rosa"
+          },
+          {
+            "resolutionId": "dev-deadline-next-friday:cand:0:probe:0:split:res:0",
+            "participantId": "Kwame"
+          },
+          {
+            "resolutionId": "dev-deadline-next-friday:cand:0:probe:0:split:res:0",
+            "participantId": "Lena"
+          }
+        ]
+      }
+    }
+  ],
+  "record": {
+    "meetingId": "dev-deadline-next-friday",
+    "title": "Security questionnaire back next Friday",
+    "heldAt": "2026-10-28T14:00:00-05:00",
+    "generatedAt": "2026-10-28T14:00:00-05:00",
+    "participants": [
+      {
+        "id": "Rosa",
+        "meetingId": "dev-deadline-next-friday",
+        "displayName": "Rosa",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Kwame",
+        "meetingId": "dev-deadline-next-friday",
+        "displayName": "Kwame",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Lena",
+        "meetingId": "dev-deadline-next-friday",
+        "displayName": "Lena",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "dev-deadline-next-friday:item:0",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "Then I'll answer for both and flag it.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:5",
+            "quote": "Then I'll answer for both and flag it.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:1",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "Attach the summary letter. Not the full report, that needs an NDA.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:7",
+            "quote": "Attach the summary letter. Not the full report, that needs an NDA.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:2",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "We have a mutual NDA with them already. I'll double check it covers security documents.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:8",
+            "quote": "We have a mutual NDA with them already. I'll double check it covers security documents.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:3",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "Great, so Kwame owns the questionnaire, back to them next Friday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:11",
+            "quote": "Great, so Kwame owns the questionnaire, back to them next Friday.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:4",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "And I'll do the legal and insurance sections, those are mine anyway. I'll pass them to Kwame to merge in.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:12",
+            "quote": "And I'll do the legal and insurance sections, those are mine anyway. I'll pass them to Kwame to merge in.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:5",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "Works. Put them in the shared folder, not email.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:13",
+            "quote": "Works. Put them in the shared folder, not email.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:6",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "I'll let their procurement lead know it's in progress.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:14",
+            "quote": "I'll let their procurement lead know it's in progress.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:7",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "Spreadsheet. They said the portal is being replaced.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:16",
+            "quote": "Spreadsheet. They said the portal is being replaced.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:8",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "One question on insurance. Do they want the certificate itself or just the coverage amounts?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:18",
+            "quote": "One question on insurance. Do they want the certificate itself or just the coverage amounts?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:9",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "I'll ask when I write to procurement.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:19",
+            "quote": "I'll ask when I write to procurement.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:10",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "stated",
+        "text": "One question on insurance. Do they want the certificate itself or just the coverage amounts?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:18",
+            "quote": "One question on insurance. Do they want the certificate itself or just the coverage amounts?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-deadline-next-friday:item:11",
+        "meetingId": "dev-deadline-next-friday",
+        "category": "unresolved",
+        "text": "A recheck found different readings of: Kwame sends it back next Friday as planned.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-deadline-next-friday:seg:11",
+            "quote": "Great, so Kwame owns the questionnaire, back to them next Friday.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [
+          "Rosa",
+          "Kwame",
+          "Lena"
+        ],
+        "absent": [],
+        "recheck": "failed",
+        "splitId": "dev-deadline-next-friday:cand:0:probe:0:split",
+        "deadline": null
+      }
+    ],
+    "proseDraft": "No items were confirmed. Statements were made about questionnaire ownership, attachments, NDA coverage, and handling, and it is still open whether Kwame sends it back next Friday as planned.\n\nUnresolved\n- It is still open whether Kwame sends it back next Friday as planned because the recheck found different readings.\n\nStated in the meeting\n- It was stated that the speaker would answer for both and flag it.\n- It was stated to attach the summary letter rather than the full report, which needs an NDA.\n- It was stated that a mutual NDA already exists and would be double-checked for coverage of security documents.\n- It was stated that Kwame owns the questionnaire with return next Friday.\n- It was stated that the speaker would do the legal and insurance sections and pass them to Kwame to merge in.\n- It was stated to put them in the shared folder and not use email.\n- It was stated that the speaker would let their procurement lead know it is in progress.\n- It was stated to use the spreadsheet because the portal is being replaced.\n- A question was stated about whether insurance requires the certificate itself or just the coverage amounts.\n- It was stated that the speaker would ask about that when writing to procurement.\n- A question was stated about whether insurance requires the certificate itself or just the coverage amounts."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 26192,
+          "inputTokens": 1383,
+          "outputTokens": 8007,
+          "reasoningTokens": 7134,
+          "costUsd": 0.0357585,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 21869,
+          "inputTokens": 2153,
+          "outputTokens": 5470,
+          "reasoningTokens": 5059,
+          "costUsd": 0.024969650000000003,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4811,
+          "inputTokens": 558,
+          "outputTokens": 1409,
+          "reasoningTokens": 1358,
+          "costUsd": 0.00668575,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1739,
+          "inputTokens": 428,
+          "outputTokens": 504,
+          "reasoningTokens": 437,
+          "costUsd": 0.0024119000000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4089,
+          "inputTokens": 549,
+          "outputTokens": 1251,
+          "reasoningTokens": 1194,
+          "costUsd": 0.005597100000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2363,
+          "inputTokens": 440,
+          "outputTokens": 588,
+          "reasoningTokens": 525,
+          "costUsd": 0.0027839,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 7027,
+          "inputTokens": 685,
+          "outputTokens": 1925,
+          "reasoningTokens": 1846,
+          "costUsd": 0.0090375,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2282,
+          "inputTokens": 430,
+          "outputTokens": 498,
+          "reasoningTokens": 446,
+          "costUsd": 0.002654,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 5836,
+          "inputTokens": 662,
+          "outputTokens": 1796,
+          "reasoningTokens": 1724,
+          "costUsd": 0.0084605,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2595,
+          "inputTokens": 426,
+          "outputTokens": 539,
+          "reasoningTokens": 487,
+          "costUsd": 0.00255815,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2042,
+          "inputTokens": 303,
+          "outputTokens": 552,
+          "reasoningTokens": 512,
+          "costUsd": 0.00260045,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1503,
+          "inputTokens": 294,
+          "outputTokens": 284,
+          "reasoningTokens": 254,
+          "costUsd": 0.0014502,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1308,
+          "inputTokens": 300,
+          "outputTokens": 292,
+          "reasoningTokens": 259,
+          "costUsd": 0.0014917,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1418,
+          "inputTokens": 294,
+          "outputTokens": 252,
+          "reasoningTokens": 219,
+          "costUsd": 0.0013142,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1059,
+          "inputTokens": 285,
+          "outputTokens": 230,
+          "reasoningTokens": 199,
+          "costUsd": 0.0012094500000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1508,
+          "inputTokens": 291,
+          "outputTokens": 398,
+          "reasoningTokens": 363,
+          "costUsd": 0.00193095,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1565,
+          "inputTokens": 309,
+          "outputTokens": 338,
+          "reasoningTokens": 303,
+          "costUsd": 0.00169845,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1003,
+          "inputTokens": 300,
+          "outputTokens": 245,
+          "reasoningTokens": 208,
+          "costUsd": 0.00129195,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1553,
+          "inputTokens": 306,
+          "outputTokens": 278,
+          "reasoningTokens": 249,
+          "costUsd": 0.0012989000000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1741,
+          "inputTokens": 301,
+          "outputTokens": 335,
+          "reasoningTokens": 301,
+          "costUsd": 0.0016757,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1254,
+          "inputTokens": 292,
+          "outputTokens": 291,
+          "reasoningTokens": 255,
+          "costUsd": 0.00147745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1436,
+          "inputTokens": 298,
+          "outputTokens": 367,
+          "reasoningTokens": 327,
+          "costUsd": 0.00180795,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateRecheck",
+      "calls": [
+        {
+          "stage": "generateRecheck",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateRecheck.v1",
+          "cacheHit": false,
+          "latencyMs": 8181,
+          "inputTokens": 694,
+          "outputTokens": 2996,
+          "reasoningTokens": 2924,
+          "costUsd": 0.013053799999999999,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1413,
+          "inputTokens": 320,
+          "outputTokens": 366,
+          "reasoningTokens": 322,
+          "costUsd": 0.0018312,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1328,
+          "inputTokens": 311,
+          "outputTokens": 272,
+          "reasoningTokens": 226,
+          "costUsd": 0.00142045,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1656,
+          "inputTokens": 317,
+          "outputTokens": 476,
+          "reasoningTokens": 426,
+          "costUsd": 0.00229495,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 6950,
+          "inputTokens": 720,
+          "outputTokens": 2524,
+          "reasoningTokens": 1997,
+          "costUsd": 0.011627,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

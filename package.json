@@ -18,6 +18,7 @@
     "smoke:model": "tsx packages/ai/scripts/smoke-call-model.ts",
     "smoke:transcribe": "tsx packages/eval/scripts/smoke-transcribe.ts",
     "eval": "tsx packages/eval/scripts/eval.ts",
+    "eval:run": "tsx packages/eval/scripts/run.ts",
     "loop": "tsx packages/eval/scripts/loop.ts",
     "gate": "tsx packages/eval/scripts/gate.ts",
     "tiers": "tsx packages/eval/scripts/tiers.ts",

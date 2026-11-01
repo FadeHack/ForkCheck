@@ -1,0 +1,79 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 2,
+  "scenario": "heldout-insufficient-quick-sync",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-insufficient-quick-sync:seg:0",
+      "text": "Hey, did you see my message about the partner thing?"
+    },
+    {
+      "id": "heldout-insufficient-quick-sync:seg:1",
+      "text": "Yeah, skimmed it. Seems promising."
+    },
+    {
+      "id": "heldout-insufficient-quick-sync:seg:2",
+      "text": "I think so too. Lots to figure out."
+    },
+    {
+      "id": "heldout-insufficient-quick-sync:seg:3",
+      "text": "Sounds good, let's sync on it."
+    },
+    {
+      "id": "heldout-insufficient-quick-sync:seg:4",
+      "text": "Cool. Talk soon."
+    }
+  ],
+  "decisions": [],
+  "candidates": [],
+  "rounds": [],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 2541,
+          "inputTokens": 987,
+          "outputTokens": 608,
+          "reasoningTokens": 593,
+          "costUsd": 0.0028321500000000003,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 1653,
+          "inputTokens": 1207,
+          "outputTokens": 292,
+          "reasoningTokens": 278,
+          "costUsd": 0.00148255,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    }
+  ]
+}

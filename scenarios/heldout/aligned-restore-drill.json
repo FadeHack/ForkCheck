@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "id": "heldout-aligned-restore-drill",
+  "title": "Quarterly restore drill",
+  "set": "heldout",
+  "category": "aligned",
+  "heldAt": "2026-11-02T09:00:00-05:00",
+  "timezone": "America/Chicago",
+  "participants": ["Hiroshi", "Delphine"],
+  "transcript": "[00:00] Hiroshi: Quarterly restore drill. Auditors want evidence by the end of the month.\n[00:06] Delphine: I'll run it. Restore last night's production snapshot into the isolated drill account.\n[00:12] Hiroshi: When?\n[00:16] Delphine: Thursday the 12th, starting 10:00 Central. It takes about three hours.\n[00:21] Hiroshi: And what counts as a pass?\n[00:25] Delphine: The restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it.\n[00:34] Hiroshi: Good. Write it up in the drill log by Friday the 13th, with screenshots.\n[00:40] Delphine: Drill log by Friday the 13th. Yes.\n[00:44] Hiroshi: I'll forward it to the auditors the following Monday.\n[00:48] Delphine: Sounds good.\n",
+  "expectedDecisions": [
+    {
+      "id": "restore-drill",
+      "kind": "commitment",
+      "statement": "Delphine runs the restore drill on Thursday the 12th from 10:00 Central.",
+      "owner": "Delphine",
+      "deadline": "Thursday the 12th, 10:00 Central",
+      "quotes": ["I'll run it.", "Thursday the 12th, starting 10:00 Central."]
+    },
+    {
+      "id": "drill-log",
+      "kind": "commitment",
+      "statement": "Delphine writes up the drill in the log by Friday the 13th.",
+      "owner": "Delphine",
+      "deadline": "Friday the 13th",
+      "quotes": ["Drill log by Friday the 13th. Yes."]
+    },
+    {
+      "id": "auditor-forward",
+      "kind": "commitment",
+      "statement": "Hiroshi forwards the drill log to the auditors the following Monday.",
+      "owner": "Hiroshi",
+      "deadline": "the following Monday",
+      "quotes": ["I'll forward it to the auditors the following Monday."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Hiroshi",
+      "readings": [
+        {
+          "decision": "restore-drill",
+          "dimension": "owner",
+          "reading": "Delphine."
+        },
+        {
+          "decision": "restore-drill",
+          "dimension": "deadline",
+          "reading": "Thursday 12 November, starting 10:00 Central."
+        },
+        {
+          "decision": "restore-drill",
+          "dimension": "criteria",
+          "reading": "Finishes within four hours, row counts match the manifest for every table, and the app can log in."
+        }
+      ]
+    },
+    {
+      "participant": "Delphine",
+      "readings": [
+        {
+          "decision": "restore-drill",
+          "dimension": "owner",
+          "reading": "Delphine."
+        },
+        {
+          "decision": "restore-drill",
+          "dimension": "deadline",
+          "reading": "Thursday 12 November, starting 10:00 Central."
+        },
+        {
+          "decision": "restore-drill",
+          "dimension": "criteria",
+          "reading": "Finishes within four hours, row counts match the manifest for every table, and the app can log in."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": [
+      "Delphine: \"Thursday the 12th, starting 10:00 Central.\"",
+      "Delphine: \"Drill log by Friday the 13th. Yes.\"",
+      "Hiroshi: \"I'll forward it to the auditors the following Monday.\""
+    ],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}

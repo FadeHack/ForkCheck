@@ -1,0 +1,593 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 0,
+  "scenario": "dev-criteria-usual-qa",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "dev-criteria-usual-qa:seg:0",
+      "text": "Release 4.2. Diego, is everything merged?"
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:1",
+      "text": "Everything except the offline drafts fix. That's in review and should land today."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:2",
+      "text": "Is offline drafts the one that lost text on Android when you rotated the phone?"
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:3",
+      "text": "That's the one. Turned out to be an activity lifecycle thing."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:4",
+      "text": "App store review is taking a day or two lately. When can we submit?"
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:5",
+      "text": "Once the fix lands and it's been through QA."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:6",
+      "text": "We'll do the usual QA pass on the release build."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:7",
+      "text": "Great. Then let's submit Wednesday if the usual QA pass is clean."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:8",
+      "text": "Wednesday works."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:9",
+      "text": "OK."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:10",
+      "text": "Release notes. Who's writing them?"
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:11",
+      "text": "I'll draft them from the changelog and send them to you."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:12",
+      "text": "Thanks. Keep them short, three bullets at most."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:13",
+      "text": "Can we mention the rotation fix? A lot of store reviews complained about it."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:14",
+      "text": "Yes, lead with that."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:15",
+      "text": "Also, the new onboarding screens are behind a flag. They ship dark."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:16",
+      "text": "Good. We'll turn them on once the A/B setup is ready."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:17",
+      "text": "Then I'll skip onboarding this round."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:18",
+      "text": "Agreed. Anything else for 4.2?"
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:19",
+      "text": "The crash reporter upgrade went in last week. Nothing to do, just so you know."
+    },
+    {
+      "id": "dev-criteria-usual-qa:seg:20",
+      "text": "Noted. Thanks, both."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "dev-criteria-usual-qa:dec:0",
+        "meetingId": "dev-criteria-usual-qa",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "We will do the usual QA pass on the release build",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-criteria-usual-qa:dec:0:ev:0",
+          "decisionId": "dev-criteria-usual-qa:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:6",
+          "quote": "We'll do the usual QA pass on the release build."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-criteria-usual-qa:dec:1",
+        "meetingId": "dev-criteria-usual-qa",
+        "idx": 1,
+        "kind": "decision",
+        "statement": "Submit Wednesday if the usual QA pass is clean",
+        "ownerText": null,
+        "deadlineText": "Wednesday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-criteria-usual-qa:dec:1:ev:0",
+          "decisionId": "dev-criteria-usual-qa:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:7",
+          "quote": "Then let's submit Wednesday if the usual QA pass is clean."
+        },
+        {
+          "id": "dev-criteria-usual-qa:dec:1:ev:1",
+          "decisionId": "dev-criteria-usual-qa:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:8",
+          "quote": "Wednesday works."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-criteria-usual-qa:dec:2",
+        "meetingId": "dev-criteria-usual-qa",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Diego will draft release notes from the changelog and send them to you",
+        "ownerText": "Diego",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-criteria-usual-qa:dec:2:ev:0",
+          "decisionId": "dev-criteria-usual-qa:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:11",
+          "quote": "I'll draft them from the changelog and send them to you."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-criteria-usual-qa:dec:3",
+        "meetingId": "dev-criteria-usual-qa",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "Keep release notes short, three bullets at most",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-criteria-usual-qa:dec:3:ev:0",
+          "decisionId": "dev-criteria-usual-qa:dec:3",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:12",
+          "quote": "Keep them short, three bullets at most."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-criteria-usual-qa:dec:4",
+        "meetingId": "dev-criteria-usual-qa",
+        "idx": 4,
+        "kind": "decision",
+        "statement": "Lead with the rotation fix in the release notes",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-criteria-usual-qa:dec:4:ev:0",
+          "decisionId": "dev-criteria-usual-qa:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:13",
+          "quote": "Can we mention the rotation fix? A lot of store reviews complained about it."
+        },
+        {
+          "id": "dev-criteria-usual-qa:dec:4:ev:1",
+          "decisionId": "dev-criteria-usual-qa:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:14",
+          "quote": "Yes, lead with that."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-criteria-usual-qa:dec:5",
+        "meetingId": "dev-criteria-usual-qa",
+        "idx": 5,
+        "kind": "decision",
+        "statement": "The new onboarding screens are behind a flag and ship dark",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-criteria-usual-qa:dec:5:ev:0",
+          "decisionId": "dev-criteria-usual-qa:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:15",
+          "quote": "Also, the new onboarding screens are behind a flag. They ship dark."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-criteria-usual-qa:dec:6",
+        "meetingId": "dev-criteria-usual-qa",
+        "idx": 6,
+        "kind": "decision",
+        "statement": "We will turn on the new onboarding screens once the A/B setup is ready",
+        "ownerText": null,
+        "deadlineText": "once the A/B setup is ready",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-criteria-usual-qa:dec:6:ev:0",
+          "decisionId": "dev-criteria-usual-qa:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:16",
+          "quote": "Good. We'll turn them on once the A/B setup is ready."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-criteria-usual-qa:dec:7",
+        "meetingId": "dev-criteria-usual-qa",
+        "idx": 7,
+        "kind": "commitment",
+        "statement": "Skip onboarding this round",
+        "ownerText": "Zara",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-criteria-usual-qa:dec:7:ev:0",
+          "decisionId": "dev-criteria-usual-qa:dec:7",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:17",
+          "quote": "Then I'll skip onboarding this round."
+        },
+        {
+          "id": "dev-criteria-usual-qa:dec:7:ev:1",
+          "decisionId": "dev-criteria-usual-qa:dec:7",
+          "resolutionId": null,
+          "segmentId": "dev-criteria-usual-qa:seg:18",
+          "quote": "Agreed."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-criteria-usual-qa:cand:0",
+      "dimension": "criteria",
+      "mismatch": "what-usual-means",
+      "probeId": "dev-criteria-usual-qa:cand:0:t0"
+    },
+    {
+      "id": "dev-criteria-usual-qa:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-criteria-usual-qa:cand:0:t0",
+      "stem": "For \"We will do the usual QA pass on the release build\", which check has to pass first?",
+      "options": [
+        {
+          "id": "dev-criteria-usual-qa:cand:0:t0:opt:0",
+          "text": "A quick smoke test of the main flows"
+        },
+        {
+          "id": "dev-criteria-usual-qa:cand:0:t0:opt:1",
+          "text": "A full regression pass"
+        },
+        {
+          "id": "dev-criteria-usual-qa:cand:0:t0:opt:2",
+          "text": "A full regression plus extra checks for what changed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Zara",
+          "choice": "option",
+          "optionId": "dev-criteria-usual-qa:cand:0:t0:opt:1"
+        },
+        {
+          "participantId": "Diego",
+          "choice": "option",
+          "optionId": "dev-criteria-usual-qa:cand:0:t0:opt:0"
+        },
+        {
+          "participantId": "Noor",
+          "choice": "option",
+          "optionId": "dev-criteria-usual-qa:cand:0:t0:opt:2"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-criteria-usual-qa:cand:1:probe:0",
+      "stem": "For \"We will turn on the new onboarding screens\", what has to exist by \"once the A/B setup is ready\"?",
+      "options": [
+        {
+          "id": "dev-criteria-usual-qa:cand:1:probe:0:opt:0",
+          "text": "The A/B flag and variants are technically configured in the dashboard"
+        },
+        {
+          "id": "dev-criteria-usual-qa:cand:1:probe:0:opt:1",
+          "text": "Noor has approved the experiment copy and targeting as ready to launch"
+        },
+        {
+          "id": "dev-criteria-usual-qa:cand:1:probe:0:opt:2",
+          "text": "QA has verified the A/B experiment end-to-end and formally signed it off"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Zara",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Diego",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Noor",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 18129,
+          "inputTokens": 1432,
+          "outputTokens": 4248,
+          "reasoningTokens": 3637,
+          "costUsd": 0.0192808,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 11957,
+          "inputTokens": 2066,
+          "outputTokens": 2935,
+          "reasoningTokens": 2692,
+          "costUsd": 0.01505625,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 2485,
+          "inputTokens": 748,
+          "outputTokens": 566,
+          "reasoningTokens": 503,
+          "costUsd": 0.0029181,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2320,
+          "inputTokens": 625,
+          "outputTokens": 559,
+          "reasoningTokens": 483,
+          "costUsd": 0.0027346,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2570,
+          "inputTokens": 297,
+          "outputTokens": 371,
+          "reasoningTokens": 339,
+          "costUsd": 0.0018237000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2194,
+          "inputTokens": 300,
+          "outputTokens": 337,
+          "reasoningTokens": 303,
+          "costUsd": 0.00180725,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1895,
+          "inputTokens": 294,
+          "outputTokens": 362,
+          "reasoningTokens": 324,
+          "costUsd": 0.0017817,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2699,
+          "inputTokens": 319,
+          "outputTokens": 504,
+          "reasoningTokens": 469,
+          "costUsd": 0.0024164499999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1800,
+          "inputTokens": 322,
+          "outputTokens": 394,
+          "reasoningTokens": 362,
+          "costUsd": 0.0019527000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1438,
+          "inputTokens": 316,
+          "outputTokens": 291,
+          "reasoningTokens": 256,
+          "costUsd": 0.00150745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

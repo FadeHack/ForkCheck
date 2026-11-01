@@ -1,0 +1,1416 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 0,
+  "scenario": "dev-ownership-outage-email",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "dev-ownership-outage-email:seg:0",
+      "text": "Let's do the outage follow-up. Felix, what's the final count?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:1",
+      "text": "Two hundred and twelve workspaces had sync paused for more than an hour over the weekend. Root cause was the queue migration. The rollback finished at 3:40."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:2",
+      "text": "Support got about ninety tickets. Most were closed with the status page link, but around fifteen are still open and a couple are angry."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:3",
+      "text": "Are those fifteen inside the two hundred and twelve?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:4",
+      "text": "I think so. I haven't cross-checked."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:5",
+      "text": "I can export the affected workspace list with the owner emails."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:6",
+      "text": "Good. We agreed in the incident review that anyone down over an hour gets a credit. Is the credit applied automatically?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:7",
+      "text": "Not yet. Billing needs a CSV. I'll have the credits applied by Thursday."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:8",
+      "text": "OK. And the affected customers need to hear from us directly, not just through the status page."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:9",
+      "text": "Agreed. The ones with open tickets keep asking whether it'll happen again."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:10",
+      "text": "The postmortem draft answers that. We added a canary for the queue and a migration lock."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:11",
+      "text": "Right. So we'll handle the customer emails by tomorrow. Plain language, the credit, and what we changed."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:12",
+      "text": "Sounds good."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:13",
+      "text": "Yep, makes sense."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:14",
+      "text": "Imani, can you also close out the open tickets once the email is out, pointing to it?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:15",
+      "text": "Yes, I'll do that with a macro."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:16",
+      "text": "I'll publish the postmortem on the blog after legal reads it."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:17",
+      "text": "Great. Anything else on the outage?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:18",
+      "text": "Just that the status page went up twenty minutes late. We should look at that."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:19",
+      "text": "That one's on the on-call checklist. I'll add a step for it."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:20",
+      "text": "Thanks, both."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:0",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 0,
+        "kind": "open_item",
+        "statement": "Whether those fifteen are inside the two hundred and twelve still needs to be cross-checked.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "unresolved"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:0:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:3",
+          "quote": "Are those fifteen inside the two hundred and twelve?"
+        },
+        {
+          "id": "dev-ownership-outage-email:dec:0:ev:1",
+          "decisionId": "dev-ownership-outage-email:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:4",
+          "quote": "I think so. I haven't cross-checked."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:1",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Felix will have the credits applied by Thursday.",
+        "ownerText": "Felix",
+        "deadlineText": "by Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:1:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:7",
+          "quote": "I'll have the credits applied by Thursday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:2",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "The group will handle the customer emails by tomorrow.",
+        "ownerText": null,
+        "deadlineText": "by tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:2:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:11",
+          "quote": "So we'll handle the customer emails by tomorrow."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:3",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "The customer emails will use plain language and include the credit and what we changed.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:3:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:3",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:11",
+          "quote": "Plain language, the credit, and what we changed."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:4",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Imani will close out the open tickets once the email is out, pointing to it.",
+        "ownerText": "Imani",
+        "deadlineText": "once the email is out",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:4:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:14",
+          "quote": "Imani, can you also close out the open tickets once the email is out, pointing to it?"
+        },
+        {
+          "id": "dev-ownership-outage-email:dec:4:ev:1",
+          "decisionId": "dev-ownership-outage-email:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:15",
+          "quote": "Yes, I'll do that with a macro."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:5",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 5,
+        "kind": "commitment",
+        "statement": "Felix will publish the postmortem on the blog after legal reads it.",
+        "ownerText": "Felix",
+        "deadlineText": "after legal reads it",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:5:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:16",
+          "quote": "I'll publish the postmortem on the blog after legal reads it."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:6",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 6,
+        "kind": "commitment",
+        "statement": "Felix will add a step for it to the on-call checklist.",
+        "ownerText": "Felix",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:6:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:19",
+          "quote": "That one's on the on-call checklist. I'll add a step for it."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-ownership-outage-email:cand:0",
+      "dimension": "owner",
+      "mismatch": "who-sends",
+      "probeId": "dev-ownership-outage-email:cand:0:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:4",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:4:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-ownership-outage-email:cand:2:probe:0",
+      "stem": "When \"Felix will have the credits applied by Thursday\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:2:probe:0:opt:0",
+          "text": "Passing the credit file to billing is sufficient for completion by Thursday"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:2:probe:0:opt:1",
+          "text": "Customers seeing the credits in their billing accounts is required for completion by Thursday"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:0:t0",
+      "stem": "For \"The group will handle the customer emails by tomorrow\", who does it on the day it happens?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:0:t0:opt:0",
+          "text": "Imani does it"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:0:t0:opt:1",
+          "text": "Felix does it"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:0:t0:opt:2",
+          "text": "Sunil does it"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:0:t0:opt:3",
+          "text": "No one is named yet"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "option",
+          "optionId": "dev-ownership-outage-email:cand:0:t0:opt:1"
+        },
+        {
+          "participantId": "Felix",
+          "choice": "option",
+          "optionId": "dev-ownership-outage-email:cand:0:t0:opt:0"
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "option",
+          "optionId": "dev-ownership-outage-email:cand:0:t0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0",
+      "stem": "When \"The group will handle the customer emails by tomorrow\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:1:probe:0:opt:0",
+          "text": "Every owner of the 212 workspaces with paused sync gets a message"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:1:probe:0:opt:1",
+          "text": "Only the roughly 15 customers with unresolved tickets get a message"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:4:t0",
+      "stem": "For \"Felix will publish the postmortem on the blog after legal reads it\", which check has to pass first?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:4:t0:opt:0",
+          "text": "A quick smoke test of the main flows"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:4:t0:opt:1",
+          "text": "A full regression pass"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:4:t0:opt:2",
+          "text": "A full regression plus extra checks for what changed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:5:probe:0",
+      "stem": "When \"Felix will add a step for it to the on-call checklist\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:5:probe:0:opt:0",
+          "text": "The checklist gains an early alert task right after sync pause is spotted"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:5:probe:0:opt:1",
+          "text": "The checklist gains a closing update task once rollback has completed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [
+    {
+      "splitId": "dev-ownership-outage-email:cand:0:t0:split",
+      "probeId": "dev-ownership-outage-email:cand:0:t0",
+      "mismatch": "who-sends",
+      "events": [
+        {
+          "type": "propose",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "recheck"
+        }
+      ],
+      "recheck": {
+        "probe": {
+          "stem": "When the customer emails arrive, whose name do customers see as the sender?"
+        },
+        "round": {
+          "probeId": "dev-ownership-outage-email:cand:0:t0:split:recheck:dev-ownership-outage-email:cand:0:t0:split:res:0",
+          "stem": "When the customer emails arrive, whose name do customers see as the sender?",
+          "options": [
+            {
+              "id": "dev-ownership-outage-email:cand:0:t0:split:recheck:dev-ownership-outage-email:cand:0:t0:split:res:0:opt:0",
+              "text": "They see Imani as the sender"
+            },
+            {
+              "id": "dev-ownership-outage-email:cand:0:t0:split:recheck:dev-ownership-outage-email:cand:0:t0:split:res:0:opt:1",
+              "text": "They see Felix as the sender"
+            },
+            {
+              "id": "dev-ownership-outage-email:cand:0:t0:split:recheck:dev-ownership-outage-email:cand:0:t0:split:res:0:opt:2",
+              "text": "They see Sunil as the sender"
+            },
+            {
+              "id": "dev-ownership-outage-email:cand:0:t0:split:recheck:dev-ownership-outage-email:cand:0:t0:split:res:0:opt:3",
+              "text": "They see no person as the sender"
+            }
+          ],
+          "answers": [
+            {
+              "participantId": "Imani",
+              "choice": "option",
+              "optionId": "dev-ownership-outage-email:cand:0:t0:split:recheck:dev-ownership-outage-email:cand:0:t0:split:res:0:opt:1"
+            },
+            {
+              "participantId": "Felix",
+              "choice": "unsure",
+              "optionId": null
+            },
+            {
+              "participantId": "Sunil",
+              "choice": "option",
+              "optionId": "dev-ownership-outage-email:cand:0:t0:split:recheck:dev-ownership-outage-email:cand:0:t0:split:res:0:opt:0"
+            }
+          ],
+          "divergence": {
+            "outcome": "split"
+          }
+        }
+      },
+      "state": {
+        "status": "reopened",
+        "participants": [
+          {
+            "id": "Imani",
+            "status": "active"
+          },
+          {
+            "id": "Felix",
+            "status": "active"
+          },
+          {
+            "id": "Sunil",
+            "status": "active"
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "dev-ownership-outage-email:cand:0:t0:split:res:0",
+            "status": "confirmed"
+          }
+        ],
+        "confirmations": [
+          {
+            "resolutionId": "dev-ownership-outage-email:cand:0:t0:split:res:0",
+            "participantId": "Imani"
+          },
+          {
+            "resolutionId": "dev-ownership-outage-email:cand:0:t0:split:res:0",
+            "participantId": "Felix"
+          },
+          {
+            "resolutionId": "dev-ownership-outage-email:cand:0:t0:split:res:0",
+            "participantId": "Sunil"
+          }
+        ]
+      }
+    }
+  ],
+  "record": {
+    "meetingId": "dev-ownership-outage-email",
+    "title": "Outage follow-up: we'll handle the customer emails",
+    "heldAt": "2026-11-03T16:00:00-08:00",
+    "generatedAt": "2026-11-03T16:00:00-08:00",
+    "participants": [
+      {
+        "id": "Imani",
+        "meetingId": "dev-ownership-outage-email",
+        "displayName": "Imani",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Felix",
+        "meetingId": "dev-ownership-outage-email",
+        "displayName": "Felix",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Sunil",
+        "meetingId": "dev-ownership-outage-email",
+        "displayName": "Sunil",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "dev-ownership-outage-email:item:0",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "Are those fifteen inside the two hundred and twelve?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:3",
+            "quote": "Are those fifteen inside the two hundred and twelve?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:1",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "I think so. I haven't cross-checked.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:4",
+            "quote": "I think so. I haven't cross-checked.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:2",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "I'll have the credits applied by Thursday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:7",
+            "quote": "I'll have the credits applied by Thursday.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:3",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "So we'll handle the customer emails by tomorrow.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:11",
+            "quote": "So we'll handle the customer emails by tomorrow.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:4",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "Plain language, the credit, and what we changed.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:11",
+            "quote": "Plain language, the credit, and what we changed.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:5",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "Imani, can you also close out the open tickets once the email is out, pointing to it?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:14",
+            "quote": "Imani, can you also close out the open tickets once the email is out, pointing to it?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:6",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "Yes, I'll do that with a macro.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:15",
+            "quote": "Yes, I'll do that with a macro.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:7",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "I'll publish the postmortem on the blog after legal reads it.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:16",
+            "quote": "I'll publish the postmortem on the blog after legal reads it.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:8",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "stated",
+        "text": "That one's on the on-call checklist. I'll add a step for it.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:19",
+            "quote": "That one's on the on-call checklist. I'll add a step for it.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-ownership-outage-email:item:9",
+        "meetingId": "dev-ownership-outage-email",
+        "category": "unresolved",
+        "text": "A recheck found different readings of: Support and engineering get the email out together.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-ownership-outage-email:seg:11",
+            "quote": "So we'll handle the customer emails by tomorrow.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [
+          "Imani",
+          "Felix",
+          "Sunil"
+        ],
+        "absent": [],
+        "recheck": "failed",
+        "splitId": "dev-ownership-outage-email:cand:0:t0:split",
+        "deadline": null
+      }
+    ],
+    "proseDraft": "No confirmed resolutions are recorded in these items. It is still open whether support and engineering get the email out together, with the recheck recorded as failed.\n\nUnresolved\n- The draft notes it is still open whether support and engineering get the email out together, with the recheck recorded as failed.\n\nStated in the meeting\n- The draft notes the question of whether the fifteen are included in the two hundred and twelve.\n- The draft notes a view that it is so, without a cross-check having been done.\n- The draft notes a statement about getting the credits applied by Thursday.\n- The draft notes a statement about handling the customer emails by tomorrow.\n- The draft notes a statement listing plain language, the credit, and what was changed.\n- The draft notes a request to Imani to close out the open tickets once the email is out, pointing to it.\n- The draft notes a statement about doing that with a macro.\n- The draft notes a statement about publishing the postmortem on the blog after legal reads it.\n- The draft notes a statement about that being on the on-call checklist and adding a step for it."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 27792,
+          "inputTokens": 1365,
+          "outputTokens": 8261,
+          "reasoningTokens": 7614,
+          "costUsd": 0.035424,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 42933,
+          "inputTokens": 1998,
+          "outputTokens": 9805,
+          "reasoningTokens": 9253,
+          "costUsd": 0.04416875,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 5285,
+          "inputTokens": 550,
+          "outputTokens": 1322,
+          "reasoningTokens": 1273,
+          "costUsd": 0.0059001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2232,
+          "inputTokens": 425,
+          "outputTokens": 497,
+          "reasoningTokens": 431,
+          "costUsd": 0.0023784,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4830,
+          "inputTokens": 546,
+          "outputTokens": 1288,
+          "reasoningTokens": 1238,
+          "costUsd": 0.0061565,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2149,
+          "inputTokens": 418,
+          "outputTokens": 588,
+          "reasoningTokens": 533,
+          "costUsd": 0.0027564,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6980,
+          "inputTokens": 554,
+          "outputTokens": 1877,
+          "reasoningTokens": 1833,
+          "costUsd": 0.00866975,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 26756,
+          "inputTokens": 603,
+          "outputTokens": 7361,
+          "reasoningTokens": 7300,
+          "costUsd": 0.032038,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4249,
+          "inputTokens": 561,
+          "outputTokens": 1445,
+          "reasoningTokens": 1398,
+          "costUsd": 0.006436600000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1739,
+          "inputTokens": 426,
+          "outputTokens": 465,
+          "reasoningTokens": 405,
+          "costUsd": 0.0022436500000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1663,
+          "inputTokens": 294,
+          "outputTokens": 366,
+          "reasoningTokens": 333,
+          "costUsd": 0.0017987,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1497,
+          "inputTokens": 298,
+          "outputTokens": 327,
+          "reasoningTokens": 291,
+          "costUsd": 0.00163795,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1420,
+          "inputTokens": 292,
+          "outputTokens": 263,
+          "reasoningTokens": 231,
+          "costUsd": 0.00135845,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1252,
+          "inputTokens": 291,
+          "outputTokens": 317,
+          "reasoningTokens": 291,
+          "costUsd": 0.0014459000000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1732,
+          "inputTokens": 295,
+          "outputTokens": 474,
+          "reasoningTokens": 437,
+          "costUsd": 0.00225895,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1341,
+          "inputTokens": 289,
+          "outputTokens": 327,
+          "reasoningTokens": 300,
+          "costUsd": 0.0016267,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1226,
+          "inputTokens": 295,
+          "outputTokens": 297,
+          "reasoningTokens": 265,
+          "costUsd": 0.0015067000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1228,
+          "inputTokens": 299,
+          "outputTokens": 334,
+          "reasoningTokens": 301,
+          "costUsd": 0.00166895,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1445,
+          "inputTokens": 293,
+          "outputTokens": 280,
+          "reasoningTokens": 246,
+          "costUsd": 0.00143195,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2064,
+          "inputTokens": 296,
+          "outputTokens": 478,
+          "reasoningTokens": 444,
+          "costUsd": 0.0022771999999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1403,
+          "inputTokens": 300,
+          "outputTokens": 265,
+          "reasoningTokens": 231,
+          "costUsd": 0.00137695,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1506,
+          "inputTokens": 294,
+          "outputTokens": 300,
+          "reasoningTokens": 263,
+          "costUsd": 0.0015182000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2588,
+          "inputTokens": 296,
+          "outputTokens": 733,
+          "reasoningTokens": 697,
+          "costUsd": 0.0033609499999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1226,
+          "inputTokens": 300,
+          "outputTokens": 304,
+          "reasoningTokens": 275,
+          "costUsd": 0.0014019000000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1987,
+          "inputTokens": 294,
+          "outputTokens": 629,
+          "reasoningTokens": 594,
+          "costUsd": 0.0029164499999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateRecheck",
+      "calls": [
+        {
+          "stage": "generateRecheck",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateRecheck.v1",
+          "cacheHit": false,
+          "latencyMs": 18194,
+          "inputTokens": 670,
+          "outputTokens": 5360,
+          "reasoningTokens": 5265,
+          "costUsd": 0.0236175,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1919,
+          "inputTokens": 334,
+          "outputTokens": 591,
+          "reasoningTokens": 562,
+          "costUsd": 0.0028049499999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2988,
+          "inputTokens": 338,
+          "outputTokens": 800,
+          "reasoningTokens": 762,
+          "costUsd": 0.0036982,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1535,
+          "inputTokens": 332,
+          "outputTokens": 377,
+          "reasoningTokens": 345,
+          "costUsd": 0.00189295,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 9214,
+          "inputTokens": 632,
+          "outputTokens": 2470,
+          "reasoningTokens": 2033,
+          "costUsd": 0.0110224,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

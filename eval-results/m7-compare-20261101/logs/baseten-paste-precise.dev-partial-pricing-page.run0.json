@@ -1,0 +1,840 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 0,
+  "scenario": "dev-partial-pricing-page",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "dev-partial-pricing-page:seg:0",
+      "text": "Pricing page. The new prices take effect on the 13th, so the page has to match by then."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:1",
+      "text": "The 13th is a Friday, right?"
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:2",
+      "text": "Yes."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:3",
+      "text": "Sales already sent the existing customers their notice, so that side is covered."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:4",
+      "text": "OK. What changes on the page?"
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:5",
+      "text": "The pricing update. Starter goes from twelve to fifteen, Team from twenty-nine to thirty-two."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:6",
+      "text": "And enterprise stays as contact us?"
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:7",
+      "text": "Yes."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:8",
+      "text": "Customers keep asking about annual billing, so the timing is good."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:9",
+      "text": "Agreed. I'll build the pricing update on a branch and send you a preview link on Monday."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:10",
+      "text": "Great. So the pricing update is live on the 13th, Jun owns it."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:11",
+      "text": "Yep, live on the 13th."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:12",
+      "text": "Perfect. I'll update the sales deck to match."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:13",
+      "text": "Do we need to change the FAQ?"
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:14",
+      "text": "The FAQ still says prices are locked for a year. That's no longer true for monthly plans."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:15",
+      "text": "Then I'll rewrite that answer."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:16",
+      "text": "Send me the new copy and I'll swap it in."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:17",
+      "text": "Will do. Anything else?"
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:18",
+      "text": "Only that the sales team will want to link straight to the page from proposals."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:19",
+      "text": "The URL won't change, so old links keep working."
+    },
+    {
+      "id": "dev-partial-pricing-page:seg:20",
+      "text": "Good. That's it, then."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "dev-partial-pricing-page:dec:0",
+        "meetingId": "dev-partial-pricing-page",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "The pricing update will be live on the 13th",
+        "ownerText": "Jun",
+        "deadlineText": "on the 13th",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-partial-pricing-page:dec:0:ev:0",
+          "decisionId": "dev-partial-pricing-page:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:10",
+          "quote": "So the pricing update is live on the 13th, Jun owns it."
+        },
+        {
+          "id": "dev-partial-pricing-page:dec:0:ev:1",
+          "decisionId": "dev-partial-pricing-page:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:11",
+          "quote": "Yep, live on the 13th."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-partial-pricing-page:dec:1",
+        "meetingId": "dev-partial-pricing-page",
+        "idx": 1,
+        "kind": "decision",
+        "statement": "Enterprise pricing stays as contact us",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-partial-pricing-page:dec:1:ev:0",
+          "decisionId": "dev-partial-pricing-page:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:6",
+          "quote": "And enterprise stays as contact us?"
+        },
+        {
+          "id": "dev-partial-pricing-page:dec:1:ev:1",
+          "decisionId": "dev-partial-pricing-page:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:7",
+          "quote": "Yes."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-partial-pricing-page:dec:2",
+        "meetingId": "dev-partial-pricing-page",
+        "idx": 2,
+        "kind": "decision",
+        "statement": "The URL will not change so old links keep working",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-partial-pricing-page:dec:2:ev:0",
+          "decisionId": "dev-partial-pricing-page:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:19",
+          "quote": "The URL won't change, so old links keep working."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-partial-pricing-page:dec:3",
+        "meetingId": "dev-partial-pricing-page",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Jun will build the pricing update on a branch and send a preview link on Monday",
+        "ownerText": "Jun",
+        "deadlineText": "on Monday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-partial-pricing-page:dec:3:ev:0",
+          "decisionId": "dev-partial-pricing-page:dec:3",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:9",
+          "quote": "I'll build the pricing update on a branch and send you a preview link on Monday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-partial-pricing-page:dec:4",
+        "meetingId": "dev-partial-pricing-page",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Marisol will update the sales deck to match",
+        "ownerText": "Marisol",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-partial-pricing-page:dec:4:ev:0",
+          "decisionId": "dev-partial-pricing-page:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:12",
+          "quote": "I'll update the sales deck to match."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-partial-pricing-page:dec:5",
+        "meetingId": "dev-partial-pricing-page",
+        "idx": 5,
+        "kind": "commitment",
+        "statement": "Elena will rewrite the FAQ answer about prices being locked for a year",
+        "ownerText": "Elena",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-partial-pricing-page:dec:5:ev:0",
+          "decisionId": "dev-partial-pricing-page:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:14",
+          "quote": "The FAQ still says prices are locked for a year. That's no longer true for monthly plans."
+        },
+        {
+          "id": "dev-partial-pricing-page:dec:5:ev:1",
+          "decisionId": "dev-partial-pricing-page:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:15",
+          "quote": "Then I'll rewrite that answer."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-partial-pricing-page:dec:6",
+        "meetingId": "dev-partial-pricing-page",
+        "idx": 6,
+        "kind": "commitment",
+        "statement": "Jun will swap in the new FAQ copy after Elena sends it",
+        "ownerText": "Jun",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-partial-pricing-page:dec:6:ev:0",
+          "decisionId": "dev-partial-pricing-page:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-partial-pricing-page:seg:16",
+          "quote": "Send me the new copy and I'll swap it in."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-partial-pricing-page:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:0:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:1",
+      "dimension": "scope",
+      "mismatch": "what-the-update-covers",
+      "probeId": "dev-partial-pricing-page:cand:1:t0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:2:probe:0"
+    },
+    {
+      "id": "dev-partial-pricing-page:cand:3",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-partial-pricing-page:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-partial-pricing-page:cand:0:probe:0",
+      "stem": "For \"The pricing update will be live\", what has to exist by Friday, November 13?",
+      "options": [
+        {
+          "id": "dev-partial-pricing-page:cand:0:probe:0:opt:0",
+          "text": "The updated pricing page must go live specifically on Friday the 13th and remain unpublished before then"
+        },
+        {
+          "id": "dev-partial-pricing-page:cand:0:probe:0:opt:1",
+          "text": "The updated pricing page must be live at the latest on Friday the 13th, but it may launch earlier if the pricing is correct"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Elena",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:0:probe:0:opt:1"
+        },
+        {
+          "participantId": "Jun",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:0:probe:0:opt:1"
+        },
+        {
+          "participantId": "Marisol",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:0:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:1:t0",
+      "stem": "For \"The pricing update will be live on the 13th\", what form does it take?",
+      "options": [
+        {
+          "id": "dev-partial-pricing-page:cand:1:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "dev-partial-pricing-page:cand:1:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "dev-partial-pricing-page:cand:1:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Elena",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:1:t0:opt:2"
+        },
+        {
+          "participantId": "Jun",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:1:t0:opt:2"
+        },
+        {
+          "participantId": "Marisol",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:1:t0:opt:2"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:2:probe:0",
+      "stem": "Jun shares the preview on Monday the 9th and has not heard back by Friday the 13th. What is expected to happen on Friday the 13th?",
+      "options": [
+        {
+          "id": "dev-partial-pricing-page:cand:2:probe:0:opt:0",
+          "text": "Jun puts the new pricing page live on Friday the 13th as planned"
+        },
+        {
+          "id": "dev-partial-pricing-page:cand:2:probe:0:opt:1",
+          "text": "Jun holds the new pricing page back until Elena and Marisol both give explicit approval"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Elena",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:2:probe:0:opt:0"
+        },
+        {
+          "participantId": "Jun",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:2:probe:0:opt:0"
+        },
+        {
+          "participantId": "Marisol",
+          "choice": "option",
+          "optionId": "dev-partial-pricing-page:cand:2:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-partial-pricing-page:cand:3:probe:0",
+      "stem": "When Jun shares the branch preview on Monday the 9th, who will get the link?",
+      "options": [
+        {
+          "id": "dev-partial-pricing-page:cand:3:probe:0:opt:0",
+          "text": "The link goes to Elena only"
+        },
+        {
+          "id": "dev-partial-pricing-page:cand:3:probe:0:opt:1",
+          "text": "The link goes to Elena and Marisol"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Elena",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Jun",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Marisol",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 7384,
+          "inputTokens": 1420,
+          "outputTokens": 2344,
+          "reasoningTokens": 1789,
+          "costUsd": 0.0111738,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 11381,
+          "inputTokens": 2035,
+          "outputTokens": 3051,
+          "reasoningTokens": 2668,
+          "costUsd": 0.0146657,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3438,
+          "inputTokens": 743,
+          "outputTokens": 878,
+          "reasoningTokens": 812,
+          "costUsd": 0.0042378500000000005,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1609,
+          "inputTokens": 611,
+          "outputTokens": 357,
+          "reasoningTokens": 290,
+          "costUsd": 0.0018586,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 5109,
+          "inputTokens": 850,
+          "outputTokens": 1322,
+          "reasoningTokens": 1224,
+          "costUsd": 0.0061178000000000005,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1475,
+          "inputTokens": 601,
+          "outputTokens": 249,
+          "reasoningTokens": 203,
+          "costUsd": 0.0013870999999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3961,
+          "inputTokens": 820,
+          "outputTokens": 1018,
+          "reasoningTokens": 952,
+          "costUsd": 0.0047883000000000005,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1418,
+          "inputTokens": 549,
+          "outputTokens": 226,
+          "reasoningTokens": 169,
+          "costUsd": 0.00164675,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2427,
+          "inputTokens": 336,
+          "outputTokens": 468,
+          "reasoningTokens": 428,
+          "costUsd": 0.0022846999999999998,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2131,
+          "inputTokens": 336,
+          "outputTokens": 437,
+          "reasoningTokens": 397,
+          "costUsd": 0.00215295,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 4110,
+          "inputTokens": 341,
+          "outputTokens": 505,
+          "reasoningTokens": 472,
+          "costUsd": 0.0024481999999999998,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2120,
+          "inputTokens": 310,
+          "outputTokens": 453,
+          "reasoningTokens": 422,
+          "costUsd": 0.0021884499999999998,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1763,
+          "inputTokens": 310,
+          "outputTokens": 358,
+          "reasoningTokens": 329,
+          "costUsd": 0.0016439,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1726,
+          "inputTokens": 315,
+          "outputTokens": 441,
+          "reasoningTokens": 410,
+          "costUsd": 0.0021436999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1628,
+          "inputTokens": 335,
+          "outputTokens": 360,
+          "reasoningTokens": 319,
+          "costUsd": 0.00168365,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1531,
+          "inputTokens": 335,
+          "outputTokens": 259,
+          "reasoningTokens": 223,
+          "costUsd": 0.0012544000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1517,
+          "inputTokens": 340,
+          "outputTokens": 300,
+          "reasoningTokens": 264,
+          "costUsd": 0.0015757,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1403,
+          "inputTokens": 303,
+          "outputTokens": 261,
+          "reasoningTokens": 228,
+          "costUsd": 0.0013637,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1185,
+          "inputTokens": 303,
+          "outputTokens": 258,
+          "reasoningTokens": 226,
+          "costUsd": 0.00135095,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1677,
+          "inputTokens": 308,
+          "outputTokens": 291,
+          "reasoningTokens": 255,
+          "costUsd": 0.00149745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

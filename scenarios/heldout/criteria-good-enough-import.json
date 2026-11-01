@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "id": "heldout-criteria-good-enough-import",
+  "title": "Importer good enough for Lindqvist",
+  "set": "heldout",
+  "category": "criteria",
+  "heldAt": "2026-11-04T14:00:00-05:00",
+  "timezone": "America/New_York",
+  "participants": ["Clara", "Diego", "Yusuf"],
+  "transcript": "[00:00] Clara: Lindqvist Dental wants to start moving their patient records next week. They're asking about the importer.\n[00:07] Diego: The CSV importer works. It's rough around the edges, but it works.\n[00:13] Yusuf: Rough how?\n[00:17] Diego: Error messages are just row numbers, and it's slow on big files.\n[00:23] Clara: They don't need it perfect. It needs to be good enough for the client to start using.\n[00:31] Diego: Fair. Then I'll get it good enough for them by Tuesday.\n[00:36] Yusuf: I'll write a short guide on the column format, with a template file.\n[00:42] Clara: Great. I'll tell them Tuesday.\n[00:46] Yusuf: Do they need the appointment history too, or just patients?\n[00:51] Clara: Patients first. Appointments can come later.\n[00:55] Diego: Good, that keeps it simpler.\n[00:59] Clara: Thanks, all.\n",
+  "expectedDecisions": [
+    {
+      "id": "importer-ready",
+      "kind": "commitment",
+      "statement": "Diego gets the CSV importer good enough for Lindqvist Dental by Tuesday.",
+      "owner": "Diego",
+      "deadline": "Tuesday",
+      "quotes": [
+        "It needs to be good enough for the client to start using.",
+        "I'll get it good enough for them by Tuesday."
+      ]
+    },
+    {
+      "id": "column-guide",
+      "kind": "commitment",
+      "statement": "Yusuf writes a column-format guide with a template file.",
+      "owner": "Yusuf",
+      "deadline": null,
+      "quotes": ["I'll write a short guide on the column format, with a template file."]
+    },
+    {
+      "id": "patients-first",
+      "kind": "decision",
+      "statement": "Import patients first; appointment history comes later.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["Patients first. Appointments can come later."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Clara",
+      "readings": [
+        {
+          "decision": "importer-ready",
+          "dimension": "criteria",
+          "reading": "Their full 40,000-patient export imports in under ten minutes, and every rejected row says which column is wrong."
+        }
+      ]
+    },
+    {
+      "participant": "Diego",
+      "readings": [
+        {
+          "decision": "importer-ready",
+          "dimension": "criteria",
+          "reading": "Their three sample files import with no errors. Speed and error wording can wait."
+        }
+      ]
+    },
+    {
+      "participant": "Yusuf",
+      "readings": [
+        {
+          "decision": "importer-ready",
+          "dimension": "criteria",
+          "reading": "Their full 40,000-patient export imports in under ten minutes with readable error messages."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "what-good-enough-means",
+      "decision": "importer-ready",
+      "dimension": "criteria",
+      "note": "'Good enough for the client': Diego means the three sample files import cleanly; Clara and Yusuf mean the full export in under ten minutes with readable errors."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Diego: \"I'll get it good enough for them by Tuesday.\"",
+      "Yusuf: \"I'll write a short guide on the column format, with a template file.\"",
+      "Clara: \"Patients first. Appointments can come later.\""
+    ],
+    "confirmed": [
+      "By Tuesday 2026-11-10, Lindqvist's full 40,000-row patient export imports in under ten minutes, and each rejected row names the failing column."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "what-good-enough-means",
+      "precise": {
+        "text": "Done means Lindqvist's full 40,000-row patient export imports in under ten minutes and every rejected row names the column that failed, by Tuesday 2026-11-10.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "Diego gets the importer good enough for Lindqvist by Tuesday.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

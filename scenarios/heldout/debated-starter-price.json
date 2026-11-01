@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "id": "heldout-debated-starter-price",
+  "title": "Starter plan price increase",
+  "set": "heldout",
+  "category": "debated",
+  "heldAt": "2026-11-04T13:00:00-05:00",
+  "timezone": "America/New_York",
+  "participants": ["Victor", "Amina", "Kai"],
+  "transcript": "[00:00] Victor: Proposal: raise the Starter plan from twelve to fifteen dollars a seat, from January.\n[00:06] Amina: I don't agree. Starter is how most of our big accounts started. A price jump hits the funnel.\n[00:14] Kai: Our costs per seat went up a lot this year, though. Starter is barely above break-even.\n[00:21] Amina: Then cut the free storage on Starter instead of the price. Nobody shops on storage.\n[00:28] Victor: That annoys existing customers more than a price change.\n[00:32] Amina: We don't know that. We've never tested either.\n[00:36] Kai: Could we test it on new signups only?\n[00:40] Victor: Maybe. I don't think we're going to agree today.\n[00:44] Amina: No. Let's revisit this next week with the cohort numbers.\n[00:49] Kai: I'll pull the cohort numbers for Starter before then.\n[00:53] Victor: OK. Nothing changes until we decide.\n",
+  "expectedDecisions": [
+    {
+      "id": "starter-price",
+      "kind": "open_item",
+      "statement": "Whether to raise the Starter plan price is still open; revisit next week with cohort numbers.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["Let's revisit this next week with the cohort numbers."]
+    },
+    {
+      "id": "cohort-numbers",
+      "kind": "commitment",
+      "statement": "Kai pulls the Starter cohort numbers before the revisit.",
+      "owner": "Kai",
+      "deadline": null,
+      "quotes": ["I'll pull the cohort numbers for Starter before then."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Victor",
+      "readings": [
+        {
+          "decision": "cohort-numbers",
+          "dimension": "owner",
+          "reading": "Kai pulls the numbers."
+        }
+      ]
+    },
+    {
+      "participant": "Amina",
+      "readings": [
+        {
+          "decision": "cohort-numbers",
+          "dimension": "owner",
+          "reading": "Kai pulls the numbers."
+        }
+      ]
+    },
+    {
+      "participant": "Kai",
+      "readings": [
+        {
+          "decision": "cohort-numbers",
+          "dimension": "owner",
+          "reading": "Kai pulls the numbers."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": ["Kai: \"I'll pull the cohort numbers for Starter before then.\""],
+    "confirmed": [],
+    "unresolved": [
+      "Whether to raise the Starter plan price from $12 to $15 per seat (debated; revisit next week)."
+    ]
+  },
+  "scriptedResolutions": []
+}

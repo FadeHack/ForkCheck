@@ -1,0 +1,726 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 0,
+  "scenario": "heldout-dependency-referral-legal",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-dependency-referral-legal:seg:0",
+      "text": "Referral program. The landing page is built, the reward logic is tested."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:1",
+      "text": "Fifty dollars credit for the referrer, a free month for the new account."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:2",
+      "text": "And the cash option for partners. That's the part people actually asked for."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:3",
+      "text": "Right. So we launch the referral program once legal is done."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:4",
+      "text": "Makes sense. I'll have the launch email ready so we can go the same day."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:5",
+      "text": "I'll keep the partner sign-up form hidden until then."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:6",
+      "text": "Sienna, can you also brief support on the credit rules?"
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:7",
+      "text": "Yes, I'll do a short doc for them."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:8",
+      "text": "One thing. Do we cap referrals per account?"
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:9",
+      "text": "Ten per month. It's already in the reward logic."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:10",
+      "text": "Good."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:11",
+      "text": "OK. Thanks."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:0",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 0,
+        "kind": "assumption",
+        "statement": "The referral program will launch once legal is done.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:0:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:3",
+          "quote": "So we launch the referral program once legal is done."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:1",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Sienna will have the launch email ready so we can go the same day.",
+        "ownerText": "Sienna",
+        "deadlineText": "so we can go the same day",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:1:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:4",
+          "quote": "I'll have the launch email ready so we can go the same day."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:2",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Tomas will keep the partner sign-up form hidden until then.",
+        "ownerText": "Tomas",
+        "deadlineText": "until then",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:2:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:5",
+          "quote": "I'll keep the partner sign-up form hidden until then."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:3",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Sienna will brief support on the credit rules with a short doc for them.",
+        "ownerText": "Sienna",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:3:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:6",
+          "quote": "Sienna, can you also brief support on the credit rules?"
+        },
+        {
+          "id": "heldout-dependency-referral-legal:dec:3:ev:1",
+          "decisionId": "heldout-dependency-referral-legal:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:7",
+          "quote": "Yes, I'll do a short doc for them."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-dependency-referral-legal:cand:0",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-dependency-referral-legal:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-dependency-referral-legal:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-dependency-referral-legal:cand:1:t0"
+    },
+    {
+      "id": "heldout-dependency-referral-legal:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-dependency-referral-legal:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-dependency-referral-legal:cand:1:t0",
+      "stem": "For \"Sienna will have the launch email ready so we can go the same day\", what form does it take?",
+      "options": [
+        {
+          "id": "heldout-dependency-referral-legal:cand:1:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "heldout-dependency-referral-legal:cand:1:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "heldout-dependency-referral-legal:cand:1:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rafael",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sienna",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomas",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-dependency-referral-legal:cand:0:probe:0",
+      "stem": "Suppose legal clears the program in the morning but Sienna's launch email has not gone out yet. What happens to the partner form in the meantime?",
+      "options": [
+        {
+          "id": "heldout-dependency-referral-legal:cand:0:probe:0:opt:0",
+          "text": "It becomes accessible right after legal clearance, before the email goes out."
+        },
+        {
+          "id": "heldout-dependency-referral-legal:cand:0:probe:0:opt:1",
+          "text": "It stays inaccessible until after Sienna's email goes out."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rafael",
+          "choice": "option",
+          "optionId": "heldout-dependency-referral-legal:cand:0:probe:0:opt:0"
+        },
+        {
+          "participantId": "Sienna",
+          "choice": "option",
+          "optionId": "heldout-dependency-referral-legal:cand:0:probe:0:opt:0"
+        },
+        {
+          "participantId": "Tomas",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-dependency-referral-legal:cand:2:probe:0",
+      "stem": "When \"Sienna will brief support on the credit rules with a short doc for them\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-dependency-referral-legal:cand:2:probe:0:opt:0",
+          "text": "Only the $50 referrer bonus and the free month for new users"
+        },
+        {
+          "id": "heldout-dependency-referral-legal:cand:2:probe:0:opt:1",
+          "text": "Those standard rewards plus the partner cash alternative and monthly cap of ten"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rafael",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sienna",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomas",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-dependency-referral-legal",
+    "title": "Referral program after legal",
+    "heldAt": "2026-11-02T16:00:00-05:00",
+    "generatedAt": "2026-11-02T16:00:00-05:00",
+    "participants": [
+      {
+        "id": "Rafael",
+        "meetingId": "heldout-dependency-referral-legal",
+        "displayName": "Rafael",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Sienna",
+        "meetingId": "heldout-dependency-referral-legal",
+        "displayName": "Sienna",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Tomas",
+        "meetingId": "heldout-dependency-referral-legal",
+        "displayName": "Tomas",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-dependency-referral-legal:item:0",
+        "meetingId": "heldout-dependency-referral-legal",
+        "category": "stated",
+        "text": "So we launch the referral program once legal is done.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-dependency-referral-legal:seg:3",
+            "quote": "So we launch the referral program once legal is done.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-dependency-referral-legal:item:1",
+        "meetingId": "heldout-dependency-referral-legal",
+        "category": "stated",
+        "text": "I'll have the launch email ready so we can go the same day.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-dependency-referral-legal:seg:4",
+            "quote": "I'll have the launch email ready so we can go the same day.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-dependency-referral-legal:item:2",
+        "meetingId": "heldout-dependency-referral-legal",
+        "category": "stated",
+        "text": "I'll keep the partner sign-up form hidden until then.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-dependency-referral-legal:seg:5",
+            "quote": "I'll keep the partner sign-up form hidden until then.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-dependency-referral-legal:item:3",
+        "meetingId": "heldout-dependency-referral-legal",
+        "category": "stated",
+        "text": "Sienna, can you also brief support on the credit rules?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-dependency-referral-legal:seg:6",
+            "quote": "Sienna, can you also brief support on the credit rules?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-dependency-referral-legal:item:4",
+        "meetingId": "heldout-dependency-referral-legal",
+        "category": "stated",
+        "text": "Yes, I'll do a short doc for them.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-dependency-referral-legal:seg:7",
+            "quote": "Yes, I'll do a short doc for them.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "Nothing was listed as confirmed. Statements covered launching the referral program once legal is done, having the launch email ready, keeping the sign-up form hidden, and briefing support on the credit rules.\n\nStated in the meeting\n- It was stated that the referral program would launch once legal is done.\n- It was stated that the launch email would be ready so launch could happen the same day.\n- It was stated that the partner sign-up form would stay hidden until then.\n- Sienna was asked to brief support on the credit rules.\n- It was stated that a short doc would be done."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 22722,
+          "inputTokens": 1074,
+          "outputTokens": 5342,
+          "reasoningTokens": 4952,
+          "costUsd": 0.0233585,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 36466,
+          "inputTokens": 1543,
+          "outputTokens": 8710,
+          "reasoningTokens": 8376,
+          "costUsd": 0.03894625,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 6083,
+          "inputTokens": 694,
+          "outputTokens": 1792,
+          "reasoningTokens": 1704,
+          "costUsd": 0.0084835,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2305,
+          "inputTokens": 457,
+          "outputTokens": 465,
+          "reasoningTokens": 416,
+          "costUsd": 0.0022824,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3762,
+          "inputTokens": 584,
+          "outputTokens": 1048,
+          "reasoningTokens": 998,
+          "costUsd": 0.0047781,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2548,
+          "inputTokens": 440,
+          "outputTokens": 686,
+          "reasoningTokens": 629,
+          "costUsd": 0.0032004,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1485,
+          "inputTokens": 292,
+          "outputTokens": 451,
+          "reasoningTokens": 420,
+          "costUsd": 0.00215745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1774,
+          "inputTokens": 286,
+          "outputTokens": 432,
+          "reasoningTokens": 398,
+          "costUsd": 0.0020691999999999998,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1494,
+          "inputTokens": 304,
+          "outputTokens": 375,
+          "reasoningTokens": 340,
+          "costUsd": 0.00184945,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1331,
+          "inputTokens": 303,
+          "outputTokens": 286,
+          "reasoningTokens": 257,
+          "costUsd": 0.00146995,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2593,
+          "inputTokens": 297,
+          "outputTokens": 727,
+          "reasoningTokens": 697,
+          "costUsd": 0.0033366999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1601,
+          "inputTokens": 315,
+          "outputTokens": 333,
+          "reasoningTokens": 294,
+          "costUsd": 0.0016847000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1283,
+          "inputTokens": 302,
+          "outputTokens": 243,
+          "reasoningTokens": 210,
+          "costUsd": 0.0012859500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1245,
+          "inputTokens": 296,
+          "outputTokens": 279,
+          "reasoningTokens": 243,
+          "costUsd": 0.0014314500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2284,
+          "inputTokens": 314,
+          "outputTokens": 673,
+          "reasoningTokens": 636,
+          "costUsd": 0.0031284499999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 4922,
+          "inputTokens": 499,
+          "outputTokens": 1504,
+          "reasoningTokens": 1259,
+          "costUsd": 0.00701575,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

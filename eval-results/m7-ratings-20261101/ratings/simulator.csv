@@ -1,0 +1,164 @@
+item,scenario,participant,brief,question,answer,plausible,notes
+s-01ceee69,heldout-ownership-renewal-call,Maya,"owner: Hugo books and runs the call, since renewals sit with sales. She joins to cover product questions.","When ""Only offer a smaller tier if they bring it up and do not lead with a discount"" is done, which of these is included?
+1. Providing fewer licenses while keeping every feature available
+2. Providing core routing tools while removing the analytics part",unsure,yes,
+s-05b0d468,heldout-ownership-renewal-call,Jonas,"owner: Hugo books and runs it, as the account executive on Northwind.","When ""Jonas will pull their usage by team to have numbers on the call"" is done, which of these is included?
+1. Total seats used, shown separately for every team
+2. Route planning activity versus reporting activity, shown separately for every team",unsure,yes,
+s-098c96ce,heldout-outcome-reporting-pilot,Ines,outcome: The six design-partner customer accounts see it on Monday.,"It is Monday the 9th first thing in the morning, and neither the chart tracking nor the what's-new draft is finished. What will Pavel do?
+1. Enable the pilot for the group right away and add the tracking and draft afterwards.
+2. Wait to enable the pilot until the tracking and draft are both finished.",Enable the pilot for the group right away and add the tracking and draft afterwards.,yes,
+s-0e2497a4,heldout-ownership-renewal-call,Maya,"owner: Hugo books and runs the call, since renewals sit with sales. She joins to cover product questions.","Northwind says the renewal price is too high but does not mention scope or tiers. What do you do?
+1. Describe the pared-back plan as one way they could pay less.
+2. Hold the current plan discussion until they ask for less scope.",unsure,yes,
+s-10bfad2b,heldout-ownership-renewal-call,Jonas,"owner: Hugo books and runs it, as the account executive on Northwind.","Northwind says the renewal price is too high but does not mention scope or tiers. What do you do?
+1. Describe the pared-back plan as one way they could pay less.
+2. Hold the current plan discussion until they ask for less scope.",unsure,yes,
+s-1620b570,dev-deadline-next-friday,Lena,deadline: Friday 6 November. She plans to hand over her sections on Monday 2 November.,"For ""Kwame will send the questionnaire back to them"", what has to exist by ""next Friday""?
+1. The finished questionnaire sent to Brightwater by Friday the 30th
+2. The finished questionnaire sent to Brightwater by Friday the 6th",The finished questionnaire sent to Brightwater by Friday the 6th,yes,
+s-196416dd,heldout-outcome-reporting-pilot,Pavel,"outcome: Only our own customer success team sees it Monday, so they can check it with real data before any customer does.","It is Monday the 9th first thing in the morning, and neither the chart tracking nor the what's-new draft is finished. What will Pavel do?
+1. Enable the pilot for the group right away and add the tracking and draft afterwards.
+2. Wait to enable the pilot until the tracking and draft are both finished.",unsure,yes,
+s-1cceeb76,dev-deadline-next-friday,Rosa,"deadline: Friday 30 October, two days from now. Procurement's cut-off is the 30th.","For ""Kwame will send the questionnaire back to them"", what has to exist by ""next Friday""?
+1. The finished questionnaire sent to Brightwater by Friday the 30th
+2. The finished questionnaire sent to Brightwater by Friday the 6th",The finished questionnaire sent to Brightwater by Friday the 30th,yes,
+s-21acab29,heldout-outcome-reporting-pilot,Ruth,outcome: Customers in the pilot see the dashboards on Monday: the six design-partner accounts.,"For ""Ship it to the pilot group on Monday"", what form does it take?
+1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",The live version on real data,yes,
+s-2a7a7912,dev-deadline-next-friday,Rosa,"deadline: Friday 30 October, two days from now. Procurement's cut-off is the 30th.","When ""Lena will do the legal and insurance sections and pass them to Kwame to merge in"" is done, which of these is included?
+1. Completed legal responses plus coverage details and the certificate file
+2. Completed legal responses plus coverage details but no certificate file",unsure,yes,
+s-2d5b0140,dev-criteria-usual-qa,Zara,"criteria: Full manual regression on the device lab, four iOS and four Android phones. About two days.","When ""Zara will skip onboarding this round"" is done, which of these is included?
+1. No onboarding-related checks are included
+2. Confirming the new screens stay off behind the flag is included",unsure,yes,
+s-35916bd5,heldout-outcome-reporting-pilot,Pavel,"outcome: Only our own customer success team sees it Monday, so they can check it with real data before any customer does.","For ""Pavel will add the events"", what has to exist by Monday, November 9?
+1. Merged code for both signals exists starting Friday the 6th evening
+2. Merged code for both signals exists starting Monday the 9th morning",unsure,yes,
+s-360565ea,dev-criteria-usual-qa,Noor,"criteria: Full regression plus the accessibility checklist, because 4.2 changes the compose screen.","For ""Do the usual QA pass on the release build"", which check has to pass first?
+1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",A full regression plus extra checks for what changed,yes,
+s-36d99212,heldout-outcome-reporting-pilot,Ruth,outcome: Customers in the pilot see the dashboards on Monday: the six design-partner accounts.,"For ""Pavel will add the events"", what has to exist by Monday, November 9?
+1. Merged code for both signals exists starting Friday the 6th evening
+2. Merged code for both signals exists starting Monday the 9th morning",unsure,yes,
+s-47284442,heldout-ownership-renewal-call,Maya,"owner: Hugo books and runs the call, since renewals sit with sales. She joins to cover product questions.","For ""The team will handle the renewal call with their new ops lead this month, walking through route planning and asking what reporting would need to do for them"", who does it on the day it happens?
+1. Hugo does it
+2. Maya does it
+3. Jonas does it
+4. No one is named yet",Hugo does it,yes,
+s-56063c90,heldout-outcome-reporting-pilot,Ines,outcome: The six design-partner customer accounts see it on Monday.,"For ""Ship it to the pilot group on Monday"", what form does it take?
+1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",The live version on real data,yes,
+s-578409cb,dev-criteria-usual-qa,Zara,"criteria: Full manual regression on the device lab, four iOS and four Android phones. About two days.","For ""Do the usual QA pass on the release build"", which check has to pass first?
+1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",A full regression pass,yes,
+s-6399e1de,heldout-ownership-renewal-call,Hugo,owner: Maya books and runs the call; customer success owns the relationship. Hugo joins only if price comes up.,"Northwind says the renewal price is too high but does not mention scope or tiers. What do you do?
+1. Describe the pared-back plan as one way they could pay less.
+2. Hold the current plan discussion until they ask for less scope.",unsure,yes,
+s-669fd945,heldout-ownership-renewal-call,Maya,"owner: Hugo books and runs the call, since renewals sit with sales. She joins to cover product questions.","For ""Maya will send the new lead the onboarding guide, so they've seen the product before the call"", what has to exist by ""this week""?
+1. Maya has sent the starter materials to the new lead by Friday the 6th
+2. Maya has sent the starter materials to the new lead by Sunday the 8th",unsure,yes,
+s-704a26a6,dev-deadline-next-friday,Lena,deadline: Friday 6 November. She plans to hand over her sections on Monday 2 November.,"When ""Lena will do the legal and insurance sections and pass them to Kwame to merge in"" is done, which of these is included?
+1. Completed legal responses plus coverage details and the certificate file
+2. Completed legal responses plus coverage details but no certificate file",unsure,yes,
+s-724eb186,heldout-outcome-reporting-pilot,Ines,outcome: The six design-partner customer accounts see it on Monday.,"Suppose someone outside the pilot group opens reporting after the note is live. What will they experience?
+1. Only pilot members can view it; others opening reporting see no message
+2. Everyone opening reporting sees it, whether or not they are in the pilot",Only pilot members can view it; others opening reporting see no message,yes,
+s-730284bb,heldout-outcome-reporting-pilot,Ruth,outcome: Customers in the pilot see the dashboards on Monday: the six design-partner accounts.,"Suppose someone outside the pilot group opens reporting after the note is live. What will they experience?
+1. Only pilot members can view it; others opening reporting see no message
+2. Everyone opening reporting sees it, whether or not they are in the pilot",Only pilot members can view it; others opening reporting see no message,yes,
+s-7451ab3a,dev-criteria-usual-qa,Diego,"criteria: A smoke test of login, compose and sync on the iOS and Android simulators. An hour or two.","When ""Zara will skip onboarding this round"" is done, which of these is included?
+1. No onboarding-related checks are included
+2. Confirming the new screens stay off behind the flag is included",No onboarding-related checks are included,yes,
+s-751ee726,heldout-outcome-reporting-pilot,Pavel,"outcome: Only our own customer success team sees it Monday, so they can check it with real data before any customer does.","For ""Ship it to the pilot group on Monday"", what form does it take?
+1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",The live version on real data,yes,
+s-76e6d3e9,dev-criteria-usual-qa,Zara,"criteria: Full manual regression on the device lab, four iOS and four Android phones. About two days.","Once the A/B setup is ready, who will encounter the new onboarding screens?
+1. Only users assigned to the test variant will see the new screens
+2. Every user opening the app will see the new screens",unsure,yes,
+s-77980722,heldout-ownership-renewal-call,Jonas,"owner: Hugo books and runs it, as the account executive on Northwind.","For ""The team will handle the renewal call with their new ops lead this month, walking through route planning and asking what reporting would need to do for them"", who does it on the day it happens?
+1. Hugo does it
+2. Maya does it
+3. Jonas does it
+4. No one is named yet",Hugo does it,yes,
+s-78f60ab3,heldout-outcome-reporting-pilot,Ines,outcome: The six design-partner customer accounts see it on Monday.,"For ""Pavel will add the events"", what has to exist by Monday, November 9?
+1. Merged code for both signals exists starting Friday the 6th evening
+2. Merged code for both signals exists starting Monday the 9th morning",unsure,yes,
+s-8795bdec,heldout-ownership-renewal-call,Hugo,owner: Maya books and runs the call; customer success owns the relationship. Hugo joins only if price comes up.,"For ""Maya will send the new lead the onboarding guide, so they've seen the product before the call"", what has to exist by ""this week""?
+1. Maya has sent the starter materials to the new lead by Friday the 6th
+2. Maya has sent the starter materials to the new lead by Sunday the 8th",unsure,yes,
+s-8a470558,dev-criteria-usual-qa,Noor,"criteria: Full regression plus the accessibility checklist, because 4.2 changes the compose screen.","For ""Turn them on once the A/B setup is ready"", who does it on the day it happens?
+1. Diego does it
+2. Noor does it
+3. Zara does it
+4. No one is named yet",unsure,yes,
+s-8f3616c6,dev-criteria-usual-qa,Diego,"criteria: A smoke test of login, compose and sync on the iOS and Android simulators. An hour or two.","For ""Do the usual QA pass on the release build"", which check has to pass first?
+1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",A quick smoke test of the main flows,yes,
+s-92cd7737,dev-criteria-usual-qa,Noor,"criteria: Full regression plus the accessibility checklist, because 4.2 changes the compose screen.","When ""Zara will skip onboarding this round"" is done, which of these is included?
+1. No onboarding-related checks are included
+2. Confirming the new screens stay off behind the flag is included",Confirming the new screens stay off behind the flag is included,yes,
+s-9ac3d09c,heldout-ownership-renewal-call,Hugo,owner: Maya books and runs the call; customer success owns the relationship. Hugo joins only if price comes up.,"When ""Only offer a smaller tier if they bring it up and do not lead with a discount"" is done, which of these is included?
+1. Providing fewer licenses while keeping every feature available
+2. Providing core routing tools while removing the analytics part",unsure,yes,
+s-9c9d117f,heldout-outcome-reporting-pilot,Ruth,outcome: Customers in the pilot see the dashboards on Monday: the six design-partner accounts.,"It is Monday the 9th first thing in the morning, and neither the chart tracking nor the what's-new draft is finished. What will Pavel do?
+1. Enable the pilot for the group right away and add the tracking and draft afterwards.
+2. Wait to enable the pilot until the tracking and draft are both finished.",Enable the pilot for the group right away and add the tracking and draft afterwards.,yes,
+s-bbef8a2c,heldout-ownership-renewal-call,Maya,"owner: Hugo books and runs the call, since renewals sit with sales. She joins to cover product questions.","When ""Jonas will pull their usage by team to have numbers on the call"" is done, which of these is included?
+1. Total seats used, shown separately for every team
+2. Route planning activity versus reporting activity, shown separately for every team",unsure,yes,
+s-c014487e,heldout-ownership-renewal-call,Hugo,owner: Maya books and runs the call; customer success owns the relationship. Hugo joins only if price comes up.,"For ""The team will handle the renewal call with their new ops lead this month, walking through route planning and asking what reporting would need to do for them"", who does it on the day it happens?
+1. Hugo does it
+2. Maya does it
+3. Jonas does it
+4. No one is named yet",Maya does it,yes,
+s-c2dc5f1b,dev-criteria-usual-qa,Zara,"criteria: Full manual regression on the device lab, four iOS and four Android phones. About two days.","For ""Turn them on once the A/B setup is ready"", who does it on the day it happens?
+1. Diego does it
+2. Noor does it
+3. Zara does it
+4. No one is named yet",unsure,yes,
+s-c6124cb1,heldout-ownership-staging-cert,Aiko,owner: Bruno renews it. He knows the DNS setup and said he'd ping her when it's done.,"For ""The cert needs renewing before the 12th"", who does it on the day it happens?
+1. Aiko does it
+2. Bruno does it
+3. No one is named yet
+4. Aiko and Bruno share it",Bruno does it,yes,
+s-ce914dbc,dev-deadline-next-friday,Kwame,"deadline: Friday 6 November, the Friday of the following week.","When ""Lena will do the legal and insurance sections and pass them to Kwame to merge in"" is done, which of these is included?
+1. Completed legal responses plus coverage details and the certificate file
+2. Completed legal responses plus coverage details but no certificate file",unsure,yes,
+s-cf846281,heldout-ownership-renewal-call,Hugo,owner: Maya books and runs the call; customer success owns the relationship. Hugo joins only if price comes up.,"When ""Jonas will pull their usage by team to have numbers on the call"" is done, which of these is included?
+1. Total seats used, shown separately for every team
+2. Route planning activity versus reporting activity, shown separately for every team",unsure,yes,
+s-d14fb0b8,dev-deadline-next-friday,Kwame,"deadline: Friday 6 November, the Friday of the following week.","For ""Kwame will send the questionnaire back to them"", what has to exist by ""next Friday""?
+1. The finished questionnaire sent to Brightwater by Friday the 30th
+2. The finished questionnaire sent to Brightwater by Friday the 6th",The finished questionnaire sent to Brightwater by Friday the 6th,yes,
+s-dfe4abcf,heldout-ownership-renewal-call,Jonas,"owner: Hugo books and runs it, as the account executive on Northwind.","When ""Only offer a smaller tier if they bring it up and do not lead with a discount"" is done, which of these is included?
+1. Providing fewer licenses while keeping every feature available
+2. Providing core routing tools while removing the analytics part",unsure,yes,
+s-e7cc7257,heldout-ownership-renewal-call,Jonas,"owner: Hugo books and runs it, as the account executive on Northwind.","For ""Maya will send the new lead the onboarding guide, so they've seen the product before the call"", what has to exist by ""this week""?
+1. Maya has sent the starter materials to the new lead by Friday the 6th
+2. Maya has sent the starter materials to the new lead by Sunday the 8th",unsure,yes,
+s-e7d3d5e8,dev-criteria-usual-qa,Diego,"criteria: A smoke test of login, compose and sync on the iOS and Android simulators. An hour or two.","For ""Turn them on once the A/B setup is ready"", who does it on the day it happens?
+1. Diego does it
+2. Noor does it
+3. Zara does it
+4. No one is named yet",unsure,yes,
+s-ed35325e,heldout-outcome-reporting-pilot,Pavel,"outcome: Only our own customer success team sees it Monday, so they can check it with real data before any customer does.","Suppose someone outside the pilot group opens reporting after the note is live. What will they experience?
+1. Only pilot members can view it; others opening reporting see no message
+2. Everyone opening reporting sees it, whether or not they are in the pilot",Only pilot members can view it; others opening reporting see no message,yes,
+s-ee6bc321,heldout-ownership-staging-cert,Bruno,owner: Aiko renews it. He only sorts out DNS access and pings her so she can do the renewal.,"For ""The cert needs renewing before the 12th"", who does it on the day it happens?
+1. Aiko does it
+2. Bruno does it
+3. No one is named yet
+4. Aiko and Bruno share it",Aiko does it,yes,
+s-f0472c3b,dev-criteria-usual-qa,Diego,"criteria: A smoke test of login, compose and sync on the iOS and Android simulators. An hour or two.","Once the A/B setup is ready, who will encounter the new onboarding screens?
+1. Only users assigned to the test variant will see the new screens
+2. Every user opening the app will see the new screens",unsure,yes,
+s-f2128f77,dev-criteria-usual-qa,Noor,"criteria: Full regression plus the accessibility checklist, because 4.2 changes the compose screen.","Once the A/B setup is ready, who will encounter the new onboarding screens?
+1. Only users assigned to the test variant will see the new screens
+2. Every user opening the app will see the new screens",unsure,yes,

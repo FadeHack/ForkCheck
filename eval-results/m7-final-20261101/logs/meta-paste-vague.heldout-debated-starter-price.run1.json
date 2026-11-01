@@ -1,0 +1,673 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 1,
+  "scenario": "heldout-debated-starter-price",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-debated-starter-price:seg:0",
+      "text": "Proposal: raise the Starter plan from twelve to fifteen dollars a seat, from January."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:1",
+      "text": "I don't agree. Starter is how most of our big accounts started. A price jump hits the funnel."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:2",
+      "text": "Our costs per seat went up a lot this year, though. Starter is barely above break-even."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:3",
+      "text": "Then cut the free storage on Starter instead of the price. Nobody shops on storage."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:4",
+      "text": "That annoys existing customers more than a price change."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:5",
+      "text": "We don't know that. We've never tested either."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:6",
+      "text": "Could we test it on new signups only?"
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:7",
+      "text": "Maybe. I don't think we're going to agree today."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:8",
+      "text": "No. Let's revisit this next week with the cohort numbers."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:9",
+      "text": "I'll pull the cohort numbers for Starter before then."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:10",
+      "text": "OK. Nothing changes until we decide."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:0",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 0,
+        "kind": "open_item",
+        "statement": "Raise the Starter plan from twelve to fifteen dollars a seat, from January.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "debated"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:0:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:0",
+          "quote": "Proposal: raise the Starter plan from twelve to fifteen dollars a seat, from January."
+        },
+        {
+          "id": "heldout-debated-starter-price:dec:0:ev:1",
+          "decisionId": "heldout-debated-starter-price:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:1",
+          "quote": "I don't agree."
+        },
+        {
+          "id": "heldout-debated-starter-price:dec:0:ev:2",
+          "decisionId": "heldout-debated-starter-price:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:8",
+          "quote": "Let's revisit this next week with the cohort numbers."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:1",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 1,
+        "kind": "open_item",
+        "statement": "Cut the free storage on Starter instead of the price.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "debated"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:1:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:3",
+          "quote": "Then cut the free storage on Starter instead of the price."
+        },
+        {
+          "id": "heldout-debated-starter-price:dec:1:ev:1",
+          "decisionId": "heldout-debated-starter-price:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:4",
+          "quote": "That annoys existing customers more than a price change."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:2",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Kai will pull the cohort numbers for Starter before then.",
+        "ownerText": "Kai",
+        "deadlineText": "before then",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:2:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:9",
+          "quote": "I'll pull the cohort numbers for Starter before then."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:3",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "Nothing changes until we decide.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:3:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:10",
+          "quote": "Nothing changes until we decide."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-debated-starter-price:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-debated-starter-price:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-debated-starter-price:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-debated-starter-price:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-debated-starter-price:cand:1:probe:0",
+      "stem": "For \"Kai will pull the cohort numbers for Starter\", what has to exist by \"then\"?",
+      "options": [
+        {
+          "id": "heldout-debated-starter-price:cand:1:probe:0:opt:0",
+          "text": "The Starter cohort figures assembled and ready to share by Monday the 9th"
+        },
+        {
+          "id": "heldout-debated-starter-price:cand:1:probe:0:opt:1",
+          "text": "The Starter cohort figures assembled and ready to share by Wednesday the 11th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Victor",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Amina",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kai",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-debated-starter-price:cand:0:probe:0",
+      "stem": "When \"Kai will pull the cohort numbers for Starter before then\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-debated-starter-price:cand:0:probe:0:opt:0",
+          "text": "A breakdown of large customers who began on Starter and their progression to higher tiers"
+        },
+        {
+          "id": "heldout-debated-starter-price:cand:0:probe:0:opt:1",
+          "text": "A breakdown of per-seat expense and profit for Starter relative to break-even"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Victor",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Amina",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kai",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-debated-starter-price",
+    "title": "Starter plan price increase",
+    "heldAt": "2026-11-04T13:00:00-05:00",
+    "generatedAt": "2026-11-04T13:00:00-05:00",
+    "participants": [
+      {
+        "id": "Victor",
+        "meetingId": "heldout-debated-starter-price",
+        "displayName": "Victor",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Amina",
+        "meetingId": "heldout-debated-starter-price",
+        "displayName": "Amina",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Kai",
+        "meetingId": "heldout-debated-starter-price",
+        "displayName": "Kai",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-debated-starter-price:item:0",
+        "meetingId": "heldout-debated-starter-price",
+        "category": "stated",
+        "text": "Proposal: raise the Starter plan from twelve to fifteen dollars a seat, from January.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-starter-price:seg:0",
+            "quote": "Proposal: raise the Starter plan from twelve to fifteen dollars a seat, from January.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-starter-price:item:1",
+        "meetingId": "heldout-debated-starter-price",
+        "category": "stated",
+        "text": "I don't agree.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-starter-price:seg:1",
+            "quote": "I don't agree.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-starter-price:item:2",
+        "meetingId": "heldout-debated-starter-price",
+        "category": "stated",
+        "text": "Let's revisit this next week with the cohort numbers.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-starter-price:seg:8",
+            "quote": "Let's revisit this next week with the cohort numbers.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-starter-price:item:3",
+        "meetingId": "heldout-debated-starter-price",
+        "category": "stated",
+        "text": "Then cut the free storage on Starter instead of the price.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-starter-price:seg:3",
+            "quote": "Then cut the free storage on Starter instead of the price.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-starter-price:item:4",
+        "meetingId": "heldout-debated-starter-price",
+        "category": "stated",
+        "text": "That annoys existing customers more than a price change.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-starter-price:seg:4",
+            "quote": "That annoys existing customers more than a price change.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-starter-price:item:5",
+        "meetingId": "heldout-debated-starter-price",
+        "category": "stated",
+        "text": "I'll pull the cohort numbers for Starter before then.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-starter-price:seg:9",
+            "quote": "I'll pull the cohort numbers for Starter before then.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-starter-price:item:6",
+        "meetingId": "heldout-debated-starter-price",
+        "category": "stated",
+        "text": "Nothing changes until we decide.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-starter-price:seg:10",
+            "quote": "Nothing changes until we decide.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "The proposal to raise the Starter plan from twelve to fifteen dollars a seat from January was stated along with disagreement and alternative views about storage. A revisit next week with the cohort numbers was suggested, but no resolution was confirmed and the statements say nothing changes until a decision is made.\n\nStated in the meeting\n- The proposal to raise the Starter plan from twelve to fifteen dollars a seat from January was stated.\n- Disagreement with the proposal was stated.\n- A suggestion to revisit this next week with the cohort numbers was stated.\n- An alternative to cut the free storage on Starter instead of the price was stated.\n- The view that cutting storage annoys existing customers more than a price change was stated.\n- An offer to pull the cohort numbers for Starter before then was stated.\n- The statement that nothing changes until a decision is made was stated."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 28759,
+          "inputTokens": 1044,
+          "outputTokens": 7035,
+          "reasoningTokens": 6625,
+          "costUsd": 0.03051625,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 12518,
+          "inputTokens": 1489,
+          "outputTokens": 3120,
+          "reasoningTokens": 2901,
+          "costUsd": 0.01429295,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 5033,
+          "inputTokens": 560,
+          "outputTokens": 1600,
+          "reasoningTokens": 1547,
+          "costUsd": 0.007094100000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1797,
+          "inputTokens": 439,
+          "outputTokens": 505,
+          "reasoningTokens": 438,
+          "costUsd": 0.0024299,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3945,
+          "inputTokens": 558,
+          "outputTokens": 1263,
+          "reasoningTokens": 1210,
+          "costUsd": 0.0056593500000000005,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1378,
+          "inputTokens": 437,
+          "outputTokens": 430,
+          "reasoningTokens": 375,
+          "costUsd": 0.00210865,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1023,
+          "inputTokens": 287,
+          "outputTokens": 238,
+          "reasoningTokens": 208,
+          "costUsd": 0.00124595,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1330,
+          "inputTokens": 287,
+          "outputTokens": 281,
+          "reasoningTokens": 252,
+          "costUsd": 0.0012879,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1634,
+          "inputTokens": 287,
+          "outputTokens": 326,
+          "reasoningTokens": 297,
+          "costUsd": 0.00147915,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2002,
+          "inputTokens": 290,
+          "outputTokens": 542,
+          "reasoningTokens": 510,
+          "costUsd": 0.0025416999999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1062,
+          "inputTokens": 290,
+          "outputTokens": 250,
+          "reasoningTokens": 215,
+          "costUsd": 0.0013007000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1238,
+          "inputTokens": 290,
+          "outputTokens": 254,
+          "reasoningTokens": 224,
+          "costUsd": 0.0013177,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 4505,
+          "inputTokens": 531,
+          "outputTokens": 1604,
+          "reasoningTokens": 1277,
+          "costUsd": 0.00721565,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,612 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 1,
+  "scenario": "heldout-same-reading-numbers-after-standup",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:0",
+      "text": "Quick one before standup. The board deck is due tomorrow and I'm missing the signup numbers."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:1",
+      "text": "The dashboard broke when we renamed the events. I'll pull them by hand."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:2",
+      "text": "Can you send me the numbers after standup?"
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:3",
+      "text": "Yes, I'll send them after standup."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:4",
+      "text": "Include the trial-to-paid figure too. Last deck had it."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:5",
+      "text": "Will do."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:6",
+      "text": "And I'll fix the dashboard this afternoon, it's just the event names."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:7",
+      "text": "Perfect. See you in standup."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-same-reading-numbers-after-standup:dec:0",
+        "meetingId": "heldout-same-reading-numbers-after-standup",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Colm will send the signup numbers after standup.",
+        "ownerText": "Colm",
+        "deadlineText": "after standup",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:0:ev:0",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:2",
+          "quote": "Can you send me the numbers after standup?"
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:0:ev:1",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:3",
+          "quote": "Yes, I'll send them after standup."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-numbers-after-standup:dec:1",
+        "meetingId": "heldout-same-reading-numbers-after-standup",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Colm will include the trial-to-paid figure in the numbers.",
+        "ownerText": "Colm",
+        "deadlineText": null,
+        "ownerInferred": true,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:1:ev:0",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:4",
+          "quote": "Include the trial-to-paid figure too. Last deck had it."
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:1:ev:1",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:5",
+          "quote": "Will do."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-numbers-after-standup:dec:2",
+        "meetingId": "heldout-same-reading-numbers-after-standup",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Beatriz will fix the dashboard this afternoon.",
+        "ownerText": "Beatriz",
+        "deadlineText": "this afternoon",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:2:ev:0",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:6",
+          "quote": "And I'll fix the dashboard this afternoon, it's just the event names."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-same-reading-numbers-after-standup:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:0:probe:0",
+      "stem": "When \"Colm will include the trial-to-paid figure in the numbers\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:0",
+          "text": "The conversion rate for the October signup cohort, covering the same period as the deck for Friday the 6th"
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:1",
+          "text": "The conversion rate for the rolling 30-day trial cohort ending Thursday the 5th"
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:2",
+          "text": "The prior board deck’s conversion number reused unchanged as a placeholder"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hamid",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Beatriz",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Colm",
+          "choice": "option",
+          "optionId": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:1:probe:0",
+      "stem": "When \"Beatriz will fix the dashboard this afternoon\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:1:probe:0:opt:0",
+          "text": "The dashboard showing data without errors after the event name mappings are corrected on Thursday afternoon"
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:1:probe:0:opt:1",
+          "text": "The dashboard showing data without errors after the event name mappings are corrected and signup totals are aligned with Colm's manual numbers on Thursday afternoon"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hamid",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Beatriz",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Colm",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:2:probe:0",
+      "stem": "After standup on Thursday, where will Colm share the signup numbers?",
+      "options": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:2:probe:0:opt:0",
+          "text": "In a private message to Hamid for the board deck"
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:2:probe:0:opt:1",
+          "text": "In the shared team channel where Hamid and Beatriz both see them"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hamid",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Beatriz",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Colm",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 9979,
+          "inputTokens": 1121,
+          "outputTokens": 2905,
+          "reasoningTokens": 2616,
+          "costUsd": 0.0126211,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 15159,
+          "inputTokens": 1543,
+          "outputTokens": 3912,
+          "reasoningTokens": 3581,
+          "costUsd": 0.017709950000000002,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 2762,
+          "inputTokens": 756,
+          "outputTokens": 741,
+          "reasoningTokens": 663,
+          "costUsd": 0.00367185,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3464,
+          "inputTokens": 847,
+          "outputTokens": 940,
+          "reasoningTokens": 866,
+          "costUsd": 0.00505375,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2265,
+          "inputTokens": 645,
+          "outputTokens": 401,
+          "reasoningTokens": 339,
+          "costUsd": 0.0020881,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3813,
+          "inputTokens": 710,
+          "outputTokens": 947,
+          "reasoningTokens": 884,
+          "costUsd": 0.00434905,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1479,
+          "inputTokens": 597,
+          "outputTokens": 264,
+          "reasoningTokens": 219,
+          "costUsd": 0.0014458499999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3462,
+          "inputTokens": 842,
+          "outputTokens": 915,
+          "reasoningTokens": 845,
+          "costUsd": 0.0043780500000000005,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1348,
+          "inputTokens": 573,
+          "outputTokens": 219,
+          "reasoningTokens": 166,
+          "costUsd": 0.0012246,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3868,
+          "inputTokens": 352,
+          "outputTokens": 940,
+          "reasoningTokens": 907,
+          "costUsd": 0.0041699,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2484,
+          "inputTokens": 352,
+          "outputTokens": 585,
+          "reasoningTokens": 554,
+          "costUsd": 0.0028019499999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1616,
+          "inputTokens": 352,
+          "outputTokens": 367,
+          "reasoningTokens": 333,
+          "costUsd": 0.00187545,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1149,
+          "inputTokens": 336,
+          "outputTokens": 288,
+          "reasoningTokens": 252,
+          "costUsd": 0.0015197000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2059,
+          "inputTokens": 336,
+          "outputTokens": 298,
+          "reasoningTokens": 267,
+          "costUsd": 0.0015622000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1289,
+          "inputTokens": 336,
+          "outputTokens": 305,
+          "reasoningTokens": 269,
+          "costUsd": 0.00145115,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1068,
+          "inputTokens": 310,
+          "outputTokens": 309,
+          "reasoningTokens": 275,
+          "costUsd": 0.0014356500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1066,
+          "inputTokens": 310,
+          "outputTokens": 276,
+          "reasoningTokens": 244,
+          "costUsd": 0.0014362,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1485,
+          "inputTokens": 310,
+          "outputTokens": 203,
+          "reasoningTokens": 173,
+          "costUsd": 0.00098515,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

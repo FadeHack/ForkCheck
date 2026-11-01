@@ -2,13 +2,19 @@
  * Scenario tooling.
  * Usage:
  *   pnpm eval validate [scenario files...]   (default: every scenario under scenarios/)
+ *   pnpm eval audio-set [--synthetic <dir>] [--human <dir>]   (WAV checks on the 10-file audio set)
+ *   pnpm eval sheets <run dir...> [--out <dir>] [--seed <s>]   (blind rating sheets, key kept apart)
+ *   pnpm eval import-sheets <run dir>        (validates the completed sheets, writes human.json)
+ *   pnpm eval report <run dir...> [--date YYYY-MM-DD] [--human <human.json>]   (eval-results/<date>/report.md)
  *   LIVE=1 pnpm eval extract                 (extraction precision and recall on the dev set)
  *   LIVE=1 pnpm eval probes                  (candidates against planted gaps, T2 probes after lint and critic)
  *   LIVE=1 pnpm eval simulate                (simulated answers on the probes for planted gaps)
  *   LIVE=1 pnpm eval recheck                 (rechecks of scripted resolutions: catch and pass rates)
  */
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
+import { parseArgs } from "node:util";
+import { inspectWav } from "@forkcheck/asr";
 import type { ModelPort } from "@forkcheck/ai";
 import {
   divergence,
@@ -28,18 +34,31 @@ import {
   type StageTrace,
 } from "@forkcheck/engine";
 import {
+  aggregate,
+  applyAdoptionRule,
+  AUDIO_SET,
+  buildSheets,
+  importSheets,
   isSplit,
+  parseCsv,
   lintScenario,
   parseScenario,
   recheckBriefs,
+  renderReport,
+  runLog,
   scenario,
   scenarioBriefs,
   scenarioExtractInput,
   scoreCandidates,
   scoreExtraction,
+  SHEETS,
+  sheetKey,
+  summarizeRatings,
   summarizeScores,
   type ExtractScore,
+  type HumanScores,
   type Scenario,
+  type SheetKind,
 } from "../src/index";
 import { liveMeta } from "./live";
 
@@ -362,6 +381,158 @@ async function recheckDev(): Promise<boolean> {
   return true;
 }
 
+/** Runs the upload checks on every file in the audio set; recordings live outside git. */
+function checkAudioSet(args: string[]): boolean {
+  const { values } = parseArgs({
+    args,
+    options: {
+      synthetic: { type: "string", default: "var/audio/synthetic" },
+      human: { type: "string", default: "var/audio/human" },
+    },
+  });
+  let ok = true;
+  for (const entry of AUDIO_SET) {
+    const file = resolve(entry.source === "human" ? values.human : values.synthetic, entry.file);
+    const name = relative(process.cwd(), file);
+    if (!existsSync(file)) {
+      ok = false;
+      console.log(`miss  ${name}`);
+      continue;
+    }
+    const report = inspectWav(readFileSync(file));
+    ok &&= report.ok;
+    console.log(
+      report.ok
+        ? `pass  ${name}  ${entry.source}`
+        : `FAIL  ${name}  ${report.problems.map((p) => p.message).join(" ")}`,
+    );
+  }
+  return ok;
+}
+
+/**
+ * Writes the three blind sheets to `<run>/ratings/` and the item key to `<run>/ratings-key.json`,
+ * outside the folder the rater opens.
+ */
+function writeSheets(args: string[]): boolean {
+  const { values, positionals } = parseArgs({
+    args,
+    allowPositionals: true,
+    options: {
+      seed: { type: "string", default: "forkcheck-m7" },
+      out: { type: "string" },
+    },
+  });
+  const dir = values.out ?? positionals[0];
+  if (!dir || positionals.length === 0) {
+    console.error("Usage: pnpm eval sheets <run dir...> [--out <dir>]");
+    return false;
+  }
+  // Every run in one set, so questions from both providers are mixed in one blind sheet.
+  const logs = positionals.flatMap((run) =>
+    readdirSync(join(run, "logs"))
+      .filter((f) => f.endsWith(".json"))
+      .sort()
+      .map((f) => runLog.parse(JSON.parse(readFileSync(join(run, "logs", f), "utf8")))),
+  );
+  const scenarios = new Map(
+    allScenarioFiles().map((f) => {
+      const s = parseScenario(readFileSync(f, "utf8"));
+      return [s.id, s];
+    }),
+  );
+  const sheets = buildSheets(scenarios, logs, values.seed);
+  mkdirSync(join(dir, "ratings"), { recursive: true });
+  for (const kind of Object.keys(SHEETS) as SheetKind[]) {
+    const file = join(dir, "ratings", SHEETS[kind].file);
+    if (existsSync(file)) {
+      console.error(`${file} exists; move it away before writing new sheets`);
+      return false;
+    }
+    writeFileSync(file, sheets[kind]);
+    console.log(`${file}  ${parseCsv(sheets[kind]).length - 1} rows`);
+  }
+  writeFileSync(join(dir, "ratings-key.json"), JSON.stringify(sheets.key, null, 2) + "\n");
+  return true;
+}
+
+function importRatings(args: string[]): boolean {
+  const dir = args[0];
+  if (!dir) {
+    console.error("Usage: pnpm eval import-sheets <run dir>");
+    return false;
+  }
+  const key = sheetKey.parse(JSON.parse(readFileSync(join(dir, "ratings-key.json"), "utf8")));
+  const completed = Object.fromEntries(
+    (Object.keys(SHEETS) as SheetKind[]).map((k) => [
+      k,
+      readFileSync(join(dir, "ratings", SHEETS[k].file), "utf8"),
+    ]),
+  ) as Record<SheetKind, string>;
+  const { ratings, problems } = importSheets(completed, key);
+  if (problems.length > 0) {
+    for (const p of problems) console.log(`FAIL  ${p}`);
+    return false;
+  }
+  const summary = summarizeRatings(ratings, key);
+  writeFileSync(join(dir, "human.json"), JSON.stringify(summary, null, 2) + "\n");
+  console.log(`${ratings.length} ratings imported; ${join(dir, "human.json")}`);
+  return true;
+}
+
+/**
+ * Aggregates the logs of the given run directories into eval-results/<date>/report.md, with
+ * the adoption rule when both providers ran and the human scores of any imported human.json.
+ */
+function writeReport(args: string[]): boolean {
+  const { values, positionals } = parseArgs({
+    args,
+    allowPositionals: true,
+    options: {
+      date: { type: "string", default: new Date().toISOString().slice(0, 10) },
+      human: { type: "string" },
+    },
+  });
+  if (positionals.length === 0) {
+    console.error("Usage: pnpm eval report <run dir...> [--date YYYY-MM-DD]");
+    return false;
+  }
+  const scenarios = new Map(
+    allScenarioFiles().map((f) => {
+      const s = parseScenario(readFileSync(f, "utf8"));
+      return [s.id, s];
+    }),
+  );
+  const logs = positionals.flatMap((dir) =>
+    readdirSync(join(dir, "logs"))
+      .filter((f) => f.endsWith(".json"))
+      .sort()
+      .map((f) => runLog.parse(JSON.parse(readFileSync(join(dir, "logs", f), "utf8")))),
+  );
+  const conditions = aggregate(scenarios, logs);
+  const spark = conditions.find((c) => c.condition === "meta/paste/precise");
+  const open = conditions.find((c) => c.condition === "baseten/paste/precise");
+  const humanFiles = values.human
+    ? [values.human]
+    : positionals.map((d) => join(d, "human.json")).filter(existsSync);
+  const human = humanFiles.length
+    ? humanFiles.flatMap((f) => JSON.parse(readFileSync(f, "utf8")) as HumanScores[])
+    : null;
+  const md = renderReport({
+    date: values.date,
+    conditions,
+    adoption: spark && open ? applyAdoptionRule(spark, open) : null,
+    human,
+  });
+  const out = resolve(root, "..", "eval-results", values.date);
+  mkdirSync(out, { recursive: true });
+  writeFileSync(join(out, "report.md"), md);
+  console.log(
+    `${logs.length} scenario runs in ${conditions.length} conditions; ${join(out, "report.md")}`,
+  );
+  return true;
+}
+
 const [command, ...args] = process.argv.slice(2);
 switch (command) {
   case "validate": {
@@ -369,6 +540,18 @@ switch (command) {
     process.exit(validate(files) ? 0 : 1);
     break;
   }
+  case "audio-set":
+    process.exit(checkAudioSet(args) ? 0 : 1);
+    break;
+  case "report":
+    process.exit(writeReport(args) ? 0 : 1);
+    break;
+  case "sheets":
+    process.exit(writeSheets(args) ? 0 : 1);
+    break;
+  case "import-sheets":
+    process.exit(importRatings(args) ? 0 : 1);
+    break;
   case "extract":
     process.exit((await extractDev()) ? 0 : 1);
     break;
@@ -383,7 +566,7 @@ switch (command) {
     break;
   default:
     console.error(
-      "Usage: pnpm eval validate [files...] | LIVE=1 pnpm eval extract | probes | simulate | recheck",
+      "Usage: pnpm eval validate [files...] | audio-set | sheets <run> | import-sheets <run> | report <run...> | LIVE=1 pnpm eval extract | probes | simulate | recheck",
     );
     process.exit(2);
 }

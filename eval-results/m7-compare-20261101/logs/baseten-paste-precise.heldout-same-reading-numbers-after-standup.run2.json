@@ -1,0 +1,451 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 2,
+  "scenario": "heldout-same-reading-numbers-after-standup",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:0",
+      "text": "Quick one before standup. The board deck is due tomorrow and I'm missing the signup numbers."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:1",
+      "text": "The dashboard broke when we renamed the events. I'll pull them by hand."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:2",
+      "text": "Can you send me the numbers after standup?"
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:3",
+      "text": "Yes, I'll send them after standup."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:4",
+      "text": "Include the trial-to-paid figure too. Last deck had it."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:5",
+      "text": "Will do."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:6",
+      "text": "And I'll fix the dashboard this afternoon, it's just the event names."
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:seg:7",
+      "text": "Perfect. See you in standup."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-same-reading-numbers-after-standup:dec:0",
+        "meetingId": "heldout-same-reading-numbers-after-standup",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Colm will send the signup numbers after standup.",
+        "ownerText": "Colm",
+        "deadlineText": "after standup",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:0:ev:0",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:2",
+          "quote": "Can you send me the numbers after standup?"
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:0:ev:1",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:3",
+          "quote": "Yes, I'll send them after standup."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-numbers-after-standup:dec:1",
+        "meetingId": "heldout-same-reading-numbers-after-standup",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Colm will include the trial-to-paid figure in the numbers.",
+        "ownerText": "Colm",
+        "deadlineText": null,
+        "ownerInferred": true,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:1:ev:0",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:4",
+          "quote": "Include the trial-to-paid figure too. Last deck had it."
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:1:ev:1",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:5",
+          "quote": "Will do."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-numbers-after-standup:dec:2",
+        "meetingId": "heldout-same-reading-numbers-after-standup",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Beatriz will fix the dashboard this afternoon.",
+        "ownerText": "Beatriz",
+        "deadlineText": "this afternoon",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:dec:2:ev:0",
+          "decisionId": "heldout-same-reading-numbers-after-standup:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-numbers-after-standup:seg:6",
+          "quote": "And I'll fix the dashboard this afternoon, it's just the event names."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-same-reading-numbers-after-standup:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-same-reading-numbers-after-standup:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:0:probe:0",
+      "stem": "For \"Colm will send the signup numbers\", what has to exist by \"after standup\"?",
+      "options": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:0",
+          "text": "A message with the signup numbers delivered within about 15 to 30 minutes after standup ends on Thursday the 5th"
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:1",
+          "text": "A message with the signup numbers delivered at any time after standup on Thursday the 5th, as long as it arrives by end of day for the board deck"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hamid",
+          "choice": "option",
+          "optionId": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:0"
+        },
+        {
+          "participantId": "Beatriz",
+          "choice": "option",
+          "optionId": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:0"
+        },
+        {
+          "participantId": "Colm",
+          "choice": "option",
+          "optionId": "heldout-same-reading-numbers-after-standup:cand:0:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "heldout-same-reading-numbers-after-standup:cand:1:probe:0",
+      "stem": "For \"Beatriz will fix the dashboard\", what has to exist by \"this afternoon\"?",
+      "options": [
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:1:probe:0:opt:0",
+          "text": "A completed and verified dashboard fix delivered by the end of Thursday the 5th afternoon"
+        },
+        {
+          "id": "heldout-same-reading-numbers-after-standup:cand:1:probe:0:opt:1",
+          "text": "A status update on Thursday the 5th afternoon showing work in progress, with the final fix allowed to arrive by Friday morning"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hamid",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Beatriz",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Colm",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 7712,
+          "inputTokens": 1121,
+          "outputTokens": 2342,
+          "reasoningTokens": 2053,
+          "costUsd": 0.01022835,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 11958,
+          "inputTokens": 1543,
+          "outputTokens": 3068,
+          "reasoningTokens": 2851,
+          "costUsd": 0.01412295,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3143,
+          "inputTokens": 735,
+          "outputTokens": 733,
+          "reasoningTokens": 655,
+          "costUsd": 0.0034708,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1617,
+          "inputTokens": 623,
+          "outputTokens": 307,
+          "reasoningTokens": 238,
+          "costUsd": 0.0016611,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3173,
+          "inputTokens": 710,
+          "outputTokens": 788,
+          "reasoningTokens": 726,
+          "costUsd": 0.0036733,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1777,
+          "inputTokens": 596,
+          "outputTokens": 249,
+          "reasoningTokens": 188,
+          "costUsd": 0.0013808499999999999,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2630,
+          "inputTokens": 351,
+          "outputTokens": 706,
+          "reasoningTokens": 668,
+          "costUsd": 0.0033149499999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1421,
+          "inputTokens": 351,
+          "outputTokens": 349,
+          "reasoningTokens": 311,
+          "costUsd": 0.0017977,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1982,
+          "inputTokens": 351,
+          "outputTokens": 551,
+          "reasoningTokens": 516,
+          "costUsd": 0.0026561999999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1432,
+          "inputTokens": 333,
+          "outputTokens": 304,
+          "reasoningTokens": 269,
+          "costUsd": 0.00158395,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1638,
+          "inputTokens": 333,
+          "outputTokens": 362,
+          "reasoningTokens": 328,
+          "costUsd": 0.00168965,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1330,
+          "inputTokens": 333,
+          "outputTokens": 324,
+          "reasoningTokens": 290,
+          "costUsd": 0.00166895,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

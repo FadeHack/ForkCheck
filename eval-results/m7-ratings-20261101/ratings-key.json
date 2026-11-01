@@ -1,0 +1,2137 @@
+{
+  "q-2fb2241c": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-baa672e9": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-ec86838e": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-61390bfa": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "e-081ed8d2": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "e-02e2ea84": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "e-28e0fabc": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-b48e4910": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "q-06692204": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-1b5f22d7": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-359c76ee": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-16daf28b": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "q-5c076f15": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-35c178bd": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-73f82718": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-079e032e": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-b1e94cf4": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-afe79b6b": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-1be86da8": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-2bbc6072": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-12e3b93e": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-6d385dd2": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-99d5e4da": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-cd30b1b3": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-add0c201": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-bb7d5725": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-23556f78": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-1236bbda": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-b9011483": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "e-091ab3a9": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "e-06c0ce59": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "q-5389313a": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "e-1fae3fbd": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "q-c9fe422a": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-analytics-renewal"
+  },
+  "q-742c4336": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-analytics-renewal"
+  },
+  "q-ec082d6a": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-analytics-renewal"
+  },
+  "e-183c3e74": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-analytics-renewal"
+  },
+  "q-14dedbb1": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-ios-release"
+  },
+  "q-d2a8ef30": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-ios-release"
+  },
+  "q-77f1d416": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-ios-release"
+  },
+  "q-98b7cfb1": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-ios-release"
+  },
+  "e-2566de58": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-ios-release"
+  },
+  "e-2a17891a": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-ios-release"
+  },
+  "q-b26d6d1d": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-postgres-upgrade"
+  },
+  "q-9a30b33c": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-postgres-upgrade"
+  },
+  "e-12b0b86d": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-postgres-upgrade"
+  },
+  "e-0a863210": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-postgres-upgrade"
+  },
+  "e-01e2fa8b": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "rec-postgres-upgrade"
+  },
+  "q-e0375c36": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-ab7e9908": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-38c5aff4": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-48504377": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "e-327f8e83": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-8cd4b58f": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "q-be974950": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "q-909d1b3b": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "q-8a31c5ef": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "e-27c934cc": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "e-22cd8d52": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "e-0d85d492": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "e-0d263747": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "q-184755f5": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-2c8e0bd0": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-6c3569d9": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-d5d200ed": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-55d382d2": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "e-2ac32e8e": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "e-00b9508f": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "e-041b5933": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-30dd9429": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "q-0f23fb49": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-2fd020c2": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-130dc091": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-1e155802": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-08fc2c39": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-28b3962c": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "q-558128b3": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-0dccdafc": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-3b7760c9": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-fda80689": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "e-1a2726ae": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "e-00ee9675": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "e-1145110d": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-ae76881e": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-f37bc551": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-bfa877bc": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-94334cb4": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-0c6bfadc": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-16427a67": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-36db2362": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-14e0c29f": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-2dbd8552": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-325bcca0": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-17c90b13": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-same-reading-loop-in-legal"
+  },
+  "e-09fb600e": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-same-reading-loop-in-legal"
+  },
+  "q-4a7ca866": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-1ed561bf": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-f2836238": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-0e813d6d": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-2086339e": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-110ebce3": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-177168cf": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-10a53ad2": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-aligned-restore-drill"
+  },
+  "e-25fa9bb5": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-aligned-restore-drill"
+  },
+  "q-3dd5ed07": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-criteria-good-enough-import"
+  },
+  "q-ec984668": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-criteria-good-enough-import"
+  },
+  "e-2c410111": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-criteria-good-enough-import"
+  },
+  "q-1fbbb0ba": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "q-51055c37": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "q-590f0e31": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "q-7a100664": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "e-32ea6ee4": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "q-400a63cb": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-early-next-week"
+  },
+  "q-f8cb277a": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-early-next-week"
+  },
+  "q-39b508c3": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-early-next-week"
+  },
+  "e-15a8730c": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-early-next-week"
+  },
+  "e-21f219a3": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-early-next-week"
+  },
+  "q-bb88cd2d": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "e-316652d5": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "e-015d8e79": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "e-18c83dc2": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "q-1c1fc1d0": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-debated-on-call-rotation"
+  },
+  "e-1afc550e": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-debated-on-call-rotation"
+  },
+  "e-253d47df": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-debated-on-call-rotation"
+  },
+  "q-f9c8ccf8": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-debated-starter-price"
+  },
+  "q-9959e1c8": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-debated-starter-price"
+  },
+  "q-9eab2a53": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-debated-starter-price"
+  },
+  "e-13b478ad": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-debated-starter-price"
+  },
+  "q-156560c8": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "q-abfec2d3": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "q-cb68cbec": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "e-0b2de9ab": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "q-f19a58e2": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "q-974d4832": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "q-493ac596": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "q-2fe20abd": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "q-6b970aff": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "q-8b57e180": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "q-290ff5d0": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "q-0d27de30": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "q-3e266a94": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "e-10673eb7": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "q-0bfeb297": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "q-2e917683": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "q-9b22ae48": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "q-d0bf1f90": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "q-9544c599": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-partial-invoice-redesign"
+  },
+  "q-4e322547": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-partial-invoice-redesign"
+  },
+  "e-05609f20": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-partial-invoice-redesign"
+  },
+  "e-18e86e85": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-same-reading-numbers-after-standup"
+  },
+  "e-292e4641": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-same-reading-numbers-after-standup"
+  },
+  "e-1369eb35": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-same-reading-usual-handoff"
+  },
+  "e-15766a6b": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-same-reading-usual-handoff"
+  },
+  "q-18613da4": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-scope-checkout-demo"
+  },
+  "q-ddc518a0": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-scope-checkout-demo"
+  },
+  "q-eefe8155": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-scope-checkout-demo"
+  },
+  "q-ed342251": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-scope-checkout-demo"
+  },
+  "q-9afa99f6": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-scope-docs-migration"
+  },
+  "q-8561dc96": {
+    "sheet": "questions",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-scope-docs-migration"
+  },
+  "e-1f04fd51": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-scope-docs-migration"
+  },
+  "e-245d62a6": {
+    "sheet": "evidence",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-scope-docs-migration"
+  },
+  "e-2deb5197": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "e-35607099": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "e-1d74e970": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-aligned-key-rotation"
+  },
+  "q-477a0377": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "q-6849937c": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "e-1345918b": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "e-36f2e55c": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "e-289e002a": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "e-12e8d412": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "q-22ed917d": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-1e7c68a4": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-e64def85": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-5797b83a": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-6d79b18c": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "e-0c1fd9db": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-end-of-month"
+  },
+  "q-047d0377": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "q-796fd7e6": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "q-3edba2c0": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-0a4d1f16": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-1e91daa3": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "e-17be8355": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "q-7d961fb1": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-b0f66057": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-8a0a77df": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-ownership-outage-email"
+  },
+  "q-93055228": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-e05e7512": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-51f4ffed": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "q-b22cdc63": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-30ba06be": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-3811fb2d": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-partial-pricing-page"
+  },
+  "e-2a542ad6": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-same-reading-loop-in-legal"
+  },
+  "e-231a1807": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-same-reading-loop-in-legal"
+  },
+  "e-0a5319a1": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-same-reading-loop-in-legal"
+  },
+  "e-0f2f52fa": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-same-reading-loop-in-legal"
+  },
+  "q-759728f8": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-a828b108": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-6261f9e3": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-23ae5651": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-37a628c7": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "e-207a1047": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "dev-scope-dashboard-demo"
+  },
+  "q-be5f2257": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-aligned-restore-drill"
+  },
+  "e-09517e5d": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-aligned-restore-drill"
+  },
+  "q-b038a60e": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-criteria-good-enough-import"
+  },
+  "q-9e702048": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-criteria-good-enough-import"
+  },
+  "q-431672a6": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "q-e2d411dd": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "e-007c9ffc": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "e-3314790b": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-criteria-load-tested"
+  },
+  "q-fd33aff8": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-deadline-early-next-week"
+  },
+  "e-223f0329": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-deadline-early-next-week"
+  },
+  "q-755df6b5": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "e-19556c0f": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "e-1e7a2756": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-deadline-end-of-day-timezones"
+  },
+  "q-42a48026": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-debated-on-call-rotation"
+  },
+  "q-f9a8b779": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-debated-on-call-rotation"
+  },
+  "q-b3faaad5": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-debated-starter-price"
+  },
+  "q-8bbc7977": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-debated-starter-price"
+  },
+  "q-30b03499": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "q-807e592f": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "q-e7a4b201": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "q-b2bef451": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "e-2e12267d": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "e-0655e46c": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-dependency-referral-legal"
+  },
+  "q-a51af360": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "q-2737c5b0": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "q-17cdc2c6": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "q-5eb0e344": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "e-00fcbf40": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "q-ea95bddd": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "q-18c81a59": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "q-0b584ec8": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "q-425ffab4": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "q-9ace0754": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "q-84d7e108": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "e-03618c09": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "q-a9a4b473": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-partial-invoice-redesign"
+  },
+  "q-e39ede02": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-partial-invoice-redesign"
+  },
+  "q-fce4b056": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-partial-invoice-redesign"
+  },
+  "q-943a65ea": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-same-reading-numbers-after-standup"
+  },
+  "q-9a8c00cd": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-same-reading-numbers-after-standup"
+  },
+  "q-efe75c15": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-same-reading-numbers-after-standup"
+  },
+  "e-0d727f88": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-same-reading-numbers-after-standup"
+  },
+  "q-f7e351d2": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-same-reading-usual-handoff"
+  },
+  "q-1073929d": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-same-reading-usual-handoff"
+  },
+  "q-c273c98f": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-same-reading-usual-handoff"
+  },
+  "q-73a483f1": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-same-reading-usual-handoff"
+  },
+  "q-b640cea6": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-sarcasm-friday-launch"
+  },
+  "q-6a57b776": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-sarcasm-friday-launch"
+  },
+  "q-e3d5932a": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-sarcasm-friday-launch"
+  },
+  "q-49466c1a": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-scope-checkout-demo"
+  },
+  "q-ebbd267f": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-scope-checkout-demo"
+  },
+  "q-d050329a": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-scope-checkout-demo"
+  },
+  "e-0724cb92": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-scope-checkout-demo"
+  },
+  "q-05bfac41": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-scope-docs-migration"
+  },
+  "q-f4739cfd": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-scope-docs-migration"
+  },
+  "q-cf97139f": {
+    "sheet": "questions",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-scope-docs-migration"
+  },
+  "e-0c4acaa4": {
+    "sheet": "evidence",
+    "provider": "baseten",
+    "condition": "paste/precise",
+    "runId": "m7-compare-20261101",
+    "scenario": "heldout-scope-docs-migration"
+  },
+  "s-c6124cb1": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "s-ee6bc321": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-staging-cert"
+  },
+  "s-c014487e": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-47284442": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-77980722": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-9ac3d09c": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-01ceee69": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-dfe4abcf": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-6399e1de": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-0e2497a4": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-10bfad2b": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-8795bdec": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-669fd945": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-e7cc7257": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-cf846281": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-bbef8a2c": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-05b0d468": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-ownership-renewal-call"
+  },
+  "s-21acab29": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-751ee726": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-56063c90": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-9c9d117f": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-196416dd": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-098c96ce": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-730284bb": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-ed35325e": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-724eb186": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-36d99212": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-35916bd5": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-78f60ab3": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "heldout-outcome-reporting-pilot"
+  },
+  "s-1cceeb76": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "s-d14fb0b8": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "s-1620b570": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "s-2a7a7912": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "s-ce914dbc": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "s-704a26a6": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "audio/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-deadline-next-friday"
+  },
+  "s-578409cb": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-8f3616c6": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-360565ea": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-2d5b0140": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-7451ab3a": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-92cd7737": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-76e6d3e9": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-f0472c3b": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-f2128f77": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-c2dc5f1b": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-e7d3d5e8": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  },
+  "s-8a470558": {
+    "sheet": "simulator",
+    "provider": "meta",
+    "condition": "paste/precise",
+    "runId": "m7-final-20261101",
+    "scenario": "dev-criteria-usual-qa"
+  }
+}

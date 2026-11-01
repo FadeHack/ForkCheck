@@ -1,0 +1,1155 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 0,
+  "scenario": "heldout-ownership-renewal-call",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-ownership-renewal-call:seg:0",
+      "text": "Northwind Freight's renewal is up on the 30th, and their usage dropped about a third since summer."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:1",
+      "text": "Their main champion left in September. The new ops lead hasn't logged in once."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:2",
+      "text": "That's the risk. If nobody talks to the new lead before procurement does, they'll cut seats."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:3",
+      "text": "Do we know what they actually use now?"
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:4",
+      "text": "Mostly route planning. Nobody touches the reporting module anymore."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:5",
+      "text": "OK. We'll handle the renewal call with their new ops lead this month. Walk them through route planning, ask what reporting would need to do for them."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:6",
+      "text": "Sounds right."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:7",
+      "text": "Should we offer a smaller tier if they push on price?"
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:8",
+      "text": "Only if they bring it up. Don't lead with a discount."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:9",
+      "text": "I'll pull their usage by team so we have numbers on the call."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:10",
+      "text": "And I'll send the new lead the onboarding guide this week, so they've seen the product before the call."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:11",
+      "text": "Good. Let's keep this tight, it's a big account."
+    },
+    {
+      "id": "heldout-ownership-renewal-call:seg:12",
+      "text": "Agreed."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-ownership-renewal-call:dec:0",
+        "meetingId": "heldout-ownership-renewal-call",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "The team will hold the renewal call with the new ops lead this month to walk through route planning and ask what reporting would need to do for them.",
+        "ownerText": null,
+        "deadlineText": "this month",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-ownership-renewal-call:dec:0:ev:0",
+          "decisionId": "heldout-ownership-renewal-call:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-renewal-call:seg:5",
+          "quote": "We'll handle the renewal call with their new ops lead this month."
+        },
+        {
+          "id": "heldout-ownership-renewal-call:dec:0:ev:1",
+          "decisionId": "heldout-ownership-renewal-call:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-renewal-call:seg:5",
+          "quote": "Walk them through route planning, ask what reporting would need to do for them."
+        },
+        {
+          "id": "heldout-ownership-renewal-call:dec:0:ev:2",
+          "decisionId": "heldout-ownership-renewal-call:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-renewal-call:seg:6",
+          "quote": "Sounds right."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-ownership-renewal-call:dec:1",
+        "meetingId": "heldout-ownership-renewal-call",
+        "idx": 1,
+        "kind": "decision",
+        "statement": "A smaller tier will only be offered if they bring it up, without leading with a discount.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-ownership-renewal-call:dec:1:ev:0",
+          "decisionId": "heldout-ownership-renewal-call:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-renewal-call:seg:7",
+          "quote": "Should we offer a smaller tier if they push on price?"
+        },
+        {
+          "id": "heldout-ownership-renewal-call:dec:1:ev:1",
+          "decisionId": "heldout-ownership-renewal-call:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-renewal-call:seg:8",
+          "quote": "Only if they bring it up. Don't lead with a discount."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-ownership-renewal-call:dec:2",
+        "meetingId": "heldout-ownership-renewal-call",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Jonas will pull their usage by team to have numbers on the call.",
+        "ownerText": "Jonas",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-ownership-renewal-call:dec:2:ev:0",
+          "decisionId": "heldout-ownership-renewal-call:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-renewal-call:seg:9",
+          "quote": "I'll pull their usage by team so we have numbers on the call."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-ownership-renewal-call:dec:3",
+        "meetingId": "heldout-ownership-renewal-call",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Maya will send the new lead the onboarding guide this week so they've seen the product before the call.",
+        "ownerText": "Maya",
+        "deadlineText": "this week",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-ownership-renewal-call:dec:3:ev:0",
+          "decisionId": "heldout-ownership-renewal-call:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-renewal-call:seg:10",
+          "quote": "And I'll send the new lead the onboarding guide this week, so they've seen the product before the call."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-ownership-renewal-call:cand:0",
+      "dimension": "owner",
+      "mismatch": "who-runs-renewal-call",
+      "probeId": "heldout-ownership-renewal-call:cand:0:t0"
+    },
+    {
+      "id": "heldout-ownership-renewal-call:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-ownership-renewal-call:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-ownership-renewal-call:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-ownership-renewal-call:cand:2:probe:0"
+    },
+    {
+      "id": "heldout-ownership-renewal-call:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-ownership-renewal-call:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-ownership-renewal-call:cand:0:t0",
+      "stem": "For \"The team will hold the renewal call with the new ops lead this month to walk through route planning and ask what reporting would need to do for them\", who does it on the day it happens?",
+      "options": [
+        {
+          "id": "heldout-ownership-renewal-call:cand:0:t0:opt:0",
+          "text": "Hugo does it"
+        },
+        {
+          "id": "heldout-ownership-renewal-call:cand:0:t0:opt:1",
+          "text": "Maya does it"
+        },
+        {
+          "id": "heldout-ownership-renewal-call:cand:0:t0:opt:2",
+          "text": "Jonas does it"
+        },
+        {
+          "id": "heldout-ownership-renewal-call:cand:0:t0:opt:3",
+          "text": "No one is named yet"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hugo",
+          "choice": "option",
+          "optionId": "heldout-ownership-renewal-call:cand:0:t0:opt:1"
+        },
+        {
+          "participantId": "Maya",
+          "choice": "option",
+          "optionId": "heldout-ownership-renewal-call:cand:0:t0:opt:0"
+        },
+        {
+          "participantId": "Jonas",
+          "choice": "option",
+          "optionId": "heldout-ownership-renewal-call:cand:0:t0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "heldout-ownership-renewal-call:cand:1:probe:0",
+      "stem": "If Northwind says the renewal costs too much without mentioning tiers, what should the team do?",
+      "options": [
+        {
+          "id": "heldout-ownership-renewal-call:cand:1:probe:0:opt:0",
+          "text": "Offer the reduced tier as a way to meet their budget."
+        },
+        {
+          "id": "heldout-ownership-renewal-call:cand:1:probe:0:opt:1",
+          "text": "Keep to the current proposal until they ask for a downgrade."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hugo",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Maya",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Jonas",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-ownership-renewal-call:cand:3:probe:0",
+      "stem": "For \"Maya will send the new lead the onboarding guide so they've seen the product before the call\", what has to exist by \"this week\"?",
+      "options": [
+        {
+          "id": "heldout-ownership-renewal-call:cand:3:probe:0:opt:0",
+          "text": "The onboarding materials shared with the new contact by Friday the 6th"
+        },
+        {
+          "id": "heldout-ownership-renewal-call:cand:3:probe:0:opt:1",
+          "text": "The onboarding materials shared with the new contact by Sunday the 8th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hugo",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Maya",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Jonas",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-ownership-renewal-call:cand:2:probe:0",
+      "stem": "When \"Jonas will pull their usage by team to have numbers on the call\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-ownership-renewal-call:cand:2:probe:0:opt:0",
+          "text": "Totals of occupied seats for each group, highlighting the decline since the summer period."
+        },
+        {
+          "id": "heldout-ownership-renewal-call:cand:2:probe:0:opt:1",
+          "text": "Split of engagement with itinerary tools and insight tools for each group separately."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hugo",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Maya",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Jonas",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [
+    {
+      "splitId": "heldout-ownership-renewal-call:cand:0:t0:split",
+      "probeId": "heldout-ownership-renewal-call:cand:0:t0",
+      "mismatch": "who-runs-renewal-call",
+      "events": [
+        {
+          "type": "propose",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "recheck"
+        }
+      ],
+      "recheck": {
+        "probe": {
+          "stem": "The morning after the renewal call with the new ops lead, who sends the route planning notes to reporting?"
+        },
+        "round": {
+          "probeId": "heldout-ownership-renewal-call:cand:0:t0:split:recheck:heldout-ownership-renewal-call:cand:0:t0:split:res:0",
+          "stem": "The morning after the renewal call with the new ops lead, who sends the route planning notes to reporting?",
+          "options": [
+            {
+              "id": "heldout-ownership-renewal-call:cand:0:t0:split:recheck:heldout-ownership-renewal-call:cand:0:t0:split:res:0:opt:0",
+              "text": "Hugo sends the route planning notes to reporting"
+            },
+            {
+              "id": "heldout-ownership-renewal-call:cand:0:t0:split:recheck:heldout-ownership-renewal-call:cand:0:t0:split:res:0:opt:1",
+              "text": "Maya sends the route planning notes to reporting"
+            },
+            {
+              "id": "heldout-ownership-renewal-call:cand:0:t0:split:recheck:heldout-ownership-renewal-call:cand:0:t0:split:res:0:opt:2",
+              "text": "Jonas sends the route planning notes to reporting"
+            },
+            {
+              "id": "heldout-ownership-renewal-call:cand:0:t0:split:recheck:heldout-ownership-renewal-call:cand:0:t0:split:res:0:opt:3",
+              "text": "No one sends the route planning notes yet"
+            }
+          ],
+          "answers": [
+            {
+              "participantId": "Hugo",
+              "choice": "unsure",
+              "optionId": null
+            },
+            {
+              "participantId": "Maya",
+              "choice": "unsure",
+              "optionId": null
+            },
+            {
+              "participantId": "Jonas",
+              "choice": "unsure",
+              "optionId": null
+            }
+          ],
+          "divergence": {
+            "outcome": "insufficient"
+          }
+        }
+      },
+      "state": {
+        "status": "confirmed",
+        "participants": [
+          {
+            "id": "Hugo",
+            "status": "active"
+          },
+          {
+            "id": "Maya",
+            "status": "active"
+          },
+          {
+            "id": "Jonas",
+            "status": "active"
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "heldout-ownership-renewal-call:cand:0:t0:split:res:0",
+            "status": "confirmed"
+          }
+        ],
+        "confirmations": [
+          {
+            "resolutionId": "heldout-ownership-renewal-call:cand:0:t0:split:res:0",
+            "participantId": "Hugo"
+          },
+          {
+            "resolutionId": "heldout-ownership-renewal-call:cand:0:t0:split:res:0",
+            "participantId": "Maya"
+          },
+          {
+            "resolutionId": "heldout-ownership-renewal-call:cand:0:t0:split:res:0",
+            "participantId": "Jonas"
+          }
+        ]
+      }
+    }
+  ],
+  "record": {
+    "meetingId": "heldout-ownership-renewal-call",
+    "title": "Northwind renewal call",
+    "heldAt": "2026-11-02T10:30:00-08:00",
+    "generatedAt": "2026-11-02T10:30:00-08:00",
+    "participants": [
+      {
+        "id": "Hugo",
+        "meetingId": "heldout-ownership-renewal-call",
+        "displayName": "Hugo",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Maya",
+        "meetingId": "heldout-ownership-renewal-call",
+        "displayName": "Maya",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Jonas",
+        "meetingId": "heldout-ownership-renewal-call",
+        "displayName": "Jonas",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-ownership-renewal-call:item:0",
+        "meetingId": "heldout-ownership-renewal-call",
+        "category": "stated",
+        "text": "We'll handle the renewal call with their new ops lead this month.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:5",
+            "quote": "We'll handle the renewal call with their new ops lead this month.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-ownership-renewal-call:item:1",
+        "meetingId": "heldout-ownership-renewal-call",
+        "category": "stated",
+        "text": "Walk them through route planning, ask what reporting would need to do for them.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:5",
+            "quote": "Walk them through route planning, ask what reporting would need to do for them.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-ownership-renewal-call:item:2",
+        "meetingId": "heldout-ownership-renewal-call",
+        "category": "stated",
+        "text": "Sounds right.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:6",
+            "quote": "Sounds right.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-ownership-renewal-call:item:3",
+        "meetingId": "heldout-ownership-renewal-call",
+        "category": "stated",
+        "text": "Should we offer a smaller tier if they push on price?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:7",
+            "quote": "Should we offer a smaller tier if they push on price?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-ownership-renewal-call:item:4",
+        "meetingId": "heldout-ownership-renewal-call",
+        "category": "stated",
+        "text": "Only if they bring it up. Don't lead with a discount.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:8",
+            "quote": "Only if they bring it up. Don't lead with a discount.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-ownership-renewal-call:item:5",
+        "meetingId": "heldout-ownership-renewal-call",
+        "category": "stated",
+        "text": "I'll pull their usage by team so we have numbers on the call.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:9",
+            "quote": "I'll pull their usage by team so we have numbers on the call.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-ownership-renewal-call:item:6",
+        "meetingId": "heldout-ownership-renewal-call",
+        "category": "stated",
+        "text": "And I'll send the new lead the onboarding guide this week, so they've seen the product before the call.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:10",
+            "quote": "And I'll send the new lead the onboarding guide this week, so they've seen the product before the call.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-ownership-renewal-call:item:7",
+        "meetingId": "heldout-ownership-renewal-call",
+        "category": "confirmed",
+        "text": "We'll get the Northwind call done this month, between us.",
+        "sourceRefs": [
+          {
+            "kind": "confirmation",
+            "resolutionId": "heldout-ownership-renewal-call:cand:0:t0:split:res:0"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:5",
+            "quote": "We'll handle the renewal call with their new ops lead this month.",
+            "origin": "paste"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:5",
+            "quote": "Walk them through route planning, ask what reporting would need to do for them.",
+            "origin": "paste"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-ownership-renewal-call:seg:6",
+            "quote": "Sounds right.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [
+          "Hugo",
+          "Maya",
+          "Jonas"
+        ],
+        "absent": [],
+        "recheck": "not_conclusive",
+        "splitId": "heldout-ownership-renewal-call:cand:0:t0:split",
+        "deadline": null
+      }
+    ],
+    "proseDraft": "It was confirmed that the Northwind call would be done this month, with a recheck that was not conclusive. The other points about the new ops lead, route planning, pricing, usage numbers, and the onboarding guide were stated but were not confirmed resolutions.\n\nConfirmed by participants\n- It was confirmed by Hugo, Maya, and Jonas that the Northwind call would be done this month between them, with a recheck that was not conclusive.\n\nStated in the meeting\n- Someone said the renewal call with their new ops lead would be handled this month.\n- Someone said to walk them through route planning and ask what reporting would need to do for them.\n- Someone said that sounds right.\n- Someone asked whether to offer a smaller tier if they push on price.\n- Someone said to bring it up only if they raise it and not to lead with a discount.\n- Someone said they would pull their usage by team to have numbers on the call.\n- Someone said they would send the new lead the onboarding guide this week so they had seen the product before the call."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 28136,
+          "inputTokens": 1123,
+          "outputTokens": 7519,
+          "reasoningTokens": 7036,
+          "costUsd": 0.0333595,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 44248,
+          "inputTokens": 1644,
+          "outputTokens": 7324,
+          "reasoningTokens": 6929,
+          "costUsd": 0.033182,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 7139,
+          "inputTokens": 688,
+          "outputTokens": 1405,
+          "reasoningTokens": 1329,
+          "costUsd": 0.00683125,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2417,
+          "inputTokens": 427,
+          "outputTokens": 510,
+          "reasoningTokens": 463,
+          "costUsd": 0.00243615,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4438,
+          "inputTokens": 552,
+          "outputTokens": 1071,
+          "reasoningTokens": 1019,
+          "costUsd": 0.00483585,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2419,
+          "inputTokens": 428,
+          "outputTokens": 636,
+          "reasoningTokens": 566,
+          "costUsd": 0.0029729,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6615,
+          "inputTokens": 573,
+          "outputTokens": 1689,
+          "reasoningTokens": 1638,
+          "costUsd": 0.007488600000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2371,
+          "inputTokens": 429,
+          "outputTokens": 485,
+          "reasoningTokens": 426,
+          "costUsd": 0.0023324,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1047,
+          "inputTokens": 315,
+          "outputTokens": 193,
+          "reasoningTokens": 162,
+          "costUsd": 0.0010897,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1750,
+          "inputTokens": 315,
+          "outputTokens": 365,
+          "reasoningTokens": 332,
+          "costUsd": 0.0018207,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1172,
+          "inputTokens": 308,
+          "outputTokens": 305,
+          "reasoningTokens": 271,
+          "costUsd": 0.00155695,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1943,
+          "inputTokens": 297,
+          "outputTokens": 407,
+          "reasoningTokens": 371,
+          "costUsd": 0.0019767,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1828,
+          "inputTokens": 297,
+          "outputTokens": 338,
+          "reasoningTokens": 302,
+          "costUsd": 0.00168345,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1497,
+          "inputTokens": 290,
+          "outputTokens": 273,
+          "reasoningTokens": 236,
+          "costUsd": 0.00139845,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1436,
+          "inputTokens": 312,
+          "outputTokens": 286,
+          "reasoningTokens": 251,
+          "costUsd": 0.0014812,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3891,
+          "inputTokens": 312,
+          "outputTokens": 558,
+          "reasoningTokens": 523,
+          "costUsd": 0.0026371999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1641,
+          "inputTokens": 305,
+          "outputTokens": 349,
+          "reasoningTokens": 311,
+          "costUsd": 0.0017402000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1572,
+          "inputTokens": 309,
+          "outputTokens": 267,
+          "reasoningTokens": 230,
+          "costUsd": 0.0013967,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1551,
+          "inputTokens": 309,
+          "outputTokens": 305,
+          "reasoningTokens": 271,
+          "costUsd": 0.0015582,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1580,
+          "inputTokens": 302,
+          "outputTokens": 290,
+          "reasoningTokens": 257,
+          "costUsd": 0.0014857,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateRecheck",
+      "calls": [
+        {
+          "stage": "generateRecheck",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateRecheck.v1",
+          "cacheHit": false,
+          "latencyMs": 12630,
+          "inputTokens": 744,
+          "outputTokens": 3098,
+          "reasoningTokens": 2987,
+          "costUsd": 0.0140965,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2660,
+          "inputTokens": 355,
+          "outputTokens": 322,
+          "reasoningTokens": 291,
+          "costUsd": 0.0016879500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2922,
+          "inputTokens": 355,
+          "outputTokens": 580,
+          "reasoningTokens": 547,
+          "costUsd": 0.00278445,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1347,
+          "inputTokens": 348,
+          "outputTokens": 296,
+          "reasoningTokens": 266,
+          "costUsd": 0.0015687000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 8312,
+          "inputTokens": 603,
+          "outputTokens": 2438,
+          "reasoningTokens": 2038,
+          "costUsd": 0.01111525,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

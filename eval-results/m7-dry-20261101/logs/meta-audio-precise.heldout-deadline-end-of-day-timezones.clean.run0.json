@@ -1,0 +1,923 @@
+{
+  "runId": "m7-dry-20261101",
+  "run": 0,
+  "scenario": "heldout-deadline-end-of-day-timezones",
+  "provider": "meta",
+  "source": "audio",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:0",
+      "text": "Morning from Berlin, quick one on the 4.2 release, the build is green and QA signed off last night."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:1",
+      "text": "Nice, is the change log still a mess?"
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:2",
+      "text": "It's 40 raw commit titles. Customers can't read that. Support wants the notes before the rollout so they can update the help center articles. Right. Marcus, can can you get the release notes to me by end of day tomorrow? I'll review and publish them."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:3",
+      "text": "End of day of day tomorrow works. I'll group them by feature. Fixes and deprecations."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:4",
+      "text": "Please call out the export change. That one will generate tickets."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:5",
+      "text": "Will do. I'll put it at the top with a short how-to."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:6",
+      "text": "And the rollout itself starts Thursday at 8 o'clock my time. 10% first."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:7",
+      "text": "I'll have the help center drafts ready drafts ready to fill up on Thursday."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:8",
+      "text": "Do we mention the API API rate limit change or keep that for the that for the developer newsletter?"
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:9",
+      "text": "Mention it in one line and link to the developer docs."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:10",
+      "text": "Works for me."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:11",
+      "text": "Great. Great. Thanks. Both."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:0",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Marcus will get the release notes to Ingrid by end of day tomorrow.",
+        "ownerText": "Marcus",
+        "deadlineText": "by end of day tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:0:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:2",
+          "quote": "Marcus, can can you get the release notes to me by end of day tomorrow?"
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:0:ev:1",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:3",
+          "quote": "End of day of day tomorrow works."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:1",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Ingrid will review and publish the release notes.",
+        "ownerText": "Ingrid",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:1:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:2",
+          "quote": "I'll review and publish them."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:2",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Marcus will put the export change at the top with a short how-to.",
+        "ownerText": "Marcus",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:2:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:4",
+          "quote": "Please call out the export change."
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:2:ev:1",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:5",
+          "quote": "I'll put it at the top with a short how-to."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:3",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Marcus will group the release notes by feature, fixes and deprecations.",
+        "ownerText": "Marcus",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:3:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:3",
+          "quote": "I'll group them by feature."
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:3:ev:1",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:3",
+          "quote": "Fixes and deprecations."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:4",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 4,
+        "kind": "decision",
+        "statement": "The release notes will mention the API rate limit change in one line and link to the developer docs.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:4:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:8",
+          "quote": "Do we mention the API API rate limit change or keep that for the that for the developer newsletter?"
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:4:ev:1",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:9",
+          "quote": "Mention it in one line and link to the developer docs."
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:4:ev:2",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:10",
+          "quote": "Works for me."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:5",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 5,
+        "kind": "commitment",
+        "statement": "Priya will have the help center drafts ready to fill up on Thursday.",
+        "ownerText": "Priya",
+        "deadlineText": "on Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:5:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:5",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:7",
+          "quote": "I'll have the help center drafts ready drafts ready to fill up on Thursday."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-deadline-end-of-day-timezones:cand:0",
+      "dimension": "deadline",
+      "mismatch": "whose-end-of-day",
+      "probeId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": null
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0",
+      "stem": "For \"Marcus will get the release notes to Ingrid\", what has to exist by Wednesday, November 4?",
+      "options": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:0",
+          "text": "The release notes are with Ingrid by evening Wednesday the 4th Berlin time"
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:1",
+          "text": "The release notes are with Ingrid by evening Wednesday the 4th Chicago time"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Ingrid",
+          "choice": "option",
+          "optionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:0"
+        },
+        {
+          "participantId": "Marcus",
+          "choice": "option",
+          "optionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:1"
+        },
+        {
+          "participantId": "Priya",
+          "choice": "option",
+          "optionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    }
+  ],
+  "splits": [
+    {
+      "splitId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split",
+      "probeId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0",
+      "mismatch": "whose-end-of-day",
+      "events": [
+        {
+          "type": "propose",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "confirm",
+          "actor": {
+            "kind": "participant"
+          }
+        },
+        {
+          "type": "recheck"
+        }
+      ],
+      "recheck": {
+        "probe": {
+          "stem": "On Wednesday the 4th at 15:00 Central, where are the release notes?"
+        },
+        "round": {
+          "probeId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:recheck:heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0",
+          "stem": "On Wednesday the 4th at 15:00 Central, where are the release notes?",
+          "options": [
+            {
+              "id": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:recheck:heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0:opt:0",
+              "text": "The release notes are with Ingrid after a morning delivery"
+            },
+            {
+              "id": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:recheck:heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0:opt:1",
+              "text": "The release notes are still with Marcus for an evening delivery"
+            }
+          ],
+          "answers": [
+            {
+              "participantId": "Ingrid",
+              "choice": "option",
+              "optionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:recheck:heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0:opt:0"
+            },
+            {
+              "participantId": "Marcus",
+              "choice": "option",
+              "optionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:recheck:heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0:opt:0"
+            },
+            {
+              "participantId": "Priya",
+              "choice": "option",
+              "optionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:recheck:heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0:opt:0"
+            }
+          ],
+          "divergence": {
+            "outcome": "consistent"
+          }
+        }
+      },
+      "state": {
+        "status": "rechecked",
+        "participants": [
+          {
+            "id": "Ingrid",
+            "status": "active"
+          },
+          {
+            "id": "Marcus",
+            "status": "active"
+          },
+          {
+            "id": "Priya",
+            "status": "active"
+          }
+        ],
+        "resolutions": [
+          {
+            "id": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0",
+            "status": "confirmed"
+          }
+        ],
+        "confirmations": [
+          {
+            "resolutionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0",
+            "participantId": "Ingrid"
+          },
+          {
+            "resolutionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0",
+            "participantId": "Marcus"
+          },
+          {
+            "resolutionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0",
+            "participantId": "Priya"
+          }
+        ]
+      }
+    }
+  ],
+  "record": {
+    "meetingId": "heldout-deadline-end-of-day-timezones",
+    "title": "Release notes by end of day tomorrow",
+    "heldAt": "2026-11-03T09:00:00-06:00",
+    "generatedAt": "2026-11-03T09:00:00-06:00",
+    "participants": [
+      {
+        "id": "Ingrid",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "displayName": "Ingrid",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Marcus",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "displayName": "Marcus",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Priya",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "displayName": "Priya",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:0",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "Marcus, can can you get the release notes to me by end of day tomorrow?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:2",
+            "quote": "Marcus, can can you get the release notes to me by end of day tomorrow?",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:1",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "End of day of day tomorrow works.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:3",
+            "quote": "End of day of day tomorrow works.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:2",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "I'll review and publish them.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:2",
+            "quote": "I'll review and publish them.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:3",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "Please call out the export change.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:4",
+            "quote": "Please call out the export change.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:4",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "I'll put it at the top with a short how-to.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:5",
+            "quote": "I'll put it at the top with a short how-to.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:5",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "I'll group them by feature.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:3",
+            "quote": "I'll group them by feature.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:6",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "Fixes and deprecations.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:3",
+            "quote": "Fixes and deprecations.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:7",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "Do we mention the API API rate limit change or keep that for the that for the developer newsletter?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:8",
+            "quote": "Do we mention the API API rate limit change or keep that for the that for the developer newsletter?",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:8",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "Mention it in one line and link to the developer docs.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:9",
+            "quote": "Mention it in one line and link to the developer docs.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:9",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "Works for me.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:10",
+            "quote": "Works for me.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:10",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "stated",
+        "text": "I'll have the help center drafts ready drafts ready to fill up on Thursday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:7",
+            "quote": "I'll have the help center drafts ready drafts ready to fill up on Thursday.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-deadline-end-of-day-timezones:item:11",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "category": "confirmed",
+        "text": "Marcus sends the 4.2 release notes to Ingrid by Wednesday 2026-11-04 at 11:00 Central, which is 18:00 in Berlin.",
+        "sourceRefs": [
+          {
+            "kind": "confirmation",
+            "resolutionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split:res:0"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:2",
+            "quote": "Marcus, can can you get the release notes to me by end of day tomorrow?",
+            "origin": "asr"
+          },
+          {
+            "kind": "segment",
+            "segmentId": "heldout-deadline-end-of-day-timezones:seg:3",
+            "quote": "End of day of day tomorrow works.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [
+          "Ingrid",
+          "Marcus",
+          "Priya"
+        ],
+        "absent": [],
+        "recheck": "passed",
+        "splitId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:split",
+        "deadline": null
+      }
+    ],
+    "proseDraft": "It was confirmed that Marcus sends the 4.2 release notes to Ingrid by Wednesday 2026-11-04 at 11:00 Central which is 18:00 in Berlin with recheck passed. The remaining items were stated and not listed as confirmed and no unresolved items were listed.\n\nConfirmed by participants\n- It was confirmed that Marcus sends the 4.2 release notes to Ingrid by Wednesday 2026-11-04 at 11:00 Central which is 18:00 in Berlin as confirmed by Ingrid Marcus and Priya with recheck passed.\n\nStated in the meeting\n- A request for Marcus to get the release notes by end of day tomorrow was stated.\n- A statement that end of day tomorrow works was made.\n- A statement about reviewing and publishing them was made.\n- A request to call out the export change was stated.\n- A statement about putting it at the top with a short how-to was made.\n- A statement about grouping them by feature was made.\n- A statement mentioning fixes and deprecations was made.\n- A question about whether to mention the API rate limit change or keep that for the developer newsletter was raised.\n- A suggestion to mention it in one line and link to the developer docs was stated.\n- A statement that it works for them was made.\n- A statement about having the help center drafts ready on Thursday was made."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 25327,
+          "inputTokens": 1163,
+          "outputTokens": 7977,
+          "reasoningTokens": 7285,
+          "costUsd": 0.035356,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 17234,
+          "inputTokens": 1799,
+          "outputTokens": 3670,
+          "reasoningTokens": 3471,
+          "costUsd": 0.01784625,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 7006,
+          "inputTokens": 576,
+          "outputTokens": 1999,
+          "reasoningTokens": 1946,
+          "costUsd": 0.00921575,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2609,
+          "inputTokens": 425,
+          "outputTokens": 460,
+          "reasoningTokens": 409,
+          "costUsd": 0.0022211500000000003,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 8197,
+          "inputTokens": 567,
+          "outputTokens": 1809,
+          "reasoningTokens": 1795,
+          "costUsd": 0.008397,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1842,
+          "inputTokens": 307,
+          "outputTokens": 378,
+          "reasoningTokens": 341,
+          "costUsd": 0.0018659500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2048,
+          "inputTokens": 303,
+          "outputTokens": 335,
+          "reasoningTokens": 299,
+          "costUsd": 0.0016782000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1786,
+          "inputTokens": 304,
+          "outputTokens": 401,
+          "reasoningTokens": 369,
+          "costUsd": 0.0019599500000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateRecheck",
+      "calls": [
+        {
+          "stage": "generateRecheck",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateRecheck.v1",
+          "cacheHit": false,
+          "latencyMs": 15568,
+          "inputTokens": 744,
+          "outputTokens": 3532,
+          "reasoningTokens": 3447,
+          "costUsd": 0.015941,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2098,
+          "inputTokens": 360,
+          "outputTokens": 307,
+          "reasoningTokens": 268,
+          "costUsd": 0.00163045,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1977,
+          "inputTokens": 356,
+          "outputTokens": 588,
+          "reasoningTokens": 540,
+          "costUsd": 0.0028196999999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1773,
+          "inputTokens": 357,
+          "outputTokens": 415,
+          "reasoningTokens": 369,
+          "costUsd": 0.0020857,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 9044,
+          "inputTokens": 741,
+          "outputTokens": 2518,
+          "reasoningTokens": 1942,
+          "costUsd": 0.01136265,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

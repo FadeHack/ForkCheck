@@ -37,7 +37,7 @@ import {
   type ParticipantBrief,
   type StageTrace,
 } from "@forkcheck/engine";
-import { matchDecisions, scenarioExtractInput } from "./extract-score";
+import { matchDecisions, scenarioExtractInput, type Heard } from "./extract-score";
 import type { Scenario } from "./scenario";
 import { recheckBriefs, scenarioBriefs } from "./simulate";
 
@@ -102,8 +102,14 @@ export interface LoopResult {
   recordInput: RecordInput;
   /** Transcript turns with speakers, for rendering stated quotes. */
   segments: Segment[];
+  /** Extracted decisions with their evidence, for scoring S2. */
+  decisions: DecisionWithEvidence[];
   trace: LoopTrace;
 }
+
+/** Transcribed segments, when given, are what the model heard instead of the script. */
+const heardFrom = (segments?: Segment[]): Heard | undefined =>
+  segments ? { text: segments.map((seg) => seg.text).join("\n") } : undefined;
 
 function apply(state: ResolutionState, event: ResolutionEvent): ResolutionState {
   const result = applyResolutionEvent(state, event);
@@ -155,7 +161,7 @@ export async function probeRounds(
   );
   stages.push(found.trace);
 
-  const matches = matchDecisions(s, decisions);
+  const matches = matchDecisions(s, decisions, heardFrom(segments));
   const mismatchOf = (c: Candidate) =>
     s.plantedMismatches.find(
       (m) => onPlantedDecision(matches, decisions, m, c) && m.dimension === c.dimension,
@@ -271,7 +277,7 @@ export async function runLoop(
     await probeRounds(s, model, segments ? { segments } : {});
   const participantIds = input.participants.map((p) => p.id);
   const at = s.heldAt;
-  const matches = matchDecisions(s, decisions);
+  const matches = matchDecisions(s, decisions, heardFrom(segments));
   const onDecision = (m: Scenario["plantedMismatches"][number], c: Candidate) =>
     onPlantedDecision(matches, decisions, m, c);
   const byId = new Map(decisions.map((d) => [d.decision.id, d]));
@@ -369,6 +375,7 @@ export async function runLoop(
     record,
     recordInput,
     segments: input.segments,
+    decisions,
     trace: {
       scenario: s.id,
       resolution,

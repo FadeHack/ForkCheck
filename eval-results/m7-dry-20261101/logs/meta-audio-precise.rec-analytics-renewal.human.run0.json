@@ -1,0 +1,733 @@
+{
+  "runId": "m7-dry-20261101",
+  "run": 0,
+  "scenario": "rec-analytics-renewal",
+  "provider": "meta",
+  "source": "audio",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "rec-analytics-renewal:seg:0",
+      "text": "The analytics contract renews on November 30th. Do we keep them?"
+    },
+    {
+      "id": "rec-analytics-renewal:seg:1",
+      "text": "Usage is down. Only the growth team still logs in every week."
+    },
+    {
+      "id": "rec-analytics-renewal:seg:2",
+      "text": "Then let's renegotiate instead of renewing as is. can you get a quote for ten seats instead of twenty five?"
+    },
+    {
+      "id": "rec-analytics-renewal:seg:3",
+      "text": "Sure I will ask their account manager for the ten seat price by Thursday."
+    },
+    {
+      "id": "rec-analytics-renewal:seg:4",
+      "text": "If it's under eight thousand thousand a year we sign it if not we look at alternatives."
+    },
+    {
+      "id": "rec-analytics-renewal:seg:5",
+      "text": "Under eight thousand got it I should I give them notice that we might not renew?"
+    },
+    {
+      "id": "rec-analytics-renewal:seg:6",
+      "text": "Yes the contract contract needs thirty days notice so send it before October thirty first"
+    },
+    {
+      "id": "rec-analytics-renewal:seg:7",
+      "text": "I will send the notice tomorrow and copy you"
+    },
+    {
+      "id": "rec-analytics-renewal:seg:8",
+      "text": "Thanks and export last year dashboards in case we switch."
+    },
+    {
+      "id": "rec-analytics-renewal:seg:9",
+      "text": "Will do. I will put the exports in the shared drive."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "rec-analytics-renewal:dec:0",
+        "meetingId": "rec-analytics-renewal",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "The group will renegotiate the analytics contract instead of renewing as is.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "rec-analytics-renewal:dec:0:ev:0",
+          "decisionId": "rec-analytics-renewal:dec:0",
+          "resolutionId": null,
+          "segmentId": "rec-analytics-renewal:seg:2",
+          "quote": "Then let's renegotiate instead of renewing as is."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-analytics-renewal:dec:1",
+        "meetingId": "rec-analytics-renewal",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Tomasz will ask the account manager for the ten seat price by Thursday.",
+        "ownerText": "Tomasz",
+        "deadlineText": "by Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "rec-analytics-renewal:dec:1:ev:0",
+          "decisionId": "rec-analytics-renewal:dec:1",
+          "resolutionId": null,
+          "segmentId": "rec-analytics-renewal:seg:3",
+          "quote": "Sure I will ask their account manager for the ten seat price by Thursday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-analytics-renewal:dec:2",
+        "meetingId": "rec-analytics-renewal",
+        "idx": 2,
+        "kind": "assumption",
+        "statement": "If the quote is under eight thousand thousand a year the group will sign it, and if not the group will look at alternatives.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "rec-analytics-renewal:dec:2:ev:0",
+          "decisionId": "rec-analytics-renewal:dec:2",
+          "resolutionId": null,
+          "segmentId": "rec-analytics-renewal:seg:4",
+          "quote": "If it's under eight thousand thousand a year we sign it if not we look at alternatives."
+        },
+        {
+          "id": "rec-analytics-renewal:dec:2:ev:1",
+          "decisionId": "rec-analytics-renewal:dec:2",
+          "resolutionId": null,
+          "segmentId": "rec-analytics-renewal:seg:5",
+          "quote": "Under eight thousand got it"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-analytics-renewal:dec:3",
+        "meetingId": "rec-analytics-renewal",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Tomasz will send the notice tomorrow and copy Nadia.",
+        "ownerText": "Tomasz",
+        "deadlineText": "tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "rec-analytics-renewal:dec:3:ev:0",
+          "decisionId": "rec-analytics-renewal:dec:3",
+          "resolutionId": null,
+          "segmentId": "rec-analytics-renewal:seg:6",
+          "quote": "Yes the contract contract needs thirty days notice so send it before October thirty first"
+        },
+        {
+          "id": "rec-analytics-renewal:dec:3:ev:1",
+          "decisionId": "rec-analytics-renewal:dec:3",
+          "resolutionId": null,
+          "segmentId": "rec-analytics-renewal:seg:7",
+          "quote": "I will send the notice tomorrow and copy you"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-analytics-renewal:dec:4",
+        "meetingId": "rec-analytics-renewal",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Tomasz will put the exports of last year dashboards in the shared drive.",
+        "ownerText": "Tomasz",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-analytics-renewal:dec:4:ev:0",
+          "decisionId": "rec-analytics-renewal:dec:4",
+          "resolutionId": null,
+          "segmentId": "rec-analytics-renewal:seg:8",
+          "quote": "Thanks and export last year dashboards in case we switch."
+        },
+        {
+          "id": "rec-analytics-renewal:dec:4:ev:1",
+          "decisionId": "rec-analytics-renewal:dec:4",
+          "resolutionId": null,
+          "segmentId": "rec-analytics-renewal:seg:9",
+          "quote": "I will put the exports in the shared drive."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "rec-analytics-renewal:cand:0",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "rec-analytics-renewal:cand:0:t0"
+    },
+    {
+      "id": "rec-analytics-renewal:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "rec-analytics-renewal:cand:1:probe:0"
+    },
+    {
+      "id": "rec-analytics-renewal:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "rec-analytics-renewal:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "rec-analytics-renewal:cand:0:t0",
+      "stem": "For \"If the quote is under eight thousand thousand a year the group will sign it, and if not the group will look at alternatives\", which check has to pass first?",
+      "options": [
+        {
+          "id": "rec-analytics-renewal:cand:0:t0:opt:0",
+          "text": "A quick smoke test of the main flows"
+        },
+        {
+          "id": "rec-analytics-renewal:cand:0:t0:opt:1",
+          "text": "A full regression pass"
+        },
+        {
+          "id": "rec-analytics-renewal:cand:0:t0:opt:2",
+          "text": "A full regression plus extra checks for what changed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Nadia",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomasz",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "rec-analytics-renewal:cand:1:probe:0",
+      "stem": "When \"Tomasz will send the notice tomorrow and copy Nadia\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "rec-analytics-renewal:cand:1:probe:0:opt:0",
+          "text": "Sending a tentative note that renewal is uncertain while talks continue"
+        },
+        {
+          "id": "rec-analytics-renewal:cand:1:probe:0:opt:1",
+          "text": "Sending the official month-long notice that terminates the current contract if no new terms are agreed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Nadia",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomasz",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "rec-analytics-renewal:cand:2:probe:0",
+      "stem": "When \"Tomasz will put the exports of last year dashboards in the shared drive\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "rec-analytics-renewal:cand:2:probe:0:opt:0",
+          "text": "Every dashboard made during the prior year, no matter which team owns it or how often it gets opened."
+        },
+        {
+          "id": "rec-analytics-renewal:cand:2:probe:0:opt:1",
+          "text": "Only the growth team's dashboards from the prior year that are still checked every week."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Nadia",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomasz",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "rec-analytics-renewal",
+    "title": "Renegotiate the analytics contract",
+    "heldAt": "2026-10-27T15:00:00Z",
+    "generatedAt": "2026-10-27T15:00:00Z",
+    "participants": [
+      {
+        "id": "Nadia",
+        "meetingId": "rec-analytics-renewal",
+        "displayName": "Nadia",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Tomasz",
+        "meetingId": "rec-analytics-renewal",
+        "displayName": "Tomasz",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "rec-analytics-renewal:item:0",
+        "meetingId": "rec-analytics-renewal",
+        "category": "stated",
+        "text": "Then let's renegotiate instead of renewing as is.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-analytics-renewal:seg:2",
+            "quote": "Then let's renegotiate instead of renewing as is.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-analytics-renewal:item:1",
+        "meetingId": "rec-analytics-renewal",
+        "category": "stated",
+        "text": "Sure I will ask their account manager for the ten seat price by Thursday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-analytics-renewal:seg:3",
+            "quote": "Sure I will ask their account manager for the ten seat price by Thursday.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-analytics-renewal:item:2",
+        "meetingId": "rec-analytics-renewal",
+        "category": "stated",
+        "text": "If it's under eight thousand thousand a year we sign it if not we look at alternatives.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-analytics-renewal:seg:4",
+            "quote": "If it's under eight thousand thousand a year we sign it if not we look at alternatives.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-analytics-renewal:item:3",
+        "meetingId": "rec-analytics-renewal",
+        "category": "stated",
+        "text": "Under eight thousand got it",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-analytics-renewal:seg:5",
+            "quote": "Under eight thousand got it",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-analytics-renewal:item:4",
+        "meetingId": "rec-analytics-renewal",
+        "category": "stated",
+        "text": "Yes the contract contract needs thirty days notice so send it before October thirty first",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-analytics-renewal:seg:6",
+            "quote": "Yes the contract contract needs thirty days notice so send it before October thirty first",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-analytics-renewal:item:5",
+        "meetingId": "rec-analytics-renewal",
+        "category": "stated",
+        "text": "I will send the notice tomorrow and copy you",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-analytics-renewal:seg:7",
+            "quote": "I will send the notice tomorrow and copy you",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-analytics-renewal:item:6",
+        "meetingId": "rec-analytics-renewal",
+        "category": "stated",
+        "text": "Thanks and export last year dashboards in case we switch.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-analytics-renewal:seg:8",
+            "quote": "Thanks and export last year dashboards in case we switch.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-analytics-renewal:item:7",
+        "meetingId": "rec-analytics-renewal",
+        "category": "stated",
+        "text": "I will put the exports in the shared drive.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-analytics-renewal:seg:9",
+            "quote": "I will put the exports in the shared drive.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "This record contains only stated items, with nothing listed as confirmed and nothing listed as unresolved. The statements covered renegotiating instead of renewing, requesting the ten seat price and handling the notice, and exporting last year dashboards.\n\nStated in the meeting\n- It was stated that the contract should be renegotiated instead of being renewed as is.\n- It was stated that the ten seat price would be asked from their account manager by Thursday.\n- It was stated that if the price is under eight thousand thousand a year it would be signed and if not alternatives would be looked at.\n- It was stated in acknowledgement of the under eight thousand figure.\n- It was stated that the contract needs thirty days notice so it should be sent before October thirty first.\n- It was stated that the notice would be sent tomorrow with a copy.\n- It was stated with thanks that last year dashboards should be exported in case of a switch.\n- It was stated that the exports would be put in the shared drive."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 20782,
+          "inputTokens": 1010,
+          "outputTokens": 6555,
+          "reasoningTokens": 6028,
+          "costUsd": 0.02912125,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 48799,
+          "inputTokens": 1548,
+          "outputTokens": 9479,
+          "reasoningTokens": 9166,
+          "costUsd": 0.04139245,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 7227,
+          "inputTokens": 577,
+          "outputTokens": 1584,
+          "reasoningTokens": 1533,
+          "costUsd": 0.00704735,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2908,
+          "inputTokens": 441,
+          "outputTokens": 808,
+          "reasoningTokens": 752,
+          "costUsd": 0.00372015,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6488,
+          "inputTokens": 556,
+          "outputTokens": 1412,
+          "reasoningTokens": 1353,
+          "costUsd": 0.006696,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2809,
+          "inputTokens": 434,
+          "outputTokens": 476,
+          "reasoningTokens": 428,
+          "costUsd": 0.0023004,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2412,
+          "inputTokens": 284,
+          "outputTokens": 517,
+          "reasoningTokens": 489,
+          "costUsd": 0.00242795,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1538,
+          "inputTokens": 284,
+          "outputTokens": 392,
+          "reasoningTokens": 362,
+          "costUsd": 0.0018967,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1633,
+          "inputTokens": 276,
+          "outputTokens": 279,
+          "reasoningTokens": 249,
+          "costUsd": 0.00140645,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2276,
+          "inputTokens": 276,
+          "outputTokens": 328,
+          "reasoningTokens": 301,
+          "costUsd": 0.0016147,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1597,
+          "inputTokens": 288,
+          "outputTokens": 346,
+          "reasoningTokens": 318,
+          "costUsd": 0.0017062,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1405,
+          "inputTokens": 288,
+          "outputTokens": 289,
+          "reasoningTokens": 258,
+          "costUsd": 0.00146395,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 5566,
+          "inputTokens": 559,
+          "outputTokens": 1485,
+          "reasoningTokens": 1122,
+          "costUsd": 0.00701,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

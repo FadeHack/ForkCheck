@@ -1,0 +1,439 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 2,
+  "scenario": "heldout-sarcasm-friday-launch",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:0",
+      "text": "Marketing booked the app store feature for this weekend. They want version 3 out on Friday."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:1",
+      "text": "The offline mode still crashes on older Android phones."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:2",
+      "text": "And App Store review has been taking two days lately."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:3",
+      "text": "I know. Can we make Friday?"
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:4",
+      "text": "Sure, Friday, what could go wrong."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:5",
+      "text": "Ha. I'll prep the store listing either way."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:6",
+      "text": "Great, I'll tell marketing Friday is on."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:7",
+      "text": "I'll keep working the crash."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:8",
+      "text": "Screenshots are done, by the way. Just need the release notes."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:9",
+      "text": "I'll write those today."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:0",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Ruben will prep the store listing.",
+        "ownerText": "Ruben",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:0:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:5",
+          "quote": "I'll prep the store listing either way."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:1",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Nadia will tell marketing Friday is on.",
+        "ownerText": "Nadia",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:1:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:6",
+          "quote": "I'll tell marketing Friday is on."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:2",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Theo will keep working the crash.",
+        "ownerText": "Theo",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:2:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:7",
+          "quote": "I'll keep working the crash."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:3",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Nadia will write the release notes.",
+        "ownerText": "Nadia",
+        "deadlineText": "today",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:3:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:9",
+          "quote": "I'll write those today."
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:3:ev:1",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:8",
+          "quote": "Just need the release notes."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:4",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 4,
+        "kind": "open_item",
+        "statement": "Whether version 3 can be released on Friday remains to be determined.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "unresolved"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:4:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:3",
+          "quote": "Can we make Friday?"
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:4:ev:1",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:1",
+          "quote": "The offline mode still crashes on older Android phones."
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:4:ev:2",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:2",
+          "quote": "And App Store review has been taking two days lately."
+        }
+      ]
+    }
+  ],
+  "candidates": [],
+  "rounds": [],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-sarcasm-friday-launch",
+    "title": "Mobile release on Friday",
+    "heldAt": "2026-11-03T10:00:00-08:00",
+    "generatedAt": "2026-11-03T10:00:00-08:00",
+    "participants": [
+      {
+        "id": "Nadia",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "displayName": "Nadia",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Theo",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "displayName": "Theo",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Ruben",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "displayName": "Ruben",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-sarcasm-friday-launch:item:0",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "category": "stated",
+        "text": "I'll prep the store listing either way.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-sarcasm-friday-launch:seg:5",
+            "quote": "I'll prep the store listing either way.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-sarcasm-friday-launch:item:1",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "category": "stated",
+        "text": "I'll tell marketing Friday is on.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-sarcasm-friday-launch:seg:6",
+            "quote": "I'll tell marketing Friday is on.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-sarcasm-friday-launch:item:2",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "category": "stated",
+        "text": "I'll keep working the crash.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-sarcasm-friday-launch:seg:7",
+            "quote": "I'll keep working the crash.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-sarcasm-friday-launch:item:3",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "category": "stated",
+        "text": "I'll write those today.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-sarcasm-friday-launch:seg:9",
+            "quote": "I'll write those today.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-sarcasm-friday-launch:item:4",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "category": "stated",
+        "text": "Just need the release notes.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-sarcasm-friday-launch:seg:8",
+            "quote": "Just need the release notes.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-sarcasm-friday-launch:item:5",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "category": "stated",
+        "text": "Can we make Friday?",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-sarcasm-friday-launch:seg:3",
+            "quote": "Can we make Friday?",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-sarcasm-friday-launch:item:6",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "category": "stated",
+        "text": "The offline mode still crashes on older Android phones.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-sarcasm-friday-launch:seg:1",
+            "quote": "The offline mode still crashes on older Android phones.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-sarcasm-friday-launch:item:7",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "category": "stated",
+        "text": "And App Store review has been taking two days lately.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-sarcasm-friday-launch:seg:2",
+            "quote": "And App Store review has been taking two days lately.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "No items were marked as confirmed, so nothing is recorded as confirmed and nothing is listed as still open. The statements asked whether Friday could be made, noted the offline-mode crash and the two-day review time, and mentioned the store listing, marketing message, crash work, and release notes.\n\nStated in the meeting\n- Someone said they would prep the store listing either way.\n- Someone said they would tell marketing Friday is on.\n- Someone said they would keep working the crash.\n- Someone said they would write those today.\n- Someone said they just need the release notes.\n- Someone asked whether Friday could be made.\n- Someone stated that offline mode still crashes on older Android phones.\n- Someone stated that App Store review has been taking two days lately."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 29858,
+          "inputTokens": 1000,
+          "outputTokens": 8323,
+          "reasoningTokens": 7847,
+          "costUsd": 0.03662275,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 19750,
+          "inputTokens": 1481,
+          "outputTokens": 4527,
+          "reasoningTokens": 4513,
+          "costUsd": 0.0202627,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 5344,
+          "inputTokens": 551,
+          "outputTokens": 1357,
+          "reasoningTokens": 1010,
+          "costUsd": 0.006456,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

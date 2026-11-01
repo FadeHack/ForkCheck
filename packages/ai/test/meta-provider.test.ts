@@ -1,6 +1,6 @@
-import { mkdtempSync, readFileSync } from "node:fs";
+import { mkdtempSync, readdirSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   chatCostUsd,
@@ -263,5 +263,16 @@ describe("FileSpendLedger", () => {
     expect(await b.totalUsd("meta")).toBeCloseTo(0.75, 10);
     expect(await b.totalUsd("baseten")).toBe(1);
     expect(JSON.parse(readFileSync(path, "utf8"))).toMatchObject({ meta: { calls: 2 } });
+  });
+
+  it("does not fail when two ledgers write the same file at once", async () => {
+    // Two eval runs in separate processes share var/spend.json; a shared temp name made one
+    // rename the other's file away (ENOENT). Totals may still race; writes must not throw.
+    const path = join(mkdtempSync(join(tmpdir(), "ledger-")), "spend.json");
+    const a = new FileSpendLedger(path);
+    const b = new FileSpendLedger(path);
+    const adds = Array.from({ length: 20 }, (_, i) => (i % 2 ? a : b).add("meta", 0.01));
+    await expect(Promise.all(adds)).resolves.toBeDefined();
+    expect(readdirSync(dirname(path))).toEqual(["spend.json"]);
   });
 });

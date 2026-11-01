@@ -1,0 +1,600 @@
+{
+  "runId": "m7-dry-20261101",
+  "run": 0,
+  "scenario": "heldout-ownership-staging-cert",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-ownership-staging-cert:seg:0",
+      "text": "Two things from the infra board. First, the staging certificate expires on the 12th."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:1",
+      "text": "The wildcard one? That's still manual because of the old DNS provider."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:2",
+      "text": "Yes. Last time it lapsed, every preview build failed for half a day."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:3",
+      "text": "Right, I remember. The renewal itself is ten minutes, it's the DNS record that's annoying."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:4",
+      "text": "So the cert needs renewing before the 12th, and we should move it to automatic renewal after this."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:5",
+      "text": "Agreed. I'll ping you when the DNS access is sorted."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:6",
+      "text": "Great. Second thing, the log retention change."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:7",
+      "text": "Thirty days for application logs, ninety for audit logs. I merged that yesterday."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:8",
+      "text": "Lovely. Then I'll update the data retention page to match."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:9",
+      "text": "Thanks. That's all from me."
+    },
+    {
+      "id": "heldout-ownership-staging-cert:seg:10",
+      "text": "Same. Talk tomorrow."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-ownership-staging-cert:dec:0",
+        "meetingId": "heldout-ownership-staging-cert",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "The staging certificate will be renewed before the 12th.",
+        "ownerText": null,
+        "deadlineText": "before the 12th",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-ownership-staging-cert:dec:0:ev:0",
+          "decisionId": "heldout-ownership-staging-cert:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-staging-cert:seg:4",
+          "quote": "So the cert needs renewing before the 12th, and we should move it to automatic renewal after this."
+        },
+        {
+          "id": "heldout-ownership-staging-cert:dec:0:ev:1",
+          "decisionId": "heldout-ownership-staging-cert:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-staging-cert:seg:5",
+          "quote": "Agreed."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-ownership-staging-cert:dec:1",
+        "meetingId": "heldout-ownership-staging-cert",
+        "idx": 1,
+        "kind": "decision",
+        "statement": "The staging certificate will be moved to automatic renewal after this renewal.",
+        "ownerText": null,
+        "deadlineText": "after this",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-ownership-staging-cert:dec:1:ev:0",
+          "decisionId": "heldout-ownership-staging-cert:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-staging-cert:seg:4",
+          "quote": "So the cert needs renewing before the 12th, and we should move it to automatic renewal after this."
+        },
+        {
+          "id": "heldout-ownership-staging-cert:dec:1:ev:1",
+          "decisionId": "heldout-ownership-staging-cert:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-staging-cert:seg:5",
+          "quote": "Agreed."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-ownership-staging-cert:dec:2",
+        "meetingId": "heldout-ownership-staging-cert",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Bruno will ping Aiko when the DNS access is sorted.",
+        "ownerText": "Bruno",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-ownership-staging-cert:dec:2:ev:0",
+          "decisionId": "heldout-ownership-staging-cert:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-staging-cert:seg:5",
+          "quote": "I'll ping you when the DNS access is sorted."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-ownership-staging-cert:dec:3",
+        "meetingId": "heldout-ownership-staging-cert",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Aiko will update the data retention page to match the log retention change.",
+        "ownerText": "Aiko",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-ownership-staging-cert:dec:3:ev:0",
+          "decisionId": "heldout-ownership-staging-cert:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-ownership-staging-cert:seg:8",
+          "quote": "Then I'll update the data retention page to match."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-ownership-staging-cert:cand:0",
+      "dimension": "owner",
+      "mismatch": "who-renews-cert",
+      "probeId": "heldout-ownership-staging-cert:cand:0:t0"
+    },
+    {
+      "id": "heldout-ownership-staging-cert:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-ownership-staging-cert:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-ownership-staging-cert:cand:2",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "heldout-ownership-staging-cert:cand:2:t0"
+    },
+    {
+      "id": "heldout-ownership-staging-cert:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-ownership-staging-cert:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-ownership-staging-cert:cand:0:t0",
+      "stem": "For \"The staging certificate will be renewed before the 12th\", who does it on the day it happens?",
+      "options": [
+        {
+          "id": "heldout-ownership-staging-cert:cand:0:t0:opt:0",
+          "text": "Aiko does it"
+        },
+        {
+          "id": "heldout-ownership-staging-cert:cand:0:t0:opt:1",
+          "text": "Bruno does it"
+        },
+        {
+          "id": "heldout-ownership-staging-cert:cand:0:t0:opt:2",
+          "text": "No one is named yet"
+        },
+        {
+          "id": "heldout-ownership-staging-cert:cand:0:t0:opt:3",
+          "text": "Aiko and Bruno share it"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Aiko",
+          "choice": "option",
+          "optionId": "heldout-ownership-staging-cert:cand:0:t0:opt:1"
+        },
+        {
+          "participantId": "Bruno",
+          "choice": "option",
+          "optionId": "heldout-ownership-staging-cert:cand:0:t0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "heldout-ownership-staging-cert:cand:1:probe:0",
+      "stem": "If it is Monday the 9th and Bruno has not yet pinged about DNS access, what happens with the staging certificate renewal?",
+      "options": [
+        {
+          "id": "heldout-ownership-staging-cert:cand:1:probe:0:opt:0",
+          "text": "Renewal waits until Bruno confirms DNS access is sorted"
+        },
+        {
+          "id": "heldout-ownership-staging-cert:cand:1:probe:0:opt:1",
+          "text": "Renewal goes ahead using the existing manual DNS steps"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Aiko",
+          "choice": "option",
+          "optionId": "heldout-ownership-staging-cert:cand:1:probe:0:opt:0"
+        },
+        {
+          "participantId": "Bruno",
+          "choice": "option",
+          "optionId": "heldout-ownership-staging-cert:cand:1:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "heldout-ownership-staging-cert:cand:2:t0",
+      "stem": "For \"The staging certificate will be moved to automatic renewal after this renewal\", who does it on the day it happens?",
+      "options": [
+        {
+          "id": "heldout-ownership-staging-cert:cand:2:t0:opt:0",
+          "text": "Aiko does it"
+        },
+        {
+          "id": "heldout-ownership-staging-cert:cand:2:t0:opt:1",
+          "text": "Bruno does it"
+        },
+        {
+          "id": "heldout-ownership-staging-cert:cand:2:t0:opt:2",
+          "text": "No one is named yet"
+        },
+        {
+          "id": "heldout-ownership-staging-cert:cand:2:t0:opt:3",
+          "text": "Aiko and Bruno share it"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Aiko",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Bruno",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-ownership-staging-cert:cand:3:probe:0",
+      "stem": "For \"The staging certificate will be moved to automatic renewal renewal\", what has to exist by \"after this\"?",
+      "options": [
+        {
+          "id": "heldout-ownership-staging-cert:cand:3:probe:0:opt:0",
+          "text": "A live automatic renewal setup completed right after this manual renewal, before Thursday the 12th"
+        },
+        {
+          "id": "heldout-ownership-staging-cert:cand:3:probe:0:opt:1",
+          "text": "No automatic renewal yet by the 12th; it will be added sometime after Thursday the 12th with no fixed date"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Aiko",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Bruno",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 11011,
+          "inputTokens": 1200,
+          "outputTokens": 3230,
+          "reasoningTokens": 2878,
+          "costUsd": 0.0152275,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 9245,
+          "inputTokens": 1668,
+          "outputTokens": 2100,
+          "reasoningTokens": 1734,
+          "costUsd": 0.01101,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3289,
+          "inputTokens": 834,
+          "outputTokens": 806,
+          "reasoningTokens": 726,
+          "costUsd": 0.004468,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1661,
+          "inputTokens": 577,
+          "outputTokens": 288,
+          "reasoningTokens": 229,
+          "costUsd": 0.00194525,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3966,
+          "inputTokens": 722,
+          "outputTokens": 1211,
+          "reasoningTokens": 1148,
+          "costUsd": 0.00562685,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1536,
+          "inputTokens": 599,
+          "outputTokens": 290,
+          "reasoningTokens": 221,
+          "costUsd": 0.0015588499999999999,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2146,
+          "inputTokens": 298,
+          "outputTokens": 342,
+          "reasoningTokens": 315,
+          "costUsd": 0.001826,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2444,
+          "inputTokens": 302,
+          "outputTokens": 338,
+          "reasoningTokens": 299,
+          "costUsd": 0.001814,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2263,
+          "inputTokens": 298,
+          "outputTokens": 458,
+          "reasoningTokens": 421,
+          "costUsd": 0.002319,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1529,
+          "inputTokens": 302,
+          "outputTokens": 324,
+          "reasoningTokens": 289,
+          "costUsd": 0.0017545,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1954,
+          "inputTokens": 299,
+          "outputTokens": 463,
+          "reasoningTokens": 430,
+          "costUsd": 0.0022172,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3467,
+          "inputTokens": 303,
+          "outputTokens": 816,
+          "reasoningTokens": 778,
+          "costUsd": 0.00384675,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1592,
+          "inputTokens": 316,
+          "outputTokens": 325,
+          "reasoningTokens": 292,
+          "costUsd": 0.0016519500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1906,
+          "inputTokens": 320,
+          "outputTokens": 514,
+          "reasoningTokens": 477,
+          "costUsd": 0.0025845,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

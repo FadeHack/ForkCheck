@@ -1,0 +1,899 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 1,
+  "scenario": "dev-ownership-outage-email",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "dev-ownership-outage-email:seg:0",
+      "text": "Let's do the outage follow-up. Felix, what's the final count?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:1",
+      "text": "Two hundred and twelve workspaces had sync paused for more than an hour over the weekend. Root cause was the queue migration. The rollback finished at 3:40."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:2",
+      "text": "Support got about ninety tickets. Most were closed with the status page link, but around fifteen are still open and a couple are angry."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:3",
+      "text": "Are those fifteen inside the two hundred and twelve?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:4",
+      "text": "I think so. I haven't cross-checked."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:5",
+      "text": "I can export the affected workspace list with the owner emails."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:6",
+      "text": "Good. We agreed in the incident review that anyone down over an hour gets a credit. Is the credit applied automatically?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:7",
+      "text": "Not yet. Billing needs a CSV. I'll have the credits applied by Thursday."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:8",
+      "text": "OK. And the affected customers need to hear from us directly, not just through the status page."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:9",
+      "text": "Agreed. The ones with open tickets keep asking whether it'll happen again."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:10",
+      "text": "The postmortem draft answers that. We added a canary for the queue and a migration lock."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:11",
+      "text": "Right. So we'll handle the customer emails by tomorrow. Plain language, the credit, and what we changed."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:12",
+      "text": "Sounds good."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:13",
+      "text": "Yep, makes sense."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:14",
+      "text": "Imani, can you also close out the open tickets once the email is out, pointing to it?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:15",
+      "text": "Yes, I'll do that with a macro."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:16",
+      "text": "I'll publish the postmortem on the blog after legal reads it."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:17",
+      "text": "Great. Anything else on the outage?"
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:18",
+      "text": "Just that the status page went up twenty minutes late. We should look at that."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:19",
+      "text": "That one's on the on-call checklist. I'll add a step for it."
+    },
+    {
+      "id": "dev-ownership-outage-email:seg:20",
+      "text": "Thanks, both."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:0",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "Anyone down over an hour gets a credit.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:0:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:6",
+          "quote": "We agreed in the incident review that anyone down over an hour gets a credit."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:1",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Felix will export the affected workspace list with the owner emails.",
+        "ownerText": "Felix",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:1:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:5",
+          "quote": "I can export the affected workspace list with the owner emails."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:2",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Felix will have the credits applied by Thursday.",
+        "ownerText": "Felix",
+        "deadlineText": "by Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:2:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:7",
+          "quote": "I'll have the credits applied by Thursday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:3",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "The group will handle customer emails by tomorrow with plain language, the credit, and what was changed.",
+        "ownerText": null,
+        "deadlineText": "by tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:3:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:3",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:11",
+          "quote": "So we'll handle the customer emails by tomorrow. Plain language, the credit, and what we changed."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:4",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Imani will close out the open tickets once the email is out, pointing to it.",
+        "ownerText": "Imani",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:4:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:14",
+          "quote": "Imani, can you also close out the open tickets once the email is out, pointing to it?"
+        },
+        {
+          "id": "dev-ownership-outage-email:dec:4:ev:1",
+          "decisionId": "dev-ownership-outage-email:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:15",
+          "quote": "Yes, I'll do that with a macro."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:5",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 5,
+        "kind": "commitment",
+        "statement": "Felix will publish the postmortem on the blog after legal reads it.",
+        "ownerText": "Felix",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:5:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:16",
+          "quote": "I'll publish the postmortem on the blog after legal reads it."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:6",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 6,
+        "kind": "open_item",
+        "statement": "The status page went up twenty minutes late and should be looked at.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "unresolved"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:6:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:18",
+          "quote": "Just that the status page went up twenty minutes late. We should look at that."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-ownership-outage-email:dec:7",
+        "meetingId": "dev-ownership-outage-email",
+        "idx": 7,
+        "kind": "commitment",
+        "statement": "Felix will add a step for the status page to the on-call checklist.",
+        "ownerText": "Felix",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-ownership-outage-email:dec:7:ev:0",
+          "decisionId": "dev-ownership-outage-email:dec:7",
+          "resolutionId": null,
+          "segmentId": "dev-ownership-outage-email:seg:19",
+          "quote": "I'll add a step for it."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-ownership-outage-email:cand:0",
+      "dimension": "owner",
+      "mismatch": "who-sends",
+      "probeId": "dev-ownership-outage-email:cand:0:t0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": null
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:3",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0"
+    },
+    {
+      "id": "dev-ownership-outage-email:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-ownership-outage-email:cand:0:t0",
+      "stem": "For \"The group will handle customer emails by tomorrow with plain language, the credit, and what was changed\", who does it on the day it happens?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:0:t0:opt:0",
+          "text": "Imani does it"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:0:t0:opt:1",
+          "text": "Felix does it"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:0:t0:opt:2",
+          "text": "Sunil does it"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:0:t0:opt:3",
+          "text": "No one is named yet"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "option",
+          "optionId": "dev-ownership-outage-email:cand:0:t0:opt:1"
+        },
+        {
+          "participantId": "Felix",
+          "choice": "option",
+          "optionId": "dev-ownership-outage-email:cand:0:t0:opt:0"
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "option",
+          "optionId": "dev-ownership-outage-email:cand:0:t0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:4:probe:0",
+      "stem": "For \"Felix will have the credits applied\", what has to exist by Thursday, November 5?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:4:probe:0:opt:0",
+          "text": "The credits are fully posted and viewable in the customer billing portal by end of day Thursday, November 5 Pacific."
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:4:probe:0:opt:1",
+          "text": "The credits are fully posted and included in the billing extract by start of business Thursday, November 5 Pacific."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "option",
+          "optionId": "dev-ownership-outage-email:cand:4:probe:0:opt:1"
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:1:probe:0",
+      "stem": "For \"The group will handle customer emails with plain language, the credit, and what was changed\", what has to exist by Wednesday, November 4?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:1:probe:0:opt:0",
+          "text": "All customer emails using simple wording to explain the credit and the fix are sent by late evening on Wednesday the 4th Pacific"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:1:probe:0:opt:1",
+          "text": "All customer emails using simple wording to explain the credit and the fix are sent by around 9 a.m. on Wednesday the 4th Pacific"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-ownership-outage-email:cand:3:probe:0",
+      "stem": "Suppose Legal confirms they have opened and read the draft but has not sent an explicit approval. What is Felix expected to do next?",
+      "options": [
+        {
+          "id": "dev-ownership-outage-email:cand:3:probe:0:opt:0",
+          "text": "Publish the write-up now, since the condition of Legal having seen it is met"
+        },
+        {
+          "id": "dev-ownership-outage-email:cand:3:probe:0:opt:1",
+          "text": "Keep the draft unpublished until Legal provides explicit sign-off to release it"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Imani",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunil",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 9221,
+          "inputTokens": 1511,
+          "outputTokens": 2542,
+          "reasoningTokens": 1936,
+          "costUsd": 0.011143450000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 9292,
+          "inputTokens": 2184,
+          "outputTokens": 2469,
+          "reasoningTokens": 2013,
+          "costUsd": 0.012378450000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3320,
+          "inputTokens": 727,
+          "outputTokens": 887,
+          "reasoningTokens": 813,
+          "costUsd": 0.0042561000000000005,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1246,
+          "inputTokens": 609,
+          "outputTokens": 167,
+          "reasoningTokens": 116,
+          "costUsd": 0.0010486,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4122,
+          "inputTokens": 759,
+          "outputTokens": 1215,
+          "reasoningTokens": 1113,
+          "costUsd": 0.0055493,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6408,
+          "inputTokens": 869,
+          "outputTokens": 1463,
+          "reasoningTokens": 1411,
+          "costUsd": 0.007304,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 4361,
+          "inputTokens": 831,
+          "outputTokens": 1096,
+          "reasoningTokens": 1014,
+          "costUsd": 0.005133550000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1621,
+          "inputTokens": 590,
+          "outputTokens": 323,
+          "reasoningTokens": 267,
+          "costUsd": 0.0016878499999999999,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3195,
+          "inputTokens": 701,
+          "outputTokens": 819,
+          "reasoningTokens": 754,
+          "costUsd": 0.004357,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1862,
+          "inputTokens": 592,
+          "outputTokens": 284,
+          "reasoningTokens": 221,
+          "costUsd": 0.001947,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1645,
+          "inputTokens": 301,
+          "outputTokens": 261,
+          "reasoningTokens": 231,
+          "costUsd": 0.0013612000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2666,
+          "inputTokens": 305,
+          "outputTokens": 517,
+          "reasoningTokens": 482,
+          "costUsd": 0.0023134,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1632,
+          "inputTokens": 299,
+          "outputTokens": 240,
+          "reasoningTokens": 208,
+          "costUsd": 0.00126945,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2061,
+          "inputTokens": 313,
+          "outputTokens": 412,
+          "reasoningTokens": 379,
+          "costUsd": 0.00201795,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1730,
+          "inputTokens": 317,
+          "outputTokens": 283,
+          "reasoningTokens": 251,
+          "costUsd": 0.0014747,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1466,
+          "inputTokens": 311,
+          "outputTokens": 277,
+          "reasoningTokens": 244,
+          "costUsd": 0.0014417,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2131,
+          "inputTokens": 333,
+          "outputTokens": 369,
+          "reasoningTokens": 338,
+          "costUsd": 0.0018602,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2034,
+          "inputTokens": 337,
+          "outputTokens": 428,
+          "reasoningTokens": 391,
+          "costUsd": 0.0021159499999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1333,
+          "inputTokens": 331,
+          "outputTokens": 312,
+          "reasoningTokens": 277,
+          "costUsd": 0.00161545,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1837,
+          "inputTokens": 303,
+          "outputTokens": 352,
+          "reasoningTokens": 315,
+          "costUsd": 0.00175045,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1905,
+          "inputTokens": 307,
+          "outputTokens": 387,
+          "reasoningTokens": 353,
+          "costUsd": 0.0019042,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1772,
+          "inputTokens": 301,
+          "outputTokens": 345,
+          "reasoningTokens": 310,
+          "costUsd": 0.0017182,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

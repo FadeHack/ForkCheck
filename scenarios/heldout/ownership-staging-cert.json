@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "id": "heldout-ownership-staging-cert",
+  "title": "Staging certificate before it expires",
+  "set": "heldout",
+  "category": "ownership",
+  "heldAt": "2026-11-04T11:00:00+00:00",
+  "timezone": "Europe/London",
+  "participants": ["Aiko", "Bruno"],
+  "transcript": "[00:00] Aiko: Two things from the infra board. First, the staging certificate expires on the 12th.\n[00:06] Bruno: The wildcard one? That's still manual because of the old DNS provider.\n[00:12] Aiko: Yes. Last time it lapsed, every preview build failed for half a day.\n[00:18] Bruno: Right, I remember. The renewal itself is ten minutes, it's the DNS record that's annoying.\n[00:25] Aiko: So the cert needs renewing before the 12th, and we should move it to automatic renewal after this.\n[00:33] Bruno: Agreed. I'll ping you when the DNS access is sorted.\n[00:38] Aiko: Great. Second thing, the log retention change.\n[00:42] Bruno: Thirty days for application logs, ninety for audit logs. I merged that yesterday.\n[00:48] Aiko: Lovely. Then I'll update the data retention page to match.\n[00:53] Bruno: Thanks. That's all from me.\n[00:57] Aiko: Same. Talk tomorrow.\n",
+  "expectedDecisions": [
+    {
+      "id": "staging-cert",
+      "kind": "commitment",
+      "statement": "The staging wildcard certificate is renewed before it expires on the 12th.",
+      "owner": null,
+      "deadline": "before the 12th",
+      "quotes": [
+        "the cert needs renewing before the 12th",
+        "I'll ping you when the DNS access is sorted."
+      ]
+    },
+    {
+      "id": "auto-renewal",
+      "kind": "decision",
+      "statement": "After this renewal, the staging certificate moves to automatic renewal.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["we should move it to automatic renewal after this"]
+    },
+    {
+      "id": "retention-page",
+      "kind": "commitment",
+      "statement": "Aiko updates the data retention page to match the new log retention.",
+      "owner": "Aiko",
+      "deadline": null,
+      "quotes": ["I'll update the data retention page to match."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Aiko",
+      "readings": [
+        {
+          "decision": "staging-cert",
+          "dimension": "owner",
+          "reading": "Bruno renews it. He knows the DNS setup and said he'd ping her when it's done."
+        }
+      ]
+    },
+    {
+      "participant": "Bruno",
+      "readings": [
+        {
+          "decision": "staging-cert",
+          "dimension": "owner",
+          "reading": "Aiko renews it. He only sorts out DNS access and pings her so she can do the renewal."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "who-renews-cert",
+      "decision": "staging-cert",
+      "dimension": "owner",
+      "note": "Each assumes the other: Aiko hears Bruno will renew it; Bruno means he will only unblock DNS for Aiko."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Aiko: \"the cert needs renewing before the 12th\"",
+      "Aiko: \"I'll update the data retention page to match.\""
+    ],
+    "confirmed": [
+      "Bruno gets DNS access and renews the staging wildcard certificate by Tuesday 2026-11-10, 17:00 UK time."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "who-renews-cert",
+      "precise": {
+        "text": "Bruno sorts the DNS access and renews the staging certificate himself by Tuesday 2026-11-10 at 17:00 UK time, then tells Aiko it's done.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "We'll get the cert sorted before the 12th.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

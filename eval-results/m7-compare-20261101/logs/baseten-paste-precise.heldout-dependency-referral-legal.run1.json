@@ -1,0 +1,643 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 1,
+  "scenario": "heldout-dependency-referral-legal",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-dependency-referral-legal:seg:0",
+      "text": "Referral program. The landing page is built, the reward logic is tested."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:1",
+      "text": "Fifty dollars credit for the referrer, a free month for the new account."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:2",
+      "text": "And the cash option for partners. That's the part people actually asked for."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:3",
+      "text": "Right. So we launch the referral program once legal is done."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:4",
+      "text": "Makes sense. I'll have the launch email ready so we can go the same day."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:5",
+      "text": "I'll keep the partner sign-up form hidden until then."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:6",
+      "text": "Sienna, can you also brief support on the credit rules?"
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:7",
+      "text": "Yes, I'll do a short doc for them."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:8",
+      "text": "One thing. Do we cap referrals per account?"
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:9",
+      "text": "Ten per month. It's already in the reward logic."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:10",
+      "text": "Good."
+    },
+    {
+      "id": "heldout-dependency-referral-legal:seg:11",
+      "text": "OK. Thanks."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:0",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 0,
+        "kind": "assumption",
+        "statement": "We will launch the referral program once legal is done.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:0:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:3",
+          "quote": "So we launch the referral program once legal is done."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:1",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Sienna will have the launch email ready so we can go the same day.",
+        "ownerText": "Sienna",
+        "deadlineText": "the same day",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:1:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:4",
+          "quote": "I'll have the launch email ready so we can go the same day."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:2",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Tomas will keep the partner sign-up form hidden until legal is done.",
+        "ownerText": "Tomas",
+        "deadlineText": "until then",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:2:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:5",
+          "quote": "I'll keep the partner sign-up form hidden until then."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:3",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Sienna will brief support on the credit rules with a short doc.",
+        "ownerText": "Sienna",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:3:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:6",
+          "quote": "Sienna, can you also brief support on the credit rules?"
+        },
+        {
+          "id": "heldout-dependency-referral-legal:dec:3:ev:1",
+          "decisionId": "heldout-dependency-referral-legal:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:7",
+          "quote": "Yes, I'll do a short doc for them."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-dependency-referral-legal:dec:4",
+        "meetingId": "heldout-dependency-referral-legal",
+        "idx": 4,
+        "kind": "decision",
+        "statement": "Referrals are capped at ten per month.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-dependency-referral-legal:dec:4:ev:0",
+          "decisionId": "heldout-dependency-referral-legal:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-dependency-referral-legal:seg:9",
+          "quote": "Ten per month. It's already in the reward logic."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-dependency-referral-legal:cand:0",
+      "dimension": "dependency",
+      "mismatch": "what-legal-done-means",
+      "probeId": "heldout-dependency-referral-legal:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-dependency-referral-legal:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-dependency-referral-legal:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-dependency-referral-legal:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-dependency-referral-legal:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-dependency-referral-legal:cand:0:probe:0",
+      "stem": "Legal has not sent formal paperwork, but someone in Legal writes on Slack Tuesday that the referral program 'looks good'. What happens next?",
+      "options": [
+        {
+          "id": "heldout-dependency-referral-legal:cand:0:probe:0:opt:0",
+          "text": "We treat that Slack message as the go-ahead and launch the referral program"
+        },
+        {
+          "id": "heldout-dependency-referral-legal:cand:0:probe:0:opt:1",
+          "text": "We hold launch until we have formal written sign-off from Legal counsel specifically approving the cash option"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rafael",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sienna",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomas",
+          "choice": "option",
+          "optionId": "heldout-dependency-referral-legal:cand:0:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-dependency-referral-legal:cand:1:probe:0",
+      "stem": "Suppose Rafael messages on Wednesday that Legal has cleared the referral program to launch, but Legal has not yet reviewed the launch email wording. What happens with the email on Wednesday?",
+      "options": [
+        {
+          "id": "heldout-dependency-referral-legal:cand:1:probe:0:opt:0",
+          "text": "Sienna sends her finished draft that Wednesday since the program itself is cleared"
+        },
+        {
+          "id": "heldout-dependency-referral-legal:cand:1:probe:0:opt:1",
+          "text": "Sienna holds the email past Wednesday until Legal reviews and approves the email copy"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rafael",
+          "choice": "option",
+          "optionId": "heldout-dependency-referral-legal:cand:1:probe:0:opt:0"
+        },
+        {
+          "participantId": "Sienna",
+          "choice": "option",
+          "optionId": "heldout-dependency-referral-legal:cand:1:probe:0:opt:0"
+        },
+        {
+          "participantId": "Tomas",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-dependency-referral-legal:cand:2:probe:0",
+      "stem": "If on Tuesday Rafael tells Tomas that Legal gave a verbal OK on the cash option and the formal email will come later, what will Tomas do about the partner sign-up form?",
+      "options": [
+        {
+          "id": "heldout-dependency-referral-legal:cand:2:probe:0:opt:0",
+          "text": "Make the form visible right away based on Rafael passing along the verbal heads-up"
+        },
+        {
+          "id": "heldout-dependency-referral-legal:cand:2:probe:0:opt:1",
+          "text": "Keep the form hidden until formal written clearance for the cash option is received"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Rafael",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sienna",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomas",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 12554,
+          "inputTokens": 1220,
+          "outputTokens": 3077,
+          "reasoningTokens": 2678,
+          "costUsd": 0.01333505,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 12938,
+          "inputTokens": 1732,
+          "outputTokens": 3281,
+          "reasoningTokens": 2945,
+          "costUsd": 0.01610925,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3528,
+          "inputTokens": 825,
+          "outputTokens": 809,
+          "reasoningTokens": 721,
+          "costUsd": 0.003906300000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 3566,
+          "inputTokens": 606,
+          "outputTokens": 827,
+          "reasoningTokens": 750,
+          "costUsd": 0.0038498499999999997,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 4195,
+          "inputTokens": 859,
+          "outputTokens": 1020,
+          "reasoningTokens": 923,
+          "costUsd": 0.0048455500000000006,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1821,
+          "inputTokens": 622,
+          "outputTokens": 293,
+          "reasoningTokens": 239,
+          "costUsd": 0.00160035,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3297,
+          "inputTokens": 840,
+          "outputTokens": 768,
+          "reasoningTokens": 671,
+          "costUsd": 0.0037508000000000003,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1693,
+          "inputTokens": 610,
+          "outputTokens": 255,
+          "reasoningTokens": 195,
+          "costUsd": 0.00142385,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2866,
+          "inputTokens": 309,
+          "outputTokens": 678,
+          "reasoningTokens": 643,
+          "costUsd": 0.00314345,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2791,
+          "inputTokens": 303,
+          "outputTokens": 592,
+          "reasoningTokens": 553,
+          "costUsd": 0.00277045,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1495,
+          "inputTokens": 321,
+          "outputTokens": 407,
+          "reasoningTokens": 366,
+          "costUsd": 0.0020067,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1802,
+          "inputTokens": 312,
+          "outputTokens": 438,
+          "reasoningTokens": 394,
+          "costUsd": 0.0021271999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2153,
+          "inputTokens": 306,
+          "outputTokens": 516,
+          "reasoningTokens": 480,
+          "costUsd": 0.0024511999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 6841,
+          "inputTokens": 324,
+          "outputTokens": 1685,
+          "reasoningTokens": 1645,
+          "costUsd": 0.00744195,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2040,
+          "inputTokens": 312,
+          "outputTokens": 622,
+          "reasoningTokens": 582,
+          "costUsd": 0.0029092,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1866,
+          "inputTokens": 306,
+          "outputTokens": 394,
+          "reasoningTokens": 359,
+          "costUsd": 0.0019327,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1657,
+          "inputTokens": 324,
+          "outputTokens": 467,
+          "reasoningTokens": 431,
+          "costUsd": 0.00226545,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "id": "heldout-sarcasm-friday-launch",
+  "title": "Mobile release on Friday",
+  "set": "heldout",
+  "category": "sarcasm",
+  "heldAt": "2026-11-03T10:00:00-08:00",
+  "timezone": "America/Los_Angeles",
+  "participants": ["Nadia", "Theo", "Ruben"],
+  "transcript": "[00:00] Nadia: Marketing booked the app store feature for this weekend. They want version 3 out on Friday.\n[00:07] Theo: The offline mode still crashes on older Android phones.\n[00:11] Ruben: And App Store review has been taking two days lately.\n[00:16] Nadia: I know. Can we make Friday?\n[00:20] Theo: Sure, Friday, what could go wrong.\n[00:24] Ruben: Ha. I'll prep the store listing either way.\n[00:28] Nadia: Great, I'll tell marketing Friday is on.\n[00:32] Theo: I'll keep working the crash.\n[00:36] Ruben: Screenshots are done, by the way. Just need the release notes.\n[00:41] Nadia: I'll write those today.\n",
+  "expectedDecisions": [
+    {
+      "id": "v3-release",
+      "kind": "commitment",
+      "statement": "Version 3 of the mobile app ships on Friday.",
+      "owner": "Theo",
+      "deadline": "Friday",
+      "quotes": [
+        "Can we make Friday?",
+        "Sure, Friday, what could go wrong.",
+        "I'll tell marketing Friday is on."
+      ]
+    },
+    {
+      "id": "store-listing",
+      "kind": "commitment",
+      "statement": "Ruben prepares the store listing.",
+      "owner": "Ruben",
+      "deadline": null,
+      "quotes": ["I'll prep the store listing either way."]
+    },
+    {
+      "id": "release-notes",
+      "kind": "commitment",
+      "statement": "Nadia writes the release notes today.",
+      "owner": "Nadia",
+      "deadline": "today",
+      "quotes": ["I'll write those today."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Nadia",
+      "readings": [
+        {
+          "decision": "v3-release",
+          "dimension": "deadline",
+          "reading": "Submitted for review in time to be live on Friday 6 November, for the weekend feature."
+        }
+      ]
+    },
+    {
+      "participant": "Theo",
+      "readings": [
+        {
+          "decision": "v3-release",
+          "dimension": "deadline",
+          "reading": "Not Friday. Realistically Wednesday 11 November, after the Android crash fix and two days of review."
+        }
+      ]
+    },
+    {
+      "participant": "Ruben",
+      "readings": [
+        {
+          "decision": "v3-release",
+          "dimension": "deadline",
+          "reading": "Uncertain: Friday 6 November only if the crash is fixed by Wednesday, otherwise the week after."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "sarcastic-friday",
+      "decision": "v3-release",
+      "dimension": "deadline",
+      "note": "Sarcasm: Nadia takes 'Sure, Friday' as a commitment; Theo meant it isn't realistic; Ruben treats it as conditional."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Ruben: \"I'll prep the store listing either way.\"",
+      "Nadia: \"I'll write those today.\""
+    ],
+    "confirmed": [
+      "Version 3 is submitted for review on Monday 2026-11-09 and released by Wednesday 2026-11-11; Nadia moves the store feature to that weekend."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "sarcastic-friday",
+      "precise": {
+        "text": "Version 3 is submitted for review on Monday 2026-11-09 and released by Wednesday 2026-11-11. Nadia asks marketing to move the store feature one week.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "We'll try for Friday and see how it goes.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

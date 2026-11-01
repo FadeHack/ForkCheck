@@ -1,0 +1,695 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 0,
+  "scenario": "heldout-sarcasm-friday-launch",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:0",
+      "text": "Marketing booked the app store feature for this weekend. They want version 3 out on Friday."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:1",
+      "text": "The offline mode still crashes on older Android phones."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:2",
+      "text": "And App Store review has been taking two days lately."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:3",
+      "text": "I know. Can we make Friday?"
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:4",
+      "text": "Sure, Friday, what could go wrong."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:5",
+      "text": "Ha. I'll prep the store listing either way."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:6",
+      "text": "Great, I'll tell marketing Friday is on."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:7",
+      "text": "I'll keep working the crash."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:8",
+      "text": "Screenshots are done, by the way. Just need the release notes."
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:seg:9",
+      "text": "I'll write those today."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:0",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "Release version 3 on Friday",
+        "ownerText": null,
+        "deadlineText": "on Friday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "debated"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:0:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:0",
+          "quote": "They want version 3 out on Friday."
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:0:ev:1",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:4",
+          "quote": "Sure, Friday, what could go wrong."
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:0:ev:2",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:6",
+          "quote": "Great, I'll tell marketing Friday is on."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:1",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Nadia will tell marketing Friday is on",
+        "ownerText": "Nadia",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:1:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:6",
+          "quote": "Great, I'll tell marketing Friday is on."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:2",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Ruben will prep the store listing",
+        "ownerText": "Ruben",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:2:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:5",
+          "quote": "I'll prep the store listing either way."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:3",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Theo will keep working on the offline mode crash",
+        "ownerText": "Theo",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:3:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:7",
+          "quote": "I'll keep working the crash."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:4",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Nadia will write the release notes today",
+        "ownerText": "Nadia",
+        "deadlineText": "today",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:4:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:8",
+          "quote": "Just need the release notes."
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:4:ev:1",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:9",
+          "quote": "I'll write those today."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:5",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 5,
+        "kind": "open_item",
+        "statement": "Offline mode still crashes on older Android phones",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "unresolved"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:5:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:5",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:1",
+          "quote": "The offline mode still crashes on older Android phones."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-sarcasm-friday-launch:dec:6",
+        "meetingId": "heldout-sarcasm-friday-launch",
+        "idx": 6,
+        "kind": "assumption",
+        "statement": "App Store review will take two days",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "unresolved"
+      },
+      "evidence": [
+        {
+          "id": "heldout-sarcasm-friday-launch:dec:6:ev:0",
+          "decisionId": "heldout-sarcasm-friday-launch:dec:6",
+          "resolutionId": null,
+          "segmentId": "heldout-sarcasm-friday-launch:seg:2",
+          "quote": "And App Store review has been taking two days lately."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-sarcasm-friday-launch:cand:0",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-sarcasm-friday-launch:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-sarcasm-friday-launch:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-sarcasm-friday-launch:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-sarcasm-friday-launch:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-sarcasm-friday-launch:cand:0:probe:0",
+      "stem": "If Theo's fix for the offline crash on older Android phones is still pending on Thursday, what will Nadia have told marketing about Friday?",
+      "options": [
+        {
+          "id": "heldout-sarcasm-friday-launch:cand:0:probe:0:opt:0",
+          "text": "That Friday is locked for version 3 and will proceed even if that crash is unresolved"
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:cand:0:probe:0:opt:1",
+          "text": "That Friday is the intended target but is only confirmed once that crash is fixed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Nadia",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Theo",
+          "choice": "option",
+          "optionId": "heldout-sarcasm-friday-launch:cand:0:probe:0:opt:1"
+        },
+        {
+          "participantId": "Ruben",
+          "choice": "option",
+          "optionId": "heldout-sarcasm-friday-launch:cand:0:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-sarcasm-friday-launch:cand:1:probe:0",
+      "stem": "For \"Ruben will prep the store listing\", what has to exist by the deadline?",
+      "options": [
+        {
+          "id": "heldout-sarcasm-friday-launch:cand:1:probe:0:opt:0",
+          "text": "A completed listing draft ready by end of day Tuesday the 3rd so it can be submitted Wednesday for the review period"
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:cand:1:probe:0:opt:1",
+          "text": "A final published listing that goes live for users on Friday the 6th when version 3 launches"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Nadia",
+          "choice": "option",
+          "optionId": "heldout-sarcasm-friday-launch:cand:1:probe:0:opt:0"
+        },
+        {
+          "participantId": "Theo",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Ruben",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-sarcasm-friday-launch:cand:2:probe:0",
+      "stem": "When \"Ruben will prep the store listing\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-sarcasm-friday-launch:cand:2:probe:0:opt:0",
+          "text": "The screenshots and description are updated, and release notes will be added separately later"
+        },
+        {
+          "id": "heldout-sarcasm-friday-launch:cand:2:probe:0:opt:1",
+          "text": "The listing is delivered complete with updated screenshots, description, and Nadia's release notes integrated"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Nadia",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Theo",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Ruben",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 9837,
+          "inputTokens": 1146,
+          "outputTokens": 3281,
+          "reasoningTokens": 2744,
+          "costUsd": 0.01481355,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 12253,
+          "inputTokens": 1722,
+          "outputTokens": 2477,
+          "reasoningTokens": 2178,
+          "costUsd": 0.01267975,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 4299,
+          "inputTokens": 819,
+          "outputTokens": 965,
+          "reasoningTokens": 879,
+          "costUsd": 0.0045618,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2181,
+          "inputTokens": 599,
+          "outputTokens": 249,
+          "reasoningTokens": 194,
+          "costUsd": 0.0013846,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3168,
+          "inputTokens": 699,
+          "outputTokens": 811,
+          "reasoningTokens": 747,
+          "costUsd": 0.0038981,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1604,
+          "inputTokens": 602,
+          "outputTokens": 291,
+          "reasoningTokens": 236,
+          "costUsd": 0.0015668499999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 2581,
+          "inputTokens": 690,
+          "outputTokens": 586,
+          "reasoningTokens": 534,
+          "costUsd": 0.0029306,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1593,
+          "inputTokens": 581,
+          "outputTokens": 298,
+          "reasoningTokens": 227,
+          "costUsd": 0.0015703499999999999,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2717,
+          "inputTokens": 311,
+          "outputTokens": 556,
+          "reasoningTokens": 522,
+          "costUsd": 0.00262745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 4511,
+          "inputTokens": 313,
+          "outputTokens": 905,
+          "reasoningTokens": 857,
+          "costUsd": 0.0041132,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1702,
+          "inputTokens": 313,
+          "outputTokens": 351,
+          "reasoningTokens": 318,
+          "costUsd": 0.0017587,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2624,
+          "inputTokens": 314,
+          "outputTokens": 592,
+          "reasoningTokens": 553,
+          "costUsd": 0.0027841999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1903,
+          "inputTokens": 316,
+          "outputTokens": 330,
+          "reasoningTokens": 292,
+          "costUsd": 0.0016732000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1242,
+          "inputTokens": 316,
+          "outputTokens": 301,
+          "reasoningTokens": 262,
+          "costUsd": 0.00154995,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1063,
+          "inputTokens": 303,
+          "outputTokens": 303,
+          "reasoningTokens": 271,
+          "costUsd": 0.0014014000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1419,
+          "inputTokens": 305,
+          "outputTokens": 294,
+          "reasoningTokens": 258,
+          "costUsd": 0.00150645,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1392,
+          "inputTokens": 305,
+          "outputTokens": 279,
+          "reasoningTokens": 242,
+          "costUsd": 0.0014427,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

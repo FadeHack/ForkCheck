@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "id": "heldout-insufficient-quick-sync",
+  "title": "Quick sync",
+  "set": "heldout",
+  "category": "insufficient",
+  "heldAt": "2026-11-04T16:30:00-05:00",
+  "timezone": "America/New_York",
+  "participants": ["Rhea", "Gustavo"],
+  "transcript": "[00:00] Rhea: Hey, did you see my message about the partner thing?\n[00:05] Gustavo: Yeah, skimmed it. Seems promising.\n[00:09] Rhea: I think so too. Lots to figure out.\n[00:13] Gustavo: Sounds good, let's sync on it.\n[00:17] Rhea: Cool. Talk soon.\n",
+  "expectedDecisions": [],
+  "briefs": [
+    {
+      "participant": "Rhea",
+      "readings": []
+    },
+    {
+      "participant": "Gustavo",
+      "readings": []
+    }
+  ],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": [],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}

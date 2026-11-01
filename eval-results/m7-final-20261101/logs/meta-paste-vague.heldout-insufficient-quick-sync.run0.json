@@ -1,0 +1,122 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 0,
+  "scenario": "heldout-insufficient-quick-sync",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-insufficient-quick-sync:seg:0",
+      "text": "Hey, did you see my message about the partner thing?"
+    },
+    {
+      "id": "heldout-insufficient-quick-sync:seg:1",
+      "text": "Yeah, skimmed it. Seems promising."
+    },
+    {
+      "id": "heldout-insufficient-quick-sync:seg:2",
+      "text": "I think so too. Lots to figure out."
+    },
+    {
+      "id": "heldout-insufficient-quick-sync:seg:3",
+      "text": "Sounds good, let's sync on it."
+    },
+    {
+      "id": "heldout-insufficient-quick-sync:seg:4",
+      "text": "Cool. Talk soon."
+    }
+  ],
+  "decisions": [],
+  "candidates": [],
+  "rounds": [],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-insufficient-quick-sync",
+    "title": "Quick sync",
+    "heldAt": "2026-11-04T16:30:00-05:00",
+    "generatedAt": "2026-11-04T16:30:00-05:00",
+    "participants": [
+      {
+        "id": "Rhea",
+        "meetingId": "heldout-insufficient-quick-sync",
+        "displayName": "Rhea",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Gustavo",
+        "meetingId": "heldout-insufficient-quick-sync",
+        "displayName": "Gustavo",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [],
+    "proseDraft": "No confirmed resolutions were provided in the items. No open matters were provided in the items."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 3457,
+          "inputTokens": 841,
+          "outputTokens": 749,
+          "reasoningTokens": 734,
+          "costUsd": 0.0042345,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 1593,
+          "inputTokens": 1059,
+          "outputTokens": 273,
+          "reasoningTokens": 260,
+          "costUsd": 0.002484,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 3547,
+          "inputTokens": 346,
+          "outputTokens": 786,
+          "reasoningTokens": 753,
+          "costUsd": 0.0035079,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

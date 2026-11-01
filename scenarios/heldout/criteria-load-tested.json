@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "id": "heldout-criteria-load-tested",
+  "title": "Search endpoint after load testing",
+  "set": "heldout",
+  "category": "criteria",
+  "heldAt": "2026-11-05T09:30:00+01:00",
+  "timezone": "Europe/Berlin",
+  "participants": ["Mirela", "Kofi", "Jun"],
+  "transcript": "[00:00] Mirela: The new search endpoint is merged. Relevance looks much better in the side-by-side.\n[00:06] Kofi: Latency is fine on my machine, but that's a hundred documents, not two million.\n[00:12] Jun: The index on production is a lot bigger, yes.\n[00:16] Mirela: So, plan: once it's load tested, we switch traffic over.\n[00:21] Kofi: OK. I'll do the load test this week.\n[00:25] Jun: I'll keep the old endpoint running for two weeks after the switch, in case we need to roll back.\n[00:33] Mirela: Good. And the switch happens behind the search flag, not a deploy.\n[00:39] Kofi: Yes, flag only.\n[00:43] Jun: Should we tell the mobile team? Their app calls search directly.\n[00:48] Mirela: I'll message them today.\n[00:52] Kofi: Thanks.\n[00:56] Mirela: That's all. Thanks.\n",
+  "expectedDecisions": [
+    {
+      "id": "load-test-gate",
+      "kind": "decision",
+      "statement": "Search traffic switches to the new endpoint once it has been load tested.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["once it's load tested, we switch traffic over."]
+    },
+    {
+      "id": "load-test",
+      "kind": "commitment",
+      "statement": "Kofi runs the load test on the new search endpoint this week.",
+      "owner": "Kofi",
+      "deadline": "this week",
+      "quotes": ["I'll do the load test this week."]
+    },
+    {
+      "id": "old-endpoint",
+      "kind": "commitment",
+      "statement": "Jun keeps the old endpoint running for two weeks after the switch.",
+      "owner": "Jun",
+      "deadline": null,
+      "quotes": ["I'll keep the old endpoint running for two weeks after the switch"]
+    },
+    {
+      "id": "mobile-heads-up",
+      "kind": "commitment",
+      "statement": "Mirela tells the mobile team today.",
+      "owner": "Mirela",
+      "deadline": "today",
+      "quotes": ["I'll message them today."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Mirela",
+      "readings": [
+        {
+          "decision": "load-test-gate",
+          "dimension": "criteria",
+          "reading": "Twice the current peak traffic on a production-sized index for 30 minutes, with p95 under 300 ms."
+        }
+      ]
+    },
+    {
+      "participant": "Kofi",
+      "readings": [
+        {
+          "decision": "load-test-gate",
+          "dimension": "criteria",
+          "reading": "A short run at today's peak traffic on staging; if p95 stays under 300 ms, it passes."
+        }
+      ]
+    },
+    {
+      "participant": "Jun",
+      "readings": [
+        {
+          "decision": "load-test-gate",
+          "dimension": "criteria",
+          "reading": "Twice the current peak on a production-sized index for 30 minutes, p95 under 300 ms."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "what-load-tested-means",
+      "decision": "load-test-gate",
+      "dimension": "criteria",
+      "note": "'Load tested': Kofi plans a short run at current peak on staging; Mirela and Jun expect 2x peak for 30 minutes on a production-sized index."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Mirela: \"once it's load tested, we switch traffic over.\"",
+      "Kofi: \"I'll do the load test this week.\"",
+      "Mirela: \"I'll message them today.\""
+    ],
+    "confirmed": [
+      "Traffic switches only after a 30-minute test at twice current peak on a production-sized index keeps p95 under 300 ms; Kofi runs it by Friday 2026-11-06."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "what-load-tested-means",
+      "precise": {
+        "text": "The switch happens only after a 30-minute run at twice today's peak on a production-sized index keeps p95 below 300 ms. Kofi runs it by Friday 2026-11-06.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "We switch once Kofi has load tested it.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

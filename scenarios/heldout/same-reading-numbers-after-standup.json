@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "id": "heldout-same-reading-numbers-after-standup",
+  "title": "Signup numbers after standup",
+  "set": "heldout",
+  "category": "same_reading",
+  "heldAt": "2026-11-05T09:15:00+00:00",
+  "timezone": "Europe/Dublin",
+  "participants": ["Hamid", "Beatriz", "Colm"],
+  "transcript": "[00:00] Hamid: Quick one before standup. The board deck is due tomorrow and I'm missing the signup numbers.\n[00:07] Colm: The dashboard broke when we renamed the events. I'll pull them by hand.\n[00:13] Hamid: Can you send me the numbers after standup?\n[00:17] Colm: Yes, I'll send them after standup.\n[00:21] Beatriz: Include the trial-to-paid figure too. Last deck had it.\n[00:25] Colm: Will do.\n[00:29] Beatriz: And I'll fix the dashboard this afternoon, it's just the event names.\n[00:35] Hamid: Perfect. See you in standup.\n",
+  "expectedDecisions": [
+    {
+      "id": "signup-numbers",
+      "kind": "commitment",
+      "statement": "Colm sends Hamid the signup numbers after standup.",
+      "owner": "Colm",
+      "deadline": "after standup",
+      "quotes": ["Can you send me the numbers after standup?", "Yes, I'll send them after standup."]
+    },
+    {
+      "id": "dashboard-fix",
+      "kind": "commitment",
+      "statement": "Beatriz fixes the signup dashboard this afternoon.",
+      "owner": "Beatriz",
+      "deadline": "this afternoon",
+      "quotes": ["I'll fix the dashboard this afternoon"]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Hamid",
+      "readings": [
+        {
+          "decision": "signup-numbers",
+          "dimension": "deadline",
+          "reading": "This morning, by about 10:00, right after today's standup."
+        },
+        {
+          "decision": "signup-numbers",
+          "dimension": "scope",
+          "reading": "Weekly signups for October plus the trial-to-paid conversion rate, in a sheet."
+        }
+      ]
+    },
+    {
+      "participant": "Beatriz",
+      "readings": [
+        {
+          "decision": "signup-numbers",
+          "dimension": "deadline",
+          "reading": "This morning, by about 10:00, right after today's standup."
+        },
+        {
+          "decision": "signup-numbers",
+          "dimension": "scope",
+          "reading": "Weekly signups for October plus the trial-to-paid conversion rate, in a sheet."
+        }
+      ]
+    },
+    {
+      "participant": "Colm",
+      "readings": [
+        {
+          "decision": "signup-numbers",
+          "dimension": "deadline",
+          "reading": "This morning, by about 10:00, right after today's standup."
+        },
+        {
+          "decision": "signup-numbers",
+          "dimension": "scope",
+          "reading": "Weekly signups for October plus the trial-to-paid conversion rate, in a sheet."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": [
+      "Colm: \"Yes, I'll send them after standup.\"",
+      "Beatriz: \"I'll fix the dashboard this afternoon\""
+    ],
+    "confirmed": [],
+    "unresolved": []
+  },
+  "scriptedResolutions": []
+}

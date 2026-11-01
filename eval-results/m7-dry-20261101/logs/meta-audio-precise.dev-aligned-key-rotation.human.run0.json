@@ -1,0 +1,1058 @@
+{
+  "runId": "m7-dry-20261101",
+  "run": 0,
+  "scenario": "dev-aligned-key-rotation",
+  "provider": "meta",
+  "source": "audio",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "dev-aligned-key-rotation:seg:0",
+      "text": "teaching keys the contractor who had had access finished last week. So we rotate everything he could see."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:1",
+      "text": "That's the payment sandbox key, the email provider key and the two internal service tokens. Right Matthew, can you rotate all four by Tuesday November third seventeen UTC."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:2",
+      "text": "Yes, Tuesday the third seventeen UTC all four."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:3",
+      "text": "Done. Means the old keys are revoked at the provider and not just replaced and the CICD are updated so the nightly build passes."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:4",
+      "text": "Got it. Revoked at the provider, CI secrets updated, nightly green"
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:5",
+      "text": "I will check the will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:6",
+      "text": "Okay, I will post in the infra channel as each one is done."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:7",
+      "text": "Thanks. Production keys are out of scope. He never had access to those"
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:8",
+      "text": "Understood. Staging only."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:9",
+      "text": "And if a rotation breaks something, roll forward, don't restore the old key."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:10",
+      "text": "Makes sense. The old one will be revoked anyway."
+    },
+    {
+      "id": "dev-aligned-key-rotation:seg:11",
+      "text": "Great. That's all I had."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "dev-aligned-key-rotation:dec:0",
+        "meetingId": "dev-aligned-key-rotation",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Rotate the payment sandbox key, the email provider key and the two internal service tokens by Tuesday November third seventeen UTC.",
+        "ownerText": null,
+        "deadlineText": "by Tuesday November third seventeen UTC",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-aligned-key-rotation:dec:0:ev:0",
+          "decisionId": "dev-aligned-key-rotation:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:1",
+          "quote": "That's the payment sandbox key, the email provider key and the two internal service tokens. Right Matthew, can you rotate all four by Tuesday November third seventeen UTC."
+        },
+        {
+          "id": "dev-aligned-key-rotation:dec:0:ev:1",
+          "decisionId": "dev-aligned-key-rotation:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:2",
+          "quote": "Yes, Tuesday the third seventeen UTC all four."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-aligned-key-rotation:dec:1",
+        "meetingId": "dev-aligned-key-rotation",
+        "idx": 1,
+        "kind": "decision",
+        "statement": "Old keys are revoked at the provider and the CICD are updated so the nightly build passes.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-aligned-key-rotation:dec:1:ev:0",
+          "decisionId": "dev-aligned-key-rotation:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:3",
+          "quote": "Means the old keys are revoked at the provider and not just replaced and the CICD are updated so the nightly build passes."
+        },
+        {
+          "id": "dev-aligned-key-rotation:dec:1:ev:1",
+          "decisionId": "dev-aligned-key-rotation:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:4",
+          "quote": "Revoked at the provider, CI secrets updated, nightly green"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-aligned-key-rotation:dec:2",
+        "meetingId": "dev-aligned-key-rotation",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Grace will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked.",
+        "ownerText": "Grace",
+        "deadlineText": "on Wednesday morning",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-aligned-key-rotation:dec:2:ev:0",
+          "decisionId": "dev-aligned-key-rotation:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:5",
+          "quote": "I will check the will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-aligned-key-rotation:dec:3",
+        "meetingId": "dev-aligned-key-rotation",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Mateo will post in the infra channel as each one is done.",
+        "ownerText": "Mateo",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-aligned-key-rotation:dec:3:ev:0",
+          "decisionId": "dev-aligned-key-rotation:dec:3",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:6",
+          "quote": "Okay, I will post in the infra channel as each one is done."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-aligned-key-rotation:dec:4",
+        "meetingId": "dev-aligned-key-rotation",
+        "idx": 4,
+        "kind": "decision",
+        "statement": "Production keys are out of scope and rotation is staging only.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-aligned-key-rotation:dec:4:ev:0",
+          "decisionId": "dev-aligned-key-rotation:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:7",
+          "quote": "Production keys are out of scope."
+        },
+        {
+          "id": "dev-aligned-key-rotation:dec:4:ev:1",
+          "decisionId": "dev-aligned-key-rotation:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:8",
+          "quote": "Understood. Staging only."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-aligned-key-rotation:dec:5",
+        "meetingId": "dev-aligned-key-rotation",
+        "idx": 5,
+        "kind": "decision",
+        "statement": "If a rotation breaks something, roll forward and do not restore the old key.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-aligned-key-rotation:dec:5:ev:0",
+          "decisionId": "dev-aligned-key-rotation:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:9",
+          "quote": "And if a rotation breaks something, roll forward, don't restore the old key."
+        },
+        {
+          "id": "dev-aligned-key-rotation:dec:5:ev:1",
+          "decisionId": "dev-aligned-key-rotation:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-aligned-key-rotation:seg:10",
+          "quote": "Makes sense. The old one will be revoked anyway."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-aligned-key-rotation:cand:0",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:0:t0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:2:t0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:3",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:3:probe:0"
+    },
+    {
+      "id": "dev-aligned-key-rotation:cand:4",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "dev-aligned-key-rotation:cand:4:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-aligned-key-rotation:cand:1:probe:0",
+      "stem": "When Mateo performs the staging key rotation, what happens first?",
+      "options": [
+        {
+          "id": "dev-aligned-key-rotation:cand:1:probe:0:opt:0",
+          "text": "Invalidate the prior credentials with the host, then configure the pipeline to use the replacement credentials"
+        },
+        {
+          "id": "dev-aligned-key-rotation:cand:1:probe:0:opt:1",
+          "text": "Configure the pipeline to use the replacement credentials, then invalidate the prior credentials with the host"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Grace",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Mateo",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:0:t0",
+      "stem": "For \"Rotate the payment sandbox key, the email provider key and the two internal service tokens by Tuesday November third seventeen UTC\", who does it on the day it happens?",
+      "options": [
+        {
+          "id": "dev-aligned-key-rotation:cand:0:t0:opt:0",
+          "text": "Mateo does it"
+        },
+        {
+          "id": "dev-aligned-key-rotation:cand:0:t0:opt:1",
+          "text": "Grace does it"
+        },
+        {
+          "id": "dev-aligned-key-rotation:cand:0:t0:opt:2",
+          "text": "No one is named yet"
+        },
+        {
+          "id": "dev-aligned-key-rotation:cand:0:t0:opt:3",
+          "text": "Mateo and Grace share it"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Grace",
+          "choice": "option",
+          "optionId": "dev-aligned-key-rotation:cand:0:t0:opt:0"
+        },
+        {
+          "participantId": "Mateo",
+          "choice": "option",
+          "optionId": "dev-aligned-key-rotation:cand:0:t0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:2:t0",
+      "stem": "For \"Old keys are revoked at the provider and the CICD are updated so the nightly build passes\", which check has to pass first?",
+      "options": [
+        {
+          "id": "dev-aligned-key-rotation:cand:2:t0:opt:0",
+          "text": "A quick smoke test of the main flows"
+        },
+        {
+          "id": "dev-aligned-key-rotation:cand:2:t0:opt:1",
+          "text": "A full regression pass"
+        },
+        {
+          "id": "dev-aligned-key-rotation:cand:2:t0:opt:2",
+          "text": "A full regression plus extra checks for what changed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Grace",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Mateo",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:3:probe:0",
+      "stem": "When \"Mateo will post in the infra channel as each one is done\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "dev-aligned-key-rotation:cand:3:probe:0:opt:0",
+          "text": "A successor key has been created and coexists with the current one"
+        },
+        {
+          "id": "dev-aligned-key-rotation:cand:3:probe:0:opt:1",
+          "text": "The current key has been retired and automated jobs run on the successor"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Grace",
+          "choice": "option",
+          "optionId": "dev-aligned-key-rotation:cand:3:probe:0:opt:1"
+        },
+        {
+          "participantId": "Mateo",
+          "choice": "option",
+          "optionId": "dev-aligned-key-rotation:cand:3:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "dev-aligned-key-rotation:cand:4:probe:0",
+      "stem": "After Grace finishes the dashboard check on Wednesday morning, what happens to the confirmation?",
+      "options": [
+        {
+          "id": "dev-aligned-key-rotation:cand:4:probe:0:opt:0",
+          "text": "It is shared where the full infra group can read it"
+        },
+        {
+          "id": "dev-aligned-key-rotation:cand:4:probe:0:opt:1",
+          "text": "It is sent to Mateo alone as a private update"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Grace",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Mateo",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "dev-aligned-key-rotation",
+    "title": "Rotate the staging keys by Tuesday",
+    "heldAt": "2026-10-30T11:00:00Z",
+    "generatedAt": "2026-10-30T11:00:00Z",
+    "participants": [
+      {
+        "id": "Grace",
+        "meetingId": "dev-aligned-key-rotation",
+        "displayName": "Grace",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Mateo",
+        "meetingId": "dev-aligned-key-rotation",
+        "displayName": "Mateo",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "dev-aligned-key-rotation:item:0",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "That's the payment sandbox key, the email provider key and the two internal service tokens. Right Matthew, can you rotate all four by Tuesday November third seventeen UTC.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:1",
+            "quote": "That's the payment sandbox key, the email provider key and the two internal service tokens. Right Matthew, can you rotate all four by Tuesday November third seventeen UTC.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:1",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "Yes, Tuesday the third seventeen UTC all four.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:2",
+            "quote": "Yes, Tuesday the third seventeen UTC all four.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:2",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "Means the old keys are revoked at the provider and not just replaced and the CICD are updated so the nightly build passes.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:3",
+            "quote": "Means the old keys are revoked at the provider and not just replaced and the CICD are updated so the nightly build passes.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:3",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "Revoked at the provider, CI secrets updated, nightly green",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:4",
+            "quote": "Revoked at the provider, CI secrets updated, nightly green",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:4",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "I will check the will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:5",
+            "quote": "I will check the will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:5",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "Okay, I will post in the infra channel as each one is done.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:6",
+            "quote": "Okay, I will post in the infra channel as each one is done.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:6",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "Production keys are out of scope.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:7",
+            "quote": "Production keys are out of scope.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:7",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "Understood. Staging only.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:8",
+            "quote": "Understood. Staging only.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:8",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "And if a rotation breaks something, roll forward, don't restore the old key.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:9",
+            "quote": "And if a rotation breaks something, roll forward, don't restore the old key.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "dev-aligned-key-rotation:item:9",
+        "meetingId": "dev-aligned-key-rotation",
+        "category": "stated",
+        "text": "Makes sense. The old one will be revoked anyway.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "dev-aligned-key-rotation:seg:10",
+            "quote": "Makes sense. The old one will be revoked anyway.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "No resolutions were listed as confirmed and nothing was listed as still open. The statements described rotating the four staging keys by Tuesday November third seventeen UTC, with production keys out of scope.\n\nStated in the meeting\n- Stated to Matthew was the request to rotate the payment sandbox key, the email provider key and the two internal service tokens by Tuesday November third seventeen UTC.\n- Stated yes to rotating all four by Tuesday the third seventeen UTC.\n- Stated that rotation means the old keys are revoked at the provider and not just replaced and the CICD are updated so the nightly build passes.\n- Stated that the old keys are revoked at the provider, CI secrets are updated and nightly is green.\n- Stated that the provider dashboards will be checked on Wednesday morning to confirm the old keys show as revoked.\n- Stated that an update will be posted in the infra channel as each one is done.\n- Stated that production keys are out of scope.\n- Stated that it is understood to be staging only.\n- Stated that if a rotation breaks something to roll forward and not restore the old key.\n- Stated that it makes sense and the old one will be revoked anyway."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 31325,
+          "inputTokens": 1078,
+          "outputTokens": 8583,
+          "reasoningTokens": 7912,
+          "costUsd": 0.03713775,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 33372,
+          "inputTokens": 1721,
+          "outputTokens": 7981,
+          "reasoningTokens": 7478,
+          "costUsd": 0.035242199999999994,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 7488,
+          "inputTokens": 698,
+          "outputTokens": 1652,
+          "reasoningTokens": 1573,
+          "costUsd": 0.0078935,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2950,
+          "inputTokens": 436,
+          "outputTokens": 629,
+          "reasoningTokens": 571,
+          "costUsd": 0.0029531500000000003,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6053,
+          "inputTokens": 568,
+          "outputTokens": 1373,
+          "reasoningTokens": 1312,
+          "costUsd": 0.00613935,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 3980,
+          "inputTokens": 460,
+          "outputTokens": 1070,
+          "reasoningTokens": 1000,
+          "costUsd": 0.0051225,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 20067,
+          "inputTokens": 698,
+          "outputTokens": 3925,
+          "reasoningTokens": 3876,
+          "costUsd": 0.01755375,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 4326,
+          "inputTokens": 448,
+          "outputTokens": 846,
+          "reasoningTokens": 783,
+          "costUsd": 0.0038904,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 5823,
+          "inputTokens": 674,
+          "outputTokens": 1734,
+          "reasoningTokens": 1661,
+          "costUsd": 0.0076653,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 10942,
+          "inputTokens": 754,
+          "outputTokens": 2784,
+          "reasoningTokens": 2715,
+          "costUsd": 0.0127745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2666,
+          "inputTokens": 411,
+          "outputTokens": 554,
+          "reasoningTokens": 481,
+          "costUsd": 0.0026031500000000003,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1848,
+          "inputTokens": 350,
+          "outputTokens": 409,
+          "reasoningTokens": 374,
+          "costUsd": 0.00205145,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2637,
+          "inputTokens": 350,
+          "outputTokens": 643,
+          "reasoningTokens": 610,
+          "costUsd": 0.00304595,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1652,
+          "inputTokens": 359,
+          "outputTokens": 329,
+          "reasoningTokens": 301,
+          "costUsd": 0.0017227,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1328,
+          "inputTokens": 359,
+          "outputTokens": 241,
+          "reasoningTokens": 210,
+          "costUsd": 0.0013487,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1858,
+          "inputTokens": 355,
+          "outputTokens": 426,
+          "reasoningTokens": 392,
+          "costUsd": 0.00212995,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1845,
+          "inputTokens": 355,
+          "outputTokens": 395,
+          "reasoningTokens": 362,
+          "costUsd": 0.0019982,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1791,
+          "inputTokens": 354,
+          "outputTokens": 367,
+          "reasoningTokens": 332,
+          "costUsd": 0.00187795,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1877,
+          "inputTokens": 354,
+          "outputTokens": 407,
+          "reasoningTokens": 371,
+          "costUsd": 0.00190715,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1331,
+          "inputTokens": 340,
+          "outputTokens": 252,
+          "reasoningTokens": 215,
+          "costUsd": 0.0013717,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1637,
+          "inputTokens": 340,
+          "outputTokens": 355,
+          "reasoningTokens": 315,
+          "costUsd": 0.00166865,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 10384,
+          "inputTokens": 645,
+          "outputTokens": 2502,
+          "reasoningTokens": 2061,
+          "costUsd": 0.01117465,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

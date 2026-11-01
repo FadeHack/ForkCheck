@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "id": "heldout-debated-on-call-rotation",
+  "title": "Follow-the-sun on-call",
+  "set": "heldout",
+  "category": "debated",
+  "heldAt": "2026-11-05T08:00:00+00:00",
+  "timezone": "Europe/London",
+  "participants": ["Petra", "Andile", "Mei"],
+  "transcript": "[00:00] Petra: The on-call survey is in. People in London are getting paged at three in the morning for US traffic.\n[00:08] Andile: Follow-the-sun fixes that. London covers the day here, Austin covers the day there.\n[00:14] Mei: Austin has two people who know the payment system. That's not enough for a rotation.\n[00:21] Andile: We train more. It's six weeks of shadowing.\n[00:25] Mei: Six weeks where incidents take longer. I'm not comfortable with that before the holiday peak.\n[00:32] Petra: Both fair. I don't want to force a decision now.\n[00:37] Andile: Can we at least start the shadowing?\n[00:41] Mei: Shadowing alone I'm fine with.\n[00:45] Petra: OK. Andile, set up shadowing for two Austin engineers. The rotation itself we leave open until January.\n[00:53] Andile: Will do.\n",
+  "expectedDecisions": [
+    {
+      "id": "rotation-model",
+      "kind": "open_item",
+      "statement": "Whether to move to follow-the-sun on-call stays open until January.",
+      "owner": null,
+      "deadline": null,
+      "quotes": ["The rotation itself we leave open until January."]
+    },
+    {
+      "id": "shadowing",
+      "kind": "commitment",
+      "statement": "Andile sets up payment-system shadowing for two Austin engineers.",
+      "owner": "Andile",
+      "deadline": null,
+      "quotes": ["Andile, set up shadowing for two Austin engineers."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Petra",
+      "readings": [
+        {
+          "decision": "shadowing",
+          "dimension": "owner",
+          "reading": "Andile sets it up."
+        }
+      ]
+    },
+    {
+      "participant": "Andile",
+      "readings": [
+        {
+          "decision": "shadowing",
+          "dimension": "owner",
+          "reading": "Andile sets it up."
+        }
+      ]
+    },
+    {
+      "participant": "Mei",
+      "readings": [
+        {
+          "decision": "shadowing",
+          "dimension": "owner",
+          "reading": "Andile sets it up."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [],
+  "expectedRecord": {
+    "stated": ["Petra: \"Andile, set up shadowing for two Austin engineers.\""],
+    "confirmed": [],
+    "unresolved": [
+      "Whether to move on-call to follow-the-sun between London and Austin (debated; left open until January)."
+    ]
+  },
+  "scriptedResolutions": []
+}

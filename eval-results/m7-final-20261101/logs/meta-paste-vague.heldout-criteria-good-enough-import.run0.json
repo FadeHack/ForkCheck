@@ -1,0 +1,565 @@
+{
+  "runId": "m7-final-20261101",
+  "run": 0,
+  "scenario": "heldout-criteria-good-enough-import",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-criteria-good-enough-import:seg:0",
+      "text": "Lindqvist Dental wants to start moving their patient records next week. They're asking about the importer."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:1",
+      "text": "The CSV importer works. It's rough around the edges, but it works."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:2",
+      "text": "Rough how?"
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:3",
+      "text": "Error messages are just row numbers, and it's slow on big files."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:4",
+      "text": "They don't need it perfect. It needs to be good enough for the client to start using."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:5",
+      "text": "Fair. Then I'll get it good enough for them by Tuesday."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:6",
+      "text": "I'll write a short guide on the column format, with a template file."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:7",
+      "text": "Great. I'll tell them Tuesday."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:8",
+      "text": "Do they need the appointment history too, or just patients?"
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:9",
+      "text": "Patients first. Appointments can come later."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:10",
+      "text": "Good, that keeps it simpler."
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:seg:11",
+      "text": "Thanks, all."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-criteria-good-enough-import:dec:0",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Diego will get it good enough for them by Tuesday.",
+        "ownerText": "Diego",
+        "deadlineText": "by Tuesday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-good-enough-import:dec:0:ev:0",
+          "decisionId": "heldout-criteria-good-enough-import:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-good-enough-import:seg:5",
+          "quote": "I'll get it good enough for them by Tuesday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-criteria-good-enough-import:dec:1",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Yusuf will write a short guide on the column format, with a template file.",
+        "ownerText": "Yusuf",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-good-enough-import:dec:1:ev:0",
+          "decisionId": "heldout-criteria-good-enough-import:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-good-enough-import:seg:6",
+          "quote": "I'll write a short guide on the column format, with a template file."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-criteria-good-enough-import:dec:2",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Clara will tell them Tuesday.",
+        "ownerText": "Clara",
+        "deadlineText": "Tuesday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-good-enough-import:dec:2:ev:0",
+          "decisionId": "heldout-criteria-good-enough-import:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-good-enough-import:seg:7",
+          "quote": "I'll tell them Tuesday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-criteria-good-enough-import:dec:3",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "Patients first and Appointments can come later.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-criteria-good-enough-import:dec:3:ev:0",
+          "decisionId": "heldout-criteria-good-enough-import:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-criteria-good-enough-import:seg:9",
+          "quote": "Patients first. Appointments can come later."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-criteria-good-enough-import:cand:0",
+      "dimension": "criteria",
+      "mismatch": "what-good-enough-means",
+      "probeId": "heldout-criteria-good-enough-import:cand:0:t0"
+    },
+    {
+      "id": "heldout-criteria-good-enough-import:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-criteria-good-enough-import:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-criteria-good-enough-import:cand:0:t0",
+      "stem": "For \"Diego will get it good enough for them by Tuesday\", which check has to pass first?",
+      "options": [
+        {
+          "id": "heldout-criteria-good-enough-import:cand:0:t0:opt:0",
+          "text": "A quick smoke test of the main flows"
+        },
+        {
+          "id": "heldout-criteria-good-enough-import:cand:0:t0:opt:1",
+          "text": "A full regression pass"
+        },
+        {
+          "id": "heldout-criteria-good-enough-import:cand:0:t0:opt:2",
+          "text": "A full regression plus extra checks for what changed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Clara",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Diego",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Yusuf",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-criteria-good-enough-import:cand:1:probe:0",
+      "stem": "If Tuesday the 10th arrives and Diego's importer update or Yusuf's guide and template are still unfinished, what will Clara do?",
+      "options": [
+        {
+          "id": "heldout-criteria-good-enough-import:cand:1:probe:0:opt:0",
+          "text": "Hold the Lindqvist message until the importer update plus the guide and template can be attached"
+        },
+        {
+          "id": "heldout-criteria-good-enough-import:cand:1:probe:0:opt:1",
+          "text": "Send Lindqvist a progress update on Tuesday without waiting for those unfinished items"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Clara",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Diego",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Yusuf",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-criteria-good-enough-import",
+    "title": "Importer good enough for Lindqvist",
+    "heldAt": "2026-11-04T14:00:00-05:00",
+    "generatedAt": "2026-11-04T14:00:00-05:00",
+    "participants": [
+      {
+        "id": "Clara",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "displayName": "Clara",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Diego",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "displayName": "Diego",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Yusuf",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "displayName": "Yusuf",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-criteria-good-enough-import:item:0",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "category": "stated",
+        "text": "I'll get it good enough for them by Tuesday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-good-enough-import:seg:5",
+            "quote": "I'll get it good enough for them by Tuesday.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-good-enough-import:item:1",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "category": "stated",
+        "text": "I'll write a short guide on the column format, with a template file.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-good-enough-import:seg:6",
+            "quote": "I'll write a short guide on the column format, with a template file.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-good-enough-import:item:2",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "category": "stated",
+        "text": "I'll tell them Tuesday.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-good-enough-import:seg:7",
+            "quote": "I'll tell them Tuesday.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-criteria-good-enough-import:item:3",
+        "meetingId": "heldout-criteria-good-enough-import",
+        "category": "stated",
+        "text": "Patients first. Appointments can come later.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-criteria-good-enough-import:seg:9",
+            "quote": "Patients first. Appointments can come later.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "Nothing in this record is listed as confirmed. Nothing in this record is listed as still open.\n\nStated in the meeting\n- It was stated that it would be made good enough for them by Tuesday.\n- It was stated that a short guide on the column format would be written with a template file.\n- It was stated that they would be told Tuesday.\n- It was stated that patients come first and appointments can come later."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 25389,
+          "inputTokens": 1059,
+          "outputTokens": 6965,
+          "reasoningTokens": 6639,
+          "costUsd": 0.030925,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 46183,
+          "inputTokens": 1479,
+          "outputTokens": 10562,
+          "reasoningTokens": 10317,
+          "costUsd": 0.04590895,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 5435,
+          "inputTokens": 678,
+          "outputTokens": 1424,
+          "reasoningTokens": 1334,
+          "costUsd": 0.0068995,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1897,
+          "inputTokens": 456,
+          "outputTokens": 492,
+          "reasoningTokens": 434,
+          "costUsd": 0.0023959000000000003,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1831,
+          "inputTokens": 301,
+          "outputTokens": 422,
+          "reasoningTokens": 386,
+          "costUsd": 0.00204545,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3004,
+          "inputTokens": 293,
+          "outputTokens": 752,
+          "reasoningTokens": 721,
+          "costUsd": 0.00343795,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1643,
+          "inputTokens": 295,
+          "outputTokens": 423,
+          "reasoningTokens": 390,
+          "costUsd": 0.0019014000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1433,
+          "inputTokens": 315,
+          "outputTokens": 269,
+          "reasoningTokens": 232,
+          "costUsd": 0.0014127,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1434,
+          "inputTokens": 307,
+          "outputTokens": 303,
+          "reasoningTokens": 269,
+          "costUsd": 0.0015472,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1653,
+          "inputTokens": 309,
+          "outputTokens": 317,
+          "reasoningTokens": 283,
+          "costUsd": 0.0016092,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 6841,
+          "inputTokens": 459,
+          "outputTokens": 1616,
+          "reasoningTokens": 1431,
+          "costUsd": 0.00717665,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
