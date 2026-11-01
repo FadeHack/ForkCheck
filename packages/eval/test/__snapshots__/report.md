@@ -90,7 +90,7 @@ Rule, fixed before the run (R§7.3): Spark Open is a credible alternative for a 
 
 ## Human ratings
 
-Human scores come from one rater, the project owner, so no inter-rater agreement is reported. Treat them as one careful reader's judgement, not a measured consensus.
+Human scores: ratings were pre-filled by a model, then reviewed and corrected by one rater, the project owner. No inter-rater agreement is reported.
 
 | Condition | Questions rated | Clarity (1–3) | Answerability (1–3) | Evidence supports claim | Simulated answer follows brief |
 | --- | --- | --- | --- | --- | --- |

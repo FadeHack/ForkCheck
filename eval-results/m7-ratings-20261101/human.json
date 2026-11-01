@@ -1,0 +1,44 @@
+[
+  {
+    "condition": "baseten/paste/precise",
+    "questions": 64,
+    "clarityMean": 2.78125,
+    "answerabilityMean": 2.796875,
+    "evidence": {
+      "supported": 27,
+      "of": 33
+    },
+    "simulator": {
+      "plausible": 0,
+      "of": 0
+    }
+  },
+  {
+    "condition": "meta/audio/precise",
+    "questions": 28,
+    "clarityMean": 2.7142857142857144,
+    "answerabilityMean": 2.75,
+    "evidence": {
+      "supported": 15,
+      "of": 20
+    },
+    "simulator": {
+      "plausible": 8,
+      "of": 8
+    }
+  },
+  {
+    "condition": "meta/paste/precise",
+    "questions": 64,
+    "clarityMean": 2.8125,
+    "answerabilityMean": 2.875,
+    "evidence": {
+      "supported": 37,
+      "of": 49
+    },
+    "simulator": {
+      "plausible": 39,
+      "of": 39
+    }
+  }
+]

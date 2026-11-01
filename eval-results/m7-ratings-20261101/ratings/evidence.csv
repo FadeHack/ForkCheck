@@ -1,0 +1,103 @@
+item,scenario,claim,quote,supports,notes
+e-007c9ffc,heldout-criteria-load-tested,Jun will keep the old endpoint running for two weeks after the switch,"I'll keep the old endpoint running for two weeks after the switch, in case we need to roll back.",yes,
+e-00b9508f,dev-deadline-end-of-month,Tomasz will send a preview link for the referral block this afternoon.,One more thing. Can we get a preview link for the referral block? Legal wants to read the terms in context.,no,a request; doesn't say Tomasz sends it or when
+e-00ee9675,dev-ownership-outage-email,"The group will handle the customer emails by tomorrow with plain language, the credit, and what we changed.",So we'll handle the customer emails by tomorrow.,yes,supports the timing only
+e-00fcbf40,heldout-outcome-reporting-pilot,Enable usage tracking on each chart for chart opens and exports,Do we want usage tracking on each chart?,no,"a question, not a decision"
+e-015d8e79,heldout-deadline-end-of-day-timezones,Ingrid will review and publish the release notes.,"Marcus, can you get the release notes to me by end of day tomorrow? I'll review and publish them.",yes,
+e-01e2fa8b,rec-postgres-upgrade,Felix will send a short summary on Monday even if everything goes fine.,Will do. Monday summary to you.,yes,
+e-02e2ea84,dev-aligned-key-rotation,The old keys are revoked at the provider and the CICD are updated so the nightly build passes.,"Got it. Revoked at the provider, CI secrets updated, nightly green",yes,
+e-03618c09,heldout-ownership-staging-cert,Bruno will ping Aiko when the DNS access is sorted,I'll ping you when the DNS access is sorted.,yes,
+e-041b5933,dev-deadline-end-of-month,The referral wording will be kept frozen after this week.,"Thanks. The campaign copy is with the translators, so I can't change the referral wording after this week.",yes,
+e-05609f20,heldout-partial-invoice-redesign,The invoice redesign will go live on Monday the 16th.,Then let's get the invoice redesign live on Monday the 16th. Noah owns it.,yes,
+e-0655e46c,heldout-dependency-referral-legal,Sienna will brief support on the credit rules with a short doc,"Yes, I'll do a short doc for them.",yes,
+e-06c0ce59,heldout-deadline-end-of-day-timezones,The release notes will mention it in one line and link to the developer docs.,Mention it in one line and link to the developer docs.,yes,
+e-0724cb92,heldout-scope-checkout-demo,Leila will send the agenda for the Hartwell demo tomorrow,I'll send them the agenda tomorrow.,yes,
+e-081ed8d2,dev-aligned-key-rotation,"Rotate the payment sandbox key, the email provider key and the two internal service tokens by Tuesday November third seventeen UTC.","That's the payment sandbox key, the email provider key and the two internal service tokens. Right Matthew, can you rotate all four by Tuesday November third seventeen UTC.",yes,
+e-08fc2c39,dev-deadline-next-friday,Rosa will ask procurement whether they want the certificate itself or just the coverage amounts.,Do they want the certificate itself or just the coverage amounts?,no,the question itself; doesn't say Rosa will ask
+e-091ab3a9,heldout-deadline-end-of-day-timezones,"Marcus will get the release notes to Ingrid by end of day tomorrow, grouped by feature, fixes and deprecations.","Marcus, can can you get the release notes to me by end of day tomorrow?",yes,supports the deadline only
+e-09517e5d,heldout-aligned-restore-drill,Hiroshi will forward the drill log to the auditors the following Monday.,I'll forward it to the auditors the following Monday.,yes,
+e-09fb600e,dev-same-reading-loop-in-legal,Bashir will update the public subprocessor page the same day as the DPA list.,Will do.,no,'Will do.' alone doesn't show what
+e-0a4d1f16,dev-deadline-next-friday,Lena will do the legal and insurance sections and pass them to Kwame to merge.,"And I'll do the legal and insurance sections, those are mine anyway. I'll pass them to Kwame to merge in.",yes,
+e-0a5319a1,dev-same-reading-loop-in-legal,We will update the DPA subprocessor list to include the two added last quarter,We can.,no,'We can.' alone doesn't show what
+e-0a863210,rec-postgres-upgrade,Felix will send a short summary on Monday even if everything goes fine.,Good. and send me short summary on Monday even if everything goes fine.,yes,
+e-0b2de9ab,heldout-dependency-referral-legal,The referral program will launch once legal is done.,So we launch the referral program once legal is done.,yes,
+e-0c1fd9db,dev-deadline-end-of-month,Hannah will chase finance today for the reverse charge invoice wording.,I'll chase finance today.,yes,
+e-0c4acaa4,heldout-scope-docs-migration,Ivo will set up the redirect rules once Nkechi has the map.,Yes.,no,'Yes.' alone doesn't show what
+e-0c6bfadc,dev-partial-pricing-page,"Starter goes from twelve to fifteen, Team from twenty-nine to thirty-two, and enterprise stays as contact us.",And enterprise stays as contact us?,no,a question about one part only
+e-0d263747,dev-criteria-usual-qa,Zara will skip onboarding this round.,Then I'll skip onboarding this round.,yes,
+e-0d727f88,heldout-same-reading-numbers-after-standup,Beatriz will fix the dashboard this afternoon,"And I'll fix the dashboard this afternoon, it's just the event names.",yes,
+e-0d85d492,dev-criteria-usual-qa,Lead the release notes with the rotation fix.,"Yes, lead with that.",yes,
+e-0e813d6d,dev-scope-dashboard-demo,Oskar will demo the dashboard to Halvorsen on Thursday.,So Oskar demos the dashboard to Halvorsen on Thursday.,yes,
+e-0f2f52fa,dev-same-reading-loop-in-legal,Owen will call their privacy officer himself and find a middle ground if legal is not OK with 48 hours,Then I'll call their privacy officer myself and find a middle ground.,yes,
+e-10673eb7,heldout-ownership-renewal-call,Only offer a smaller tier if they bring it up and do not lead with a discount.,Should we offer a smaller tier if they push on price?,no,"a question, not the decision"
+e-10a53ad2,heldout-aligned-restore-drill,"Delphine will restore last night's production snapshot into the isolated drill account on Thursday the 12th, starting 10:00 Central.",I'll run it. Restore last night's production snapshot into the isolated drill account.,yes,
+e-110ebce3,dev-scope-dashboard-demo,Mei will fix the colour scale on the lane chart where red means on time.,The colour scale on the lane chart is off too.,no,"names the problem, not that Mei fixes it"
+e-1145110d,dev-ownership-outage-email,"The group will handle the customer emails by tomorrow with plain language, the credit, and what we changed.","Plain language, the credit, and what we changed.",yes,supports the content only
+e-1236bbda,dev-scope-dashboard-demo,"Thursday will be kept to the product, with pricing left for the renewal call.",I'd leave pricing for the renewal call itself.,yes,
+e-12b0b86d,rec-postgres-upgrade,Felix will run the upgrade.,that's when traffic at lowest who is running it,no,asks who runs it; doesn't say Felix
+e-12e3b93e,dev-partial-pricing-page,Jun will swap in the new copy.,send me the new copy and I'll swap it in,yes,
+e-12e8d412,dev-criteria-usual-qa,Lead with the rotation fix in the release notes,Can we mention the rotation fix? A lot of store reviews complained about it.,no,"asks to mention it, not to lead with it"
+e-130dc091,dev-deadline-next-friday,"Attach the summary letter, not the full report.","Attach the summary letter. Not the full report, that needs an NDA.",yes,
+e-1345918b,dev-criteria-usual-qa,Submit Wednesday if the usual QA pass is clean,Then let's submit Wednesday if the usual QA pass is clean.,yes,
+e-1369eb35,heldout-same-reading-usual-handoff,Lucia will put that in the known issues section.,I'll put that in the known issues section.,yes,
+e-13b478ad,heldout-debated-starter-price,Cut the free storage on Starter instead of the price.,Then cut the free storage on Starter instead of the price.,yes,
+e-14e0c29f,dev-partial-pricing-page,Jun will swap in the new copy.,Send me the new copy and I'll swap it in.,yes,
+e-15766a6b,heldout-same-reading-usual-handoff,Omar will file the ticket.,I'll file the ticket.,yes,
+e-15a8730c,heldout-deadline-early-next-week,"The nonprofit stacking answer is no, they don't stack, to be said plainly with a line on which discount wins.","And the nonprofit stacking question, the answer is no, they don't stack.",yes,
+e-16427a67,dev-partial-pricing-page,Jun will build the pricing update on a branch and send a preview link on Monday.,I'll build the pricing update on a branch and send you a preview link on Monday.,yes,
+e-16daf28b,dev-deadline-next-friday,"The questionnaire will be returned as a spreadsheet, not in the portal.",Do they want it in their portal or as a spreadsheet,no,"a question, not the answer"
+e-177168cf,dev-scope-dashboard-demo,Thursday will stay to the product with pricing left for the renewal call.,I'd leave pricing for the renewal call itself.,yes,
+e-17be8355,dev-deadline-next-friday,Rosa will ask procurement whether they need the insurance certificate or just coverage amounts.,I'll ask when I write to procurement.,yes,
+e-17c90b13,dev-same-reading-loop-in-legal,Chiara will loop in legal today.,I'll loop in legal today.,yes,
+e-183c3e74,rec-analytics-renewal,Tomasz will put the exports in the shared drive.,Thanks and export last year dashboards in case we switch.,no,"no Tomasz, no shared drive"
+e-18c83dc2,heldout-deadline-end-of-day-timezones,The release notes will mention the API rate limit change in one line and link to the developer docs.,Do we mention the API rate limit change or keep that for the developer newsletter?,no,"a question, not the decision"
+e-18e86e85,heldout-same-reading-numbers-after-standup,Colm will send the signup numbers after standup.,I'm missing the signup numbers.,no,"says numbers are missing, not that Colm sends them"
+e-19556c0f,heldout-deadline-end-of-day-timezones,Marcus will put the export change at the top of the release notes with a short how-to,Please call out the export change. That one will generate tickets.,no,asks to call it out; no top placement or how-to
+e-1a2726ae,dev-ownership-outage-email,Felix will have the credits for anyone down over an hour applied by Thursday.,anyone down over an hour gets a credit,no,"credit rule only; no Felix, no Thursday"
+e-1afc550e,heldout-debated-on-call-rotation,Whether to adopt Follow-the-sun for the rotation is left open until January.,The rotation itself we leave open until January.,yes,
+e-1b5f22d7,dev-deadline-next-friday,"The legal and insurance sections will be put in the shared folder, not email.",Works put them in the shared folder folder not email,yes,
+e-1be86da8,dev-partial-pricing-page,The pricing update is live on the 13th.,the pricing pricing update is live on the 13th,yes,
+e-1d74e970,dev-aligned-key-rotation,"If a rotation breaks something, roll forward and do not restore the old key","And if a rotation breaks something, roll forward. Don't restore the old key.",yes,
+e-1e155802,dev-deadline-next-friday,Rosa will let their procurement lead know it's in progress.,I'll let their procurement lead know it's in progress.,yes,
+e-1e7a2756,heldout-deadline-end-of-day-timezones,Release notes will mention the API rate limit change in one line and link to the developer docs,Mention it in one line and link to the developer docs.,yes,
+e-1e91daa3,dev-deadline-next-friday,"Legal and insurance sections will be put in the shared folder, not email.","Put them in the shared folder, not email.",yes,
+e-1f04fd51,heldout-scope-docs-migration,Nkechi will migrate the docs to the new site by the 20th.,"By the 20th, yes. I'll script the conversion and fix the tables by hand.",yes,
+e-1fae3fbd,heldout-ownership-staging-cert,Bruno will ping you when the DNS access is sorted.,I'll ping you when the DNS access is sorted.,yes,
+e-207a1047,dev-scope-dashboard-demo,The Thursday demo will be kept to the product and will not include the pricing change,I'd leave pricing for the renewal call itself.,yes,
+e-2086339e,dev-scope-dashboard-demo,Mei will tidy up the scorecard screens before then.,I'll tidy up the scorecard screens before then.,yes,
+e-21f219a3,heldout-deadline-early-next-week,"The nonprofit stacking answer is no, they don't stack, to be said plainly with a line on which discount wins.","Plain no, with a line on which discount wins.",yes,
+e-223f0329,heldout-deadline-early-next-week,Wen will write the pricing FAQ.,I can write the FAQ.,yes,
+e-22cd8d52,dev-criteria-usual-qa,Submit Wednesday if the usual QA pass is clean.,Wednesday works.,yes,
+e-231a1807,dev-same-reading-loop-in-legal,Bashir will update the public subprocessor page same day as the DPA list so they match,Should I also update the public subprocessor page?,no,"a question, not a commitment"
+e-23556f78,dev-scope-dashboard-demo,Mei will fix the color scale on the lane chart where Red means on time right now.,Ha I'll fix that as well.,yes,
+e-23ae5651,dev-scope-dashboard-demo,Gabriel will ask Halvorsen for a sample of their shipment data,"I'll ask, but their IT is slow. Don't count on it.",yes,
+e-245d62a6,heldout-scope-docs-migration,Nkechi will generate a redirect map from the old URLs.,"Redirects too, please.",no,a request; doesn't say Nkechi will
+e-253d47df,heldout-debated-on-call-rotation,Whether to adopt Follow-the-sun for the rotation is left open until January.,Austin has two people who know the payment system. That's not enough for a rotation.,no,"about staffing, not about leaving it open"
+e-2566de58,rec-ios-release,Ship phones now and fix the iPad crash in 4.2.1.,Not for phones. I would ship phones now and fix the iPad crash in 4.2.1.,yes,
+e-25fa9bb5,heldout-aligned-restore-drill,"Write it up in the drill log by Friday the 13th, with screenshots.",Drill log by Friday the 13th. Yes.,yes,
+e-27c934cc,dev-criteria-usual-qa,Submit Wednesday if the usual QA pass is clean.,Great. Then let's submit Wednesday if the usual QA pass is clean.,yes,
+e-289e002a,dev-criteria-usual-qa,"Keep release notes short, three bullets at most","Keep them short, three bullets at most.",yes,
+e-28b3962c,dev-deadline-next-friday,Kwame will answer for both and flag it.,Then I'll answer for both and flag it.,yes,
+e-28e0fabc,dev-aligned-key-rotation,Grace will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked.,I will check the will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked.,yes,
+e-292e4641,heldout-same-reading-numbers-after-standup,Beatriz will fix the dashboard this afternoon.,"And I'll fix the dashboard this afternoon, it's just the event names.",yes,
+e-2a17891a,rec-ios-release,Submit to App Store review on Wednesday morning.,Wednesday morning,no,'Wednesday morning' alone doesn't show the App Store
+e-2a542ad6,dev-same-reading-loop-in-legal,Bashir will send the updated subprocessor list to go over together with the legal loop-in,I'll send you the updated subprocessor list so it all goes over together.,yes,
+e-2ac32e8e,dev-deadline-end-of-month,The end of month switch-over is doable if finance gets back this week.,End of month should be doable if finance gets back to me this week.,yes,
+e-2bbc6072,dev-partial-pricing-page,Elena will rewrite that answer.,the frequently asked question still says prices are locked for a for a year that's no longer true for monthly plans,no,"names the problem, not that Elena rewrites it"
+e-2c410111,heldout-criteria-good-enough-import,"The importer needs to be good enough for the client to start using, not perfect.",They don't need it perfect. It needs to be good enough for the client to start using.,yes,
+e-2dbd8552,dev-partial-pricing-page,Elena will send the new copy to Jun.,Send me the new copy and I'll swap it in.,yes,
+e-2deb5197,dev-aligned-key-rotation,Mateo will post in the infra channel as each key rotation is done,I'll post in the infra channel as each one is done.,yes,
+e-2e12267d,heldout-dependency-referral-legal,Tomas will keep the partner sign-up form hidden until then,I'll keep the partner sign-up form hidden until then.,yes,
+e-2fd020c2,dev-deadline-next-friday,"Kwame owns the questionnaire, back to them next Friday.","OK, timing. Their procurement lead said they need it back next Friday.",yes,"supports the deadline, not the owner"
+e-30ba06be,dev-partial-pricing-page,The URL will not change so old links keep working,"The URL won't change, so old links keep working.",yes,
+e-316652d5,heldout-deadline-end-of-day-timezones,"Marcus will get the release notes to Ingrid by end of day tomorrow, grouped by feature, fixes and deprecations.","End of day tomorrow works. I'll group them by feature, fixes and deprecations.",yes,
+e-325bcca0,dev-partial-pricing-page,Elena will send the new copy to Jun.,Will do.,no,'Will do.' alone doesn't show what
+e-327f8e83,dev-aligned-key-rotation,Grace will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked.,I'll check the provider dashboards on Wednesday morning and confirm the old keys show as revoked.,yes,
+e-32ea6ee4,heldout-criteria-load-tested,Traffic will be switched over once it's load tested.,"once it's load tested, we switch traffic over.",yes,
+e-3314790b,heldout-criteria-load-tested,"The switch will happen behind the search flag, not a deploy","Yes, flag only.",yes,
+e-35607099,dev-aligned-key-rotation,Production keys are out of scope for this rotation; only staging keys will be rotated,Understood. Staging only.,yes,
+e-359c76ee,dev-deadline-next-friday,"The questionnaire will be returned as a spreadsheet, not in the portal.",Spreadsheet they said the portal is being replaced,yes,
+e-36db2362,dev-partial-pricing-page,Marisol will update the sales deck to match.,I'll update the sales deck to match.,yes,
+e-36f2e55c,dev-criteria-usual-qa,Diego will draft release notes from the changelog and send them to you,I'll draft them from the changelog and send them to you.,yes,
+e-37a628c7,dev-scope-dashboard-demo,Gabriel will ask Halvorsen for a sample of their shipment data,Can you ask them for a sample of their shipment data? It's a better demo with their own lanes.,yes,
+e-3811fb2d,dev-partial-pricing-page,Jun will build the pricing update on a branch and send a preview link on Monday,I'll build the pricing update on a branch and send you a preview link on Monday.,yes,

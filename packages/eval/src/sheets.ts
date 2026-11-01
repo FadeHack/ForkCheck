@@ -4,8 +4,8 @@ import type { RunLog } from "./metrics";
 import type { Scenario } from "./scenario";
 
 /**
- * Human rating sheets (R§7.2, M7.3). One rater, the project owner, fills in three CSV
- * files. Items carry opaque IDs in hash order, so the provider behind a question cannot be
+ * Human rating sheets (R§7.2, M7.3). A model pre-fills three CSV files and one
+ * rater, the project owner, reviews and corrects them. Items carry opaque IDs in hash order, so the provider behind a question cannot be
  * read from the sheet; the key that maps IDs back stays in a separate file.
  */
 export const SHEETS = {
@@ -35,8 +35,8 @@ export type SheetKind = keyof typeof SHEETS;
 
 /** Printed with every human score in the report (R§7.2). */
 export const SINGLE_RATER_NOTE =
-  "Human scores come from one rater, the project owner, so no inter-rater agreement is " +
-  "reported. Treat them as one careful reader's judgement, not a measured consensus.";
+  "Human scores: ratings were pre-filled by a model, then reviewed and corrected by one " +
+  "rater, the project owner. No inter-rater agreement is reported.";
 
 /** Share of evidence quotes sent for the human support check. */
 export const EVIDENCE_SAMPLE = 0.2;

@@ -1,0 +1,382 @@
+item,scenario,question,options,clarity,answerability,notes
+q-047d0377,dev-deadline-next-friday,"For ""Kwame owns the security questionnaire and will return it to Brightwater"", what has to exist by ""next Friday""?","1. The completed spreadsheet questionnaire has been delivered to Brightwater by end of day Friday the 30th.
+2. The completed spreadsheet questionnaire has been delivered to Brightwater by end of day Friday, November 6th.",3,3,
+q-05bfac41,heldout-scope-docs-migration,"When ""Nkechi will migrate the docs to the new site by the 20th"" is done, which of these is included?","1. The completed work includes the full archive of around 300 pages from the legacy platform, even material dormant for a long period
+2. The completed work includes only actively maintained documentation, leaving long-dormant material out of scope",3,3,
+q-06692204,dev-deadline-next-friday,"When ""Lena will do the legal and insurance sections and pass them to Kwame to merge in"" is done, which of these is included?","1. Completed legal responses plus coverage details and the certificate file
+2. Completed legal responses plus coverage details but no certificate file",3,3,
+q-079e032e,dev-partial-pricing-page,"For ""Jun owns the pricing update live on the 13th"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",2,3,stem already says live
+q-0b584ec8,heldout-ownership-renewal-call,"When ""Jonas will pull usage by team so there are numbers on the call"" is done, which of these is included?","1. Figures for just the route-planning tool, split by team, covering the past 30 days
+2. Figures for every tool, split by team, covering the period since summer to show the one-third decline",3,3,
+q-0bfeb297,heldout-ownership-staging-cert,"For ""The cert needs renewing before the 12th"", who does it on the day it happens?","1. Aiko does it
+2. Bruno does it
+3. No one is named yet
+4. Aiko and Bruno share it",3,3,
+q-0d27de30,heldout-ownership-renewal-call,"For ""Maya will send the new lead the onboarding guide, so they've seen the product before the call"", what has to exist by ""this week""?","1. Maya has sent the starter materials to the new lead by Friday the 6th
+2. Maya has sent the starter materials to the new lead by Sunday the 8th",3,3,
+q-0dccdafc,dev-ownership-outage-email,"After the send is finished, whose inbox contains our note about this outage?","1. All 212 affected workspace owners from Felix's export
+2. Only the roughly fifteen customers with tickets still open",3,3,
+q-0f23fb49,dev-deadline-next-friday,"When you open the shared folder once the questionnaire work wraps up, what do you expect to see inside?","1. Lena's draft legal and insurance sections waiting for Kwame to combine
+2. Finished questionnaire spreadsheet placed for procurement to pick up",2,3,
+q-1073929d,heldout-same-reading-usual-handoff,"After Lucia completes the handoff tomorrow, Thursday the 5th, where will it be accessible?","1. In the internal Slack channel and internal KB, visible only to the support team
+2. In the public help center and release notes, visible to customers right away",3,3,
+q-14dedbb1,rec-ios-release,"For ""Ship phones now and fix the iPad crash in 4.2.1"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",2,2,mock-up/build/live options don't fit this item
+q-156560c8,heldout-dependency-referral-legal,"For ""Sienna will have the launch email ready so we can go the same day"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",2,2,mock-up/build/live options don't fit this item
+q-17cdc2c6,heldout-outcome-reporting-pilot,"On Monday the 9th, what will be true if the new reporting dashboards have counted as shipped?","1. Pilot users can access the dashboards because the flag was turned on, even if no announcement is shown
+2. Pilot users opening reporting see a short three-bullet what's-new note from Ines with a direct link",2,3,'have counted as shipped' is awkward
+q-184755f5,dev-deadline-end-of-month,"For ""Tomasz will delete them from the sender config after a day of clean sends"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",2,1,"template doesn't fit this item; options are about QA, not this task"
+q-18613da4,heldout-scope-checkout-demo,"For ""The new checkout will be ready for the Hartwell demo"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-18c81a59,heldout-ownership-renewal-call,"For ""Maya will send the new lead the onboarding guide"", what has to exist by ""this week""?","1. Maya has sent the onboarding guide to the new lead by close of business Friday, November 6
+2. Maya has sent the onboarding guide to the new lead by end of day Sunday, November 8",3,3,
+q-1c1fc1d0,heldout-debated-on-call-rotation,"When ""Andile will set up shadowing for two Austin engineers"" is done, which of these is included?","1. Observation slots for the two Austin colleagues already versed in the payments platform
+2. Observation slots for two extra Austin colleagues unfamiliar with payments to grow the rota pool",3,3,
+q-1e7c68a4,dev-deadline-end-of-month,"When ""The group will aim for end of month for the full switch-over to the new templates"" is done, which of these is included?","1. All customer billing sends run on the new templates at the deadline, covering invoice, failed payment and receipt including every VAT variant, the US tax section and the referral footer
+2. Only the templates needed for the autumn campaign that include the referral footer are on the new system at the deadline; other billing sends can remain on the old templates for now
+3. Invoice and failed payment sends are on the new templates at the deadline, while the receipt template with its tax breakdowns is due to move after that",2,3,long options
+q-1ed561bf,dev-scope-dashboard-demo,"For ""Mei will tidy up the scorecard screens"", what has to exist by ""then""?","1. Polished score displays ready for the internal dry run on Wednesday the 4th
+2. Polished score displays ready for the Halvorsen demo on Thursday the 5th",3,3,
+q-1fbbb0ba,heldout-criteria-load-tested,"Right after the flag is turned on, what happens to a search made from the mobile app?","1. It is routed to the new endpoint together with all other search traffic.
+2. It continues to the previous endpoint until the mobile client is changed.",3,3,
+q-22ed917d,dev-deadline-end-of-month,"For ""The group will aim for for the full switch-over to the new templates"", what has to exist by ""end of month""?","1. The new templates are fully live for all customers by close of business on Friday the 30th, treated as a firm deadline with no weekend work planned.
+2. The new templates are fully live no later than 23:59 on Saturday the 31st, with the team expecting to deploy over the weekend if needed to meet it.
+3. The team is working toward having the new templates fully live around Saturday the 31st, but slipping into the first days of November would still be within the aim.",2,2,'aim for for' typo; options overlap
+q-2737c5b0,heldout-outcome-reporting-pilot,It's Monday the 9th and Pavel still hasn't merged the chart opens and exports tracking — what happens with the dashboard release?,"1. We make the dashboards available to pilot users on Monday the 9th and add the tracking later
+2. We hold the dashboards back until that tracking has been merged",3,3,
+q-290ff5d0,heldout-ownership-renewal-call,Northwind says the renewal price is too high but does not mention scope or tiers. What do you do?,"1. Describe the pared-back plan as one way they could pay less.
+2. Hold the current plan discussion until they ask for less scope.",3,3,
+q-2c8e0bd0,dev-deadline-end-of-month,"For ""The group will aim for for the full switch-over"", what has to exist by ""end of month""?","1. All customers are on the new billing messages by Friday the 30th, a locked date for campaign planning.
+2. The new billing messages are targeted for around Saturday the 31st, allowed to drift into November if finance is delayed.",2,3,'aim for for' typo
+q-2e917683,heldout-ownership-staging-cert,"For ""It will be moved to automatic renewal after this"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",2,2,mock-up/build/live options don't fit this item
+q-2fb2241c,dev-aligned-key-rotation,"During the rotation, there is a moment when only one side has been changed. What does that moment look like?","1. The prior credentials are already disabled while the pipeline still points to them, so the nightly run fails briefly.
+2. The pipeline already points to the fresh credentials while the prior ones still work, so both remain valid briefly.",3,3,
+q-2fe20abd,heldout-outcome-reporting-pilot,"For ""Pavel will add the events"", what has to exist by Monday, November 9?","1. Merged code for both signals exists starting Friday the 6th evening
+2. Merged code for both signals exists starting Monday the 9th morning",2,3,'exists starting' is awkward
+q-30b03499,heldout-dependency-referral-legal,"Legal calls on Tuesday the 3rd and says verbally the review is finished with no issues, noting the formal written approval will come on Thursday the 5th. When does the referral program go live?","1. On Tuesday the 3rd, right after the verbal confirmation that there are no issues
+2. On Thursday the 5th, after the formal written sign-off is received",3,3,
+q-30dd9429,dev-deadline-next-friday,"For ""Kwame owns the questionnaire, back to them"", what has to exist by ""next Friday""?","1. Finished answers returned to the buyer by Friday the 30th
+2. Finished answers returned to the buyer by Friday the 6th",2,3,garbled stem
+q-35c178bd,dev-ownership-outage-email,"For ""The customer emails will be handled by tomorrow with plain language, the credit, and what we changed"", who does it on the day it happens?","1. Imani does it
+2. Felix does it
+3. Sunil does it
+4. No one is named yet",3,3,
+q-38c5aff4,dev-aligned-key-rotation,"After Grace finishes the dashboard review on Wednesday morning, where will her confirmation about the old keys go?","1. It will be posted in the infra channel for the team to see.
+2. It will be sent directly to Mateo and no one else.",3,3,
+q-39b508c3,heldout-deadline-early-next-week,"When ""Wen will write the FAQ for early next week"" is done, which of these is included?","1. Wen shares editable text for internal feedback, with website release to follow later
+2. Wen has the material formatted and publicly visible on the site",3,3,
+q-3b7760c9,dev-ownership-outage-email,"If legal replies 'Got it, I've read the draft' on Thursday the 5th with no further comment, what does Felix do next?","1. He posts the write-up that day since it has been seen
+2. He keeps the write-up offline until legal confirms it can go out",3,3,
+q-3dd5ed07,heldout-criteria-good-enough-import,"For ""Diego will get it good enough for them by Tuesday"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",3,3,
+q-3e266a94,heldout-ownership-renewal-call,"When ""Jonas will pull their usage by team to have numbers on the call"" is done, which of these is included?","1. Total seats used, shown separately for every team
+2. Route planning activity versus reporting activity, shown separately for every team",3,3,
+q-3edba2c0,dev-deadline-next-friday,"When ""Kwame owns the security questionnaire and will return it to Brightwater next Friday"" is done, which of these is included?","1. Lena's legal and insurance answers listing the coverage amounts, with no certificate file attached
+2. Lena's legal and insurance answers listing the coverage amounts plus the insurance certificate file attached",3,3,
+q-400a63cb,heldout-deadline-early-next-week,"Wen has shared the refund wording with Gareth, has had no reply yet, and the FAQ is ready to go live. What should happen?","1. Hold the launch until Gareth confirms the wording is acceptable
+2. Launch on schedule; sharing the wording fulfilled the finance step",3,3,
+q-425ffab4,heldout-ownership-staging-cert,"For ""The staging certificate needs renewing before the 12th"", who does it on the day it happens?","1. Aiko does it
+2. Bruno does it
+3. No one is named yet
+4. Aiko and Bruno share it",3,3,
+q-42a48026,heldout-debated-on-call-rotation,"When ""Andile will set up shadowing for two Austin engineers"" is done, which of these is included?","1. Shadowing arranged as a six-week pairing limited to the payment system, for two additional Austin engineers who are new to that area, separate from the two who already know it
+2. General daytime follow-the-sun shadowing that covers the full range of London on-call responsibilities, not limited to the payment system alone",2,2,options differ on two dimensions
+q-431672a6,heldout-criteria-load-tested,"For ""Kofi will do the load test this week"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",2,1,"template doesn't fit this item; options are about QA, not this task"
+q-477a0377,dev-criteria-usual-qa,"For ""We will do the usual QA pass on the release build"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",3,3,
+q-48504377,dev-aligned-key-rotation,"For ""Mateo will post in the infra channel as each one is done"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",2,1,"template doesn't fit this item; options are about QA, not this task"
+q-493ac596,heldout-outcome-reporting-pilot,Suppose someone outside the pilot group opens reporting after the note is live. What will they experience?,"1. Only pilot members can view it; others opening reporting see no message
+2. Everyone opening reporting sees it, whether or not they are in the pilot",2,3,'it' is vague
+q-49466c1a,heldout-scope-checkout-demo,"For ""The new checkout will be ready for the Hartwell demo"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-4a7ca866,dev-scope-dashboard-demo,"For ""Oskar will demo the dashboard to Halvorsen on Thursday"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-4e322547,heldout-partial-invoice-redesign,"For ""Noah will email the three firms on the integration list"", what has to exist by ""this week""?","1. Noah's warning to the three partner companies is sent by Friday the 6th
+2. Noah's warning to the three partner companies is sent by Sunday the 8th",3,3,
+q-51055c37,heldout-criteria-load-tested,"For ""Kofi will do the load test this week"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",2,1,"template doesn't fit this item; options are about QA, not this task"
+q-51f4ffed,dev-partial-pricing-page,Jun shares the preview on Monday the 9th and has not heard back by Friday the 13th. What is expected to happen on Friday the 13th?,"1. Jun puts the new pricing page live on Friday the 13th as planned
+2. Jun holds the new pricing page back until Elena and Marisol both give explicit approval",3,3,
+q-5389313a,heldout-ownership-staging-cert,"For ""The cert needs renewing before the 12th"", who does it on the day it happens?","1. Aiko does it
+2. Bruno does it
+3. No one is named yet
+4. Aiko and Bruno share it",3,3,
+q-558128b3,dev-ownership-outage-email,"When ""Felix will have the credits for anyone down over an hour applied by Thursday"" is done, which of these is included?","1. Only the 212 workspaces flagged as paused for over sixty minutes are given credits.
+2. The 212 workspaces flagged as paused for over sixty minutes and the 15 workspaces with open tickets are all given credits.",3,3,
+q-55d382d2,dev-deadline-end-of-month,"For ""The referral wording will be kept frozen"", what has to exist by ""after this week""?","1. A finalized referral text must exist by end of Friday the 23rd, after which edits stop
+2. A finalized referral text must exist by start of Monday the 26th, with weekend edits still allowed",3,3,
+q-5797b83a,dev-deadline-end-of-month,"For ""The referral wording will be kept frozen"", what has to exist by ""after this week""?","1. The final approved referral wording must exist in its locked form by Monday the 26th at 00:00, with no further edits allowed after that
+2. The final approved referral wording must exist in its locked form by Friday the 23rd at 17:00, with no further edits allowed after that",3,3,
+q-590f0e31,heldout-criteria-load-tested,"For ""Jun will keep the old endpoint running"", what has to exist by ""for two weeks after the switch""?","1. The previous interface remains live until the fortnight ends, then it is switched off
+2. The previous interface remains live past the fortnight until the team agrees a return is unnecessary",3,3,
+q-5c076f15,dev-ownership-outage-email,Suppose legal confirms they have read the draft but have not sent any approval message. What happens with the blog post?,"1. Felix posts it right away because the reading step is done.
+2. Felix keeps it unpublished until legal sends an approval.",3,3,
+q-5eb0e344,heldout-outcome-reporting-pilot,"For ""Pavel will add the chart opens and exports tracking events"", what has to exist by Monday, November 9?","1. Chart opens and exports tracking is merged by end of day Friday the 6th, with the weekend treated as off-limits
+2. Chart opens and exports tracking is merged by Monday morning the 9th, so a push Sunday night or around 8am PT Monday still satisfies it",3,3,
+q-61390bfa,dev-aligned-key-rotation,"On Wednesday the 4th in the morning, after Grace finishes checking the dashboards, how will her update be shared?","1. In a team-wide post that everyone on the team can read
+2. In a private message sent only to Mateo",3,3,
+q-6261f9e3,dev-scope-dashboard-demo,"For ""Mei will tidy up the scorecard screens"", what has to exist by ""then""?","1. Finished scorecard screens with the placeholder labels corrected by end of day Wednesday the 4th for the dry run
+2. Finished scorecard screens with the placeholder labels corrected by Thursday morning the 5th for the Halvorsen demo",3,3,
+q-6849937c,dev-criteria-usual-qa,"For ""We will turn on the new onboarding screens"", what has to exist by ""once the A/B setup is ready""?","1. The A/B flag and variants are technically configured in the dashboard
+2. Noor has approved the experiment copy and targeting as ready to launch
+3. QA has verified the A/B experiment end-to-end and formally signed it off",3,3,
+q-6a57b776,heldout-sarcasm-friday-launch,"For ""Ruben will prep the store listing"", what has to exist by the deadline?","1. A completed listing draft ready by end of day Tuesday the 3rd so it can be submitted Wednesday for the review period
+2. A final published listing that goes live for users on Friday the 6th when version 3 launches",3,3,
+q-6b970aff,heldout-ownership-renewal-call,"For ""The team will handle the renewal call with their new ops lead this month, walking through route planning and asking what reporting would need to do for them"", who does it on the day it happens?","1. Hugo does it
+2. Maya does it
+3. Jonas does it
+4. No one is named yet",3,3,
+q-6c3569d9,dev-deadline-end-of-month,"If finance sends a short acknowledgement on Friday the 23rd without any receipt text, what happens to the end-of-month plan?","1. It remains doable because finance responded within the week.
+2. It is no longer doable because the approved receipt text is missing.",3,3,
+q-6d385dd2,dev-scope-dashboard-demo,"For ""Oskar will demo the dashboard to Halvorsen on Thursday"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-6d79b18c,dev-deadline-end-of-month,"When ""The referral wording will be kept frozen after this week"" is done, which of these is included?","1. Only the referral footer inside the new email templates shared with Legal for preview is frozen
+2. All autumn referral copy is frozen, covering both the new template footer and the separate campaign emails handled by translators
+3. Only the legally required referral terms language is frozen, while the surrounding marketing tagline can still be edited",2,2,three long overlapping options
+q-73a483f1,heldout-same-reading-usual-handoff,"After Lucia adds the note about bulk edit skipping locked invoices without explanation, where will it be visible?","1. Only in the internal support handoff doc for agents to reference
+2. In the public release notes and customer-facing known issues page",3,3,
+q-73f82718,dev-ownership-outage-email,"When ""Felix will add a step for it to the on call checklist"" is done, which of these is included?","1. A requirement to publish the public incident notice right when response begins
+2. A requirement to verify the public incident notice is live after submission",3,3,
+q-742c4336,rec-analytics-renewal,"For ""Tomasz will send the notice"", what has to exist by ""October thirty first""?","1. A notice already dispatched on Wednesday the 28th
+2. A notice dispatched at any point up to Friday the 30th",2,2,"deadline says 31st, options stop at 30th"
+q-755df6b5,heldout-deadline-end-of-day-timezones,"For ""Marcus will get the release notes to Ingrid"", what has to exist by Wednesday, November 4?","1. Grouped release notes accessible to Ingrid no later than 11:59 p.m. Berlin time on Wednesday the 4th
+2. Grouped release notes accessible to Ingrid no later than 11:59 p.m. Chicago time on Wednesday the 4th",3,3,
+q-759728f8,dev-scope-dashboard-demo,"For ""Oskar will demo the dashboard to Halvorsen on Thursday"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-77f1d416,rec-ios-release,"For ""Hold the release until Monday with manual release Monday at 10 AM"", who does it on the day it happens?","1. Hana does it
+2. Luis does it
+3. No one is named yet
+4. Hana and Luis share it",2,3,awkward stem
+q-796fd7e6,dev-deadline-next-friday,"For ""Lena will do the legal and insurance sections and pass them to Kwame to merge"", what has to exist by the deadline?","1. By end of day Thursday the 5th, Lena’s completed legal and insurance sections are in the shared folder ready for Kwame to merge the next day
+2. By end of day Friday the 6th, Lena’s completed legal and insurance sections are in the shared folder for Kwame to merge and submit that same day",3,3,
+q-7a100664,heldout-criteria-load-tested,"For ""Kofi will do the load test"", what has to exist by ""this week""?","1. Finished load test output available by Friday the 6th
+2. Finished load test output available by Sunday the 8th",3,3,
+q-7d961fb1,dev-ownership-outage-email,"For ""Felix will publish the postmortem on the blog after legal reads it"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",2,1,"template doesn't fit this item; options are about QA, not this task"
+q-807e592f,heldout-dependency-referral-legal,"Suppose legal verbally tells Tomas the cash option review is complete, but the formal written sign-off is still pending. When will the partner sign-up form become visible?","1. Right after the verbal confirmation, even before written sign-off arrives
+2. Only after the formal written sign-off is received",3,3,
+q-84d7e108,heldout-ownership-staging-cert,"For ""The staging certificate should be moved to automatic renewal"", what has to exist by ""after this""?","1. An operational automatic renewal setup is in place right after the manual renewal is finished, before Thursday the 12th passes
+2. An operational automatic renewal setup is in place at a later follow-up stage once the window around Thursday the 12th is over",3,3,
+q-8561dc96,heldout-scope-docs-migration,"When ""Nkechi will generate a redirect map from the old URLs"" is done, which of these is included?","1. All of the approximately 300 existing platform pages have corresponding new destinations.
+2. Only existing pages linked from forum posts have corresponding new destinations.",3,3,
+q-8a0a77df,dev-ownership-outage-email,"When ""Felix will add a step for the status page to the on-call checklist"" is done, which of these is included?","1. A single checklist entry telling the on-call to update the status page once an outage is declared
+2. A full checklist section with timing requirements, message template, and owner for status page updates",3,3,
+q-8a31c5ef,dev-criteria-usual-qa,"For ""Turn them on once the A/B setup is ready"", who does it on the day it happens?","1. Diego does it
+2. Noor does it
+3. Zara does it
+4. No one is named yet",3,3,
+q-8b57e180,heldout-ownership-renewal-call,"When ""Only offer a smaller tier if they bring it up and do not lead with a discount"" is done, which of these is included?","1. Providing fewer licenses while keeping every feature available
+2. Providing core routing tools while removing the analytics part",3,3,
+q-8bbc7977,heldout-debated-starter-price,"When ""Pull the cohort numbers for Starter before then"" is done, which of these is included?","1. A cohort breakdown of cost per seat and gross margin by signup date to assess break-even on Starter
+2. A cohort breakdown of upgrade rate to higher paid plans and the expansion revenue generated over time",3,3,
+q-8cd4b58f,dev-criteria-usual-qa,"For ""Do the usual QA pass on the release build"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",3,3,
+q-909d1b3b,dev-criteria-usual-qa,"Once the A/B setup is ready, who will encounter the new onboarding screens?","1. Only users assigned to the test variant will see the new screens
+2. Every user opening the app will see the new screens",3,3,
+q-93055228,dev-partial-pricing-page,"For ""The pricing update will be live"", what has to exist by Friday, November 13?","1. The updated pricing page must go live specifically on Friday the 13th and remain unpublished before then
+2. The updated pricing page must be live at the latest on Friday the 13th, but it may launch earlier if the pricing is correct",3,3,
+q-94334cb4,dev-partial-pricing-page,"On Monday the 9th, when Jun circulates the draft, who gets it?","1. Only Elena receives the draft link directly
+2. Elena and Marisol both receive the draft link directly",3,3,
+q-943a65ea,heldout-same-reading-numbers-after-standup,"When ""Beatriz will fix the dashboard this afternoon"" is done, which of these is included?","1. The task covers correcting the naming configuration for both the signup and conversion views so they display current data again, without reprocessing past records.
+2. The task covers correcting the naming configuration for both views and reprocessing past records to align displayed totals with the manually gathered figures.
+3. The task covers correcting the naming configuration for the signup view only, with the conversion view to be addressed separately.",2,3,long options
+q-9544c599,heldout-partial-invoice-redesign,"When ""Sunita will send Noah the final assets tomorrow"" is done, which of these is included?","1. Only the finished brand mark goes to Noah on Wednesday the 4th.
+2. The brand mark plus the per-project grouping design and clarified deadline styling go to Noah on Wednesday the 4th.",3,3,
+q-974d4832,heldout-outcome-reporting-pilot,"It is Monday the 9th first thing in the morning, and neither the chart tracking nor the what's-new draft is finished. What will Pavel do?","1. Enable the pilot for the group right away and add the tracking and draft afterwards.
+2. Wait to enable the pilot until the tracking and draft are both finished.",3,3,
+q-98b7cfb1,rec-ios-release,"For ""Hana will write the release notes and send them to you"", what has to exist by Tuesday, November 3?","1. The completed documentation delivered to Luis for review
+2. Nothing yet; Hana's delivery is due Tuesday the 10th",2,2,option 2 introduces an unexplained date
+q-9959e1c8,heldout-debated-starter-price,"When ""Pull the cohort numbers for Starter before then"" is done, which of these is included?","1. Tracking of how entry-tier customers expand over time into larger contracts
+2. Breakdown of expense per seat and the point where pricing covers costs",3,3,
+q-99d5e4da,dev-scope-dashboard-demo,"When ""Gabriel will send the invite"" is done, which of these is included?","1. A 45-minute slot covering both the walkthrough and questions
+2. A 60-minute slot with questions scheduled after the walkthrough",3,3,
+q-9a30b33c,rec-postgres-upgrade,"For ""Felix will send a short summary even if everything goes fine"", what has to exist by ""Monday""?","1. A concise status note from Felix received by the end of Monday the 2nd
+2. A concise status note from Felix received by the end of Monday the 9th",3,3,
+q-9a8c00cd,heldout-same-reading-numbers-after-standup,"When ""Colm will send the signup numbers after standup"" is done, which of these is included?","1. Only the manually compiled signup totals for the board deck period required for tomorrow's presentation are included
+2. Only today's raw new signup figure retrieved manually after standup is included
+3. A complete historical signup breakdown including the trial-to-paid conversion table from the former dashboard is included",2,2,options differ on several dimensions
+q-9ace0754,heldout-ownership-staging-cert,"For ""The staging certificate should be moved to automatic renewal after this"", who does it on the day it happens?","1. Aiko does it
+2. Bruno does it
+3. No one is named yet
+4. Aiko and Bruno share it",3,3,
+q-9afa99f6,heldout-scope-docs-migration,"When ""Nkechi will migrate the docs to the new site by the 20th"" is done, which of these is included?","1. All roughly 300 pages move, including those idle for two years
+2. Only the actively kept pages move, those idle for two years stay",3,3,
+q-9b22ae48,heldout-ownership-staging-cert,"For ""It will be moved to automatic renewal after this"", who does it on the day it happens?","1. Aiko does it
+2. Bruno does it
+3. No one is named yet
+4. Aiko and Bruno share it",2,3,'it' is vague
+q-9e702048,heldout-criteria-good-enough-import,"For ""Diego will get the importer good enough for Lindqvist Dental"", what has to exist by Tuesday, November 10?","1. A working importer is already finished by end of day Monday the 9th so it is available for Clara's Tuesday morning outreach
+2. A working importer may be finished at any time on Tuesday the 10th and still meets the deadline, even after Clara's morning outreach",3,3,
+q-9eab2a53,heldout-debated-starter-price,"For ""Revisit this with the cohort numbers"", what has to exist by ""next week""?","1. A follow-up discussion using the retention figures held on Monday the 9th or Tuesday the 10th
+2. A follow-up discussion using the retention figures held on any day in the week of Monday the 9th",3,3,
+q-a51af360,heldout-outcome-reporting-pilot,"For ""Ship the new reporting dashboards to the pilot group on Monday"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-a828b108,dev-scope-dashboard-demo,"If Halvorsen's sample shipment file hasn't arrived by Thursday morning, what will Oskar show at the demo?","1. The dashboard with generic example lanes using synthetic placeholder data to illustrate functionality.
+2. The dashboard reworked to show Halvorsen's own lanes from their shipment file once it arrives.",3,3,
+q-a9a4b473,heldout-partial-invoice-redesign,"Suppose Sunita shares the final assets on Wednesday the 4th and Noah emails the warning by Friday the 6th, but by Sunday the 15th none of the three integration firms has replied — what happens on Monday the 16th?","1. We launch the redesign on Monday the 16th as planned; sending the warning covered what was needed
+2. We postpone the launch until each of the three firms has replied confirming their parser will handle the new PDF",2,3,long stem
+q-ab7e9908,dev-aligned-key-rotation,"When ""Grace will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked"" is done, which of these is included?","1. Verifying revocation for four credentials: sandbox payments, email delivery, and two internal services
+2. Verifying revocation for two credentials: sandbox payments and email delivery",3,3,
+q-abfec2d3,heldout-dependency-referral-legal,Suppose legal clears the program in the morning but Sienna's launch email has not gone out yet. What happens to the partner form in the meantime?,"1. It becomes accessible right after legal clearance, before the email goes out.
+2. It stays inaccessible until after Sienna's email goes out.",3,3,
+q-add0c201,dev-scope-dashboard-demo,"If Mei's scorecard and lane chart work is still incomplete on Wednesday, what will Oskar do?","1. Delay the rehearsal until those updates are finished
+2. Go ahead with the rehearsal using the current state",3,3,
+q-ae76881e,dev-partial-pricing-page,"For ""The pricing update is live"", what has to exist by Friday, November 13?","1. The new prices are displayed before Friday the 13th starts
+2. The new prices are displayed sometime during Friday the 13th",3,3,
+q-afe79b6b,dev-partial-pricing-page,"By Sunday the 8th, what will Marisol have done about the sales slides?","1. Revise them right away using the Starter and Team figures covered in the meeting
+2. Hold off until Jun's preview link on Monday the 9th, then align them with the page",3,3,
+q-b038a60e,heldout-criteria-good-enough-import,"For ""Diego will get the importer good enough for Lindqvist Dental by Tuesday"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",3,3,
+q-b0f66057,dev-ownership-outage-email,"For ""The team will handle the customer emails by tomorrow covering the credit and what was changed"", who does it on the day it happens?","1. Imani does it
+2. Felix does it
+3. Sunil does it
+4. No one is named yet",3,3,
+q-b1e94cf4,dev-partial-pricing-page,"For ""Elena will rewrite that answer"", what has to exist by the deadline?","1. An updated FAQ wording from Elena ready by Monday the 9th for Jun's preview
+2. An updated FAQ wording from Elena ready by Friday the 13th for the go-live",3,3,
+q-b22cdc63,dev-partial-pricing-page,"When Jun shares the branch preview on Monday the 9th, who will get the link?","1. The link goes to Elena only
+2. The link goes to Elena and Marisol",3,3,
+q-b26d6d1d,rec-postgres-upgrade,"For ""Siobhan is back up if something goes wrong"", who does it on the day it happens?","1. Felix does it
+2. Amara does it
+3. No one is named yet
+4. Felix and Amara share it",2,1,Siobhan is not among the options
+q-b2bef451,heldout-dependency-referral-legal,"When ""Sienna will brief support on the credit rules with a short doc"" is done, which of these is included?","1. The short doc covers only the $50 referrer credit and the free month for new customers
+2. The short doc covers the $50 credit and free month plus the partner cash-out option and the ten-per-month cap",3,3,
+q-b3faaad5,heldout-debated-starter-price,"For ""Pull the cohort numbers for Starter"", what has to exist by ""then""?","1. A shareable Starter cohort numbers summary distributed by EOD Tuesday, November 10
+2. Starter cohort numbers prepared to present live at the revisit meeting Wednesday, November 11 at 13:00",3,3,
+q-b48e4910,dev-deadline-next-friday,"For ""Kwame will send the questionnaire back to them"", what has to exist by ""next Friday""?","1. The finished questionnaire sent to Brightwater by Friday the 30th
+2. The finished questionnaire sent to Brightwater by Friday the 6th",3,3,
+q-b640cea6,heldout-sarcasm-friday-launch,"If Theo's fix for the offline crash on older Android phones is still pending on Thursday, what will Nadia have told marketing about Friday?","1. That Friday is locked for version 3 and will proceed even if that crash is unresolved
+2. That Friday is the intended target but is only confirmed once that crash is fixed",3,3,
+q-b9011483,heldout-deadline-end-of-day-timezones,"For ""Marcus will get the release notes to Ingrid, grouped by feature, fixes and deprecations"", what has to exist by Wednesday, November 4?","1. The three-part notes must be with Ingrid by the end of the workday in Berlin on Wednesday the 4th
+2. The three-part notes must be with Ingrid by the end of the workday in Chicago on Wednesday the 4th",3,3,
+q-baa672e9,dev-aligned-key-rotation,"For ""Rotate the payment sandbox key, the email provider key and the two internal service tokens by Tuesday November third seventeen UTC"", who does it on the day it happens?","1. Mateo does it
+2. Grace does it
+3. No one is named yet
+4. Mateo and Grace share it",3,3,
+q-bb7d5725,dev-scope-dashboard-demo,"For ""Someone will do a dry run on Wednesday"", who does it on the day it happens?","1. Mei does it
+2. Oskar does it
+3. Gabriel does it
+4. No one is named yet",3,3,
+q-bb88cd2d,heldout-deadline-end-of-day-timezones,"For ""Marcus will get the release notes to Ingrid, grouped by feature, fixes and deprecations"", what has to exist by Wednesday, November 4?","1. The notes organized in the agreed categories reach Ingrid before Wednesday the 4th ends in Berlin
+2. The notes organized in the agreed categories reach Ingrid before Wednesday the 4th ends in Chicago",3,3,
+q-be5f2257,heldout-aligned-restore-drill,"If by Friday the 13th the drill log is still missing screenshots and the restore hasn't met the pass criteria, what will happen on Monday the 16th?","1. Hiroshi will hold off forwarding anything until Delphine posts the complete log and the restore is marked as passed
+2. Hiroshi will forward the log in whatever state it is in to meet the auditors' end-of-month request",3,3,
+q-be974950,dev-criteria-usual-qa,"When ""Zara will skip onboarding this round"" is done, which of these is included?","1. No onboarding-related checks are included
+2. Confirming the new screens stay off behind the flag is included",3,3,
+q-bfa877bc,dev-partial-pricing-page,"For ""Elena will send the new copy to Jun"", what has to exist by the deadline?","1. The revised FAQ wording is with Jun early enough for the Monday the 9th preview
+2. The revised FAQ wording reaches Jun at any point before the Friday the 13th launch",3,3,
+q-c273c98f,heldout-same-reading-usual-handoff,"When ""Lucia will do the usual handoff tomorrow"" is done, which of these is included?","1. The handoff counts as done when Lucia has refreshed the handover document and shared a Slack recap covering the summary and known issues.
+2. The handoff counts as done only after Lucia has also recorded a Loom overview, prepared an FAQ, and set up a live Q&A slot for Support.",3,3,
+q-c9fe422a,rec-analytics-renewal,"For ""If it's under eight thousand thousand a year the group will sign it, otherwise the group will look at alternatives"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",1,1,"'eight thousand thousand'; template doesn't fit this item; options are about QA, not this task"
+q-cb68cbec,heldout-dependency-referral-legal,"When ""Sienna will brief support on the credit rules with a short doc for them"" is done, which of these is included?","1. Only the $50 referrer bonus and the free month for new users
+2. Those standard rewards plus the partner cash alternative and monthly cap of ten",3,3,
+q-cd30b1b3,dev-scope-dashboard-demo,"For ""Mei will tidy up the scorecard screens"", what has to exist by ""then""?","1. Revised score views ready for review at Wednesday the 4th rehearsal
+2. Revised score views ready for review at Thursday the 5th live demo",3,3,
+q-cf97139f,heldout-scope-docs-migration,"For ""Freeze edits on the old platform from the 16th"", who does it on the day it happens?","1. Ivo does it
+2. Nkechi does it
+3. Farah does it
+4. No one is named yet",3,3,
+q-d050329a,heldout-scope-checkout-demo,"When ""Sam will look at caching the tax rates"" is done, which of these is included?","1. A brief write-up on options for caching tax rates, with no checkout code changed
+2. Working cache handling for tax rates live in the checkout so the first tax lookup in the demo is fast",3,3,
+q-d0bf1f90,heldout-ownership-staging-cert,"While Aiko is waiting for Bruno's update, what is Bruno doing?","1. He is working through the access setup himself before messaging Aiko.
+2. He is waiting for IT or the provider to finish, then messaging Aiko.",3,3,
+q-d2a8ef30,rec-ios-release,"For ""Submit to App Store review on Wednesday morning"", who does it on the day it happens?","1. Hana does it
+2. Luis does it
+3. No one is named yet
+4. Hana and Luis share it",3,3,
+q-d5d200ed,dev-deadline-end-of-month,"For ""Tomasz will delete them from the sender config"", what has to exist by ""after a day of clean sends""?","1. An uninterrupted 24-hour interval without sending faults starting at switchover
+2. A full midnight-to-midnight date without sending faults, cleared on the next workday",3,3,
+q-ddc518a0,heldout-scope-checkout-demo,"During the Hartwell demo, someone from Hartwell asks to see the admin side. What happens?","1. Switch to the admin screens live during the demo
+2. Stay on the buyer path and cover admin in a follow-up",3,3,
+q-e0375c36,dev-aligned-key-rotation,"Halfway through Mateo's rotation work, when one side has been updated and the other has not yet, someone triggers a staging deploy from CI. What happens?","1. It goes through with the new credentials because the CI secrets were switched while the old provider keys were still live.
+2. It fails because the CI is still trying the old credentials after those keys were already revoked at the provider.",3,3,
+q-e05e7512,dev-partial-pricing-page,"For ""The pricing update will be live on the 13th"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-e2d411dd,heldout-criteria-load-tested,"For ""Kofi will do the load test"", what has to exist by ""this week""?","1. Completed load test results ready by end of day Friday the 6th
+2. Completed load test results ready by end of day Sunday the 8th",3,3,
+q-e39ede02,heldout-partial-invoice-redesign,"When ""Noah will email the three firms on the integration list this week to warn about PDF changes"" is done, which of these is included?","1. A concise notification that the invoice PDF layout changes on November 16, noting the added logo, grouping by project and emphasized due date, with no sample file attached
+2. The notification plus a sample of the new November 16 invoice and documentation of new field positions so firms can update their PDF extraction before launch",3,3,
+q-e3d5932a,heldout-sarcasm-friday-launch,"When ""Ruben will prep the store listing"" is done, which of these is included?","1. The screenshots and description are updated, and release notes will be added separately later
+2. The listing is delivered complete with updated screenshots, description, and Nadia's release notes integrated",3,3,
+q-e64def85,dev-deadline-end-of-month,"For ""Tomasz will delete the old templates from the sender config after a day of clean sends"", which check has to pass first?","1. A quick smoke test of the main flows
+2. A full regression pass
+3. A full regression plus extra checks for what changed",2,1,"template doesn't fit this item; options are about QA, not this task"
+q-e7a4b201,heldout-dependency-referral-legal,"If Legal verbally says the review is done on Tuesday afternoon but the formal written approval is not documented until Wednesday morning, when will the launch email go out?","1. On Tuesday afternoon, right after the verbal confirmation
+2. On Wednesday morning, once written approval is received and documented",3,3,
+q-ea95bddd,heldout-ownership-renewal-call,"For ""We'll handle the renewal call with their new ops lead this month to walk through route planning and ask about reporting needs"", who does it on the day it happens?","1. Hugo does it
+2. Maya does it
+3. Jonas does it
+4. No one is named yet",3,3,
+q-ebbd267f,heldout-scope-checkout-demo,"Imagine it's the morning of the Hartwell demo. Ottilie has warmed the old tax service, but Sam's caching of tax rates hasn't been merged into her branch yet. How should the team treat the checkout's status?","1. It's ready to show — Ottilie's work on the old service is enough for the demo.
+2. It's not yet ready — it needs Sam's cached rates merged in first.",3,3,
+q-ec082d6a,rec-analytics-renewal,"When ""Tomasz will put the exports in the shared drive"" is done, which of these is included?","1. All dashboards created or viewed over the previous twelve months
+2. Only growth squad reports that remain in weekly use",3,3,
+q-ec86838e,dev-aligned-key-rotation,"When ""Grace will check the provider dashboards on Wednesday morning and confirm the old keys show as revoked"" is done, which of these is included?","1. The check includes only the payment sandbox and email service keys showing disabled
+2. The check includes all four rotated secrets with the internal tokens showing disabled",3,3,
+q-ec984668,heldout-criteria-good-enough-import,"When ""Yusuf will write a short guide on the column format, with a template file"" is done, which of these is included?","1. A how-to and example sheet for patient fields alone, for the first load
+2. A how-to and example sheet for patient fields and for appointment history fields",3,3,
+q-ed342251,heldout-scope-checkout-demo,"When ""Sam will look at caching the tax rates"" is done, which of these is included?","1. A review of possible methods is reported back, with checkout code left unchanged
+2. A working stored-rates change is in the demo branch ready for Hartwell",3,3,
+q-eefe8155,heldout-scope-checkout-demo,"When ""Leila will send them the agenda tomorrow"" is done, which of these is included?","1. A 30-minute session focused only on the buyer checkout flow
+2. A 30-minute session with buyer checkout first, then admin tools",3,3,
+q-efe75c15,heldout-same-reading-numbers-after-standup,"When ""Colm will include the trial-to-paid figure in the numbers sent"" is done, which of these is included?","1. The trial-to-paid rate for the current board period, covering the same window as the signup numbers
+2. The cumulative all-time trial-to-paid rate, as presented in the prior deck for comparison
+3. Trial-to-paid rates broken down by signup cohort or day across the board period, not just a single headline total",2,2,options differ on several dimensions
+q-f19a58e2,heldout-outcome-reporting-pilot,"For ""Ship it to the pilot group on Monday"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-f2836238,dev-scope-dashboard-demo,"For ""Someone will do a dry run on Wednesday"", who does it on the day it happens?","1. Mei does it
+2. Oskar does it
+3. Gabriel does it
+4. No one is named yet",3,3,
+q-f37bc551,dev-partial-pricing-page,"For ""The pricing update is live on the 13th"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-f4739cfd,heldout-scope-docs-migration,"When ""Nkechi will generate a redirect map from the old URLs"" is done, which of these is included?","1. The completed map covers all roughly 300 old URLs, with a redirect or fallback for each even if the content was not moved
+2. The completed map covers only the old URLs whose docs were actually migrated to the new site",3,3,
+q-f7e351d2,heldout-same-reading-usual-handoff,"For ""Bulk edit for invoices ships Thursday"", what form does it take?","1. Designs or a mock-up
+2. A working build on test data
+3. The live version on real data",3,3,
+q-f8cb277a,heldout-deadline-early-next-week,"For ""Wen will write the FAQ for"", what has to exist by ""early next week""?","1. The finished FAQ written by Wen ready by Monday the 9th
+2. The finished FAQ written by Wen ready by Wednesday the 11th",2,3,truncated stem 'write the FAQ for'
+q-f9a8b779,heldout-debated-on-call-rotation,"For ""Andile will set up shadowing for two Austin engineers"", what has to exist by the deadline?","1. Both Austin pairings are scheduled and actively shadowing by Thursday the 12th so the six-week run is already underway
+2. Shadowing arrangements are finalized at any point before the January rotation decision, with no requirement to be booked or underway in mid-November",3,3,
+q-f9c8ccf8,heldout-debated-starter-price,"When ""Nothing changes until we decide"" is done, which of these is included?","1. Every account stays at the current price and storage, and no newcomer trial goes ahead
+2. Existing accounts stay at the current price and storage, but a newcomer-only trial can go ahead",3,3,
+q-fce4b056,heldout-partial-invoice-redesign,"For ""Noah will email the three firms on the integration list to warn about PDF changes"", what has to exist by ""this week""?","1. Noah has sent the PDF change warning to all three integration firms by end of day Friday the 6th
+2. Noah has sent the PDF change warning to all three integration firms by end of day Sunday the 9th",2,2,"Sunday is the 8th, not the 9th"
+q-fd33aff8,heldout-deadline-early-next-week,"For ""Wen will write the pricing FAQ"", what has to exist by ""early next week""?","1. A shareable draft of the pricing FAQ must be circulated by end of day Monday the 9th, as a firm commitment
+2. A shareable draft of the pricing FAQ must be circulated by end of day Tuesday the 10th, as a firm commitment
+3. A draft of the pricing FAQ is targeted for end of day Wednesday the 11th, as a soft aim that can move a day or two without affecting the November 16 launch",2,2,three options mix date and firmness
+q-fda80689,dev-ownership-outage-email,"For ""The group will handle the customer emails by tomorrow with plain language, the credit, and what we changed"", who does it on the day it happens?","1. Imani does it
+2. Felix does it
+3. Sunil does it
+4. No one is named yet",3,3,
