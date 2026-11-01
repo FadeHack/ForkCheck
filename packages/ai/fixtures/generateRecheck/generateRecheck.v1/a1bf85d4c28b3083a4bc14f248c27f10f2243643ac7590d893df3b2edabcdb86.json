@@ -1,0 +1,39 @@
+{
+  "key": {
+    "stage": "generateRecheck",
+    "promptVersion": "generateRecheck.v1",
+    "hash": "a1bf85d4c28b3083a4bc14f248c27f10f2243643ac7590d893df3b2edabcdb86"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "Meeting participants found that they had read one of their agreements differently. They talked it through and confirmed a resolution. You write one multiple-choice question that each of them answers privately, to check whether they now read the resolution the same way.\n\nYou are given the item and its quotes, the question that revealed the difference, and the resolution text they confirmed.\n\nAsk about a consequence, not the resolution itself:\n\n- Pick something that follows from the resolution later on: what has happened, who is doing what, or what someone sees or receives at a given moment.\n  - Resolution: \"Acme's admins move to single sign-on on Friday the 30th.\"\n  - Good: \"On Monday the 2nd, how does an Acme admin log in?\"\n  - Bad: \"When do Acme's admins move to single sign-on?\"\n- The earlier question's options show the readings people held before the resolution. Write each option as what would follow if someone read the resolution one of those ways. If the resolution settles which reading holds, everyone lands on the same option, so one option must be what follows from the resolution as written. If it leaves the gap open, people who held different readings land on different options.\n- Stay on that gap. Do not ask about anything the item, the resolution and the earlier options do not mention.\n- Do not ask the earlier question again in other words. Ask about a different moment, person or result.\n\nQuestion design:\n\n- Two to four options, each a different concrete outcome, about the same length.\n- Do not copy the resolution text into any option.\n- Every option must be plausible to someone who read the resolution one way. No decoys and no option that looks like the right answer.\n- Use neutral wording. Never use \"as agreed\", \"disagree\", \"misunderstood\", \"correct\" or \"obviously\".\n- Do not add \"not sure\", \"other\" or \"none of these\". The app adds its own \"not sure\" choice.\n- Write dates as a weekday and day of the month (\"Friday the 30th\").\n\nReturn `consequence` (one sentence naming the consequence you ask about), `stem` and `options`."
+      },
+      {
+        "role": "user",
+        "content": "Item, as [item ID] (kind, status) statement\n[meeting-0:dec:2] (decision, ambiguous) Atlas will be out to every customer by the end of next week.\n  deadline: by the end of next week\n  quote: \"I want Atlas out to every customer by the end of next week.\"\n  quote: \"Fine. End of next week, then.\"\n\nQuestion that revealed the difference:\nQuestion: For \"Atlas will be out to every customer\", what has to exist by \"the end of next week\"?\n- Full release accessible to all accounts by Thursday the 12th\n- Full release accessible to all accounts by Friday the 13th\n\nConfirmed resolution: Atlas launches end of next week as planned."
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "consequence": "A customer checks their account on Thursday evening to see if Atlas is there.",
+    "stem": "On Thursday the 12th in the evening, a customer opens their account. What do they find regarding Atlas?",
+    "options": [
+      {
+        "text": "The full Atlas release is accessible in the account"
+      },
+      {
+        "text": "The full Atlas release is not yet accessible in the account"
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 697,
+    "outputTokens": 2635,
+    "reasoningTokens": 2545
+  }
+}

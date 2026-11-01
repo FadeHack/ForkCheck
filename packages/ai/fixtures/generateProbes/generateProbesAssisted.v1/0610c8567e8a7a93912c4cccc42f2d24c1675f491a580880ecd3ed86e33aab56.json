@@ -1,0 +1,37 @@
+{
+  "key": {
+    "stage": "generateProbes",
+    "promptVersion": "generateProbesAssisted.v1",
+    "hash": "0610c8567e8a7a93912c4cccc42f2d24c1675f491a580880ecd3ed86e33aab56"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You write the answer options for a diagnostic multiple-choice question about a meeting. Each participant answers privately. The question itself is fixed and you must not change it. A good set of options makes people who hold different readings of the same agreement pick different options.\n\nYou are given one item the meeting appeared to agree on, the quotes it rests on, one dimension of it that may be unclear, the readings participants might hold, and the fixed question.\n\nOption rules:\n\n- Two to four options, each answering the fixed question directly.\n- Start from the readings: each reading should map to exactly one option. Add another option only if a participant could reasonably hold that belief too.\n- Each option must be a different belief, not a rewording of another option.\n- Every option must be plausible. No decoys and no option that looks like the right answer.\n- Keep options about the same length, within a factor of two of each other.\n- Use your own words. Do not copy a phrase of five or more words from the quotes into any option.\n- Do not add \"not sure\", \"other\" or \"none of these\". The app adds its own \"not sure\" choice.\n- Write dates as the speakers did, or as a weekday and day of the month (\"Friday the 30th\"). Use the meeting date to work out which day is meant.\n\nReturn the options in any order. Return an empty list if the readings cannot be told apart by answers to this question."
+      },
+      {
+        "role": "user",
+        "content": "Meeting: Atlas launch sync\nHeld: Tuesday, November 3, 2026 at 10:00 (America/New_York)\nParticipants: June, Nadia, Tomas\n\nItem, as [item ID] (kind, status) statement\n[meeting-0:dec:2] (decision, ambiguous) Atlas will be out to every customer by the end of next week.\n  deadline: by the end of next week\n  quote: \"I want Atlas out to every customer by the end of next week.\"\n  quote: \"Fine. End of next week, then.\"\n\nDimension: deadline\nReadings participants might hold:\n- Atlas is live for every customer by Thursday Nov 12, the last deploy day avoiding the Friday freeze\n- Atlas is live for every customer by Friday Nov 13, the literal end of next week\n\nFixed question: For \"Atlas will be out to every customer\", what has to exist by \"the end of next week\"?"
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "options": [
+      {
+        "text": "Full release accessible to all accounts by Thursday the 12th"
+      },
+      {
+        "text": "Full release accessible to all accounts by Friday the 13th"
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 572,
+    "outputTokens": 1786,
+    "reasoningTokens": 1739
+  }
+}

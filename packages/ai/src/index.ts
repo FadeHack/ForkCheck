@@ -35,6 +35,7 @@ export {
   fixtureProvider,
   MissingFixtureError,
   RecordingProvider,
+  RecordMissingProvider,
   type FixtureFile,
   type FixtureInput,
   type FixtureKey,

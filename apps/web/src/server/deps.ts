@@ -7,6 +7,7 @@ import {
   LoggedProvider,
   MetaProvider,
   MultiCallLog,
+  RecordMissingProvider,
   type ModelPort,
 } from "@forkcheck/ai";
 import {
@@ -19,6 +20,7 @@ import { findWorkspaceRoot, loadEnv, type Env } from "@forkcheck/config";
 import { parseProbeDimensions, type Dimension } from "@forkcheck/core";
 import { connect, DbCallLog, MeetingRepo, RoundRepo, SplitRepo, type Db } from "@forkcheck/db";
 import { logError } from "./log";
+import { MeetingScopedProvider } from "./meeting-scope";
 import { LocalDiskStorage, type Storage } from "./storage";
 
 /** For deps without audio: nothing is stored, so there is nothing to read or delete. */
@@ -77,19 +79,28 @@ export function createDeps(db: Db, overrides: DepsOverrides = {}): Deps {
   };
 }
 
-/** Recorded fixtures unless LIVE=1; live calls share the CLI's spend ledger and cap. */
+/** Recorded fixtures unless LIVE=1; live calls share the CLI's spend ledger and cap. RECORD_FIXTURES=1 records the ones missing. */
 function modelFactory(env: Env, db: Db, ledger: FileSpendLedger): (meetingId: string) => ModelPort {
   // Replays are logged too, so the trace panel shows a replayed demo's calls.
   if (!env.LIVE) {
-    return (meetingId) => new LoggedProvider(new FakeProvider(), new DbCallLog(db, { meetingId }));
+    return (meetingId) =>
+      new LoggedProvider(
+        new MeetingScopedProvider(new FakeProvider(), meetingId),
+        new DbCallLog(db, { meetingId }),
+      );
   }
-  return (meetingId) =>
-    new MetaProvider({
+  return (meetingId) => {
+    const meta = new MetaProvider({
       apiKey: env.MODEL_API_KEY ?? "",
       spendCapUsd: env.SPEND_CAP_USD,
       ledger,
       log: new MultiCallLog(new ConsoleCallLog(), new DbCallLog(db, { meetingId })),
     });
+    return new MeetingScopedProvider(
+      env.RECORD_FIXTURES ? new RecordMissingProvider(meta) : meta,
+      meetingId,
+    );
+  };
 }
 
 /** Live transcriptions bill the same ledger and cap as model calls; RECORD_FIXTURES=1 saves them for replay. */

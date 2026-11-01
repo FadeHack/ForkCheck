@@ -157,6 +157,29 @@ export class RecordingProvider implements ModelPort {
 }
 
 /**
+ * Replays a recorded response when there is one and records a live one when there isn't, so
+ * re-running a recording pass extends the fixtures instead of rewriting them with new replies.
+ */
+export class RecordMissingProvider implements ModelPort {
+  readonly #replay: FakeProvider;
+  readonly #record: RecordingProvider;
+
+  constructor(live: ModelPort, dir: string = defaultFixturesDir) {
+    this.#replay = new FakeProvider(dir);
+    this.#record = new RecordingProvider(live, dir);
+  }
+
+  async call<T>(request: ModelRequest<T>): Promise<ModelResponse<T>> {
+    try {
+      return await this.#replay.call(request);
+    } catch (error) {
+      if (error instanceof MissingFixtureError) return this.#record.call(request);
+      throw error;
+    }
+  }
+}
+
+/**
  * The provider to use when no live calls are wanted: replay by default, or record through
  * `live` when RECORD_FIXTURES=1 (which loadEnv only allows together with LIVE=1).
  */

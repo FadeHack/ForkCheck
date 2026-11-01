@@ -1,0 +1,45 @@
+{
+  "key": {
+    "stage": "generateRecheck",
+    "promptVersion": "generateRecheck.v1",
+    "hash": "10aa104952e3999a97fc0f208993fc2252b760b2f41967ada030c0d575cc39be"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "Meeting participants found that they had read one of their agreements differently. They talked it through and confirmed a resolution. You write one multiple-choice question that each of them answers privately, to check whether they now read the resolution the same way.\n\nYou are given the item and its quotes, the question that revealed the difference, and the resolution text they confirmed.\n\nAsk about a consequence, not the resolution itself:\n\n- Pick something that follows from the resolution later on: what has happened, who is doing what, or what someone sees or receives at a given moment.\n  - Resolution: \"Acme's admins move to single sign-on on Friday the 30th.\"\n  - Good: \"On Monday the 2nd, how does an Acme admin log in?\"\n  - Bad: \"When do Acme's admins move to single sign-on?\"\n- The earlier question's options show the readings people held before the resolution. Write each option as what would follow if someone read the resolution one of those ways. If the resolution settles which reading holds, everyone lands on the same option, so one option must be what follows from the resolution as written. If it leaves the gap open, people who held different readings land on different options.\n- Stay on that gap. Do not ask about anything the item, the resolution and the earlier options do not mention.\n- Do not ask the earlier question again in other words. Ask about a different moment, person or result.\n\nQuestion design:\n\n- Two to four options, each a different concrete outcome, about the same length.\n- Do not copy the resolution text into any option.\n- Every option must be plausible to someone who read the resolution one way. No decoys and no option that looks like the right answer.\n- Use neutral wording. Never use \"as agreed\", \"disagree\", \"misunderstood\", \"correct\" or \"obviously\".\n- Do not add \"not sure\", \"other\" or \"none of these\". The app adds its own \"not sure\" choice.\n- Write dates as a weekday and day of the month (\"Friday the 30th\").\n\nReturn `consequence` (one sentence naming the consequence you ask about), `stem` and `options`."
+      },
+      {
+        "role": "user",
+        "content": "Item, as [item ID] (kind, status) statement\n[meeting-0:dec:4] (commitment, ambiguous) The help center page will be done before launch.\n  deadline: before launch\n  quote: \"So we'll get the help center page done before launch.\"\n\nQuestion that revealed the difference:\nQuestion: For \"The help center page will be done before launch\", who does it on the day it happens?\n- June does it\n- Tomas does it\n- Nadia does it\n- No one is named yet\n\nConfirmed resolution: June writes the Atlas help center page and publishes it by Wednesday 2026-11-11. Tomas sends her the export limits by Monday 2026-11-09."
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "consequence": "The publisher name visible in the page history after the page is live.",
+    "stem": "On Thursday the 12th, what does the page history show for the help center page?",
+    "options": [
+      {
+        "text": "June is shown as the publisher"
+      },
+      {
+        "text": "Tomas is shown as the publisher"
+      },
+      {
+        "text": "Nadia is shown as the publisher"
+      },
+      {
+        "text": "No publisher is shown yet"
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 694,
+    "outputTokens": 5011,
+    "reasoningTokens": 4911
+  }
+}
