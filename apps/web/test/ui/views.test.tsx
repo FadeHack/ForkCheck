@@ -413,6 +413,7 @@ describe("RecordView", () => {
           sources: [],
           questions: [],
           playback: false,
+          replayed: { model: false, transcription: false },
         }}
       />,
     );
@@ -445,6 +446,7 @@ describe("RecordView", () => {
           sources: [],
           questions: [],
           playback: false,
+          replayed: { model: false, transcription: false },
         }}
       />,
     );

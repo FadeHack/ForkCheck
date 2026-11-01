@@ -92,6 +92,8 @@ export interface TranscribeResult {
   costUsd: number;
   latencyMs: number;
   attempts: number;
+  /** Set when the response is a recording, so whatever shows it can label it as replayed. */
+  replayed?: true;
 }
 
 const RETRY_LATER =

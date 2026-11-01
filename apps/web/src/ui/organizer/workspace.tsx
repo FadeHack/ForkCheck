@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { OrganizerMeetingState } from "../../contracts/api";
 import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
 import { Loading, PageError } from "../components";
+import { ReplayedBanner } from "../replayed-banner";
 import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, stagesFor, type OrganizerStage, type StageList } from "../stages";
 import { formatHeldAt } from "../time";
@@ -51,6 +52,7 @@ export function WorkspaceView({
         <p>Held {formatHeldAt(state.meeting.heldAt, state.meeting.timezone)}</p>
       </header>
       {state.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
+      <ReplayedBanner replayed={state.replayed} />
       <StageRail stages={stages} current={current} viewing={stage} href={href} />
       {stage === "speakers" && <SpeakersView state={state} onChange={reload} />}
       {stage === "review" && <ReviewView state={state} onChange={reload} />}

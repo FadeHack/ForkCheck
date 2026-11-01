@@ -1,8 +1,9 @@
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import {
+  FallbackTranscriber,
   RecordingTranscriber,
   ReplayTranscriber,
   TranscribeError,
@@ -42,9 +43,40 @@ describe("ReplayTranscriber", () => {
     const wav = new Uint8Array([4, 5, 6]);
     await new RecordingTranscriber(live, dir).transcribe(wav, { keywords: ["Ana"] });
     const replayed = await new ReplayTranscriber(dir).transcribe(wav);
-    expect(replayed).toEqual({ response, costUsd: 0, latencyMs: 0, attempts: 0 });
+    expect(replayed).toEqual({ response, costUsd: 0, latencyMs: 0, attempts: 0, replayed: true });
     await expect(new ReplayTranscriber(dir).transcribe(new Uint8Array([7]))).rejects.toThrow(
       "no_fixture",
     );
+  });
+});
+
+describe("FallbackTranscriber", () => {
+  const wav = new Uint8Array([8, 9]);
+  const failing = (kind: "network" | "auth"): Transcriber => ({
+    transcribe: () => Promise.reject(new TranscribeError(kind, "Try again.", kind, "s1", 3)),
+  });
+  beforeEach(async () => {
+    const live: Transcriber = {
+      transcribe: async () => ({ response, costUsd: 0.01, latencyMs: 5, attempts: 1 }),
+    };
+    await new RecordingTranscriber(live, dir).transcribe(wav);
+  });
+
+  it("replays the recording, labeled, when the service can't be reached", async () => {
+    const result = await new FallbackTranscriber(
+      failing("network"),
+      new ReplayTranscriber(dir),
+    ).transcribe(wav);
+    expect(result).toMatchObject({ response, replayed: true });
+  });
+
+  it("passes other failures through, and the live error when nothing was recorded", async () => {
+    const replay = new ReplayTranscriber(dir);
+    await expect(
+      new FallbackTranscriber(failing("auth"), replay).transcribe(wav),
+    ).rejects.toMatchObject({ kind: "auth" });
+    await expect(
+      new FallbackTranscriber(failing("network"), replay).transcribe(new Uint8Array([1])),
+    ).rejects.toMatchObject({ kind: "network" });
   });
 });

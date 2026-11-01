@@ -85,6 +85,16 @@ export interface StartTranscriptionResponse {
   status: "transcribing";
 }
 
+/**
+ * Which results came from recorded replies instead of live calls: everything when the server
+ * runs without LIVE=1, or a call that fell back because the service couldn't be reached.
+ * Screens label them "Replayed".
+ */
+export interface ReplayedResults {
+  model: boolean;
+  transcription: boolean;
+}
+
 // GET /api/meetings/:id
 export interface ProbeAnswerCount {
   probeId: string;
@@ -113,6 +123,7 @@ export interface OrganizerMeetingState {
   speakers: SpeakerAssignment[];
   /** Changes made to turns in transcript review, oldest first. */
   edits: SegmentEdit[];
+  replayed: ReplayedResults;
 }
 
 export interface SegmentEdit {
@@ -252,6 +263,7 @@ export interface ParticipantState {
   waitingOn: string[];
   /** Closed rounds only. */
   revealed: RevealedSplit[];
+  replayed: ReplayedResults;
 }
 
 // POST /api/p/:token/answers
@@ -327,6 +339,7 @@ export interface RecordResponse {
   questions: RevealedSplit[];
   /** Quotes can be played: the organizer kept the recording and is the one reading. */
   playback: boolean;
+  replayed: ReplayedResults;
 }
 export type RecordSource = Pick<
   Segment,

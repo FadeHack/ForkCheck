@@ -41,4 +41,5 @@ export {
   type FixtureKey,
 } from "./fixtures";
 export { defaultPromptsDir, loadPrompt, type Prompt, type PromptVariant } from "./prompts";
+export { FallbackProvider } from "./fallback";
 export { ScriptedProvider } from "./scripted";

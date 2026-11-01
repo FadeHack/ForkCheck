@@ -1,4 +1,5 @@
 import { buildRecord, validateRecord, type Meeting, type RecordInput } from "@forkcheck/core";
+import { meetingReplays } from "@forkcheck/db";
 import type { RecordResponse } from "../contracts/api";
 import type { Deps } from "./deps";
 import { revealedSplits } from "./rounds";
@@ -13,13 +14,14 @@ export async function meetingRecord(
   meeting: Meeting,
   reader: "organizer" | "participant",
 ): Promise<RecordResponse> {
-  const [participants, segments, analysis, probes, stored, audio] = await Promise.all([
+  const [participants, segments, analysis, probes, stored, audio, replayed] = await Promise.all([
     deps.meetings.participants(meeting.id),
     deps.meetings.segments(meeting.id),
     deps.meetings.analysis(meeting.id),
     deps.meetings.probes(meeting.id),
     deps.splits.list(meeting.id),
     deps.meetings.liveAudio(meeting.id),
+    meetingReplays(deps.db, meeting.id),
   ]);
   const splits: RecordInput["splits"] = [];
   // Probes come in rank order, so record splits follow the order the questions were ranked.
@@ -68,5 +70,6 @@ export async function meetingRecord(
     questions: await revealedSplits(deps, meeting.id),
     // The recording is served to the organizer only, and only if kept past review.
     playback: reader === "organizer" && audio?.retain === true,
+    replayed,
   };
 }

@@ -91,6 +91,7 @@ export function organizerState(
     splits: [],
     resolutions: [],
     confirmations: [],
+    replayed: { model: false, transcription: false },
     ...overrides,
   };
 }
@@ -103,6 +104,7 @@ export function participantState(overrides: Partial<ParticipantState> = {}): Par
     openProbes: [],
     ownAnswers: [],
     waitingOn: [],
+    replayed: { model: false, transcription: false },
     revealed: [],
     ...overrides,
   };

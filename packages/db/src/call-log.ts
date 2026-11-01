@@ -1,7 +1,10 @@
 import { randomUUID } from "node:crypto";
-import { asc, eq } from "drizzle-orm";
+import { and, asc, eq } from "drizzle-orm";
 import { toIso, type Db } from "./client";
 import { modelCall } from "./schema";
+
+/** The stage name transcriptions are logged under, next to the model stages. */
+export const TRANSCRIBE_STAGE = "transcribe";
 
 /** The ai package's ModelCallEntry, restated because db may not import ai. */
 export interface ModelCallRecord {
@@ -49,4 +52,25 @@ export async function meetingModelCalls(db: Db, meetingId: string): Promise<Mode
     ...rest,
     at: toIso(at),
   }));
+}
+
+/** Whether any of the meeting's model results or its transcription came from a recorded reply. */
+export async function meetingReplays(
+  db: Db,
+  meetingId: string,
+): Promise<{ model: boolean; transcription: boolean }> {
+  const rows = await db
+    .selectDistinct({ stage: modelCall.stage })
+    .from(modelCall)
+    .where(
+      and(
+        eq(modelCall.meetingId, meetingId),
+        eq(modelCall.provider, "fake"),
+        eq(modelCall.ok, true),
+      ),
+    );
+  return {
+    model: rows.some((r) => r.stage !== TRANSCRIBE_STAGE),
+    transcription: rows.some((r) => r.stage === TRANSCRIBE_STAGE),
+  };
 }

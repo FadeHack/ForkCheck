@@ -19,6 +19,7 @@ import {
 } from "../components";
 import { nameList } from "../labels";
 import { ConfirmList, type ConfirmLine } from "../resolve";
+import { ReplayedBanner } from "../replayed-banner";
 import { SimulatedBanner } from "../simulated-banner";
 import { PlayButton, PlayerFailure, useTurnPlayer, type TurnPlayer } from "../player";
 import { formatHeldAt } from "../time";
@@ -231,6 +232,7 @@ export function RecordView({ data }: { data: RecordResponse }) {
         </div>
       </header>
       {people.some((p) => p.isSimulated) && <SimulatedBanner />}
+      <ReplayedBanner replayed={data.replayed} />
       {record.items.some((i) =>
         i.sourceRefs.some((r) => r.kind === "segment" && r.origin === "asr"),
       ) && (

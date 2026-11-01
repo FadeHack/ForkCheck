@@ -7,14 +7,18 @@ import type {
   ProposeResolutionResponse,
   RecordResponse,
 } from "../src/contracts/api";
+import { noAxeViolations } from "./axe";
 import { closeRound } from "./seed";
 
 /**
  * The demo meeting, "Atlas launch sync", from paste to record, once with precise resolutions
  * and once with vague ones. The app's own server answers every model call: from recorded
  * fixtures by default, or live with LIVE=1 (RECORD_FIXTURES=1 saves them for replay).
+ * OFFLINE=1 says a LIVE=1 server has no network, so its results are replays as well.
  */
 const LIVE = process.env.LIVE === "1";
+const REPLAYED = !LIVE || process.env.OFFLINE === "1";
+const replayedBanner = (page: Page) => page.getByRole("note").filter({ hasText: "Replayed." });
 const MODEL_WAIT = { timeout: LIVE ? 5 * 60_000 : 30_000 };
 
 interface Demo {
@@ -147,6 +151,7 @@ for (const path of ["precise", "vague"] as const) {
     await draft(/help center page.*who does it/).check();
     await expect(publish).toHaveText("Publish 5 questions");
     await publish.click();
+    if (REPLAYED) await expect(replayedBanner(page)).toBeVisible();
     await expect(page.getByRole("button", { name: "Reveal answers" })).toBeVisible();
 
     // Each person answers from their own brief, on their own device; here through their API.
@@ -202,6 +207,13 @@ for (const path of ["precise", "vague"] as const) {
 
     await page.goto(`/m/${m.id}/record`);
     await expect(page.getByText("Every item passed the record checks.")).toBeVisible(MODEL_WAIT);
+    if (REPLAYED) {
+      await expect(replayedBanner(page)).toBeVisible();
+      await noAxeViolations(page);
+      await page.goto(`/p/${tok("June")}`);
+      await expect(replayedBanner(page)).toBeVisible();
+      await noAxeViolations(page);
+    }
     const res = await request.get(`/api/meetings/${m.id}/record`, { headers });
     const { record } = (await res.json()) as RecordResponse;
     const confirmed = record.items.filter((i) => i.category === "confirmed").map((i) => i.text);

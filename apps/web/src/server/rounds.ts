@@ -12,6 +12,7 @@ import {
   type QuoteSources,
   type Round,
 } from "@forkcheck/core";
+import { meetingReplays } from "@forkcheck/db";
 import type {
   EditProbeRequest,
   OpenRoundRequest,
@@ -237,6 +238,7 @@ export async function participantState(
     ownAnswers: await deps.rounds.answersBy(participant.id),
     waitingOn: await waitingOn(deps, participant, participants, probes),
     revealed: await revealedSplits(deps, meeting.id),
+    replayed: await meetingReplays(deps.db, meeting.id),
   };
 }
 

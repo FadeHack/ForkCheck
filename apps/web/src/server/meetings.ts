@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { parseTranscript, type Meeting, type Participant } from "@forkcheck/core";
+import { meetingReplays } from "@forkcheck/db";
 import type {
   CreateMeetingRequest,
   CreateMeetingResponse,
@@ -95,10 +96,11 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
     });
   const resolutions = await deps.splits.resolutions(splits.map((s) => s.id));
   const confirmations = await deps.splits.confirmations(resolutions.map((r) => r.id));
-  const [audio, speakers, edits] = await Promise.all([
+  const [audio, speakers, edits, replayed] = await Promise.all([
     deps.meetings.liveAudio(meeting.id),
     deps.meetings.speakerMap(meeting.id),
     deps.meetings.segmentEdits(meeting.id),
+    meetingReplays(deps.db, meeting.id),
   ]);
 
   return {
@@ -117,6 +119,7 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
     audio,
     speakers,
     edits,
+    replayed,
   };
 }
 
