@@ -1,0 +1,476 @@
+{
+  "runId": "m7-dry-20261101",
+  "run": 0,
+  "scenario": "heldout-debated-on-call-rotation",
+  "provider": "meta",
+  "source": "paste",
+  "resolution": "vague",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "heldout-debated-on-call-rotation:seg:0",
+      "text": "The on-call survey is in. People in London are getting paged at three in the morning for US traffic."
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:1",
+      "text": "Follow-the-sun fixes that. London covers the day here, Austin covers the day there."
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:2",
+      "text": "Austin has two people who know the payment system. That's not enough for a rotation."
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:3",
+      "text": "We train more. It's six weeks of shadowing."
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:4",
+      "text": "Six weeks where incidents take longer. I'm not comfortable with that before the holiday peak."
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:5",
+      "text": "Both fair. I don't want to force a decision now."
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:6",
+      "text": "Can we at least start the shadowing?"
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:7",
+      "text": "Shadowing alone I'm fine with."
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:8",
+      "text": "OK. Andile, set up shadowing for two Austin engineers. The rotation itself we leave open until January."
+    },
+    {
+      "id": "heldout-debated-on-call-rotation:seg:9",
+      "text": "Will do."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-debated-on-call-rotation:dec:0",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Andile will set up shadowing for two Austin engineers.",
+        "ownerText": "Andile",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-on-call-rotation:dec:0:ev:0",
+          "decisionId": "heldout-debated-on-call-rotation:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-on-call-rotation:seg:8",
+          "quote": "Andile, set up shadowing for two Austin engineers."
+        },
+        {
+          "id": "heldout-debated-on-call-rotation:dec:0:ev:1",
+          "decisionId": "heldout-debated-on-call-rotation:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-on-call-rotation:seg:7",
+          "quote": "Shadowing alone I'm fine with."
+        },
+        {
+          "id": "heldout-debated-on-call-rotation:dec:0:ev:2",
+          "decisionId": "heldout-debated-on-call-rotation:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-on-call-rotation:seg:9",
+          "quote": "Will do."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-on-call-rotation:dec:1",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "idx": 1,
+        "kind": "open_item",
+        "statement": "Whether to adopt follow-the-sun with London covering the day here and Austin covering the day there.",
+        "ownerText": null,
+        "deadlineText": "until January",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "debated"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-on-call-rotation:dec:1:ev:0",
+          "decisionId": "heldout-debated-on-call-rotation:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-on-call-rotation:seg:1",
+          "quote": "Follow-the-sun fixes that. London covers the day here, Austin covers the day there."
+        },
+        {
+          "id": "heldout-debated-on-call-rotation:dec:1:ev:1",
+          "decisionId": "heldout-debated-on-call-rotation:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-on-call-rotation:seg:4",
+          "quote": "Six weeks where incidents take longer. I'm not comfortable with that before the holiday peak."
+        },
+        {
+          "id": "heldout-debated-on-call-rotation:dec:1:ev:2",
+          "decisionId": "heldout-debated-on-call-rotation:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-on-call-rotation:seg:8",
+          "quote": "The rotation itself we leave open until January."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-debated-on-call-rotation:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-debated-on-call-rotation:cand:0:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-debated-on-call-rotation:cand:0:probe:0",
+      "stem": "When \"Andile will set up shadowing for two Austin engineers\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-debated-on-call-rotation:cand:0:probe:0:opt:0",
+          "text": "The two Austin engineers already familiar with the payment system observe shifts."
+        },
+        {
+          "id": "heldout-debated-on-call-rotation:cand:0:probe:0:opt:1",
+          "text": "Two extra Austin engineers unfamiliar with the payment system observe shifts to widen the pool."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Petra",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Andile",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Mei",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "heldout-debated-on-call-rotation",
+    "title": "Follow-the-sun on-call",
+    "heldAt": "2026-11-05T08:00:00+00:00",
+    "generatedAt": "2026-11-05T08:00:00+00:00",
+    "participants": [
+      {
+        "id": "Petra",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "displayName": "Petra",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Andile",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "displayName": "Andile",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Mei",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "displayName": "Mei",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "heldout-debated-on-call-rotation:item:0",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "category": "stated",
+        "text": "Andile, set up shadowing for two Austin engineers.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-on-call-rotation:seg:8",
+            "quote": "Andile, set up shadowing for two Austin engineers.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-on-call-rotation:item:1",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "category": "stated",
+        "text": "Shadowing alone I'm fine with.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-on-call-rotation:seg:7",
+            "quote": "Shadowing alone I'm fine with.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-on-call-rotation:item:2",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "category": "stated",
+        "text": "Will do.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-on-call-rotation:seg:9",
+            "quote": "Will do.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-on-call-rotation:item:3",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "category": "stated",
+        "text": "Follow-the-sun fixes that. London covers the day here, Austin covers the day there.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-on-call-rotation:seg:1",
+            "quote": "Follow-the-sun fixes that. London covers the day here, Austin covers the day there.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-on-call-rotation:item:4",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "category": "stated",
+        "text": "Six weeks where incidents take longer. I'm not comfortable with that before the holiday peak.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-on-call-rotation:seg:4",
+            "quote": "Six weeks where incidents take longer. I'm not comfortable with that before the holiday peak.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "heldout-debated-on-call-rotation:item:5",
+        "meetingId": "heldout-debated-on-call-rotation",
+        "category": "stated",
+        "text": "The rotation itself we leave open until January.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "heldout-debated-on-call-rotation:seg:8",
+            "quote": "The rotation itself we leave open until January.",
+            "origin": "paste"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "The record contains only stated remarks, with no confirmed resolutions. The remarks mentioned shadowing for two Austin engineers and leaving the rotation itself open until January.\n\nStated in the meeting\n- Someone said Andile should set up shadowing for two Austin engineers.\n- Someone said they were fine with shadowing alone.\n- Someone said they will do it.\n- Someone said follow-the-sun fixes that, with London covering the day here and Austin covering the day there.\n- Someone said six weeks where incidents take longer was not comfortable before the holiday peak.\n- Someone said to leave the rotation itself open until January."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 11400,
+          "inputTokens": 1044,
+          "outputTokens": 3583,
+          "reasoningTokens": 3261,
+          "costUsd": 0.01584525,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 13537,
+          "inputTokens": 1439,
+          "outputTokens": 3683,
+          "reasoningTokens": 3562,
+          "costUsd": 0.0166232,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 5621,
+          "inputTokens": 583,
+          "outputTokens": 1702,
+          "reasoningTokens": 1651,
+          "costUsd": 0.007556350000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1618,
+          "inputTokens": 441,
+          "outputTokens": 452,
+          "reasoningTokens": 389,
+          "costUsd": 0.00220715,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1295,
+          "inputTokens": 289,
+          "outputTokens": 226,
+          "reasoningTokens": 190,
+          "costUsd": 0.00119745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1636,
+          "inputTokens": 289,
+          "outputTokens": 366,
+          "reasoningTokens": 335,
+          "costUsd": 0.0016516500000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1024,
+          "inputTokens": 289,
+          "outputTokens": 231,
+          "reasoningTokens": 199,
+          "costUsd": 0.0012187,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 4175,
+          "inputTokens": 526,
+          "outputTokens": 1212,
+          "reasoningTokens": 941,
+          "costUsd": 0.0058085,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

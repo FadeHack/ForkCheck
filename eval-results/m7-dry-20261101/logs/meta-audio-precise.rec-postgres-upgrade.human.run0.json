@@ -1,0 +1,1139 @@
+{
+  "runId": "m7-dry-20261101",
+  "run": 0,
+  "scenario": "rec-postgres-upgrade",
+  "provider": "meta",
+  "source": "audio",
+  "resolution": "precise",
+  "depth": "loop",
+  "segments": [
+    {
+      "id": "rec-postgres-upgrade:seg:0",
+      "text": "The post of Gregory John Mattaniens win do right. right."
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:1",
+      "text": "day the seventh from six to eight AM AM Central European time"
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:2",
+      "text": "that's when traffic at lowest who is running it"
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:3",
+      "text": "Me Siobhan is back up if something goes wrong"
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:4",
+      "text": "What's the rollback plan?"
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:5",
+      "text": "We take a snapshot at 5 45 if the upgrade fails we restore it that takes about 20 minutes"
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:6",
+      "text": "then the status page goes up on Thursday two days before"
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:7",
+      "text": "I will post it Thursday and email the five biggest customers directly"
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:8",
+      "text": "Good. and send me short summary on Monday even if everything goes fine."
+    },
+    {
+      "id": "rec-postgres-upgrade:seg:9",
+      "text": "Will do. Monday summary to you."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "rec-postgres-upgrade:dec:0",
+        "meetingId": "rec-postgres-upgrade",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "The upgrade window is the seventh from six to eight AM Central European time.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-postgres-upgrade:dec:0:ev:0",
+          "decisionId": "rec-postgres-upgrade:dec:0",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:1",
+          "quote": "day the seventh from six to eight AM AM Central European time"
+        },
+        {
+          "id": "rec-postgres-upgrade:dec:0:ev:1",
+          "decisionId": "rec-postgres-upgrade:dec:0",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:2",
+          "quote": "that's when traffic at lowest"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-postgres-upgrade:dec:1",
+        "meetingId": "rec-postgres-upgrade",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Felix will run it.",
+        "ownerText": "Felix",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-postgres-upgrade:dec:1:ev:0",
+          "decisionId": "rec-postgres-upgrade:dec:1",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:2",
+          "quote": "who is running it"
+        },
+        {
+          "id": "rec-postgres-upgrade:dec:1:ev:1",
+          "decisionId": "rec-postgres-upgrade:dec:1",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:3",
+          "quote": "Me"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-postgres-upgrade:dec:2",
+        "meetingId": "rec-postgres-upgrade",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Siobhan is back up if something goes wrong.",
+        "ownerText": "Siobhan",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-postgres-upgrade:dec:2:ev:0",
+          "decisionId": "rec-postgres-upgrade:dec:2",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:3",
+          "quote": "Siobhan is back up if something goes wrong"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-postgres-upgrade:dec:3",
+        "meetingId": "rec-postgres-upgrade",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "The rollback plan is to take a snapshot at 5 45 and if the upgrade fails restore it, which takes about 20 minutes.",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-postgres-upgrade:dec:3:ev:0",
+          "decisionId": "rec-postgres-upgrade:dec:3",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:5",
+          "quote": "We take a snapshot at 5 45 if the upgrade fails we restore it that takes about 20 minutes"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-postgres-upgrade:dec:4",
+        "meetingId": "rec-postgres-upgrade",
+        "idx": 4,
+        "kind": "decision",
+        "statement": "The status page goes up on Thursday two days before.",
+        "ownerText": null,
+        "deadlineText": "on Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-postgres-upgrade:dec:4:ev:0",
+          "decisionId": "rec-postgres-upgrade:dec:4",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:6",
+          "quote": "the status page goes up on Thursday two days before"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-postgres-upgrade:dec:5",
+        "meetingId": "rec-postgres-upgrade",
+        "idx": 5,
+        "kind": "commitment",
+        "statement": "Felix will post it Thursday.",
+        "ownerText": "Felix",
+        "deadlineText": "Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-postgres-upgrade:dec:5:ev:0",
+          "decisionId": "rec-postgres-upgrade:dec:5",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:7",
+          "quote": "I will post it Thursday"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-postgres-upgrade:dec:6",
+        "meetingId": "rec-postgres-upgrade",
+        "idx": 6,
+        "kind": "commitment",
+        "statement": "Felix will email the five biggest customers directly.",
+        "ownerText": "Felix",
+        "deadlineText": null,
+        "ownerInferred": true,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-postgres-upgrade:dec:6:ev:0",
+          "decisionId": "rec-postgres-upgrade:dec:6",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:7",
+          "quote": "email the five biggest customers directly"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "rec-postgres-upgrade:dec:7",
+        "meetingId": "rec-postgres-upgrade",
+        "idx": 7,
+        "kind": "commitment",
+        "statement": "Felix will send a short summary on Monday even if everything goes fine.",
+        "ownerText": "Felix",
+        "deadlineText": "on Monday",
+        "ownerInferred": true,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "rec-postgres-upgrade:dec:7:ev:0",
+          "decisionId": "rec-postgres-upgrade:dec:7",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:8",
+          "quote": "send me short summary on Monday even if everything goes fine."
+        },
+        {
+          "id": "rec-postgres-upgrade:dec:7:ev:1",
+          "decisionId": "rec-postgres-upgrade:dec:7",
+          "resolutionId": null,
+          "segmentId": "rec-postgres-upgrade:seg:9",
+          "quote": "Monday summary to you."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "rec-postgres-upgrade:cand:0",
+      "dimension": "owner",
+      "mismatch": null,
+      "probeId": "rec-postgres-upgrade:cand:0:t0"
+    },
+    {
+      "id": "rec-postgres-upgrade:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "rec-postgres-upgrade:cand:1:probe:0"
+    },
+    {
+      "id": "rec-postgres-upgrade:cand:2",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "rec-postgres-upgrade:cand:2:t0"
+    },
+    {
+      "id": "rec-postgres-upgrade:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "rec-postgres-upgrade:cand:3:probe:0"
+    },
+    {
+      "id": "rec-postgres-upgrade:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "rec-postgres-upgrade:cand:4:probe:0"
+    },
+    {
+      "id": "rec-postgres-upgrade:cand:5",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "rec-postgres-upgrade:cand:5:probe:0"
+    },
+    {
+      "id": "rec-postgres-upgrade:cand:6",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "rec-postgres-upgrade:cand:6:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "rec-postgres-upgrade:cand:1:probe:0",
+      "stem": "For \"The upgrade window is the seventh from six to eight AM Central European time\", what has to exist by the deadline?",
+      "options": [
+        {
+          "id": "rec-postgres-upgrade:cand:1:probe:0:opt:0",
+          "text": "A completed upgrade with normal service resumed and any recovery done by 8 AM CET Saturday the 7th"
+        },
+        {
+          "id": "rec-postgres-upgrade:cand:1:probe:0:opt:1",
+          "text": "Best effort progress in the early hours, with safety work permitted to extend beyond 8 AM CET Saturday the 7th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Amara",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "rec-postgres-upgrade:cand:2:t0",
+      "stem": "For \"The rollback plan is to take a snapshot at 5 45 and if the upgrade fails restore it, which takes about 20 minutes\", which check has to pass first?",
+      "options": [
+        {
+          "id": "rec-postgres-upgrade:cand:2:t0:opt:0",
+          "text": "A quick smoke test of the main flows"
+        },
+        {
+          "id": "rec-postgres-upgrade:cand:2:t0:opt:1",
+          "text": "A full regression pass"
+        },
+        {
+          "id": "rec-postgres-upgrade:cand:2:t0:opt:2",
+          "text": "A full regression plus extra checks for what changed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Amara",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "rec-postgres-upgrade:cand:0:t0",
+      "stem": "For \"Siobhan is back up if something goes wrong\", who does it on the day it happens?",
+      "options": [
+        {
+          "id": "rec-postgres-upgrade:cand:0:t0:opt:0",
+          "text": "Felix does it"
+        },
+        {
+          "id": "rec-postgres-upgrade:cand:0:t0:opt:1",
+          "text": "Amara does it"
+        },
+        {
+          "id": "rec-postgres-upgrade:cand:0:t0:opt:2",
+          "text": "No one is named yet"
+        },
+        {
+          "id": "rec-postgres-upgrade:cand:0:t0:opt:3",
+          "text": "Felix and Amara share it"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Amara",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "rec-postgres-upgrade:cand:4:probe:0",
+      "stem": "For \"Felix will email the five biggest customers directly\", what has to exist by the deadline?",
+      "options": [
+        {
+          "id": "rec-postgres-upgrade:cand:4:probe:0:opt:0",
+          "text": "Direct notes to the top five accounts are sent by Thursday the 5th, at the same time as the status page"
+        },
+        {
+          "id": "rec-postgres-upgrade:cand:4:probe:0:opt:1",
+          "text": "Direct notes to the top five accounts are sent by 6 AM on Saturday the 7th, so Friday the 6th still counts"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Amara",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "rec-postgres-upgrade:cand:5:probe:0",
+      "stem": "When \"Felix will email the five biggest customers directly\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "rec-postgres-upgrade:cand:5:probe:0:opt:0",
+          "text": "Direct outreach goes to the five accounts ranked by total spend"
+        },
+        {
+          "id": "rec-postgres-upgrade:cand:5:probe:0:opt:1",
+          "text": "Direct outreach goes to the five accounts ranked by Postgres usage"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Amara",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Felix",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": {
+    "meetingId": "rec-postgres-upgrade",
+    "title": "Postgres upgrade window",
+    "heldAt": "2026-11-02T10:00:00Z",
+    "generatedAt": "2026-11-02T10:00:00Z",
+    "participants": [
+      {
+        "id": "Amara",
+        "meetingId": "rec-postgres-upgrade",
+        "displayName": "Amara",
+        "isSimulated": true,
+        "status": "active"
+      },
+      {
+        "id": "Felix",
+        "meetingId": "rec-postgres-upgrade",
+        "displayName": "Felix",
+        "isSimulated": true,
+        "status": "active"
+      }
+    ],
+    "items": [
+      {
+        "id": "rec-postgres-upgrade:item:0",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "day the seventh from six to eight AM AM Central European time",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:1",
+            "quote": "day the seventh from six to eight AM AM Central European time",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:1",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "that's when traffic at lowest",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:2",
+            "quote": "that's when traffic at lowest",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:2",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "who is running it",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:2",
+            "quote": "who is running it",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:3",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "Me",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:3",
+            "quote": "Me",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:4",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "Siobhan is back up if something goes wrong",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:3",
+            "quote": "Siobhan is back up if something goes wrong",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:5",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "We take a snapshot at 5 45 if the upgrade fails we restore it that takes about 20 minutes",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:5",
+            "quote": "We take a snapshot at 5 45 if the upgrade fails we restore it that takes about 20 minutes",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:6",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "the status page goes up on Thursday two days before",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:6",
+            "quote": "the status page goes up on Thursday two days before",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:7",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "I will post it Thursday",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:7",
+            "quote": "I will post it Thursday",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:8",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "email the five biggest customers directly",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:7",
+            "quote": "email the five biggest customers directly",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:9",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "send me short summary on Monday even if everything goes fine.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:8",
+            "quote": "send me short summary on Monday even if everything goes fine.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      },
+      {
+        "id": "rec-postgres-upgrade:item:10",
+        "meetingId": "rec-postgres-upgrade",
+        "category": "stated",
+        "text": "Monday summary to you.",
+        "sourceRefs": [
+          {
+            "kind": "segment",
+            "segmentId": "rec-postgres-upgrade:seg:9",
+            "quote": "Monday summary to you.",
+            "origin": "asr"
+          }
+        ],
+        "confirmedBy": [],
+        "absent": [],
+        "recheck": "not_run",
+        "splitId": null,
+        "deadline": null
+      }
+    ],
+    "proseDraft": "The record lists no confirmed resolutions and no unresolved items. It contains only stated remarks about the timing on the seventh, traffic levels, running and backup cover, a snapshot and restore, the status page, direct customer emails, and a Monday summary.\n\nStated in the meeting\n- It was stated that traffic is lowest at that time.\n- Someone stated the question of who is running it.\n- Someone stated the word \"Me.\"\n- It was stated that Siobhan is backup if something goes wrong.\n- It was stated that we take a snapshot at 5:45 and if the upgrade fails we restore it, which takes about 20 minutes.\n- It was stated that the status page goes up on Thursday, two days before.\n- It was stated that I will post it Thursday.\n- It was stated to email the five biggest customers directly.\n- It was stated to send me a short summary on Monday even if everything goes fine.\n- It was stated that a Monday summary will go to you."
+  },
+  "validation": {
+    "ok": true,
+    "findings": []
+  },
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 31331,
+          "inputTokens": 985,
+          "outputTokens": 8169,
+          "reasoningTokens": 7473,
+          "costUsd": 0.035262,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 43207,
+          "inputTokens": 1624,
+          "outputTokens": 9668,
+          "reasoningTokens": 8985,
+          "costUsd": 0.043119,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6039,
+          "inputTokens": 568,
+          "outputTokens": 1650,
+          "reasoningTokens": 1582,
+          "costUsd": 0.0073166,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 4606,
+          "inputTokens": 462,
+          "outputTokens": 797,
+          "reasoningTokens": 731,
+          "costUsd": 0.00369965,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6653,
+          "inputTokens": 535,
+          "outputTokens": 1644,
+          "reasoningTokens": 1578,
+          "costUsd": 0.00724985,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 3482,
+          "inputTokens": 442,
+          "outputTokens": 680,
+          "reasoningTokens": 612,
+          "costUsd": 0.0031774,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 7037,
+          "inputTokens": 537,
+          "outputTokens": 1495,
+          "reasoningTokens": 1420,
+          "costUsd": 0.0066191,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 3271,
+          "inputTokens": 454,
+          "outputTokens": 575,
+          "reasoningTokens": 522,
+          "costUsd": 0.00301125,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 6788,
+          "inputTokens": 527,
+          "outputTokens": 1178,
+          "reasoningTokens": 1133,
+          "costUsd": 0.00525935,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1567,
+          "inputTokens": 414,
+          "outputTokens": 395,
+          "reasoningTokens": 335,
+          "costUsd": 0.0019311500000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 10614,
+          "inputTokens": 669,
+          "outputTokens": 2504,
+          "reasoningTokens": 2439,
+          "costUsd": 0.01147825,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2000,
+          "inputTokens": 405,
+          "outputTokens": 443,
+          "reasoningTokens": 384,
+          "costUsd": 0.002389,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2404,
+          "inputTokens": 295,
+          "outputTokens": 452,
+          "reasoningTokens": 425,
+          "costUsd": 0.0021654499999999998,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1947,
+          "inputTokens": 295,
+          "outputTokens": 339,
+          "reasoningTokens": 312,
+          "costUsd": 0.0016852,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2249,
+          "inputTokens": 286,
+          "outputTokens": 303,
+          "reasoningTokens": 276,
+          "costUsd": 0.00152095,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1775,
+          "inputTokens": 286,
+          "outputTokens": 303,
+          "reasoningTokens": 272,
+          "costUsd": 0.00152095,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2469,
+          "inputTokens": 271,
+          "outputTokens": 295,
+          "reasoningTokens": 268,
+          "costUsd": 0.0014682,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1386,
+          "inputTokens": 271,
+          "outputTokens": 239,
+          "reasoningTokens": 210,
+          "costUsd": 0.0012302,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1637,
+          "inputTokens": 296,
+          "outputTokens": 292,
+          "reasoningTokens": 265,
+          "costUsd": 0.0014867,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2355,
+          "inputTokens": 296,
+          "outputTokens": 457,
+          "reasoningTokens": 430,
+          "costUsd": 0.0021879499999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2107,
+          "inputTokens": 267,
+          "outputTokens": 456,
+          "reasoningTokens": 426,
+          "costUsd": 0.00214745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1562,
+          "inputTokens": 267,
+          "outputTokens": 284,
+          "reasoningTokens": 253,
+          "costUsd": 0.0012756500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "draftRecordProse",
+      "calls": [
+        {
+          "stage": "draftRecordProse",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "draftRecordProse.v1",
+          "cacheHit": false,
+          "latencyMs": 9817,
+          "inputTokens": 600,
+          "outputTokens": 2243,
+          "reasoningTokens": 1799,
+          "costUsd": 0.01001765,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
