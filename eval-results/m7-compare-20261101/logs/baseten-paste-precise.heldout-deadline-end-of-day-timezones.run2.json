@@ -1,0 +1,521 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 2,
+  "scenario": "heldout-deadline-end-of-day-timezones",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:0",
+      "text": "Morning from Berlin. Quick one on the 4.2 release. The build is green and QA signed off last night."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:1",
+      "text": "Nice. Is the changelog still a mess?"
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:2",
+      "text": "It's forty raw commit titles. Customers can't read that."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:3",
+      "text": "Support wants the notes before the rollout so they can update the help center articles."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:4",
+      "text": "Right. Marcus, can you get the release notes to me by end of day tomorrow? I'll review and publish them."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:5",
+      "text": "End of day tomorrow works. I'll group them by feature, fixes and deprecations."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:6",
+      "text": "Please call out the export change. That one will generate tickets."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:7",
+      "text": "Will do. I'll put it at the top with a short how-to."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:8",
+      "text": "And the rollout itself starts Thursday at 08:00 my time, ten percent first."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:9",
+      "text": "I'll have the help center drafts ready to flip on Thursday."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:10",
+      "text": "Do we mention the API rate limit change or keep that for the developer newsletter?"
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:11",
+      "text": "Mention it in one line and link to the developer docs."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:12",
+      "text": "Works for me."
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:seg:13",
+      "text": "Great. Thanks, both."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:0",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Marcus will get the release notes to Ingrid by end of day tomorrow",
+        "ownerText": "Marcus",
+        "deadlineText": "by end of day tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:0:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:4",
+          "quote": "Marcus, can you get the release notes to me by end of day tomorrow? I'll review and publish them."
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:0:ev:1",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:5",
+          "quote": "End of day tomorrow works. I'll group them by feature, fixes and deprecations."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:1",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Marcus will call out the export change at the top with a short how-to",
+        "ownerText": "Marcus",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:1:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:6",
+          "quote": "Please call out the export change. That one will generate tickets."
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:1:ev:1",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:7",
+          "quote": "Will do. I'll put it at the top with a short how-to."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:2",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 2,
+        "kind": "decision",
+        "statement": "The rollout starts Thursday at 08:00 my time, ten percent first",
+        "ownerText": null,
+        "deadlineText": "Thursday at 08:00 my time",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:2:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:8",
+          "quote": "And the rollout itself starts Thursday at 08:00 my time, ten percent first."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:3",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Priya will have the help center drafts ready to flip on Thursday",
+        "ownerText": "Priya",
+        "deadlineText": "on Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:3:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:9",
+          "quote": "I'll have the help center drafts ready to flip on Thursday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-end-of-day-timezones:dec:4",
+        "meetingId": "heldout-deadline-end-of-day-timezones",
+        "idx": 4,
+        "kind": "decision",
+        "statement": "Mention the API rate limit change in one line and link to the developer docs",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:dec:4:ev:0",
+          "decisionId": "heldout-deadline-end-of-day-timezones:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-end-of-day-timezones:seg:11",
+          "quote": "Mention it in one line and link to the developer docs."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-deadline-end-of-day-timezones:cand:0",
+      "dimension": "deadline",
+      "mismatch": "whose-end-of-day",
+      "probeId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-deadline-end-of-day-timezones:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-deadline-end-of-day-timezones:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-deadline-end-of-day-timezones:cand:1:probe:0",
+      "stem": "For \"The rollout starts, ten percent first\", what has to exist by Thursday, November 5?",
+      "options": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:cand:1:probe:0:opt:0",
+          "text": "The ten percent rollout is live by 08:00 Berlin time on Thursday the 5th"
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:cand:1:probe:0:opt:1",
+          "text": "The ten percent rollout is live by 08:00 Chicago time on Thursday the 5th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Ingrid",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Marcus",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Priya",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0",
+      "stem": "For \"Marcus will get the release notes to Ingrid\", what has to exist by Wednesday, November 4?",
+      "options": [
+        {
+          "id": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:0",
+          "text": "The release notes organized into features, fixes and deprecations are in Ingrid's inbox by Wednesday the 4th around 5pm Berlin time"
+        },
+        {
+          "id": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:1",
+          "text": "The release notes organized into features, fixes and deprecations are in Ingrid's inbox by end of day Wednesday the 4th Chicago time where the meeting was held"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Ingrid",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Marcus",
+          "choice": "option",
+          "optionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:1"
+        },
+        {
+          "participantId": "Priya",
+          "choice": "option",
+          "optionId": "heldout-deadline-end-of-day-timezones:cand:0:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 8823,
+          "inputTokens": 1331,
+          "outputTokens": 1768,
+          "reasoningTokens": 1285,
+          "costUsd": 0.00776975,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 6849,
+          "inputTokens": 1916,
+          "outputTokens": 1675,
+          "reasoningTokens": 1447,
+          "costUsd": 0.00852815,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4440,
+          "inputTokens": 770,
+          "outputTokens": 1326,
+          "reasoningTokens": 1244,
+          "costUsd": 0.006175600000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1858,
+          "inputTokens": 636,
+          "outputTokens": 294,
+          "reasoningTokens": 231,
+          "costUsd": 0.0016220999999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 2840,
+          "inputTokens": 729,
+          "outputTokens": 847,
+          "reasoningTokens": 789,
+          "costUsd": 0.0040885999999999995,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1533,
+          "inputTokens": 598,
+          "outputTokens": 290,
+          "reasoningTokens": 235,
+          "costUsd": 0.0015576,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1942,
+          "inputTokens": 314,
+          "outputTokens": 306,
+          "reasoningTokens": 273,
+          "costUsd": 0.0015687000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1598,
+          "inputTokens": 310,
+          "outputTokens": 241,
+          "reasoningTokens": 209,
+          "costUsd": 0.00128745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1780,
+          "inputTokens": 311,
+          "outputTokens": 330,
+          "reasoningTokens": 297,
+          "costUsd": 0.00166695,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3174,
+          "inputTokens": 339,
+          "outputTokens": 880,
+          "reasoningTokens": 837,
+          "costUsd": 0.00389865,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1584,
+          "inputTokens": 335,
+          "outputTokens": 310,
+          "reasoningTokens": 272,
+          "costUsd": 0.00161195,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2444,
+          "inputTokens": 336,
+          "outputTokens": 554,
+          "reasoningTokens": 519,
+          "costUsd": 0.0026501999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,587 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 1,
+  "scenario": "heldout-partial-invoice-redesign",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-partial-invoice-redesign:seg:0",
+      "text": "Customers keep saying our invoices look like a receipt from 2005."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:1",
+      "text": "Fair. The template hasn't changed since we launched."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:2",
+      "text": "The new design is approved. Logo, line items grouped by project, a clear due date."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:3",
+      "text": "Then let's get the invoice redesign live on Monday the 16th. Noah owns it."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:4",
+      "text": "The 16th is fine."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:5",
+      "text": "I'll send Noah the final assets tomorrow."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:6",
+      "text": "And we should warn the accounting firms that parse our PDFs."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:7",
+      "text": "I'll email the three firms on the integration list this week."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:8",
+      "text": "Thanks. Do we keep the old layout available as an option?"
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:9",
+      "text": "No. One layout."
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:seg:10",
+      "text": "Agreed."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-partial-invoice-redesign:dec:0",
+        "meetingId": "heldout-partial-invoice-redesign",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "Invoice redesign will go live on Monday the 16th",
+        "ownerText": "Noah",
+        "deadlineText": "on Monday the 16th",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-partial-invoice-redesign:dec:0:ev:0",
+          "decisionId": "heldout-partial-invoice-redesign:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-partial-invoice-redesign:seg:3",
+          "quote": "Then let's get the invoice redesign live on Monday the 16th. Noah owns it."
+        },
+        {
+          "id": "heldout-partial-invoice-redesign:dec:0:ev:1",
+          "decisionId": "heldout-partial-invoice-redesign:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-partial-invoice-redesign:seg:4",
+          "quote": "The 16th is fine."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-partial-invoice-redesign:dec:1",
+        "meetingId": "heldout-partial-invoice-redesign",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Sunita will send Noah the final assets tomorrow",
+        "ownerText": "Sunita",
+        "deadlineText": "tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-partial-invoice-redesign:dec:1:ev:0",
+          "decisionId": "heldout-partial-invoice-redesign:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-partial-invoice-redesign:seg:5",
+          "quote": "I'll send Noah the final assets tomorrow."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-partial-invoice-redesign:dec:2",
+        "meetingId": "heldout-partial-invoice-redesign",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Noah will email the three firms on the integration list this week",
+        "ownerText": "Noah",
+        "deadlineText": "this week",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-partial-invoice-redesign:dec:2:ev:0",
+          "decisionId": "heldout-partial-invoice-redesign:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-partial-invoice-redesign:seg:7",
+          "quote": "I'll email the three firms on the integration list this week."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-partial-invoice-redesign:dec:3",
+        "meetingId": "heldout-partial-invoice-redesign",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "Only one invoice layout will be used and the old layout will not be kept as an option",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-partial-invoice-redesign:dec:3:ev:0",
+          "decisionId": "heldout-partial-invoice-redesign:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-partial-invoice-redesign:seg:9",
+          "quote": "No. One layout."
+        },
+        {
+          "id": "heldout-partial-invoice-redesign:dec:3:ev:1",
+          "decisionId": "heldout-partial-invoice-redesign:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-partial-invoice-redesign:seg:10",
+          "quote": "Agreed."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-partial-invoice-redesign:cand:0",
+      "dimension": "scope",
+      "mismatch": "pdf-or-email-too",
+      "probeId": "heldout-partial-invoice-redesign:cand:0:t0"
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:cand:1",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "heldout-partial-invoice-redesign:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-partial-invoice-redesign:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-partial-invoice-redesign:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-partial-invoice-redesign:cand:0:t0",
+      "stem": "For \"Invoice redesign will go live on Monday the 16th\", what form does it take?",
+      "options": [
+        {
+          "id": "heldout-partial-invoice-redesign:cand:0:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "heldout-partial-invoice-redesign:cand:0:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "heldout-partial-invoice-redesign:cand:0:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Elif",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Noah",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunita",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-partial-invoice-redesign:cand:1:probe:0",
+      "stem": "On Monday the 16th, who will see the new invoice layout when it goes live?",
+      "options": [
+        {
+          "id": "heldout-partial-invoice-redesign:cand:1:probe:0:opt:0",
+          "text": "Every customer account sees the new layout right away on the 16th"
+        },
+        {
+          "id": "heldout-partial-invoice-redesign:cand:1:probe:0:opt:1",
+          "text": "Only internal accounts see it on the 16th, customers get it after verification"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Elif",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Noah",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunita",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-partial-invoice-redesign:cand:2:probe:0",
+      "stem": "For \"Noah will email the three firms on the integration list\", what has to exist by \"this week\"?",
+      "options": [
+        {
+          "id": "heldout-partial-invoice-redesign:cand:2:probe:0:opt:0",
+          "text": "Evidence that all three integration firms have been emailed by end of day Friday the 6th"
+        },
+        {
+          "id": "heldout-partial-invoice-redesign:cand:2:probe:0:opt:1",
+          "text": "Evidence that all three integration firms have been emailed by end of day Sunday the 8th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Elif",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Noah",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Sunita",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 10268,
+          "inputTokens": 1183,
+          "outputTokens": 3084,
+          "reasoningTokens": 2740,
+          "costUsd": 0.013318549999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 12646,
+          "inputTokens": 1649,
+          "outputTokens": 3399,
+          "reasoningTokens": 3106,
+          "costUsd": 0.0156622,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3177,
+          "inputTokens": 847,
+          "outputTokens": 867,
+          "reasoningTokens": 785,
+          "costUsd": 0.0041803000000000005,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1427,
+          "inputTokens": 580,
+          "outputTokens": 263,
+          "reasoningTokens": 208,
+          "costUsd": 0.00142035,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3751,
+          "inputTokens": 717,
+          "outputTokens": 1137,
+          "reasoningTokens": 1081,
+          "costUsd": 0.0053061,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 4042,
+          "inputTokens": 592,
+          "outputTokens": 222,
+          "reasoningTokens": 169,
+          "costUsd": 0.0012610999999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2850,
+          "inputTokens": 299,
+          "outputTokens": 604,
+          "reasoningTokens": 566,
+          "costUsd": 0.00281645,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3911,
+          "inputTokens": 301,
+          "outputTokens": 982,
+          "reasoningTokens": 944,
+          "costUsd": 0.00442545,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1967,
+          "inputTokens": 300,
+          "outputTokens": 563,
+          "reasoningTokens": 527,
+          "costUsd": 0.00264345,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1445,
+          "inputTokens": 308,
+          "outputTokens": 312,
+          "reasoningTokens": 274,
+          "costUsd": 0.0015867000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1907,
+          "inputTokens": 310,
+          "outputTokens": 308,
+          "reasoningTokens": 277,
+          "costUsd": 0.0015722,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1786,
+          "inputTokens": 309,
+          "outputTokens": 216,
+          "reasoningTokens": 185,
+          "costUsd": 0.0011799500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1420,
+          "inputTokens": 318,
+          "outputTokens": 377,
+          "reasoningTokens": 341,
+          "costUsd": 0.00187545,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1860,
+          "inputTokens": 320,
+          "outputTokens": 252,
+          "reasoningTokens": 215,
+          "costUsd": 0.0013467000000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1877,
+          "inputTokens": 319,
+          "outputTokens": 389,
+          "reasoningTokens": 355,
+          "costUsd": 0.0019277,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,725 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 0,
+  "scenario": "heldout-same-reading-usual-handoff",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:0",
+      "text": "Bulk edit for invoices ships Thursday. Last thing before then is support."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:1",
+      "text": "Do the usual handoff to support, then. They hate surprises."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:2",
+      "text": "I'll do the usual handoff tomorrow."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:3",
+      "text": "Thanks. Any known issues they should hear about?"
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:4",
+      "text": "One. Bulk edit skips invoices that are locked for payment, and it doesn't say why."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:5",
+      "text": "I'll put that in the known issues section."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:6",
+      "text": "And let's fix the message in the next sprint."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:7",
+      "text": "I'll file the ticket."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:8",
+      "text": "Good. Thanks."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:0",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "Bulk edit for invoices ships Thursday.",
+        "ownerText": null,
+        "deadlineText": "Thursday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:0:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:0",
+          "quote": "Bulk edit for invoices ships Thursday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:1",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Lucia will do the usual handoff tomorrow.",
+        "ownerText": "Lucia",
+        "deadlineText": "tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:1:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:2",
+          "quote": "I'll do the usual handoff tomorrow."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:2",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Lucia will put the issue that bulk edit skips invoices that are locked for payment and doesn't say why in the known issues section.",
+        "ownerText": "Lucia",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:2:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:5",
+          "quote": "I'll put that in the known issues section."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:3",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "The team will fix the message in the next sprint.",
+        "ownerText": null,
+        "deadlineText": "in the next sprint",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:3:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:6",
+          "quote": "And let's fix the message in the next sprint."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:4",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Omar will file the ticket.",
+        "ownerText": "Omar",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:4:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:7",
+          "quote": "I'll file the ticket."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-same-reading-usual-handoff:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-usual-handoff:cand:0:t0"
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-usual-handoff:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:cand:2",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-usual-handoff:cand:2:probe:0"
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:cand:3",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "heldout-same-reading-usual-handoff:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-same-reading-usual-handoff:cand:0:t0",
+      "stem": "For \"Bulk edit for invoices ships Thursday\", what form does it take?",
+      "options": [
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:0:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:0:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:0:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Greta",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:0:t0:opt:2"
+        },
+        {
+          "participantId": "Omar",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:0:t0:opt:2"
+        },
+        {
+          "participantId": "Lucia",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-same-reading-usual-handoff:cand:2:probe:0",
+      "stem": "After Lucia completes the handoff tomorrow, Thursday the 5th, where will it be accessible?",
+      "options": [
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:2:probe:0:opt:0",
+          "text": "In the internal Slack channel and internal KB, visible only to the support team"
+        },
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:2:probe:0:opt:1",
+          "text": "In the public help center and release notes, visible to customers right away"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Greta",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:2:probe:0:opt:0"
+        },
+        {
+          "participantId": "Omar",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:2:probe:0:opt:0"
+        },
+        {
+          "participantId": "Lucia",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:2:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "heldout-same-reading-usual-handoff:cand:1:probe:0",
+      "stem": "When \"Lucia will do the usual handoff tomorrow\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:1:probe:0:opt:0",
+          "text": "The handoff counts as done when Lucia has refreshed the handover document and shared a Slack recap covering the summary and known issues."
+        },
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:1:probe:0:opt:1",
+          "text": "The handoff counts as done only after Lucia has also recorded a Loom overview, prepared an FAQ, and set up a live Q&A slot for Support."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Greta",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:1:probe:0:opt:1"
+        },
+        {
+          "participantId": "Omar",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:1:probe:0:opt:1"
+        },
+        {
+          "participantId": "Lucia",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:1:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "heldout-same-reading-usual-handoff:cand:3:probe:0",
+      "stem": "After Lucia adds the note about bulk edit skipping locked invoices without explanation, where will it be visible?",
+      "options": [
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:3:probe:0:opt:0",
+          "text": "Only in the internal support handoff doc for agents to reference"
+        },
+        {
+          "id": "heldout-same-reading-usual-handoff:cand:3:probe:0:opt:1",
+          "text": "In the public release notes and customer-facing known issues page"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Greta",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:3:probe:0:opt:0"
+        },
+        {
+          "participantId": "Omar",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:3:probe:0:opt:0"
+        },
+        {
+          "participantId": "Lucia",
+          "choice": "option",
+          "optionId": "heldout-same-reading-usual-handoff:cand:3:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 9637,
+          "inputTokens": 1134,
+          "outputTokens": 2927,
+          "reasoningTokens": 2577,
+          "costUsd": 0.01385725,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 11886,
+          "inputTokens": 1613,
+          "outputTokens": 3088,
+          "reasoningTokens": 2705,
+          "costUsd": 0.014295450000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3186,
+          "inputTokens": 716,
+          "outputTokens": 815,
+          "reasoningTokens": 738,
+          "costUsd": 0.00393635,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1945,
+          "inputTokens": 623,
+          "outputTokens": 397,
+          "reasoningTokens": 336,
+          "costUsd": 0.0020436,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 4226,
+          "inputTokens": 814,
+          "outputTokens": 1101,
+          "reasoningTokens": 1019,
+          "costUsd": 0.005133550000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1581,
+          "inputTokens": 577,
+          "outputTokens": 266,
+          "reasoningTokens": 210,
+          "costUsd": 0.0014293499999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 2762,
+          "inputTokens": 834,
+          "outputTokens": 576,
+          "reasoningTokens": 506,
+          "costUsd": 0.0029273000000000003,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1448,
+          "inputTokens": 578,
+          "outputTokens": 278,
+          "reasoningTokens": 213,
+          "costUsd": 0.0014815999999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2849,
+          "inputTokens": 316,
+          "outputTokens": 433,
+          "reasoningTokens": 395,
+          "costUsd": 0.00211095,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2326,
+          "inputTokens": 316,
+          "outputTokens": 478,
+          "reasoningTokens": 441,
+          "costUsd": 0.0023022,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2074,
+          "inputTokens": 316,
+          "outputTokens": 536,
+          "reasoningTokens": 500,
+          "costUsd": 0.0024079,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3007,
+          "inputTokens": 330,
+          "outputTokens": 694,
+          "reasoningTokens": 655,
+          "costUsd": 0.0032376999999999996,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2009,
+          "inputTokens": 330,
+          "outputTokens": 420,
+          "reasoningTokens": 380,
+          "costUsd": 0.0019324000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2590,
+          "inputTokens": 330,
+          "outputTokens": 551,
+          "reasoningTokens": 509,
+          "costUsd": 0.0024891500000000003,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3632,
+          "inputTokens": 359,
+          "outputTokens": 1015,
+          "reasoningTokens": 967,
+          "costUsd": 0.0046381999999999994,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3562,
+          "inputTokens": 359,
+          "outputTokens": 642,
+          "reasoningTokens": 602,
+          "costUsd": 0.00305295,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 4388,
+          "inputTokens": 359,
+          "outputTokens": 1261,
+          "reasoningTokens": 1221,
+          "costUsd": 0.0056837,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1599,
+          "inputTokens": 324,
+          "outputTokens": 419,
+          "reasoningTokens": 381,
+          "costUsd": 0.00192065,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2135,
+          "inputTokens": 324,
+          "outputTokens": 515,
+          "reasoningTokens": 481,
+          "costUsd": 0.0023286500000000003,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1441,
+          "inputTokens": 324,
+          "outputTokens": 316,
+          "reasoningTokens": 279,
+          "costUsd": 0.0016237,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

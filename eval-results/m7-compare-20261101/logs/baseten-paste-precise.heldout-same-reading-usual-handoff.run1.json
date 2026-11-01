@@ -1,0 +1,202 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 1,
+  "scenario": "heldout-same-reading-usual-handoff",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:0",
+      "text": "Bulk edit for invoices ships Thursday. Last thing before then is support."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:1",
+      "text": "Do the usual handoff to support, then. They hate surprises."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:2",
+      "text": "I'll do the usual handoff tomorrow."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:3",
+      "text": "Thanks. Any known issues they should hear about?"
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:4",
+      "text": "One. Bulk edit skips invoices that are locked for payment, and it doesn't say why."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:5",
+      "text": "I'll put that in the known issues section."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:6",
+      "text": "And let's fix the message in the next sprint."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:7",
+      "text": "I'll file the ticket."
+    },
+    {
+      "id": "heldout-same-reading-usual-handoff:seg:8",
+      "text": "Good. Thanks."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:0",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Lucia will do the usual handoff to support tomorrow",
+        "ownerText": "Lucia",
+        "deadlineText": "tomorrow",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:0:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:2",
+          "quote": "I'll do the usual handoff tomorrow."
+        },
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:0:ev:1",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:1",
+          "quote": "Do the usual handoff to support, then."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:1",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Lucia will put the issue where bulk edit skips invoices that are locked for payment without explanation in the known issues section",
+        "ownerText": "Lucia",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:1:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:5",
+          "quote": "I'll put that in the known issues section."
+        },
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:1:ev:1",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:4",
+          "quote": "Bulk edit skips invoices that are locked for payment, and it doesn't say why."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:2",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 2,
+        "kind": "decision",
+        "statement": "The group will fix the message for locked invoices in the next sprint",
+        "ownerText": null,
+        "deadlineText": "in the next sprint",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:2:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:6",
+          "quote": "And let's fix the message in the next sprint."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-same-reading-usual-handoff:dec:3",
+        "meetingId": "heldout-same-reading-usual-handoff",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Omar will file the ticket to fix the message",
+        "ownerText": "Omar",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-same-reading-usual-handoff:dec:3:ev:0",
+          "decisionId": "heldout-same-reading-usual-handoff:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-same-reading-usual-handoff:seg:7",
+          "quote": "I'll file the ticket."
+        }
+      ]
+    }
+  ],
+  "candidates": [],
+  "rounds": [],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 11187,
+          "inputTokens": 1134,
+          "outputTokens": 2950,
+          "reasoningTokens": 2583,
+          "costUsd": 0.0128286,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 9288,
+          "inputTokens": 1611,
+          "outputTokens": 2487,
+          "reasoningTokens": 2473,
+          "costUsd": 0.011738700000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    }
+  ]
+}

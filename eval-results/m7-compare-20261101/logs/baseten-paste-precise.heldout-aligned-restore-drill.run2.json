@@ -1,0 +1,547 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 2,
+  "scenario": "heldout-aligned-restore-drill",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-aligned-restore-drill:seg:0",
+      "text": "Quarterly restore drill. Auditors want evidence by the end of the month."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:1",
+      "text": "I'll run it. Restore last night's production snapshot into the isolated drill account."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:2",
+      "text": "When?"
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:3",
+      "text": "Thursday the 12th, starting 10:00 Central. It takes about three hours."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:4",
+      "text": "And what counts as a pass?"
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:5",
+      "text": "The restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:6",
+      "text": "Good. Write it up in the drill log by Friday the 13th, with screenshots."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:7",
+      "text": "Drill log by Friday the 13th. Yes."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:8",
+      "text": "I'll forward it to the auditors the following Monday."
+    },
+    {
+      "id": "heldout-aligned-restore-drill:seg:9",
+      "text": "Sounds good."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-aligned-restore-drill:dec:0",
+        "meetingId": "heldout-aligned-restore-drill",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Delphine will run the restore drill by restoring last night's production snapshot into the isolated drill account on Thursday the 12th starting 10:00 Central",
+        "ownerText": "Delphine",
+        "deadlineText": "Thursday the 12th, starting 10:00 Central",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-aligned-restore-drill:dec:0:ev:0",
+          "decisionId": "heldout-aligned-restore-drill:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:1",
+          "quote": "I'll run it. Restore last night's production snapshot into the isolated drill account."
+        },
+        {
+          "id": "heldout-aligned-restore-drill:dec:0:ev:1",
+          "decisionId": "heldout-aligned-restore-drill:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:3",
+          "quote": "Thursday the 12th, starting 10:00 Central. It takes about three hours."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-aligned-restore-drill:dec:1",
+        "meetingId": "heldout-aligned-restore-drill",
+        "idx": 1,
+        "kind": "decision",
+        "statement": "A pass for the drill is that the restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-aligned-restore-drill:dec:1:ev:0",
+          "decisionId": "heldout-aligned-restore-drill:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:5",
+          "quote": "The restore finishes within four hours, row counts match the snapshot manifest for every table, and the app logs in against it."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-aligned-restore-drill:dec:2",
+        "meetingId": "heldout-aligned-restore-drill",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Delphine will write up the drill in the drill log with screenshots by Friday the 13th",
+        "ownerText": "Delphine",
+        "deadlineText": "by Friday the 13th",
+        "ownerInferred": true,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-aligned-restore-drill:dec:2:ev:0",
+          "decisionId": "heldout-aligned-restore-drill:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:6",
+          "quote": "Write it up in the drill log by Friday the 13th, with screenshots."
+        },
+        {
+          "id": "heldout-aligned-restore-drill:dec:2:ev:1",
+          "decisionId": "heldout-aligned-restore-drill:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:7",
+          "quote": "Drill log by Friday the 13th. Yes."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-aligned-restore-drill:dec:3",
+        "meetingId": "heldout-aligned-restore-drill",
+        "idx": 3,
+        "kind": "commitment",
+        "statement": "Hiroshi will forward the drill log to the auditors the following Monday",
+        "ownerText": "Hiroshi",
+        "deadlineText": "the following Monday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-aligned-restore-drill:dec:3:ev:0",
+          "decisionId": "heldout-aligned-restore-drill:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-aligned-restore-drill:seg:8",
+          "quote": "I'll forward it to the auditors the following Monday."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-aligned-restore-drill:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-aligned-restore-drill:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-aligned-restore-drill:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-aligned-restore-drill:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-aligned-restore-drill:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-aligned-restore-drill:cand:2:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-aligned-restore-drill:cand:0:probe:0",
+      "stem": "For \"Hiroshi will forward the drill log to the auditors\", what has to exist by \"the following Monday\"?",
+      "options": [
+        {
+          "id": "heldout-aligned-restore-drill:cand:0:probe:0:opt:0",
+          "text": "Hiroshi has forwarded the drill log to the auditors by Monday the 9th"
+        },
+        {
+          "id": "heldout-aligned-restore-drill:cand:0:probe:0:opt:1",
+          "text": "Hiroshi has forwarded the drill log to the auditors by Monday the 16th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hiroshi",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Delphine",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-aligned-restore-drill:cand:1:probe:0",
+      "stem": "When \"Hiroshi will forward the drill log to the auditors the following Monday\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-aligned-restore-drill:cand:1:probe:0:opt:0",
+          "text": "The complete historic file containing every past drill entry is sent to the auditors"
+        },
+        {
+          "id": "heldout-aligned-restore-drill:cand:1:probe:0:opt:1",
+          "text": "Only the write-up and screenshots for the November 12 restore drill are sent to the auditors"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hiroshi",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Delphine",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-aligned-restore-drill:cand:2:probe:0",
+      "stem": "If it is Monday the 9th and Delphine has not yet confirmed the drill log write-up with screenshots is ready, what will Hiroshi do about the auditors?",
+      "options": [
+        {
+          "id": "heldout-aligned-restore-drill:cand:2:probe:0:opt:0",
+          "text": "Hiroshi forwards the drill log as it stands to the auditors on Monday the 9th"
+        },
+        {
+          "id": "heldout-aligned-restore-drill:cand:2:probe:0:opt:1",
+          "text": "Hiroshi holds the log and only forwards it after Delphine confirms the write-up with screenshots is ready"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hiroshi",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Delphine",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 5426,
+          "inputTokens": 1164,
+          "outputTokens": 1829,
+          "reasoningTokens": 1384,
+          "costUsd": 0.00796105,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 11559,
+          "inputTokens": 1735,
+          "outputTokens": 3192,
+          "reasoningTokens": 2892,
+          "costUsd": 0.01488995,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 2735,
+          "inputTokens": 721,
+          "outputTokens": 805,
+          "reasoningTokens": 751,
+          "costUsd": 0.0043225,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1619,
+          "inputTokens": 599,
+          "outputTokens": 286,
+          "reasoningTokens": 230,
+          "costUsd": 0.00154185,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3044,
+          "inputTokens": 708,
+          "outputTokens": 697,
+          "reasoningTokens": 645,
+          "costUsd": 0.00328405,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1694,
+          "inputTokens": 586,
+          "outputTokens": 231,
+          "reasoningTokens": 176,
+          "costUsd": 0.00129185,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 4868,
+          "inputTokens": 834,
+          "outputTokens": 1314,
+          "reasoningTokens": 1211,
+          "costUsd": 0.005923,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1426,
+          "inputTokens": 618,
+          "outputTokens": 216,
+          "reasoningTokens": 159,
+          "costUsd": 0.0012680999999999999,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2428,
+          "inputTokens": 343,
+          "outputTokens": 311,
+          "reasoningTokens": 282,
+          "costUsd": 0.0014854,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1946,
+          "inputTokens": 343,
+          "outputTokens": 361,
+          "reasoningTokens": 318,
+          "costUsd": 0.0018387,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1632,
+          "inputTokens": 345,
+          "outputTokens": 331,
+          "reasoningTokens": 297,
+          "costUsd": 0.0015729000000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1093,
+          "inputTokens": 345,
+          "outputTokens": 316,
+          "reasoningTokens": 279,
+          "costUsd": 0.00164995,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1519,
+          "inputTokens": 361,
+          "outputTokens": 386,
+          "reasoningTokens": 349,
+          "costUsd": 0.00196745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1445,
+          "inputTokens": 361,
+          "outputTokens": 335,
+          "reasoningTokens": 297,
+          "costUsd": 0.0017507,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,767 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 1,
+  "scenario": "heldout-outcome-reporting-pilot",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:0",
+      "text": "The new reporting dashboards are feature complete. Pavel, how's performance?"
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:1",
+      "text": "Under two seconds for every chart on our biggest test workspace."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:2",
+      "text": "The CSV export from the charts is in too."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:3",
+      "text": "Great. Then let's ship it to the pilot group on Monday."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:4",
+      "text": "Monday works. I'll flip the flag first thing."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:5",
+      "text": "I'll write the what's-new note that shows up when they open reporting."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:6",
+      "text": "Keep it short. Three bullets and a link."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:7",
+      "text": "Sure."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:8",
+      "text": "Do we want usage tracking on each chart?"
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:9",
+      "text": "Yes, chart opens and exports. I'll want those numbers in two weeks."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:10",
+      "text": "I'll add the events before Monday."
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:seg:11",
+      "text": "Thanks, both."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-outcome-reporting-pilot:dec:0",
+        "meetingId": "heldout-outcome-reporting-pilot",
+        "idx": 0,
+        "kind": "decision",
+        "statement": "Ship the new reporting dashboards to the pilot group on Monday",
+        "ownerText": null,
+        "deadlineText": "on Monday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-outcome-reporting-pilot:dec:0:ev:0",
+          "decisionId": "heldout-outcome-reporting-pilot:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-outcome-reporting-pilot:seg:3",
+          "quote": "Then let's ship it to the pilot group on Monday."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-outcome-reporting-pilot:dec:1",
+        "meetingId": "heldout-outcome-reporting-pilot",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Pavel will flip the flag first thing on Monday",
+        "ownerText": "Pavel",
+        "deadlineText": "Monday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-outcome-reporting-pilot:dec:1:ev:0",
+          "decisionId": "heldout-outcome-reporting-pilot:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-outcome-reporting-pilot:seg:4",
+          "quote": "Monday works."
+        },
+        {
+          "id": "heldout-outcome-reporting-pilot:dec:1:ev:1",
+          "decisionId": "heldout-outcome-reporting-pilot:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-outcome-reporting-pilot:seg:4",
+          "quote": "I'll flip the flag first thing."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-outcome-reporting-pilot:dec:2",
+        "meetingId": "heldout-outcome-reporting-pilot",
+        "idx": 2,
+        "kind": "commitment",
+        "statement": "Ines will write the what's-new note that shows up when they open reporting",
+        "ownerText": "Ines",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-outcome-reporting-pilot:dec:2:ev:0",
+          "decisionId": "heldout-outcome-reporting-pilot:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-outcome-reporting-pilot:seg:5",
+          "quote": "I'll write the what's-new note that shows up when they open reporting."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-outcome-reporting-pilot:dec:3",
+        "meetingId": "heldout-outcome-reporting-pilot",
+        "idx": 3,
+        "kind": "decision",
+        "statement": "The what's-new note will be three bullets and a link",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-outcome-reporting-pilot:dec:3:ev:0",
+          "decisionId": "heldout-outcome-reporting-pilot:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-outcome-reporting-pilot:seg:6",
+          "quote": "Keep it short. Three bullets and a link."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-outcome-reporting-pilot:dec:4",
+        "meetingId": "heldout-outcome-reporting-pilot",
+        "idx": 4,
+        "kind": "decision",
+        "statement": "Usage tracking will cover chart opens and exports",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-outcome-reporting-pilot:dec:4:ev:0",
+          "decisionId": "heldout-outcome-reporting-pilot:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-outcome-reporting-pilot:seg:9",
+          "quote": "Yes, chart opens and exports."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-outcome-reporting-pilot:dec:5",
+        "meetingId": "heldout-outcome-reporting-pilot",
+        "idx": 5,
+        "kind": "commitment",
+        "statement": "Pavel will add the chart opens and exports tracking events before Monday",
+        "ownerText": "Pavel",
+        "deadlineText": "before Monday",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-outcome-reporting-pilot:dec:5:ev:0",
+          "decisionId": "heldout-outcome-reporting-pilot:dec:5",
+          "resolutionId": null,
+          "segmentId": "heldout-outcome-reporting-pilot:seg:10",
+          "quote": "I'll add the events before Monday."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-outcome-reporting-pilot:cand:0",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-outcome-reporting-pilot:cand:0:t0"
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:cand:1",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-outcome-reporting-pilot:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:cand:2",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-outcome-reporting-pilot:cand:2:probe:0"
+    },
+    {
+      "id": "heldout-outcome-reporting-pilot:cand:3",
+      "dimension": "outcome",
+      "mismatch": null,
+      "probeId": "heldout-outcome-reporting-pilot:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-outcome-reporting-pilot:cand:2:probe:0",
+      "stem": "It's first thing Monday the 9th and the chart opens/exports tracking is still waiting to be merged. What happens?",
+      "options": [
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:2:probe:0:opt:0",
+          "text": "Pavel enables the flag Monday morning; the tracking update can land after"
+        },
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:2:probe:0:opt:1",
+          "text": "Pavel keeps the flag off until the tracking for opens and exports is merged and working"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Ruth",
+          "choice": "option",
+          "optionId": "heldout-outcome-reporting-pilot:cand:2:probe:0:opt:0"
+        },
+        {
+          "participantId": "Pavel",
+          "choice": "option",
+          "optionId": "heldout-outcome-reporting-pilot:cand:2:probe:0:opt:0"
+        },
+        {
+          "participantId": "Ines",
+          "choice": "option",
+          "optionId": "heldout-outcome-reporting-pilot:cand:2:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "heldout-outcome-reporting-pilot:cand:1:probe:0",
+      "stem": "For \"Ship the new reporting dashboards to the pilot group\", what has to exist by Monday, November 9?",
+      "options": [
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:1:probe:0:opt:0",
+          "text": "The pilot group has working access to the new reporting dashboards by early morning PT on Monday the 9th"
+        },
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:1:probe:0:opt:1",
+          "text": "The pilot group has working access to the new reporting dashboards by late evening PT on Monday the 9th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Ruth",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Pavel",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Ines",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-outcome-reporting-pilot:cand:3:probe:0",
+      "stem": "Starting Monday, who will be shown the note when they open reporting?",
+      "options": [
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:3:probe:0:opt:0",
+          "text": "Only users in the pilot group"
+        },
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:3:probe:0:opt:1",
+          "text": "Any user who opens reporting"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Ruth",
+          "choice": "option",
+          "optionId": "heldout-outcome-reporting-pilot:cand:3:probe:0:opt:0"
+        },
+        {
+          "participantId": "Pavel",
+          "choice": "option",
+          "optionId": "heldout-outcome-reporting-pilot:cand:3:probe:0:opt:0"
+        },
+        {
+          "participantId": "Ines",
+          "choice": "option",
+          "optionId": "heldout-outcome-reporting-pilot:cand:3:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "consistent"
+      }
+    },
+    {
+      "probeId": "heldout-outcome-reporting-pilot:cand:0:t0",
+      "stem": "For \"Ship the new reporting dashboards to the pilot group on Monday\", what form does it take?",
+      "options": [
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:0:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:0:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "heldout-outcome-reporting-pilot:cand:0:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Ruth",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Pavel",
+          "choice": "option",
+          "optionId": "heldout-outcome-reporting-pilot:cand:0:t0:opt:2"
+        },
+        {
+          "participantId": "Ines",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 13138,
+          "inputTokens": 1192,
+          "outputTokens": 3998,
+          "reasoningTokens": 3566,
+          "costUsd": 0.0184815,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 12828,
+          "inputTokens": 1721,
+          "outputTokens": 3421,
+          "reasoningTokens": 3073,
+          "costUsd": 0.0158457,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3924,
+          "inputTokens": 700,
+          "outputTokens": 994,
+          "reasoningTokens": 932,
+          "costUsd": 0.0046771,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1511,
+          "inputTokens": 591,
+          "outputTokens": 282,
+          "reasoningTokens": 223,
+          "costUsd": 0.0015148499999999999,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3621,
+          "inputTokens": 824,
+          "outputTokens": 836,
+          "reasoningTokens": 753,
+          "costUsd": 0.004583,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1387,
+          "inputTokens": 585,
+          "outputTokens": 232,
+          "reasoningTokens": 176,
+          "costUsd": 0.00129485,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3206,
+          "inputTokens": 817,
+          "outputTokens": 798,
+          "reasoningTokens": 746,
+          "costUsd": 0.00441275,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1287,
+          "inputTokens": 547,
+          "outputTokens": 186,
+          "reasoningTokens": 129,
+          "costUsd": 0.00105185,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1904,
+          "inputTokens": 305,
+          "outputTokens": 298,
+          "reasoningTokens": 263,
+          "costUsd": 0.00152345,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3768,
+          "inputTokens": 311,
+          "outputTokens": 797,
+          "reasoningTokens": 759,
+          "costUsd": 0.0036517,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1842,
+          "inputTokens": 300,
+          "outputTokens": 443,
+          "reasoningTokens": 404,
+          "costUsd": 0.00213345,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3718,
+          "inputTokens": 316,
+          "outputTokens": 828,
+          "reasoningTokens": 796,
+          "costUsd": 0.0036489,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2504,
+          "inputTokens": 322,
+          "outputTokens": 512,
+          "reasoningTokens": 474,
+          "costUsd": 0.0023134,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1761,
+          "inputTokens": 311,
+          "outputTokens": 467,
+          "reasoningTokens": 435,
+          "costUsd": 0.0022492,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1530,
+          "inputTokens": 276,
+          "outputTokens": 257,
+          "reasoningTokens": 224,
+          "costUsd": 0.00131295,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2048,
+          "inputTokens": 282,
+          "outputTokens": 407,
+          "reasoningTokens": 375,
+          "costUsd": 0.00195795,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1280,
+          "inputTokens": 271,
+          "outputTokens": 328,
+          "reasoningTokens": 297,
+          "costUsd": 0.00160845,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1517,
+          "inputTokens": 291,
+          "outputTokens": 329,
+          "reasoningTokens": 291,
+          "costUsd": 0.0016377,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2136,
+          "inputTokens": 297,
+          "outputTokens": 503,
+          "reasoningTokens": 464,
+          "costUsd": 0.0023847,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2746,
+          "inputTokens": 286,
+          "outputTokens": 582,
+          "reasoningTokens": 540,
+          "costUsd": 0.0027067,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

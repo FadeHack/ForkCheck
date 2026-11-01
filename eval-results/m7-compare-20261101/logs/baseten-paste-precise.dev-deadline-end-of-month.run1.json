@@ -1,0 +1,1045 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 1,
+  "scenario": "dev-deadline-end-of-month",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "dev-deadline-end-of-month:seg:0",
+      "text": "Morning. Main thing today is the billing email templates. Tomasz, where did we land with the rendering bug?"
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:1",
+      "text": "Fixed on Monday. Outlook was stripping the header table, so I rebuilt it with plain divs. It renders fine in all the test inboxes now."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:2",
+      "text": "Nice. Did that cover the dark mode version too?"
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:3",
+      "text": "Mostly. The logo still looks muddy on a black background. I've asked design for a light variant."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:4",
+      "text": "OK. What's left before we can switch every customer over to the new templates?"
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:5",
+      "text": "Three templates. The invoice, the failed payment one, and the receipt. Receipts are the hard part because of the tax lines per country."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:6",
+      "text": "How many countries are we talking about?"
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:7",
+      "text": "Eleven with VAT, plus the US sales tax block. I want a snapshot test for each one."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:8",
+      "text": "That's sensible. Any blockers?"
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:9",
+      "text": "The tax copy. Finance still owes me the wording for reverse charge invoices."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:10",
+      "text": "I'll chase finance today."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:11",
+      "text": "From my side, the new templates are what the autumn campaign links to. The footer has the new referral block."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:12",
+      "text": "Right. So let's aim for end of month for the full switch-over. Tomasz, does that work?"
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:13",
+      "text": "End of month should be doable if finance gets back to me this week."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:14",
+      "text": "OK, end of month. I'll plan around that."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:15",
+      "text": "Good. Tomasz, can you also turn off the old templates once the switch is done, so we don't send both?"
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:16",
+      "text": "Yes, I'll delete them from the sender config after a day of clean sends."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:17",
+      "text": "One more thing. Can we get a preview link for the referral block? Legal wants to read the terms in context."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:18",
+      "text": "I'll send one this afternoon."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:19",
+      "text": "Thanks. The campaign copy is with the translators, so I can't change the referral wording after this week."
+    },
+    {
+      "id": "dev-deadline-end-of-month:seg:20",
+      "text": "Noted. Let's keep that wording frozen, then. Thanks, both."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "dev-deadline-end-of-month:dec:0",
+        "meetingId": "dev-deadline-end-of-month",
+        "idx": 0,
+        "kind": "open_item",
+        "statement": "Finance owes the wording for reverse charge invoices",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "unresolved"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-end-of-month:dec:0:ev:0",
+          "decisionId": "dev-deadline-end-of-month:dec:0",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-end-of-month:seg:9",
+          "quote": "The tax copy. Finance still owes me the wording for reverse charge invoices."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-end-of-month:dec:1",
+        "meetingId": "dev-deadline-end-of-month",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Hannah will chase finance today",
+        "ownerText": "Hannah",
+        "deadlineText": "today",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-end-of-month:dec:1:ev:0",
+          "decisionId": "dev-deadline-end-of-month:dec:1",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-end-of-month:seg:10",
+          "quote": "I'll chase finance today."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-end-of-month:dec:2",
+        "meetingId": "dev-deadline-end-of-month",
+        "idx": 2,
+        "kind": "decision",
+        "statement": "The team will aim for end of month for the full switch-over to the new templates",
+        "ownerText": null,
+        "deadlineText": "end of month",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-end-of-month:dec:2:ev:0",
+          "decisionId": "dev-deadline-end-of-month:dec:2",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-end-of-month:seg:12",
+          "quote": "So let's aim for end of month for the full switch-over."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-end-of-month:dec:3",
+        "meetingId": "dev-deadline-end-of-month",
+        "idx": 3,
+        "kind": "assumption",
+        "statement": "End of month switch-over is doable if finance gets back this week",
+        "ownerText": "Tomasz",
+        "deadlineText": "this week",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-end-of-month:dec:3:ev:0",
+          "decisionId": "dev-deadline-end-of-month:dec:3",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-end-of-month:seg:13",
+          "quote": "End of month should be doable if finance gets back to me this week."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-end-of-month:dec:4",
+        "meetingId": "dev-deadline-end-of-month",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Tomasz will delete the old templates from the sender config after a day of clean sends",
+        "ownerText": "Tomasz",
+        "deadlineText": "after a day of clean sends",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-end-of-month:dec:4:ev:0",
+          "decisionId": "dev-deadline-end-of-month:dec:4",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-end-of-month:seg:16",
+          "quote": "Yes, I'll delete them from the sender config after a day of clean sends."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-end-of-month:dec:5",
+        "meetingId": "dev-deadline-end-of-month",
+        "idx": 5,
+        "kind": "commitment",
+        "statement": "Tomasz will send a preview link for the referral block this afternoon",
+        "ownerText": "Tomasz",
+        "deadlineText": "this afternoon",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-end-of-month:dec:5:ev:0",
+          "decisionId": "dev-deadline-end-of-month:dec:5",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-end-of-month:seg:18",
+          "quote": "I'll send one this afternoon."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "dev-deadline-end-of-month:dec:6",
+        "meetingId": "dev-deadline-end-of-month",
+        "idx": 6,
+        "kind": "decision",
+        "statement": "The referral wording will be kept frozen after this week",
+        "ownerText": null,
+        "deadlineText": "after this week",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "dev-deadline-end-of-month:dec:6:ev:0",
+          "decisionId": "dev-deadline-end-of-month:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-end-of-month:seg:19",
+          "quote": "I can't change the referral wording after this week."
+        },
+        {
+          "id": "dev-deadline-end-of-month:dec:6:ev:1",
+          "decisionId": "dev-deadline-end-of-month:dec:6",
+          "resolutionId": null,
+          "segmentId": "dev-deadline-end-of-month:seg:20",
+          "quote": "Let's keep that wording frozen, then."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "dev-deadline-end-of-month:cand:0",
+      "dimension": "deadline",
+      "mismatch": "end-of-month-firmness",
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:1",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:1:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:2",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:2:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:3",
+      "dimension": "criteria",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:3:t0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:4",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0"
+    },
+    {
+      "id": "dev-deadline-end-of-month:cand:5",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "dev-deadline-end-of-month:cand:3:t0",
+      "stem": "For \"Tomasz will delete the old templates from the sender config after a day of clean sends\", which check has to pass first?",
+      "options": [
+        {
+          "id": "dev-deadline-end-of-month:cand:3:t0:opt:0",
+          "text": "A quick smoke test of the main flows"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:3:t0:opt:1",
+          "text": "A full regression pass"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:3:t0:opt:2",
+          "text": "A full regression plus extra checks for what changed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hannah",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomasz",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Aiko",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:4:probe:0",
+      "stem": "For \"Tomasz will delete the old templates from the sender config\", what has to exist by \"after a day of clean sends\"?",
+      "options": [
+        {
+          "id": "dev-deadline-end-of-month:cand:4:probe:0:opt:0",
+          "text": "A full calendar day after the switch where every send was clean must have completed"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:4:probe:0:opt:1",
+          "text": "Twenty-four continuous hours of clean sending must have been recorded, even if it spans midnight"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:4:probe:0:opt:2",
+          "text": "One business day of clean sending must have occurred, with weekends excluded from the count"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hannah",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomasz",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Aiko",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:0:probe:0",
+      "stem": "For \"The team will aim for for the full switch-over to the new templates\", what has to exist by \"end of month\"?",
+      "options": [
+        {
+          "id": "dev-deadline-end-of-month:cand:0:probe:0:opt:0",
+          "text": "A firm requirement that all customers are on the new billing emails by close of business Friday the 30th"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:0:probe:0:opt:1",
+          "text": "A firm requirement that all customers are on the new billing emails by midnight Saturday the 31st, even though that is a weekend"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:0:probe:0:opt:2",
+          "text": "A working target for all customers to be on the new billing emails around Friday the 30th to Saturday the 31st, where moving into the first days of November is still treated as on track"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hannah",
+          "choice": "option",
+          "optionId": "dev-deadline-end-of-month:cand:0:probe:0:opt:2"
+        },
+        {
+          "participantId": "Tomasz",
+          "choice": "option",
+          "optionId": "dev-deadline-end-of-month:cand:0:probe:0:opt:2"
+        },
+        {
+          "participantId": "Aiko",
+          "choice": "option",
+          "optionId": "dev-deadline-end-of-month:cand:0:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:1:t0",
+      "stem": "For \"The team will aim for end of month for the full switch-over to the new templates\", what form does it take?",
+      "options": [
+        {
+          "id": "dev-deadline-end-of-month:cand:1:t0:opt:0",
+          "text": "Designs or a mock-up"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:1:t0:opt:1",
+          "text": "A working build on test data"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:1:t0:opt:2",
+          "text": "The live version on real data"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hannah",
+          "choice": "option",
+          "optionId": "dev-deadline-end-of-month:cand:1:t0:opt:2"
+        },
+        {
+          "participantId": "Tomasz",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Aiko",
+          "choice": "option",
+          "optionId": "dev-deadline-end-of-month:cand:1:t0:opt:2"
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "dev-deadline-end-of-month:cand:5:probe:0",
+      "stem": "For \"The referral wording will be kept frozen\", what has to exist by \"after this week\"?",
+      "options": [
+        {
+          "id": "dev-deadline-end-of-month:cand:5:probe:0:opt:0",
+          "text": "The final referral wording must be locked with no further edits allowed after the end of the day on Friday the 24th"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:5:probe:0:opt:1",
+          "text": "The final referral wording must be locked with no further edits allowed after midnight at the end of Sunday the 26th"
+        },
+        {
+          "id": "dev-deadline-end-of-month:cand:5:probe:0:opt:2",
+          "text": "The final referral wording must be locked with no further edits allowed once Tomasz shares the preview link this afternoon on Wednesday the 21st"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Hannah",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Tomasz",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Aiko",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 7353,
+          "inputTokens": 1561,
+          "outputTokens": 2406,
+          "reasoningTokens": 1873,
+          "costUsd": 0.011613549999999999,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 12213,
+          "inputTokens": 2183,
+          "outputTokens": 3251,
+          "reasoningTokens": 2509,
+          "costUsd": 0.0157007,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3957,
+          "inputTokens": 779,
+          "outputTokens": 1084,
+          "reasoningTokens": 975,
+          "costUsd": 0.00558075,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3929,
+          "inputTokens": 926,
+          "outputTokens": 1080,
+          "reasoningTokens": 970,
+          "costUsd": 0.0053251,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2180,
+          "inputTokens": 708,
+          "outputTokens": 469,
+          "reasoningTokens": 393,
+          "costUsd": 0.00245585,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 8602,
+          "inputTokens": 725,
+          "outputTokens": 2588,
+          "reasoningTokens": 2529,
+          "costUsd": 0.011482850000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 3951,
+          "inputTokens": 599,
+          "outputTokens": 971,
+          "reasoningTokens": 901,
+          "costUsd": 0.004453100000000001,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3191,
+          "inputTokens": 842,
+          "outputTokens": 955,
+          "reasoningTokens": 899,
+          "costUsd": 0.0046888500000000005,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1965,
+          "inputTokens": 596,
+          "outputTokens": 296,
+          "reasoningTokens": 225,
+          "costUsd": 0.0015806,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3877,
+          "inputTokens": 753,
+          "outputTokens": 1114,
+          "reasoningTokens": 1043,
+          "costUsd": 0.00525335,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1592,
+          "inputTokens": 632,
+          "outputTokens": 312,
+          "reasoningTokens": 264,
+          "costUsd": 0.0016936,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4755,
+          "inputTokens": 732,
+          "outputTokens": 1484,
+          "reasoningTokens": 1388,
+          "costUsd": 0.0067996,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1614,
+          "inputTokens": 645,
+          "outputTokens": 296,
+          "reasoningTokens": 220,
+          "costUsd": 0.0016418499999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1950,
+          "inputTokens": 307,
+          "outputTokens": 258,
+          "reasoningTokens": 226,
+          "costUsd": 0.00135595,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1952,
+          "inputTokens": 308,
+          "outputTokens": 321,
+          "reasoningTokens": 289,
+          "costUsd": 0.00148415,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2273,
+          "inputTokens": 316,
+          "outputTokens": 411,
+          "reasoningTokens": 372,
+          "costUsd": 0.00201745,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1840,
+          "inputTokens": 334,
+          "outputTokens": 336,
+          "reasoningTokens": 298,
+          "costUsd": 0.0017212,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2150,
+          "inputTokens": 335,
+          "outputTokens": 340,
+          "reasoningTokens": 302,
+          "costUsd": 0.00173945,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2054,
+          "inputTokens": 343,
+          "outputTokens": 266,
+          "reasoningTokens": 225,
+          "costUsd": 0.00143495,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1773,
+          "inputTokens": 372,
+          "outputTokens": 322,
+          "reasoningTokens": 284,
+          "costUsd": 0.0015684000000000002,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1721,
+          "inputTokens": 373,
+          "outputTokens": 399,
+          "reasoningTokens": 362,
+          "costUsd": 0.0020377,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1821,
+          "inputTokens": 381,
+          "outputTokens": 398,
+          "reasoningTokens": 354,
+          "costUsd": 0.00204345,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 5163,
+          "inputTokens": 301,
+          "outputTokens": 1148,
+          "reasoningTokens": 1107,
+          "costUsd": 0.00499015,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2821,
+          "inputTokens": 302,
+          "outputTokens": 496,
+          "reasoningTokens": 464,
+          "costUsd": 0.0023612,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1546,
+          "inputTokens": 310,
+          "outputTokens": 321,
+          "reasoningTokens": 288,
+          "costUsd": 0.0016274500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1565,
+          "inputTokens": 351,
+          "outputTokens": 284,
+          "reasoningTokens": 252,
+          "costUsd": 0.0015214500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1397,
+          "inputTokens": 352,
+          "outputTokens": 313,
+          "reasoningTokens": 278,
+          "costUsd": 0.00164595,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1848,
+          "inputTokens": 360,
+          "outputTokens": 363,
+          "reasoningTokens": 328,
+          "costUsd": 0.00186845,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

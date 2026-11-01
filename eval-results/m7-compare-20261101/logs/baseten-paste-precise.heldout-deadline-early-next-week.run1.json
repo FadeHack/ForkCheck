@@ -1,0 +1,493 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 1,
+  "scenario": "heldout-deadline-early-next-week",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-deadline-early-next-week:seg:0",
+      "text": "Last item. The new annual plan goes live on the 16th, and sales keeps getting the same five questions."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:1",
+      "text": "Proration, seat changes mid-year, refunds, currency, and whether the discount stacks with the nonprofit one."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:2",
+      "text": "We need a pricing FAQ on the site before the launch email goes out."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:3",
+      "text": "When does the launch email go?"
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:4",
+      "text": "The plan is the morning of the 16th, but marketing wants the FAQ link in the draft before then."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:5",
+      "text": "I can write the FAQ. Most of the answers are already in the sales notes."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:6",
+      "text": "Great. Let's aim for early next week for the FAQ, then."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:7",
+      "text": "Early next week, sure."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:8",
+      "text": "Run the refund answer past finance before it goes up."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:9",
+      "text": "Yes, I'll send that one to Gareth first."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:10",
+      "text": "And the nonprofit stacking question, the answer is no, they don't stack."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:11",
+      "text": "Then we should say that plainly. People will try."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:12",
+      "text": "Got it. Plain no, with a line on which discount wins."
+    },
+    {
+      "id": "heldout-deadline-early-next-week:seg:13",
+      "text": "Perfect. Thanks, all."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-deadline-early-next-week:dec:0",
+        "meetingId": "heldout-deadline-early-next-week",
+        "idx": 0,
+        "kind": "commitment",
+        "statement": "Wen will write the pricing FAQ by early next week",
+        "ownerText": "Wen",
+        "deadlineText": "early next week",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-early-next-week:dec:0:ev:0",
+          "decisionId": "heldout-deadline-early-next-week:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-early-next-week:seg:5",
+          "quote": "I can write the FAQ. Most of the answers are already in the sales notes."
+        },
+        {
+          "id": "heldout-deadline-early-next-week:dec:0:ev:1",
+          "decisionId": "heldout-deadline-early-next-week:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-early-next-week:seg:6",
+          "quote": "Great. Let's aim for early next week for the FAQ, then."
+        },
+        {
+          "id": "heldout-deadline-early-next-week:dec:0:ev:2",
+          "decisionId": "heldout-deadline-early-next-week:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-early-next-week:seg:7",
+          "quote": "Early next week, sure."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-early-next-week:dec:1",
+        "meetingId": "heldout-deadline-early-next-week",
+        "idx": 1,
+        "kind": "commitment",
+        "statement": "Wen will send the refund answer to Gareth in finance for review before the FAQ goes up",
+        "ownerText": "Wen",
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-early-next-week:dec:1:ev:0",
+          "decisionId": "heldout-deadline-early-next-week:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-early-next-week:seg:8",
+          "quote": "Run the refund answer past finance before it goes up."
+        },
+        {
+          "id": "heldout-deadline-early-next-week:dec:1:ev:1",
+          "decisionId": "heldout-deadline-early-next-week:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-early-next-week:seg:9",
+          "quote": "Yes, I'll send that one to Gareth first."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-deadline-early-next-week:dec:2",
+        "meetingId": "heldout-deadline-early-next-week",
+        "idx": 2,
+        "kind": "decision",
+        "statement": "The annual plan discount does not stack with the nonprofit discount",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-deadline-early-next-week:dec:2:ev:0",
+          "decisionId": "heldout-deadline-early-next-week:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-early-next-week:seg:10",
+          "quote": "And the nonprofit stacking question, the answer is no, they don't stack."
+        },
+        {
+          "id": "heldout-deadline-early-next-week:dec:2:ev:1",
+          "decisionId": "heldout-deadline-early-next-week:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-deadline-early-next-week:seg:12",
+          "quote": "Got it. Plain no, with a line on which discount wins."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-deadline-early-next-week:cand:0",
+      "dimension": "deadline",
+      "mismatch": "early-next-week-firmness",
+      "probeId": "heldout-deadline-early-next-week:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-deadline-early-next-week:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-deadline-early-next-week:cand:1:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-deadline-early-next-week:cand:0:probe:0",
+      "stem": "For \"Wen will write the pricing FAQ\", what has to exist by \"early next week\"?",
+      "options": [
+        {
+          "id": "heldout-deadline-early-next-week:cand:0:probe:0:opt:0",
+          "text": "A complete pricing FAQ must exist by end of day Monday, November 9 as a firm deadline"
+        },
+        {
+          "id": "heldout-deadline-early-next-week:cand:0:probe:0:opt:1",
+          "text": "A complete pricing FAQ must exist by end of day Wednesday, November 11 as a firm deadline for early next week"
+        },
+        {
+          "id": "heldout-deadline-early-next-week:cand:0:probe:0:opt:2",
+          "text": "A complete pricing FAQ is aimed for early next week as a soft target, and delivering later next week is acceptable if needed"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Tobias",
+          "choice": "option",
+          "optionId": "heldout-deadline-early-next-week:cand:0:probe:0:opt:2"
+        },
+        {
+          "participantId": "Wen",
+          "choice": "option",
+          "optionId": "heldout-deadline-early-next-week:cand:0:probe:0:opt:2"
+        },
+        {
+          "participantId": "Adaeze",
+          "choice": "option",
+          "optionId": "heldout-deadline-early-next-week:cand:0:probe:0:opt:0"
+        }
+      ],
+      "divergence": {
+        "outcome": "split"
+      }
+    },
+    {
+      "probeId": "heldout-deadline-early-next-week:cand:1:probe:0",
+      "stem": "Wen has the FAQ draft ready early next week, but Gareth in finance hasn't yet approved the refund answer. What happens next?",
+      "options": [
+        {
+          "id": "heldout-deadline-early-next-week:cand:1:probe:0:opt:0",
+          "text": "Hold the entire FAQ from publication until Gareth approves the refund answer."
+        },
+        {
+          "id": "heldout-deadline-early-next-week:cand:1:probe:0:opt:1",
+          "text": "Publish the FAQ without the refund entry and add that Q&A after Gareth approves it."
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Tobias",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Wen",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Adaeze",
+          "choice": "option",
+          "optionId": "heldout-deadline-early-next-week:cand:1:probe:0:opt:1"
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 6655,
+          "inputTokens": 1314,
+          "outputTokens": 1889,
+          "reasoningTokens": 1525,
+          "costUsd": 0.00826275,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 19361,
+          "inputTokens": 1771,
+          "outputTokens": 4800,
+          "reasoningTokens": 4563,
+          "costUsd": 0.021768950000000002,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 3427,
+          "inputTokens": 771,
+          "outputTokens": 694,
+          "reasoningTokens": 605,
+          "costUsd": 0.00391325,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2321,
+          "inputTokens": 649,
+          "outputTokens": 231,
+          "reasoningTokens": 154,
+          "costUsd": 0.0013705999999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3070,
+          "inputTokens": 871,
+          "outputTokens": 717,
+          "reasoningTokens": 630,
+          "costUsd": 0.0035728,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1430,
+          "inputTokens": 604,
+          "outputTokens": 209,
+          "reasoningTokens": 152,
+          "costUsd": 0.0012208499999999999,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3390,
+          "inputTokens": 339,
+          "outputTokens": 611,
+          "reasoningTokens": 571,
+          "costUsd": 0.0028962,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1824,
+          "inputTokens": 336,
+          "outputTokens": 335,
+          "reasoningTokens": 297,
+          "costUsd": 0.00171945,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1644,
+          "inputTokens": 344,
+          "outputTokens": 291,
+          "reasoningTokens": 257,
+          "costUsd": 0.0015424500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1288,
+          "inputTokens": 309,
+          "outputTokens": 266,
+          "reasoningTokens": 230,
+          "costUsd": 0.00139245,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1785,
+          "inputTokens": 306,
+          "outputTokens": 253,
+          "reasoningTokens": 216,
+          "costUsd": 0.0013334500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3039,
+          "inputTokens": 314,
+          "outputTokens": 514,
+          "reasoningTokens": 472,
+          "costUsd": 0.0024527,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

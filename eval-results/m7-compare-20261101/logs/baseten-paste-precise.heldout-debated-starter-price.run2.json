@@ -1,0 +1,857 @@
+{
+  "runId": "m7-compare-20261101",
+  "run": 2,
+  "scenario": "heldout-debated-starter-price",
+  "provider": "baseten",
+  "source": "paste",
+  "resolution": "precise",
+  "depth": "detect",
+  "segments": [
+    {
+      "id": "heldout-debated-starter-price:seg:0",
+      "text": "Proposal: raise the Starter plan from twelve to fifteen dollars a seat, from January."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:1",
+      "text": "I don't agree. Starter is how most of our big accounts started. A price jump hits the funnel."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:2",
+      "text": "Our costs per seat went up a lot this year, though. Starter is barely above break-even."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:3",
+      "text": "Then cut the free storage on Starter instead of the price. Nobody shops on storage."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:4",
+      "text": "That annoys existing customers more than a price change."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:5",
+      "text": "We don't know that. We've never tested either."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:6",
+      "text": "Could we test it on new signups only?"
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:7",
+      "text": "Maybe. I don't think we're going to agree today."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:8",
+      "text": "No. Let's revisit this next week with the cohort numbers."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:9",
+      "text": "I'll pull the cohort numbers for Starter before then."
+    },
+    {
+      "id": "heldout-debated-starter-price:seg:10",
+      "text": "OK. Nothing changes until we decide."
+    }
+  ],
+  "decisions": [
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:0",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 0,
+        "kind": "open_item",
+        "statement": "Raise the Starter plan price from twelve to fifteen dollars a seat from January",
+        "ownerText": null,
+        "deadlineText": "from January",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "debated"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:0:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:0",
+          "quote": "Proposal: raise the Starter plan from twelve to fifteen dollars a seat, from January."
+        },
+        {
+          "id": "heldout-debated-starter-price:dec:0:ev:1",
+          "decisionId": "heldout-debated-starter-price:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:1",
+          "quote": "I don't agree. Starter is how most of our big accounts started. A price jump hits the funnel."
+        },
+        {
+          "id": "heldout-debated-starter-price:dec:0:ev:2",
+          "decisionId": "heldout-debated-starter-price:dec:0",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:7",
+          "quote": "Maybe. I don't think we're going to agree today."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:1",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 1,
+        "kind": "open_item",
+        "statement": "Cut the free storage on Starter instead of raising the price",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "debated"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:1:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:3",
+          "quote": "Then cut the free storage on Starter instead of the price. Nobody shops on storage."
+        },
+        {
+          "id": "heldout-debated-starter-price:dec:1:ev:1",
+          "decisionId": "heldout-debated-starter-price:dec:1",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:4",
+          "quote": "That annoys existing customers more than a price change."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:2",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 2,
+        "kind": "open_item",
+        "statement": "Test the price or storage change on new signups only",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "unresolved"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:2:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:2",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:6",
+          "quote": "Could we test it on new signups only?"
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:3",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 3,
+        "kind": "open_item",
+        "statement": "Revisit the Starter plan pricing decision next week with the cohort numbers",
+        "ownerText": null,
+        "deadlineText": "next week",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:3:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:3",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:8",
+          "quote": "Let's revisit this next week with the cohort numbers."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:4",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 4,
+        "kind": "commitment",
+        "statement": "Kai will pull the cohort numbers for Starter before the revisit next week",
+        "ownerText": "Kai",
+        "deadlineText": "before then",
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "ambiguous"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:4:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:4",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:9",
+          "quote": "I'll pull the cohort numbers for Starter before then."
+        }
+      ]
+    },
+    {
+      "decision": {
+        "id": "heldout-debated-starter-price:dec:5",
+        "meetingId": "heldout-debated-starter-price",
+        "idx": 5,
+        "kind": "decision",
+        "statement": "Maintain current Starter plan pricing with no changes until a decision is made",
+        "ownerText": null,
+        "deadlineText": null,
+        "ownerInferred": false,
+        "deadlineInferred": false,
+        "status": "explicit"
+      },
+      "evidence": [
+        {
+          "id": "heldout-debated-starter-price:dec:5:ev:0",
+          "decisionId": "heldout-debated-starter-price:dec:5",
+          "resolutionId": null,
+          "segmentId": "heldout-debated-starter-price:seg:10",
+          "quote": "Nothing changes until we decide."
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "heldout-debated-starter-price:cand:0",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-debated-starter-price:cand:0:probe:0"
+    },
+    {
+      "id": "heldout-debated-starter-price:cand:1",
+      "dimension": "dependency",
+      "mismatch": null,
+      "probeId": "heldout-debated-starter-price:cand:1:probe:0"
+    },
+    {
+      "id": "heldout-debated-starter-price:cand:2",
+      "dimension": "scope",
+      "mismatch": null,
+      "probeId": "heldout-debated-starter-price:cand:2:probe:0"
+    },
+    {
+      "id": "heldout-debated-starter-price:cand:3",
+      "dimension": "deadline",
+      "mismatch": null,
+      "probeId": "heldout-debated-starter-price:cand:3:probe:0"
+    }
+  ],
+  "rounds": [
+    {
+      "probeId": "heldout-debated-starter-price:cand:2:probe:0",
+      "stem": "When \"Kai will pull the cohort numbers for Starter before the revisit next week\" is done, which of these is included?",
+      "options": [
+        {
+          "id": "heldout-debated-starter-price:cand:2:probe:0:opt:0",
+          "text": "It includes conversion share to large paid plans and time to upgrade for Starter cohorts over the last 12 months"
+        },
+        {
+          "id": "heldout-debated-starter-price:cand:2:probe:0:opt:1",
+          "text": "It includes cost per seat and gross margin trends for Starter cohorts over the last 12 months to assess break-even"
+        },
+        {
+          "id": "heldout-debated-starter-price:cand:2:probe:0:opt:2",
+          "text": "It includes conversion rates, cost and margin, and storage used per Starter cohort over the last 12 months"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Victor",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Amina",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kai",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-debated-starter-price:cand:0:probe:0",
+      "stem": "For \"Revisit the Starter plan pricing decision with the cohort numbers\", what has to exist by \"next week\"?",
+      "options": [
+        {
+          "id": "heldout-debated-starter-price:cand:0:probe:0:opt:0",
+          "text": "A review session for the Starter pricing using the cohort numbers scheduled no later than Friday the 13th"
+        },
+        {
+          "id": "heldout-debated-starter-price:cand:0:probe:0:opt:1",
+          "text": "A review session for the Starter pricing using the cohort numbers scheduled no later than Wednesday the 11th"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Victor",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Amina",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kai",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-debated-starter-price:cand:1:probe:0",
+      "stem": "If Kai's cohort numbers aren't ready by the planned check-in next week (Wednesday the 11th), what happens to the revisit?",
+      "options": [
+        {
+          "id": "heldout-debated-starter-price:cand:1:probe:0:opt:0",
+          "text": "We push the revisit back until the cohort numbers are delivered"
+        },
+        {
+          "id": "heldout-debated-starter-price:cand:1:probe:0:opt:1",
+          "text": "We hold the revisit as scheduled and work with whatever data we have"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Victor",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Amina",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Kai",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    },
+    {
+      "probeId": "heldout-debated-starter-price:cand:3:probe:0",
+      "stem": "For \"Kai will pull the cohort numbers for Starter before the revisit next week\", what has to exist by \"then\"?",
+      "options": [
+        {
+          "id": "heldout-debated-starter-price:cand:3:probe:0:opt:0",
+          "text": "Kai has made the Starter cohort numbers available to Victor and Amina no later than when the revisit meeting starts next week, even if only moments before"
+        },
+        {
+          "id": "heldout-debated-starter-price:cand:3:probe:0:opt:1",
+          "text": "Kai has made the Starter cohort numbers available to Victor and Amina at least 24 to 48 hours ahead of the revisit meeting next week to allow time for review"
+        }
+      ],
+      "answers": [
+        {
+          "participantId": "Victor",
+          "choice": "unsure",
+          "optionId": null
+        },
+        {
+          "participantId": "Amina",
+          "choice": "option",
+          "optionId": "heldout-debated-starter-price:cand:3:probe:0:opt:0"
+        },
+        {
+          "participantId": "Kai",
+          "choice": "unsure",
+          "optionId": null
+        }
+      ],
+      "divergence": {
+        "outcome": "insufficient"
+      }
+    }
+  ],
+  "splits": [],
+  "record": null,
+  "validation": null,
+  "stages": [
+    {
+      "stage": "extract",
+      "calls": [
+        {
+          "stage": "extract",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "extract.v1",
+          "cacheHit": false,
+          "latencyMs": 6899,
+          "inputTokens": 1190,
+          "outputTokens": 1869,
+          "reasoningTokens": 1343,
+          "costUsd": 0.00816355,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "findCandidates",
+      "calls": [
+        {
+          "stage": "findCandidates",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "findCandidates.v2",
+          "cacheHit": false,
+          "latencyMs": 15381,
+          "inputTokens": 1776,
+          "outputTokens": 4043,
+          "reasoningTokens": 3621,
+          "costUsd": 0.01855795,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 4180,
+          "inputTokens": 717,
+          "outputTokens": 690,
+          "reasoningTokens": 630,
+          "costUsd": 0.00340635,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1612,
+          "inputTokens": 608,
+          "outputTokens": 265,
+          "reasoningTokens": 192,
+          "costUsd": 0.0014638499999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbes.v1",
+          "cacheHit": false,
+          "latencyMs": 3685,
+          "inputTokens": 819,
+          "outputTokens": 823,
+          "reasoningTokens": 739,
+          "costUsd": 0.0039583000000000005,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1538,
+          "inputTokens": 585,
+          "outputTokens": 266,
+          "reasoningTokens": 216,
+          "costUsd": 0.0014393499999999998,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 2877,
+          "inputTokens": 752,
+          "outputTokens": 707,
+          "reasoningTokens": 629,
+          "costUsd": 0.00338155,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 3239,
+          "inputTokens": 656,
+          "outputTokens": 771,
+          "reasoningTokens": 703,
+          "costUsd": 0.00367435,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 5857,
+          "inputTokens": 906,
+          "outputTokens": 1603,
+          "reasoningTokens": 1516,
+          "costUsd": 0.00724125,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 1548,
+          "inputTokens": 664,
+          "outputTokens": 245,
+          "reasoningTokens": 172,
+          "costUsd": 0.00130805,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "generateProbes",
+      "calls": [
+        {
+          "stage": "generateProbes",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "generateProbesAssisted.v1",
+          "cacheHit": false,
+          "latencyMs": 2977,
+          "inputTokens": 712,
+          "outputTokens": 674,
+          "reasoningTokens": 592,
+          "costUsd": 0.0031913,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "critique",
+      "calls": [
+        {
+          "stage": "critique",
+          "provider": "baseten",
+          "model": "meta-models/muse-spark-open-1026",
+          "promptVersion": "critique.v1",
+          "cacheHit": false,
+          "latencyMs": 2022,
+          "inputTokens": 620,
+          "outputTokens": 199,
+          "reasoningTokens": 148,
+          "costUsd": 0.00162075,
+          "ok": true,
+          "error": null,
+          "validFirstTry": true
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1999,
+          "inputTokens": 330,
+          "outputTokens": 279,
+          "reasoningTokens": 245,
+          "costUsd": 0.0014739500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1972,
+          "inputTokens": 330,
+          "outputTokens": 339,
+          "reasoningTokens": 308,
+          "costUsd": 0.0017289500000000001,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1488,
+          "inputTokens": 330,
+          "outputTokens": 350,
+          "reasoningTokens": 321,
+          "costUsd": 0.0017757,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 2125,
+          "inputTokens": 301,
+          "outputTokens": 362,
+          "reasoningTokens": 327,
+          "costUsd": 0.00179045,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 971,
+          "inputTokens": 301,
+          "outputTokens": 197,
+          "reasoningTokens": 166,
+          "costUsd": 0.0010892,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1471,
+          "inputTokens": 301,
+          "outputTokens": 224,
+          "reasoningTokens": 192,
+          "costUsd": 0.00120395,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1649,
+          "inputTokens": 289,
+          "outputTokens": 277,
+          "reasoningTokens": 248,
+          "costUsd": 0.0014142,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 997,
+          "inputTokens": 289,
+          "outputTokens": 244,
+          "reasoningTokens": 212,
+          "costUsd": 0.00113315,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 1679,
+          "inputTokens": 289,
+          "outputTokens": 274,
+          "reasoningTokens": 242,
+          "costUsd": 0.00140145,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 4074,
+          "inputTokens": 324,
+          "outputTokens": 1059,
+          "reasoningTokens": 1026,
+          "costUsd": 0.00478145,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 4464,
+          "inputTokens": 324,
+          "outputTokens": 980,
+          "reasoningTokens": 945,
+          "costUsd": 0.0044456999999999995,
+          "ok": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "stage": "simulateAnswer",
+      "calls": [
+        {
+          "stage": "simulateAnswer",
+          "provider": "meta",
+          "model": "muse-spark-1.3",
+          "promptVersion": "simulateAnswer.v1",
+          "cacheHit": false,
+          "latencyMs": 3405,
+          "inputTokens": 324,
+          "outputTokens": 762,
+          "reasoningTokens": 730,
+          "costUsd": 0.0035191999999999997,
+          "ok": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}
