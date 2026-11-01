@@ -8,6 +8,7 @@ import type {
   ProbeAnswerCount,
 } from "../contracts/api";
 import type { Deps } from "./deps";
+import { deleteAfter } from "./retention";
 import { hashToken, newToken } from "./tokens";
 
 export async function createMeeting(
@@ -16,6 +17,7 @@ export async function createMeeting(
   origin: string,
 ): Promise<CreateMeetingResponse> {
   const id = randomUUID();
+  const now = deps.now();
   const meeting: Meeting = {
     id,
     title: body.title,
@@ -25,8 +27,8 @@ export async function createMeeting(
     timezone: body.timezone,
     transcriptVersion: body.transcript === undefined ? 0 : 1,
     error: null,
-    createdAt: deps.now().toISOString(),
-    deleteAfter: null,
+    createdAt: now.toISOString(),
+    deleteAfter: deleteAfter(now),
   };
   const participants = body.participants.map((p, i) => ({
     participant: {
@@ -121,10 +123,4 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
     edits,
     replayed,
   };
-}
-
-/** Removes stored audio first, then the meeting; rows cascade. */
-export async function deleteMeeting(deps: Deps, meetingId: string): Promise<void> {
-  for (const key of await deps.meetings.audioKeys(meetingId)) await deps.storage.delete(key);
-  await deps.meetings.delete(meetingId);
 }

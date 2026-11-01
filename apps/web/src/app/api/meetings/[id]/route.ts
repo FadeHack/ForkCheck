@@ -1,6 +1,7 @@
 import { withOrganizer } from "../../../../server/auth";
 import { json, noContent } from "../../../../server/http";
-import { deleteMeeting, organizerState } from "../../../../server/meetings";
+import { organizerState } from "../../../../server/meetings";
+import { deleteMeeting } from "../../../../server/retention";
 
 export const GET = withOrganizer(async (_req, { deps, meeting }) =>
   json(await organizerState(deps, meeting)),

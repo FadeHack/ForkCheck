@@ -15,6 +15,7 @@ import { RecheckView } from "./recheck";
 import { ReviewView } from "./review";
 import { SpeakersView } from "./speakers";
 import { TracePanel } from "./trace";
+import { DeleteMeeting, MeetingDeleted } from "./delete";
 import { RecordLink, RevealView, StageRail } from "./views";
 
 const POLL_MS = 5000;
@@ -34,11 +35,13 @@ export function WorkspaceView({
   state,
   viewing,
   reload,
+  onDeleted = () => {},
 }: {
   state: OrganizerMeetingState;
   viewing: string | null;
   /** Fetches the state again after an action changed it. */
   reload?: () => Promise<void>;
+  onDeleted?: () => void;
 }) {
   const current = organizerStage(state);
   const stages = stagesFor(state.meeting);
@@ -65,6 +68,7 @@ export function WorkspaceView({
       {stage === "recheck" && <RecheckView state={state} onChange={reload} />}
       {stage === "record" && <RecordLink meetingId={id} />}
       <TracePanel meetingId={id} />
+      <DeleteMeeting state={state} onDeleted={onDeleted} />
     </>
   );
 }
@@ -83,6 +87,7 @@ async function fetchState(meetingId: string): Promise<Loaded<OrganizerMeetingSta
 
 export function Workspace({ meetingId }: { meetingId: string }) {
   const [loaded, setLoaded] = useState<Loaded<OrganizerMeetingState>>({ state: "loading" });
+  const [deleted, setDeleted] = useState(false);
   const viewing = useSearchParams().get("stage");
 
   // A reload keeps the current state on screen until the new one arrives, so open forms stay mounted.
@@ -101,6 +106,7 @@ export function Workspace({ meetingId }: { meetingId: string }) {
   // Answers, labels and confirmations arrive from other people's phones. Drafting has its own
   // progress check, and the record no longer changes.
   const live =
+    !deleted &&
     loaded.state === "ready" &&
     ["round", "reveal", "resolve", "recheck"].includes(organizerStage(loaded.data));
   useEffect(() => {
@@ -113,9 +119,17 @@ export function Workspace({ meetingId }: { meetingId: string }) {
     return () => clearInterval(timer);
   }, [live, meetingId]);
 
+  if (deleted) return <MeetingDeleted />;
   if (loaded.state === "loading") return <Loading>Opening the meeting check.</Loading>;
   if (loaded.state === "error") {
     return <PageError title="This meeting check didn't open">{loaded.message}</PageError>;
   }
-  return <WorkspaceView state={loaded.data} viewing={viewing} reload={reload} />;
+  return (
+    <WorkspaceView
+      state={loaded.data}
+      viewing={viewing}
+      reload={reload}
+      onDeleted={() => setDeleted(true)}
+    />
+  );
 }

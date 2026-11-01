@@ -263,6 +263,20 @@ describe("WorkspaceView", () => {
     expect(out).toContain("Reveal, not yet");
     expect(out).toContain('href="/m/m1?stage=questions"');
   });
+
+  it("says when the meeting is deleted by itself, and offers to delete it now", () => {
+    const state = organizerState({ rounds: [round("r1")] });
+    const expiring = {
+      ...state,
+      meeting: { ...state.meeting, deleteAfter: "2026-11-03T20:00:00.000Z" },
+    };
+    const out = text(<WorkspaceView state={expiring} viewing={null} />);
+    expect(out).toContain("It is deleted automatically on Nov 3, 2026.");
+    expect(out).toContain("Delete now");
+    expect(text(<WorkspaceView state={state} viewing={null} />)).toContain(
+      "It is kept until you delete it.",
+    );
+  });
 });
 
 describe("ParticipantView", () => {

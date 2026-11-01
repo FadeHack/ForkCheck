@@ -9,7 +9,7 @@ import type {
   Probe,
   Segment,
 } from "@forkcheck/core";
-import { and, asc, eq, inArray, isNull, lt, notInArray, or, sql } from "drizzle-orm";
+import { and, asc, eq, inArray, isNull, lt, lte, notInArray, or, sql } from "drizzle-orm";
 import { toIso, toIsoOrNull, type Db } from "../client";
 import * as t from "../schema";
 
@@ -632,6 +632,15 @@ export class MeetingRepo {
       .from(t.audioAsset)
       .where(and(eq(t.audioAsset.meetingId, meetingId), isNull(t.audioAsset.deletedAt)));
     return rows.map((r) => r.key);
+  }
+
+  /** Meetings whose retention ran out at or before `now`. */
+  async expired(now: Date): Promise<string[]> {
+    const rows = await this.db
+      .select({ id: t.meeting.id })
+      .from(t.meeting)
+      .where(lte(t.meeting.deleteAfter, now));
+    return rows.map((r) => r.id);
   }
 
   /** Child rows go with it through `on delete cascade`. */

@@ -1035,3 +1035,14 @@
 .quote-play {
   margin-top: var(--space-2);
 }
+
+/* Delete: last on the organizer page, after the trace. */
+.delete-meeting {
+  margin-top: var(--space-8);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-4);
+}
+
+.delete-meeting h2 {
+  font-size: 1.25rem;
+}

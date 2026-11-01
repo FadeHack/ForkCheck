@@ -50,3 +50,14 @@ export function formatHeldAt(instant: string, timeZone: string): string {
     return instant;
   }
 }
+
+/** The calendar day of `instant` in `timeZone`, such as "Nov 10, 2026". */
+export function formatDay(instant: string, timeZone: string): string {
+  try {
+    return new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeZone }).format(
+      new Date(instant),
+    );
+  } catch {
+    return instant;
+  }
+}
