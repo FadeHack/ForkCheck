@@ -17,6 +17,17 @@ const outcome = z.enum(["split", "consistent", "insufficient"]);
 const round = z.object({
   probeId: z.string(),
   stem: z.string(),
+  /** Kept for the human rating sheets; the metrics only need the outcome. */
+  options: z.array(z.object({ id: z.string(), text: z.string() })).optional(),
+  answers: z
+    .array(
+      z.object({
+        participantId: z.string(),
+        choice: z.enum(["option", "unsure", "write_in"]),
+        optionId: z.string().nullable(),
+      }),
+    )
+    .optional(),
   divergence: z.object({ outcome }),
 });
 const actor = z.object({ kind: z.enum(["participant", "model"]) });
