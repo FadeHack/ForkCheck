@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
@@ -53,7 +54,8 @@ export class FileSpendLedger implements SpendLedger {
       const entry = data[provider] ?? { usd: 0, calls: 0 };
       data[provider] = { usd: entry.usd + usd, calls: entry.calls + 1 };
       await mkdir(dirname(this.#path), { recursive: true });
-      const tmp = `${this.#path}.tmp`;
+      // A name of its own, so another ledger on the same file cannot rename it away.
+      const tmp = `${this.#path}.${randomUUID()}.tmp`;
       await writeFile(tmp, `${JSON.stringify(data, null, 2)}\n`);
       await rename(tmp, this.#path);
     });
