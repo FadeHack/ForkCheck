@@ -139,6 +139,6 @@ Human scores come from one rater, the project owner, so no inter-rater agreement
 
 - Participants are simulated: Muse Spark answers each probe from a private brief. The simulator and the question generator are the same model family, which may push reveal rates up. Simulated results do not establish how real teams would answer.
 - The 26 meetings are synthetic, written for this evaluation with planted mismatches. The audio set is 6 synthetic renders and 4 volunteer recordings of scripts.
-- Pasted and audio runs are reported separately; audio minus paste attributes the loss to transcription and speaker mapping.
+- Pasted and audio runs are reported separately; audio minus paste attributes the loss to transcription and speaker mapping. On audio, an extracted decision matches its expected one when a quote of five or more words shares at least 80% of its words, since the ASR wording drifts from the script; on paste the quotes must contain each other.
 - Model outputs vary between runs; each number sums every logged scenario run of its condition.
 - Human scores come from a single rater (see above).

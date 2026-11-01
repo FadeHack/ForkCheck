@@ -94,6 +94,38 @@ describe("scoreExtraction", () => {
     ]);
   });
 
+  it("on audio, matches a quote the ASR heard with drift, not on paste", () => {
+    const heard = "I'll publish the publish the post mortem on the blog after legal reads it.";
+    const audio = { text: `Felix: ${heard}` };
+    expect(scoreExtraction(s, [extracted(heard)]).matched).toBe(0);
+    expect(scoreExtraction(s, [extracted(heard)], audio).matched).toBe(1);
+  });
+
+  it("on audio, still refuses short or mostly different quotes", () => {
+    const audio = { text: "" };
+    // Contained in the expected quote: a match on paste and audio alike.
+    expect(scoreExtraction(s, [extracted("blog after legal")], audio).matched).toBe(1);
+    // Four words, all in the expected quote but not as a phrase: too short to match on words.
+    expect(scoreExtraction(s, [extracted("legal reads the blog")], audio).matched).toBe(0);
+    // Five words, three shared.
+    expect(scoreExtraction(s, [extracted("legal reads the contract today")], audio).matched).toBe(
+      0,
+    );
+    expect(
+      scoreExtraction(s, [extracted("I'll publish the release notes on the wiki today.")], audio)
+        .matched,
+    ).toBe(0);
+  });
+
+  it("on audio, a field the ASR heard is not invented", () => {
+    const quote = "I'll add a step for it.";
+    const decision = extracted(quote, { ownerText: "the SRE team" });
+    expect(scoreExtraction(s, [decision]).invented).toHaveLength(1);
+    expect(
+      scoreExtraction(s, [decision], { text: "the SRE team will add a step for it" }).invented,
+    ).toEqual([]);
+  });
+
   it("summarizes precision and recall", () => {
     const score = scoreExtraction(s, [extracted("handle the customer emails"), extracted("nope")]);
     expect(summarizeScores([score])).toMatchObject({ precision: 0.5, recall: 1 / 6, invented: 0 });

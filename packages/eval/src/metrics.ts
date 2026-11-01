@@ -168,7 +168,11 @@ const INFERRED_RULES = new Set(["stated_quote_verified", "confirmed_text_from_re
 
 export function scoreRun(s: Scenario, log: RunLog): ScenarioMetrics {
   const control = s.plantedMismatches.length === 0;
-  const extraction = scoreExtraction(s, log.decisions);
+  const extraction = scoreExtraction(
+    s,
+    log.decisions,
+    log.source === "audio" ? { text: log.segments.map((seg) => seg.text).join("\n") } : undefined,
+  );
   const segments = new Map(log.segments.map((seg) => [seg.id, normalizeQuote(seg.text)]));
   const quotes = log.decisions.flatMap((d) => d.evidence);
   const validQuotes = quotes.filter((e) =>
