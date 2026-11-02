@@ -7,6 +7,8 @@ loadLocalEnvFile();
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // The dev badge sits over the page and ends up in screenshots and the demo video.
+  devIndicators: false,
   // When two entries set the same header, the later one wins, and it also beats a header the
   // route sets itself: token paths keep no-referrer.
   async headers() {

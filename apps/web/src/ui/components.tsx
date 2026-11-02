@@ -9,6 +9,7 @@ import type {
   SplitStatus,
 } from "@forkcheck/core";
 import { nameList, outcomeLabel, SIMULATED, splitStatusLabel } from "./labels";
+import { calendarFor, CalendarStrip, markedQuote } from "./proof";
 
 export function Loading({ children }: { children: string }) {
   return (
@@ -172,22 +173,27 @@ export function timestamp(ms: number): string {
   return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
 }
 
-/** `play` is a control to hear the quote, passed only while the recording is kept. */
+/**
+ * `play` is a control to hear the quote, passed only while the recording is kept. `asks` is the
+ * question about it: the words they share are circled.
+ */
 export function QuoteBlock({
   quote,
   segment,
   speaker,
   play,
+  asks,
 }: {
   quote: string;
   segment: SourceQuote["segment"] | undefined;
   speaker: string | null;
   play?: ReactNode;
+  asks?: string | undefined;
 }) {
   return (
     <figure className="quote">
       <blockquote>
-        <p>{quote}</p>
+        <p>{markedQuote(quote, asks)}</p>
       </blockquote>
       <figcaption>
         {speaker ?? "Unknown speaker"}
@@ -260,6 +266,15 @@ export function ForkView({
   const unmatched = answers.filter((a) => a.choice === "write_in" && a.mappedOptionId === null);
   const chosen = options.filter((o) => answers.some((a) => optionOf(a) === o.id));
   const answered = answers.length - unsure.length;
+  const calendar =
+    split.outcome === "split"
+      ? calendarFor(
+          chosen.map((o) => ({
+            text: o.text,
+            who: who(answers.filter((a) => optionOf(a) === o.id)),
+          })),
+        )
+      : null;
   return (
     <article className="fork" data-outcome={split.outcome}>
       {quote && (
@@ -271,6 +286,7 @@ export function ForkView({
               ? (byId.get(quote.segment.participantId)?.displayName ?? null)
               : null
           }
+          asks={split.outcome === "split" ? stem : undefined}
         />
       )}
       <h3 className="fork-stem">{stem}</h3>
@@ -285,6 +301,7 @@ export function ForkView({
         )}
         {split.outcome === "insufficient" && <> to compare.</>}
       </p>
+      {calendar && <CalendarStrip days={calendar.days} />}
       {chosen.length > 0 && (
         <ul className="fork-branches">
           {chosen.map((o) => {

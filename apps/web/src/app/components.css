@@ -6,16 +6,16 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  max-width: var(--measure);
+  max-width: var(--sheet-wide);
   margin-inline: auto;
-  padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--line-subtle);
+  padding: var(--space-4) var(--space-4) var(--space-6);
 }
 
 .wordmark {
   color: var(--ink);
-  font-weight: 600;
-  font-size: 1.125rem;
+  font-weight: 700;
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
   text-decoration: none;
   padding-block: 0.625rem;
 }
@@ -320,7 +320,7 @@
 .stage-rail ol {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-6);
+  gap: var(--space-2) 0;
   list-style: none;
   padding: 0;
   margin: var(--space-6) 0 var(--space-8);
@@ -335,10 +335,17 @@
   color: var(--ink-muted);
 }
 
+/* A short rule joins each step to the one before, so the stages read as one path. */
+.stage-rail li + li::before {
+  content: "";
+  width: var(--space-6);
+  margin-inline: var(--space-3);
+  border-top: 2px solid var(--line);
+}
+
 .stage-rail li[aria-current="step"] {
-  color: var(--ink);
-  font-weight: 600;
-  border-bottom: 2px solid var(--ink);
+  color: var(--split);
+  font-weight: 700;
 }
 
 .stage-rail a {
@@ -1045,4 +1052,225 @@
 
 .delete-meeting h2 {
   font-size: 1.25rem;
+}
+
+/*
+ * Proof sheet: a split reads like a marked-up manuscript. The asked-about words in the quote get
+ * a red-pencil ring and the answers sit in the margin as pencil notes. Agreed questions stay
+ * plain and small, so the splits are what the eye finds first.
+ */
+/* Inline-block, so the ring is sized from a real box rather than a line fragment. */
+.pencil-circle {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.pencil-circle svg {
+  position: absolute;
+  inset: -0.35em -0.5em;
+  width: calc(100% + 1em);
+  height: calc(100% + 0.7em);
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+  stroke: var(--split);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pencil-circle path {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+    animation: pencil-draw 900ms ease-out both;
+  }
+
+  @keyframes pencil-draw {
+    from {
+      stroke-dashoffset: 1200;
+    }
+
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+/* A long phrase on a phone wraps, so the ring gives way to a pencil underline. */
+@media (max-width: 40rem) {
+  .pencil-circle {
+    display: inline;
+    white-space: normal;
+    text-decoration: underline wavy var(--split) 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .pencil-circle svg {
+    display: none;
+  }
+}
+
+.fork[data-outcome="split"] .quote {
+  background: none;
+  padding: 0;
+}
+
+.fork[data-outcome="split"] .quote blockquote {
+  font-size: clamp(1.375rem, 1.1rem + 1.1vw, 2rem);
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 34ch;
+}
+
+.fork[data-outcome="split"] .fork-stem {
+  font-weight: 400;
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 56rem) {
+  .fork[data-outcome="split"] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    column-gap: var(--space-12);
+    align-items: start;
+  }
+
+  .fork[data-outcome="split"] > * {
+    grid-column: 1;
+  }
+
+  .fork[data-outcome="split"] > .fork-branches {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    margin: var(--space-2) 0 0;
+    padding: var(--space-1) 0 var(--space-1) var(--space-4);
+    border-left: 2px solid var(--split);
+  }
+
+  .fork[data-outcome="split"] .fork-branches::before,
+  .fork[data-outcome="split"] .fork-branch::before,
+  .fork[data-outcome="split"] .fork-branch::after {
+    display: none;
+  }
+
+  .fork[data-outcome="split"] .fork-branch {
+    padding: 0 0 var(--space-4);
+  }
+}
+
+.fork[data-outcome="split"] .fork-option {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 1.375rem;
+  line-height: 1.25;
+  color: var(--split);
+}
+
+.reveal .fork[data-outcome="consistent"] .quote blockquote,
+.reveal .fork[data-outcome="consistent"] .fork-stem {
+  font-size: 1rem;
+}
+
+/* A date split as days on a strip: the days people chose are filled, with their names below. */
+.calendar-strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(3.75rem, 1fr);
+  list-style: none;
+  margin: var(--space-6) 0 var(--space-4);
+  padding: 0;
+  border-top: 2px solid var(--line);
+  overflow-x: auto;
+}
+
+.calendar-strip li {
+  margin: 0;
+  padding: var(--space-2) var(--space-1) 0;
+  text-align: center;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.calendar-strip li[data-picked] .calendar-day {
+  display: block;
+  margin-top: calc(-1 * var(--space-2) - 2px);
+  padding: var(--space-2) var(--space-1);
+  background: var(--split);
+  color: var(--paper);
+  font-weight: 700;
+}
+
+.calendar-who {
+  display: block;
+  margin-top: var(--space-2);
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  line-height: 1.2;
+  color: var(--split);
+}
+
+/* The validity labels wait behind one line; it opens on its own once a label is chosen. */
+.validity-more {
+  margin: var(--space-4) 0;
+}
+
+.validity-more > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--action);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* Record summary: how many items landed in each category, each a link to its section. */
+.record-tally ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-12);
+  list-style: none;
+  margin: var(--space-6) 0 var(--space-8);
+  padding: var(--space-4) 0;
+  border-block: 1px solid var(--line-subtle);
+}
+
+.record-tally li {
+  margin: 0;
+}
+
+.record-tally a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+.record-tally a:hover {
+  text-decoration: underline;
+}
+
+.record-tally-count {
+  font-family: var(--font-reading);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.record-tally [data-category="confirmed"] .record-tally-count {
+  color: var(--confirmed);
+}
+
+.record-tally [data-category="unresolved"] .record-tally-count {
+  color: var(--unresolved);
+}
+
+@media print {
+  .record-tally {
+    display: none;
+  }
 }

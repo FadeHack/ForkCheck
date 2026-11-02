@@ -59,6 +59,7 @@ test("answers stay sealed until the reveal, then every viewer sees the same fork
   expect(shown[0]).toContain("Dana didn't answer.");
   await expect(pPage!.locator('.reveal .fork[data-outcome="split"] .fork-branch')).toHaveCount(2);
 
+  await pPage!.getByText("Not a real difference? Say why").first().click();
   const label = pPage!.getByRole("group", { name: "Is this a real difference?" }).first();
   await label.getByLabel("Real difference").check();
   await expect(label.getByText("Saved.")).toBeVisible();

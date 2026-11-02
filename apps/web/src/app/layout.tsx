@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Public_Sans, Source_Serif_4 } from "next/font/google";
+import { Patrick_Hand, Public_Sans, Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 import type { ReactNode } from "react";
@@ -11,6 +11,8 @@ import "./components.css";
 // Downloaded at build and served from this app, so pages make no third-party font request.
 const sans = Public_Sans({ subsets: ["latin"], variable: "--font-public-sans" });
 const serif = Source_Serif_4({ subsets: ["latin"], variable: "--font-source-serif" });
+// The red-pencil notes beside a split, and nothing else.
+const hand = Patrick_Hand({ subsets: ["latin"], weight: "400", variable: "--font-patrick-hand" });
 
 export const metadata: Metadata = {
   title: "ForkCheck",
@@ -20,7 +22,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     // The theme script sets data-theme before hydration, so the attribute can differ.
-    <html lang="en" className={`${sans.variable} ${serif.variable}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${sans.variable} ${serif.variable} ${hand.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <Script id="theme" strategy="beforeInteractive">
           {THEME_SCRIPT}

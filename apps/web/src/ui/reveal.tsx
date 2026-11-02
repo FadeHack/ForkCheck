@@ -27,6 +27,7 @@ export interface RevealItem {
 }
 
 export const VALIDITY_PROMPT = "Is this a real difference?";
+export const VALIDITY_SUMMARY = "Not a real difference? Say why";
 const LABELS_LOCKED = "Someone has proposed wording, so labels on this question can't change now.";
 
 /** What a recheck's answers mean for the wording it followed up. */
@@ -108,31 +109,35 @@ function ValidityControl({
     await onChange?.();
   }
 
+  // Most people only need to propose wording, so the labels wait behind one line until wanted.
   return (
-    <fieldset className="validity" aria-describedby={locked ? hintId : undefined}>
-      <legend>{VALIDITY_PROMPT}</legend>
-      {validityLabel.options.map((label) => (
-        <label key={label} className="choice">
-          <input
-            type="radio"
-            name={`${split.id}-validity`}
-            value={label}
-            checked={chosen === label}
-            disabled={locked}
-            onChange={() => void choose(label)}
-          />
-          <span>{validityText[label]}</span>
-        </label>
-      ))}
-      {locked && (
-        <p id={hintId} className="field-hint">
-          {LABELS_LOCKED}
+    <details className="validity-more" open={own !== null || undefined}>
+      <summary>{VALIDITY_SUMMARY}</summary>
+      <fieldset className="validity" aria-describedby={locked ? hintId : undefined}>
+        <legend>{VALIDITY_PROMPT}</legend>
+        {validityLabel.options.map((label) => (
+          <label key={label} className="choice">
+            <input
+              type="radio"
+              name={`${split.id}-validity`}
+              value={label}
+              checked={chosen === label}
+              disabled={locked}
+              onChange={() => void choose(label)}
+            />
+            <span>{validityText[label]}</span>
+          </label>
+        ))}
+        {locked && (
+          <p id={hintId} className="field-hint">
+            {LABELS_LOCKED}
+          </p>
+        )}
+        <p role="status" className="field-hint">
+          {note}
         </p>
-      )}
-      <p role="status" className="field-hint">
-        {note}
-      </p>
-    </fieldset>
+      </fieldset>
+    </details>
   );
 }
 

@@ -53,6 +53,7 @@
 :root {
   --font-ui: var(--font-public-sans), system-ui, sans-serif;
   --font-reading: var(--font-source-serif), Georgia, serif;
+  --font-hand: var(--font-patrick-hand), "Bradley Hand", cursive;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -63,6 +64,7 @@
   --radius-control: 6px;
   --radius-panel: 10px;
   --measure: 46rem;
+  --sheet-wide: 72rem;
 }
 
 *,
@@ -71,9 +73,10 @@
   box-sizing: border-box;
 }
 
+/* The desk is the surface tone; each page is a sheet of paper laid on it. */
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--surface);
   color: var(--ink);
   font-family: var(--font-ui);
   font-size: 1rem;
@@ -81,9 +84,26 @@ body {
 }
 
 main {
-  max-width: var(--measure);
-  margin-inline: auto;
-  padding: var(--space-8) var(--space-4) var(--space-12);
+  max-width: calc(var(--measure) + 2 * var(--space-12));
+  margin: 0 auto var(--space-12);
+  padding: var(--space-8) var(--space-12) var(--space-12);
+  background: var(--paper);
+  box-shadow:
+    0 1px 0 var(--line-subtle),
+    0 10px 28px rgb(60 45 20 / 0.12);
+}
+
+/* The reveal and the record are worked like a proof, with notes in the margin, so they get room. */
+main:has(.reveal, .record) {
+  max-width: var(--sheet-wide);
+}
+
+@media (max-width: 40rem) {
+  main {
+    padding: var(--space-6) var(--space-4) var(--space-8);
+    margin-bottom: 0;
+    box-shadow: none;
+  }
 }
 
 h1,
@@ -208,6 +228,12 @@ select {
  * so it outranks them. The contrast test reads the first rule for each selector, above.
  */
 @media print {
+  main {
+    box-shadow: none;
+    max-width: none;
+    padding: 0;
+  }
+
   :root:not([data-theme="light"]) {
     color-scheme: light;
     --paper: #fbf8f3;

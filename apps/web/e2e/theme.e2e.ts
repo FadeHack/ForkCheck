@@ -16,7 +16,7 @@ test.afterEach(() => {
 });
 
 const background = (page: Page) =>
-  page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+  page.evaluate(() => getComputedStyle(document.querySelector("main")!).backgroundColor);
 
 function luminance(rgb: string): number {
   const [r, g, b] = rgb
