@@ -112,7 +112,19 @@ function Item({ item, ctx }: { item: RecordItem; ctx: Context }) {
           <p className="record-status">
             <StatusLabel status={item.category === "confirmed" ? "confirmed" : "unresolved"} />
           </p>
-          <p className="record-text">{item.text}</p>
+          {/* The status label above says it in words; the tick and the pencil line are marks. */}
+          <p className="record-text">
+            {item.category === "confirmed" ? (
+              <>
+                <span className="record-tick" aria-hidden="true">
+                  ✓
+                </span>
+                {item.text}
+              </>
+            ) : (
+              <span className="record-open">{item.text}</span>
+            )}
+          </p>
         </>
       )}
       {item.deadline && (

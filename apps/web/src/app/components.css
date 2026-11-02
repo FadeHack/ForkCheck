@@ -808,6 +808,11 @@
   .record h3 {
     break-after: avoid;
   }
+
+  /* Paper gets the settled marks, never a frame of them arriving. */
+  .record * {
+    animation: none !important;
+  }
 }
 
 /* Trace panel: organizer only, closed by default; numbers line up in columns. */
@@ -1068,8 +1073,8 @@
 
 .pencil-circle svg {
   position: absolute;
-  inset: -0.35em -0.5em;
-  width: calc(100% + 1em);
+  inset: -0.35em -0.3em;
+  width: calc(100% + 0.6em);
   height: calc(100% + 0.7em);
   overflow: visible;
   pointer-events: none;
@@ -1083,7 +1088,7 @@
   .pencil-circle path {
     stroke-dasharray: 1200;
     stroke-dashoffset: 0;
-    animation: pencil-draw 900ms ease-out both;
+    animation: pencil-draw 900ms ease-out backwards;
   }
 
   @keyframes pencil-draw {
@@ -1272,5 +1277,160 @@
 @media print {
   .record-tally {
     display: none;
+  }
+}
+
+/* The record is the clean copy: a confirmed item gets a tick, an unresolved one keeps its pencil. */
+.record-tick {
+  margin-right: var(--space-2);
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--confirmed);
+}
+
+/* Wide enough for a margin: the tick hangs outside the item's rule, where an editor puts it. */
+@media (min-width: 56rem) {
+  .record-item {
+    position: relative;
+  }
+
+  .record-tick {
+    position: absolute;
+    left: -2.75rem;
+    margin: 0;
+    font-size: 2.25rem;
+  }
+}
+
+.record-open {
+  text-decoration: underline wavy var(--split) 2px;
+  text-underline-offset: 0.25em;
+  text-decoration-skip-ink: none;
+}
+
+/* "Where it was said" reads as the manuscript: who and when in the gutter, the words beside it. */
+@media (min-width: 40rem) {
+  .record-segment .quote {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: var(--space-6);
+    background: none;
+    padding: var(--space-2) 0;
+    margin: 0;
+    border-bottom: 1px solid var(--line-subtle);
+  }
+
+  .record-segment .quote figcaption {
+    grid-row: 1;
+    grid-column: 1;
+    padding-top: 0.2em;
+  }
+
+  .record-segment .quote blockquote,
+  .record-segment .quote-play {
+    grid-column: 2;
+  }
+
+  .record-segment .quote blockquote p {
+    margin: 0;
+  }
+}
+
+/*
+ * The reveal plays in the order an editor marks a page: the ring goes round the phrase, the margin
+ * line drops, then each reading and its days arrive. Everything settles within two seconds.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes margin-drop {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+
+    to {
+      clip-path: inset(0);
+    }
+  }
+
+  @keyframes mark-in {
+    from {
+      opacity: 0;
+      transform: translateX(-0.5rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes day-fill {
+    from {
+      background-color: transparent;
+      color: var(--ink-muted);
+    }
+  }
+
+  @keyframes pencil-in {
+    from {
+      text-decoration-color: transparent;
+    }
+  }
+
+  @keyframes tick-in {
+    from {
+      opacity: 0;
+      transform: scale(1.6) rotate(-12deg);
+    }
+  }
+
+  .fork[data-outcome="split"] > .fork-branches {
+    animation: margin-drop 500ms 700ms ease-out both;
+  }
+
+  .fork[data-outcome="split"] .fork-branch {
+    animation: mark-in 350ms ease-out both;
+    animation-delay: 950ms;
+  }
+
+  .fork[data-outcome="split"] .fork-branch:nth-child(2) {
+    animation-delay: 1150ms;
+  }
+
+  .fork[data-outcome="split"] .fork-branch:nth-child(3) {
+    animation-delay: 1350ms;
+  }
+
+  .fork[data-outcome="split"] .fork-branch:nth-child(n + 4) {
+    animation-delay: 1550ms;
+  }
+
+  .calendar-strip li[data-picked] .calendar-day {
+    animation: day-fill 400ms 1200ms ease-out both;
+  }
+
+  .calendar-strip li[data-picked] .calendar-who {
+    animation: mark-in 350ms 1400ms ease-out both;
+  }
+
+  .record-tick {
+    display: inline-block;
+    animation: tick-in 300ms 200ms ease-out both;
+  }
+
+  .record-open {
+    animation: pencil-in 600ms 200ms ease-out both;
+  }
+
+  .record-tally li {
+    animation: mark-in 350ms ease-out both;
+  }
+
+  .record-tally li:nth-child(2) {
+    animation-delay: 120ms;
+  }
+
+  .record-tally li:nth-child(3) {
+    animation-delay: 240ms;
   }
 }
