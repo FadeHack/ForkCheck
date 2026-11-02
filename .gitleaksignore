@@ -1,0 +1,5 @@
+# Fake keys in tests of key redaction, in a commit on the M8 branch; the tests now build them at runtime.
+cead56d854f9bd221f7ec1e69e3cd75b7194355b:packages/ai/test/meta-provider.test.ts:meta-model-api-key:190
+cead56d854f9bd221f7ec1e69e3cd75b7194355b:packages/ai/test/meta-provider.test.ts:meta-model-api-key:200
+cead56d854f9bd221f7ec1e69e3cd75b7194355b:packages/ai/test/meta-provider.test.ts:meta-model-api-key:203
+cead56d854f9bd221f7ec1e69e3cd75b7194355b:apps/web/test/server/security.test.ts:generic-api-key:199
