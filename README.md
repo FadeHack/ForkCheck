@@ -12,7 +12,7 @@ ForkCheck reads a meeting transcript, either pasted or transcribed from a record
 
 ## Setup
 
-You need Node 24 or later, Docker (for Postgres), and pnpm, which `corepack enable` installs. ffmpeg is needed only to upload recordings.
+You need Node 24 or later, Docker (for Postgres), and pnpm (if it is missing, `corepack enable` installs it). ffmpeg is needed only to upload recordings.
 
 ```sh
 pnpm install

@@ -67,7 +67,10 @@ const reads: Record<Person, Record<Topic, RegExp> & { recheck: Record<Topic, Reg
  * After a precise resolution everyone reads the recheck the same way: June owns the page, and
  * by the Tuesday Tomas has sent her the export limits.
  */
-const settled: Record<Topic, RegExp> = { launch: live, owner: /^June\b|\bfrom Tomas\b/ };
+const settled: Record<Topic, RegExp> = {
+  launch: live,
+  owner: /^June\b|\bJune put\b|\bfrom Tomas\b/,
+};
 
 /**
  * Which planted mismatch a question is about, from its wording. The model may draft more
