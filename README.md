@@ -10,6 +10,8 @@ ForkCheck reads a meeting transcript, either pasted or transcribed from a record
 4. checks the new wording with a follow-up question about its consequences;
 5. writes a decision record that links back to the source and sorts each item as stated in the meeting, confirmed by participants, or unresolved.
 
+For the hackathon submission (what we built, how Meta's models are used, evaluation results and limits), see [WRITEUP.md](WRITEUP.md).
+
 ## Setup
 
 You need Node 24 or later, Docker (for Postgres), and pnpm (if it is missing, `corepack enable` installs it). ffmpeg is needed only to upload recordings.
