@@ -19,7 +19,7 @@ test.afterEach(() => {
 });
 
 test("an empty form names each field and how to fix it", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/new");
   await page.getByLabel("Time zone").fill("Mars/Olympus");
   await page.getByRole("button", { name: "Create meeting check" }).click();
 
@@ -46,7 +46,7 @@ test("an empty form names each field and how to fix it", async ({ page }) => {
 test("creates a meeting from the demo transcript, warning about a missing participant first", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/new");
   await page.getByLabel("Meeting title").fill(demo.title);
   await page.getByLabel("Meeting date and time").fill("2026-10-26T15:00");
   await page.getByLabel("Time zone").fill("America/New_York");

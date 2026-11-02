@@ -259,8 +259,10 @@ describe("WorkspaceView", () => {
     const out = html(
       <WorkspaceView state={organizerState({ rounds: [round("r1")] })} viewing={null} />,
     );
-    expect(out).toContain('<li aria-current="step"><strong>Round</strong></li>');
-    expect(out).toContain("Reveal, not yet");
+    expect(out).toContain(
+      '<li aria-current="step" data-state="current" data-viewing="true"><strong>Round</strong></li>',
+    );
+    expect(out).toContain('Reveal<span class="stage-note">, not yet</span>');
     expect(out).toContain('href="/m/m1?stage=questions"');
   });
 

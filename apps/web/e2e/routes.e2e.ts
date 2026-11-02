@@ -38,12 +38,18 @@ async function createMeeting(request: APIRequestContext): Promise<CreateMeetingR
   return (await res.json()) as CreateMeetingResponse;
 }
 
-test("start page creates a meeting check and shows its links", async ({ page, context }) => {
+test("the front page leads to the start page, which creates a check and shows its links", async ({
+  page,
+  context,
+}) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "Check what your meeting decided", level: 1 }),
+    page.getByRole("heading", { name: "Everyone agreed. On the same thing?", level: 1 }),
   ).toBeVisible();
+  await page.getByRole("link", { name: "Check your own meeting" }).click();
+  await expect(page).toHaveURL(/\/new$/);
+  await expect(page.getByRole("heading", { name: "Check a meeting", level: 1 })).toBeVisible();
   await page.getByRole("button", { name: "Create meeting check" }).click();
   await expect(page.getByText("Confirm that everyone agreed")).toBeVisible();
 

@@ -105,7 +105,7 @@ for (const theme of ["light", "dark"] as const) {
     page,
   }) => {
     await page.emulateMedia({ colorScheme: theme });
-    await page.goto("/");
+    await page.goto("/new");
     const rings = await focusRings(page);
     const paper = await background(page);
     expect(rings.length).toBeGreaterThanOrEqual(8);

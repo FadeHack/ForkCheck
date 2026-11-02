@@ -110,7 +110,7 @@ async function answerAll(
 }
 
 async function createFromPaste(page: Page, hideNames: boolean) {
-  await page.goto("/");
+  await page.goto("/new");
   await page.getByLabel("Meeting title").fill(demo.title);
   await page.getByLabel("Meeting date and time").fill("2026-11-03T10:00");
   await page.getByLabel("Time zone").fill("America/New_York");

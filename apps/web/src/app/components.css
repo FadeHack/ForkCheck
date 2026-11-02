@@ -1310,6 +1310,11 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* A picked day's filled block uses the whole cell, so a bold "Thu 12" fits inside it. */
+.calendar-strip li[data-picked] {
+  padding-inline: 0;
+}
+
 .calendar-strip li[data-picked] .calendar-day {
   display: block;
   margin-top: calc(-1 * var(--space-2) - 2px);
@@ -1875,4 +1880,448 @@
   .pencil-tick {
     animation: tick-in 250ms ease-out;
   }
+}
+
+/* ---------- Site navigation ---------- */
+
+/* The organizer's two places sit on the desk beside the theme, never on the sheet. */
+.site-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+
+.site-tools .theme-select {
+  padding-bottom: 0;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav li {
+  margin: 0;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-3);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+/* On a phone the tools take their own row above, so the name tab still joins the sheet. */
+@media (max-width: 40rem) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  .site-tools {
+    order: -1;
+    width: 100%;
+    justify-content: flex-end;
+    padding-bottom: 0;
+  }
+
+  .site-nav a {
+    padding: 0 var(--space-2);
+  }
+}
+
+/* Links styled as buttons, for actions that go to another page. */
+a.button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* ---------- Front page ---------- */
+
+.landing h1 {
+  font-size: clamp(2.5rem, 1.7rem + 3vw, 4rem);
+  max-width: 11ch;
+  margin-bottom: var(--space-6);
+}
+
+.landing-lede {
+  font-size: 1.1875rem;
+  line-height: 1.55;
+}
+
+.landing-pitch .actions {
+  margin-top: var(--space-8);
+}
+
+/* The excerpt is the product's own reveal, cut from the sample meeting and set beside the pitch. */
+.landing-specimen {
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--ink);
+}
+
+.landing-specimen figcaption {
+  margin-bottom: var(--space-4);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 56rem) {
+  .landing-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-12);
+    align-items: start;
+    padding-top: var(--space-6);
+  }
+
+  .landing-specimen {
+    margin-top: 0;
+  }
+
+  /* Half a sheet is too narrow for the reveal's wide margin, so its notes column shrinks. */
+  .landing-specimen .fork[data-outcome="split"] {
+    grid-template-columns: minmax(0, 1fr) 12rem;
+    column-gap: var(--space-6);
+  }
+
+  /* A week of days needs the excerpt's full width, so the strip runs under the notes too. */
+  .landing-specimen .fork[data-outcome="split"] > .calendar-strip {
+    grid-column: 1 / -1;
+    grid-row: 5;
+  }
+}
+
+.landing-loop {
+  margin-top: var(--space-12);
+}
+
+/* Set like the record's manuscript: who does the step in the gutter, the step beside it. */
+.loop-list {
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.loop-list > li {
+  counter-increment: step;
+  margin: 0;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line-subtle);
+}
+
+.loop-list h3 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-reading);
+  font-size: 1.25rem;
+}
+
+.loop-list h3::before {
+  content: counter(step) ". ";
+  color: var(--ink-muted);
+}
+
+.loop-list p {
+  margin: 0;
+}
+
+.loop-who {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-1);
+}
+
+@media (min-width: 56rem) {
+  .loop-list > li {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+
+  .loop-who {
+    padding-top: 0.2rem;
+    text-align: right;
+  }
+}
+
+.landing-facts {
+  margin-top: var(--space-12);
+}
+
+.landing-facts > div {
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--ink);
+}
+
+.landing-facts > div + div {
+  margin-top: var(--space-8);
+}
+
+.landing-facts h2 {
+  margin-top: 0;
+  font-family: var(--font-reading);
+}
+
+@media (min-width: 56rem) {
+  .landing-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-12);
+  }
+
+  .landing-facts > div + div {
+    margin-top: 0;
+  }
+}
+
+.landing-credit {
+  margin-top: var(--space-12);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line-subtle);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.landing-credit p {
+  margin: 0;
+}
+
+/* ---------- Start: the sample meeting ---------- */
+
+.sample-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  background: var(--surface);
+  border-radius: var(--radius-panel);
+}
+
+.sample-bar p {
+  flex: 1 1 22rem;
+  margin: 0;
+}
+
+@media (min-width: 56rem) {
+  .start-form > .sample-bar {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Your meetings ---------- */
+
+.meeting-list {
+  margin: var(--space-8) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.meeting-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-2) var(--space-4);
+  align-items: center;
+  margin: 0;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line-subtle);
+}
+
+.meeting-row p {
+  margin: 0;
+}
+
+.meeting-title {
+  font-family: var(--font-reading);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.meeting-held {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.meeting-where {
+  grid-column: 1;
+}
+
+.meeting-row .button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.meeting-row[data-state="gone"] .meeting-where,
+.meeting-row[data-state="loading"] .meeting-where {
+  color: var(--ink-muted);
+}
+
+@media (min-width: 56rem) {
+  .meeting-row {
+    grid-template-columns: minmax(0, 1fr) 14rem auto;
+  }
+
+  .meeting-where {
+    grid-column: 2;
+  }
+
+  .meeting-row .button {
+    grid-column: 3;
+    grid-row: auto;
+  }
+}
+
+.meetings-empty .actions {
+  margin-top: var(--space-4);
+}
+
+/* ---------- Workspace ---------- */
+
+.stage-note {
+  font-weight: 400;
+}
+
+/*
+ * On a wide sheet the stages stand in the left margin as one stem with a node per stage, the
+ * fork line's single stem; it stays in view while the stage beside it scrolls.
+ */
+@media (min-width: 64rem) {
+  .workspace {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .workspace-side {
+    position: sticky;
+    top: var(--space-6);
+  }
+
+  .workspace-side .stage-rail ol {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: var(--space-2) 0 0;
+  }
+
+  .workspace-side .stage-rail li {
+    position: relative;
+    padding-left: var(--space-6);
+  }
+
+  .workspace-side .stage-rail li::before,
+  .workspace-side .stage-rail li + li::before {
+    content: "";
+    position: absolute;
+    left: calc(0.375rem - 1px);
+    top: 0;
+    bottom: 0;
+    width: 0;
+    margin: 0;
+    border-top: 0;
+    border-left: 2px solid var(--line);
+  }
+
+  .workspace-side .stage-rail li:first-child::before {
+    top: 50%;
+  }
+
+  .workspace-side .stage-rail li:last-child::before {
+    bottom: 50%;
+  }
+
+  .workspace-side .stage-rail li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-top: -0.375rem;
+    border: 2px solid var(--line);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  .workspace-side .stage-rail li[data-state="done"]::after {
+    background: var(--line);
+  }
+
+  .workspace-side .stage-rail li[data-state="current"]::after {
+    border-color: currentColor;
+    background: currentColor;
+  }
+
+  .workspace-side .stage-rail .stage-note {
+    font-size: 0.875rem;
+  }
+
+  /* The workspace title and stage headings start level with the stem. */
+  .workspace-main > :first-child,
+  .workspace-main > :first-child > :first-child {
+    margin-top: 0;
+  }
+}
+
+/* While questions are chosen the decision list waits behind one line. */
+.decisions-fold summary {
+  display: block;
+  cursor: pointer;
+  list-style: none;
+}
+
+.decisions-fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.decisions-fold summary h2 {
+  margin-bottom: var(--space-1);
+}
+
+.decisions-count {
+  color: var(--ink-muted);
+}
+
+.decisions-show,
+.decisions-hide {
+  color: var(--action);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.decisions-hide,
+.decisions-fold details[open] .decisions-show {
+  display: none;
+}
+
+.decisions-fold details[open] .decisions-hide {
+  display: inline;
+}
+
+/* The publish button stays at the bottom of the screen while the drafts scroll past. */
+.draft-list ~ .publish {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  padding: var(--space-4) 0;
+  background: var(--paper);
+  border-top: 1px solid var(--line-subtle);
 }

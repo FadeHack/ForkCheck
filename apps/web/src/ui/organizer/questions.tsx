@@ -100,27 +100,60 @@ function DraftQuestions({ state, onChange }: { state: State; onChange: () => Pro
   );
 }
 
-function Decisions({ state }: { state: State }) {
+/** "6 decisions, 5 of them open to more than one reading." */
+export function decisionsSummary(statuses: readonly string[]): string {
+  const n = statuses.length;
+  const open = statuses.filter((st) => st === "ambiguous").length;
+  const all = `${n} ${n === 1 ? "decision" : "decisions"}`;
+  if (open === 0) return `${all}, none open to more than one reading.`;
+  if (open === n) return `${all}, ${n === 1 ? "it is" : "all"} open to more than one reading.`;
+  return `${all}, ${open} of them open to more than one reading.`;
+}
+
+/**
+ * Folded while questions are drafted: each draft already quotes its own evidence, so the full
+ * list would repeat every quote above the questions the organizer is there to choose.
+ */
+function Decisions({ state, folded = false }: { state: State; folded?: boolean }) {
   const names = new Map(state.participants.map((p) => [p.id, p.displayName]));
   const segments = new Map(state.segments.map((s) => [s.id, s]));
+  const list = (
+    <ol className="decision-list">
+      {state.decisions.map(({ decision, evidence }) => (
+        <li key={decision.id} data-status={decision.status}>
+          <p className="decision-statement">{decision.statement}</p>
+          <p className="decision-status">{decisionStatusLabel[decision.status]}</p>
+          {evidence.map((e) => {
+            const segment = segments.get(e.segmentId);
+            const speaker = segment?.participantId
+              ? (names.get(segment.participantId) ?? null)
+              : null;
+            return <QuoteBlock key={e.id} quote={e.quote} segment={segment} speaker={speaker} />;
+          })}
+        </li>
+      ))}
+    </ol>
+  );
+  const summary = decisionsSummary(state.decisions.map((d) => d.decision.status));
+  if (!folded) {
+    return (
+      <section aria-labelledby="decisions-heading">
+        <h2 id="decisions-heading">Decisions found</h2>
+        {list}
+      </section>
+    );
+  }
   return (
-    <section aria-labelledby="decisions-heading">
-      <h2 id="decisions-heading">Decisions found</h2>
-      <ol className="decision-list">
-        {state.decisions.map(({ decision, evidence }) => (
-          <li key={decision.id} data-status={decision.status}>
-            <p className="decision-statement">{decision.statement}</p>
-            <p className="decision-status">{decisionStatusLabel[decision.status]}</p>
-            {evidence.map((e) => {
-              const segment = segments.get(e.segmentId);
-              const speaker = segment?.participantId
-                ? (names.get(segment.participantId) ?? null)
-                : null;
-              return <QuoteBlock key={e.id} quote={e.quote} segment={segment} speaker={speaker} />;
-            })}
-          </li>
-        ))}
-      </ol>
+    <section aria-labelledby="decisions-heading" className="decisions-fold">
+      <details>
+        <summary>
+          <h2 id="decisions-heading">Decisions found</h2>
+          <span className="decisions-count">{summary}</span>{" "}
+          <span className="decisions-show">Show them with their quotes.</span>
+          <span className="decisions-hide">Hide them.</span>
+        </summary>
+        {list}
+      </details>
     </section>
   );
 }
@@ -392,7 +425,7 @@ export function QuestionsView({
 
   return (
     <>
-      <Decisions state={state} />
+      <Decisions state={state} folded={drafts.length > 0} />
       <section aria-labelledby="drafts-heading">
         <h2 id="drafts-heading">Draft questions</h2>
         {drafts.length === 0 ? (

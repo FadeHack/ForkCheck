@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import type { ReactNode } from "react";
 import { THEME_SCRIPT } from "../ui/theme-script";
+import { SiteNav } from "../ui/site-nav";
 import { ThemeSelect } from "../ui/theme-select";
 import "./globals.css";
 import "./components.css";
@@ -41,7 +42,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </svg>
             ForkCheck
           </Link>
-          <ThemeSelect />
+          <div className="site-tools">
+            <SiteNav />
+            <ThemeSelect />
+          </div>
         </header>
         {children}
       </body>

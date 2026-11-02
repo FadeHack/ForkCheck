@@ -11,6 +11,8 @@ import {
   type RecordingInfo,
 } from "../audio";
 import { Button, ErrorNotice, Field, Toast } from "../components";
+import { saveMeeting } from "../saved-meetings";
+import { SAMPLE_MEETING } from "./sample";
 import { useToast } from "../use-toast";
 import {
   serverFieldErrors,
@@ -94,7 +96,7 @@ function fillBrowserZone(input: HTMLInputElement | null) {
   if (input && input.value === "") input.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
 }
 
-export function CreateMeeting() {
+export function CreateMeeting({ sample: startWithSample = false }: { sample?: boolean }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [failure, setFailure] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
@@ -105,12 +107,23 @@ export function CreateMeeting() {
   const [recording, setRecording] = useState<RecordingInfo | null>(null);
   // The duration arrives after the file is chosen; a later choice must not be overwritten by it.
   const chosen = useRef<File | null>(null);
-  const [participants, setParticipants] = useState("");
-  const [transcript, setTranscript] = useState("");
+  const [sample, setSample] = useState(startWithSample);
+  const [participants, setParticipants] = useState(
+    startWithSample ? SAMPLE_MEETING.participants.join("\n") : "",
+  );
+  const [transcript, setTranscript] = useState(startWithSample ? SAMPLE_MEETING.transcript : "");
   const warnings = useMemo(
     () => transcriptWarnings(participants, transcript),
     [participants, transcript],
   );
+
+  function fillSample() {
+    setSample(true);
+    setSource("paste");
+    setParticipants(SAMPLE_MEETING.participants.join("\n"));
+    setTranscript(SAMPLE_MEETING.transcript);
+    setErrors({});
+  }
 
   function showRecording(info: RecordingInfo | null) {
     setRecording(info);
@@ -174,6 +187,14 @@ export function CreateMeeting() {
     }
     setSending(false);
     if (res.ok) {
+      const { title, heldAt, timezone } = checked.body;
+      saveMeeting({
+        id: res.data.meetingId,
+        token: res.data.organizerToken,
+        title,
+        heldAt,
+        timezone,
+      });
       setErrors({});
       setCreated(res.data);
       return;
@@ -187,21 +208,58 @@ export function CreateMeeting() {
 
   return (
     <form className="start-form" onSubmit={submit} noValidate>
+      <div className="sample-bar" role="group" aria-label="Sample meeting">
+        {sample ? (
+          <p role="status">
+            Filled in with the sample meeting, <cite>Atlas launch sync</cite>. Its people and
+            product are made up. Tick the agreement below and create it.
+          </p>
+        ) : (
+          <>
+            <p>
+              No transcript to hand? The sample meeting has three people, a launch date and a help
+              page they each understood differently.
+            </p>
+            <Button variant="secondary" onClick={fillSample}>
+              Fill in the sample meeting
+            </Button>
+          </>
+        )}
+      </div>
       {failure && <ErrorNotice>{failure}</ErrorNotice>}
       <div className="start-details">
         <Field id="title" label="Meeting title" error={errors.title}>
-          {(d) => <input id="title" name="title" required aria-describedby={d} />}
+          {(d) => (
+            <input
+              key={String(sample)}
+              id="title"
+              name="title"
+              required
+              defaultValue={sample ? SAMPLE_MEETING.title : undefined}
+              aria-describedby={d}
+            />
+          )}
         </Field>
         <Field id="heldAt" label="Meeting date and time" error={errors.heldAt}>
           {(d) => (
-            <input id="heldAt" name="heldAt" type="datetime-local" required aria-describedby={d} />
+            <input
+              key={String(sample)}
+              id="heldAt"
+              name="heldAt"
+              type="datetime-local"
+              required
+              defaultValue={sample ? SAMPLE_MEETING.heldAt : undefined}
+              aria-describedby={d}
+            />
           )}
         </Field>
         <Field id="timezone" label="Time zone" error={errors.timezone}>
           {(d) => (
             <input
+              key={String(sample)}
               id="timezone"
               name="timezone"
+              defaultValue={sample ? SAMPLE_MEETING.timezone : undefined}
               ref={fillBrowserZone}
               required
               aria-describedby={d}

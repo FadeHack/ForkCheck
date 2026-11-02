@@ -242,6 +242,7 @@ export function ForkView({
   split,
   answers,
   people,
+  stemAs: Stem = "h3",
 }: {
   /** The decision's quote, where the fork's stem drops from. */
   quote?: SourceQuote | null;
@@ -250,6 +251,8 @@ export function ForkView({
   split: Split;
   answers: Answer[];
   people: Participant[];
+  /** A heading in a reveal's outline; a paragraph where the fork is shown outside one. */
+  stemAs?: "h3" | "p";
 }) {
   const byId = new Map(people.map((p) => [p.id, p]));
   const name = (id: string, simulated = false) => {
@@ -289,7 +292,7 @@ export function ForkView({
           asks={split.outcome === "split" ? stem : undefined}
         />
       )}
-      <h3 className="fork-stem">{stem}</h3>
+      <Stem className="fork-stem">{stem}</Stem>
       <p className="fork-status">
         <StatusLabel status={split.outcome} />
         {split.outcome === "split" && <>: a difference to discuss.</>}
