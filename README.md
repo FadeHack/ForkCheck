@@ -54,10 +54,10 @@ Set `LIVE=1` and `MODEL_API_KEY` in `.env.local` and restart `pnpm dev`. Analysi
 
 Other commands:
 
-| Command                | What it does                                                                                                               |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `pnpm verify`        | lint, format check, typecheck, dependency rules and unit tests (in-memory Postgres, no Docker needed)                      |
-| `pnpm e2e`           | browser tests against the dev server, desktop and mobile                                                                   |
+| Command              | What it does                                                                                                           |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `pnpm verify`        | lint, format check, typecheck, dependency rules and unit tests (in-memory Postgres, no Docker needed)                  |
+| `pnpm e2e`           | browser tests against the dev server, desktop and mobile                                                               |
 | `pnpm eval validate` | checks every scenario file; `packages/eval/scripts/eval.ts` lists the evaluation commands, most of which need `LIVE=1` |
 
 ## Privacy defaults
