@@ -114,6 +114,7 @@ export const meeting = pgTable("meeting", {
   stepHeartbeatAt: at("step_heartbeat_at"),
   createdAt: at("created_at").notNull(),
   deleteAfter: at("delete_after"),
+  pseudonymizeNames: boolean("pseudonymize_names").notNull().default(false),
 });
 
 export const participant = pgTable(

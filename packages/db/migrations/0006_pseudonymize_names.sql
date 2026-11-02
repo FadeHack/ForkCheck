@@ -1,0 +1,1 @@
+ALTER TABLE "meeting" ADD COLUMN "pseudonymize_names" boolean DEFAULT false NOT NULL;

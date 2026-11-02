@@ -24,6 +24,7 @@ import { parseProbeDimensions, type Dimension } from "@forkcheck/core";
 import { connect, DbCallLog, MeetingRepo, RoundRepo, SplitRepo, type Db } from "@forkcheck/db";
 import { logError } from "./log";
 import { MeetingScopedProvider } from "./meeting-scope";
+import { PseudonymizingProvider } from "./pseudonymize";
 import { LocalDiskStorage, type Storage } from "./storage";
 
 /** For deps without audio: nothing is stored, so there is nothing to read or delete. */
@@ -64,13 +65,14 @@ const workspace = () => findWorkspaceRoot() ?? process.cwd();
 const replayDir = () => join(workspace(), "packages", "asr", "fixtures", "replay");
 
 export function createDeps(db: Db, overrides: DepsOverrides = {}): Deps {
+  const meetings = new MeetingRepo(db);
+  const model = overrides.model ?? (() => new FakeProvider());
   return {
     db,
-    meetings: new MeetingRepo(db),
+    meetings,
     rounds: new RoundRepo(db),
     splits: new SplitRepo(db),
     storage: noStorage,
-    model: () => new FakeProvider(),
     transcriber: () => new ReplayTranscriber(replayDir()),
     ffmpegPath: "ffmpeg",
     background: (task) => {
@@ -79,6 +81,13 @@ export function createDeps(db: Db, overrides: DepsOverrides = {}): Deps {
     dimensions: parseProbeDimensions(undefined),
     now: () => new Date(),
     ...overrides,
+    // Every stage's model goes through here, so no request skips the meeting's name setting.
+    model: (meetingId) =>
+      new PseudonymizingProvider(model(meetingId), async () => {
+        const meeting = await meetings.get(meetingId);
+        if (!meeting?.pseudonymizeNames) return null;
+        return (await meetings.participants(meetingId)).map((p) => p.displayName);
+      }),
   };
 }
 

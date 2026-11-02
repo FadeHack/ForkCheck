@@ -89,6 +89,7 @@ export const toMeeting = (r: MeetingRow): Meeting => ({
   error: r.error,
   createdAt: toIso(r.createdAt),
   deleteAfter: toIsoOrNull(r.deleteAfter),
+  pseudonymizeNames: r.pseudonymizeNames,
 });
 
 export const toProbe = (r: ProbeRow): Probe => ({

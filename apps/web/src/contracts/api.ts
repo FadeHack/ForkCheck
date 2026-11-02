@@ -54,6 +54,8 @@ export const createMeetingRequest = z.strictObject({
   participants: z.array(newParticipant).min(2),
   /** `Name: text` per line, optional `[mm:ss]`. Omitted for audio meetings. */
   transcript: z.string().min(1).optional(),
+  /** Swap participant names for placeholders in every model request. Off unless set. */
+  pseudonymizeNames: z.boolean().optional(),
 });
 export type CreateMeetingRequest = z.infer<typeof createMeetingRequest>;
 export interface CreateMeetingResponse {

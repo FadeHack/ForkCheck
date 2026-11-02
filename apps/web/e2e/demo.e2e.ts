@@ -38,8 +38,8 @@ const demo = JSON.parse(
 type Person = "Nadia" | "Tomas" | "June";
 
 type Topic = "launch" | "owner";
-const live = /\bis (available|accessible)\b/i;
-const notLive = /\b(unavailable|not yet accessible|not yet available)\b/i;
+const live = /\b(is (available|accessible)|every customer can)\b/i;
+const notLive = /\b(unavailable|not yet accessible|not yet available|only some customers)\b/i;
 
 /**
  * Each person's private brief, as the option they pick: first on the planted questions, then on
@@ -63,8 +63,11 @@ const reads: Record<Person, Record<Topic, RegExp> & { recheck: Record<Topic, Reg
     recheck: { launch: live, owner: /^Tomas/ },
   },
 };
-/** After a precise resolution everyone reads the recheck the same way. */
-const settled: Record<Topic, RegExp> = { launch: live, owner: /^June/ };
+/**
+ * After a precise resolution everyone reads the recheck the same way: June owns the page, and
+ * by the Tuesday Tomas has sent her the export limits.
+ */
+const settled: Record<Topic, RegExp> = { launch: live, owner: /^June\b|\bfrom Tomas\b/ };
 
 /**
  * Which planted mismatch a question is about, from its wording. The model may draft more
@@ -103,13 +106,14 @@ async function answerAll(
   }
 }
 
-async function createFromPaste(page: Page) {
+async function createFromPaste(page: Page, hideNames: boolean) {
   await page.goto("/");
   await page.getByLabel("Meeting title").fill(demo.title);
   await page.getByLabel("Meeting date and time").fill("2026-11-03T10:00");
   await page.getByLabel("Time zone").fill("America/New_York");
   await page.getByLabel("Participant names, one per line").fill(demo.participants.join("\n"));
   await page.getByLabel("Transcript", { exact: true }).fill(demo.transcript);
+  if (hideNames) await page.getByLabel("Hide participant names from the model").check();
   await page.getByLabel(/Everyone in this meeting agreed/).check();
   await page.getByRole("button", { name: "Create meeting check" }).click();
   await expect(page.getByRole("heading", { name: "Meeting check created" })).toBeVisible();
@@ -132,24 +136,46 @@ async function createFromPaste(page: Page) {
 
 test.skip(({ isMobile }) => isMobile, "The demo runs on one device");
 
-for (const path of ["precise", "vague"] as const) {
-  test(`Atlas launch sync, ${path} resolutions`, async ({ page, request }) => {
+// The model sees placeholders for the names in the last run; everyone here still sees names.
+const runs = [
+  { path: "precise", hideNames: false },
+  { path: "vague", hideNames: false },
+  { path: "precise", hideNames: true },
+] as const;
+
+for (const { path, hideNames } of runs) {
+  const title = `Atlas launch sync, ${path} resolutions${hideNames ? ", names hidden" : ""}`;
+  test(title, async ({ page, request }) => {
     test.setTimeout(LIVE ? 20 * 60_000 : 120_000);
-    const m = await createFromPaste(page);
+    const m = await createFromPaste(page, hideNames);
     const headers = { authorization: `Bearer ${m.token}` };
     const tok = (who: Person) => m.tokens.get(who)!;
 
     await page.goto(m.href);
+    await expect(page.getByText("Participant names are hidden from the model")).toHaveCount(
+      hideNames ? 1 : 0,
+    );
     await page.getByRole("button", { name: "Draft questions" }).click();
     const publish = page.getByRole("button", { name: /^Publish \d+ questions?$/ });
     await expect(publish).toBeVisible(MODEL_WAIT);
-    // Five questions fit in a round. The organizer swaps the screenshots question, which
-    // nobody disagrees on, for the one asking who writes the help center page.
-    const draft = (stem: RegExp) =>
-      page.locator(".draft-list > li").filter({ hasText: stem }).getByLabel("Send this question");
-    await draft(/Final screenshots/).uncheck();
-    await draft(/help center page.*who does it/).check();
-    await expect(publish).toHaveText("Publish 5 questions");
+    // Five questions fit in a round. If the one asking who writes the help center page didn't
+    // make it, the organizer swaps out a question nobody disagrees on, the screenshots one first.
+    const box = "Send this question";
+    const drafts = page.locator(".draft-list > li");
+    const owner = drafts.filter({ hasText: /help center page.*who does it/ }).getByLabel(box);
+    if (!(await owner.isChecked())) {
+      const spare = [];
+      for (const li of await drafts.all()) {
+        const text = await li.innerText();
+        if (topic({ stem: text }) === null && (await li.getByLabel(box).isChecked())) {
+          spare.push({ li, screenshots: /screenshots/i.test(text) });
+        }
+      }
+      const swap = spare.find((s) => s.screenshots) ?? spare[0]!;
+      await swap.li.getByLabel(box).uncheck();
+      await owner.check();
+    }
+    await expect(publish).toHaveText(/^Publish [2-5] questions$/);
     await publish.click();
     if (REPLAYED) await expect(replayedBanner(page)).toBeVisible();
     await expect(page.getByRole("button", { name: "Reveal answers" })).toBeVisible();

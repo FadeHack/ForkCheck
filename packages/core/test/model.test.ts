@@ -68,6 +68,7 @@ describe("meeting", () => {
       error: null,
       createdAt: "2026-10-26T19:00:00Z",
       deleteAfter: null,
+      pseudonymizeNames: false,
     };
     expect(meeting.safeParse(m).success).toBe(true);
     expect(meeting.safeParse({ ...m, organizerTokenHash: "x" }).success).toBe(false);

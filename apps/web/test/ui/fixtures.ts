@@ -12,6 +12,7 @@ export const meeting: Meeting = {
   error: null,
   createdAt: "2026-10-27T20:00:00.000Z",
   deleteAfter: null,
+  pseudonymizeNames: false,
 };
 
 export const participants: Participant[] = ["Priya", "Marco", "Dana"].map((name, i) => ({

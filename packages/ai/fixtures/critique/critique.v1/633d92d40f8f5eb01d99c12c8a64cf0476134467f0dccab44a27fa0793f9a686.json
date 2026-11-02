@@ -1,0 +1,32 @@
+{
+  "key": {
+    "stage": "critique",
+    "promptVersion": "critique.v1",
+    "hash": "633d92d40f8f5eb01d99c12c8a64cf0476134467f0dccab44a27fa0793f9a686"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You check a multiple-choice question before it is sent privately to meeting participants. The question is meant to reveal whether participants hold different readings of something the meeting appeared to agree on.\n\nYou are given the dimension being checked, the readings participants might hold, and the question with its numbered options. Answer two things:\n\n- `canDiverge`: could two reasonable participants, one holding one reading and one holding another, choose different options? Answer `false` if every reading leads to the same option, if an option does not fit any reading, or if the question asks about something other than the given dimension.\n- `leadingOption`: the number shown before an option that looks like the right, safe or expected answer to anyone regardless of their reading, or `null` if no option stands out. Options stand out through wording such as \"properly\", \"fully\" or \"as agreed\", through being much more detailed than the others, or through being the only one that sounds responsible.\n\nThen give `reason`: one or two plain sentences naming the problem, written so the question's author can fix it. If both checks pass, say briefly why.\n\nThe app always adds its own \"not sure\" choice; do not count its absence as a problem."
+      },
+      {
+        "role": "user",
+        "content": "Dimension: deadline\nReadings participants might hold:\n- Atlas is live for every customer by Thursday, November 12 to avoid a Friday deploy and match the Thursday email\n- Atlas is live for every customer by Friday, November 13, the literal end of next week\n\nQuestion: For \"Atlas will be out to every customer\", what has to exist by \"the end of next week\"?\n0 Atlas fully deployed and available to all customers by Thursday the 12th\n1 Atlas fully deployed and available to all customers by Friday the 13th"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "canDiverge": true,
+    "leadingOption": null,
+    "reason": "Option 0 matches the Thursday reading and option 1 matches the Friday reading, with parallel wording so neither looks like the expected answer."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 440,
+    "outputTokens": 542,
+    "reasoningTokens": 487
+  }
+}

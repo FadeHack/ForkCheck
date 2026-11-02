@@ -31,6 +31,13 @@ describe("validateMeeting", () => {
     });
   });
 
+  it("asks for placeholder names only when the box is ticked", () => {
+    const on = validateMeeting({ ...valid, pseudonymizeNames: true });
+    expect(on.ok && on.body.pseudonymizeNames).toBe(true);
+    const off = validateMeeting({ ...valid, pseudonymizeNames: false });
+    expect(off.ok && "pseudonymizeNames" in off.body).toBe(false);
+  });
+
   it("asks for a recording instead of a transcript when the source is audio", () => {
     const audio: MeetingForm = { ...valid, source: "audio", transcript: "", recording: null };
     expect(validateMeeting(audio)).toEqual({

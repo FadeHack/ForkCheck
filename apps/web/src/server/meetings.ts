@@ -29,6 +29,7 @@ export async function createMeeting(
     error: null,
     createdAt: now.toISOString(),
     deleteAfter: deleteAfter(now),
+    pseudonymizeNames: body.pseudonymizeNames ?? false,
   };
   const participants = body.participants.map((p, i) => ({
     participant: {

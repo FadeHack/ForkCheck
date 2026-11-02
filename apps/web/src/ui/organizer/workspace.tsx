@@ -53,6 +53,11 @@ export function WorkspaceView({
       <header>
         <h1>{state.meeting.title}</h1>
         <p>Held {formatHeldAt(state.meeting.heldAt, state.meeting.timezone)}</p>
+        {state.meeting.pseudonymizeNames && (
+          <p>
+            Participant names are hidden from the model, which sees Person A, Person B and so on.
+          </p>
+        )}
       </header>
       {state.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
       <ReplayedBanner replayed={state.replayed} />
