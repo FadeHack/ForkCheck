@@ -36,6 +36,7 @@ const meeting: Meeting = {
   error: null,
   createdAt: "2026-10-27T16:00:00.000Z",
   deleteAfter: null,
+  pseudonymizeNames: false,
 };
 
 const T0 = new Date("2026-10-27T16:30:00.000Z");

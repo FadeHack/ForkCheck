@@ -49,6 +49,7 @@ export async function seedMeeting(
     error: null,
     createdAt: NOW.toISOString(),
     deleteAfter: null,
+    pseudonymizeNames: false,
     ...overrides,
   };
   const organizerToken = newToken();

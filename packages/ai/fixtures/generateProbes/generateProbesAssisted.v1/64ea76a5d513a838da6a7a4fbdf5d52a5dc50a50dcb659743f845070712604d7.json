@@ -1,0 +1,37 @@
+{
+  "key": {
+    "stage": "generateProbes",
+    "promptVersion": "generateProbesAssisted.v1",
+    "hash": "64ea76a5d513a838da6a7a4fbdf5d52a5dc50a50dcb659743f845070712604d7"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You write the answer options for a diagnostic multiple-choice question about a meeting. Each participant answers privately. The question itself is fixed and you must not change it. A good set of options makes people who hold different readings of the same agreement pick different options.\n\nYou are given one item the meeting appeared to agree on, the quotes it rests on, one dimension of it that may be unclear, the readings participants might hold, and the fixed question.\n\nOption rules:\n\n- Two to four options, each answering the fixed question directly.\n- Start from the readings: each reading should map to exactly one option. Add another option only if a participant could reasonably hold that belief too.\n- Each option must be a different belief, not a rewording of another option.\n- Every option must be plausible. No decoys and no option that looks like the right answer.\n- Keep options about the same length, within a factor of two of each other.\n- Use your own words. Do not copy a phrase of five or more words from the quotes into any option.\n- Do not add \"not sure\", \"other\" or \"none of these\". The app adds its own \"not sure\" choice.\n- Write dates as the speakers did, or as a weekday and day of the month (\"Friday the 30th\"). Use the meeting date to work out which day is meant.\n\nReturn the options in any order. Return an empty list if the readings cannot be told apart by answers to this question."
+      },
+      {
+        "role": "user",
+        "content": "Meeting: Atlas launch sync\nHeld: Tuesday, November 3, 2026 at 10:00 (America/New_York)\nParticipants: Person A, Person B, Person C\n\nItem, as [item ID] (kind, status) statement\n[meeting-0:dec:0] (commitment, ambiguous) Fix exports that still time out on big accounts.\n  owner: Person C\n  deadline: this week\n  quote: \"Exports still time out on big accounts, I'm fixing that this week.\"\n\nDimension: deadline\nReadings participants might hold:\n- Person C merges the export timeout fix by Friday, November 6\n- Person C merges the export timeout fix by Sunday, November 8\n\nFixed question: For \"Fix exports that still time out on big accounts\", what has to exist by \"this week\"?"
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "options": [
+      {
+        "text": "A merged solution for large-account export timeouts ready by Friday the 6th"
+      },
+      {
+        "text": "A merged solution for large-account export timeouts ready by Sunday the 8th"
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 548,
+    "outputTokens": 1284,
+    "reasoningTokens": 1229
+  }
+}

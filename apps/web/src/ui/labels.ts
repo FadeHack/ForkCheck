@@ -101,6 +101,7 @@ export const validityText: Record<ValidityLabel, string> = {
 };
 
 export const SIMULATED = "SIMULATED";
+export const REPLAYED = "Replayed";
 
 /**
  * Who said a turn: the participant, "Unknown speaker" when the organizer said so (or the turn

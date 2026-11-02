@@ -10,7 +10,7 @@ export default function HomePage() {
         could be read more than one way, asks each participant short private questions about them,
         and shows where the answers differ so you can settle the wording together. A recording is
         sent to Meta for transcription. The transcript and the participant names are sent to
-        Meta&apos;s model API for analysis.
+        Meta&apos;s model API for analysis, unless you choose to hide the names.
       </p>
       <CheckedDimensions />
       <CreateMeeting />

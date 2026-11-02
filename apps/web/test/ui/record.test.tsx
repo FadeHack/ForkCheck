@@ -86,6 +86,7 @@ const data: RecordResponse = {
   ],
   questions: [q1, revealed("q2", "consistent"), revealed("rq", "consistent", "recheck")],
   playback: false,
+  replayed: { model: false, transcription: false },
 };
 
 describe("noSplitLine", () => {

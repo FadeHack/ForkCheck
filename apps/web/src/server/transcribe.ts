@@ -6,8 +6,10 @@ import { join } from "node:path";
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 import type { ReadableStream as NodeReadableStream } from "node:stream/web";
+import { META_TRANSCRIBE_MODEL } from "@forkcheck/ai";
 import { convertToWav, toSegments, TranscribeError } from "@forkcheck/asr";
 import type { Meeting, MeetingStatus, Segment } from "@forkcheck/core";
+import { DbCallLog, TRANSCRIBE_STAGE } from "@forkcheck/db";
 import type { StartTranscriptionRequest, StartTranscriptionResponse } from "../contracts/api";
 import type { Deps } from "./deps";
 import { logError } from "./log";
@@ -99,7 +101,24 @@ async function runTranscription(
     const converted = await convertStored(deps, storageKey);
     if (!converted.ok) throw new TranscriptionProblem(converted.message);
     await beat();
-    const { response } = await deps.transcriber(meetingId).transcribe(converted.wav, { keywords });
+    const result = await deps.transcriber(meetingId).transcribe(converted.wav, { keywords });
+    const { response } = result;
+    // Logged with the model calls, so the trace lists it and screens can label a replay.
+    await new DbCallLog(deps.db, { meetingId }).write({
+      at: deps.now().toISOString(),
+      stage: TRANSCRIBE_STAGE,
+      provider: result.replayed ? "fake" : "meta",
+      model: META_TRANSCRIBE_MODEL,
+      promptVersion: "none",
+      cacheHit: false,
+      latencyMs: result.latencyMs,
+      inputTokens: 0,
+      outputTokens: 0,
+      reasoningTokens: null,
+      costUsd: result.costUsd,
+      ok: true,
+      error: null,
+    });
     await beat();
     let idx = 0;
     const segments: Segment[] = toSegments(response, {

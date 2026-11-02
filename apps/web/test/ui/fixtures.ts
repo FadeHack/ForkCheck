@@ -12,6 +12,7 @@ export const meeting: Meeting = {
   error: null,
   createdAt: "2026-10-27T20:00:00.000Z",
   deleteAfter: null,
+  pseudonymizeNames: false,
 };
 
 export const participants: Participant[] = ["Priya", "Marco", "Dana"].map((name, i) => ({
@@ -91,6 +92,7 @@ export function organizerState(
     splits: [],
     resolutions: [],
     confirmations: [],
+    replayed: { model: false, transcription: false },
     ...overrides,
   };
 }
@@ -103,6 +105,7 @@ export function participantState(overrides: Partial<ParticipantState> = {}): Par
     openProbes: [],
     ownAnswers: [],
     waitingOn: [],
+    replayed: { model: false, transcription: false },
     revealed: [],
     ...overrides,
   };

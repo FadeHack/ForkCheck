@@ -7,6 +7,7 @@ import { responseFormatName } from "../schemas/stages";
 import { toStrictJsonSchema } from "../schemas/strict";
 import { SpendCapError, type SpendLedger } from "../spend";
 import { stageConfig as defaultStageConfig, type StageConfig } from "../stage-config";
+import { withoutKey } from "../redact";
 
 export const BASETEN_BASE_URL = "https://inference.baseten.co/v1";
 
@@ -187,7 +188,10 @@ export class BasetenProvider implements ModelPort {
         return await this.#client.chat.completions.create(params);
       } catch (error) {
         const { kind, status } = classify(error);
-        const message = error instanceof Error ? error.message : String(error);
+        const message = withoutKey(
+          error instanceof Error ? error.message : String(error),
+          this.#o.apiKey,
+        );
         if (!RETRYABLE.has(kind) || attempt >= maxAttempts) {
           throw await fail(kind, message, attempt, status);
         }

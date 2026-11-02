@@ -183,6 +183,25 @@ describe("MetaProvider", () => {
     expect(requests).toHaveLength(1);
   });
 
+  it("keeps the API key out of the error and the call log when the service echoes it", async () => {
+    // Assembled at runtime so the secret scanner doesn't flag the source.
+    const echoed = ["LLM", "9", "abcdefgh"].join("_");
+    const { fetch } = mockFetch(
+      () =>
+        new Response(JSON.stringify({ error: { message: `Invalid key test-key or ${echoed}` } }), {
+          status: 401,
+          headers: { "content-type": "application/json" },
+        }),
+    );
+    const { meta, log } = provider(fetch);
+    const error = (await meta.call(request).catch((e: unknown) => e)) as Error;
+    expect(error.message).not.toContain("test-key");
+    expect(error.message).not.toContain(echoed);
+    expect(error.message).toContain("[key]");
+    expect(JSON.stringify(log.entries)).not.toContain("test-key");
+    expect(JSON.stringify(log.entries)).not.toContain(echoed);
+  });
+
   it("rejects a body that violates the schema but still records the spend", async () => {
     const { fetch } = mockFetch(() => ok(completion(JSON.stringify({ optionId: 3 }))));
     const { meta, ledger, log } = provider(fetch);

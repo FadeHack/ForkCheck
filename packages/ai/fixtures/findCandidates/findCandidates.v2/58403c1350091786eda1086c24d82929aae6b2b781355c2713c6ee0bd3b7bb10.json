@@ -1,0 +1,133 @@
+{
+  "key": {
+    "stage": "findCandidates",
+    "promptVersion": "findCandidates.v2",
+    "hash": "58403c1350091786eda1086c24d82929aae6b2b781355c2713c6ee0bd3b7bb10"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You read a meeting transcript and the items the meeting appeared to agree on. For each item, find the places where two reasonable participants could leave the meeting holding different readings of what was agreed, even though nobody objected.\n\nEach gap you report is tied to exactly one dimension:\n\n- `owner`: who actually does the work, or who does it on the day.\n- `deadline`: what the timing words mean (\"next Friday\", \"end of month\", \"early next week\") or how firm they are.\n- `scope`: what the deliverable is when it counts as done: which version of it (designs, a working internal build, the live product) and which parts it includes.\n- `criteria`: which check has to pass before it counts as done: what the check consists of (which tests, run where, by whom) and what result counts as passing.\n- `dependency`: what has to happen first, or who has to sign off first.\n- `outcome`: who sees or uses the result first, and in what form.\n\nWhere gaps usually hide:\n\n- A deliverable named by a general noun (\"the dashboard\", \"the update\", \"the migration\"). People in the room may picture different versions of it or different parts of it. Readings should name those concrete versions or parts, using what the transcript mentions.\n- A check named by habit (\"the usual review\", \"the normal QA pass\", \"the standard sign-off\"). People may each picture the check they usually run. Readings should name what each check consists of; that is `criteria`, not `scope`.\n\nFor each gap return:\n\n- `decisionId`: the ID of the item, exactly as given. When the same deliverable appears in more than one item, use the item that commits to delivering it.\n- `dimension`: one of the six above. If a gap touches two dimensions, report two gaps.\n- `readings`: two to four concrete readings a participant could reasonably hold. Each reading is a short plain statement of what that person believes was agreed (\"the code is merged by Friday the 30th\", \"it is live for customers by Friday the 30th\"). Readings must differ in a way that would change what someone does. Do not include \"not sure\" or \"not decided\" as a reading.\n- `impact`, each `low`, `medium` or `high`:\n  - `reversibility`: how hard it is to undo if people act on the wrong reading (`high` means hard to undo).\n  - `blastRadius`: how many people, customers or teams are affected.\n  - `timeToImpact`: how soon the wrong reading causes harm (`high` means within days).\n\nRules:\n\n- Only report gaps the transcript leaves open. If the words used pin the meaning down, there is no gap.\n- Never report a gap on an item whose status is `debated`: that disagreement is already visible.\n- Do not report a gap that participants openly argued about in the transcript.\n- Do not report readings that differ only by a few hours on the same day, unless the transcript makes the hour matter.\n- Report each (item, dimension) pair at most once.\n- Report nothing for an item with no gap. An empty list is a valid answer."
+      },
+      {
+        "role": "user",
+        "content": "Meeting: Atlas launch sync\nHeld: Tuesday, November 3, 2026 at 10:00 (America/New_York)\nParticipants: June, Nadia, Tomas\n\nItems, as [item ID] (kind, status) statement\n[meeting-0:dec:0] (commitment, ambiguous) Tomas will fix exports that time out on big accounts this week.\n  owner: Tomas\n  deadline: this week\n  quote: \"Exports still time out on big accounts, I'm fixing that this week.\"\n[meeting-0:dec:1] (commitment, ambiguous) Final screenshots will be provided by Thursday.\n  deadline: Thursday\n  quote: \"I need final screenshots.\"\n  quote: \"You'll have them Thursday.\"\n[meeting-0:dec:2] (decision, ambiguous) Atlas will be out to every customer by the end of next week.\n  deadline: by the end of next week\n  quote: \"I want Atlas out to every customer by the end of next week.\"\n  quote: \"Fine. End of next week, then.\"\n[meeting-0:dec:3] (commitment, explicit) Tomas will turn on the flag for internal accounts tomorrow so support can try it.\n  owner: Tomas\n  deadline: tomorrow\n  quote: \"I'll turn on the flag for internal accounts tomorrow so support can try it.\"\n[meeting-0:dec:4] (commitment, ambiguous) The help center page will be done before launch.\n  deadline: before launch\n  quote: \"So we'll get the help center page done before launch.\"\n[meeting-0:dec:5] (decision, ambiguous) The help center page needs screenshots and the export limits.\n  quote: \"Yes, it needs screenshots and the export limits.\"\n  quote: \"Right, the export limits have to be in there.\"\n\nTranscript, one turn per line as [segment ID] speaker: text\n[meeting-0:seg:0] Nadia: Atlas launch. Where are we?\n[meeting-0:seg:1] Tomas: The dashboards are done. Exports still time out on big accounts, I'm fixing that this week.\n[meeting-0:seg:2] June: The announcement email is drafted. I need final screenshots.\n[meeting-0:seg:3] Tomas: You'll have them Thursday.\n[meeting-0:seg:4] Nadia: Good. I want Atlas out to every customer by the end of next week.\n[meeting-0:seg:5] Tomas: That works. Reminder that we don't deploy on Fridays.\n[meeting-0:seg:6] June: Our launch emails do best on a Thursday, so I'd plan around that.\n[meeting-0:seg:7] Nadia: Fine. End of next week, then.\n[meeting-0:seg:8] Tomas: I'll turn on the flag for internal accounts tomorrow so support can try it.\n[meeting-0:seg:9] Nadia: Great. The help center needs a page for Atlas too.\n[meeting-0:seg:10] June: Yes, it needs screenshots and the export limits.\n[meeting-0:seg:11] Tomas: Right, the export limits have to be in there.\n[meeting-0:seg:12] Nadia: So we'll get the help center page done before launch.\n[meeting-0:seg:13] June: Sounds good.\n[meeting-0:seg:14] Tomas: Yep.\n[meeting-0:seg:15] Nadia: Thanks, both."
+      }
+    ],
+    "reasoningEffort": "medium"
+  },
+  "output": {
+    "candidates": [
+      {
+        "decisionId": "meeting-0:dec:0",
+        "dimension": "deadline",
+        "readings": [
+          {
+            "text": "Tomas will have the exports timeout fix merged by Friday Nov 6"
+          },
+          {
+            "text": "Tomas will have the exports timeout fix merged by Sunday Nov 8"
+          }
+        ],
+        "impact": {
+          "reversibility": "low",
+          "blastRadius": "low",
+          "timeToImpact": "high"
+        }
+      },
+      {
+        "decisionId": "meeting-0:dec:1",
+        "dimension": "scope",
+        "readings": [
+          {
+            "text": "final screenshots are dashboards only for the announcement email"
+          },
+          {
+            "text": "final screenshots include dashboards and the fixed exports flow for the announcement email"
+          }
+        ],
+        "impact": {
+          "reversibility": "medium",
+          "blastRadius": "medium",
+          "timeToImpact": "medium"
+        }
+      },
+      {
+        "decisionId": "meeting-0:dec:2",
+        "dimension": "deadline",
+        "readings": [
+          {
+            "text": "Atlas is live for every customer by Thursday Nov 12, the last deploy day avoiding the Friday freeze"
+          },
+          {
+            "text": "Atlas is live for every customer by Friday Nov 13, the literal end of next week"
+          }
+        ],
+        "impact": {
+          "reversibility": "high",
+          "blastRadius": "high",
+          "timeToImpact": "medium"
+        }
+      },
+      {
+        "decisionId": "meeting-0:dec:2",
+        "dimension": "scope",
+        "readings": [
+          {
+            "text": "Atlas launch includes dashboards with exports working on big accounts after Tomas's fix"
+          },
+          {
+            "text": "Atlas launch includes dashboards even if exports still time out on big accounts"
+          }
+        ],
+        "impact": {
+          "reversibility": "high",
+          "blastRadius": "high",
+          "timeToImpact": "medium"
+        }
+      },
+      {
+        "decisionId": "meeting-0:dec:4",
+        "dimension": "owner",
+        "readings": [
+          {
+            "text": "June will write the help center page"
+          },
+          {
+            "text": "Tomas will write the help center page"
+          }
+        ],
+        "impact": {
+          "reversibility": "low",
+          "blastRadius": "low",
+          "timeToImpact": "high"
+        }
+      },
+      {
+        "decisionId": "meeting-0:dec:4",
+        "dimension": "deadline",
+        "readings": [
+          {
+            "text": "the help center page is done before internal access on Wednesday Nov 4 so support can use it"
+          },
+          {
+            "text": "the help center page is done before every-customer launch on Thursday Nov 12"
+          }
+        ],
+        "impact": {
+          "reversibility": "medium",
+          "blastRadius": "medium",
+          "timeToImpact": "high"
+        }
+      }
+    ]
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 1614,
+    "outputTokens": 9787,
+    "reasoningTokens": 9246
+  }
+}

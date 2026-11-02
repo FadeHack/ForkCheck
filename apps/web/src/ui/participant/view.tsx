@@ -9,6 +9,7 @@ import { waitingLine } from "../labels";
 import { RevealList } from "../reveal";
 import { participantStage, recheckMayFollow, type ParticipantStage } from "../stages";
 import { AnswerForm, answerText } from "./answers";
+import { ReplayedBanner } from "../replayed-banner";
 
 export const ANSWER_INTRO =
   "Answer on your own. Nobody sees your answers until everyone has answered or the organizer reveals them.";
@@ -99,6 +100,7 @@ export function ParticipantView({
         <h1>{state.meeting.title}</h1>
         <p>You are answering as {state.participant.displayName}.</p>
       </header>
+      <ReplayedBanner replayed={state.replayed} />
       <StageAnnouncer stage={stage} />
       {stage === "not_started" && (
         <p>The organizer hasn&apos;t sent any questions yet. Come back to this link later.</p>

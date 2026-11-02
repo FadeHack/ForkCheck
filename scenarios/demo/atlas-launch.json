@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "id": "demo-atlas-launch",
+  "title": "Atlas launch sync",
+  "set": "demo",
+  "category": "deadline",
+  "heldAt": "2026-11-03T10:00:00-05:00",
+  "timezone": "America/New_York",
+  "participants": ["Nadia", "Tomas", "June"],
+  "transcript": "[00:00] Nadia: Atlas launch. Where are we?\n[00:04] Tomas: The dashboards are done. Exports still time out on big accounts, I'm fixing that this week.\n[00:12] June: The announcement email is drafted. I need final screenshots.\n[00:18] Tomas: You'll have them Thursday.\n[00:21] Nadia: Good. I want Atlas out to every customer by the end of next week.\n[00:27] Tomas: That works. Reminder that we don't deploy on Fridays.\n[00:32] June: Our launch emails do best on a Thursday, so I'd plan around that.\n[00:37] Nadia: Fine. End of next week, then.\n[00:40] Tomas: I'll turn on the flag for internal accounts tomorrow so support can try it.\n[00:46] Nadia: Great. The help center needs a page for Atlas too.\n[00:50] June: Yes, it needs screenshots and the export limits.\n[00:55] Tomas: Right, the export limits have to be in there.\n[00:59] Nadia: So we'll get the help center page done before launch.\n[01:03] June: Sounds good.\n[01:05] Tomas: Yep.\n[01:07] Nadia: Thanks, both.\n",
+  "expectedDecisions": [
+    {
+      "id": "atlas-launch-date",
+      "kind": "commitment",
+      "statement": "Atlas is available to every customer by the end of next week.",
+      "owner": null,
+      "deadline": "end of next week",
+      "quotes": [
+        "I want Atlas out to every customer by the end of next week.",
+        "End of next week, then."
+      ]
+    },
+    {
+      "id": "screenshots",
+      "kind": "commitment",
+      "statement": "Tomas gives June the final screenshots on Thursday.",
+      "owner": "Tomas",
+      "deadline": "Thursday",
+      "quotes": ["You'll have them Thursday."]
+    },
+    {
+      "id": "internal-flag",
+      "kind": "commitment",
+      "statement": "Tomas turns on Atlas for internal accounts tomorrow.",
+      "owner": "Tomas",
+      "deadline": "tomorrow",
+      "quotes": ["I'll turn on the flag for internal accounts tomorrow"]
+    },
+    {
+      "id": "help-center-page",
+      "kind": "commitment",
+      "statement": "A help center page for Atlas is done before launch.",
+      "owner": null,
+      "deadline": "before launch",
+      "quotes": ["So we'll get the help center page done before launch."]
+    }
+  ],
+  "briefs": [
+    {
+      "participant": "Nadia",
+      "readings": [
+        {
+          "decision": "atlas-launch-date",
+          "dimension": "deadline",
+          "reading": "Every customer has Atlas by the end of Friday 13 November."
+        },
+        {
+          "decision": "help-center-page",
+          "dimension": "owner",
+          "reading": "June writes the page; Tomas checks the export limits section."
+        }
+      ]
+    },
+    {
+      "participant": "Tomas",
+      "readings": [
+        {
+          "decision": "atlas-launch-date",
+          "dimension": "deadline",
+          "reading": "Rollout starts Monday 16 November, since there are no Friday deploys; the week of the 9th is for the export fix."
+        },
+        {
+          "decision": "help-center-page",
+          "dimension": "owner",
+          "reading": "June writes it. Help center pages belong to marketing; he only sends the limits."
+        }
+      ]
+    },
+    {
+      "participant": "June",
+      "readings": [
+        {
+          "decision": "atlas-launch-date",
+          "dimension": "deadline",
+          "reading": "The launch email goes out Thursday 12 November, so Atlas has to be live for everyone that morning."
+        },
+        {
+          "decision": "help-center-page",
+          "dimension": "owner",
+          "reading": "Tomas's team writes it, because it is about limits and exports; she only adds screenshots."
+        }
+      ]
+    }
+  ],
+  "plantedMismatches": [
+    {
+      "id": "end-of-next-week",
+      "decision": "atlas-launch-date",
+      "dimension": "deadline",
+      "note": "Nadia hears Friday the 13th, Tomas Monday the 16th (no Friday deploys), June Thursday the 12th (email day)."
+    },
+    {
+      "id": "help-center-owner",
+      "decision": "help-center-page",
+      "dimension": "owner",
+      "note": "\"We'll get it done\" names no one: Tomas and June each think the other writes it."
+    }
+  ],
+  "expectedRecord": {
+    "stated": [
+      "Nadia: \"I want Atlas out to every customer by the end of next week.\"",
+      "Tomas: \"You'll have them Thursday.\"",
+      "Tomas: \"I'll turn on the flag for internal accounts tomorrow\"",
+      "Nadia: \"So we'll get the help center page done before launch.\""
+    ],
+    "confirmed": [
+      "Atlas is on for every customer by Thursday 2026-11-12, 09:00 ET; the launch email goes out at 11:00 ET the same day (firm).",
+      "June writes the Atlas help center page and publishes it by Wednesday 2026-11-11; Tomas sends her the export limits by Monday 2026-11-09."
+    ],
+    "unresolved": []
+  },
+  "scriptedResolutions": [
+    {
+      "mismatch": "end-of-next-week",
+      "precise": {
+        "text": "Atlas is on for every customer by Thursday 2026-11-12, 09:00 ET. The launch email goes out at 11:00 ET the same day. Firm.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "Atlas launches end of next week as planned.",
+        "expectedRecheck": "split"
+      }
+    },
+    {
+      "mismatch": "help-center-owner",
+      "precise": {
+        "text": "June writes the Atlas help center page and publishes it by Wednesday 2026-11-11. Tomas sends her the export limits by Monday 2026-11-09.",
+        "expectedRecheck": "consistent"
+      },
+      "vague": {
+        "text": "Marketing and engineering finish the help center page together.",
+        "expectedRecheck": "split"
+      }
+    }
+  ]
+}

@@ -59,6 +59,7 @@ async function seedLoopEnd(deps: Deps, input: RecordInput) {
     error: null,
     createdAt: input.generatedAt,
     deleteAfter: null,
+    pseudonymizeNames: false,
   };
   const organizerToken = newToken();
   const tokens = input.participants.map(() => newToken());

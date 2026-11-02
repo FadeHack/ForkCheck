@@ -23,6 +23,8 @@ export interface MeetingForm {
   recording?: RecordingInfo | null;
   /** Audio only: project terms for recognition, one per line. */
   terms?: string;
+  /** Placeholders instead of names in every model request. */
+  pseudonymizeNames?: boolean;
   consent: boolean;
 }
 
@@ -93,13 +95,11 @@ export function validateMeeting(
   if (!form.consent) errors.consent = FIX.consent;
 
   if (Object.keys(errors).length > 0 || heldAt === null) return { ok: false, errors };
+  const base = { title, heldAt, timezone, participants };
+  const body = form.pseudonymizeNames ? { ...base, pseudonymizeNames: true } : base;
   return audio
-    ? {
-        ok: true,
-        body: { title, heldAt, timezone, participants },
-        keywords: termList(form.terms ?? ""),
-      }
-    : { ok: true, body: { title, heldAt, timezone, participants, transcript }, keywords: [] };
+    ? { ok: true, body, keywords: termList(form.terms ?? "") }
+    : { ok: true, body: { ...body, transcript }, keywords: [] };
 }
 
 /** Maps a 400's `participants.1` style paths onto the form's fields. */

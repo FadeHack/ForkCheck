@@ -3,13 +3,17 @@ import { join, resolve } from "node:path";
 import {
   ConsoleCallLog,
   FakeProvider,
+  FallbackProvider,
   FileSpendLedger,
   LoggedProvider,
   MetaProvider,
   MultiCallLog,
+  RecordMissingProvider,
   type ModelPort,
+  type SpendLedger,
 } from "@forkcheck/ai";
 import {
+  FallbackTranscriber,
   RecordingTranscriber,
   ReplayTranscriber,
   TranscribeClient,
@@ -19,6 +23,9 @@ import { findWorkspaceRoot, loadEnv, type Env } from "@forkcheck/config";
 import { parseProbeDimensions, type Dimension } from "@forkcheck/core";
 import { connect, DbCallLog, MeetingRepo, RoundRepo, SplitRepo, type Db } from "@forkcheck/db";
 import { logError } from "./log";
+import { MeetingScopedProvider } from "./meeting-scope";
+import { PseudonymizingProvider } from "./pseudonymize";
+import { defaultRateLimits, type RateLimits } from "./rate-limit";
 import { LocalDiskStorage, type Storage } from "./storage";
 
 /** For deps without audio: nothing is stored, so there is nothing to read or delete. */
@@ -45,13 +52,21 @@ export interface Deps {
   background(task: () => Promise<void>): void;
   /** PROBE_DIMENSIONS, parsed. */
   dimensions: readonly Dimension[];
+  rateLimits: RateLimits;
   now(): Date;
 }
 
 export type DepsOverrides = Partial<
   Pick<
     Deps,
-    "storage" | "model" | "transcriber" | "ffmpegPath" | "background" | "dimensions" | "now"
+    | "storage"
+    | "model"
+    | "transcriber"
+    | "ffmpegPath"
+    | "background"
+    | "dimensions"
+    | "rateLimits"
+    | "now"
   >
 >;
 
@@ -59,56 +74,94 @@ const workspace = () => findWorkspaceRoot() ?? process.cwd();
 const replayDir = () => join(workspace(), "packages", "asr", "fixtures", "replay");
 
 export function createDeps(db: Db, overrides: DepsOverrides = {}): Deps {
+  const meetings = new MeetingRepo(db);
+  const model = overrides.model ?? (() => new FakeProvider());
+  const now = overrides.now ?? (() => new Date());
   return {
     db,
-    meetings: new MeetingRepo(db),
+    meetings,
     rounds: new RoundRepo(db),
     splits: new SplitRepo(db),
     storage: noStorage,
-    model: () => new FakeProvider(),
     transcriber: () => new ReplayTranscriber(replayDir()),
     ffmpegPath: "ffmpeg",
     background: (task) => {
       task().catch((error: unknown) => logError("background task", error));
     },
     dimensions: parseProbeDimensions(undefined),
-    now: () => new Date(),
+    rateLimits: defaultRateLimits(() => now()),
+    now,
     ...overrides,
+    // Every stage's model goes through here, so no request skips the meeting's name setting.
+    model: (meetingId) =>
+      new PseudonymizingProvider(model(meetingId), async () => {
+        const meeting = await meetings.get(meetingId);
+        if (!meeting?.pseudonymizeNames) return null;
+        return (await meetings.participants(meetingId)).map((p) => p.displayName);
+      }),
   };
 }
 
-/** Recorded fixtures unless LIVE=1; live calls share the CLI's spend ledger and cap. */
-function modelFactory(env: Env, db: Db, ledger: FileSpendLedger): (meetingId: string) => ModelPort {
-  // Replays are logged too, so the trace panel shows a replayed demo's calls.
-  if (!env.LIVE) {
-    return (meetingId) => new LoggedProvider(new FakeProvider(), new DbCallLog(db, { meetingId }));
-  }
-  return (meetingId) =>
-    new MetaProvider({
-      apiKey: env.MODEL_API_KEY ?? "",
-      spendCapUsd: env.SPEND_CAP_USD,
-      ledger,
-      log: new MultiCallLog(new ConsoleCallLog(), new DbCallLog(db, { meetingId })),
-    });
+/** What the live factories need; tests pass a `fetch` that fails, to stand in for a dead network. */
+export interface LiveOptions {
+  env: Pick<Env, "LIVE" | "RECORD_FIXTURES" | "MODEL_API_KEY" | "SPEND_CAP_USD">;
+  db: Db;
+  ledger: SpendLedger;
+  fetch?: typeof fetch;
+  /** Skips the retry waits in tests. */
+  sleep?: (ms: number) => Promise<void>;
+  /** Where recorded transcriptions are kept; the repository's by default. */
+  replayDir?: string;
 }
 
-/** Live transcriptions bill the same ledger and cap as model calls; RECORD_FIXTURES=1 saves them for replay. */
-function transcriberFactory(env: Env, ledger: FileSpendLedger): () => Transcriber {
-  if (!env.LIVE) return () => new ReplayTranscriber(replayDir());
+/**
+ * Recorded fixtures unless LIVE=1. Live calls share the CLI's spend ledger and cap, and fall
+ * back to a recorded reply when the service can't be reached; RECORD_FIXTURES=1 records the
+ * ones missing. Every replay is logged as `fake`, so the trace and the screens can label it.
+ */
+export function modelFactory(o: LiveOptions): (meetingId: string) => ModelPort {
+  const replay = (meetingId: string) =>
+    new LoggedProvider(new FakeProvider(), new DbCallLog(o.db, { meetingId }));
+  if (!o.env.LIVE) return (meetingId) => new MeetingScopedProvider(replay(meetingId), meetingId);
+  return (meetingId) => {
+    const meta = new MetaProvider({
+      apiKey: o.env.MODEL_API_KEY ?? "",
+      spendCapUsd: o.env.SPEND_CAP_USD,
+      ledger: o.ledger,
+      log: new MultiCallLog(new ConsoleCallLog(), new DbCallLog(o.db, { meetingId })),
+      ...(o.fetch ? { fetch: o.fetch } : {}),
+      ...(o.sleep ? { sleep: o.sleep } : {}),
+    });
+    const live = o.env.RECORD_FIXTURES ? new RecordMissingProvider(meta) : meta;
+    return new MeetingScopedProvider(new FallbackProvider(live, replay(meetingId)), meetingId);
+  };
+}
+
+/**
+ * Recorded responses unless LIVE=1. Live transcriptions bill the same ledger and cap as model
+ * calls and fall back to the recording when the service can't be reached; RECORD_FIXTURES=1
+ * saves them for replay.
+ */
+export function transcriberFactory(o: LiveOptions): () => Transcriber {
+  const dir = o.replayDir ?? replayDir();
+  if (!o.env.LIVE) return () => new ReplayTranscriber(dir);
   const logPath = join(workspace(), "var", "transcribe-calls.jsonl");
   return () => {
     const client = new TranscribeClient({
-      apiKey: env.MODEL_API_KEY ?? "",
-      spendCapUsd: env.SPEND_CAP_USD,
-      ledger,
+      apiKey: o.env.MODEL_API_KEY ?? "",
+      spendCapUsd: o.env.SPEND_CAP_USD,
+      ledger: o.ledger,
       log: {
         async write(entry) {
           await mkdir(join(workspace(), "var"), { recursive: true });
           await appendFile(logPath, `${JSON.stringify(entry)}\n`);
         },
       },
+      ...(o.fetch ? { fetch: o.fetch } : {}),
+      ...(o.sleep ? { sleep: o.sleep } : {}),
     });
-    return env.RECORD_FIXTURES ? new RecordingTranscriber(client, replayDir()) : client;
+    const live = o.env.RECORD_FIXTURES ? new RecordingTranscriber(client, dir) : client;
+    return new FallbackTranscriber(live, new ReplayTranscriber(dir));
   };
 }
 
@@ -129,8 +182,8 @@ export function getDeps(): Deps {
     const { db } = connect(env.DATABASE_URL!);
     const ledger = new FileSpendLedger(join(workspace(), "var", "spend.json"));
     current = createDeps(db, {
-      model: modelFactory(env, db, ledger),
-      transcriber: transcriberFactory(env, ledger),
+      model: modelFactory({ env, db, ledger }),
+      transcriber: transcriberFactory({ env, db, ledger }),
       ffmpegPath: env.FFMPEG_PATH,
       storage: storageFor(env),
       dimensions: parseProbeDimensions(env.PROBE_DIMENSIONS),

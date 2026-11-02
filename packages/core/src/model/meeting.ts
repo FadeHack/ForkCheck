@@ -31,6 +31,8 @@ export const meeting = z.strictObject({
   error: z.string().nullable(),
   createdAt: instant,
   deleteAfter: instant.nullable(),
+  /** Participant names are swapped for placeholders in every model request. */
+  pseudonymizeNames: z.boolean(),
 });
 export type Meeting = z.infer<typeof meeting>;
 

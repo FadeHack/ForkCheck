@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { OrganizerMeetingState } from "../../contracts/api";
 import { callApi, MISSING_KEY, organizerToken, type Loaded } from "../api";
 import { Loading, PageError } from "../components";
+import { ReplayedBanner } from "../replayed-banner";
 import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, stagesFor, type OrganizerStage, type StageList } from "../stages";
 import { formatHeldAt } from "../time";
@@ -14,6 +15,7 @@ import { RecheckView } from "./recheck";
 import { ReviewView } from "./review";
 import { SpeakersView } from "./speakers";
 import { TracePanel } from "./trace";
+import { DeleteMeeting, MeetingDeleted } from "./delete";
 import { RecordLink, RevealView, StageRail } from "./views";
 
 const POLL_MS = 5000;
@@ -33,11 +35,13 @@ export function WorkspaceView({
   state,
   viewing,
   reload,
+  onDeleted = () => {},
 }: {
   state: OrganizerMeetingState;
   viewing: string | null;
   /** Fetches the state again after an action changed it. */
   reload?: () => Promise<void>;
+  onDeleted?: () => void;
 }) {
   const current = organizerStage(state);
   const stages = stagesFor(state.meeting);
@@ -49,8 +53,14 @@ export function WorkspaceView({
       <header>
         <h1>{state.meeting.title}</h1>
         <p>Held {formatHeldAt(state.meeting.heldAt, state.meeting.timezone)}</p>
+        {state.meeting.pseudonymizeNames && (
+          <p>
+            Participant names are hidden from the model, which sees Person A, Person B and so on.
+          </p>
+        )}
       </header>
       {state.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
+      <ReplayedBanner replayed={state.replayed} />
       <StageRail stages={stages} current={current} viewing={stage} href={href} />
       {stage === "speakers" && <SpeakersView state={state} onChange={reload} />}
       {stage === "review" && <ReviewView state={state} onChange={reload} />}
@@ -63,6 +73,7 @@ export function WorkspaceView({
       {stage === "recheck" && <RecheckView state={state} onChange={reload} />}
       {stage === "record" && <RecordLink meetingId={id} />}
       <TracePanel meetingId={id} />
+      <DeleteMeeting state={state} onDeleted={onDeleted} />
     </>
   );
 }
@@ -81,6 +92,7 @@ async function fetchState(meetingId: string): Promise<Loaded<OrganizerMeetingSta
 
 export function Workspace({ meetingId }: { meetingId: string }) {
   const [loaded, setLoaded] = useState<Loaded<OrganizerMeetingState>>({ state: "loading" });
+  const [deleted, setDeleted] = useState(false);
   const viewing = useSearchParams().get("stage");
 
   // A reload keeps the current state on screen until the new one arrives, so open forms stay mounted.
@@ -99,6 +111,7 @@ export function Workspace({ meetingId }: { meetingId: string }) {
   // Answers, labels and confirmations arrive from other people's phones. Drafting has its own
   // progress check, and the record no longer changes.
   const live =
+    !deleted &&
     loaded.state === "ready" &&
     ["round", "reveal", "resolve", "recheck"].includes(organizerStage(loaded.data));
   useEffect(() => {
@@ -111,9 +124,17 @@ export function Workspace({ meetingId }: { meetingId: string }) {
     return () => clearInterval(timer);
   }, [live, meetingId]);
 
+  if (deleted) return <MeetingDeleted />;
   if (loaded.state === "loading") return <Loading>Opening the meeting check.</Loading>;
   if (loaded.state === "error") {
     return <PageError title="This meeting check didn't open">{loaded.message}</PageError>;
   }
-  return <WorkspaceView state={loaded.data} viewing={viewing} reload={reload} />;
+  return (
+    <WorkspaceView
+      state={loaded.data}
+      viewing={viewing}
+      reload={reload}
+      onDeleted={() => setDeleted(true)}
+    />
+  );
 }

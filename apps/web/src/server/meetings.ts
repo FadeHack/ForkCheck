@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { parseTranscript, type Meeting, type Participant } from "@forkcheck/core";
+import { meetingReplays } from "@forkcheck/db";
 import type {
   CreateMeetingRequest,
   CreateMeetingResponse,
@@ -7,6 +8,7 @@ import type {
   ProbeAnswerCount,
 } from "../contracts/api";
 import type { Deps } from "./deps";
+import { deleteAfter } from "./retention";
 import { hashToken, newToken } from "./tokens";
 
 export async function createMeeting(
@@ -15,6 +17,7 @@ export async function createMeeting(
   origin: string,
 ): Promise<CreateMeetingResponse> {
   const id = randomUUID();
+  const now = deps.now();
   const meeting: Meeting = {
     id,
     title: body.title,
@@ -24,8 +27,9 @@ export async function createMeeting(
     timezone: body.timezone,
     transcriptVersion: body.transcript === undefined ? 0 : 1,
     error: null,
-    createdAt: deps.now().toISOString(),
-    deleteAfter: null,
+    createdAt: now.toISOString(),
+    deleteAfter: deleteAfter(now),
+    pseudonymizeNames: body.pseudonymizeNames ?? false,
   };
   const participants = body.participants.map((p, i) => ({
     participant: {
@@ -95,10 +99,11 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
     });
   const resolutions = await deps.splits.resolutions(splits.map((s) => s.id));
   const confirmations = await deps.splits.confirmations(resolutions.map((r) => r.id));
-  const [audio, speakers, edits] = await Promise.all([
+  const [audio, speakers, edits, replayed] = await Promise.all([
     deps.meetings.liveAudio(meeting.id),
     deps.meetings.speakerMap(meeting.id),
     deps.meetings.segmentEdits(meeting.id),
+    meetingReplays(deps.db, meeting.id),
   ]);
 
   return {
@@ -117,11 +122,6 @@ export async function organizerState(deps: Deps, meeting: Meeting): Promise<Orga
     audio,
     speakers,
     edits,
+    replayed,
   };
-}
-
-/** Removes stored audio first, then the meeting; rows cascade. */
-export async function deleteMeeting(deps: Deps, meetingId: string): Promise<void> {
-  for (const key of await deps.meetings.audioKeys(meetingId)) await deps.storage.delete(key);
-  await deps.meetings.delete(meetingId);
 }

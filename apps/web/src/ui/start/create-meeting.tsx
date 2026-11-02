@@ -144,6 +144,7 @@ export function CreateMeeting() {
       transcript,
       recording,
       terms: text("terms"),
+      pseudonymizeNames: form.get("pseudonymize") !== null,
       consent: form.get("consent") !== null,
     });
     if (!checked.ok) {
@@ -290,6 +291,20 @@ export function CreateMeeting() {
           </Field>
         </>
       )}
+      <Field
+        id="pseudonymize"
+        check
+        label="Hide participant names from the model"
+        hint={
+          source === "paste"
+            ? "The model sees Person A, Person B and so on. Everyone here still sees real names."
+            : "The model sees Person A, Person B and so on. Everyone here still sees real names. The recording is transcribed as spoken, names included."
+        }
+      >
+        {(d) => (
+          <input id="pseudonymize" name="pseudonymize" type="checkbox" aria-describedby={d} />
+        )}
+      </Field>
       <Field
         id="consent"
         check

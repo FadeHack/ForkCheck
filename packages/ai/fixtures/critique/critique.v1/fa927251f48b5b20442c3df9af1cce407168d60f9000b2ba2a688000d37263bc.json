@@ -1,0 +1,32 @@
+{
+  "key": {
+    "stage": "critique",
+    "promptVersion": "critique.v1",
+    "hash": "fa927251f48b5b20442c3df9af1cce407168d60f9000b2ba2a688000d37263bc"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You check a multiple-choice question before it is sent privately to meeting participants. The question is meant to reveal whether participants hold different readings of something the meeting appeared to agree on.\n\nYou are given the dimension being checked, the readings participants might hold, and the question with its numbered options. Answer two things:\n\n- `canDiverge`: could two reasonable participants, one holding one reading and one holding another, choose different options? Answer `false` if every reading leads to the same option, if an option does not fit any reading, or if the question asks about something other than the given dimension.\n- `leadingOption`: the number shown before an option that looks like the right, safe or expected answer to anyone regardless of their reading, or `null` if no option stands out. Options stand out through wording such as \"properly\", \"fully\" or \"as agreed\", through being much more detailed than the others, or through being the only one that sounds responsible.\n\nThen give `reason`: one or two plain sentences naming the problem, written so the question's author can fix it. If both checks pass, say briefly why.\n\nThe app always adds its own \"not sure\" choice; do not count its absence as a problem."
+      },
+      {
+        "role": "user",
+        "content": "Dimension: deadline\nReadings participants might hold:\n- the help center page is done before internal access on Wednesday Nov 4 so support can use it\n- the help center page is done before every-customer launch on Thursday Nov 12\n\nQuestion: For \"The help center page will be done\", what has to exist by \"launch\"?\n0 A finished help center page ready for internal staff by Wednesday the 4th\n1 A finished help center page ready for all customers by Thursday the 12th"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "canDiverge": true,
+    "leadingOption": null,
+    "reason": "Option 0 matches the Nov 4 internal reading and Option 1 matches the Nov 12 launch reading, and neither option is worded as more correct or detailed."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 432,
+    "outputTokens": 578,
+    "reasoningTokens": 516
+  }
+}

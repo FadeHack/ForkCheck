@@ -15,6 +15,7 @@ const stageLabel: Record<string, string> = {
   generateRecheck: "Draft recheck question",
   draftRecordProse: "Write record summary",
   simulateAnswer: "Simulated answers",
+  transcribe: "Transcribe recording",
 };
 
 const replayed = (c: TraceCall) => c.provider === "fake";
@@ -72,7 +73,9 @@ export function TraceView({ data }: { data: TraceResponse }) {
                   <tr key={`${c.at}-${i}`}>
                     <th scope="row">
                       {stageLabel[c.stage] ?? c.stage}
-                      <span className="trace-version">{c.promptVersion}</span>
+                      {c.promptVersion !== "none" && (
+                        <span className="trace-version">{c.promptVersion}</span>
+                      )}
                       {!c.ok && (
                         <span className="trace-failed">
                           Failed: {c.error ?? "no reason logged"}

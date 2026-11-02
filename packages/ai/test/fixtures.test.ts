@@ -12,6 +12,7 @@ import {
   fixtureProvider,
   MissingFixtureError,
   RecordingProvider,
+  RecordMissingProvider,
   type ModelPort,
   type ModelRequest,
   type ModelResponse,
@@ -156,5 +157,17 @@ describe("fixtureProvider", () => {
       RecordingProvider,
     );
     expect(() => fixtureProvider({ RECORD_FIXTURES: true }, null, dir)).toThrow("live provider");
+  });
+});
+
+describe("RecordMissingProvider", () => {
+  it("records a missing response, then replays it without calling live again", async () => {
+    const live = new StubLive();
+    const provider = new RecordMissingProvider(live, dir);
+    const first = await provider.call(request());
+    const second = await provider.call(request());
+    expect(live.calls).toBe(1);
+    expect(second.output).toEqual(first.output);
+    expect(second.call.provider).toBe("fake");
   });
 });

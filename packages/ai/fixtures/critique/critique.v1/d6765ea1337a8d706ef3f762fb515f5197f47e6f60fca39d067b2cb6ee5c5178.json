@@ -1,0 +1,32 @@
+{
+  "key": {
+    "stage": "critique",
+    "promptVersion": "critique.v1",
+    "hash": "d6765ea1337a8d706ef3f762fb515f5197f47e6f60fca39d067b2cb6ee5c5178"
+  },
+  "request": {
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You check a multiple-choice question before it is sent privately to meeting participants. The question is meant to reveal whether participants hold different readings of something the meeting appeared to agree on.\n\nYou are given the dimension being checked, the readings participants might hold, and the question with its numbered options. Answer two things:\n\n- `canDiverge`: could two reasonable participants, one holding one reading and one holding another, choose different options? Answer `false` if every reading leads to the same option, if an option does not fit any reading, or if the question asks about something other than the given dimension.\n- `leadingOption`: the number shown before an option that looks like the right, safe or expected answer to anyone regardless of their reading, or `null` if no option stands out. Options stand out through wording such as \"properly\", \"fully\" or \"as agreed\", through being much more detailed than the others, or through being the only one that sounds responsible.\n\nThen give `reason`: one or two plain sentences naming the problem, written so the question's author can fix it. If both checks pass, say briefly why.\n\nThe app always adds its own \"not sure\" choice; do not count its absence as a problem."
+      },
+      {
+        "role": "user",
+        "content": "Dimension: scope\nReadings participants might hold:\n- Atlas launch includes dashboards with exports working on big accounts after Tomas's fix\n- Atlas launch includes dashboards even if exports still time out on big accounts\n\nQuestion: When \"Atlas will be out to every customer by the end of next week\" is done, which of these is included?\n0 Dashboard access for everyone, with exports functioning for large customers after the fix\n1 Dashboard access for everyone, even if exports keep timing out for large customers"
+      }
+    ],
+    "reasoningEffort": "low"
+  },
+  "output": {
+    "canDiverge": true,
+    "leadingOption": null,
+    "reason": "Each reading maps to a different option — fix-required to 0 and timeout-tolerant to 1 — and both options are parallel factual scope descriptions with no wording that makes one look correct or responsible."
+  },
+  "recorded": {
+    "provider": "meta",
+    "model": "muse-spark-1.3",
+    "inputTokens": 429,
+    "outputTokens": 1107,
+    "reasoningTokens": 1042
+  }
+}
