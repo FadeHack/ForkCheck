@@ -46,7 +46,7 @@ export function CreatedLinks({
   }
 
   return (
-    <section aria-labelledby="created-heading">
+    <section aria-labelledby="created-heading" className="created">
       <h2 id="created-heading">Meeting check created</h2>
       {transcribing && (
         <p>
@@ -57,7 +57,7 @@ export function CreatedLinks({
       <h3>Your organizer link</h3>
       <p>Keep this link. It&apos;s the only way back to this workspace.</p>
       <ul className="link-list">
-        <li>
+        <li className="link-organizer">
           <a href={organizer}>{organizer}</a>
           <Button
             variant="secondary"
@@ -70,10 +70,10 @@ export function CreatedLinks({
       </ul>
       <h3>Participant links</h3>
       <p>Send each person their own link. Each link opens that person&apos;s private questions.</p>
-      <ul className="link-list">
+      <ul className="link-list link-tickets">
         {created.participantLinks.map((l) => (
           <li key={l.participantId}>
-            {l.displayName}: <a href={l.url}>{l.url}</a>
+            <span className="link-name">{l.displayName}</span> <a href={l.url}>{l.url}</a>
             <Button
               variant="secondary"
               aria-label={`Copy link for ${l.displayName}`}
@@ -186,152 +186,164 @@ export function CreateMeeting() {
   if (created) return <CreatedLinks created={created} transcribing={source === "audio"} />;
 
   return (
-    <form onSubmit={submit} noValidate>
+    <form className="start-form" onSubmit={submit} noValidate>
       {failure && <ErrorNotice>{failure}</ErrorNotice>}
-      <Field id="title" label="Meeting title" error={errors.title}>
-        {(d) => <input id="title" name="title" required aria-describedby={d} />}
-      </Field>
-      <Field id="heldAt" label="Meeting date and time" error={errors.heldAt}>
-        {(d) => (
-          <input id="heldAt" name="heldAt" type="datetime-local" required aria-describedby={d} />
-        )}
-      </Field>
-      <Field id="timezone" label="Time zone" error={errors.timezone}>
-        {(d) => (
-          <input
-            id="timezone"
-            name="timezone"
-            ref={fillBrowserZone}
-            required
-            aria-describedby={d}
-          />
-        )}
-      </Field>
-      <Field id="participants" label="Participant names, one per line" error={errors.participants}>
-        {(d) => (
-          <textarea
-            id="participants"
-            name="participants"
-            rows={4}
-            required
-            value={participants}
-            onChange={(e) => setParticipants(e.target.value)}
-            aria-describedby={d}
-          />
-        )}
-      </Field>
-      <fieldset className="source-choice">
-        <legend>How do you have the meeting?</legend>
-        {(
-          [
-            ["paste", "Paste a transcript"],
-            ["audio", "Upload a recording"],
-          ] as const
-        ).map(([value, label]) => (
-          <label key={value} className="choice">
-            <input
-              type="radio"
-              name="source"
-              value={value}
-              checked={source === value}
-              onChange={() => setSource(value)}
-            />
-            {label}
-          </label>
-        ))}
-      </fieldset>
-      {source === "paste" ? (
-        <Field
-          id="transcript"
-          label="Transcript"
-          hint={
-            <>One line per turn, starting with the speaker&apos;s name: &quot;Dana: text&quot;.</>
-          }
-          warning={warnings.length > 0 ? warnings.map((w) => <p key={w}>{w}</p>) : undefined}
-          error={errors.transcript}
-        >
+      <div className="start-details">
+        <Field id="title" label="Meeting title" error={errors.title}>
+          {(d) => <input id="title" name="title" required aria-describedby={d} />}
+        </Field>
+        <Field id="heldAt" label="Meeting date and time" error={errors.heldAt}>
           {(d) => (
-            <textarea
-              id="transcript"
-              name="transcript"
-              rows={12}
+            <input id="heldAt" name="heldAt" type="datetime-local" required aria-describedby={d} />
+          )}
+        </Field>
+        <Field id="timezone" label="Time zone" error={errors.timezone}>
+          {(d) => (
+            <input
+              id="timezone"
+              name="timezone"
+              ref={fillBrowserZone}
               required
-              value={transcript}
-              onChange={(e) => setTranscript(e.target.value)}
               aria-describedby={d}
             />
           )}
         </Field>
-      ) : (
-        <>
+        <Field
+          id="participants"
+          label="Participant names, one per line"
+          error={errors.participants}
+        >
+          {(d) => (
+            <textarea
+              id="participants"
+              name="participants"
+              rows={4}
+              required
+              value={participants}
+              onChange={(e) => setParticipants(e.target.value)}
+              aria-describedby={d}
+            />
+          )}
+        </Field>
+      </div>
+      <div className="start-source">
+        <fieldset className="source-choice">
+          <legend>How do you have the meeting?</legend>
+          {(
+            [
+              ["paste", "Paste a transcript"],
+              ["audio", "Upload a recording"],
+            ] as const
+          ).map(([value, label]) => (
+            <label key={value} className="choice">
+              <input
+                type="radio"
+                name="source"
+                value={value}
+                checked={source === value}
+                onChange={() => setSource(value)}
+              />
+              {label}
+            </label>
+          ))}
+        </fieldset>
+        {source === "paste" ? (
           <Field
-            id="recording"
-            label="Recording"
-            hint="WAV, M4A, MP3 or WebM, up to 10 minutes and 32 MB."
-            error={errors.recording}
+            id="transcript"
+            label="Transcript"
+            hint={
+              <>One line per turn, starting with the speaker&apos;s name: &quot;Dana: text&quot;.</>
+            }
+            warning={warnings.length > 0 ? warnings.map((w) => <p key={w}>{w}</p>) : undefined}
+            error={errors.transcript}
           >
             {(d) => (
-              <input
-                id="recording"
-                name="recording"
-                type="file"
-                accept={RECORDING_ACCEPT}
+              <textarea
+                id="transcript"
+                name="transcript"
+                rows={12}
                 required
-                onChange={chooseFile}
+                value={transcript}
+                onChange={(e) => setTranscript(e.target.value)}
                 aria-describedby={d}
               />
             )}
           </Field>
-          <Field
-            id="terms"
-            label="Project terms, one per line (optional)"
-            hint="Product names and jargon help the transcription. Participant names are added for you."
-          >
-            {(d) => <textarea id="terms" name="terms" rows={3} aria-describedby={d} />}
-          </Field>
-        </>
-      )}
-      <Field
-        id="pseudonymize"
-        check
-        label="Hide participant names from the model"
-        hint={
-          source === "paste"
-            ? "The model sees Person A, Person B and so on. Everyone here still sees real names."
-            : "The model sees Person A, Person B and so on. Everyone here still sees real names. The recording is transcribed as spoken, names included."
-        }
-      >
-        {(d) => (
-          <input id="pseudonymize" name="pseudonymize" type="checkbox" aria-describedby={d} />
+        ) : (
+          <>
+            <Field
+              id="recording"
+              label="Recording"
+              hint="WAV, M4A, MP3 or WebM, up to 10 minutes and 32 MB."
+              error={errors.recording}
+            >
+              {(d) => (
+                <input
+                  id="recording"
+                  name="recording"
+                  type="file"
+                  accept={RECORDING_ACCEPT}
+                  required
+                  onChange={chooseFile}
+                  aria-describedby={d}
+                />
+              )}
+            </Field>
+            <Field
+              id="terms"
+              label="Project terms, one per line (optional)"
+              hint="Product names and jargon help the transcription. Participant names are added for you."
+            >
+              {(d) => <textarea id="terms" name="terms" rows={3} aria-describedby={d} />}
+            </Field>
+          </>
         )}
-      </Field>
-      <Field
-        id="consent"
-        check
-        label={
-          source === "paste" ? (
-            <>
-              Everyone in this meeting agreed to have it checked. The transcript is sent to
-              Meta&apos;s model API for analysis.
-            </>
-          ) : (
-            <>
-              Everyone in this recording agreed to have it checked. The recording is sent to Meta
-              for transcription, and the transcript to Meta&apos;s model API for analysis.
-            </>
-          )
-        }
-        error={errors.consent}
-      >
-        {(d) => <input id="consent" name="consent" type="checkbox" required aria-describedby={d} />}
-      </Field>
-      <Button type="submit" disabled={sending}>
-        {sending
-          ? source === "audio"
-            ? "Uploading the recording"
-            : "Creating meeting check"
-          : "Create meeting check"}
-      </Button>
+      </div>
+      <div className="start-submit">
+        <Field
+          id="pseudonymize"
+          check
+          label="Hide participant names from the model"
+          hint={
+            source === "paste"
+              ? "The model sees Person A, Person B and so on. Everyone here still sees real names."
+              : "The model sees Person A, Person B and so on. Everyone here still sees real names. The recording is transcribed as spoken, names included."
+          }
+        >
+          {(d) => (
+            <input id="pseudonymize" name="pseudonymize" type="checkbox" aria-describedby={d} />
+          )}
+        </Field>
+        <Field
+          id="consent"
+          check
+          label={
+            source === "paste" ? (
+              <>
+                Everyone in this meeting agreed to have it checked. The transcript is sent to
+                Meta&apos;s model API for analysis.
+              </>
+            ) : (
+              <>
+                Everyone in this recording agreed to have it checked. The recording is sent to Meta
+                for transcription, and the transcript to Meta&apos;s model API for analysis.
+              </>
+            )
+          }
+          error={errors.consent}
+        >
+          {(d) => (
+            <input id="consent" name="consent" type="checkbox" required aria-describedby={d} />
+          )}
+        </Field>
+        <Button type="submit" disabled={sending}>
+          {sending
+            ? source === "audio"
+              ? "Uploading the recording"
+              : "Creating meeting check"
+            : "Create meeting check"}
+        </Button>
+      </div>
     </form>
   );
 }

@@ -98,7 +98,7 @@ export function RecheckView({
           {asked.map((p) => (
             <div key={p.id} className="recheck-question">
               <p className="fork-stem">{p.stem}</p>
-              <ul>
+              <ul className="draft-options">
                 {p.options.map((o) => (
                   <li key={o.id}>{o.text}</li>
                 ))}

@@ -495,7 +495,7 @@ describe("CreatedLinks", () => {
       />,
     );
     expect(out).toContain('href="/m/m1#k=tok"');
-    expect(out).toContain('Priya: <a href="http://localhost/p/pt">');
+    expect(out).toContain('<span class="link-name">Priya</span> <a href="http://localhost/p/pt">');
     expect(out).toContain("It&#x27;s the only way back to this workspace.");
   });
 });

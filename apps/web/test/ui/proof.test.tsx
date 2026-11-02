@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { askedPhrase, calendarFor, dayOf } from "../../src/ui/proof";
+import { renderToStaticMarkup } from "react-dom/server";
+import { askedPhrase, calendarFor, dayOf, markedStem } from "../../src/ui/proof";
 
 const at = (quote: string, stem: string) => {
   const r = askedPhrase(quote, stem);
@@ -80,5 +81,24 @@ describe("calendarFor", () => {
         { text: "Thursday the 13th", who: "B" },
       ]),
     ).toBeNull();
+  });
+});
+
+describe("markedStem", () => {
+  const html = (stem: string) => renderToStaticMarkup(<>{markedStem(stem)}</>);
+
+  it("rings the last quoted fragment, quote marks included", () => {
+    expect(
+      html(
+        'For "Atlas will be out to every customer", what has to exist by "the end of next week"?',
+      ),
+    ).toContain('<span class="pencil-circle">&quot;the end of next week&quot;<svg');
+  });
+
+  it("underlines a fragment too long for a ring, and leaves a stem with no quotes alone", () => {
+    expect(
+      html('When "Atlas will be out to every customer by the end of next week" is done?'),
+    ).toContain('<span class="pencil-line">&quot;Atlas will be out');
+    expect(html("On Monday, what do they find?")).toBe("On Monday, what do they find?");
   });
 });

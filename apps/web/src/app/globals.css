@@ -84,7 +84,7 @@ body {
 }
 
 main {
-  max-width: calc(var(--measure) + 2 * var(--space-12));
+  max-width: var(--sheet-wide);
   margin: 0 auto var(--space-12);
   padding: var(--space-8) var(--space-12) var(--space-12);
   background: var(--paper);
@@ -93,9 +93,9 @@ main {
     0 10px 28px rgb(60 45 20 / 0.12);
 }
 
-/* The reveal and the record are worked like a proof, with notes in the margin, so they get room. */
-main:has(.reveal, .record) {
-  max-width: var(--sheet-wide);
+/* The sheet is wide so screens can keep notes in a margin; running text keeps a reading measure. */
+main p {
+  max-width: var(--measure);
 }
 
 @media (max-width: 40rem) {
@@ -115,8 +115,13 @@ h4 {
   margin: 0 0 var(--space-3);
 }
 
+/* Page titles are set like a document's title, in the reading face. */
 h1 {
-  font-size: clamp(1.75rem, 1.45rem + 1.2vw, 2.25rem);
+  font-family: var(--font-reading);
+  font-weight: 700;
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 h2 {

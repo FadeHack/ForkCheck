@@ -58,7 +58,7 @@ describe("RecheckView", () => {
     const out = html(<RecheckView state={state} />);
     expect(out).toContain(RECHECK_SENT);
     expect(out).toContain(recheckProbe.stem);
-    expect(out).toContain("1 of 3 have answered.");
+    expect(out).toContain('<span class="round-count">1</span> of 3 have answered.');
     expect(out).not.toContain("Where does SSO run?");
     expect(out).not.toContain("Chosen by");
     expect(out).not.toContain("Send a recheck question");

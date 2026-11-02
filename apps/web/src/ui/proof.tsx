@@ -43,17 +43,43 @@ export function PencilCircle({ children }: { children: ReactNode }) {
   );
 }
 
-/** The quote with the asked-about phrase circled, or as written when no phrase matches. */
-export function markedQuote(quote: string, stem: string | undefined): ReactNode {
-  const at = stem ? askedPhrase(quote, stem) : null;
-  if (!at) return quote;
+/** Past this many characters a ring would wrap badly, so the phrase gets a pencil line instead. */
+const RING_MAX = 28;
+
+/** A ring for a short phrase, a wavy pencil line under a long one. */
+function PencilMark({ children }: { children: string }) {
+  return children.length > RING_MAX ? (
+    <span className="pencil-line">{children}</span>
+  ) : (
+    <PencilCircle>{children}</PencilCircle>
+  );
+}
+
+function marked(text: string, at: { start: number; end: number } | null): ReactNode {
+  if (!at) return text;
   return (
     <>
-      {quote.slice(0, at.start)}
-      <PencilCircle>{quote.slice(at.start, at.end)}</PencilCircle>
-      {quote.slice(at.end)}
+      {text.slice(0, at.start)}
+      <PencilMark>{text.slice(at.start, at.end)}</PencilMark>
+      {text.slice(at.end)}
     </>
   );
+}
+
+/** The quote with the asked-about phrase marked, or as written when no phrase matches. */
+export function markedQuote(quote: string, stem: string | undefined): ReactNode {
+  return marked(quote, stem ? askedPhrase(quote, stem) : null);
+}
+
+/**
+ * The question with the words it asks about marked: the last quoted fragment, which is the
+ * detail ("the end of next week") after the decision it belongs to.
+ */
+export function markedStem(stem: string): ReactNode {
+  const last = [...stem.matchAll(/["“]([^"”]+)["”]/g)].at(-1);
+  if (!last) return stem;
+  // The quote marks go inside the mark, so a wrap never strands one at a line end.
+  return marked(stem, { start: last.index, end: last.index + last[0].length });
 }
 
 const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];

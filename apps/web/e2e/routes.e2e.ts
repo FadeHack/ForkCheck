@@ -57,7 +57,9 @@ test("start page creates a meeting check and shows its links", async ({ page, co
 
   await expect(page.getByRole("heading", { name: "Meeting check created" })).toBeVisible();
   await expect(page.getByRole("link", { name: /\/m\/.+#k=/ })).toBeVisible();
-  await expect(page.getByRole("listitem").filter({ hasText: "Marco:" })).toBeVisible();
+  await expect(
+    page.getByRole("listitem").filter({ hasText: "Marco" }).filter({ hasText: "/p/" }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "Copy link for Marco" }).click();
   await expect(page.getByRole("status")).toHaveText("Link copied");
   expect(await page.evaluate(() => navigator.clipboard.readText())).toMatch(/^http.*\/p\/.+/);

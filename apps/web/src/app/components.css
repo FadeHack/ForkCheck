@@ -294,6 +294,7 @@
 }
 
 .banner p {
+  max-width: none;
   margin: 0;
 }
 
@@ -1191,6 +1192,7 @@
 
 .calendar-strip li {
   margin: 0;
+  white-space: nowrap;
   padding: var(--space-2) var(--space-1) 0;
   text-align: center;
   color: var(--ink-muted);
@@ -1432,5 +1434,353 @@
 
   .record-tally li:nth-child(3) {
     animation-delay: 240ms;
+  }
+}
+
+/* ---------- Proof sheet on every screen ---------- */
+
+/* A long asked-about phrase gets the pencil line instead of a ring, so it can wrap. */
+.pencil-line {
+  text-decoration: underline wavy var(--split) 2px;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: none;
+}
+
+/* The rail stays one line on the wide sheet; on a phone it wraps as before. */
+@media (min-width: 56rem) {
+  .stage-rail ol {
+    flex-wrap: nowrap;
+  }
+
+  .stage-rail li + li::before {
+    width: var(--space-4);
+    margin-inline: var(--space-2);
+  }
+}
+
+/* Start: details on the left, the transcript as the page on the right, then consent and go. */
+.start-intro {
+  font-size: 1.0625rem;
+  color: var(--ink-muted);
+}
+
+@media (min-width: 56rem) {
+  .start-form {
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: 0 var(--space-12);
+    align-items: start;
+  }
+
+  .start-form > .notice-error,
+  .start-submit {
+    grid-column: 1 / -1;
+  }
+
+  .start-submit {
+    border-top: 1px solid var(--line-subtle);
+    padding-top: var(--space-6);
+  }
+}
+
+/* The transcript box reads as ruled manuscript paper: serif lines on a faint rule. */
+#transcript {
+  font-family: var(--font-reading);
+  font-size: 1rem;
+  line-height: 2rem;
+  padding: 0 var(--space-4);
+  min-height: 24rem;
+  background-color: var(--paper);
+  background-image: linear-gradient(to bottom, transparent calc(2rem - 1px), var(--line-subtle) 0);
+  background-size: 100% 2rem;
+  background-attachment: local;
+}
+
+/* Created: the organizer link stands apart; each participant gets a ticket with their name. */
+.created .link-organizer {
+  border: 2px solid var(--action);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3) var(--space-4);
+}
+
+.link-tickets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--space-4);
+}
+
+.link-tickets li {
+  margin: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-panel);
+}
+
+.link-tickets a {
+  flex: none;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: 0.875rem;
+}
+
+.link-name {
+  font-family: var(--font-reading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Organizer, decisions found: set like the transcript, the claim then its lines with who and when. */
+.decision-list > li {
+  border-top: 1px solid var(--line-subtle);
+  padding-top: var(--space-4);
+}
+
+.decision-list > li + li {
+  margin-top: var(--space-4);
+}
+
+.decision-statement {
+  font-family: var(--font-reading);
+  font-size: 1.125rem;
+}
+
+.decision-status {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.decision-list > li[data-status="ambiguous"] .decision-status,
+.decision-list > li[data-status="debated"] .decision-status,
+.decision-list > li[data-status="unresolved"] .decision-status {
+  color: var(--split);
+}
+
+.decision-list .quote,
+.draft .quote {
+  background: none;
+  padding: 0 0 0 var(--space-4);
+  border-left: 2px solid var(--line);
+}
+
+@media (min-width: 56rem) {
+  .decision-list > li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 14rem;
+    column-gap: var(--space-8);
+  }
+
+  .decision-list > li > * {
+    grid-column: 1;
+  }
+
+  .decision-list > li > .decision-status {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+  }
+}
+
+/* Organizer, drafts: the question as the reader will see it, the evidence beside it. */
+.draft h3 {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.35;
+}
+
+.draft-options {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+
+.draft-options li {
+  position: relative;
+  padding: var(--space-1) 0 var(--space-1) var(--space-8);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+/* A pencil dash, not a box: these are previews, nothing here can be ticked. */
+.draft-options li::before {
+  content: "–";
+  position: absolute;
+  left: var(--space-2);
+  color: var(--ink-muted);
+}
+
+.draft-facts {
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+.draft-facts dt {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (min-width: 56rem) {
+  .draft {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    grid-auto-flow: row dense;
+    column-gap: var(--space-12);
+    align-items: start;
+  }
+
+  .draft > * {
+    grid-column: 1;
+  }
+
+  .draft > .draft-evidence {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+}
+
+/* Participant, answering: the question number sits in the margin, large, like a numbered query. */
+.probe-card {
+  padding-top: var(--space-6);
+}
+
+.probe-count {
+  font-variant-numeric: tabular-nums;
+}
+
+.probe-number {
+  font-family: var(--font-reading);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.probe-stem {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 56rem) {
+  .probe-card {
+    position: relative;
+    padding-left: 7rem;
+    max-width: calc(var(--measure) + 7rem);
+  }
+
+  .probe-count {
+    position: absolute;
+    left: 0;
+    top: var(--space-6);
+    width: 5.5rem;
+  }
+
+  .probe-count .probe-number {
+    display: block;
+    font-size: 3.5rem;
+  }
+}
+
+/* The option chosen gets a pencil tick at the end of its row. */
+.probe-card .choice {
+  min-height: 3.25rem;
+  font-size: 1.0625rem;
+}
+
+.probe-card .choice:has(input:checked) {
+  background: var(--surface);
+}
+
+.probe-card .choice:has(input:checked)::after {
+  content: "✓";
+  margin-left: auto;
+  font-family: var(--font-hand);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--action);
+}
+
+/* Organizer, round: the count is the screen's headline while people answer. */
+.round-focal {
+  font-family: var(--font-reading);
+  font-size: 1.5rem;
+}
+
+.round-count {
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 700;
+  vertical-align: -0.1em;
+}
+
+.people-list {
+  max-width: var(--measure);
+}
+
+/* Resolve: proposed wording is a slip pinned to the split; confirmations land as ticks. */
+.resolve > h4 {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--ink-muted);
+}
+
+.quote.proposal {
+  max-width: var(--measure);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--action);
+  padding: var(--space-4) var(--space-6);
+  box-shadow: 0 6px 18px rgb(60 45 20 / 0.1);
+}
+
+.quote.proposal blockquote {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.confirm-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  border: 0;
+}
+
+.confirm-list li {
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-panel);
+  padding: var(--space-2) var(--space-4);
+}
+
+.confirm-list .person-status {
+  flex: none;
+}
+
+.confirm-confirmed svg {
+  display: none;
+}
+
+.confirm-confirmed::before {
+  content: "✓";
+  margin-right: var(--space-1);
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1;
+  vertical-align: -0.1em;
+}
+
+/* Organizer, recheck: the follow-up question set like the reveal's, options as pencil notes. */
+.recheck-question h3,
+.recheck-question .fork-stem {
+  font-family: var(--font-reading);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .probe-card .choice:has(input:checked)::after,
+  .confirm-confirmed::before {
+    animation: tick-in 250ms ease-out;
   }
 }

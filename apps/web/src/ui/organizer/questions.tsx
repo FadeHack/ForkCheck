@@ -13,6 +13,7 @@ import { organizerCall } from "../api";
 import { Button, ErrorNotice, Field, Loading, QuoteBlock, Toast } from "../components";
 import { decisionStatusLabel, dimensionLabel, lintNote, tierLabel } from "../labels";
 import { useToast } from "../use-toast";
+import { markedStem } from "../proof";
 
 type State = OrganizerMeetingState;
 
@@ -107,7 +108,7 @@ function Decisions({ state }: { state: State }) {
       <h2 id="decisions-heading">Decisions found</h2>
       <ol className="decision-list">
         {state.decisions.map(({ decision, evidence }) => (
-          <li key={decision.id}>
+          <li key={decision.id} data-status={decision.status}>
             <p className="decision-statement">{decision.statement}</p>
             <p className="decision-status">{decisionStatusLabel[decision.status]}</p>
             {evidence.map((e) => {
@@ -248,38 +249,41 @@ function DraftCard({
           }}
         />
       ) : (
-        <>
-          <h3>{probe.stem}</h3>
+        <div className="draft-question">
+          <h3>{markedStem(probe.stem)}</h3>
           <ul className="draft-options">
             {probe.options.map((o) => (
               <li key={o.id}>{o.text}</li>
             ))}
           </ul>
-        </>
+        </div>
       )}
-      <dl className="draft-facts">
-        {target && (
-          <>
-            <dt>Decision</dt>
-            <dd>{target.decision.statement}</dd>
-          </>
+      <div className="draft-evidence">
+        <dl className="draft-facts">
+          {target && (
+            <>
+              <dt>Decision</dt>
+              <dd>{target.decision.statement}</dd>
+            </>
+          )}
+          {candidate && (
+            <>
+              <dt>Detail</dt>
+              <dd>{dimensionLabel[candidate.dimension]}</dd>
+            </>
+          )}
+          <dt>Written as</dt>
+          <dd>{tierLabel[probe.tier]}</dd>
+        </dl>
+        {quote && (
+          <QuoteBlock
+            quote={quote.quote}
+            asks={probe.stem}
+            segment={segment}
+            speaker={segment?.participantId ? (names.get(segment.participantId) ?? null) : null}
+          />
         )}
-        {candidate && (
-          <>
-            <dt>Detail</dt>
-            <dd>{dimensionLabel[candidate.dimension]}</dd>
-          </>
-        )}
-        <dt>Written as</dt>
-        <dd>{tierLabel[probe.tier]}</dd>
-      </dl>
-      {quote && (
-        <QuoteBlock
-          quote={quote.quote}
-          segment={segment}
-          speaker={segment?.participantId ? (names.get(segment.participantId) ?? null) : null}
-        />
-      )}
+      </div>
       <Checks probe={probe} />
       {!editing && (
         <div className="draft-actions">
