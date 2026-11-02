@@ -25,6 +25,7 @@ import { connect, DbCallLog, MeetingRepo, RoundRepo, SplitRepo, type Db } from "
 import { logError } from "./log";
 import { MeetingScopedProvider } from "./meeting-scope";
 import { PseudonymizingProvider } from "./pseudonymize";
+import { defaultRateLimits, type RateLimits } from "./rate-limit";
 import { LocalDiskStorage, type Storage } from "./storage";
 
 /** For deps without audio: nothing is stored, so there is nothing to read or delete. */
@@ -51,13 +52,21 @@ export interface Deps {
   background(task: () => Promise<void>): void;
   /** PROBE_DIMENSIONS, parsed. */
   dimensions: readonly Dimension[];
+  rateLimits: RateLimits;
   now(): Date;
 }
 
 export type DepsOverrides = Partial<
   Pick<
     Deps,
-    "storage" | "model" | "transcriber" | "ffmpegPath" | "background" | "dimensions" | "now"
+    | "storage"
+    | "model"
+    | "transcriber"
+    | "ffmpegPath"
+    | "background"
+    | "dimensions"
+    | "rateLimits"
+    | "now"
   >
 >;
 
@@ -67,6 +76,7 @@ const replayDir = () => join(workspace(), "packages", "asr", "fixtures", "replay
 export function createDeps(db: Db, overrides: DepsOverrides = {}): Deps {
   const meetings = new MeetingRepo(db);
   const model = overrides.model ?? (() => new FakeProvider());
+  const now = overrides.now ?? (() => new Date());
   return {
     db,
     meetings,
@@ -79,7 +89,8 @@ export function createDeps(db: Db, overrides: DepsOverrides = {}): Deps {
       task().catch((error: unknown) => logError("background task", error));
     },
     dimensions: parseProbeDimensions(undefined),
-    now: () => new Date(),
+    rateLimits: defaultRateLimits(() => now()),
+    now,
     ...overrides,
     // Every stage's model goes through here, so no request skips the meeting's name setting.
     model: (meetingId) =>

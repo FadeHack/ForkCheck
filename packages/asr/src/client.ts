@@ -8,6 +8,7 @@ import {
   type TranscribeResponse,
 } from "./transcribe";
 import { inspectWav } from "./wav";
+import { withoutKey } from "./redact";
 
 export type TranscribeErrorKind =
   | "invalid_audio"
@@ -216,7 +217,7 @@ export class TranscribeClient {
         });
       } catch (error) {
         const timedOut = error instanceof DOMException && error.name === "TimeoutError";
-        const detail = error instanceof Error ? error.message : String(error);
+        const detail = withoutKey(error instanceof Error ? error.message : String(error), o.apiKey);
         return fail(
           timedOut ? "timeout" : "network",
           timedOut
@@ -258,7 +259,8 @@ export class TranscribeClient {
         return { response, costUsd, latencyMs, attempts };
       }
 
-      const error = parseError(body);
+      const parsed = parseError(body);
+      const error = { ...parsed, message: withoutKey(parsed.message, o.apiKey) };
       if (error.sessionId) sessionId = error.sessionId;
       const detail = `HTTP ${res.status}: ${error.message}`;
       if (res.status === 429) {

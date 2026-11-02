@@ -74,6 +74,7 @@ Other commands:
 - Recordings must be at most 10 minutes and 32 MB, the Voice Transcribe limits. Speaker labels from transcription are matched to participants by the organizer.
 - Questions and records are in English.
 - Audio is stored on local disk. There are no accounts; anyone with a link can use it until the meeting is deleted.
+- Rate limits (per participant link, and on wrong tokens per client) are counted in memory, so they hold for one server process only.
 
 ## Research and attribution
 

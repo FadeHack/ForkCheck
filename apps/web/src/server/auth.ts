@@ -1,7 +1,8 @@
 import type { Meeting, Participant } from "@forkcheck/core";
 import { getDeps, type Deps } from "./deps";
-import { apiError, unauthorized } from "./http";
+import { apiError, tooManyRequests, unauthorized } from "./http";
 import { logError } from "./log";
+import { clientKey } from "./rate-limit";
 import { hashToken, tokenMatches } from "./tokens";
 
 type Params = Record<string, string>;
@@ -27,6 +28,12 @@ function bearerToken(req: Request): string | null {
   return match?.[1] ?? null;
 }
 
+/** A 401 that counts toward the client's failed-lookup limit. */
+function refuse(deps: Deps, client: string): Response {
+  deps.rateLimits.failedAuth.take(client);
+  return unauthorized();
+}
+
 export async function guarded(req: Request, run: () => Promise<Response>): Promise<Response> {
   try {
     return await run();
@@ -45,16 +52,19 @@ export function withOrganizerOf<P extends Params & { id: string }>(
     guarded(req, async () => {
       const deps = getDeps();
       const params = await route.params;
+      const client = clientKey(req);
+      const blocked = deps.rateLimits.failedAuth.blocked(client);
+      if (!blocked.ok) return tooManyRequests(blocked.retryAfterS);
       const token = bearerToken(req);
-      if (token === null) return unauthorized();
+      if (token === null) return refuse(deps, client);
       const meetingId = await meetingOf(deps, params.id);
       const stored = meetingId === null ? null : await deps.meetings.organizerTokenHash(meetingId);
       // Unknown IDs answer 401, not 404, so they cannot be probed without a token.
       if (meetingId === null || stored === null || !tokenMatches(token, stored)) {
-        return unauthorized();
+        return refuse(deps, client);
       }
       const meeting = await deps.meetings.get(meetingId);
-      if (meeting === null) return unauthorized();
+      if (meeting === null) return refuse(deps, client);
       return handler(req, { deps, meeting, params });
     });
 }
@@ -77,11 +87,17 @@ export function withParticipant<P extends Params & { token: string }>(
     guarded(req, async () => {
       const deps = getDeps();
       const params = await route.params;
+      const client = clientKey(req);
+      const blocked = deps.rateLimits.failedAuth.blocked(client);
+      if (!blocked.ok) return tooManyRequests(blocked.retryAfterS);
       // A lookup by SHA-256 digest: timing reveals nothing about the token itself.
-      const participant = await deps.meetings.findParticipantByTokenHash(hashToken(params.token));
-      if (participant === null) return unauthorized();
+      const digest = hashToken(params.token);
+      const participant = await deps.meetings.findParticipantByTokenHash(digest);
+      if (participant === null) return refuse(deps, client);
       const meeting = await deps.meetings.get(participant.meetingId);
-      if (meeting === null) return unauthorized();
+      if (meeting === null) return refuse(deps, client);
+      const allowed = deps.rateLimits.participant.take(digest);
+      if (!allowed.ok) return tooManyRequests(allowed.retryAfterS);
       return handler(req, { deps, participant, meeting, params });
     });
 }

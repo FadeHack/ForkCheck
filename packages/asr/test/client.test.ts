@@ -204,6 +204,13 @@ describe("TranscribeClient", () => {
     expect(error.message).not.toContain("test-key");
   });
 
+  it("keeps the API key out of messages when the service echoes it", async () => {
+    const { client } = setup([json(400, { error: { message: "Bad audio for key test-key" } })]);
+    const error = await failure(client.transcribe(silentWav(100)));
+    expect(error.userMessage).not.toContain("test-key");
+    expect(error.message).not.toContain("test-key");
+  });
+
   it("backs off on 429, honouring Retry-After, then succeeds", async () => {
     const { client, delays, sent } = setup([
       json(429, { error: { message: "slow down" } }),
