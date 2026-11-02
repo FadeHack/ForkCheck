@@ -1,0 +1,17 @@
+ForkCheck
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product includes material adapted from IoA
+(https://github.com/THUNLP-MT/IoA), Copyright the IoA authors,
+licensed under the Apache License, Version 2.0.
+
+Modified files:
+
+- prompts/generateProbes.v1.md, adapted from prompts/prober.txt. Changed to
+  ask one question per given gap and dimension with the readings supplied,
+  with the scoring section and the free-form output format removed and the
+  option rules rewritten for ForkCheck's checks.
+
+The research behind it: Liu et al., "Illusion of Alignment: Detecting Hidden
+Disagreement in Collaborative Dialogue", EMNLP 2026.
+https://arxiv.org/abs/2608.08210
