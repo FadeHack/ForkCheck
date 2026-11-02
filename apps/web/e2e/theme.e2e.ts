@@ -61,24 +61,43 @@ async function focusRings(page: Page) {
   return rings;
 }
 
+async function pickTheme(page: Page, label: string) {
+  await page.getByRole("button", { name: /^Theme: / }).click();
+  await page.getByRole("button", { name: label, exact: true }).click();
+}
+
 test("the theme follows the system until a choice is made, and the choice persists", async ({
   page,
 }) => {
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/");
   expect(await background(page)).toBe(PAPER.dark);
+  await expect(page.getByRole("button", { name: "Theme: Match system" })).toBeVisible();
 
-  await page.getByLabel("Theme").selectOption("light");
+  await pickTheme(page, "Light");
   expect(await background(page)).toBe(PAPER.light);
   await page.reload();
   expect(await background(page)).toBe(PAPER.light);
-  await expect(page.getByLabel("Theme")).toHaveValue("light");
+  await expect(page.getByRole("button", { name: "Theme: Light" })).toBeVisible();
 
-  await page.getByLabel("Theme").selectOption("system");
+  await pickTheme(page, "Match system");
   expect(await background(page)).toBe(PAPER.dark);
   await page.reload();
   expect(await background(page)).toBe(PAPER.dark);
-  await expect(page.getByLabel("Theme")).toHaveValue("system");
+  await expect(page.getByRole("button", { name: "Theme: Match system" })).toBeVisible();
+});
+
+test("the theme choices open from one button and close with Escape", async ({ page }) => {
+  await page.goto("/");
+  const toggle = page.getByRole("button", { name: /^Theme: / });
+  await toggle.focus();
+  await page.keyboard.press("Enter");
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(page.getByRole("button", { name: "Match system", exact: true })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(toggle).toBeFocused();
+  await expect(page.getByRole("button", { name: "Light", exact: true })).toBeHidden();
 });
 
 for (const theme of ["light", "dark"] as const) {

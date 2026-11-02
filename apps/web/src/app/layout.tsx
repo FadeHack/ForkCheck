@@ -32,7 +32,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {THEME_SCRIPT}
         </Script>
         <header className="site-header">
+          {/* The name on a paper tab joined to the sheet, with the fork mark: one line that splits. */}
           <Link href="/" className="wordmark">
+            <svg className="fork-mark" viewBox="0 0 26 26" aria-hidden="true" focusable="false">
+              <path d="M4 13H11" />
+              <path d="M11 13C15 13 16 6 22 6" />
+              <path className="fork-mark-split" d="M11 13C15 13 16 20 22 20" />
+            </svg>
             ForkCheck
           </Link>
           <ThemeSelect />

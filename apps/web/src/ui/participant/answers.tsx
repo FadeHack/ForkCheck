@@ -98,6 +98,11 @@ function ProbeCard({
         onChange={() => onChange(next)}
       />
       <span>{label}</span>
+      {checked && (
+        <span className="pencil-tick" aria-hidden="true">
+          ✓
+        </span>
+      )}
     </label>
   );
   return (

@@ -1,30 +1,141 @@
 /* Styles for src/ui/components.tsx and the site header. Tokens live in globals.css. */
 
+/* The header is the sheet's folder tab: the name on paper joined to the page, the theme on the desk. */
 .site-header {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-3);
   max-width: var(--sheet-wide);
   margin-inline: auto;
-  padding: var(--space-4) var(--space-4) var(--space-6);
+  padding: var(--space-4) 0 0;
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-6) var(--space-2) var(--space-4);
+  background: var(--paper);
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  box-shadow: 0 -1px 0 var(--line-subtle);
   color: var(--ink);
+  font-family: var(--font-reading);
   font-weight: 700;
   font-size: 1.375rem;
+  line-height: 1;
   letter-spacing: -0.01em;
   text-decoration: none;
-  padding-block: 0.625rem;
+}
+
+.fork-mark {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+.fork-mark .fork-mark-split {
+  stroke: var(--split);
 }
 
 .theme-select {
+  position: relative;
+  padding-bottom: var(--space-2);
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--ink);
+}
+
+.theme-toggle svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.theme-toggle .theme-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* With the dialog and toast, the only thing above the page, so it takes a shadow. */
+.theme-options {
+  position: absolute;
+  right: 0;
+  top: calc(100% - var(--space-1));
+  z-index: 10;
+  min-width: 11rem;
+  margin: 0;
+  padding: var(--space-1);
+  list-style: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.18);
+}
+
+.theme-options li {
+  margin: 0;
+}
+
+.theme-options button {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--ink-muted);
+  justify-content: space-between;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.theme-options button:hover {
+  background: var(--surface);
+}
+
+.theme-options button[aria-pressed="true"] {
+  background: var(--surface);
+  font-weight: 600;
+}
+
+/* A tick in pencil beside a chosen option. The words already say which; the tick is a mark. */
+.pencil-tick {
+  margin-left: auto;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--action);
+}
+
+@media (max-width: 40rem) {
+  .site-header {
+    padding-inline: var(--space-3);
+  }
 }
 
 /* Button: primary for the one action a screen exists for, secondary for the rest. */
@@ -1606,7 +1717,7 @@
 
 /* A pencil dash, not a box: these are previews, nothing here can be ticked. */
 .draft-options li::before {
-  content: "–";
+  content: "–" / "";
   position: absolute;
   left: var(--space-2);
   color: var(--ink-muted);
@@ -1693,13 +1804,8 @@
   background: var(--surface);
 }
 
-.probe-card .choice:has(input:checked)::after {
-  content: "✓";
-  margin-left: auto;
-  font-family: var(--font-hand);
+.probe-card .pencil-tick {
   font-size: 1.75rem;
-  line-height: 1;
-  color: var(--action);
 }
 
 /* Organizer, round: the count is the screen's headline while people answer. */
@@ -1758,19 +1864,6 @@
   flex: none;
 }
 
-.confirm-confirmed svg {
-  display: none;
-}
-
-.confirm-confirmed::before {
-  content: "✓";
-  margin-right: var(--space-1);
-  font-family: var(--font-hand);
-  font-size: 1.5rem;
-  line-height: 1;
-  vertical-align: -0.1em;
-}
-
 /* Organizer, recheck: the follow-up question set like the reveal's, options as pencil notes. */
 .recheck-question h3,
 .recheck-question .fork-stem {
@@ -1779,8 +1872,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .probe-card .choice:has(input:checked)::after,
-  .confirm-confirmed::before {
+  .pencil-tick {
     animation: tick-in 250ms ease-out;
   }
 }
