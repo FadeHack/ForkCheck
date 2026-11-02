@@ -1,6 +1,6 @@
 /**
- * The R§7.1 audio set: six scenarios rendered with synthetic voices and four read by a
- * volunteer. Recordings stay out of git, so entries name a file inside a local directory.
+ * The R§7.1 audio set: six scenarios rendered with synthetic voices and four read by the
+ * project owner. Recordings stay out of git, so entries name a file inside a local directory.
  */
 export interface AudioSetEntry {
   scenarioId: string;

@@ -179,7 +179,7 @@ const LIMITATIONS = [
     "and the question generator are the same model family, which may push reveal rates up. " +
     "Simulated results do not establish how real teams would answer.",
   "The 26 meetings are synthetic, written for this evaluation with planted mismatches. The audio " +
-    "set is 6 synthetic renders and 4 volunteer recordings of scripts.",
+    "set is 6 synthetic renders and 4 recordings of scripts read by the project owner.",
   "Pasted and audio runs are reported separately; audio minus paste attributes the loss to " +
     "transcription and speaker mapping. On audio, an extracted decision matches its expected " +
     "one when a quote of five or more words shares at least 80% of its words, since the ASR " +

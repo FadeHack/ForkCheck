@@ -50,7 +50,7 @@ Two rules shape how the models are used:
 
 ## Evaluation
 
-We ran 26 synthetic meetings with planted mismatches (8 development, 18 held out) plus an audio set of 6 synthetic renders and 4 volunteer recordings of scripts. Participants are simulated. The full report, with every count and run log, is [eval-results/2026-11-01/report.md](eval-results/2026-11-01/report.md). All numbers below come from it.
+We ran 26 synthetic meetings with planted mismatches (8 development, 18 held out) plus an audio set of 6 synthetic renders and 4 recordings of scripts read by the project owner. Participants are simulated. The full report, with every count and run log, is [eval-results/2026-11-01/report.md](eval-results/2026-11-01/report.md). All numbers below come from it.
 
 | What we measured                                           | Target    | Pasted transcripts (Muse Spark) | Audio (Muse Spark) |
 | ---------------------------------------------------------- | --------- | ------------------------------- | ------------------ |
@@ -83,7 +83,7 @@ Every meeting check, including its transcript, answers, record and any recording
 
 ## Try it
 
-There is no hosted version. The demo runs locally, and with the default `LIVE=0` it runs fully offline: every model reply comes from a recorded fixture, and the screens label it as replayed. You need Node 24, Docker and pnpm:
+The demo runs locally. With the default `LIVE=0` it runs fully offline: every model reply comes from a recorded fixture, and the screens label it as replayed. You need Node 24, Docker and pnpm:
 
 ```sh
 pnpm install
