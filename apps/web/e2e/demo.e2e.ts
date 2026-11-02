@@ -221,9 +221,13 @@ for (const { path, hideNames } of runs) {
       });
       expect(sent.ok()).toBe(true);
       for (const who of ["Nadia", "Tomas", "June"] as const) {
-        await answerAll(request, tok(who), () => {
+        await answerAll(request, tok(who), (p) => {
           const t = mismatch === 0 ? "launch" : "owner";
-          return path === "precise" ? settled[t] : reads[who].recheck[t];
+          if (path === "vague") return reads[who].recheck[t];
+          // Live wording varies. If no single option reads as settled, everyone still picks the
+          // same one, which is what a precise resolution should produce.
+          const hits = p.options.filter((o) => settled[t].test(o.text));
+          return LIVE && hits.length !== 1 ? null : settled[t];
         });
       }
       await closeRound(request, m.id, m.token);
