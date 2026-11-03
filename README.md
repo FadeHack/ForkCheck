@@ -1,5 +1,10 @@
 # ForkCheck
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/forkcheck-dark.png">
+  <img alt="ForkCheck's front page: the headline &quot;Everyone agreed. On the same thing?&quot; beside a split from the sample meeting, where &quot;the end of next week&quot; is circled and the answers show June chose Thursday the 12th while Nadia and Tomas chose Friday the 13th." src=".github/assets/forkcheck-light.png">
+</picture>
+
 People often leave a meeting thinking they agreed, then find out they understood the decision differently: whose job it is, what "Friday" means, what "done" includes.
 
 ForkCheck reads a meeting transcript, either pasted or transcribed from a recording, and finds decisions whose details could be read more than one way. It then:
@@ -9,6 +14,31 @@ ForkCheck reads a meeting transcript, either pasted or transcribed from a record
 3. lets participants settle any difference in their own words;
 4. checks the new wording with a follow-up question about its consequences;
 5. writes a decision record that links back to the source and sorts each item as stated in the meeting, confirmed by participants, or unresolved.
+
+### How it works
+
+The model writes; code decides. Whether answers differ, whether wording is confirmed and where each record item lands are computed from the participants' own choices.
+
+```mermaid
+flowchart TD
+  paste[Pasted transcript] --> find
+  audio[Recording] -->|Muse Voice Transcribe| turns[Speaker-labelled turns]
+  turns -->|organizer names each voice and reviews| find
+  find["Find decisions and the details that could be read two ways<br/>Muse Spark; code checks every quote against the transcript"] --> ask
+  ask["Draft multiple-choice questions<br/>Muse Spark; the organizer edits and publishes"] --> answer
+  answer["Each person answers on their own link<br/>sealed until the reveal"] --> compare
+  compare{"Compare answers by option<br/>code, not the model"}
+  compare -->|same answer| record
+  compare -->|different answers| settle
+  settle["Settle the wording<br/>participants propose; everyone confirms"] --> recheck
+  settle -->|agree to disagree| record
+  recheck{"Recheck: a question about consequences<br/>Muse Spark writes it; code compares"}
+  recheck -->|split again| settle
+  recheck -->|agree| record
+  record["Decision record<br/>stated, confirmed or unresolved; each item linked to its quote"]
+```
+
+The app is Next.js with Postgres. Pure logic (comparing answers, resolution rules, the record) lives in `packages/core`, the model stages (finding decisions, writing questions and rechecks) in `packages/engine`, the model client and recorded replies in `packages/ai`, transcription in `packages/asr`, storage in `packages/db`, and the evaluation harness in `packages/eval`.
 
 For the hackathon submission (what we built, how Meta's models are used, evaluation results and limits), see [WRITEUP.md](WRITEUP.md).
 
