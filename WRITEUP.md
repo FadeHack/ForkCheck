@@ -77,9 +77,15 @@ The resolve and recheck steps were tested with two kinds of simulated resolution
 - **Templates.** Per-dimension templates were picked on the development scenarios they were shaped against, so their benefit isn't proven on unseen data.
 - **Product limits.** Recordings must be 10 minutes and 32 MB or less (the Voice Transcribe limits). Questions and records are English only. Audio is stored on local disk, and rate limits hold for one server process.
 
+## What's next
+
+- **Hosting, then sending links for you.** ForkCheck runs locally for now, so the organizer sends each link from their own mail app or phone share sheet. Once it is hosted, it can email the links itself and remind people who haven't answered.
+- **Slack and Teams.** Send each person their link as a direct message, and post the record to the meeting's channel when it's done.
+- **Better questions.** Raise the 57.4% reveal rate toward the 75% target, then measure it with real teams instead of simulated participants.
+
 ## Privacy
 
-Every meeting check, including its transcript, answers, record and any recording, is deleted 7 days after it is created, and the organizer can delete it sooner. A recording is deleted once the organizer finishes reviewing the transcript, unless they choose to keep it. The organizer can hide participant names from the model, so it sees "Person A", "Person B" and so on. A participant sees others' answers only after the organizer reveals the round. The in-app call log keeps stages, timings and costs, never prompts or answers. Details are in the [README](README.md#privacy-defaults).
+Every meeting check, including its transcript, answers, record and any recording, is deleted 7 days after it is created, and the organizer can delete it sooner. A recording is deleted once the organizer finishes reviewing the transcript, unless they choose to keep it. The organizer can hide participant names from the model, so it sees "Person A", "Person B" and so on. A participant sees others' answers only after the organizer reveals the round. Links go out from the organizer's own mail app or share sheet, so ForkCheck never sees an email address. The in-app call log keeps stages, timings and costs, never prompts or answers. Details are in the [README](README.md#privacy-defaults).
 
 ## Try it
 

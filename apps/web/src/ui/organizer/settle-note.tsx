@@ -2,6 +2,7 @@
 
 import type { Participant } from "@forkcheck/core";
 import { useSavedMeetings } from "../saved-meetings";
+import { SendLink } from "../send-link";
 
 /**
  * After the reveal the workspace has no controls: wording is proposed and confirmed from each
@@ -9,9 +10,11 @@ import { useSavedMeetings } from "../saved-meetings";
  */
 export function SettleOnLinks({
   meetingId,
+  title,
   participants,
 }: {
   meetingId: string;
+  title: string;
   participants: Participant[];
 }) {
   const saved = useSavedMeetings()?.find((m) => m.id === meetingId)?.participants ?? [];
@@ -38,6 +41,9 @@ export function SettleOnLinks({
               <a href={l.url} target="_blank" rel="noopener">
                 {l.url}
               </a>
+              <span className="link-actions">
+                <SendLink name={l.name} title={title} url={l.url} purpose="settle" />
+              </span>
             </li>
           ))}
         </ul>

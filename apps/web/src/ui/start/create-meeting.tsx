@@ -13,6 +13,7 @@ import {
 import { Button, ErrorNotice, Field, Toast } from "../components";
 import { saveMeeting } from "../saved-meetings";
 import { SAMPLE_MEETING } from "./sample";
+import { SendLink } from "../send-link";
 import { useToast } from "../use-toast";
 import {
   serverFieldErrors,
@@ -30,9 +31,12 @@ function absolute(url: string): string {
 
 export function CreatedLinks({
   created,
+  title,
   transcribing = false,
 }: {
   created: CreateMeetingResponse;
+  /** The meeting's title, for the message each link is sent with. */
+  title: string;
   transcribing?: boolean;
 }) {
   const organizer = organizerUrl(created.meetingId, created.organizerToken);
@@ -71,18 +75,24 @@ export function CreatedLinks({
         </li>
       </ul>
       <h3>Participant links</h3>
-      <p>Send each person their own link. Each link opens that person&apos;s private questions.</p>
+      <p>
+        Send each person their own link. Each link opens that person&apos;s private questions. Email
+        opens your own mail app with a message ready; add the address and send it.
+      </p>
       <ul className="link-list link-tickets">
         {created.participantLinks.map((l) => (
           <li key={l.participantId}>
             <span className="link-name">{l.displayName}</span> <a href={l.url}>{l.url}</a>
-            <Button
-              variant="secondary"
-              aria-label={`Copy link for ${l.displayName}`}
-              onClick={() => copy(l.url)}
-            >
-              Copy link
-            </Button>
+            <span className="link-actions">
+              <Button
+                variant="secondary"
+                aria-label={`Copy link for ${l.displayName}`}
+                onClick={() => copy(l.url)}
+              >
+                Copy link
+              </Button>
+              <SendLink name={l.displayName} title={title} url={l.url} purpose="answer" />
+            </span>
           </li>
         ))}
       </ul>
@@ -100,7 +110,9 @@ export function CreateMeeting({ sample: startWithSample = false }: { sample?: bo
   const [errors, setErrors] = useState<FieldErrors>({});
   const [failure, setFailure] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
-  const [created, setCreated] = useState<CreateMeetingResponse | null>(null);
+  const [created, setCreated] = useState<{ res: CreateMeetingResponse; title: string } | null>(
+    null,
+  );
 
   const [source, setSource] = useState<SourceKind>("paste");
   const [file, setFile] = useState<File | null>(null);
@@ -201,7 +213,7 @@ export function CreateMeeting({ sample: startWithSample = false }: { sample?: bo
         })),
       });
       setErrors({});
-      setCreated(res.data);
+      setCreated({ res: res.data, title });
       return;
     }
     const fields = serverFieldErrors(res.body);
@@ -209,7 +221,11 @@ export function CreateMeeting({ sample: startWithSample = false }: { sample?: bo
     setFailure(Object.keys(fields).length > 0 ? res.message : CREATE_FAILED);
   }
 
-  if (created) return <CreatedLinks created={created} transcribing={source === "audio"} />;
+  if (created) {
+    return (
+      <CreatedLinks created={created.res} title={created.title} transcribing={source === "audio"} />
+    );
+  }
 
   return (
     <form className="start-form" onSubmit={submit} noValidate>

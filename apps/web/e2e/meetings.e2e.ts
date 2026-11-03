@@ -27,6 +27,19 @@ test("the sample meeting fills the form, and the check it creates is listed unde
   await page.getByLabel(/Everyone in this meeting agreed/).check();
   await page.getByRole("button", { name: "Create meeting check" }).click();
   await expect(page.getByRole("heading", { name: "Meeting check created" })).toBeVisible();
+  // Email opens the organizer's own mail app with the person's link in a ready message.
+  const email = page.getByRole("link", { name: "Email June's link" });
+  const nadiaLink = await page
+    .getByRole("listitem")
+    .filter({ hasText: "Nadia" })
+    .getByRole("link", { name: /\/p\// })
+    .getAttribute("href");
+  await expect(email).toHaveAttribute("href", /^mailto:\?subject=Your%20questions%20about/);
+  expect(
+    decodeURIComponent(
+      (await page.getByRole("link", { name: "Email Nadia's link" }).getAttribute("href"))!,
+    ),
+  ).toContain(nadiaLink!);
 
   await page
     .getByRole("navigation", { name: "Main" })
