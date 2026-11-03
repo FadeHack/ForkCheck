@@ -26,7 +26,7 @@ The model writes; code decides. Whether answers differ, whether wording is confi
 
 The app is Next.js with Postgres. Pure logic (comparing answers, resolution rules, the record) lives in `packages/core`, the model stages (finding decisions, writing questions and rechecks) in `packages/engine`, the model client and recorded replies in `packages/ai`, transcription in `packages/asr`, storage in `packages/db`, and the evaluation harness in `packages/eval`.
 
-For the hackathon submission (what we built, how Meta's models are used, evaluation results and limits), see [WRITEUP.md](WRITEUP.md).
+For the hackathon submission (what I built, how Meta's models are used, evaluation results and limits), see [WRITEUP.md](WRITEUP.md).
 
 ## Setup
 
@@ -105,7 +105,7 @@ What this project adds:
 - a follow-up question about consequences, to check that the new wording settled the split;
 - a decision record whose every item links to its source and is marked stated, confirmed or unresolved.
 
-We found no prior work or product doing the last three, but that search was limited and is not a claim of novelty.
+I found no prior work or product doing the last three, but that search was limited and is not a claim of novelty.
 
 ## License
 

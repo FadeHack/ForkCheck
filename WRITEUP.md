@@ -23,22 +23,22 @@ The organizer and each participant use their own browser link. No accounts.
   <img alt="How a check runs. It starts from a pasted transcript, or a recording that Muse Voice Transcribe turns into speaker-labelled turns. 1 Find: Muse Spark finds decisions and the details that could be read two ways, and code checks every quote against the transcript. 2 Ask privately: Muse Spark drafts multiple-choice questions and each person answers on their own link, sealed until the reveal. 3 Compare: code compares answers option by option; matching answers go straight to the record. 4 Settle: where answers differ, someone proposes wording and everyone confirms it, or they agree to disagree. 5 Recheck: Muse Spark writes a question about what the wording means in practice and code compares the answers; if they split again, it goes back to Settle. 6 Record: code sorts each item as stated, confirmed or unresolved, linked to its quote." src=".github/assets/loop-light.png">
 </picture>
 
-## What we built on and what we built
+## What I built on and what I built
 
 ForkCheck's repository was created on Oct 27, 2026, during the event, and all of its code was written during the hackathon.
 
-The detection half follows published research: Liu et al., "Illusion of Alignment: Detecting Hidden Disagreement in Collaborative Dialogue" (EMNLP 2026; [arXiv:2608.08210](https://arxiv.org/abs/2608.08210)). Diagnostic multiple-choice questions drawn from a transcript, private answers, comparing answers by option, and asking participants whether a split is real all come from that paper. Our question prompt `prompts/generateProbes.v1.md` is adapted from the paper's repository (see [NOTICE](NOTICE)). We don't claim the detection method as ours.
+The detection half follows published research: Liu et al., "Illusion of Alignment: Detecting Hidden Disagreement in Collaborative Dialogue" (EMNLP 2026; [arXiv:2608.08210](https://arxiv.org/abs/2608.08210)). Diagnostic multiple-choice questions drawn from a transcript, private answers, comparing answers by option, and asking participants whether a split is real all come from that paper. My question prompt `prompts/generateProbes.v1.md` is adapted from the paper's repository (see [NOTICE](NOTICE)). I don't claim the detection method as mine.
 
-What we added during the hackathon:
+What I added during the hackathon:
 
 - **Audio input.** Upload a recording, transcribe it with speaker labels, map speakers to participants, and review the transcript before analysis. The paper used written transcripts.
-- **Question templates per dimension** (owner, deadline, scope, acceptance criteria), chosen per dimension from gate runs, with model-written questions as the fallback. We have not shown that templates beat free generation in general (see Limits).
+- **Question templates per dimension** (owner, deadline, scope, acceptance criteria), chosen per dimension from gate runs, with model-written questions as the fallback. I have not shown that templates beat free generation in general (see Limits).
 - **Resolution in the participants' own words**, which counts only when everyone confirms it.
 - **A recheck question about consequences**, to catch a resolution that is still vague.
 - **A source-linked decision record** with the three categories above. A validator checks every record, and its result is shown on the record page.
 - **The product around it:** a Next.js app for organizer and participants, Postgres storage, a 7-day retention default, optional name hiding, an offline replay mode, and an evaluation harness with 26 scenario meetings.
 
-We found no prior work or product that does the last three loop steps (resolve, recheck, record). Our search was limited, so treat that as a note, not a claim of novelty.
+I found no prior work or product that does the last three loop steps (resolve, recheck, record). My search was limited, so treat that as a note, not a claim of novelty.
 
 ## How Meta's models are used
 
@@ -55,9 +55,9 @@ Two rules shape how the models are used:
 
 ## Evaluation
 
-We ran 26 synthetic meetings with planted mismatches (8 development, 18 held out) plus an audio set of 6 synthetic renders and 4 recordings of scripts read by the project owner. Participants are simulated. The full report, with every count and run log, is [eval-results/2026-11-01/report.md](eval-results/2026-11-01/report.md). All numbers below come from it.
+I ran 26 synthetic meetings with planted mismatches (8 development, 18 held out) plus an audio set of 6 synthetic renders and 4 recordings of scripts I read aloud. Participants are simulated. The full report, with every count and run log, is [eval-results/2026-11-01/report.md](eval-results/2026-11-01/report.md). All numbers below come from it.
 
-| What we measured                                           | Target    | Pasted transcripts (Muse Spark) | Audio (Muse Spark) |
+| What I measured                                            | Target    | Pasted transcripts (Muse Spark) | Audio (Muse Spark) |
 | ---------------------------------------------------------- | --------- | ------------------------------- | ------------------ |
 | Decisions found (S2 recall)                                |           | 97.8% (261/267)                 | 96.1% (124/129)    |
 | Quotes that match the transcript (S2 evidence validity)    | ≥ 95%     | 100% (638/638)                  | 100% (305/305)     |
@@ -69,16 +69,16 @@ We ran 26 synthetic meetings with planted mismatches (8 development, 18 held out
 
 The resolve and recheck steps were tested with two kinds of simulated resolution. When the resolution was precise, the recheck agreed in 87.5% of cases (28/32), against a target of 80%. When it was deliberately vague, the recheck caught it, splitting again, in 75.9% of cases (22/29), against a target of 70% ([report](eval-results/2026-11-01/report.md), S6). Every open split appeared as unresolved in the record (7/7 and 26/26, S7).
 
-**Muse Spark against Muse Spark Open.** Before the run, we fixed the rule that Spark Open counts as a credible alternative for a stage if every quality metric is within 5 points of Muse Spark and at least 98% of its JSON is valid after repair. It met that rule for both stages tested. Extraction recall was 99.3% against 97.8%, and question reveal rate was 55.6% against 57.4%. Its JSON was valid on the first try in every call (78/78 and 439/439), and it cost $0.059 per meeting against $0.111 for Muse Spark ([report](eval-results/2026-11-01/report.md), "Muse Spark and Spark Open" and "Cost and latency").
+**Muse Spark against Muse Spark Open.** Before the run, I fixed the rule that Spark Open counts as a credible alternative for a stage if every quality metric is within 5 points of Muse Spark and at least 98% of its JSON is valid after repair. It met that rule for both stages tested. Extraction recall was 99.3% against 97.8%, and question reveal rate was 55.6% against 57.4%. Its JSON was valid on the first try in every call (78/78 and 439/439), and it cost $0.059 per meeting against $0.111 for Muse Spark ([report](eval-results/2026-11-01/report.md), "Muse Spark and Spark Open" and "Cost and latency").
 
 **Cost.** A full meeting check on pasted text costs about $0.11 in Muse Spark calls (about 15 calls), and about $0.13 from audio ([report](eval-results/2026-11-01/report.md), "Cost and latency").
 
 ## Limits
 
-- **Question quality is below target.** On pasted transcripts the questions reveal 57.4% of planted mismatches, against our 75% target. We report that number as measured; we did not tune against the held-out set to raise it. The audio set scored higher (77.8%), but it has fewer mismatches (18 against 54), so that gap is not evidence that audio helps.
+- **Question quality is below target.** On pasted transcripts the questions reveal 57.4% of planted mismatches, against my 75% target. I report that number as measured; I did not tune against the held-out set to raise it. The audio set scored higher (77.8%), but it has fewer mismatches (18 against 54), so that gap is not evidence that audio helps.
 - **Simulated participants.** Muse Spark answers each question from a private brief, and the same model family writes the questions, which may push reveal rates up. These results don't show how real teams would answer.
 - **Synthetic meetings.** The 26 meetings were written for this evaluation.
-- **One rater.** Human quality scores were pre-filled by a model, then reviewed and corrected by one rater, the project owner. No inter-rater agreement is reported.
+- **One rater.** Human quality scores were pre-filled by a model, then reviewed and corrected by one rater, me. No inter-rater agreement is reported.
 - **Templates.** Per-dimension templates were picked on the development scenarios they were shaped against, so their benefit isn't proven on unseen data.
 - **Product limits.** Recordings must be 10 minutes and 32 MB or less (the Voice Transcribe limits). Questions and records are English only. Audio is stored on local disk, and rate limits hold for one server process.
 
