@@ -2126,6 +2126,23 @@ a.button {
   }
 }
 
+/* ---------- After the reveal: where settling happens ---------- */
+
+.settle-note {
+  margin-bottom: var(--space-8);
+  padding: var(--space-4);
+  background: var(--surface);
+  border-radius: var(--radius-panel);
+}
+
+.settle-note h2 {
+  margin-top: 0;
+}
+
+.settle-note .link-list {
+  margin-bottom: 0;
+}
+
 /* ---------- Your meetings ---------- */
 
 .meeting-list {

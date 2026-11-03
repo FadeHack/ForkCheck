@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 import type { CreateMeetingResponse } from "../src/contracts/api";
+import { noAxeViolations } from "./axe";
+import { answerOpen, closeRound, openRound, seedAnalyzedMeeting } from "./seed";
 
 test("the sample meeting fills the form, and the check it creates is listed under Your meetings", async ({
   page,
@@ -86,4 +88,54 @@ test("participant pages carry no site navigation", async ({ page, request }) => 
   await page.goto(`/p/${created.participantLinks[0]!.token}`);
   await expect(page.getByText("You are answering as Priya.")).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Main" })).toHaveCount(0);
+});
+
+test("after the reveal, the workspace says settling happens on the participant links, and lists them", async ({
+  page,
+  request,
+  baseURL,
+}) => {
+  const m = await seedAnalyzedMeeting(baseURL!);
+  await openRound(request, m.meetingId, m.organizerToken);
+  const [priya, marco, dana] = m.participantLinks;
+  const where = "Where does single sign-on run on Friday?";
+  await answerOpen(request, priya!.token, (s) => (s === where ? "In production" : null));
+  await answerOpen(request, marco!.token, (s) => (s === where ? "On staging only" : null));
+  await answerOpen(request, dana!.token, (s) => (s === where ? "In production" : null));
+  await closeRound(request, m.meetingId, m.organizerToken);
+
+  // Opened from a link, not created here: no links were kept, so the note says where they are.
+  await page.goto(`/m/${m.meetingId}#k=${m.organizerToken}`);
+  const note = page.getByRole("region", {
+    name: "Next: settle each difference from the participant links",
+  });
+  await expect(note).toContainText("Use the links you sent each person");
+
+  // Created in this browser: the links were kept, and opening the workspace keeps them.
+  await page.evaluate(
+    ([id, links]) => {
+      const list = JSON.parse(localStorage.getItem("forkcheck:meetings") ?? "[]") as {
+        id: string;
+      }[];
+      const saved = list.find((x) => x.id === id)!;
+      Object.assign(saved, {
+        participants: links.map((l) => ({
+          participantId: l.participantId,
+          name: l.displayName,
+          url: l.url,
+        })),
+      });
+      localStorage.setItem("forkcheck:meetings", JSON.stringify(list));
+    },
+    [m.meetingId, m.participantLinks] as const,
+  );
+  await page.reload();
+  for (const l of m.participantLinks) {
+    await expect(note.getByRole("listitem").filter({ hasText: l.displayName })).toContainText(
+      l.url,
+    );
+  }
+  await expect(note.getByRole("link").first()).toHaveAttribute("target", "_blank");
+  await noAxeViolations(page);
+  await page.screenshot({ path: test.info().outputPath("settle-note.png") });
 });

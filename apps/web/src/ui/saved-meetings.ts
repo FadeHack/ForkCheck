@@ -15,6 +15,18 @@ export interface SavedMeeting {
   timezone: string;
   /** When this browser last saved or opened it, for ordering. */
   savedAt: string;
+  /**
+   * Each person's link, kept from the create response: the server stores only token hashes, so
+   * this is the one place the organizer can find them again. Absent for a check opened from a
+   * link rather than created here.
+   */
+  participants?: SavedParticipant[];
+}
+
+export interface SavedParticipant {
+  participantId: string;
+  name: string;
+  url: string;
 }
 
 const KEY = "forkcheck:meetings";
@@ -23,9 +35,19 @@ const CHANGE = "forkcheck:meetings-change";
 function isSaved(v: unknown): v is SavedMeeting {
   if (typeof v !== "object" || v === null) return false;
   const r = v as Record<string, unknown>;
-  return ["id", "token", "title", "heldAt", "timezone", "savedAt"].every(
-    (k) => typeof r[k] === "string",
+  return (
+    ["id", "token", "title", "heldAt", "timezone", "savedAt"].every(
+      (k) => typeof r[k] === "string",
+    ) &&
+    (r.participants === undefined ||
+      (Array.isArray(r.participants) && r.participants.every(isParticipant)))
   );
+}
+
+function isParticipant(v: unknown): v is SavedParticipant {
+  if (typeof v !== "object" || v === null) return false;
+  const r = v as Record<string, unknown>;
+  return ["participantId", "name", "url"].every((k) => typeof r[k] === "string");
 }
 
 /** Parses the stored list; anything malformed is dropped rather than breaking the page. */
@@ -56,10 +78,17 @@ function write(list: SavedMeeting[]) {
   window.dispatchEvent(new Event(CHANGE));
 }
 
-/** Adds the meeting, or refreshes its details and moves it to the top. */
+/**
+ * Adds the meeting, or refreshes its details and moves it to the top. Participant links already
+ * saved are kept when a later save (opening the workspace) has none to give.
+ */
 export function saveMeeting(meeting: Omit<SavedMeeting, "savedAt">) {
-  const rest = parseSaved(read()).filter((m) => m.id !== meeting.id);
-  write([{ ...meeting, savedAt: new Date().toISOString() }, ...rest]);
+  const list = parseSaved(read());
+  const participants = meeting.participants ?? list.find((m) => m.id === meeting.id)?.participants;
+  const rest = list.filter((m) => m.id !== meeting.id);
+  const saved: SavedMeeting = { ...meeting, savedAt: new Date().toISOString() };
+  if (participants) saved.participants = participants;
+  write([saved, ...rest]);
 }
 
 export function forgetMeeting(id: string) {

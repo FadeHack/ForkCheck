@@ -17,6 +17,7 @@ import { ReviewView } from "./review";
 import { SpeakersView } from "./speakers";
 import { TracePanel } from "./trace";
 import { DeleteMeeting, MeetingDeleted } from "./delete";
+import { SettleOnLinks } from "./settle-note";
 import { RecordLink, RevealView, StageRail } from "./views";
 
 const POLL_MS = 5000;
@@ -75,7 +76,12 @@ export function WorkspaceView({
             <QuestionsView key={state.meeting.status} state={state} onChange={reload} />
           )}
           {stage === "round" && <RoundMonitor state={state} onChange={reload} />}
-          {(stage === "reveal" || stage === "resolve") && <RevealView state={state} />}
+          {(stage === "reveal" || stage === "resolve") && (
+            <>
+              <SettleOnLinks meetingId={id} participants={state.participants} />
+              <RevealView state={state} />
+            </>
+          )}
           {stage === "recheck" && <RecheckView state={state} onChange={reload} />}
           {stage === "record" && <RecordLink meetingId={id} />}
           <TracePanel meetingId={id} />

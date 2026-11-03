@@ -194,6 +194,11 @@ export function CreateMeeting({ sample: startWithSample = false }: { sample?: bo
         title,
         heldAt,
         timezone,
+        participants: res.data.participantLinks.map((l) => ({
+          participantId: l.participantId,
+          name: l.displayName,
+          url: l.url,
+        })),
       });
       setErrors({});
       setCreated(res.data);
