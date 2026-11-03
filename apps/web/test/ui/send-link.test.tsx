@@ -1,5 +1,6 @@
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { linkMessage, mailtoHref } from "../../src/ui/send-link";
+import { linkMessage, mailtoHref, SendLink } from "../../src/ui/send-link";
 
 const url = "http://localhost:3000/p/abc";
 
@@ -26,5 +27,19 @@ describe("mailtoHref", () => {
     expect(mailtoHref('A "b" & c', "line 1\nline 2")).toBe(
       "mailto:?subject=A%20%22b%22%20%26%20c&body=line%201%0Aline%202",
     );
+  });
+});
+
+describe("SendLink", () => {
+  it("shows Slack and Teams as focusable, not-yet-working buttons that say Coming soon", () => {
+    const out = renderToStaticMarkup(
+      <SendLink name="June" title="Atlas launch sync" url={url} purpose="answer" />,
+    );
+    for (const service of ["Slack", "Teams"]) {
+      expect(out).toContain(`aria-label="${service}: send June&#x27;s link"`);
+    }
+    expect(out.match(/aria-disabled="true"/g)).toHaveLength(2);
+    expect(out).not.toMatch(/\sdisabled=""/);
+    expect(out.match(/role="tooltip"[^>]*>Coming soon</g)).toHaveLength(2);
   });
 });
