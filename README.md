@@ -19,24 +19,10 @@ ForkCheck reads a meeting transcript, either pasted or transcribed from a record
 
 The model writes; code decides. Whether answers differ, whether wording is confirmed and where each record item lands are computed from the participants' own choices.
 
-```mermaid
-flowchart TD
-  paste[Pasted transcript] --> find
-  audio[Recording] -->|Muse Voice Transcribe| turns[Speaker-labelled turns]
-  turns -->|organizer names each voice and reviews| find
-  find["Find decisions and the details that could be read two ways<br/>Muse Spark; code checks every quote against the transcript"] --> ask
-  ask["Draft multiple-choice questions<br/>Muse Spark; the organizer edits and publishes"] --> answer
-  answer["Each person answers on their own link<br/>sealed until the reveal"] --> compare
-  compare{"Compare answers by option<br/>code, not the model"}
-  compare -->|same answer| record
-  compare -->|different answers| settle
-  settle["Settle the wording<br/>participants propose; everyone confirms"] --> recheck
-  settle -->|agree to disagree| record
-  recheck{"Recheck: a question about consequences<br/>Muse Spark writes it; code compares"}
-  recheck -->|split again| settle
-  recheck -->|agree| record
-  record["Decision record<br/>stated, confirmed or unresolved; each item linked to its quote"]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/loop-dark.png">
+  <img alt="How a check runs. It starts from a pasted transcript, or a recording that Muse Voice Transcribe turns into speaker-labelled turns. 1 Find: Muse Spark finds decisions and the details that could be read two ways, and code checks every quote against the transcript. 2 Ask privately: Muse Spark drafts multiple-choice questions and each person answers on their own link, sealed until the reveal. 3 Compare: code compares answers option by option; matching answers go straight to the record. 4 Settle: where answers differ, someone proposes wording and everyone confirms it, or they agree to disagree. 5 Recheck: Muse Spark writes a question about what the wording means in practice and code compares the answers; if they split again, it goes back to Settle. 6 Record: code sorts each item as stated, confirmed or unresolved, linked to its quote." src=".github/assets/loop-light.png">
+</picture>
 
 The app is Next.js with Postgres. Pure logic (comparing answers, resolution rules, the record) lives in `packages/core`, the model stages (finding decisions, writing questions and rechecks) in `packages/engine`, the model client and recorded replies in `packages/ai`, transcription in `packages/asr`, storage in `packages/db`, and the evaluation harness in `packages/eval`.
 
