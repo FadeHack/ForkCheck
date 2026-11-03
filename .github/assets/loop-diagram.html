@@ -1,0 +1,307 @@
+<!doctype html>
+<!--
+  Source for loop-light.png and loop-dark.png in the README and write-up. GitHub won't render
+  HTML, so the diagram ships as images. To regenerate, open this file with ?theme=light or
+  ?theme=dark and screenshot the .diagram element at 2x.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>How a ForkCheck check runs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Public+Sans:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=block"
+    />
+    <style>
+      /* The app's tokens (apps/web/src/app/globals.css). */
+      :root {
+        --paper: #fbf8f3;
+        --surface: #f2ede4;
+        --ink: #1f1b16;
+        --ink-muted: #5c5549;
+        --line: #857b6c;
+        --line-subtle: #ddd5c8;
+        --action: #2b4c7e;
+        --confirmed: #1e5c45;
+        --split: #b3321b;
+      }
+      :root.dark {
+        --paper: #161310;
+        --surface: #211d18;
+        --ink: #efe9df;
+        --ink-muted: #b5ac9d;
+        --line: #7d7466;
+        --line-subtle: #2e2922;
+        --action: #8fb4f0;
+        --confirmed: #6fcba4;
+        --split: #ff7b5e;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          400 17px/1.45 "Public Sans",
+          system-ui,
+          sans-serif;
+      }
+      .diagram {
+        position: relative;
+        width: 1040px;
+        padding: 36px 40px 40px;
+        background: var(--paper);
+      }
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 22px;
+      }
+      h1 {
+        margin: 0;
+        font:
+          700 30px/1.15 "Source Serif 4",
+          Georgia,
+          serif;
+      }
+      .rule {
+        font:
+          400 23px/1.2 "Patrick Hand",
+          cursive;
+        color: var(--split);
+      }
+      .source {
+        margin: 0 0 14px;
+        color: var(--ink-muted);
+        font-size: 15px;
+      }
+      .source strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 34px 1fr 34px 1fr;
+        align-items: stretch;
+      }
+      .row + .row {
+        margin-top: 64px;
+      }
+      .step {
+        position: relative;
+        padding: 16px 18px 18px;
+        background: var(--surface);
+        border: 1px solid var(--line-subtle);
+        border-radius: 10px;
+      }
+      .step h2 {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin: 0 0 6px;
+        font:
+          700 22px/1.2 "Source Serif 4",
+          Georgia,
+          serif;
+      }
+      .step h2 span {
+        color: var(--ink-muted);
+        font-weight: 600;
+      }
+      .step p {
+        margin: 0;
+        font-size: 15.5px;
+        color: var(--ink);
+      }
+      .who {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 12px;
+      }
+      .tag {
+        padding: 2px 9px;
+        border: 1.5px solid currentColor;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+      .tag.model {
+        color: var(--action);
+      }
+      .tag.code {
+        color: var(--ink);
+        background: var(--ink);
+      }
+      .tag.code b {
+        color: var(--paper);
+      }
+      .tag.people {
+        color: var(--confirmed);
+      }
+      .arrow {
+        align-self: center;
+        justify-self: center;
+        color: var(--line);
+      }
+      svg.wires {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: visible;
+      }
+      .note {
+        position: absolute;
+        font:
+          400 20px/1.1 "Patrick Hand",
+          cursive;
+        color: var(--split);
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="diagram">
+      <header>
+        <h1>How a check runs</h1>
+        <span class="rule">The model writes. Code decides.</span>
+      </header>
+      <p class="source">
+        Starts from a <strong>pasted transcript</strong>, or a <strong>recording</strong> that Muse
+        Voice Transcribe turns into speaker-labelled turns for the organizer to review.
+      </p>
+
+      <div class="row">
+        <section class="step" id="s1">
+          <h2><span>1</span>Find</h2>
+          <p>
+            Decisions, and the details that could be read two ways. Every quote is checked against
+            the transcript.
+          </p>
+          <div class="who">
+            <span class="tag model">Muse Spark</span><span class="tag code"><b>Code</b></span>
+          </div>
+        </section>
+        <svg class="arrow" width="26" height="16" viewBox="0 0 26 16" aria-hidden="true">
+          <path d="M1 8h21M16 2l7 6-7 6" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <section class="step" id="s2">
+          <h2><span>2</span>Ask privately</h2>
+          <p>
+            Short multiple-choice questions. Each person answers on their own link, sealed until the
+            reveal.
+          </p>
+          <div class="who">
+            <span class="tag model">Muse Spark</span><span class="tag people">People</span>
+          </div>
+        </section>
+        <svg class="arrow" width="26" height="16" viewBox="0 0 26 16" aria-hidden="true">
+          <path d="M1 8h21M16 2l7 6-7 6" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <section class="step" id="s3">
+          <h2><span>3</span>Compare</h2>
+          <p>
+            Answers compared option by option. Where everyone chose the same, it goes straight to
+            the record.
+          </p>
+          <div class="who">
+            <span class="tag code"><b>Code</b></span>
+          </div>
+        </section>
+      </div>
+
+      <div class="row">
+        <section class="step" id="s4">
+          <h2><span>4</span>Settle</h2>
+          <p>
+            Where answers differ, someone proposes wording and everyone confirms it, or they agree
+            to disagree.
+          </p>
+          <div class="who"><span class="tag people">People</span></div>
+        </section>
+        <svg class="arrow" width="26" height="16" viewBox="0 0 26 16" aria-hidden="true">
+          <path d="M1 8h21M16 2l7 6-7 6" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <section class="step" id="s5">
+          <h2><span>5</span>Recheck</h2>
+          <p>
+            A new question about what the wording means in practice shows whether it really settled
+            the difference.
+          </p>
+          <div class="who">
+            <span class="tag model">Muse Spark</span><span class="tag code"><b>Code</b></span>
+          </div>
+        </section>
+        <svg class="arrow" width="26" height="16" viewBox="0 0 26 16" aria-hidden="true">
+          <path d="M1 8h21M16 2l7 6-7 6" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <section class="step" id="s6">
+          <h2><span>6</span>Record</h2>
+          <p>
+            Stated in the meeting, confirmed by participants, or unresolved. Each item links to its
+            quote.
+          </p>
+          <div class="who">
+            <span class="tag code"><b>Code</b></span>
+          </div>
+        </section>
+      </div>
+
+      <svg class="wires" id="wires" aria-hidden="true"></svg>
+      <span class="note" id="loop-note">split again</span>
+    </div>
+
+    <script>
+      const theme = new URLSearchParams(location.search).get("theme");
+      if (theme === "dark") document.documentElement.classList.add("dark");
+
+      // Wires drawn from the laid-out boxes: Compare down to Settle, and Recheck back to Settle.
+      function draw() {
+        const root = document.querySelector(".diagram").getBoundingClientRect();
+        const box = (id) => {
+          const r = document.getElementById(id).getBoundingClientRect();
+          return {
+            l: r.left - root.left,
+            r: r.right - root.left,
+            t: r.top - root.top,
+            b: r.bottom - root.top,
+            cx: (r.left + r.right) / 2 - root.left,
+          };
+        };
+        const s3 = box("s3"),
+          s4 = box("s4"),
+          s5 = box("s5");
+        const css = getComputedStyle(document.documentElement);
+        const line = css.getPropertyValue("--line").trim();
+        const split = css.getPropertyValue("--split").trim();
+        const mid = (s3.b + s4.t) / 2;
+        const turn = `M${s3.cx} ${s3.b} V${mid - 10} Q${s3.cx} ${mid} ${s3.cx - 10} ${mid} H${s4.cx + 10} Q${s4.cx} ${mid} ${s4.cx} ${mid + 10} V${s4.t - 2}`;
+        // The loop leaves Recheck's lower edge and comes back into Settle's, under the row.
+        const y = s4.b + 30;
+        const a = s5.cx,
+          b = s4.cx;
+        const loop = `M${a - 20} ${s5.b + 2} C${a - 40} ${y + 10}, ${b + 60} ${y + 10}, ${b + 14} ${s4.b + 4}`;
+        const marker = (id, color) =>
+          `<marker id="${id}" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M2 1 L10 6 L2 11" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></marker>`;
+        document.getElementById("wires").innerHTML =
+          `<defs>${marker("to-line", line)}${marker("to-split", split)}</defs>` +
+          `<path d="${turn}" fill="none" stroke="${line}" stroke-width="2" marker-end="url(#to-line)"/>` +
+          `<path d="${loop}" fill="none" stroke="${split}" stroke-width="2.5" stroke-linecap="round" marker-end="url(#to-split)"/>`;
+        const note = document.getElementById("loop-note");
+        note.style.left = `${(a + b) / 2 - note.offsetWidth / 2}px`;
+        note.style.top = `${y + 16}px`;
+        document.querySelector(".diagram").style.paddingBottom = "84px";
+      }
+      document.fonts.ready.then(() => {
+        draw();
+        document.body.dataset.ready = "1";
+      });
+    </script>
+  </body>
+</html>

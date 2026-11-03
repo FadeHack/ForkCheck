@@ -18,24 +18,10 @@ ForkCheck takes a meeting transcript, pasted or transcribed from a recording, an
 
 The organizer and each participant use their own browser link. No accounts.
 
-```mermaid
-flowchart TD
-  paste[Pasted transcript] --> find
-  audio[Recording] -->|Muse Voice Transcribe| turns[Speaker-labelled turns]
-  turns -->|organizer names each voice and reviews| find
-  find["Find decisions and the details that could be read two ways<br/>Muse Spark; code checks every quote against the transcript"] --> ask
-  ask["Draft multiple-choice questions<br/>Muse Spark; the organizer edits and publishes"] --> answer
-  answer["Each person answers on their own link<br/>sealed until the reveal"] --> compare
-  compare{"Compare answers by option<br/>code, not the model"}
-  compare -->|same answer| record
-  compare -->|different answers| settle
-  settle["Settle the wording<br/>participants propose; everyone confirms"] --> recheck
-  settle -->|agree to disagree| record
-  recheck{"Recheck: a question about consequences<br/>Muse Spark writes it; code compares"}
-  recheck -->|split again| settle
-  recheck -->|agree| record
-  record["Decision record<br/>stated, confirmed or unresolved; each item linked to its quote"]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/loop-dark.png">
+  <img alt="How a check runs. It starts from a pasted transcript, or a recording that Muse Voice Transcribe turns into speaker-labelled turns. 1 Find: Muse Spark finds decisions and the details that could be read two ways, and code checks every quote against the transcript. 2 Ask privately: Muse Spark drafts multiple-choice questions and each person answers on their own link, sealed until the reveal. 3 Compare: code compares answers option by option; matching answers go straight to the record. 4 Settle: where answers differ, someone proposes wording and everyone confirms it, or they agree to disagree. 5 Recheck: Muse Spark writes a question about what the wording means in practice and code compares the answers; if they split again, it goes back to Settle. 6 Record: code sorts each item as stated, confirmed or unresolved, linked to its quote." src=".github/assets/loop-light.png">
+</picture>
 
 ## What we built on and what we built
 
