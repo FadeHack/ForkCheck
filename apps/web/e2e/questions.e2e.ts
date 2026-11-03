@@ -28,7 +28,12 @@ test('a draft edited to say "disagree" fails its check and can\'t be published',
   await page.goto(`/m/${m.meetingId}#k=${m.organizerToken}`);
 
   await expect(page.getByRole("heading", { name: "Decisions found" })).toBeVisible();
-  await expect(page.getByText("Open to more than one reading")).toBeVisible();
+  // Each draft quotes its evidence, so the decision list waits behind its summary.
+  await expect(
+    page.getByText(/2 decisions, (all|\d of them) open to more than one reading/),
+  ).toBeVisible();
+  await page.getByText("Show them with their quotes.").click();
+  await expect(page.getByText("Open to more than one reading").first()).toBeVisible();
   const publish = page.getByRole("button", { name: /^Publish \d questions?$/ });
   await expect(publish).toHaveText("Publish 2 questions");
 

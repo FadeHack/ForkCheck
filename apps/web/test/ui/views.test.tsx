@@ -259,8 +259,10 @@ describe("WorkspaceView", () => {
     const out = html(
       <WorkspaceView state={organizerState({ rounds: [round("r1")] })} viewing={null} />,
     );
-    expect(out).toContain('<li aria-current="step"><strong>Round</strong></li>');
-    expect(out).toContain("Reveal, not yet");
+    expect(out).toContain(
+      '<li aria-current="step" data-state="current" data-viewing="true"><strong>Round</strong></li>',
+    );
+    expect(out).toContain('Reveal<span class="stage-note">, not yet</span>');
     expect(out).toContain('href="/m/m1?stage=questions"');
   });
 
@@ -495,7 +497,7 @@ describe("CreatedLinks", () => {
       />,
     );
     expect(out).toContain('href="/m/m1#k=tok"');
-    expect(out).toContain('Priya: <a href="http://localhost/p/pt">');
+    expect(out).toContain('<span class="link-name">Priya</span> <a href="http://localhost/p/pt">');
     expect(out).toContain("It&#x27;s the only way back to this workspace.");
   });
 });

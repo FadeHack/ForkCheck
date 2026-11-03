@@ -131,7 +131,7 @@ export function RoundMonitor({
       <section aria-labelledby="progress-heading">
         <h2 id="progress-heading">Answers so far</h2>
         <p role="status" className="round-focal">
-          {progress.done} of {progress.active} have answered.
+          <span className="round-count">{progress.done}</span> of {progress.active} have answered.
         </p>
         <p>{QUORUM_NOTE}</p>
         {state.meeting.error !== null && round.closedAt !== null && (

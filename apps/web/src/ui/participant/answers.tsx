@@ -5,6 +5,7 @@ import type { Answer } from "@forkcheck/core";
 import type { ParticipantProbe, SubmitAnswerRequest } from "../../contracts/api";
 import { callApi } from "../api";
 import { Button, ErrorNotice } from "../components";
+import { markedStem } from "../proof";
 
 /** One question's answer while it is being chosen. */
 export interface AnswerDraft {
@@ -97,15 +98,21 @@ function ProbeCard({
         onChange={() => onChange(next)}
       />
       <span>{label}</span>
+      {checked && (
+        <span className="pencil-tick" aria-hidden="true">
+          ✓
+        </span>
+      )}
     </label>
   );
   return (
     <fieldset className="probe-card" aria-describedby={error ? errorId : undefined}>
       <legend>
         <span className="probe-count">
-          Question {index + 1} of {total}
+          <span className="visually-hidden">Question </span>
+          <span className="probe-number">{index + 1}</span> of {total}
         </span>
-        <span className="probe-stem">{probe.stem}</span>
+        <span className="probe-stem">{markedStem(probe.stem)}</span>
       </legend>
       {probe.options.map((o) =>
         choice(

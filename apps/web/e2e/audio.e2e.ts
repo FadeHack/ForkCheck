@@ -40,7 +40,7 @@ test.afterEach(() => {
 });
 
 async function fillAudioForm(page: Page, file: { name: string; mimeType: string; buffer: Buffer }) {
-  await page.goto("/");
+  await page.goto("/new");
   await page.getByLabel("Meeting title").fill("SSO pilot, recorded");
   await page.getByLabel("Meeting date and time").fill("2026-10-26T15:00");
   await page.getByLabel("Time zone").fill("America/New_York");

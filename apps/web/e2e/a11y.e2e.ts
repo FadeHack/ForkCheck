@@ -158,7 +158,10 @@ test("every route passes the accessibility, overflow, target and focus checks", 
   const org = (m: CreateMeetingResponse) => `/m/${m.meetingId}#k=${m.organizerToken}`;
   const p = (m: CreateMeetingResponse, i = 0) => `/p/${m.participantLinks[i]!.token}`;
 
-  await check(page, "/", "start");
+  await check(page, "/", "front page");
+  await check(page, "/meetings", "your meetings, none yet");
+  await check(page, "/new", "start");
+  await check(page, "/new?sample", "start, sample filled in");
   await check(page, org(drafted), "organizer: questions");
   await check(page, org(open), "organizer: round");
   await check(page, org(revealed), "organizer: reveal");
@@ -166,6 +169,8 @@ test("every route passes the accessibility, overflow, target and focus checks", 
   await check(page, org(done), "organizer: record stage");
   // The record reads the organizer key this tab stored when the workspace opened.
   await check(page, `/m/${done.meetingId}/record`, "organizer record");
+  // Opening the workspaces above saved them in this browser.
+  await check(page, "/meetings", "your meetings");
   await check(page, p(drafted), "participant: nothing sent yet");
   await check(page, p(open, 1), "participant: answering");
   await check(page, p(open, 0), "participant: answered, waiting");

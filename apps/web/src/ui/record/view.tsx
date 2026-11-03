@@ -112,7 +112,19 @@ function Item({ item, ctx }: { item: RecordItem; ctx: Context }) {
           <p className="record-status">
             <StatusLabel status={item.category === "confirmed" ? "confirmed" : "unresolved"} />
           </p>
-          <p className="record-text">{item.text}</p>
+          {/* The status label above says it in words; the tick and the pencil line are marks. */}
+          <p className="record-text">
+            {item.category === "confirmed" ? (
+              <>
+                <span className="record-tick" aria-hidden="true">
+                  ✓
+                </span>
+                {item.text}
+              </>
+            ) : (
+              <span className="record-open">{item.text}</span>
+            )}
+          </p>
         </>
       )}
       {item.deadline && (
@@ -174,11 +186,22 @@ function Item({ item, ctx }: { item: RecordItem; ctx: Context }) {
 }
 
 const sections = [
-  { category: "confirmed", heading: "Confirmed by participants", empty: "Nothing confirmed yet." },
-  { category: "unresolved", heading: "Unresolved", empty: "Nothing unresolved." },
+  {
+    category: "confirmed",
+    heading: "Confirmed by participants",
+    tally: "confirmed",
+    empty: "Nothing confirmed yet.",
+  },
+  {
+    category: "unresolved",
+    heading: "Unresolved",
+    tally: "unresolved",
+    empty: "Nothing unresolved.",
+  },
   {
     category: "stated",
     heading: "Stated in meeting",
+    tally: "stated in the meeting",
     empty: "No decisions were stated in the meeting.",
   },
 ] as const;
@@ -231,6 +254,20 @@ export function RecordView({ data }: { data: RecordResponse }) {
           </Button>
         </div>
       </header>
+      <nav aria-label="Record summary" className="record-tally">
+        <ul>
+          {sections.map((s) => (
+            <li key={s.category} data-category={s.category}>
+              <a href={`#record-${s.category}`}>
+                <span className="record-tally-count">
+                  {record.items.filter((i) => i.category === s.category).length}
+                </span>{" "}
+                {s.tally}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
       {people.some((p) => p.isSimulated) && <SimulatedBanner />}
       <ReplayedBanner replayed={data.replayed} />
       {record.items.some((i) =>

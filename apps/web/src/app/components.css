@@ -1,30 +1,141 @@
 /* Styles for src/ui/components.tsx and the site header. Tokens live in globals.css. */
 
+/* The header is the sheet's folder tab: the name on paper joined to the page, the theme on the desk. */
 .site-header {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: var(--space-3);
-  max-width: var(--measure);
+  max-width: var(--sheet-wide);
   margin-inline: auto;
-  padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--line-subtle);
+  padding: var(--space-4) 0 0;
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-6) var(--space-2) var(--space-4);
+  background: var(--paper);
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  box-shadow: 0 -1px 0 var(--line-subtle);
   color: var(--ink);
-  font-weight: 600;
-  font-size: 1.125rem;
+  font-family: var(--font-reading);
+  font-weight: 700;
+  font-size: 1.375rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  padding-block: 0.625rem;
+}
+
+.fork-mark {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+.fork-mark .fork-mark-split {
+  stroke: var(--split);
 }
 
 .theme-select {
+  position: relative;
+  padding-bottom: var(--space-2);
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--ink);
+}
+
+.theme-toggle svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.theme-toggle .theme-icon-fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* With the dialog and toast, the only thing above the page, so it takes a shadow. */
+.theme-options {
+  position: absolute;
+  right: 0;
+  top: calc(100% - var(--space-1));
+  z-index: 10;
+  min-width: 11rem;
+  margin: 0;
+  padding: var(--space-1);
+  list-style: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.18);
+}
+
+.theme-options li {
+  margin: 0;
+}
+
+.theme-options button {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--ink-muted);
+  justify-content: space-between;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.theme-options button:hover {
+  background: var(--surface);
+}
+
+.theme-options button[aria-pressed="true"] {
+  background: var(--surface);
+  font-weight: 600;
+}
+
+/* A tick in pencil beside a chosen option. The words already say which; the tick is a mark. */
+.pencil-tick {
+  margin-left: auto;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--action);
+}
+
+@media (max-width: 40rem) {
+  .site-header {
+    padding-inline: var(--space-3);
+  }
 }
 
 /* Button: primary for the one action a screen exists for, secondary for the rest. */
@@ -294,6 +405,7 @@
 }
 
 .banner p {
+  max-width: none;
   margin: 0;
 }
 
@@ -320,7 +432,7 @@
 .stage-rail ol {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-6);
+  gap: var(--space-2) 0;
   list-style: none;
   padding: 0;
   margin: var(--space-6) 0 var(--space-8);
@@ -335,10 +447,17 @@
   color: var(--ink-muted);
 }
 
+/* A short rule joins each step to the one before, so the stages read as one path. */
+.stage-rail li + li::before {
+  content: "";
+  width: var(--space-6);
+  margin-inline: var(--space-3);
+  border-top: 2px solid var(--line);
+}
+
 .stage-rail li[aria-current="step"] {
-  color: var(--ink);
-  font-weight: 600;
-  border-bottom: 2px solid var(--ink);
+  color: var(--split);
+  font-weight: 700;
 }
 
 .stage-rail a {
@@ -801,6 +920,11 @@
   .record h3 {
     break-after: avoid;
   }
+
+  /* Paper gets the settled marks, never a frame of them arriving. */
+  .record * {
+    animation: none !important;
+  }
 }
 
 /* Trace panel: organizer only, closed by default; numbers line up in columns. */
@@ -1045,4 +1169,1176 @@
 
 .delete-meeting h2 {
   font-size: 1.25rem;
+}
+
+/*
+ * Proof sheet: a split reads like a marked-up manuscript. The asked-about words in the quote get
+ * a red-pencil ring and the answers sit in the margin as pencil notes. Agreed questions stay
+ * plain and small, so the splits are what the eye finds first.
+ */
+/* Inline-block, so the ring is sized from a real box rather than a line fragment. */
+.pencil-circle {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.pencil-circle svg {
+  position: absolute;
+  inset: -0.35em -0.3em;
+  width: calc(100% + 0.6em);
+  height: calc(100% + 0.7em);
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+  stroke: var(--split);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pencil-circle path {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 0;
+    animation: pencil-draw 900ms ease-out backwards;
+  }
+
+  @keyframes pencil-draw {
+    from {
+      stroke-dashoffset: 1200;
+    }
+
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+/* A long phrase on a phone wraps, so the ring gives way to a pencil underline. */
+@media (max-width: 40rem) {
+  .pencil-circle {
+    display: inline;
+    white-space: normal;
+    text-decoration: underline wavy var(--split) 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .pencil-circle svg {
+    display: none;
+  }
+}
+
+.fork[data-outcome="split"] .quote {
+  background: none;
+  padding: 0;
+}
+
+.fork[data-outcome="split"] .quote blockquote {
+  font-size: clamp(1.375rem, 1.1rem + 1.1vw, 2rem);
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 34ch;
+}
+
+.fork[data-outcome="split"] .fork-stem {
+  font-weight: 400;
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 56rem) {
+  .fork[data-outcome="split"] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    column-gap: var(--space-12);
+    align-items: start;
+  }
+
+  .fork[data-outcome="split"] > * {
+    grid-column: 1;
+  }
+
+  .fork[data-outcome="split"] > .fork-branches {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    margin: var(--space-2) 0 0;
+    padding: var(--space-1) 0 var(--space-1) var(--space-4);
+    border-left: 2px solid var(--split);
+  }
+
+  .fork[data-outcome="split"] .fork-branches::before,
+  .fork[data-outcome="split"] .fork-branch::before,
+  .fork[data-outcome="split"] .fork-branch::after {
+    display: none;
+  }
+
+  .fork[data-outcome="split"] .fork-branch {
+    padding: 0 0 var(--space-4);
+  }
+}
+
+.fork[data-outcome="split"] .fork-option {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 1.375rem;
+  line-height: 1.25;
+  color: var(--split);
+}
+
+.reveal .fork[data-outcome="consistent"] .quote blockquote,
+.reveal .fork[data-outcome="consistent"] .fork-stem {
+  font-size: 1rem;
+}
+
+/* A date split as days on a strip: the days people chose are filled, with their names below. */
+.calendar-strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(3.75rem, 1fr);
+  list-style: none;
+  margin: var(--space-6) 0 var(--space-4);
+  padding: 0;
+  border-top: 2px solid var(--line);
+  overflow-x: auto;
+}
+
+.calendar-strip li {
+  margin: 0;
+  white-space: nowrap;
+  padding: var(--space-2) var(--space-1) 0;
+  text-align: center;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* A picked day's filled block uses the whole cell, so a bold "Thu 12" fits inside it. */
+.calendar-strip li[data-picked] {
+  padding-inline: 0;
+}
+
+.calendar-strip li[data-picked] .calendar-day {
+  display: block;
+  margin-top: calc(-1 * var(--space-2) - 2px);
+  padding: var(--space-2) var(--space-1);
+  background: var(--split);
+  color: var(--paper);
+  font-weight: 700;
+}
+
+.calendar-who {
+  display: block;
+  margin-top: var(--space-2);
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  line-height: 1.2;
+  color: var(--split);
+}
+
+/* The validity labels wait behind one line; it opens on its own once a label is chosen. */
+.validity-more {
+  margin: var(--space-4) 0;
+}
+
+.validity-more > summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--action);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* Record summary: how many items landed in each category, each a link to its section. */
+.record-tally ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-12);
+  list-style: none;
+  margin: var(--space-6) 0 var(--space-8);
+  padding: var(--space-4) 0;
+  border-block: 1px solid var(--line-subtle);
+}
+
+.record-tally li {
+  margin: 0;
+}
+
+.record-tally a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+.record-tally a:hover {
+  text-decoration: underline;
+}
+
+.record-tally-count {
+  font-family: var(--font-reading);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.record-tally [data-category="confirmed"] .record-tally-count {
+  color: var(--confirmed);
+}
+
+.record-tally [data-category="unresolved"] .record-tally-count {
+  color: var(--unresolved);
+}
+
+@media print {
+  .record-tally {
+    display: none;
+  }
+}
+
+/* The record is the clean copy: a confirmed item gets a tick, an unresolved one keeps its pencil. */
+.record-tick {
+  margin-right: var(--space-2);
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--confirmed);
+}
+
+/* Wide enough for a margin: the tick hangs outside the item's rule, where an editor puts it. */
+@media (min-width: 56rem) {
+  .record-item {
+    position: relative;
+  }
+
+  .record-tick {
+    position: absolute;
+    left: -2.75rem;
+    margin: 0;
+    font-size: 2.25rem;
+  }
+}
+
+.record-open {
+  text-decoration: underline wavy var(--split) 2px;
+  text-underline-offset: 0.25em;
+  text-decoration-skip-ink: none;
+}
+
+/* "Where it was said" reads as the manuscript: who and when in the gutter, the words beside it. */
+@media (min-width: 40rem) {
+  .record-segment .quote {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: var(--space-6);
+    background: none;
+    padding: var(--space-2) 0;
+    margin: 0;
+    border-bottom: 1px solid var(--line-subtle);
+  }
+
+  .record-segment .quote figcaption {
+    grid-row: 1;
+    grid-column: 1;
+    padding-top: 0.2em;
+  }
+
+  .record-segment .quote blockquote,
+  .record-segment .quote-play {
+    grid-column: 2;
+  }
+
+  .record-segment .quote blockquote p {
+    margin: 0;
+  }
+}
+
+/*
+ * The reveal plays in the order an editor marks a page: the ring goes round the phrase, the margin
+ * line drops, then each reading and its days arrive. Everything settles within two seconds.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes margin-drop {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+
+    to {
+      clip-path: inset(0);
+    }
+  }
+
+  @keyframes mark-in {
+    from {
+      opacity: 0;
+      transform: translateX(-0.5rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes day-fill {
+    from {
+      background-color: transparent;
+      color: var(--ink-muted);
+    }
+  }
+
+  @keyframes pencil-in {
+    from {
+      text-decoration-color: transparent;
+    }
+  }
+
+  @keyframes tick-in {
+    from {
+      opacity: 0;
+      transform: scale(1.6) rotate(-12deg);
+    }
+  }
+
+  .fork[data-outcome="split"] > .fork-branches {
+    animation: margin-drop 500ms 700ms ease-out both;
+  }
+
+  .fork[data-outcome="split"] .fork-branch {
+    animation: mark-in 350ms ease-out both;
+    animation-delay: 950ms;
+  }
+
+  .fork[data-outcome="split"] .fork-branch:nth-child(2) {
+    animation-delay: 1150ms;
+  }
+
+  .fork[data-outcome="split"] .fork-branch:nth-child(3) {
+    animation-delay: 1350ms;
+  }
+
+  .fork[data-outcome="split"] .fork-branch:nth-child(n + 4) {
+    animation-delay: 1550ms;
+  }
+
+  .calendar-strip li[data-picked] .calendar-day {
+    animation: day-fill 400ms 1200ms ease-out both;
+  }
+
+  .calendar-strip li[data-picked] .calendar-who {
+    animation: mark-in 350ms 1400ms ease-out both;
+  }
+
+  .record-tick {
+    display: inline-block;
+    animation: tick-in 300ms 200ms ease-out both;
+  }
+
+  .record-open {
+    animation: pencil-in 600ms 200ms ease-out both;
+  }
+
+  .record-tally li {
+    animation: mark-in 350ms ease-out both;
+  }
+
+  .record-tally li:nth-child(2) {
+    animation-delay: 120ms;
+  }
+
+  .record-tally li:nth-child(3) {
+    animation-delay: 240ms;
+  }
+}
+
+/* ---------- Proof sheet on every screen ---------- */
+
+/* A long asked-about phrase gets the pencil line instead of a ring, so it can wrap. */
+.pencil-line {
+  text-decoration: underline wavy var(--split) 2px;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: none;
+}
+
+/* The rail stays one line on the wide sheet; on a phone it wraps as before. */
+@media (min-width: 56rem) {
+  .stage-rail ol {
+    flex-wrap: nowrap;
+  }
+
+  .stage-rail li + li::before {
+    width: var(--space-4);
+    margin-inline: var(--space-2);
+  }
+}
+
+/* Start: details on the left, the transcript as the page on the right, then consent and go. */
+.start-intro {
+  font-size: 1.0625rem;
+  color: var(--ink-muted);
+}
+
+@media (min-width: 56rem) {
+  .start-form {
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: 0 var(--space-12);
+    align-items: start;
+  }
+
+  .start-form > .notice-error,
+  .start-submit {
+    grid-column: 1 / -1;
+  }
+
+  .start-submit {
+    border-top: 1px solid var(--line-subtle);
+    padding-top: var(--space-6);
+  }
+}
+
+/* The transcript box reads as ruled manuscript paper: serif lines on a faint rule. */
+#transcript {
+  font-family: var(--font-reading);
+  font-size: 1rem;
+  line-height: 2rem;
+  padding: 0 var(--space-4);
+  min-height: 24rem;
+  background-color: var(--paper);
+  background-image: linear-gradient(to bottom, transparent calc(2rem - 1px), var(--line-subtle) 0);
+  background-size: 100% 2rem;
+  background-attachment: local;
+}
+
+/* Created: the organizer link stands apart; each participant gets a ticket with their name. */
+.created .link-organizer {
+  border: 2px solid var(--action);
+  border-radius: var(--radius-panel);
+  padding: var(--space-3) var(--space-4);
+}
+
+.link-tickets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--space-4);
+}
+
+.link-tickets li {
+  margin: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-panel);
+}
+
+.link-tickets a {
+  flex: none;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: 0.875rem;
+}
+
+.link-name {
+  font-family: var(--font-reading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Organizer, decisions found: set like the transcript, the claim then its lines with who and when. */
+.decision-list > li {
+  border-top: 1px solid var(--line-subtle);
+  padding-top: var(--space-4);
+}
+
+.decision-list > li + li {
+  margin-top: var(--space-4);
+}
+
+.decision-statement {
+  font-family: var(--font-reading);
+  font-size: 1.125rem;
+}
+
+.decision-status {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.decision-list > li[data-status="ambiguous"] .decision-status,
+.decision-list > li[data-status="debated"] .decision-status,
+.decision-list > li[data-status="unresolved"] .decision-status {
+  color: var(--split);
+}
+
+.decision-list .quote,
+.draft .quote {
+  background: none;
+  padding: 0 0 0 var(--space-4);
+  border-left: 2px solid var(--line);
+}
+
+@media (min-width: 56rem) {
+  .decision-list > li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 14rem;
+    column-gap: var(--space-8);
+  }
+
+  .decision-list > li > * {
+    grid-column: 1;
+  }
+
+  .decision-list > li > .decision-status {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+  }
+}
+
+/* Organizer, drafts: the question as the reader will see it, the evidence beside it. */
+.draft h3 {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.35;
+}
+
+.draft-options {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+
+.draft-options li {
+  position: relative;
+  padding: var(--space-1) 0 var(--space-1) var(--space-8);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+/* A pencil dash, not a box: these are previews, nothing here can be ticked. */
+.draft-options li::before {
+  content: "–" / "";
+  position: absolute;
+  left: var(--space-2);
+  color: var(--ink-muted);
+}
+
+.draft-facts {
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+}
+
+.draft-facts dt {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (min-width: 56rem) {
+  .draft {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    grid-auto-flow: row dense;
+    column-gap: var(--space-12);
+    align-items: start;
+  }
+
+  .draft > * {
+    grid-column: 1;
+  }
+
+  .draft > .draft-evidence {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+}
+
+/* Participant, answering: the question number sits in the margin, large, like a numbered query. */
+.probe-card {
+  padding-top: var(--space-6);
+}
+
+.probe-count {
+  font-variant-numeric: tabular-nums;
+}
+
+.probe-number {
+  font-family: var(--font-reading);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.probe-stem {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 56rem) {
+  .probe-card {
+    position: relative;
+    padding-left: 7rem;
+    max-width: calc(var(--measure) + 7rem);
+  }
+
+  .probe-count {
+    position: absolute;
+    left: 0;
+    top: var(--space-6);
+    width: 5.5rem;
+  }
+
+  .probe-count .probe-number {
+    display: block;
+    font-size: 3.5rem;
+  }
+}
+
+/* The option chosen gets a pencil tick at the end of its row. */
+.probe-card .choice {
+  min-height: 3.25rem;
+  font-size: 1.0625rem;
+}
+
+.probe-card .choice:has(input:checked) {
+  background: var(--surface);
+}
+
+.probe-card .pencil-tick {
+  font-size: 1.75rem;
+}
+
+/* Organizer, round: the count is the screen's headline while people answer. */
+.round-focal {
+  font-family: var(--font-reading);
+  font-size: 1.5rem;
+}
+
+.round-count {
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 700;
+  vertical-align: -0.1em;
+}
+
+.people-list {
+  max-width: var(--measure);
+}
+
+/* Resolve: proposed wording is a slip pinned to the split; confirmations land as ticks. */
+.resolve > h4 {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--ink-muted);
+}
+
+.quote.proposal {
+  max-width: var(--measure);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--action);
+  padding: var(--space-4) var(--space-6);
+  box-shadow: 0 6px 18px rgb(60 45 20 / 0.1);
+}
+
+.quote.proposal blockquote {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.confirm-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  border: 0;
+}
+
+.confirm-list li {
+  border: 1px solid var(--line-subtle);
+  border-radius: var(--radius-panel);
+  padding: var(--space-2) var(--space-4);
+}
+
+.confirm-list .person-status {
+  flex: none;
+}
+
+/* Organizer, recheck: the follow-up question set like the reveal's, options as pencil notes. */
+.recheck-question h3,
+.recheck-question .fork-stem {
+  font-family: var(--font-reading);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pencil-tick {
+    animation: tick-in 250ms ease-out;
+  }
+}
+
+/* ---------- Site navigation ---------- */
+
+/* The organizer's two places sit on the desk beside the theme, never on the sheet. */
+.site-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+
+.site-tools .theme-select {
+  padding-bottom: 0;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav li {
+  margin: 0;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-3);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+/* On a phone the tools take their own row above, so the name tab still joins the sheet. */
+@media (max-width: 40rem) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  .site-tools {
+    order: -1;
+    width: 100%;
+    justify-content: flex-end;
+    padding-bottom: 0;
+  }
+
+  .site-nav a {
+    padding: 0 var(--space-2);
+  }
+}
+
+/* Links styled as buttons, for actions that go to another page. */
+a.button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* ---------- Front page ---------- */
+
+.landing h1 {
+  font-size: clamp(2.5rem, 1.7rem + 3vw, 4rem);
+  max-width: 11ch;
+  margin-bottom: var(--space-6);
+}
+
+.landing-lede {
+  font-size: 1.1875rem;
+  line-height: 1.55;
+}
+
+.landing-pitch .actions {
+  margin-top: var(--space-8);
+}
+
+/* The excerpt is the product's own reveal, cut from the sample meeting and set beside the pitch. */
+.landing-specimen {
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--ink);
+}
+
+.landing-specimen figcaption {
+  margin-bottom: var(--space-4);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 56rem) {
+  .landing-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: var(--space-12);
+    align-items: start;
+    padding-top: var(--space-6);
+  }
+
+  .landing-specimen {
+    margin-top: 0;
+  }
+
+  /* Half a sheet is too narrow for the reveal's wide margin, so its notes column shrinks. */
+  .landing-specimen .fork[data-outcome="split"] {
+    grid-template-columns: minmax(0, 1fr) 12rem;
+    column-gap: var(--space-6);
+  }
+
+  /* A week of days needs the excerpt's full width, so the strip runs under the notes too. */
+  .landing-specimen .fork[data-outcome="split"] > .calendar-strip {
+    grid-column: 1 / -1;
+    grid-row: 5;
+  }
+}
+
+.landing-loop {
+  margin-top: var(--space-12);
+}
+
+/* Set like the record's manuscript: who does the step in the gutter, the step beside it. */
+.loop-list {
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.loop-list > li {
+  counter-increment: step;
+  margin: 0;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line-subtle);
+}
+
+.loop-list h3 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-reading);
+  font-size: 1.25rem;
+}
+
+.loop-list h3::before {
+  content: counter(step) ". ";
+  color: var(--ink-muted);
+}
+
+.loop-list p {
+  margin: 0;
+}
+
+.loop-who {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+  margin-bottom: var(--space-1);
+}
+
+@media (min-width: 56rem) {
+  .loop-list > li {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+
+  .loop-who {
+    padding-top: 0.2rem;
+    text-align: right;
+  }
+}
+
+.landing-facts {
+  margin-top: var(--space-12);
+}
+
+.landing-facts > div {
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--ink);
+}
+
+.landing-facts > div + div {
+  margin-top: var(--space-8);
+}
+
+.landing-facts h2 {
+  margin-top: 0;
+  font-family: var(--font-reading);
+}
+
+@media (min-width: 56rem) {
+  .landing-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-12);
+  }
+
+  .landing-facts > div + div {
+    margin-top: 0;
+  }
+}
+
+.landing-credit {
+  margin-top: var(--space-12);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line-subtle);
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.landing-credit p {
+  margin: 0;
+}
+
+/* ---------- Start: the sample meeting ---------- */
+
+.sample-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-6);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  background: var(--surface);
+  border-radius: var(--radius-panel);
+}
+
+.sample-bar p {
+  flex: 1 1 22rem;
+  margin: 0;
+}
+
+@media (min-width: 56rem) {
+  .start-form > .sample-bar {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- After the reveal: where settling happens ---------- */
+
+.settle-note {
+  margin-bottom: var(--space-8);
+  padding: var(--space-4);
+  background: var(--surface);
+  border-radius: var(--radius-panel);
+}
+
+.settle-note h2 {
+  margin-top: 0;
+}
+
+.settle-note .link-list {
+  margin-bottom: 0;
+}
+
+/* ---------- Your meetings ---------- */
+
+.meeting-list {
+  margin: var(--space-8) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.meeting-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-2) var(--space-4);
+  align-items: center;
+  margin: 0;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line-subtle);
+}
+
+.meeting-row p {
+  margin: 0;
+}
+
+.meeting-title {
+  font-family: var(--font-reading);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.meeting-held {
+  color: var(--ink-muted);
+  font-size: 0.9375rem;
+}
+
+.meeting-where {
+  grid-column: 1;
+}
+
+.meeting-row .button {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.meeting-row[data-state="gone"] .meeting-where,
+.meeting-row[data-state="loading"] .meeting-where {
+  color: var(--ink-muted);
+}
+
+@media (min-width: 56rem) {
+  .meeting-row {
+    grid-template-columns: minmax(0, 1fr) 14rem auto;
+  }
+
+  .meeting-where {
+    grid-column: 2;
+  }
+
+  .meeting-row .button {
+    grid-column: 3;
+    grid-row: auto;
+  }
+}
+
+.meetings-empty .actions {
+  margin-top: var(--space-4);
+}
+
+/* ---------- Workspace ---------- */
+
+.stage-note {
+  font-weight: 400;
+}
+
+/*
+ * On a wide sheet the stages stand in the left margin as one stem with a node per stage, the
+ * fork line's single stem; it stays in view while the stage beside it scrolls.
+ */
+@media (min-width: 64rem) {
+  .workspace {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .workspace-side {
+    position: sticky;
+    top: var(--space-6);
+  }
+
+  .workspace-side .stage-rail ol {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: var(--space-2) 0 0;
+  }
+
+  .workspace-side .stage-rail li {
+    position: relative;
+    padding-left: var(--space-6);
+  }
+
+  .workspace-side .stage-rail li::before,
+  .workspace-side .stage-rail li + li::before {
+    content: "";
+    position: absolute;
+    left: calc(0.375rem - 1px);
+    top: 0;
+    bottom: 0;
+    width: 0;
+    margin: 0;
+    border-top: 0;
+    border-left: 2px solid var(--line);
+  }
+
+  .workspace-side .stage-rail li:first-child::before {
+    top: 50%;
+  }
+
+  .workspace-side .stage-rail li:last-child::before {
+    bottom: 50%;
+  }
+
+  .workspace-side .stage-rail li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-top: -0.375rem;
+    border: 2px solid var(--line);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  .workspace-side .stage-rail li[data-state="done"]::after {
+    background: var(--line);
+  }
+
+  .workspace-side .stage-rail li[data-state="current"]::after {
+    border-color: currentColor;
+    background: currentColor;
+  }
+
+  .workspace-side .stage-rail .stage-note {
+    font-size: 0.875rem;
+  }
+
+  /* The workspace title and stage headings start level with the stem. */
+  .workspace-main > :first-child,
+  .workspace-main > :first-child > :first-child {
+    margin-top: 0;
+  }
+}
+
+/* While questions are chosen the decision list waits behind one line. */
+.decisions-fold summary {
+  display: block;
+  cursor: pointer;
+  list-style: none;
+}
+
+.decisions-fold summary::-webkit-details-marker {
+  display: none;
+}
+
+.decisions-fold summary h2 {
+  margin-bottom: var(--space-1);
+}
+
+.decisions-count {
+  color: var(--ink-muted);
+}
+
+.decisions-show,
+.decisions-hide {
+  color: var(--action);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.decisions-hide,
+.decisions-fold details[open] .decisions-show {
+  display: none;
+}
+
+.decisions-fold details[open] .decisions-hide {
+  display: inline;
+}
+
+/* The publish button stays at the bottom of the screen while the drafts scroll past. */
+.draft-list ~ .publish {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  padding: var(--space-4) 0;
+  background: var(--paper);
+  border-top: 1px solid var(--line-subtle);
 }

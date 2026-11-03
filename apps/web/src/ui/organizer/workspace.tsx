@@ -8,6 +8,7 @@ import { Loading, PageError } from "../components";
 import { ReplayedBanner } from "../replayed-banner";
 import { SimulatedBanner } from "../simulated-banner";
 import { organizerStage, stagesFor, type OrganizerStage, type StageList } from "../stages";
+import { saveMeeting } from "../saved-meetings";
 import { formatHeldAt } from "../time";
 import { QuestionsView } from "./questions";
 import { RoundMonitor } from "./round";
@@ -16,6 +17,7 @@ import { ReviewView } from "./review";
 import { SpeakersView } from "./speakers";
 import { TracePanel } from "./trace";
 import { DeleteMeeting, MeetingDeleted } from "./delete";
+import { SettleOnLinks } from "./settle-note";
 import { RecordLink, RevealView, StageRail } from "./views";
 
 const POLL_MS = 5000;
@@ -61,19 +63,31 @@ export function WorkspaceView({
       </header>
       {state.participants.some((p) => p.isSimulated) && <SimulatedBanner />}
       <ReplayedBanner replayed={state.replayed} />
-      <StageRail stages={stages} current={current} viewing={stage} href={href} />
-      {stage === "speakers" && <SpeakersView state={state} onChange={reload} />}
-      {stage === "review" && <ReviewView state={state} onChange={reload} />}
-      {stage === "questions" && (
-        // Remounts when drafting finishes, so the selection starts from the new drafts.
-        <QuestionsView key={state.meeting.status} state={state} onChange={reload} />
-      )}
-      {stage === "round" && <RoundMonitor state={state} onChange={reload} />}
-      {(stage === "reveal" || stage === "resolve") && <RevealView state={state} />}
-      {stage === "recheck" && <RecheckView state={state} onChange={reload} />}
-      {stage === "record" && <RecordLink meetingId={id} />}
-      <TracePanel meetingId={id} />
-      <DeleteMeeting state={state} onDeleted={onDeleted} />
+      {/* On a wide sheet the rail stands in the left margin and stays put while the stage scrolls. */}
+      <div className="workspace">
+        <div className="workspace-side">
+          <StageRail stages={stages} current={current} viewing={stage} href={href} />
+        </div>
+        <div className="workspace-main">
+          {stage === "speakers" && <SpeakersView state={state} onChange={reload} />}
+          {stage === "review" && <ReviewView state={state} onChange={reload} />}
+          {stage === "questions" && (
+            // Remounts when drafting finishes, so the selection starts from the new drafts.
+            <QuestionsView key={state.meeting.status} state={state} onChange={reload} />
+          )}
+          {stage === "round" && <RoundMonitor state={state} onChange={reload} />}
+          {(stage === "reveal" || stage === "resolve") && (
+            <>
+              <SettleOnLinks meetingId={id} participants={state.participants} />
+              <RevealView state={state} />
+            </>
+          )}
+          {stage === "recheck" && <RecheckView state={state} onChange={reload} />}
+          {stage === "record" && <RecordLink meetingId={id} />}
+          <TracePanel meetingId={id} />
+          <DeleteMeeting state={state} onDeleted={onDeleted} />
+        </div>
+      </div>
     </>
   );
 }
@@ -101,7 +115,14 @@ export function Workspace({ meetingId }: { meetingId: string }) {
   useEffect(() => {
     let live = true;
     void fetchState(meetingId).then((next) => {
-      if (live) setLoaded(next);
+      if (!live) return;
+      setLoaded(next);
+      // Opening a workspace from its link keeps it in this browser's list of meetings.
+      const token = organizerToken(meetingId);
+      if (next.state === "ready" && token !== null) {
+        const { id, title, heldAt, timezone } = next.data.meeting;
+        saveMeeting({ id, token, title, heldAt, timezone });
+      }
     });
     return () => {
       live = false;

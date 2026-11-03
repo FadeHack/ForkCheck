@@ -22,11 +22,22 @@ export function StageRail({
     <nav aria-label="Meeting check stages" className="stage-rail">
       <ol>
         {stages.map((s, i) => (
-          <li key={s.id} aria-current={s.id === current ? "step" : undefined}>
+          <li
+            key={s.id}
+            aria-current={s.id === current ? "step" : undefined}
+            data-state={i < currentIdx ? "done" : i === currentIdx ? "current" : "later"}
+            data-viewing={s.id === viewing || undefined}
+          >
             {s.id === "source" ? (
-              <>{s.label}, done</>
+              <>
+                {s.label}
+                <span className="stage-note">, done</span>
+              </>
             ) : i > currentIdx ? (
-              <>{s.label}, not yet</>
+              <>
+                {s.label}
+                <span className="stage-note">, not yet</span>
+              </>
             ) : s.id === viewing ? (
               <strong>{s.label}</strong>
             ) : (

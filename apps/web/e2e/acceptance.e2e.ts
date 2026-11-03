@@ -101,7 +101,7 @@ test("a 5-minute recording becomes a checked record", async ({ page, request }) 
 
   try {
     await timed("Create and upload", async () => {
-      await page.goto("/");
+      await page.goto("/new");
       await page.getByLabel("Meeting title").fill("Northwind pilot launch check-in");
       await page.getByLabel("Meeting date and time").fill("2026-10-26T15:00");
       await page.getByLabel("Time zone").fill("America/New_York");

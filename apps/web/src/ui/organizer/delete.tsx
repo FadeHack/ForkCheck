@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { OrganizerMeetingState } from "../../contracts/api";
 import { organizerCall } from "../api";
 import { Button, ErrorNotice, Loading } from "../components";
+import { forgetMeeting } from "../saved-meetings";
 import { formatDay } from "../time";
 
 /** When the meeting goes by itself, and a button to delete it now after one confirmation. */
@@ -27,7 +28,10 @@ export function DeleteMeeting({
       method: "DELETE",
     });
     setDeleting(false);
-    if (res.ok) return onDeleted();
+    if (res.ok) {
+      forgetMeeting(id);
+      return onDeleted();
+    }
     setConfirming(false);
     setFailure(res.message);
   }
@@ -76,7 +80,7 @@ export function MeetingDeleted() {
         work.
       </p>
       <p>
-        <Link href="/">Start a new meeting check</Link>
+        <Link href="/new">Start a new meeting check</Link>
       </p>
     </>
   );
