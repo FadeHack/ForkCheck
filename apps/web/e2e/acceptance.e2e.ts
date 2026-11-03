@@ -114,7 +114,10 @@ test("a 5-minute recording becomes a checked record", async ({ page, request }) 
         timeout: 60_000,
       });
     });
-    const links = page.getByRole("listitem").filter({ hasText: "/p/" }).getByRole("link");
+    const links = page
+      .getByRole("listitem")
+      .filter({ hasText: "/p/" })
+      .getByRole("link", { name: /\/p\// });
     const participantTokens = (await links.evaluateAll((as) =>
       as.map((a) => a.getAttribute("href")!.split("/p/")[1]!),
     )) as string[];

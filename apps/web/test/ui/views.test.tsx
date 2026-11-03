@@ -482,6 +482,7 @@ describe("CreatedLinks", () => {
   it("puts the organizer token in the fragment and lists every participant link", () => {
     const out = html(
       <CreatedLinks
+        title="Pilot customer check-in"
         created={{
           meetingId: "m1",
           organizerToken: "tok",

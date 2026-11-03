@@ -2143,6 +2143,18 @@ a.button {
   margin-bottom: 0;
 }
 
+/* ---------- Sending a participant link ---------- */
+
+.link-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.link-tickets a.button {
+  font-size: inherit;
+}
+
 /* ---------- Your meetings ---------- */
 
 .meeting-list {

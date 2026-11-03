@@ -122,7 +122,10 @@ async function createFromPaste(page: Page, hideNames: boolean) {
   await expect(page.getByRole("heading", { name: "Meeting check created" })).toBeVisible();
 
   // Links are listed in the order the names were entered.
-  const links = page.getByRole("listitem").filter({ hasText: "/p/" }).getByRole("link");
+  const links = page
+    .getByRole("listitem")
+    .filter({ hasText: "/p/" })
+    .getByRole("link", { name: /\/p\// });
   const hrefs = await links.evaluateAll((as) => as.map((a) => a.getAttribute("href")!));
   const tokens = new Map(
     (demo.participants as Person[]).map((name, i) => [name, hrefs[i]!.split("/p/")[1]!]),

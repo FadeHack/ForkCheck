@@ -78,7 +78,11 @@ export function WorkspaceView({
           {stage === "round" && <RoundMonitor state={state} onChange={reload} />}
           {(stage === "reveal" || stage === "resolve") && (
             <>
-              <SettleOnLinks meetingId={id} participants={state.participants} />
+              <SettleOnLinks
+                meetingId={id}
+                title={state.meeting.title}
+                participants={state.participants}
+              />
               <RevealView state={state} />
             </>
           )}
