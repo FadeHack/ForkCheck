@@ -24,7 +24,7 @@ pnpm db:migrate
 pnpm dev
 ```
 
-Open http://localhost:3000. With the default `LIVE=0`, nothing leaves your machine: every model reply comes from a recording in `packages/ai/fixtures`, and the screens say so with a "Replayed." note.
+Open http://localhost:3000 and select **Try the sample meeting**. With the default `LIVE=0`, nothing leaves your machine: every model reply comes from a recording in `packages/ai/fixtures`, and the screens say so with a "Replayed." note.
 
 ## Run the demo
 
@@ -39,12 +39,11 @@ pnpm e2e demo --project desktop
 
 To run it by hand:
 
-1. Print the transcript with `node -p "require('./scenarios/demo/atlas-launch.json').transcript"`.
-2. On the start page, enter the title `Atlas launch sync`, the date and time `2026-11-03 10:00`, the time zone `America/New_York`, and the participants `Nadia`, `Tomas` and `June`, one per line. Paste the transcript, tick the consent box and create the meeting check.
-3. Open the organizer link and select **Draft questions**, then publish them.
-4. Open each participant link in its own tab and answer. To see splits, answer the launch question and the help center question differently for different people.
-5. Reveal the answers. For each split, propose a resolution in a participant tab and confirm it from all three. Offline, only the wordings in the file's `scriptedResolutions` have recorded rechecks; the precise ones settle the split and the vague ones split again.
-6. Send the recheck from the organizer view, answer it, then open the record.
+1. On the front page, select **Try the sample meeting**. It fills in the start page with the demo meeting: title, date, time zone, the three participants and the transcript. Tick the consent box and create the meeting check.
+2. Open the organizer link and select **Draft questions**, then publish them.
+3. Open each participant link in its own tab and answer. To see splits, answer the launch question and the help center question differently for different people.
+4. Reveal the answers. The organizer view then lists the participant links again: for each split, propose a resolution in a participant tab and confirm it from all three. Offline, only the wordings in the file's `scriptedResolutions` have recorded rechecks; the precise ones settle the split and the vague ones split again.
+5. Send the recheck from the organizer view, answer it, then open the record.
 
 Offline mode replays only meetings whose model requests were recorded. Any other meeting needs live calls.
 
