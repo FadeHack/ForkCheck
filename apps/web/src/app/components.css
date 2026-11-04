@@ -2155,6 +2155,51 @@ a.button {
   font-size: inherit;
 }
 
+/* Slack and Teams: shown, not built yet. */
+.coming-soon {
+  position: relative;
+  display: inline-flex;
+}
+
+.coming-soon .button[aria-disabled="true"] {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink-muted);
+  border-style: dashed;
+  border-color: var(--line);
+  cursor: not-allowed;
+}
+
+.coming-soon .brand-logo {
+  width: 1em;
+  height: 1em;
+  margin-inline-end: var(--space-2);
+  flex: none;
+}
+
+.coming-soon-tip {
+  position: absolute;
+  bottom: calc(100% + var(--space-2));
+  left: 50%;
+  z-index: 2;
+  padding: var(--space-1) var(--space-2);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-control, 4px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.coming-soon:hover .coming-soon-tip,
+.coming-soon .button:focus-visible + .coming-soon-tip,
+.coming-soon-tip[data-open] {
+  visibility: visible;
+}
+
 /* ---------- Your meetings ---------- */
 
 .meeting-list {

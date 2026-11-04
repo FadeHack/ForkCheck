@@ -27,6 +27,14 @@ test("the sample meeting fills the form, and the check it creates is listed unde
   await page.getByLabel(/Everyone in this meeting agreed/).check();
   await page.getByRole("button", { name: "Create meeting check" }).click();
   await expect(page.getByRole("heading", { name: "Meeting check created" })).toBeVisible();
+  // Slack and Teams aren't built: they stay reachable and say "Coming soon".
+  const slack = page.getByRole("button", { name: "Slack: send June's link" });
+  await expect(slack).toHaveAttribute("aria-disabled", "true");
+  await expect(slack).toHaveAccessibleDescription("Coming soon");
+  // aria-disabled blocks Playwright's own click, but a real tap goes through and shows the tip.
+  await slack.click({ force: true });
+  await expect(page.getByRole("tooltip").filter({ hasText: "Coming soon" }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Meeting check created" })).toBeVisible();
   // Email opens the organizer's own mail app with the person's link in a ready message.
   const email = page.getByRole("link", { name: "Email June's link" });
   const nadiaLink = await page
