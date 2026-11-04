@@ -5,6 +5,8 @@
   <img alt="ForkCheck's front page: the headline &quot;Everyone agreed. On the same thing?&quot; beside a split from the sample meeting, where &quot;the end of next week&quot; is circled and the answers show June chose Thursday the 12th while Nadia and Tomas chose Friday the 13th." src=".github/assets/forkcheck-light.png">
 </picture>
 
+**[Watch the 3-minute demo](https://youtu.be/miof9AX9BiQ)**
+
 People often leave a meeting thinking they agreed, then find out they understood the decision differently: whose job it is, what "Friday" means, what "done" includes.
 
 ForkCheck reads a meeting transcript, either pasted or transcribed from a recording, and finds decisions whose details could be read more than one way. It then:

@@ -1,6 +1,6 @@
 # ForkCheck: hackathon write-up
 
-Meta Global AI Developer Hackathon, Indie Developer track. Problem statement: **Build for Your World**.
+Meta Global AI Developer Hackathon, Indie Developer track. Problem statement: **Build for Your World**. Demo video: [youtu.be/miof9AX9BiQ](https://youtu.be/miof9AX9BiQ).
 
 ## The problem
 
